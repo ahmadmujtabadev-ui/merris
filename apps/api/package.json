@@ -9,6 +9,8 @@
     "test": "vitest run",
     "start": "node dist/server.js",
     "seed": "tsx src/scripts/seed.ts",
+    "seed:kb": "tsx src/scripts/seed-knowledge-base.ts",
+    "download:reports": "tsx src/scripts/download-reports.ts",
     "clean": "rm -rf dist"
   },
   "dependencies": {
@@ -16,7 +18,7 @@
     "@azure/storage-blob": "^12.18.0",
     "@fastify/cors": "^9.0.0",
     "@fastify/multipart": "^8.3.1",
-    "@fastify/static": "^9.0.0",
+    "@fastify/static": "7",
     "@fastify/websocket": "^10.0.0",
     "@merris/shared": "workspace:*",
     "@microsoft/microsoft-graph-client": "^3.0.0",

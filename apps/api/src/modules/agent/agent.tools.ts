@@ -750,73 +750,110 @@ const createEvidencePackTool: ToolDefinition = {
 const benchmarkMetricTool: ToolDefinition = {
   name: 'benchmark_metric',
   description:
-    'Benchmark a specific ESG metric across ingested sustainability reports in the K1 knowledge base. Returns peer values, percentiles, and count.',
+    'Compare an ESG metric value against peer companies from the knowledge base. Returns percentile ranking, sector average, and 3-year trend.',
   input_schema: {
     type: 'object',
     properties: {
-      metricName: { type: 'string', description: 'Metric name to benchmark (e.g. "GHG Emissions Scope 1")' },
-      sector: { type: 'string', description: 'Sector to filter by (e.g. "oil_gas")' },
-      country: { type: 'string', description: 'Country to filter by (optional)' },
+      metricName: { type: 'string', description: 'The metric to benchmark (e.g., "Scope 1 GHG Emissions")' },
+      value: { type: 'number', description: 'The value to compare' },
+      unit: { type: 'string', description: 'Unit of measurement' },
+      sector: { type: 'string', description: 'Industry sector for peer comparison' },
+      country: { type: 'string', description: 'Country code for regional comparison (optional)' },
     },
-    required: ['metricName', 'sector'],
+    required: ['metricName', 'value', 'sector'],
   },
   handler: async (input) => {
-    const { metricName, sector, country } = input as {
+    const { metricName, value, unit, sector, country } = input as {
       metricName: string;
+      value: number;
+      unit?: string;
       sector: string;
       country?: string;
     };
 
-    const matchStage: Record<string, unknown> = {
-      'metrics.name': { $regex: metricName, $options: 'i' },
-      sector,
-    };
-    if (country) matchStage.country = country;
+    try {
+      const matchFilter: Record<string, any> = {
+        sector: { $regex: new RegExp(sector, 'i') },
+        'metrics.name': { $regex: new RegExp(metricName, 'i') },
+      };
+      if (country) {
+        matchFilter['country'] = { $regex: new RegExp(country, 'i') };
+      }
 
-    const reports = await KnowledgeReportModel.find(matchStage)
-      .select('company reportYear metrics')
-      .lean();
+      const peerReports = await KnowledgeReportModel.find(matchFilter)
+        .sort({ reportYear: -1 })
+        .limit(50)
+        .lean();
 
-    const values: Array<{ company: string; year: number; value: number | string; unit: string }> = [];
-    const numericValues: number[] = [];
+      if (peerReports.length === 0) {
+        return {
+          metricName,
+          yourValue: value,
+          sector,
+          message: 'No peer data available in the knowledge base for this metric and sector.',
+          peerCount: 0,
+        };
+      }
 
-    for (const report of reports) {
-      for (const metric of report.metrics) {
-        if (metric.name.toLowerCase().includes(metricName.toLowerCase())) {
-          values.push({
-            company: report.company,
-            year: report.reportYear,
-            value: metric.value,
-            unit: metric.unit,
-          });
-          const numVal = typeof metric.value === 'number' ? metric.value : parseFloat(String(metric.value));
-          if (!isNaN(numVal)) numericValues.push(numVal);
+      // Extract metric values from peers
+      const peerValues: Array<{ company: string; value: number; year: number }> = [];
+      const trendData: Map<number, number[]> = new Map();
+
+      for (const report of peerReports) {
+        for (const metric of report.metrics) {
+          if (new RegExp(metricName, 'i').test(metric.name) && typeof metric.value === 'number') {
+            peerValues.push({ company: report.company, value: metric.value, year: report.reportYear });
+            if (!trendData.has(report.reportYear)) trendData.set(report.reportYear, []);
+            trendData.get(report.reportYear)!.push(metric.value);
+          }
         }
       }
+
+      if (peerValues.length === 0) {
+        return { metricName, yourValue: value, sector, message: 'Peer reports found but no numeric values.', peerCount: 0 };
+      }
+
+      const numericValues = peerValues.map((p) => p.value).sort((a, b) => a - b);
+      const sum = numericValues.reduce((a, b) => a + b, 0);
+      const mean = sum / numericValues.length;
+      const median = numericValues[Math.floor(numericValues.length / 2)] ?? 0;
+      const min = numericValues[0] ?? 0;
+      const max = numericValues[numericValues.length - 1] ?? 0;
+      const p25 = numericValues[Math.floor(numericValues.length * 0.25)] ?? 0;
+      const p75 = numericValues[Math.floor(numericValues.length * 0.75)] ?? 0;
+
+      const belowCount = numericValues.filter((v) => v < value).length;
+      const percentileRank = Math.round((belowCount / numericValues.length) * 100);
+
+      // 3-year trend (sector average by year)
+      const years = Array.from(trendData.keys()).sort();
+      const trend = years.map((y) => {
+        const vals = trendData.get(y)!;
+        return { year: y, sectorAverage: Math.round(vals.reduce((a, b) => a + b, 0) / vals.length) };
+      });
+
+      // Named peers (latest year, top 5)
+      const latestYear = Math.max(...peerValues.map((p) => p.year));
+      const namedPeers = peerValues
+        .filter((p) => p.year === latestYear)
+        .slice(0, 5)
+        .map((p) => ({ company: p.company, value: p.value }));
+
+      return {
+        metricName,
+        yourValue: value,
+        unit: unit || 'not specified',
+        sector,
+        country: country || 'all',
+        peerStats: { mean: Math.round(mean * 100) / 100, median, p25, p75, min, max, sampleSize: numericValues.length },
+        percentileRank,
+        trend,
+        namedPeers,
+      };
+    } catch (err: any) {
+      logger.error('benchmark_metric failed', err);
+      return { error: 'Failed to query knowledge base', details: err.message };
     }
-
-    numericValues.sort((a, b) => a - b);
-    const pctl = (arr: number[], p: number) => {
-      if (arr.length === 0) return null;
-      const idx = (p / 100) * (arr.length - 1);
-      const lo = Math.floor(idx);
-      const hi = Math.ceil(idx);
-      if (lo === hi) return arr[lo];
-      return arr[lo]! + (arr[hi]! - arr[lo]!) * (idx - lo);
-    };
-
-    return {
-      metric: metricName,
-      sector,
-      country: country || 'all',
-      count: values.length,
-      values,
-      percentiles: {
-        p25: pctl(numericValues, 25),
-        p50: pctl(numericValues, 50),
-        p75: pctl(numericValues, 75),
-      },
-    };
   },
 };
 
@@ -827,70 +864,86 @@ const benchmarkMetricTool: ToolDefinition = {
 const retrieveBestDisclosureTool: ToolDefinition = {
   name: 'retrieve_best_disclosure',
   description:
-    'Retrieve the highest-quality narrative disclosure examples for a given framework reference from the K1 knowledge base.',
+    'Find the highest-quality narrative disclosure example from peer reports for a specific framework reference. Used as a style guide for drafting.',
   input_schema: {
     type: 'object',
     properties: {
-      frameworkRef: { type: 'string', description: 'Framework reference (e.g. "GRI 305-1")' },
-      sector: { type: 'string', description: 'Sector to filter by (optional)' },
-      minQuality: { type: 'number', description: 'Minimum quality score 0-100 (default 60)' },
+      frameworkRef: { type: 'string', description: 'Framework disclosure code (e.g., "GRI 305-1")' },
+      sector: { type: 'string', description: 'Industry sector' },
+      minQuality: { type: 'number', description: 'Minimum quality score (0-100), default 75' },
     },
-    required: ['frameworkRef'],
+    required: ['frameworkRef', 'sector'],
   },
   handler: async (input) => {
     const { frameworkRef, sector, minQuality } = input as {
       frameworkRef: string;
-      sector?: string;
+      sector: string;
       minQuality?: number;
     };
 
-    const matchStage: Record<string, unknown> = {
-      'narratives.frameworkRef': { $regex: frameworkRef, $options: 'i' },
-    };
-    if (sector) matchStage.sector = sector;
+    const qualityThreshold = minQuality ?? 75;
 
-    const reports = await KnowledgeReportModel.find(matchStage)
-      .select('company reportYear sector country narratives')
-      .lean();
+    try {
+      const refPattern = frameworkRef.replace(/[\s-]+/g, '.*');
 
-    const results: Array<{
-      company: string;
-      reportYear: number;
-      sector: string;
-      frameworkRef: string;
-      title: string;
-      content: string;
-      qualityScore: number;
-    }> = [];
+      const reports = await KnowledgeReportModel.find({
+        sector: { $regex: new RegExp(sector, 'i') },
+        'narratives.frameworkRef': { $regex: new RegExp(refPattern, 'i') },
+      })
+        .sort({ 'quality.narrativeQuality': -1 })
+        .limit(10)
+        .lean();
 
-    const threshold = minQuality ?? 60;
+      if (reports.length === 0) {
+        return {
+          frameworkRef,
+          sector,
+          results: [],
+          message: `No disclosures found for ${frameworkRef} in ${sector} sector.`,
+        };
+      }
 
-    for (const report of reports) {
-      for (const narrative of report.narratives) {
-        if (
-          narrative.frameworkRef.toLowerCase().includes(frameworkRef.toLowerCase()) &&
-          narrative.qualityScore >= threshold
-        ) {
-          results.push({
-            company: report.company,
-            reportYear: report.reportYear,
-            sector: report.sector,
-            frameworkRef: narrative.frameworkRef,
-            title: narrative.title,
-            content: narrative.content.substring(0, 1000),
-            qualityScore: narrative.qualityScore,
-          });
+      const candidates: Array<{
+        company: string;
+        reportYear: number;
+        qualityScore: number;
+        title: string;
+        content: string;
+        hasQuantitativeData: boolean;
+        hasYoYComparison: boolean;
+        hasMethodology: boolean;
+        wordCount: number;
+      }> = [];
+
+      for (const report of reports) {
+        for (const narrative of report.narratives) {
+          if (
+            new RegExp(refPattern, 'i').test(narrative.frameworkRef) &&
+            narrative.qualityScore >= qualityThreshold
+          ) {
+            candidates.push({
+              company: report.company,
+              reportYear: report.reportYear,
+              qualityScore: narrative.qualityScore,
+              title: narrative.title,
+              content: narrative.content.substring(0, 1000),
+              hasQuantitativeData: narrative.hasQuantitativeData,
+              hasYoYComparison: narrative.hasYoYComparison,
+              hasMethodology: narrative.hasMethodology,
+              wordCount: narrative.wordCount,
+            });
+          }
         }
       }
+
+      candidates.sort((a, b) => b.qualityScore - a.qualityScore);
+      const top3 = candidates.slice(0, 3);
+
+      return { frameworkRef, sector, resultCount: top3.length, results: top3 };
+    } catch (err: any) {
+      logger.error('retrieve_best_disclosure failed', err);
+      return { error: 'Failed to query knowledge base', details: err.message };
     }
-
-    results.sort((a, b) => b.qualityScore - a.qualityScore);
-
-    return {
-      frameworkRef,
-      count: results.length,
-      disclosures: results.slice(0, 10),
-    };
   },
 };
 
@@ -901,44 +954,98 @@ const retrieveBestDisclosureTool: ToolDefinition = {
 const retrieveSimilarCompaniesTool: ToolDefinition = {
   name: 'retrieve_similar_companies',
   description:
-    'Find companies with similar profiles in the K1 knowledge base for peer comparison, ranked by report quality.',
+    'Find comparable peer companies for benchmarking based on sector, country, and size.',
   input_schema: {
     type: 'object',
     properties: {
       sector: { type: 'string', description: 'Industry sector' },
-      country: { type: 'string', description: 'Country (optional)' },
-      limit: { type: 'number', description: 'Max results to return (default 10)' },
+      country: { type: 'string', description: 'Country code (optional)' },
+      region: { type: 'string', description: 'Region (e.g., GCC, EU)' },
     },
     required: ['sector'],
   },
   handler: async (input) => {
-    const { sector, country, limit } = input as {
+    const { sector, country, region } = input as {
       sector: string;
       country?: string;
-      limit?: number;
+      region?: string;
     };
 
-    const query: Record<string, unknown> = { sector };
-    if (country) query.country = country;
+    try {
+      // Query K1 catalog for companies in same sector + region
+      const catalogFilter: Record<string, any> = {
+        sector: { $regex: new RegExp(sector, 'i') },
+      };
+      if (country) catalogFilter['country'] = { $regex: new RegExp(country, 'i') };
+      if (region) catalogFilter['region'] = { $regex: new RegExp(region, 'i') };
 
-    const reports = await KnowledgeReportModel.find(query)
-      .select('company reportYear sector country quality')
-      .sort({ 'quality.overallScore': -1 })
-      .limit(limit ?? 10)
-      .lean();
+      const catalogEntries = await CorporateDisclosureModel.find(catalogFilter)
+        .sort({ reportYear: -1 })
+        .limit(20)
+        .lean();
 
-    return {
-      sector,
-      country: country || 'all',
-      count: reports.length,
-      companies: reports.map((r) => ({
-        company: r.company,
-        reportYear: r.reportYear,
-        sector: r.sector,
-        country: r.country,
-        qualityScore: r.quality.overallScore,
-        frameworks: r.quality.frameworks,
-      })),
-    };
+      if (catalogEntries.length === 0) {
+        return { sector, region: region || 'all', peers: [], message: 'No peer companies found in the K1 catalog for this sector/region.' };
+      }
+
+      // De-duplicate by company name (keep latest year)
+      const seen = new Map<string, (typeof catalogEntries)[0]>();
+      for (const entry of catalogEntries) {
+        const key = entry.company.toLowerCase();
+        if (!seen.has(key)) seen.set(key, entry);
+      }
+
+      const uniqueCompanies = Array.from(seen.values()).slice(0, 10);
+
+      const peers: Array<{
+        company: string;
+        country: string;
+        region: string;
+        sector: string;
+        latestReportYear: number;
+        status: string;
+        keyMetrics?: Array<{ name: string; value: number | string; unit: string }>;
+        overallQualityScore?: number;
+      }> = [];
+
+      for (const entry of uniqueCompanies) {
+        const peer: (typeof peers)[0] = {
+          company: entry.company,
+          country: entry.country,
+          region: entry.region,
+          sector: entry.sector,
+          latestReportYear: entry.reportYear,
+          status: entry.status,
+        };
+
+        // For ingested reports, include key metrics summary
+        if (entry.status === 'ingested' || entry.status === 'indexed') {
+          try {
+            const report = await KnowledgeReportModel.findOne({
+              company: entry.company,
+              reportYear: entry.reportYear,
+            }).lean();
+
+            if (report) {
+              peer.keyMetrics = report.metrics.slice(0, 5).map((m) => ({
+                name: m.name,
+                value: m.value,
+                unit: m.unit,
+              }));
+              peer.overallQualityScore = report.quality.overallScore;
+            }
+          } catch {
+            // Knowledge report not available yet
+          }
+        }
+
+        peers.push(peer);
+      }
+
+      return { sector, region: region || 'all', country: country || 'all', peerCount: peers.length, peers };
+    } catch (err: any) {
+      logger.error('retrieve_similar_companies failed', err);
+      return { error: 'Failed to query knowledge base', details: err.message };
+    }
   },
 };
