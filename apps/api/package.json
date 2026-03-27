@@ -12,7 +12,8 @@
     "seed:kb": "tsx src/scripts/seed-knowledge-base.ts",
     "download:reports": "tsx src/scripts/download-reports.ts",
     "download:kb": "tsx src/scripts/download-knowledge-base.ts",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "generate:embeddings": "tsx src/scripts/generate-embeddings.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.24.0",

@@ -11,7 +11,8 @@ import { getCompleteness } from '../data-collection/data-collection.service.js';
 import { sendMessage } from '../../lib/claude.js';
 import { logger } from '../../lib/logger.js';
 import { KnowledgeReportModel } from '../../models/knowledge-report.model.js';
-import { CorporateDisclosureModel } from '../../models/knowledge-base.model.js';
+import { CorporateDisclosureModel, RegulatoryModel, ClimateScienceModel } from '../../models/knowledge-base.model.js';
+import { semanticSearch } from '../knowledge-base/search.service.js';
 
 // ============================================================
 // Types
@@ -47,6 +48,9 @@ export function getToolDefinitions(): ToolDefinition[] {
     benchmarkMetricTool,
     retrieveBestDisclosureTool,
     retrieveSimilarCompaniesTool,
+    searchKnowledgeTool,
+    getRegulatoryContextTool,
+    getScientificBasisTool,
   ];
 }
 
@@ -1046,6 +1050,227 @@ const retrieveSimilarCompaniesTool: ToolDefinition = {
     } catch (err: any) {
       logger.error('retrieve_similar_companies failed', err);
       return { error: 'Failed to query knowledge base', details: err.message };
+    }
+  },
+};
+
+// ============================================================
+// 14. search_knowledge (Semantic Search across all KB domains)
+// ============================================================
+
+const searchKnowledgeTool: ToolDefinition = {
+  name: 'search_knowledge',
+  description:
+    'Semantic search across the Merris knowledge base. Searches climate science, regulations, sustainable finance, environmental data, supply chain, and research. Returns the most relevant entries.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      query: { type: 'string', description: 'Search query (natural language)' },
+      domains: {
+        type: 'array',
+        items: { type: 'string', enum: ['K1', 'K2', 'K3', 'K4', 'K5', 'K6', 'K7'] },
+        description: 'Limit to specific domains (optional)',
+      },
+      limit: { type: 'number', description: 'Max results (default 5)' },
+    },
+    required: ['query'],
+  },
+  handler: async (input) => {
+    const query = input['query'] as string;
+    const domains = input['domains'] as string[] | undefined;
+    const limit = (input['limit'] as number) || 5;
+
+    try {
+      const results = await semanticSearch({ query, domains, limit });
+
+      return {
+        found: results.length,
+        results: results.map((r) => ({
+          title: r.title,
+          domain: r.domain,
+          source: r.source,
+          score: r.score,
+          description: r.description?.substring(0, 300),
+          year: r.year,
+          collection: r.collection,
+        })),
+      };
+    } catch (err: any) {
+      logger.error('search_knowledge failed', err);
+      return { error: 'Semantic search failed', details: err.message };
+    }
+  },
+};
+
+// ============================================================
+// 15. get_regulatory_context (K3 Regulatory Search)
+// ============================================================
+
+const getRegulatoryContextTool: ToolDefinition = {
+  name: 'get_regulatory_context',
+  description:
+    'Find relevant regulatory requirements, legal obligations, or compliance guidance for a specific topic or jurisdiction.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      topic: { type: 'string', description: 'Topic to search for (e.g., "carbon reporting", "water disclosure")' },
+      jurisdiction: { type: 'string', description: 'Jurisdiction filter (e.g., EU, Saudi Arabia, Qatar, UAE)' },
+    },
+    required: ['topic'],
+  },
+  handler: async (input) => {
+    const topic = input['topic'] as string;
+    const jurisdiction = input['jurisdiction'] as string | undefined;
+
+    try {
+      // Direct MongoDB query on K3 for jurisdiction-specific results
+      const directFilter: Record<string, any> = {};
+      if (jurisdiction) {
+        directFilter['jurisdiction'] = { $regex: new RegExp(jurisdiction, 'i') };
+      }
+
+      const directResults = await RegulatoryModel.find(directFilter)
+        .lean();
+
+      // Also run semantic search on K3
+      const semanticResults = await semanticSearch({
+        query: `${topic}${jurisdiction ? ' ' + jurisdiction : ''}`,
+        domains: ['K3'],
+        limit: 10,
+      });
+
+      // Merge: prefer semantic results but include jurisdiction-filtered direct results
+      const semanticIds = new Set(semanticResults.map((r) => r.id));
+
+      const directMatches = directResults
+        .filter((d: any) => !semanticIds.has(d._id.toString()))
+        .filter((d: any) => {
+          const text = `${d.name} ${d.description} ${d.requirements?.map((r: any) => r.title + ' ' + r.description).join(' ') || ''}`.toLowerCase();
+          return text.includes(topic.toLowerCase());
+        })
+        .slice(0, 5)
+        .map((d: any) => ({
+          id: d._id.toString(),
+          name: d.name,
+          shortName: d.shortName,
+          jurisdiction: d.jurisdiction,
+          description: d.description?.substring(0, 300),
+          category: d.category,
+          year: d.year,
+          requirementCount: d.requirements?.length || 0,
+          score: 0.5, // Direct match gets moderate score
+        }));
+
+      return {
+        topic,
+        jurisdiction: jurisdiction || 'all',
+        semanticResults: semanticResults.map((r) => ({
+          id: r.id,
+          title: r.title,
+          description: r.description?.substring(0, 300),
+          source: r.source,
+          score: r.score,
+          year: r.year,
+        })),
+        directMatches,
+        totalFound: semanticResults.length + directMatches.length,
+      };
+    } catch (err: any) {
+      logger.error('get_regulatory_context failed', err);
+      return { error: 'Regulatory search failed', details: err.message };
+    }
+  },
+};
+
+// ============================================================
+// 16. get_scientific_basis (K2 Climate Science Search)
+// ============================================================
+
+const getScientificBasisTool: ToolDefinition = {
+  name: 'get_scientific_basis',
+  description:
+    'Find climate science data, IPCC findings, emission factors, or environmental benchmarks to support ESG claims.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      topic: { type: 'string', description: 'Topic to search for (e.g., "water stress GCC", "emission factors electricity")' },
+      dataType: {
+        type: 'string',
+        enum: ['emission_factors', 'scenarios', 'projections', 'benchmarks'],
+        description: 'Type of scientific data to find',
+      },
+    },
+    required: ['topic'],
+  },
+  handler: async (input) => {
+    const topic = input['topic'] as string;
+    const dataType = input['dataType'] as string | undefined;
+
+    try {
+      // Direct MongoDB query on K2
+      const directFilter: Record<string, any> = {};
+      if (dataType) {
+        // Map dataType to K2 subcategories
+        const subcategoryMap: Record<string, string[]> = {
+          emission_factors: ['emission_factors', 'ghg_protocol'],
+          scenarios: ['scenarios', 'pathways', 'rcp', 'ssp'],
+          projections: ['projections', 'forecasts', 'trends'],
+          benchmarks: ['benchmarks', 'targets', 'thresholds'],
+        };
+        const subcategories = subcategoryMap[dataType] || [];
+        if (subcategories.length > 0) {
+          directFilter['subcategory'] = { $regex: new RegExp(subcategories.join('|'), 'i') };
+        }
+      }
+
+      const directResults = await ClimateScienceModel.find(directFilter)
+        .lean();
+
+      // Semantic search on K2
+      const searchQuery = dataType ? `${topic} ${dataType}` : topic;
+      const semanticResults = await semanticSearch({
+        query: searchQuery,
+        domains: ['K2'],
+        limit: 10,
+      });
+
+      const semanticIds = new Set(semanticResults.map((r) => r.id));
+
+      const directMatches = directResults
+        .filter((d: any) => !semanticIds.has(d._id.toString()))
+        .filter((d: any) => {
+          const text = `${d.title} ${d.description}`.toLowerCase();
+          return topic.toLowerCase().split(/\s+/).some((word) => text.includes(word));
+        })
+        .slice(0, 5)
+        .map((d: any) => ({
+          id: d._id.toString(),
+          title: d.title,
+          description: d.description?.substring(0, 300),
+          source: d.source,
+          category: d.category,
+          subcategory: d.subcategory,
+          year: d.year,
+          score: 0.5,
+        }));
+
+      return {
+        topic,
+        dataType: dataType || 'all',
+        semanticResults: semanticResults.map((r) => ({
+          id: r.id,
+          title: r.title,
+          description: r.description?.substring(0, 300),
+          source: r.source,
+          score: r.score,
+          year: r.year,
+        })),
+        directMatches,
+        totalFound: semanticResults.length + directMatches.length,
+      };
+    } catch (err: any) {
+      logger.error('get_scientific_basis failed', err);
+      return { error: 'Scientific data search failed', details: err.message };
     }
   },
 };

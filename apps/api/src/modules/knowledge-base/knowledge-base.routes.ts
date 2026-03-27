@@ -10,6 +10,7 @@ import {
   getReportById,
   getBenchmarkData,
 } from './knowledge-base.service.js';
+import { semanticSearch } from './search.service.js';
 
 // ============================================================
 // Route Registration
@@ -178,6 +179,47 @@ export async function registerKnowledgeBaseRoutes(app: FastifyInstance): Promise
         }
 
         return reply.code(200).send({ report });
+      } catch (err) {
+        return handleError(err, reply);
+      }
+    }
+  );
+
+  // ----------------------------------------------------------
+  // POST /api/v1/knowledge-base/search
+  // Semantic search across all KB domains using TF-IDF
+  // ----------------------------------------------------------
+  app.post(
+    '/api/v1/knowledge-base/search',
+    { preHandler: [authenticate] },
+    async (request, reply) => {
+      try {
+        if (!request.user) {
+          return reply.code(401).send({ error: 'Authentication required' });
+        }
+
+        const bodySchema = z.object({
+          query: z.string().min(1),
+          domains: z.array(z.string()).optional(),
+          limit: z.number().int().min(1).max(100).optional(),
+        });
+
+        const body = bodySchema.parse(request.body);
+        const startTime = Date.now();
+
+        const results = await semanticSearch({
+          query: body.query,
+          domains: body.domains,
+          limit: body.limit,
+        });
+
+        const searchTime = Date.now() - startTime;
+
+        return reply.code(200).send({
+          results,
+          totalCandidates: results.length,
+          searchTime,
+        });
       } catch (err) {
         return handleError(err, reply);
       }
