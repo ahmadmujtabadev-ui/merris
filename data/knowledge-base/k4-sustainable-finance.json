@@ -1,0 +1,1274 @@
+[
+  {
+    "source": "ICMA",
+    "category": "green_bonds",
+    "subcategory": "principles",
+    "title": "ICMA Green Bond Principles (GBP) 2021",
+    "description": "The Green Bond Principles are voluntary process guidelines for issuing green bonds, published by the International Capital Market Association. They promote integrity in the green bond market through transparency, disclosure, and reporting.",
+    "data": {
+      "version": "June 2021 (with June 2022 Appendix I)",
+      "fourCorePillars": [
+        "Use of Proceeds",
+        "Process for Project Evaluation and Selection",
+        "Management of Proceeds",
+        "Reporting"
+      ],
+      "eligibleCategories": [
+        "Renewable energy",
+        "Energy efficiency",
+        "Pollution prevention and control",
+        "Environmentally sustainable management of living natural resources and land use",
+        "Terrestrial and aquatic biodiversity conservation",
+        "Clean transportation",
+        "Sustainable water and wastewater management",
+        "Climate change adaptation",
+        "Circular economy adapted products, production technologies and processes",
+        "Green buildings"
+      ],
+      "reportingRequirements": {
+        "allocationReporting": "Annual until full allocation, and on a timely basis in case of material developments. Should include list of projects, amounts allocated, and expected impact.",
+        "impactReporting": "Recommended. Quantitative performance measures such as GHG emissions reduced/avoided, renewable energy generated, energy efficiency gained.",
+        "externalReview": "Recommended but not mandatory. Types include second party opinion, verification, certification, and green bond scoring/rating."
+      },
+      "externalReviewTypes": [
+        "Second Party Opinion (SPO)",
+        "Verification",
+        "Certification",
+        "Green Bond Scoring/Rating"
+      ]
+    },
+    "year": 2021,
+    "verified": true,
+    "tags": ["green-bonds", "icma", "gbp", "principles", "use-of-proceeds", "reporting"]
+  },
+  {
+    "source": "Climate Bonds Initiative",
+    "category": "green_bonds",
+    "subcategory": "certification",
+    "title": "Climate Bonds Standard v4.0",
+    "description": "The Climate Bonds Standard provides a science-based certification scheme for green bonds and loans, ensuring alignment with Paris Agreement goals. Version 4.0 introduced transition requirements and enhanced social safeguards.",
+    "data": {
+      "version": "4.0 (2023)",
+      "certificationProcess": {
+        "steps": [
+          "Pre-issuance: Issuer engages approved verifier to confirm alignment with sector criteria",
+          "Issuance: Bond is issued with Climate Bonds Certification mark",
+          "Post-issuance: Annual reporting and verification within 24 months of issuance",
+          "Ongoing: Continued compliance monitoring"
+        ],
+        "timeframe": "Pre-issuance approval typically 4-6 weeks",
+        "cost": "Certification fee of 0.1 basis points of issuance value (minimum USD 2,500)"
+      },
+      "sectorCriteria": {
+        "energy": {
+          "solar": "Eligible. Must demonstrate lifecycle emissions below 100 gCO2e/kWh",
+          "wind": "Eligible. Onshore and offshore",
+          "geothermal": "Eligible if lifecycle emissions below 100 gCO2e/kWh",
+          "bioenergy": "Eligible with feedstock sustainability criteria"
+        },
+        "transport": {
+          "electricVehicles": "Zero direct emissions vehicles eligible",
+          "rail": "Electric rail eligible; diesel with transition pathway",
+          "shipping": "Zero-emission vessels and retrofits"
+        },
+        "buildings": {
+          "residential": "Top 15% of local market or major renovation achieving 30% energy improvement",
+          "commercial": "Top 15% of local market by carbon intensity"
+        },
+        "water": "Infrastructure for supply, treatment, flood defense, and nature-based solutions",
+        "waste": "Recycling, composting, waste-to-energy with efficiency thresholds",
+        "landUse": "Forestry, agriculture with sustainability certification"
+      },
+      "transitionRequirements": {
+        "entityLevel": "Issuer must have a Paris-aligned transition plan",
+        "disclosures": "Scope 1, 2, and material Scope 3 GHG emissions",
+        "lobbyingAlignment": "Climate lobbying activities must be consistent with Paris goals"
+      }
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["climate-bonds", "certification", "standard", "paris-agreement", "sector-criteria"]
+  },
+  {
+    "source": "Bloomberg / CBI",
+    "category": "green_bonds",
+    "subcategory": "gcc-issuances",
+    "title": "GCC Green Bond and Sukuk Issuances",
+    "description": "Major green bond and sustainable sukuk issuances from GCC-based entities, reflecting the region's growing commitment to sustainable finance alongside its energy transition strategies.",
+    "data": {
+      "issuances": [
+        {
+          "issuer": "ADNOC (Abu Dhabi National Oil Company)",
+          "type": "Green Bond",
+          "amount": "USD 1,000,000,000",
+          "amountUSD": 1000000000,
+          "currency": "USD",
+          "date": "2024-06",
+          "tenor": "10 years",
+          "useOfProceeds": ["Carbon capture and storage", "Energy efficiency improvements", "Hydrogen projects", "Electrification of operations"],
+          "framework": "ADNOC Green Financing Framework (2024)",
+          "spo": "S&P Global Second Party Opinion",
+          "listing": "London Stock Exchange"
+        },
+        {
+          "issuer": "Masdar (Abu Dhabi Future Energy Company)",
+          "type": "Green Bond",
+          "amount": "USD 750,000,000",
+          "amountUSD": 750000000,
+          "currency": "USD",
+          "date": "2023-10",
+          "tenor": "10 years",
+          "useOfProceeds": ["Solar PV projects globally", "Wind energy projects", "Battery storage systems"],
+          "framework": "Masdar Green Finance Framework",
+          "spo": "Sustainalytics Second Party Opinion",
+          "listing": "London Stock Exchange"
+        },
+        {
+          "issuer": "First Abu Dhabi Bank (FAB)",
+          "type": "Green Bond",
+          "amount": "USD 600,000,000",
+          "amountUSD": 600000000,
+          "currency": "USD",
+          "date": "2023-01",
+          "tenor": "5 years",
+          "useOfProceeds": ["Green buildings", "Renewable energy financing", "Clean transportation", "Sustainable water management"],
+          "framework": "FAB Sustainable Finance Framework (2022)",
+          "spo": "Sustainalytics Second Party Opinion",
+          "listing": "London Stock Exchange, NASDAQ Dubai"
+        },
+        {
+          "issuer": "Qatar National Bank (QNB)",
+          "type": "Green Bond",
+          "amount": "USD 600,000,000",
+          "amountUSD": 600000000,
+          "currency": "USD",
+          "date": "2023-09",
+          "tenor": "5 years",
+          "useOfProceeds": ["Green buildings", "Renewable energy", "Energy efficiency", "Clean transportation"],
+          "framework": "QNB Sustainable Finance Framework",
+          "spo": "ISS ESG Second Party Opinion",
+          "listing": "London Stock Exchange"
+        },
+        {
+          "issuer": "Saudi Aramco (Saudi Arabian Oil Company)",
+          "type": "Green Sukuk",
+          "amount": "USD 6,000,000,000",
+          "amountUSD": 6000000000,
+          "currency": "USD",
+          "date": "2024-06",
+          "tenor": "3, 6, and 10 year tranches",
+          "useOfProceeds": ["Carbon capture, utilization and storage (CCUS)", "Renewable energy", "Energy efficiency", "Hydrogen (blue and green)"],
+          "framework": "Saudi Aramco Green Financing Framework (2024)",
+          "spo": "S&P Global Second Party Opinion",
+          "listing": "London Stock Exchange",
+          "note": "Largest green sukuk from a GCC energy company"
+        }
+      ]
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["gcc", "green-bonds", "sukuk", "adnoc", "masdar", "fab", "qnb", "aramco", "uae", "qatar", "saudi-arabia"]
+  },
+  {
+    "source": "Climate Bonds Initiative",
+    "category": "green_bonds",
+    "subcategory": "market-data",
+    "title": "Global Green Bond Market Size 2020-2024",
+    "description": "Annual green bond issuance volumes by region, showing the rapid growth of the green bond market from USD 297 billion in 2020 to an estimated USD 575 billion in 2024.",
+    "data": {
+      "annualIssuance": {
+        "2020": {
+          "total": 297000000000,
+          "totalFormatted": "USD 297B",
+          "byRegion": {
+            "europe": { "amount": 156000000000, "formatted": "USD 156B", "share": "52.5%" },
+            "asiaPacific": { "amount": 63000000000, "formatted": "USD 63B", "share": "21.2%" },
+            "northAmerica": { "amount": 52000000000, "formatted": "USD 52B", "share": "17.5%" },
+            "latinAmerica": { "amount": 10000000000, "formatted": "USD 10B", "share": "3.4%" },
+            "africa": { "amount": 3000000000, "formatted": "USD 3B", "share": "1.0%" },
+            "supranational": { "amount": 13000000000, "formatted": "USD 13B", "share": "4.4%" }
+          }
+        },
+        "2021": {
+          "total": 522000000000,
+          "totalFormatted": "USD 522B",
+          "byRegion": {
+            "europe": { "amount": 267000000000, "formatted": "USD 267B", "share": "51.1%" },
+            "asiaPacific": { "amount": 107000000000, "formatted": "USD 107B", "share": "20.5%" },
+            "northAmerica": { "amount": 96000000000, "formatted": "USD 96B", "share": "18.4%" },
+            "latinAmerica": { "amount": 18000000000, "formatted": "USD 18B", "share": "3.4%" },
+            "africa": { "amount": 5000000000, "formatted": "USD 5B", "share": "1.0%" },
+            "supranational": { "amount": 29000000000, "formatted": "USD 29B", "share": "5.6%" }
+          }
+        },
+        "2022": {
+          "total": 487000000000,
+          "totalFormatted": "USD 487B",
+          "byRegion": {
+            "europe": { "amount": 266000000000, "formatted": "USD 266B", "share": "54.6%" },
+            "asiaPacific": { "amount": 95000000000, "formatted": "USD 95B", "share": "19.5%" },
+            "northAmerica": { "amount": 72000000000, "formatted": "USD 72B", "share": "14.8%" },
+            "latinAmerica": { "amount": 17000000000, "formatted": "USD 17B", "share": "3.5%" },
+            "africa": { "amount": 4000000000, "formatted": "USD 4B", "share": "0.8%" },
+            "supranational": { "amount": 33000000000, "formatted": "USD 33B", "share": "6.8%" }
+          }
+        },
+        "2023": {
+          "total": 575000000000,
+          "totalFormatted": "USD 575B",
+          "byRegion": {
+            "europe": { "amount": 306000000000, "formatted": "USD 306B", "share": "53.2%" },
+            "asiaPacific": { "amount": 120000000000, "formatted": "USD 120B", "share": "20.9%" },
+            "northAmerica": { "amount": 86000000000, "formatted": "USD 86B", "share": "15.0%" },
+            "latinAmerica": { "amount": 22000000000, "formatted": "USD 22B", "share": "3.8%" },
+            "africa": { "amount": 5000000000, "formatted": "USD 5B", "share": "0.9%" },
+            "supranational": { "amount": 36000000000, "formatted": "USD 36B", "share": "6.3%" }
+          }
+        },
+        "2024": {
+          "total": 530000000000,
+          "totalFormatted": "USD 530B (estimated)",
+          "byRegion": {
+            "europe": { "amount": 280000000000, "formatted": "USD 280B", "share": "52.8%" },
+            "asiaPacific": { "amount": 115000000000, "formatted": "USD 115B", "share": "21.7%" },
+            "northAmerica": { "amount": 78000000000, "formatted": "USD 78B", "share": "14.7%" },
+            "latinAmerica": { "amount": 20000000000, "formatted": "USD 20B", "share": "3.8%" },
+            "africa": { "amount": 5000000000, "formatted": "USD 5B", "share": "0.9%" },
+            "supranational": { "amount": 32000000000, "formatted": "USD 32B", "share": "6.0%" }
+          }
+        }
+      },
+      "cumulativeIssuance": "Over USD 3 trillion since inception (2007)",
+      "topIssuingCountries2023": [
+        { "country": "China", "amount": "USD 83.5B" },
+        { "country": "Germany", "amount": "USD 67.2B" },
+        { "country": "United States", "amount": "USD 62.4B" },
+        { "country": "France", "amount": "USD 50.1B" },
+        { "country": "Italy", "amount": "USD 28.7B" }
+      ]
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["green-bonds", "market-data", "issuance", "global", "regional"]
+  },
+  {
+    "source": "AAOIFI / IIFM",
+    "category": "green_bonds",
+    "subcategory": "green-sukuk",
+    "title": "Green Sukuk Framework and Sharia-Compliance Requirements",
+    "description": "Green sukuk combine Islamic finance principles with green bond standards, requiring both Sharia compliance and environmental use-of-proceeds alignment. The structure avoids interest (riba) and ensures asset-backing.",
+    "data": {
+      "definition": "A Sharia-compliant financial certificate (sukuk) where proceeds are exclusively applied to finance or refinance eligible green projects, aligned with ICMA Green Bond Principles and Sharia requirements.",
+      "shariaRequirements": {
+        "prohibition": ["Riba (interest)", "Gharar (excessive uncertainty)", "Maysir (gambling)", "Investment in haram activities"],
+        "assetBacking": "Sukuk must be backed by tangible assets, usufruct, or services — not purely financial claims",
+        "profitLossSharing": "Returns linked to asset performance rather than fixed interest rates",
+        "shariaBoard": "Independent Sharia Supervisory Board must approve structure and ongoing compliance"
+      },
+      "commonStructures": [
+        {
+          "name": "Ijara (lease-based)",
+          "description": "SPV purchases green assets and leases them to the originator. Rental payments fund coupon distribution. Well-suited for renewable energy assets and green buildings.",
+          "suitableFor": ["Solar farms", "Wind farms", "Green buildings"]
+        },
+        {
+          "name": "Wakala (agency)",
+          "description": "SPV appoints originator as agent to invest proceeds in a portfolio of green assets. Agent earns incentive fee for returns exceeding agreed benchmark.",
+          "suitableFor": ["Diversified green portfolios", "Energy efficiency projects"]
+        },
+        {
+          "name": "Murabaha (cost-plus)",
+          "description": "SPV purchases green commodities/assets and sells to originator at a disclosed markup payable in installments.",
+          "suitableFor": ["Short-term green financing", "Trade finance"]
+        }
+      ],
+      "keyMarketMilestones": [
+        { "year": 2017, "event": "First green sukuk issued by Tadau Energy (Malaysia), MYR 250 million for solar project" },
+        { "year": 2017, "event": "Republic of Indonesia issued first sovereign green sukuk, USD 1.25 billion" },
+        { "year": 2019, "event": "Islamic Development Bank (IsDB) issued USD 1.5 billion Sustainability Sukuk" },
+        { "year": 2023, "event": "Saudi Arabia issued first green sukuk under Vision 2030" },
+        { "year": 2024, "event": "Aramco issued USD 6 billion green sukuk, largest from GCC energy sector" }
+      ],
+      "regulatoryFrameworks": {
+        "malaysia": "Securities Commission Malaysia Green SRI Sukuk Framework (2014, updated 2019)",
+        "indonesia": "OJK Green Bond and Green Sukuk Regulation (2017)",
+        "gcc": "No unified GCC green sukuk standard; individual country frameworks apply",
+        "international": "IIFM Sukuk standards combined with ICMA GBP and CBI Standard"
+      }
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["green-sukuk", "islamic-finance", "sharia", "gcc", "malaysia", "indonesia"]
+  },
+  {
+    "source": "MSCI",
+    "category": "esg_ratings",
+    "subcategory": "methodology",
+    "title": "MSCI ESG Ratings Methodology",
+    "description": "MSCI ESG Ratings measure a company's resilience to long-term ESG risks on a AAA to CCC scale. The methodology uses a rules-based approach with 35 key issues weighted by industry, adjusted for company-specific exposure and management.",
+    "data": {
+      "ratingScale": ["AAA", "AA", "A", "BBB", "BB", "B", "CCC"],
+      "ratingCategories": {
+        "leader": ["AAA", "AA"],
+        "average": ["A", "BBB", "BB"],
+        "laggard": ["B", "CCC"]
+      },
+      "pillarStructure": {
+        "environmental": {
+          "themes": ["Climate Change", "Natural Capital", "Pollution & Waste", "Environmental Opportunities"],
+          "keyIssues": [
+            "Carbon Emissions",
+            "Product Carbon Footprint",
+            "Financing Environmental Impact",
+            "Climate Change Vulnerability",
+            "Water Stress",
+            "Biodiversity & Land Use",
+            "Raw Material Sourcing",
+            "Toxic Emissions & Waste",
+            "Packaging Material & Waste",
+            "Electronic Waste",
+            "Opportunities in Clean Tech",
+            "Opportunities in Green Building",
+            "Opportunities in Renewable Energy"
+          ]
+        },
+        "social": {
+          "themes": ["Human Capital", "Product Liability", "Stakeholder Opposition", "Social Opportunities"],
+          "keyIssues": [
+            "Labor Management",
+            "Health & Safety",
+            "Human Capital Development",
+            "Supply Chain Labor Standards",
+            "Product Safety & Quality",
+            "Chemical Safety",
+            "Financial Product Safety",
+            "Privacy & Data Security",
+            "Responsible Investment",
+            "Controversial Sourcing",
+            "Community Relations",
+            "Access to Communications",
+            "Access to Finance",
+            "Access to Health Care",
+            "Opportunities in Nutrition & Health"
+          ]
+        },
+        "governance": {
+          "themes": ["Corporate Governance", "Corporate Behavior"],
+          "keyIssues": [
+            "Board",
+            "Pay",
+            "Ownership",
+            "Accounting",
+            "Business Ethics",
+            "Anti-Competitive Practices",
+            "Tax Transparency",
+            "Corruption & Instability",
+            "Financial System Instability"
+          ]
+        }
+      },
+      "scoringMethodology": {
+        "industryAdjusted": true,
+        "process": [
+          "Identify key issues relevant to each GICS sub-industry",
+          "Assign weights based on impact and timeline of risk materialization",
+          "Score companies 0-10 on each key issue based on exposure and management",
+          "Weight and aggregate scores; normalize within industry peer group",
+          "Map to final AAA-CCC rating"
+        ],
+        "dataSources": "Company disclosures, government databases, NGO data, media screening, 1,600+ data points per company",
+        "coverageUniverse": "Approximately 8,500 companies and 680,000+ equity and fixed income securities globally"
+      }
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["esg-ratings", "msci", "methodology", "aaa-ccc", "industry-adjusted"]
+  },
+  {
+    "source": "S&P Global",
+    "category": "esg_ratings",
+    "subcategory": "methodology",
+    "title": "S&P Global Corporate Sustainability Assessment (CSA)",
+    "description": "The S&P Global CSA is an annual evaluation of companies' sustainability practices that feeds into the Dow Jones Sustainability Indices. It uses a detailed questionnaire-based approach with industry-specific criteria and weightings.",
+    "data": {
+      "methodology": {
+        "approach": "Annual questionnaire sent to companies (participation voluntary); non-participants assessed using publicly available information",
+        "dimensions": [
+          {
+            "name": "Environmental",
+            "typicalWeight": "20-35%",
+            "criteria": ["Environmental Policy & Management Systems", "Operational Eco-Efficiency", "Environmental Reporting", "Climate Strategy", "Biodiversity"]
+          },
+          {
+            "name": "Social",
+            "typicalWeight": "25-35%",
+            "criteria": ["Human Capital Development", "Talent Attraction & Retention", "Labor Practice Indicators", "Human Rights", "Corporate Citizenship & Philanthropy", "Social Reporting"]
+          },
+          {
+            "name": "Governance & Economic",
+            "typicalWeight": "35-45%",
+            "criteria": ["Corporate Governance", "Codes of Business Conduct", "Risk & Crisis Management", "Supply Chain Management", "Tax Strategy", "Materiality", "Innovation Management"]
+          }
+        ]
+      },
+      "scoringApproach": {
+        "scale": "0-100",
+        "scoring": "Questions scored from 0 to 1, weighted and aggregated to dimension and total scores",
+        "industrySpecific": true,
+        "numberOfIndustries": 62,
+        "mediaAndStakeholderAnalysis": "Negative screening component can reduce scores based on controversies",
+        "percentileRanking": "Companies ranked within their industry using percentile scores"
+      },
+      "coverage": "Over 13,000 companies assessed (2024), approximately 3,500 participating directly",
+      "outputProducts": ["Dow Jones Sustainability Indices (DJSI)", "S&P ESG Scores", "S&P Sustainability Yearbook"]
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["esg-ratings", "s&p-global", "csa", "djsi", "questionnaire"]
+  },
+  {
+    "source": "Sustainalytics (Morningstar)",
+    "category": "esg_ratings",
+    "subcategory": "methodology",
+    "title": "Sustainalytics ESG Risk Ratings Methodology",
+    "description": "Sustainalytics ESG Risk Ratings measure a company's exposure to industry-specific material ESG issues and how well it manages those risks. The framework focuses on unmanaged risk, scored on a 0-100 scale where lower is better.",
+    "data": {
+      "framework": {
+        "coreComponents": [
+          {
+            "name": "Exposure",
+            "description": "Company's vulnerability to material ESG issues at the subindustry and company-specific level",
+            "factors": ["Subindustry exposure (beta)", "Company-specific exposure adjustments based on business model, geography, products"]
+          },
+          {
+            "name": "Management",
+            "description": "How well a company manages its ESG risks through policies, programs, and performance",
+            "factors": ["Management indicators", "Governance indicators", "Event-driven adjustments"]
+          },
+          {
+            "name": "Unmanaged Risk",
+            "description": "Residual ESG risk after accounting for management efforts. This is the headline rating.",
+            "formula": "Unmanaged Risk = Exposure - (Manageable Risk * Management Score)"
+          }
+        ]
+      },
+      "ratingScale": {
+        "range": "0-100 (lower = less risk)",
+        "categories": [
+          { "category": "Negligible", "range": "0-10" },
+          { "category": "Low", "range": "10-20" },
+          { "category": "Medium", "range": "20-30" },
+          { "category": "High", "range": "30-40" },
+          { "category": "Severe", "range": "40+" }
+        ]
+      },
+      "materialESGIssues": 20,
+      "coverage": "Over 16,000 companies globally",
+      "updateFrequency": "Full re-rating annually; continuous monitoring for controversies"
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["esg-ratings", "sustainalytics", "morningstar", "esg-risk", "unmanaged-risk"]
+  },
+  {
+    "source": "CDP",
+    "category": "esg_ratings",
+    "subcategory": "methodology",
+    "title": "CDP Scoring Methodology",
+    "description": "CDP (formerly Carbon Disclosure Project) scores companies, cities, states, and regions on their environmental disclosure and action across climate change, forests, and water security questionnaires.",
+    "data": {
+      "scoringScale": {
+        "levels": [
+          { "grade": "A", "label": "Leadership", "description": "Implementing current best practices" },
+          { "grade": "A-", "label": "Leadership", "description": "High-level leadership actions" },
+          { "grade": "B", "label": "Management", "description": "Taking coordinated action on environmental issues" },
+          { "grade": "B-", "label": "Management", "description": "Evidence of management-level actions" },
+          { "grade": "C", "label": "Awareness", "description": "Knowledge of environmental impacts" },
+          { "grade": "C-", "label": "Awareness", "description": "Basic awareness demonstrated" },
+          { "grade": "D", "label": "Disclosure", "description": "Minimum disclosure provided" },
+          { "grade": "D-", "label": "Disclosure", "description": "Submitted but insufficient disclosure" },
+          { "grade": "F", "label": "Failure", "description": "Failed to provide sufficient information or did not respond" }
+        ]
+      },
+      "questionnaires": [
+        {
+          "name": "Climate Change",
+          "modules": ["Governance", "Risks and Opportunities", "Business Strategy", "Targets and Performance", "Emissions Methodology", "Emissions Data", "Energy", "Additional Metrics", "Verification", "Carbon Pricing", "Engagement"],
+          "weightingApproach": "Points allocated per question based on environmental impact significance, aggregated and normalized"
+        },
+        {
+          "name": "Forests",
+          "modules": ["Governance", "Current State", "Risks and Opportunities", "Strategy", "Implementation", "Engagement"],
+          "commodities": ["Timber products", "Palm oil", "Cattle products", "Soy", "Rubber", "Cocoa", "Coffee"]
+        },
+        {
+          "name": "Water Security",
+          "modules": ["Governance", "Current State", "Business Strategy", "Risk Assessment", "Facility-Level Water Accounting", "Water-Related Targets", "Water Governance", "Business Impact"]
+        }
+      ],
+      "coverage2023": {
+        "companiesDisclosing": "Over 23,000 companies",
+        "companiesScored": "Approximately 15,000",
+        "aListCompanies": 346,
+        "citiesDisclosing": "Over 1,100"
+      }
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["esg-ratings", "cdp", "disclosure", "climate", "water", "forests"]
+  },
+  {
+    "source": "GRESB",
+    "category": "esg_ratings",
+    "subcategory": "methodology",
+    "title": "GRESB Real Estate and Infrastructure Assessment",
+    "description": "GRESB provides ESG benchmarks for real assets, covering real estate and infrastructure portfolios. It is the leading global ESG benchmark for real estate and infrastructure investments, used by over 170 institutional investors.",
+    "data": {
+      "assessmentComponents": {
+        "realEstate": {
+          "managementComponent": {
+            "weight": "30%",
+            "aspects": ["Leadership", "Policies", "Reporting", "Risk Management", "Stakeholder Engagement"]
+          },
+          "performanceComponent": {
+            "weight": "70%",
+            "aspects": ["Energy", "GHG Emissions", "Water", "Waste", "Data Monitoring & Review", "Building Certifications"]
+          }
+        },
+        "infrastructure": {
+          "managementComponent": {
+            "weight": "30%",
+            "aspects": ["Leadership", "Policies", "Reporting", "Risk Management", "Stakeholder Engagement"]
+          },
+          "performanceComponent": {
+            "weight": "70%",
+            "aspects": ["Energy", "GHG Emissions", "Water", "Waste", "Biodiversity", "Certifications"]
+          }
+        }
+      },
+      "scoring": {
+        "scale": "0-100",
+        "starRating": "1-5 stars based on quintile ranking relative to peers",
+        "greenStarDesignation": "Score >= 50 in both Management and Performance components",
+        "sectorLeader": "Top entity in each sector group based on GRESB Score and public disclosure"
+      },
+      "benchmarks": {
+        "globalAverage2023": 75,
+        "byPropertyType": {
+          "office": 78,
+          "retail": 74,
+          "residential": 71,
+          "industrial": 69,
+          "diversified": 76
+        }
+      },
+      "participation2023": {
+        "realEstatePortfolios": 2084,
+        "infrastructureFunds": 857,
+        "assetsValue": "USD 8.6 trillion"
+      }
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["esg-ratings", "gresb", "real-estate", "infrastructure", "benchmarking"]
+  },
+  {
+    "source": "ISS ESG / FTSE Russell / Moody's",
+    "category": "esg_ratings",
+    "subcategory": "methodology",
+    "title": "ESG Rating Provider Methodology Overview: ISS ESG, FTSE4Good, Moody's ESG",
+    "description": "Overview of methodology for three additional major ESG rating providers, covering ISS ESG Corporate Rating, FTSE Russell ESG Ratings (FTSE4Good), and Moody's ESG Score (formerly Vigeo Eiris).",
+    "data": {
+      "providers": [
+        {
+          "name": "ISS ESG Corporate Rating",
+          "owner": "Institutional Shareholder Services (ISS)",
+          "scale": "D- to A+ (12 grades)",
+          "methodology": "Over 100 industry-specific ESG indicators. Two dimensions: Transparency Rating (disclosure quality) and Performance Rating (ESG management quality). Industry-specific key issues mapped to SDGs.",
+          "coverage": "Approximately 10,000 companies",
+          "keyFeatures": ["Norm-based screening", "Controversy assessment", "SDG Impact Rating", "Climate Impact Rating"],
+          "updateFrequency": "Annual full update; continuous controversy monitoring"
+        },
+        {
+          "name": "FTSE Russell ESG Ratings (FTSE4Good Index Series)",
+          "owner": "London Stock Exchange Group",
+          "scale": "0-5 overall score; 0-5 per pillar",
+          "methodology": "14 ESG themes with over 300 indicators. Scores on exposure (0-3) and practice/performance (0-5) per theme. Industry-specific materiality matrix determines which themes apply.",
+          "coverage": "Over 8,000 securities across 47 developed and emerging markets",
+          "keyFeatures": ["Green Revenue data model", "Climate Governance Initiative data", "FTSE4Good inclusion threshold of 3.3/5"],
+          "updateFrequency": "Semi-annual review for index inclusion; continuous data updates"
+        },
+        {
+          "name": "Moody's ESG Score",
+          "owner": "Moody's Corporation (formerly Vigeo Eiris)",
+          "scale": "0-100",
+          "methodology": "38 ESG criteria organized into 6 domains: Environment, Human Resources, Human Rights, Community Involvement, Business Behavior, Corporate Governance. Sector-specific weighting applied.",
+          "coverage": "Over 5,000 companies",
+          "keyFeatures": ["Integration with credit ratings", "Controversy risk assessment", "EU Taxonomy alignment assessment", "Climate risk physical and transition scoring"],
+          "updateFrequency": "Annual; event-driven interim updates"
+        }
+      ]
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["esg-ratings", "iss-esg", "ftse4good", "moodys", "methodology-overview"]
+  },
+  {
+    "source": "European Commission",
+    "category": "taxonomy",
+    "subcategory": "eu-taxonomy",
+    "title": "EU Taxonomy: Environmental Objectives and Key Economic Activities",
+    "description": "The EU Taxonomy is a classification system establishing a list of environmentally sustainable economic activities. It provides technical screening criteria for determining whether an activity makes a substantial contribution to one of six environmental objectives while doing no significant harm to the others.",
+    "data": {
+      "environmentalObjectives": [
+        { "id": 1, "name": "Climate change mitigation", "status": "Delegated Act adopted June 2021" },
+        { "id": 2, "name": "Climate change adaptation", "status": "Delegated Act adopted June 2021" },
+        { "id": 3, "name": "Sustainable use and protection of water and marine resources", "status": "Delegated Act adopted June 2023" },
+        { "id": 4, "name": "Transition to a circular economy", "status": "Delegated Act adopted June 2023" },
+        { "id": 5, "name": "Pollution prevention and control", "status": "Delegated Act adopted June 2023" },
+        { "id": 6, "name": "Protection and restoration of biodiversity and ecosystems", "status": "Delegated Act adopted June 2023" }
+      ],
+      "topEconomicActivities": [
+        { "naceCode": "D35.11", "activity": "Electricity generation using solar photovoltaic technology", "objective": 1, "criteria": "Direct emissions from generation must be below 100 gCO2e/kWh" },
+        { "naceCode": "D35.11", "activity": "Electricity generation from wind power", "objective": 1, "criteria": "Lifecycle GHG emissions below 100 gCO2e/kWh" },
+        { "naceCode": "D35.11", "activity": "Electricity generation from hydropower", "objective": 1, "criteria": "Power density >5 W/m2 or lifecycle emissions <100 gCO2e/kWh" },
+        { "naceCode": "F41.1/F41.2", "activity": "Construction of new buildings", "objective": 1, "criteria": "Primary energy demand at least 10% below NZEB threshold; EPC class A where applicable" },
+        { "naceCode": "F41.1/F41.2", "activity": "Renovation of existing buildings", "objective": 1, "criteria": "At least 30% reduction in primary energy demand" },
+        { "naceCode": "H49.31/H49.32", "activity": "Urban and suburban passenger transport", "objective": 1, "criteria": "Zero direct (tailpipe) CO2 emissions" },
+        { "naceCode": "H49.10", "activity": "Passenger interurban rail transport", "objective": 1, "criteria": "Zero direct CO2 emissions or trains with zero direct emissions on tracks with necessary infrastructure" },
+        { "naceCode": "C29.10", "activity": "Manufacture of low carbon vehicles", "objective": 1, "criteria": "Zero direct emissions for passenger cars/LCVs; heavy-duty vehicles per CO2 standards" },
+        { "naceCode": "C20.11/C20.13", "activity": "Manufacture of hydrogen", "objective": 1, "criteria": "Lifecycle GHG emissions below 3 tCO2e/tH2" },
+        { "naceCode": "D35.30", "activity": "District heating/cooling distribution", "objective": 1, "criteria": "System uses at least 50% renewable energy, 50% waste heat, 75% CHP, or 50% combination thereof" },
+        { "naceCode": "E36.00", "activity": "Water supply", "objective": 3, "criteria": "Energy efficiency of system, leakage rates, water quality monitoring" },
+        { "naceCode": "E37.00", "activity": "Centralized wastewater treatment", "objective": 3, "criteria": "Net energy consumption <= threshold; treated water meets quality standards" },
+        { "naceCode": "F42.91", "activity": "Flood risk prevention infrastructure", "objective": 2, "criteria": "Nature-based solutions preferred; climate risk assessment required" },
+        { "naceCode": "E38.11", "activity": "Collection and transport of non-hazardous waste", "objective": 4, "criteria": "Separately collected for reuse/recycling; waste is not landfilled/incinerated" },
+        { "naceCode": "E38.32", "activity": "Material recovery from non-hazardous waste", "objective": 4, "criteria": "At least 50% of processed waste converted into secondary raw materials by weight" },
+        { "naceCode": "J61", "activity": "Data-driven solutions for GHG emissions reductions", "objective": 1, "criteria": "ICT solutions that enable GHG emission reductions in other sectors" },
+        { "naceCode": "K65.12", "activity": "Non-life insurance: underwriting of climate-related perils", "objective": 2, "criteria": "Products that promote climate adaptation" },
+        { "naceCode": "A02.10", "activity": "Afforestation", "objective": 1, "criteria": "Forest management plan; LULUCF requirements; biodiversity safeguards" },
+        { "naceCode": "A01.1/A01.2", "activity": "Growing of crops / Animal production", "objective": 2, "criteria": "Adaptation plan, soil conservation, water efficiency" },
+        { "naceCode": "M71.12", "activity": "Engineering and technical consultancy for energy efficiency", "objective": 1, "criteria": "Services directly enabling energy efficiency improvements" }
+      ],
+      "dnshCriteria": "Each activity must demonstrate Do No Significant Harm (DNSH) to remaining five objectives",
+      "minimumSafeguards": "Alignment with OECD Guidelines for MNEs, UN Guiding Principles on Business and Human Rights, ILO Core Conventions"
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["eu-taxonomy", "classification", "technical-screening-criteria", "nace-codes", "environmental-objectives"]
+  },
+  {
+    "source": "ASEAN Taxonomy Board",
+    "category": "taxonomy",
+    "subcategory": "asean-taxonomy",
+    "title": "ASEAN Taxonomy for Sustainable Finance v3",
+    "description": "The ASEAN Taxonomy for Sustainable Finance provides a common language for sustainable finance classification across ASEAN member states, featuring a multi-tiered assessment approach that accommodates varying levels of development.",
+    "data": {
+      "version": "Version 3 (March 2024)",
+      "structure": {
+        "foundationFramework": {
+          "description": "Principles-based approach using essential criteria for quick classification",
+          "assessmentBasis": "Qualitative alignment with environmental objectives"
+        },
+        "plusStandard": {
+          "description": "Technical screening criteria with quantitative thresholds for detailed activity-level assessment",
+          "assessmentBasis": "Quantitative metrics aligned with science-based targets"
+        }
+      },
+      "environmentalObjectives": [
+        "Climate change mitigation",
+        "Climate change adaptation",
+        "Protection of healthy ecosystems and biodiversity",
+        "Promotion of resource resilience and transition to circular economy"
+      ],
+      "trafficLightClassification": {
+        "green": "Activities making substantial contribution to at least one environmental objective",
+        "amber": "Activities not yet aligned with green thresholds but on a transition pathway with a time-bound plan to achieve green thresholds",
+        "red": "Activities causing significant harm to environmental objectives with no credible transition plan"
+      },
+      "focusSectors": [
+        "Agriculture, Forestry and Fishing",
+        "Manufacturing",
+        "Electricity, Gas, Steam and Air Conditioning Supply",
+        "Water, Sewerage, Waste Management and Remediation",
+        "Construction",
+        "Transportation and Storage",
+        "Information and Communication",
+        "Carbon Capture and Sequestration"
+      ],
+      "transitionCategories": "Recognizes transition activities for hard-to-abate sectors with time-bound improvement pathways; unique feature accommodating developing economy realities"
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["asean-taxonomy", "southeast-asia", "sustainable-finance", "transition", "classification"]
+  },
+  {
+    "source": "Saudi National Center for Privatization (NCP) / CMA",
+    "category": "taxonomy",
+    "subcategory": "saudi-taxonomy",
+    "title": "Saudi Arabia Green Taxonomy Development Status",
+    "description": "Saudi Arabia is developing a national green taxonomy as part of the Saudi Green Initiative and Vision 2030. As of 2024, the taxonomy remains in development/consultation phase, with alignment expected to the Common Ground Taxonomy approach.",
+    "data": {
+      "status": "Under development / Consultation phase",
+      "leadInstitutions": ["Capital Market Authority (CMA)", "Saudi Central Bank (SAMA)", "Ministry of Finance"],
+      "expectedAlignment": ["EU Taxonomy (partial)", "ASEAN Taxonomy (transition approach)", "Common Ground Taxonomy (IPSF)"],
+      "prioritySectors": [
+        "Energy (including hydrocarbon transition activities)",
+        "Green buildings and sustainable real estate",
+        "Water desalination and management",
+        "Sustainable transport",
+        "Circular economy and waste management"
+      ],
+      "context": {
+        "saudiGreenInitiative": "Announced 2021: targets 50% renewable energy by 2030, net zero by 2060, planting 10 billion trees",
+        "visionAlignment": "Supports Saudi Vision 2030 economic diversification goals",
+        "uniqueConsiderations": "Must accommodate hydrocarbon transition pathways given oil-dependent economy; includes blue hydrogen and CCUS as eligible activities"
+      },
+      "timeline": "Draft expected for public consultation by 2025; final version anticipated 2026"
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["saudi-arabia", "green-taxonomy", "vision-2030", "cma", "consultation"]
+  },
+  {
+    "source": "UK Government / Green Technical Advisory Group",
+    "category": "taxonomy",
+    "subcategory": "uk-taxonomy",
+    "title": "UK Green Taxonomy Consultation Status",
+    "description": "The UK announced development of its own green taxonomy following Brexit. The Green Technical Advisory Group (GTAG) published advice in 2022, but formal adoption has been delayed multiple times.",
+    "data": {
+      "status": "Consultation and review phase; adoption delayed",
+      "timeline": {
+        "2021": "UK Government announced plans for UK Green Taxonomy",
+        "2022": "GTAG published advice on UK Taxonomy design; consultation on first two objectives",
+        "2023": "Government delayed formal consultation; review of international approaches ongoing",
+        "2024": "Revised consultation expected; alignment with ISSB standards under consideration",
+        "expected": "Formal adoption timeline uncertain; dependent on Sustainability Disclosure Standards implementation"
+      },
+      "proposedObjectives": [
+        "Climate change mitigation",
+        "Climate change adaptation",
+        "Protecting and enhancing the natural environment (biodiversity, water, marine)",
+        "Promoting resource efficiency and the circular economy",
+        "Preventing and controlling pollution"
+      ],
+      "keyDifferencesFromEU": [
+        "Potential for nuclear to be included as eligible from outset",
+        "Greater emphasis on transition activities",
+        "Alignment with UK Net Zero Strategy rather than EU Fit for 55",
+        "Coordination with UK Sustainability Disclosure Standards (endorsement of ISSB)"
+      ],
+      "gtagRecommendations": "Use science-based thresholds; adopt activity-level approach; include transition activities; ensure interoperability with EU Taxonomy where possible"
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["uk-taxonomy", "green-taxonomy", "gtag", "brexit", "consultation"]
+  },
+  {
+    "source": "International Platform on Sustainable Finance (IPSF)",
+    "category": "taxonomy",
+    "subcategory": "common-ground-taxonomy",
+    "title": "Common Ground Taxonomy: EU-China Comparison",
+    "description": "The Common Ground Taxonomy (CGT), developed by the IPSF, compares the EU Taxonomy and China's Green Bond Endorsed Project Catalogue to identify commonalities, enabling cross-border green finance flows.",
+    "data": {
+      "version": "Updated comparison table (2022)",
+      "purpose": "Identify common elements between EU and China taxonomies to facilitate cross-border green investment and reduce fragmentation",
+      "comparison": {
+        "structuralDifferences": {
+          "euTaxonomy": "Activity-level classification with technical screening criteria, DNSH, and minimum safeguards",
+          "chinaCatalogue": "Project-level classification in China's Green Bond Endorsed Project Catalogue (2021 edition); less granular screening criteria"
+        },
+        "commonActivities": [
+          "Solar energy",
+          "Wind energy",
+          "Hydropower (with differences in thresholds)",
+          "Bioenergy",
+          "Green buildings",
+          "Electric vehicles and sustainable transport",
+          "Water and waste management",
+          "Afforestation and reforestation"
+        ],
+        "keyDifferences": [
+          "Nuclear energy: Included in China catalogue; included in EU taxonomy as transitional under specific conditions",
+          "Natural gas: Included in China catalogue without conditions; included in EU taxonomy as transitional with strict criteria",
+          "Coal: Clean coal included in China catalogue (phasing out); excluded from EU taxonomy",
+          "DNSH: EU requires do-no-significant-harm assessment; China catalogue does not have equivalent requirement"
+        ]
+      },
+      "participants": "EU, China, and observers including Argentina, Canada, Chile, India, Indonesia, Japan, Kenya, Malaysia, Morocco, New Zealand, Norway, Senegal, Singapore, Switzerland, UK",
+      "impact": "CGT facilitates mutual recognition and interoperability, reducing costs for issuers operating in both markets"
+    },
+    "year": 2022,
+    "verified": true,
+    "tags": ["common-ground-taxonomy", "eu-china", "ipsf", "interoperability", "green-bonds"]
+  },
+  {
+    "source": "EU Platform on Sustainable Finance",
+    "category": "taxonomy",
+    "subcategory": "alignment-calculation",
+    "title": "EU Taxonomy Alignment Calculation: Revenue, CapEx, and OpEx Methodology",
+    "description": "Under the EU Taxonomy Regulation, financial and non-financial undertakings must disclose the proportion of their activities that are taxonomy-aligned based on three key performance indicators: revenue, capital expenditure (CapEx), and operating expenditure (OpEx).",
+    "data": {
+      "kpis": {
+        "turnover": {
+          "numerator": "Revenue from taxonomy-aligned economic activities",
+          "denominator": "Total net revenue (as per IFRS or applicable GAAP)",
+          "purpose": "Shows proportion of current business that is environmentally sustainable"
+        },
+        "capex": {
+          "numerator": "Capital expenditure related to assets or processes associated with taxonomy-aligned activities, plus CapEx that is part of a plan to expand or achieve taxonomy-aligned activities within 5 years",
+          "denominator": "Total additions to tangible and intangible assets during the financial year (IAS 16, IAS 38, IFRS 16)",
+          "purpose": "Shows investment direction toward sustainability transition"
+        },
+        "opex": {
+          "numerator": "Operating expenditure related to taxonomy-aligned activities: non-capitalised R&D, short-term leases, building renovation, maintenance and repair",
+          "denominator": "Total direct non-capitalised costs related to R&D, building renovation, short-term leases, maintenance and repair",
+          "purpose": "Shows day-to-day expenditure on taxonomy-aligned activities"
+        }
+      },
+      "alignmentTest": {
+        "step1": "Identify eligible economic activities (those covered by the taxonomy)",
+        "step2": "Assess substantial contribution: does the activity meet technical screening criteria for at least one environmental objective?",
+        "step3": "Assess DNSH: does the activity do no significant harm to the other five environmental objectives?",
+        "step4": "Verify minimum safeguards: alignment with OECD Guidelines, UNGPs, ILO conventions",
+        "step5": "Calculate the proportion (%) of aligned turnover/CapEx/OpEx"
+      },
+      "disclosureRequirements": {
+        "nonFinancialCompanies": "Disclose all three KPIs under NFRD/CSRD",
+        "financialInstitutions": {
+          "banks": "Green Asset Ratio (GAR) — proportion of balance sheet in taxonomy-aligned activities",
+          "assetManagers": "Proportion of AUM invested in taxonomy-aligned activities",
+          "insurers": "Taxonomy-aligned underwriting and investment activities"
+        }
+      }
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["eu-taxonomy", "alignment", "kpi", "revenue", "capex", "opex", "disclosure"]
+  },
+  {
+    "source": "PCAF",
+    "category": "pcaf",
+    "subcategory": "standard",
+    "title": "PCAF Global GHG Accounting and Reporting Standard v2 (Financed Emissions)",
+    "description": "The Partnership for Carbon Accounting Financials (PCAF) Standard provides a methodology for financial institutions to measure and disclose the GHG emissions associated with their loans and investments (Scope 3, Category 15).",
+    "data": {
+      "version": "Second Edition (December 2022)",
+      "assetClasses": [
+        "Listed equity and corporate bonds",
+        "Business loans and unlisted equity",
+        "Project finance",
+        "Commercial real estate",
+        "Mortgages",
+        "Motor vehicle loans",
+        "Sovereign debt"
+      ],
+      "attributionApproach": "Attribution factor represents the financial institution's share of total financing in the borrower or investee",
+      "attributionFactors": {
+        "listedEquityAndCorporateBonds": {
+          "formula": "Attribution Factor = Outstanding amount / (Enterprise Value Including Cash, EVIC)",
+          "financedEmissions": "Sum of (Attribution Factor * Company Emissions) for each investee"
+        },
+        "businessLoans": {
+          "formula": "Attribution Factor = Outstanding amount / Total equity + debt of the borrower",
+          "note": "When EVIC not available, use total balance sheet equity + debt"
+        },
+        "projectFinance": {
+          "formula": "Attribution Factor = Outstanding amount / Total project equity + debt",
+          "note": "For project-level emissions; Scope 1 and 2 of the project"
+        },
+        "commercialRealEstate": {
+          "formula": "Attribution Factor = Outstanding amount / Property value at origination",
+          "note": "Emissions based on building energy performance"
+        },
+        "mortgages": {
+          "formula": "Attribution Factor = Outstanding amount / Property value at origination",
+          "note": "Emissions based on building energy performance data (EPC, estimated)"
+        },
+        "motorVehicles": {
+          "formula": "Attribution Factor = Outstanding amount / Vehicle value at origination",
+          "note": "Emissions based on vehicle type, fuel efficiency, average annual distance"
+        }
+      },
+      "dataQualityScores": [
+        { "score": 1, "description": "Audited GHG emissions data or actual primary energy consumption data from the borrower/investee", "certainty": "Highest" },
+        { "score": 2, "description": "Non-audited GHG emissions data, or actual energy consumption data from the borrower/investee", "certainty": "High" },
+        { "score": 3, "description": "Emissions estimated using physical activity data (e.g., production data) from the borrower/investee, combined with verified emission factors", "certainty": "Medium" },
+        { "score": 4, "description": "Emissions estimated using economic activity data (e.g., revenue, assets) from the borrower/investee", "certainty": "Low" },
+        { "score": 5, "description": "Emissions estimated using proxy data based on sector averages or regional averages, without borrower-specific data", "certainty": "Lowest" }
+      ],
+      "signatories": "Over 440 financial institutions with USD 90+ trillion in assets (2024)"
+    },
+    "year": 2022,
+    "verified": true,
+    "tags": ["pcaf", "financed-emissions", "ghg-accounting", "scope-3", "attribution"]
+  },
+  {
+    "source": "PCAF",
+    "category": "pcaf",
+    "subcategory": "calculation-methodology",
+    "title": "PCAF Financed Emissions Calculation by Asset Class",
+    "description": "Detailed calculation methodologies for each PCAF asset class, including formulas, data requirements, and emission factor selection guidance.",
+    "data": {
+      "listedEquityAndCorporateBonds": {
+        "formula": "Financed Emissions_c = Sum_i [ (Outstanding_i / EVIC_i) * Emissions_i ]",
+        "emissionsScope": "Scope 1 and Scope 2 (Scope 3 recommended where material)",
+        "evicDefinition": "Market capitalization + total debt (including current portion of long-term debt)",
+        "example": {
+          "outstanding": "USD 10M invested",
+          "evic": "USD 500M",
+          "companyEmissions": "100,000 tCO2e",
+          "financedEmissions": "10/500 * 100,000 = 2,000 tCO2e"
+        }
+      },
+      "businessLoansAndUnlistedEquity": {
+        "formula": "Financed Emissions_c = Sum_i [ (Outstanding_i / (Equity_i + Debt_i)) * Emissions_i ]",
+        "emissionsScope": "Scope 1 and Scope 2 (Scope 3 for high-impact sectors)",
+        "note": "For unlisted companies, use total balance sheet equity + total outstanding debt as denominator",
+        "example": {
+          "outstanding": "USD 5M loan",
+          "borrowerEquityPlusDebt": "USD 50M",
+          "companyEmissions": "20,000 tCO2e",
+          "financedEmissions": "5/50 * 20,000 = 2,000 tCO2e"
+        }
+      },
+      "projectFinance": {
+        "formula": "Financed Emissions_pf = Sum_j [ (Outstanding_j / Total_project_finance_j) * Project_emissions_j ]",
+        "emissionsScope": "Project-level Scope 1 and Scope 2",
+        "note": "For construction phase, use estimated annual operational emissions"
+      },
+      "commercialRealEstate": {
+        "formula": "Financed Emissions_cre = Sum_k [ (Outstanding_k / Property_value_k) * Building_emissions_k ]",
+        "emissionsScope": "Scope 1 (on-site combustion) and Scope 2 (purchased energy) of the building",
+        "dataPreference": "Actual energy consumption > EPC-based estimates > floor area benchmarks"
+      },
+      "mortgages": {
+        "formula": "Financed Emissions_m = Sum_l [ (Outstanding_l / Property_value_l) * Building_emissions_l ]",
+        "emissionsScope": "Scope 1 and 2 of the residential property",
+        "dataPreference": "EPC label > national average by building type and vintage > regional/national proxies"
+      },
+      "motorVehicleLoans": {
+        "formula": "Financed Emissions_mv = Sum_n [ (Outstanding_n / Vehicle_value_n) * Vehicle_emissions_n ]",
+        "emissionsScope": "Tank-to-wheel (direct) emissions during use phase",
+        "emissionFactors": "Vehicle type, fuel type, manufacturer efficiency data, average annual km driven"
+      }
+    },
+    "year": 2022,
+    "verified": true,
+    "tags": ["pcaf", "financed-emissions", "calculation", "asset-classes", "formulas"]
+  },
+  {
+    "source": "UNEP FI / NZBA",
+    "category": "pcaf",
+    "subcategory": "nzba",
+    "title": "Net-Zero Banking Alliance (NZBA) Target-Setting Guidelines",
+    "description": "The NZBA requires member banks to set intermediate (2030) and long-term (2050) targets for priority sectors, aligning financing portfolios with pathways to net-zero by 2050. Members commit to transparent reporting on progress.",
+    "data": {
+      "commitments": {
+        "overarchingGoal": "Align operational and attributable GHG emissions from lending and investment portfolios with pathways to net-zero by 2050",
+        "intermediateTargets": "Set 2030 (or sooner) targets for priority sectors within 18 months of joining",
+        "sectorCoverage": "Targets must cover a significant majority of financed emissions, prioritizing carbon-intensive sectors",
+        "baselineYear": "2019 or later"
+      },
+      "prioritySectors": [
+        "Oil and Gas",
+        "Power Generation",
+        "Coal",
+        "Steel",
+        "Cement",
+        "Aluminum",
+        "Agriculture",
+        "Commercial and Residential Real Estate",
+        "Transport (aviation, shipping, road)"
+      ],
+      "targetSettingGuidelines": {
+        "metrics": ["Absolute emissions (tCO2e)", "Physical emission intensity (e.g., tCO2e/MWh, tCO2e/t steel)", "Financing intensity (e.g., tCO2e/USD lending)"],
+        "scenarios": "Must use credible, science-based no/low-overshoot 1.5C scenarios (e.g., IEA NZE2050, NGFS Net Zero 2050)",
+        "coverage": "Targets must cover a significant majority of the bank's financed emissions in each priority sector",
+        "scope": "Scope 1, 2, and material Scope 3 emissions of clients (not the bank's own operational emissions)"
+      },
+      "reportingRequirements": {
+        "annualDisclosure": "Progress against targets for each sector, absolute emissions and intensities, methodology used",
+        "transitionPlans": "Publish bank-level transition strategy within 18 months of joining"
+      },
+      "membership2024": {
+        "members": "Over 140 banks",
+        "totalAssets": "Approximately USD 74 trillion",
+        "geographicSpread": "40+ countries"
+      }
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["nzba", "net-zero", "banking", "target-setting", "financed-emissions", "1.5c"]
+  },
+  {
+    "source": "GFANZ",
+    "category": "pcaf",
+    "subcategory": "gfanz",
+    "title": "Glasgow Financial Alliance for Net Zero (GFANZ) Progress and Gaps",
+    "description": "GFANZ is a global coalition of financial institutions committed to accelerating the decarbonization of the economy. Launched at COP26 in 2021, it coordinates net-zero commitments across banking, asset management, insurance, and other financial sub-sectors.",
+    "data": {
+      "overview": {
+        "launched": "COP26, November 2021",
+        "convener": "Mark Carney (UN Special Envoy for Climate Action and Finance)",
+        "structure": "Umbrella coalition coordinating sector-specific alliances"
+      },
+      "sectorAlliances": [
+        { "name": "Net-Zero Banking Alliance (NZBA)", "members": "140+", "convener": "UNEP FI" },
+        { "name": "Net Zero Asset Managers Initiative (NZAMI)", "members": "315+", "convener": "Founding partners including IIGCC, CDP" },
+        { "name": "Net-Zero Asset Owner Alliance (NZAOA)", "members": "90+", "convener": "UNEP FI / PRI" },
+        { "name": "Net-Zero Insurance Alliance (NZIA)", "members": "Reduced (several withdrew in 2023)", "convener": "UNEP FI" },
+        { "name": "Paris Aligned Investment Initiative (PAII)", "members": "Various", "convener": "IIGCC" },
+        { "name": "Net Zero Financial Service Providers Alliance (NZFSPA)", "members": "25+", "convener": "Various" }
+      ],
+      "commitments": {
+        "totalAssets": "USD 130+ trillion at peak (2022); reduced as some members withdrew",
+        "coreCommitment": "Members commit to net-zero GHG emissions by 2050 from all operational and financed emissions",
+        "transitionPlans": "Members must publish credible, science-based transition plans"
+      },
+      "progressMetrics": {
+        "targetSetting": "Approximately 60% of NZBA members published 2030 sector targets by end of 2023",
+        "transitionPlans": "Growing number of published plans, but quality and comprehensiveness vary widely",
+        "engagementPolicies": "Most members have climate engagement policies for high-emitting clients"
+      },
+      "gaps": [
+        "Significant member attrition, particularly in NZIA (antitrust concerns in US)",
+        "Inconsistency in target-setting methodologies across alliances",
+        "Limited accountability mechanisms for members failing to meet commitments",
+        "Fossil fuel phase-out policies remain rare; most members still finance oil and gas expansion",
+        "Scope 3 financed emissions measurement remains challenging with low data quality",
+        "Emerging markets and developing economies underrepresented in membership",
+        "No standardized definition of 'transition finance' across alliances"
+      ]
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["gfanz", "net-zero", "cop26", "financial-alliances", "transition-plans"]
+  },
+  {
+    "source": "ICMA / Various",
+    "category": "green_bonds",
+    "subcategory": "social-sustainability-bonds",
+    "title": "Social and Sustainability Bond Market Overview",
+    "description": "Beyond green bonds, the labelled bond market includes social bonds (addressing social issues) and sustainability bonds (combining green and social use of proceeds). Together with sustainability-linked bonds, these form the GSS+ bond market.",
+    "data": {
+      "marketSegments": {
+        "greenBonds": {
+          "description": "Use of proceeds for environmental projects",
+          "principles": "ICMA Green Bond Principles",
+          "2023issuance": "USD 575B"
+        },
+        "socialBonds": {
+          "description": "Use of proceeds for social projects (affordable housing, healthcare, education, food security, SME financing)",
+          "principles": "ICMA Social Bond Principles",
+          "2023issuance": "USD 134B",
+          "eligibleCategories": [
+            "Affordable basic infrastructure",
+            "Access to essential services",
+            "Affordable housing",
+            "Employment generation",
+            "Food security",
+            "Socioeconomic advancement and empowerment"
+          ]
+        },
+        "sustainabilityBonds": {
+          "description": "Combination of green and social use of proceeds",
+          "principles": "ICMA Sustainability Bond Guidelines",
+          "2023issuance": "USD 168B"
+        },
+        "sustainabilityLinkedBonds": {
+          "description": "Coupon or structure linked to achievement of sustainability KPIs; not use-of-proceeds instruments",
+          "principles": "ICMA Sustainability-Linked Bond Principles",
+          "2023issuance": "USD 65B"
+        }
+      },
+      "totalGSSPlusMarket2023": "USD 942B",
+      "cumulativeGSSPlus": "Over USD 5 trillion since inception"
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["green-bonds", "social-bonds", "sustainability-bonds", "slb", "gss-plus", "icma"]
+  },
+  {
+    "source": "MSCI / S&P Global",
+    "category": "esg_ratings",
+    "subcategory": "gcc-coverage",
+    "title": "ESG Ratings Coverage and Scores for GCC Corporates",
+    "description": "ESG ratings coverage of GCC-listed companies has expanded significantly, though the region still has lower average scores compared to European peers due to hydrocarbon exposure and evolving disclosure practices.",
+    "data": {
+      "gccCoverage": {
+        "msci": {
+          "companiesCovered": "Approximately 200 GCC-listed companies (2024)",
+          "averageRating": "BB (as of 2024)",
+          "distribution": {
+            "leader": "~5% (AA or AAA)",
+            "average": "~65% (A, BBB, BB)",
+            "laggard": "~30% (B, CCC)"
+          },
+          "topRatedSectors": ["Real estate", "Banking", "Telecommunications"],
+          "lowestRatedSectors": ["Oil & Gas", "Petrochemicals", "Utilities (fossil)"]
+        },
+        "spGlobalCSA": {
+          "companiesAssessed": "Over 150 GCC companies participate or are assessed",
+          "averageScore": "30-35 out of 100 (below global average of ~40)",
+          "improvementTrend": "Average score improved from ~22 (2020) to ~33 (2024)"
+        }
+      },
+      "challenges": [
+        "Limited Scope 3 emissions disclosure",
+        "Governance structures (family/sovereign ownership) differ from Western models used by rating agencies",
+        "Relatively new sustainability reporting requirements (ADX ESG Guide, Saudi CMA ESG disclosure)",
+        "Carbon-intensive sectors dominate market capitalization"
+      ],
+      "opportunities": [
+        "Rapid improvement trajectory — GCC companies are among the fastest improvers globally",
+        "Mandated ESG disclosure in UAE (ADX) and Saudi Arabia (CMA) driving coverage expansion",
+        "Major issuers (ADNOC, Saudi Aramco, SABIC) investing heavily in ESG improvement"
+      ]
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["esg-ratings", "gcc", "msci", "s&p-global", "coverage", "scores"]
+  },
+  {
+    "source": "PCAF",
+    "category": "pcaf",
+    "subcategory": "sovereign-debt",
+    "title": "PCAF Methodology for Sovereign Debt Financed Emissions",
+    "description": "PCAF extended its standard to cover sovereign debt, enabling financial institutions to measure GHG emissions associated with government bond holdings. This is critical as sovereign bonds constitute the largest fixed-income asset class globally.",
+    "data": {
+      "methodology": {
+        "attributionApproach": "Production-based: attribute sovereign GHG emissions based on the financial institution's share of the sovereign's total debt",
+        "formula": "Financed Emissions = (Outstanding sovereign bonds held / Total sovereign debt) * Sovereign GHG emissions",
+        "emissionsScope": "Territorial (production-based) GHG emissions of the sovereign",
+        "dataSource": "UNFCCC national inventories, World Bank, IEA"
+      },
+      "dataQualityScores": [
+        { "score": 1, "description": "Verified national GHG inventory data (UNFCCC reporting)" },
+        { "score": 2, "description": "Unverified national GHG inventory, or third-party estimated using national activity data" },
+        { "score": 3, "description": "Estimated using internationally available proxy data (e.g., GDP-based emission factors)" }
+      ],
+      "challenges": [
+        "Attribution is to the sovereign, not specific government expenditures",
+        "No mechanism to link specific bond purchases to emission-reduction activities",
+        "Double counting risk with corporate financed emissions in the same country",
+        "Government emissions influenced by policy but not solely controlled by bond proceeds"
+      ],
+      "publishedDate": "December 2022 (Part C of PCAF Standard)"
+    },
+    "year": 2022,
+    "verified": true,
+    "tags": ["pcaf", "sovereign-debt", "financed-emissions", "government-bonds", "methodology"]
+  },
+  {
+    "source": "Climate Bonds Initiative / Bloomberg",
+    "category": "green_bonds",
+    "subcategory": "gcc-market",
+    "title": "GCC Green and Sustainable Bond Market Development",
+    "description": "The GCC green and sustainable bond market has grown rapidly from near-zero in 2018 to over USD 30 billion in cumulative issuance by 2024, driven by sovereign initiatives, national oil company diversification, and banking sector leadership.",
+    "data": {
+      "marketGrowth": {
+        "2019": { "annualIssuance": "USD 1.5B", "cumulativeIssuance": "USD 2B" },
+        "2020": { "annualIssuance": "USD 3.5B", "cumulativeIssuance": "USD 5.5B" },
+        "2021": { "annualIssuance": "USD 5B", "cumulativeIssuance": "USD 10.5B" },
+        "2022": { "annualIssuance": "USD 6B", "cumulativeIssuance": "USD 16.5B" },
+        "2023": { "annualIssuance": "USD 8B", "cumulativeIssuance": "USD 24.5B" },
+        "2024": { "annualIssuance": "USD 10B (estimated)", "cumulativeIssuance": "USD 34.5B (estimated)" }
+      },
+      "byCountry": {
+        "uae": "~45% of GCC issuance volume",
+        "saudiArabia": "~30% of GCC issuance volume",
+        "qatar": "~12%",
+        "bahrain": "~5%",
+        "kuwait": "~5%",
+        "oman": "~3%"
+      },
+      "keyDrivers": [
+        "National net-zero commitments (UAE 2050, Saudi 2060, Bahrain 2060)",
+        "COP28 hosted in UAE (2023) catalyzed regional sustainable finance activity",
+        "Regulatory push: ADX ESG disclosure, CMA sustainability reporting",
+        "Energy transition financing needs",
+        "Investor demand for GCC sustainable assets"
+      ]
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["gcc", "green-bonds", "market-development", "uae", "saudi-arabia", "qatar"]
+  },
+  {
+    "source": "MSCI",
+    "category": "esg_ratings",
+    "subcategory": "sector-key-issues",
+    "title": "MSCI ESG Key Issues by Major Sector",
+    "description": "MSCI assigns material ESG key issues to each GICS sub-industry. This entry covers the most material key issues and their typical weightings for major sectors, illustrating how ESG materiality varies across industries.",
+    "data": {
+      "sectorKeyIssues": {
+        "oilAndGas": {
+          "environmental": ["Carbon Emissions (high weight)", "Toxic Emissions & Waste", "Water Stress", "Biodiversity & Land Use"],
+          "social": ["Health & Safety", "Community Relations"],
+          "governance": ["Corporate Governance", "Business Ethics", "Corruption & Instability"],
+          "typicalEnvWeight": "40-50%"
+        },
+        "banking": {
+          "environmental": ["Financing Environmental Impact", "Carbon Emissions (own operations, lower weight)"],
+          "social": ["Financial Product Safety", "Privacy & Data Security", "Human Capital Development"],
+          "governance": ["Corporate Governance", "Business Ethics", "Financial System Instability"],
+          "typicalEnvWeight": "10-15%"
+        },
+        "technology": {
+          "environmental": ["Carbon Emissions (data centers)", "Electronic Waste", "Opportunities in Clean Tech"],
+          "social": ["Privacy & Data Security (high weight)", "Human Capital Development", "Labor Management", "Supply Chain Labor Standards"],
+          "governance": ["Corporate Governance", "Business Ethics", "Anti-Competitive Practices"],
+          "typicalEnvWeight": "10-20%"
+        },
+        "utilities": {
+          "environmental": ["Carbon Emissions (highest weight)", "Water Stress", "Biodiversity & Land Use", "Opportunities in Renewable Energy"],
+          "social": ["Health & Safety", "Community Relations"],
+          "governance": ["Corporate Governance", "Business Ethics"],
+          "typicalEnvWeight": "50-60%"
+        },
+        "realEstate": {
+          "environmental": ["Carbon Emissions", "Green Building (high weight)", "Water Stress"],
+          "social": ["Health & Safety", "Community Relations"],
+          "governance": ["Corporate Governance"],
+          "typicalEnvWeight": "35-45%"
+        },
+        "mining": {
+          "environmental": ["Toxic Emissions & Waste (high weight)", "Water Stress", "Biodiversity & Land Use", "Carbon Emissions"],
+          "social": ["Health & Safety (high weight)", "Community Relations", "Supply Chain Labor Standards"],
+          "governance": ["Corporate Governance", "Business Ethics", "Corruption & Instability"],
+          "typicalEnvWeight": "40-50%"
+        }
+      }
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["msci", "esg-ratings", "key-issues", "materiality", "sector-specific"]
+  },
+  {
+    "source": "PCAF / SBTi",
+    "category": "pcaf",
+    "subcategory": "facilitated-emissions",
+    "title": "PCAF Facilitated Emissions and Insurance-Associated Emissions",
+    "description": "PCAF expanded its standard to cover facilitated emissions (from capital markets activities such as underwriting and advisory) and insurance-associated emissions (from underwriting insurance policies), addressing gaps in Scope 3 Category 15 measurement.",
+    "data": {
+      "facilitatedEmissions": {
+        "definition": "GHG emissions associated with capital markets transactions where the financial institution facilitates (but does not hold) the securities — e.g., underwriting equity or debt issuances, IPOs, securitizations",
+        "attributionMethod": "Based on the financial institution's share of total facilitated amount, pro-rated over the tenor of the instrument",
+        "formula": "Facilitated Emissions = (Share of facilitation / Total facilitated amount) * (Weighting factor based on tenor) * Issuer emissions",
+        "publishedDate": "November 2023 (Part B of PCAF Standard)"
+      },
+      "insuranceAssociatedEmissions": {
+        "definition": "GHG emissions from commercial lines insurance (re)underwriting, representing the economic activity enabled by insurance coverage",
+        "scope": "Commercial property, energy, marine, aviation, motor, and liability insurance lines",
+        "attributionMethod": "Based on the insurer's share of premium relative to total insured value, applied to policyholder emissions",
+        "formula": "Insurance-associated Emissions = (Premium / Economic value of insured asset) * Policyholder emissions",
+        "publishedDate": "November 2023 (Part B of PCAF Standard)"
+      },
+      "significance": "Facilitated and insurance emissions are essential for financial institutions whose primary business is capital markets or (re)insurance rather than lending"
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["pcaf", "facilitated-emissions", "insurance", "underwriting", "scope-3"]
+  }
+]

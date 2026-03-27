@@ -1,0 +1,1361 @@
+[
+  {
+    "source": "Stockholm Resilience Centre",
+    "category": "planetary_boundaries",
+    "subcategory": "all-boundaries",
+    "title": "Planetary Boundaries Framework: All 9 Boundaries — Current Status (2023 Update)",
+    "description": "The planetary boundaries framework, first published by Rockstrom et al. (2009) and updated by Richardson et al. (2023), identifies nine Earth system processes that regulate the stability and resilience of the planet. As of the 2023 assessment, six of nine boundaries have been transgressed.",
+    "data": {
+      "overallStatus": "6 of 9 boundaries transgressed (2023 assessment)",
+      "citation": "Richardson et al. (2023). Earth beyond six of nine planetary boundaries. Science Advances, 9(37).",
+      "boundaries": [
+        {
+          "id": 1,
+          "name": "Climate Change",
+          "controlVariable": "Atmospheric CO2 concentration (ppm) and radiative forcing (W/m2)",
+          "safeBoundary": {
+            "co2": "350 ppm",
+            "radiativeForcing": "1.0 W/m2 above pre-industrial"
+          },
+          "currentValue": {
+            "co2": "424 ppm (2024 annual mean, NOAA)",
+            "radiativeForcing": "~2.91 W/m2 (2023, relative to 1750)"
+          },
+          "status": "BREACHED",
+          "zoneOfUncertainty": "350-450 ppm CO2",
+          "trend": "Increasing. CO2 rising ~2.5 ppm/year. 2023 was hottest year on record at +1.48C above pre-industrial.",
+          "keyRisks": "Ice sheet collapse, sea level rise, extreme weather amplification, tipping point cascades"
+        },
+        {
+          "id": 2,
+          "name": "Biosphere Integrity — Genetic Diversity",
+          "controlVariable": "Extinction rate (E/MSY — extinctions per million species-years)",
+          "safeBoundary": "< 10 E/MSY (background rate ~0.1-1 E/MSY)",
+          "currentValue": "100-1000 E/MSY (estimated)",
+          "status": "BREACHED (severely)",
+          "trend": "Accelerating. Current extinction rate is 100-1000x the background rate. IPBES estimates 1 million species at risk of extinction.",
+          "keyRisks": "Loss of ecosystem resilience, pollination collapse, food web disruption, loss of genetic resources for medicine and agriculture"
+        },
+        {
+          "id": 3,
+          "name": "Land-System Change",
+          "controlVariable": "Area of forested land as % of original forest cover",
+          "safeBoundary": "75% of original forest cover remaining (global); biome-specific thresholds apply",
+          "currentValue": {
+            "global": "~62% of original forest cover remaining",
+            "tropical": "~54% remaining (most critical biome)",
+            "temperate": "~58% remaining",
+            "boreal": "~85% remaining"
+          },
+          "status": "BREACHED",
+          "trend": "Ongoing deforestation, particularly in tropics. Net forest loss ~4.7 million hectares/year (2010-2020, FAO). Rate declining but still significant.",
+          "keyRisks": "Carbon release from deforestation, biodiversity loss, disruption of regional water cycles, soil degradation"
+        },
+        {
+          "id": 4,
+          "name": "Biogeochemical Flows — Nitrogen and Phosphorus Cycles",
+          "controlVariable": {
+            "nitrogen": "Industrial and intentional biological fixation of N (Tg N/yr)",
+            "phosphorus": "P flow from freshwater systems into the ocean (Tg P/yr) and P flow from fertilizer to erodible soils"
+          },
+          "safeBoundary": {
+            "nitrogen": "62 Tg N/yr",
+            "phosphorus_ocean": "11 Tg P/yr",
+            "phosphorus_fertilizer": "6.2 Tg P/yr applied to erodible soils"
+          },
+          "currentValue": {
+            "nitrogen": "~150 Tg N/yr",
+            "phosphorus_ocean": "~22 Tg P/yr",
+            "phosphorus_fertilizer": "~14 Tg P/yr"
+          },
+          "status": "BREACHED (severely, both N and P)",
+          "trend": "Increasing with agricultural intensification. Excess nitrogen causes eutrophication, dead zones, and N2O emissions. Phosphorus runoff driving freshwater pollution.",
+          "keyRisks": "Eutrophication and hypoxic dead zones, groundwater contamination, N2O as potent GHG, phosphorus scarcity (finite reserves)"
+        },
+        {
+          "id": 5,
+          "name": "Novel Entities (Chemical Pollution and Plastics)",
+          "controlVariable": "No single agreed metric; assessed qualitatively based on production volume and environmental presence of synthetic chemicals, plastics, and other novel materials",
+          "safeBoundary": "Not yet precisely quantified; boundary exceeded based on weight-of-evidence assessment",
+          "currentValue": "Over 350,000 chemicals and mixtures registered globally; plastic production exceeds 400 Mt/yr; PFAS, microplastics, and endocrine disruptors detected in all environmental compartments",
+          "status": "BREACHED",
+          "trend": "Increasing. Chemical production has grown 50-fold since 1950. Plastics production doubling every ~20 years. Persistent pollutants accumulating in remote environments including deep ocean and Arctic ice.",
+          "keyRisks": "Endocrine disruption in wildlife and humans, bioaccumulation in food chains, microplastic contamination of soils and water, reduced ecosystem resilience"
+        },
+        {
+          "id": 6,
+          "name": "Freshwater Use — Blue Water",
+          "controlVariable": "Maximum amount of consumptive blue water use (km3/yr); updated to include green water (soil moisture)",
+          "safeBoundary": {
+            "blueWater": "4,000 km3/yr global consumptive use",
+            "greenWater": "Root-zone soil moisture deviation from Holocene baseline"
+          },
+          "currentValue": {
+            "blueWater": "~2,600 km3/yr global consumptive use (within boundary for blue water)",
+            "greenWater": "Green water boundary breached in 2022 based on soil moisture analysis"
+          },
+          "status": "BREACHED (based on 2022 green water assessment; blue water globally within boundary but regionally exceeded)",
+          "trend": "Blue water use stable globally but severe regional stress (Middle East, South Asia, Central Asia). Green water disruption from land-use change and climate change.",
+          "keyRisks": "Crop failures from soil moisture decline, groundwater depletion, river flow disruption, conflict over shared water resources"
+        },
+        {
+          "id": 7,
+          "name": "Ocean Acidification",
+          "controlVariable": "Carbonate ion concentration; aragonite saturation state (omega_aragonite) of surface ocean",
+          "safeBoundary": ">= 80% of pre-industrial mean aragonite saturation state (~3.44 omega_aragonite, boundary at ~2.75)",
+          "currentValue": "~2.8 omega_aragonite global mean surface ocean (still above boundary)",
+          "status": "WITHIN BOUNDARY (but approaching zone of uncertainty)",
+          "trend": "Declining. Surface ocean pH has decreased by ~0.1 units since pre-industrial (from ~8.2 to ~8.1), representing a ~30% increase in acidity. Rate of change unprecedented in at least 66 million years.",
+          "keyRisks": "Coral reef dissolution, shellfish and pteropod shell weakening, disruption of marine food webs, impacts on fisheries productivity"
+        },
+        {
+          "id": 8,
+          "name": "Stratospheric Ozone Depletion",
+          "controlVariable": "Stratospheric O3 concentration (Dobson Units, DU)",
+          "safeBoundary": "< 5% reduction from pre-industrial level of 290 DU (boundary at ~275 DU)",
+          "currentValue": "~284 DU global mean (2023); Antarctic ozone hole still forms seasonally but is recovering",
+          "status": "WITHIN BOUNDARY (recovering)",
+          "trend": "Improving. The Montreal Protocol (1987) successfully phased out most ozone-depleting substances. Full recovery expected by ~2066 for Antarctic, ~2045 for Arctic, ~2040 for mid-latitudes. However, recent concerns about unreported CFC-11 emissions and impact of very short-lived substances.",
+          "keyRisks": "Without continued compliance: increased UV-B radiation, skin cancer, cataracts, immune suppression, damage to terrestrial and aquatic ecosystems"
+        },
+        {
+          "id": 9,
+          "name": "Atmospheric Aerosol Loading",
+          "controlVariable": "Aerosol Optical Depth (AOD); regional assessment",
+          "safeBoundary": "Not yet globally quantified; regional boundaries proposed (e.g., South Asian monsoon sensitivity)",
+          "currentValue": "Regionally variable. High AOD in South Asia, East Asia, parts of Africa. Decreasing in North America and Europe due to clean air regulations.",
+          "status": "UNQUANTIFIED (insufficient data for global boundary assessment)",
+          "trend": "Mixed. Aerosol loading declining in developed nations (air quality improvements) but remaining high or increasing in developing regions. Reduction of aerosol masking effect may accelerate warming.",
+          "keyRisks": "Disruption of monsoon patterns, respiratory disease (7 million premature deaths/year from air pollution per WHO), dimming effect on solar radiation, regional climate impacts"
+        }
+      ]
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["planetary-boundaries", "earth-system", "tipping-points", "climate", "biodiversity", "nitrogen", "phosphorus"]
+  },
+  {
+    "source": "IUCN",
+    "category": "biodiversity",
+    "subcategory": "red-list",
+    "title": "IUCN Red List of Threatened Species: Global Summary Statistics",
+    "description": "The IUCN Red List is the world's most comprehensive inventory of the global conservation status of biological species. It uses quantitative criteria to evaluate extinction risk and is the foundation for biodiversity conservation priority-setting.",
+    "data": {
+      "assessmentSummary2024": {
+        "totalSpeciesAssessed": 163040,
+        "totalThreatened": 45321,
+        "percentThreatened": "28%",
+        "byCategory": {
+          "extinct": { "count": 916, "description": "No reasonable doubt that the last individual has died" },
+          "extinctInTheWild": { "count": 93, "description": "Known only to survive in cultivation, captivity, or as a naturalized population" },
+          "criticallyEndangered": { "count": 9761, "description": "Extremely high risk of extinction in the wild" },
+          "endangered": { "count": 16399, "description": "Very high risk of extinction in the wild" },
+          "vulnerable": { "count": 19161, "description": "High risk of extinction in the wild" },
+          "nearThreatened": { "count": 8575, "description": "Close to qualifying for or likely to qualify for a threatened category in the near future" },
+          "leastConcern": { "count": 75748, "description": "Does not qualify for a more at-risk category" },
+          "dataDeficient": { "count": 22387, "description": "Inadequate information to assess extinction risk" }
+        }
+      },
+      "byMajorGroup": {
+        "mammals": { "assessed": 6678, "threatened": 1373, "percentThreatened": "21%" },
+        "birds": { "assessed": 11195, "threatened": 1481, "percentThreatened": "13%" },
+        "reptiles": { "assessed": 11341, "threatened": 2385, "percentThreatened": "21%" },
+        "amphibians": { "assessed": 8648, "threatened": 3547, "percentThreatened": "41%" },
+        "fishes": { "assessed": 26840, "threatened": 4494, "percentThreatened": "17%" },
+        "insects": { "assessed": 14195, "threatened": 3074, "percentThreatened": "22%" },
+        "plants": { "assessed": 63715, "threatened": 24914, "percentThreatened": "39%" },
+        "fungi": { "assessed": 1230, "threatened": 322, "percentThreatened": "26%" }
+      },
+      "gccSpecificSpecies": {
+        "arabianOryx": { "status": "Vulnerable (downlisted from Extinct in the Wild in 2011 after successful reintroduction)", "country": "UAE, Saudi Arabia, Oman" },
+        "hawksbillTurtle": { "status": "Critically Endangered", "country": "All GCC coastal states", "note": "Important nesting sites in Oman and UAE" },
+        "dugong": { "status": "Vulnerable", "country": "UAE, Qatar, Bahrain", "note": "Second-largest dugong population globally in UAE-Qatar waters" },
+        "arabianLeopard": { "status": "Critically Endangered", "country": "Oman, Yemen, Saudi Arabia", "note": "Fewer than 200 individuals estimated in the wild" },
+        "socotraCormorant": { "status": "Vulnerable", "country": "UAE, Oman, Bahrain", "note": "Endemic breeder to the Arabian Peninsula; declining" },
+        "greenTurtle": { "status": "Endangered", "country": "Oman, Saudi Arabia, UAE", "note": "Major nesting sites at Ras Al Jinz, Oman" },
+        "arabianTahr": { "status": "Endangered", "country": "Oman, UAE", "note": "Endemic to the Hajar Mountains" }
+      }
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["iucn", "red-list", "threatened-species", "conservation", "gcc-species", "biodiversity"]
+  },
+  {
+    "source": "CBD",
+    "category": "biodiversity",
+    "subcategory": "kunming-montreal-framework",
+    "title": "Kunming-Montreal Global Biodiversity Framework: All 23 Targets",
+    "description": "The Kunming-Montreal Global Biodiversity Framework (GBF) was adopted at COP15 in December 2022. It sets out 4 goals and 23 targets for 2030 to halt and reverse biodiversity loss, with a 2050 vision of living in harmony with nature.",
+    "data": {
+      "adopted": "December 19, 2022, Montreal, Canada (COP15)",
+      "goals2050": [
+        "Goal A: Integrity, connectivity and resilience of all ecosystems maintained or restored; halt human-induced extinction; 10-fold reduction in extinction rate by 2050",
+        "Goal B: Biodiversity is sustainably used and managed; nature's contributions to people are valued, maintained and enhanced",
+        "Goal C: Benefits from genetic resources shared fairly and equitably; traditional knowledge protected",
+        "Goal D: Adequate means of implementation available to all Parties, closing the biodiversity finance gap"
+      ],
+      "targets2030": [
+        { "id": 1, "text": "Ensure that all areas are under participatory, integrated and biodiversity-inclusive spatial planning, addressing land- and sea-use change, to bring the loss of areas of high biodiversity importance close to zero by 2030." },
+        { "id": 2, "text": "Ensure that by 2030, at least 30% of areas of degraded terrestrial, inland water, and coastal and marine ecosystems are under effective restoration." },
+        { "id": 3, "text": "Ensure and enable that by 2030, at least 30% of terrestrial, inland water, and of coastal and marine areas are effectively conserved and managed through ecologically representative, well-connected and equitably governed systems of protected areas (30x30 target)." },
+        { "id": 4, "text": "Ensure urgent management actions to halt human-induced extinction of known threatened species and for recovery and conservation of species, especially threatened species." },
+        { "id": 5, "text": "Ensure that the use, harvesting and trade of wild species is sustainable, safe and legal, preventing overexploitation and reducing human-wildlife conflict." },
+        { "id": 6, "text": "Eliminate, minimize, reduce and or mitigate the impacts of invasive alien species on biodiversity and ecosystem services, reducing the rate of introduction and establishment of invasive alien species by at least 50% by 2030." },
+        { "id": 7, "text": "Reduce pollution risks and the negative impact of pollution from all sources by 2030 to levels that are not harmful to biodiversity and ecosystem functions, including by reducing excess nutrients, pesticides and highly hazardous chemicals." },
+        { "id": 8, "text": "Minimize the impact of climate change and ocean acidification on biodiversity and increase its resilience through mitigation, adaptation, and disaster risk reduction." },
+        { "id": 9, "text": "Ensure that the management and use of wild species are sustainable, thereby providing social, economic and environmental benefits for people, especially those in vulnerable situations and those most dependent on biodiversity." },
+        { "id": 10, "text": "Ensure that areas under agriculture, aquaculture, fisheries and forestry are managed sustainably, in particular through the sustainable use of biodiversity, including a substantial increase of the application of biodiversity-friendly practices." },
+        { "id": 11, "text": "Restore, maintain and enhance nature's contributions to people, including ecosystem functions and services, through nature-based solutions and/or ecosystem-based approaches." },
+        { "id": 12, "text": "Significantly increase the area and quality and connectivity of, access to, and benefits from green and blue spaces in urban and densely populated areas." },
+        { "id": 13, "text": "Take effective legal, policy, administrative and capacity-building measures at all levels to ensure the fair and equitable sharing of benefits from the utilization of genetic resources and from digital sequence information on genetic resources." },
+        { "id": 14, "text": "Ensure the full integration of biodiversity and its multiple values into policies, regulations, planning and development processes at all levels of government and across all sectors." },
+        { "id": 15, "text": "Take legal, administrative or policy measures to encourage and enable business, and in particular to ensure that large and transnational companies and financial institutions regularly monitor, assess, and transparently disclose their risks, dependencies and impacts on biodiversity (TNFD-aligned)." },
+        { "id": 16, "text": "Ensure that people are encouraged and enabled to make sustainable consumption choices including by establishing supportive policy, legislative or regulatory frameworks, reducing the global footprint of consumption by 2030." },
+        { "id": 17, "text": "Establish, strengthen capacity for, and implement in all countries biosafety measures and take action to prevent, manage or control the potential adverse impacts of living modified organisms." },
+        { "id": 18, "text": "Identify by 2025, and eliminate, phase out or reform incentives, including subsidies, harmful for biodiversity, by at least USD 500 billion per year, while scaling up positive incentives for conservation and sustainable use." },
+        { "id": 19, "text": "Substantially and progressively increase the level of financial resources from all sources, mobilizing at least USD 200 billion per year by 2030 for biodiversity, including at least USD 20 billion per year by 2025 and USD 30 billion per year by 2030 through international financial flows to developing countries." },
+        { "id": 20, "text": "Strengthen capacity-building and development, access to and transfer of technology, and promote development of and access to innovation and technical and scientific cooperation." },
+        { "id": 21, "text": "Ensure that the best available data, information and knowledge are accessible to decision-makers, practitioners and the public to guide effective and equitable governance, integrated and participatory management of biodiversity." },
+        { "id": 22, "text": "Ensure the full, equitable, inclusive, effective and gender-responsive representation and participation in decision-making, and access to justice and information related to biodiversity by indigenous peoples and local communities." },
+        { "id": 23, "text": "Ensure gender equality in the implementation of the framework through a gender-responsive approach, where all women and girls have equal opportunity and capacity to contribute." }
+      ],
+      "keyHeadlineTarget": "Target 3: '30x30' — protect 30% of land and 30% of ocean by 2030. Current protected area coverage: ~17% terrestrial, ~8% marine."
+    },
+    "year": 2022,
+    "verified": true,
+    "tags": ["kunming-montreal", "gbf", "cop15", "30x30", "biodiversity-targets", "cbd"]
+  },
+  {
+    "source": "NHMD / UNEP-WCMC",
+    "category": "biodiversity",
+    "subcategory": "biodiversity-intactness-index",
+    "title": "Biodiversity Intactness Index (BII) by Country",
+    "description": "The Biodiversity Intactness Index (BII) estimates the average abundance of originally present species relative to their abundance in an undisturbed habitat. A BII of 100% means the ecosystem is fully intact; values below ~90% are considered beyond the safe limit proposed as a planetary boundary.",
+    "data": {
+      "methodology": "BII is estimated using the PREDICTS database (Projecting Responses of Ecological Diversity In Changing Terrestrial Systems), combining land-use and land-use intensity data with statistical models of species response to human pressures.",
+      "suggestedSafeBoundary": "90% (below which ecosystems may lose resilience)",
+      "globalAverage": "75% (2023 estimate)",
+      "top50Countries": [
+        { "rank": 1, "country": "Suriname", "bii": 97.8 },
+        { "rank": 2, "country": "Guyana", "bii": 97.5 },
+        { "rank": 3, "country": "French Guiana", "bii": 97.2 },
+        { "rank": 4, "country": "Gabon", "bii": 96.4 },
+        { "rank": 5, "country": "Papua New Guinea", "bii": 95.6 },
+        { "rank": 6, "country": "Solomon Islands", "bii": 95.1 },
+        { "rank": 7, "country": "Republic of Congo", "bii": 94.7 },
+        { "rank": 8, "country": "Central African Republic", "bii": 93.9 },
+        { "rank": 9, "country": "Equatorial Guinea", "bii": 93.2 },
+        { "rank": 10, "country": "Cameroon", "bii": 92.1 },
+        { "rank": 11, "country": "Peru", "bii": 91.8 },
+        { "rank": 12, "country": "Democratic Republic of Congo", "bii": 91.3 },
+        { "rank": 13, "country": "Bolivia", "bii": 90.7 },
+        { "rank": 14, "country": "Brunei", "bii": 90.2 },
+        { "rank": 15, "country": "Colombia", "bii": 89.8 },
+        { "rank": 16, "country": "Bhutan", "bii": 89.4 },
+        { "rank": 17, "country": "Laos", "bii": 88.9 },
+        { "rank": 18, "country": "Madagascar", "bii": 88.1 },
+        { "rank": 19, "country": "Liberia", "bii": 87.5 },
+        { "rank": 20, "country": "Venezuela", "bii": 87.2 },
+        { "rank": 21, "country": "Mongolia", "bii": 86.8 },
+        { "rank": 22, "country": "Russia", "bii": 86.5 },
+        { "rank": 23, "country": "Canada", "bii": 86.2 },
+        { "rank": 24, "country": "Brazil", "bii": 85.4 },
+        { "rank": 25, "country": "Myanmar", "bii": 85.0 },
+        { "rank": 26, "country": "Zambia", "bii": 84.7 },
+        { "rank": 27, "country": "Norway", "bii": 84.3 },
+        { "rank": 28, "country": "Finland", "bii": 84.0 },
+        { "rank": 29, "country": "Sweden", "bii": 83.6 },
+        { "rank": 30, "country": "Chile", "bii": 83.2 },
+        { "rank": 31, "country": "Ecuador", "bii": 82.5 },
+        { "rank": 32, "country": "Tanzania", "bii": 82.1 },
+        { "rank": 33, "country": "Namibia", "bii": 81.7 },
+        { "rank": 34, "country": "Botswana", "bii": 81.3 },
+        { "rank": 35, "country": "Mozambique", "bii": 80.8 },
+        { "rank": 36, "country": "Paraguay", "bii": 80.4 },
+        { "rank": 37, "country": "Australia", "bii": 80.1 },
+        { "rank": 38, "country": "Argentina", "bii": 79.5 },
+        { "rank": 39, "country": "New Zealand", "bii": 79.2 },
+        { "rank": 40, "country": "Indonesia", "bii": 78.3 },
+        { "rank": 41, "country": "Cambodia", "bii": 78.0 },
+        { "rank": 42, "country": "Mexico", "bii": 77.5 },
+        { "rank": 43, "country": "United States", "bii": 76.8 },
+        { "rank": 44, "country": "Angola", "bii": 76.3 },
+        { "rank": 45, "country": "Kenya", "bii": 75.8 },
+        { "rank": 46, "country": "South Africa", "bii": 75.2 },
+        { "rank": 47, "country": "Costa Rica", "bii": 74.6 },
+        { "rank": 48, "country": "Ethiopia", "bii": 74.1 },
+        { "rank": 49, "country": "Malaysia", "bii": 73.5 },
+        { "rank": 50, "country": "Thailand", "bii": 72.8 }
+      ],
+      "notableOthers": {
+        "unitedKingdom": 53.0,
+        "germany": 56.0,
+        "france": 62.0,
+        "japan": 65.0,
+        "india": 61.0,
+        "china": 63.0,
+        "saudiArabia": 80.5,
+        "uae": 71.2,
+        "qatar": 73.0
+      }
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["biodiversity-intactness", "bii", "predicts", "species-abundance", "land-use"]
+  },
+  {
+    "source": "GLOBIO / PBL Netherlands",
+    "category": "biodiversity",
+    "subcategory": "mean-species-abundance",
+    "title": "Mean Species Abundance (MSA) Methodology and Land-Use Intensity Factors",
+    "description": "Mean Species Abundance is a biodiversity indicator expressing the mean abundance of original species relative to their abundance in undisturbed ecosystems. It is calculated using dose-response relationships between human pressures and species abundance.",
+    "data": {
+      "methodology": {
+        "definition": "MSA = average abundance of original species in a disturbed situation / average abundance in undisturbed reference situation",
+        "scale": "0 (completely destroyed) to 1 (pristine, undisturbed)",
+        "model": "GLOBIO model combines MSA impacts from multiple pressures: land use, climate change, nitrogen deposition, infrastructure, and fragmentation",
+        "formula": "MSA_total = MSA_landuse * MSA_climate * MSA_nitrogen * MSA_infrastructure * MSA_fragmentation"
+      },
+      "landUseIntensityFactors": {
+        "primaryVegetation": {
+          "minimal": { "msa": 1.0, "description": "Undisturbed natural ecosystems" },
+          "light": { "msa": 0.7, "description": "Selective logging, low-intensity grazing" }
+        },
+        "secondaryVegetation": {
+          "mature": { "msa": 0.5, "description": "Recovered forest > 40 years" },
+          "intermediate": { "msa": 0.35, "description": "Re-growing forest 10-40 years" },
+          "young": { "msa": 0.25, "description": "Re-growing vegetation < 10 years" }
+        },
+        "agriculture": {
+          "lowIntensity": { "msa": 0.3, "description": "Subsistence, mixed farming, shade-grown crops" },
+          "mediumIntensity": { "msa": 0.15, "description": "Moderate input agriculture" },
+          "highIntensity": { "msa": 0.05, "description": "Intensive monoculture, high agrochemical input" }
+        },
+        "plantations": {
+          "timber": { "msa": 0.2 },
+          "oilPalm": { "msa": 0.15 },
+          "rubber": { "msa": 0.1 }
+        },
+        "urbanAreas": {
+          "greenUrban": { "msa": 0.05 },
+          "builtUp": { "msa": 0.0 }
+        },
+        "pastureAndRangeland": {
+          "lowIntensity": { "msa": 0.6 },
+          "highIntensity": { "msa": 0.1 }
+        }
+      },
+      "globalMSA2020": 0.68,
+      "trend": "Declining from ~0.72 (2000) to ~0.68 (2020). Projected to decline to ~0.63 by 2050 under BAU scenario."
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["msa", "mean-species-abundance", "globio", "biodiversity-indicator", "land-use"]
+  },
+  {
+    "source": "IUCN / UNEP-WCMC",
+    "category": "biodiversity",
+    "subcategory": "star-metric",
+    "title": "STAR Metric: Species Threat Abatement and Restoration",
+    "description": "The Species Threat Abatement and Restoration (STAR) metric quantifies the potential contributions that threat abatement and habitat restoration in specific places can make to reducing overall species extinction risk, enabling site-level biodiversity investment prioritization.",
+    "data": {
+      "methodology": {
+        "components": {
+          "starT": {
+            "name": "Threat Abatement",
+            "description": "Potential reduction in extinction risk achievable by abating threats at a given site",
+            "calculation": "Sum of contributions of all threatened species at the site, weighted by their IUCN Red List category and the proportion of their range at the site"
+          },
+          "starR": {
+            "name": "Restoration",
+            "description": "Potential reduction in extinction risk achievable by restoring habitat at a given site",
+            "calculation": "Based on area of restorable habitat and the species that could benefit"
+          },
+          "starTotal": "STAR_T + STAR_R = total potential for species conservation gain at a site"
+        },
+        "weighting": {
+          "criticallyEndangered": 4,
+          "endangered": 3,
+          "vulnerable": 2,
+          "nearThreatened": 1
+        },
+        "threatCategories": [
+          "Residential and commercial development",
+          "Agriculture and aquaculture",
+          "Energy production and mining",
+          "Transportation and service corridors",
+          "Biological resource use",
+          "Human intrusions and disturbance",
+          "Natural system modifications",
+          "Invasive species and diseases",
+          "Pollution",
+          "Climate change and severe weather"
+        ]
+      },
+      "applicationExamples": [
+        {
+          "application": "Corporate biodiversity footprinting",
+          "description": "Companies use STAR to identify where their operations or supply chains overlap with high-STAR areas, prioritizing mitigation investment"
+        },
+        {
+          "application": "Sovereign biodiversity assessment",
+          "description": "Countries ranked by total STAR score to prioritize international conservation funding allocation"
+        },
+        {
+          "application": "Financial institution portfolio screening",
+          "description": "Banks and investors screen loan/investment portfolios against STAR layers to assess biodiversity risk exposure"
+        }
+      ],
+      "topStarCountries": [
+        "Indonesia", "Brazil", "Madagascar", "Colombia", "India",
+        "Mexico", "Australia", "Philippines", "China", "Peru"
+      ]
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["star-metric", "biodiversity", "threat-abatement", "restoration", "conservation-priority"]
+  },
+  {
+    "source": "WWF / ZSL",
+    "category": "biodiversity",
+    "subcategory": "living-planet-index",
+    "title": "Living Planet Index: Global Wildlife Population Trends",
+    "description": "The Living Planet Index (LPI) tracks trends in global vertebrate populations, providing a headline indicator of biodiversity change. The 2024 report (using data to 2020) shows an average 73% decline in monitored wildlife populations since 1970.",
+    "data": {
+      "globalTrend": {
+        "declineSince1970": "-73% (updated 2024 report; previously -69% in 2022 report)",
+        "period": "1970-2020",
+        "methodology": "Geometric mean of population trends across 35,000+ populations of 5,495 vertebrate species",
+        "interpretation": "Does NOT mean 73% of animals have disappeared; it is the average relative change in population sizes across monitored populations"
+      },
+      "byRegion": {
+        "latinAmericaCaribbean": { "decline": "-95%", "note": "Largest regional decline, driven by habitat loss and overexploitation" },
+        "africa": { "decline": "-76%", "note": "Driven by land-use change, exploitation, climate change" },
+        "asiaPacific": { "decline": "-60%", "note": "Deforestation, overfishing, pollution" },
+        "northAmerica": { "decline": "-39%", "note": "Habitat loss, pesticides, invasive species" },
+        "europeCentralAsia": { "decline": "-35%", "note": "Historical declines now stabilizing in some areas" }
+      },
+      "byEcosystem": {
+        "freshwater": { "decline": "-85%", "note": "Worst-performing ecosystem; dam construction, pollution, overextraction" },
+        "terrestrial": { "decline": "-69%", "note": "Habitat conversion, fragmentation, hunting" },
+        "marine": { "decline": "-56%", "note": "Overfishing, bycatch, habitat degradation, pollution" }
+      },
+      "byTaxonomicGroup": {
+        "fish": { "decline": "-83%" },
+        "amphibians": { "decline": "-81%" },
+        "reptiles": { "decline": "-61%" },
+        "mammals": { "decline": "-60%" },
+        "birds": { "decline": "-39%" }
+      },
+      "keyDrivers": [
+        "Land/sea use change (habitat loss and degradation) — #1 driver",
+        "Overexploitation (hunting, fishing, harvesting)",
+        "Invasive species and disease",
+        "Pollution",
+        "Climate change (growing rapidly as a driver)"
+      ]
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["living-planet-index", "wwf", "zsl", "wildlife-populations", "vertebrates", "biodiversity-decline"]
+  },
+  {
+    "source": "IUCN / UNEP",
+    "category": "biodiversity",
+    "subcategory": "ecosystem-red-list",
+    "title": "IUCN Red List of Ecosystems: Assessment Framework",
+    "description": "The IUCN Red List of Ecosystems (RLE) assesses the conservation status of ecosystems using standardized criteria analogous to the IUCN Red List of Species. It evaluates risk of ecosystem collapse based on area decline, environmental degradation, and disruption of biotic processes.",
+    "data": {
+      "categories": [
+        { "code": "CO", "name": "Collapsed", "description": "Ecosystem has collapsed — characteristic native biota no longer sustained" },
+        { "code": "CR", "name": "Critically Endangered", "description": "Extremely high risk of collapse" },
+        { "code": "EN", "name": "Endangered", "description": "Very high risk of collapse" },
+        { "code": "VU", "name": "Vulnerable", "description": "High risk of collapse" },
+        { "code": "NT", "name": "Near Threatened", "description": "Close to qualifying for a threatened category" },
+        { "code": "LC", "name": "Least Concern", "description": "Low risk of collapse" },
+        { "code": "DD", "name": "Data Deficient", "description": "Insufficient data to assess" },
+        { "code": "NE", "name": "Not Evaluated", "description": "Has not yet been assessed" }
+      ],
+      "assessmentCriteria": [
+        { "criterion": "A", "name": "Reduction in geographic distribution", "timeframes": ["A1: past 50 years", "A2a: next 50 years", "A2b: any 50-year period including past, present, future", "A3: since 1750"] },
+        { "criterion": "B", "name": "Restricted geographic distribution", "subCriteria": ["B1: Extent of occurrence", "B2: Area of occupancy", "B3: Few threat-defined locations"] },
+        { "criterion": "C", "name": "Environmental degradation", "description": "Decline in abiotic environment (e.g., water quality, soil structure)" },
+        { "criterion": "D", "name": "Disruption of biotic processes and interactions", "description": "Decline in characteristic biota or biotic interactions" },
+        { "criterion": "E", "name": "Quantitative analysis of probability of collapse", "description": "Statistical estimation of probability of collapse within 100 years" }
+      ],
+      "globalProgress": {
+        "ecosystemsAssessed": "Over 2,700 (as of 2024)",
+        "percentThreatened": "Approximately 35-40% of assessed ecosystems are threatened (CR, EN, or VU)",
+        "mostThreatenedTypes": ["Coral reefs", "Seagrass meadows", "Temperate grasslands", "Tropical dry forests", "Freshwater wetlands"]
+      }
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["iucn-rle", "ecosystem-assessment", "conservation", "collapse-risk", "biodiversity"]
+  },
+  {
+    "source": "WRI",
+    "category": "water_pollution",
+    "subcategory": "aqueduct-water-stress",
+    "title": "WRI Aqueduct: Global Water Stress Scores by Country",
+    "description": "The World Resources Institute Aqueduct tool measures baseline water stress as the ratio of total water withdrawals to available renewable surface and groundwater supplies. Scores are normalized to a 0-5 scale, with higher values indicating greater competition for water.",
+    "data": {
+      "methodology": {
+        "indicator": "Baseline Water Stress = Total withdrawals / Available renewable supply",
+        "scale": "0-5 (normalized)",
+        "categories": [
+          { "category": "Extremely high", "stressRatio": ">80%", "score": "4-5" },
+          { "category": "High", "stressRatio": "40-80%", "score": "3-4" },
+          { "category": "Medium-high", "stressRatio": "20-40%", "score": "2-3" },
+          { "category": "Low-medium", "stressRatio": "10-20%", "score": "1-2" },
+          { "category": "Low", "stressRatio": "<10%", "score": "0-1" }
+        ],
+        "version": "Aqueduct 4.0 (2023)"
+      },
+      "countriesByStressLevel": {
+        "extremelyHigh": [
+          "Bahrain", "Cyprus", "Kuwait", "Lebanon", "Oman", "Qatar",
+          "United Arab Emirates", "Saudi Arabia", "Israel", "Egypt",
+          "Libya", "Yemen", "Jordan", "Iran", "Iraq",
+          "Pakistan", "Turkmenistan", "Uzbekistan", "San Marino",
+          "Singapore", "Botswana", "Chile", "Greece", "Belgium",
+          "Andorra"
+        ],
+        "high": [
+          "Afghanistan", "Algeria", "Armenia", "Australia", "Azerbaijan",
+          "Bangladesh", "Burkina Faso", "Cape Verde", "China",
+          "Djibouti", "El Salvador", "Eritrea", "Eswatini",
+          "Ethiopia", "Haiti", "Honduras", "India", "Italy",
+          "Kazakhstan", "Kenya", "Kyrgyzstan", "Lesotho",
+          "Madagascar", "Malawi", "Mali", "Mauritius", "Mexico",
+          "Moldova", "Mongolia", "Morocco", "Namibia",
+          "Nepal", "Niger", "Nigeria", "North Macedonia",
+          "Peru", "Poland", "Portugal", "Rwanda",
+          "Senegal", "Somalia", "South Africa", "South Korea",
+          "Spain", "Sri Lanka", "Sudan", "Syria",
+          "Tajikistan", "Tanzania", "Thailand", "Togo",
+          "Trinidad and Tobago", "Tunisia", "Turkey", "Uganda",
+          "United States", "Vietnam", "Zimbabwe"
+        ],
+        "mediumHigh": [
+          "Albania", "Angola", "Argentina", "Austria",
+          "Belarus", "Benin", "Bosnia and Herzegovina", "Bulgaria",
+          "Burundi", "Cameroon", "Chad", "Colombia",
+          "Comoros", "Cote d Ivoire", "Croatia", "Cuba",
+          "Czech Republic", "Dominican Republic", "Ecuador",
+          "Fiji", "France", "Gambia", "Georgia",
+          "Germany", "Ghana", "Guatemala", "Guinea",
+          "Guinea-Bissau", "Hungary", "Indonesia", "Jamaica",
+          "Japan", "Mauritania", "Mozambique", "Myanmar",
+          "Nicaragua", "North Korea", "Philippines", "Romania",
+          "Serbia", "Sierra Leone", "Slovakia", "South Sudan",
+          "Taiwan", "Ukraine", "United Kingdom", "Zambia"
+        ],
+        "lowMedium": [
+          "Belize", "Bolivia", "Brazil", "Brunei",
+          "Cambodia", "Canada", "Central African Republic",
+          "Congo (DRC)", "Costa Rica", "Denmark",
+          "Estonia", "Finland", "Gabon", "Iceland",
+          "Ireland", "Laos", "Latvia", "Liberia",
+          "Lithuania", "Luxembourg", "Malaysia", "Netherlands",
+          "New Zealand", "Norway", "Panama",
+          "Papua New Guinea", "Paraguay",
+          "Republic of Congo", "Russia", "Slovenia",
+          "Solomon Islands", "Suriname", "Sweden",
+          "Switzerland", "Timor-Leste", "Uruguay", "Venezuela"
+        ],
+        "low": [
+          "Bhutan", "Equatorial Guinea", "French Guiana",
+          "Greenland", "Guyana", "Montenegro"
+        ]
+      },
+      "gccDetail": {
+        "bahrain": { "score": 4.97, "category": "Extremely high", "notes": "Highest water stress globally; almost entirely dependent on desalination" },
+        "kuwait": { "score": 4.95, "category": "Extremely high", "notes": "~95% of water supply from desalination" },
+        "qatar": { "score": 4.93, "category": "Extremely high", "notes": "Groundwater critically depleted; desalination dominant" },
+        "uae": { "score": 4.90, "category": "Extremely high", "notes": "42% desalination, 28% groundwater (declining), 30% treated wastewater" },
+        "saudiArabia": { "score": 4.88, "category": "Extremely high", "notes": "Largest desalination capacity globally; agricultural reform reducing withdrawals" },
+        "oman": { "score": 4.85, "category": "Extremely high", "notes": "Rising desalination; traditional falaj systems declining" }
+      }
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["wri-aqueduct", "water-stress", "water-scarcity", "gcc", "desalination", "global"]
+  },
+  {
+    "source": "WHO",
+    "category": "water_pollution",
+    "subcategory": "air-quality-guidelines",
+    "title": "WHO Global Air Quality Guidelines 2021",
+    "description": "The World Health Organization updated its Air Quality Guidelines (AQGs) in 2021, significantly tightening recommended limits for key pollutants based on accumulated evidence of health effects at lower concentrations than previously understood.",
+    "data": {
+      "version": "2021 (previous version: 2005)",
+      "pollutants": [
+        {
+          "pollutant": "PM2.5",
+          "name": "Fine Particulate Matter (< 2.5 micrometers)",
+          "annualMean": { "guideline": "5 ug/m3", "previous2005": "10 ug/m3" },
+          "24hourMean": { "guideline": "15 ug/m3", "previous2005": "25 ug/m3" },
+          "interimTargets": [
+            { "level": "IT-1", "annual": "35 ug/m3", "24hour": "75 ug/m3" },
+            { "level": "IT-2", "annual": "25 ug/m3", "24hour": "50 ug/m3" },
+            { "level": "IT-3", "annual": "15 ug/m3", "24hour": "37.5 ug/m3" },
+            { "level": "IT-4", "annual": "10 ug/m3", "24hour": "25 ug/m3" }
+          ],
+          "healthEffects": "Cardiovascular disease, respiratory infections, lung cancer, premature death; no safe threshold identified"
+        },
+        {
+          "pollutant": "PM10",
+          "name": "Coarse Particulate Matter (< 10 micrometers)",
+          "annualMean": { "guideline": "15 ug/m3", "previous2005": "20 ug/m3" },
+          "24hourMean": { "guideline": "45 ug/m3", "previous2005": "50 ug/m3" },
+          "interimTargets": [
+            { "level": "IT-1", "annual": "70 ug/m3", "24hour": "150 ug/m3" },
+            { "level": "IT-2", "annual": "50 ug/m3", "24hour": "100 ug/m3" },
+            { "level": "IT-3", "annual": "30 ug/m3", "24hour": "75 ug/m3" },
+            { "level": "IT-4", "annual": "20 ug/m3", "24hour": "50 ug/m3" }
+          ],
+          "healthEffects": "Respiratory disease exacerbation, cardiovascular effects, premature death"
+        },
+        {
+          "pollutant": "NO2",
+          "name": "Nitrogen Dioxide",
+          "annualMean": { "guideline": "10 ug/m3", "previous2005": "40 ug/m3" },
+          "24hourMean": { "guideline": "25 ug/m3", "previous2005": "200 ug/m3 (1-hour)" },
+          "healthEffects": "Respiratory symptoms, asthma exacerbation, lung function reduction; precursor to ozone and PM2.5"
+        },
+        {
+          "pollutant": "SO2",
+          "name": "Sulfur Dioxide",
+          "24hourMean": { "guideline": "40 ug/m3", "previous2005": "20 ug/m3 (10-min)" },
+          "healthEffects": "Bronchoconstriction, asthma exacerbation, respiratory symptoms"
+        },
+        {
+          "pollutant": "O3",
+          "name": "Ozone (ground-level)",
+          "peakSeason8hourMean": { "guideline": "60 ug/m3", "previous2005": "100 ug/m3 (8-hour)" },
+          "interimTargets": [
+            { "level": "IT-1", "peakSeason": "100 ug/m3" },
+            { "level": "IT-2", "peakSeason": "70 ug/m3" }
+          ],
+          "healthEffects": "Lung function impairment, airway inflammation, aggravation of asthma, premature mortality"
+        },
+        {
+          "pollutant": "CO",
+          "name": "Carbon Monoxide",
+          "24hourMean": { "guideline": "4 mg/m3" },
+          "healthEffects": "Reduced oxygen delivery (carboxyhemoglobin formation), cardiovascular effects, headache, dizziness"
+        }
+      ],
+      "globalBurden": "6.7 million premature deaths per year attributable to ambient and household air pollution (WHO 2024 estimate)",
+      "percentExceedingGuidelines": "99% of the global population breathes air exceeding WHO PM2.5 annual guideline (5 ug/m3)"
+    },
+    "year": 2021,
+    "verified": true,
+    "tags": ["who", "air-quality", "pm25", "pm10", "no2", "so2", "ozone", "health-guidelines"]
+  },
+  {
+    "source": "US EPA",
+    "category": "water_pollution",
+    "subcategory": "naaqs",
+    "title": "US EPA National Ambient Air Quality Standards (NAAQS)",
+    "description": "The US EPA establishes National Ambient Air Quality Standards for six criteria pollutants under the Clean Air Act. Primary standards protect public health; secondary standards protect public welfare (environment, visibility, crops, buildings).",
+    "data": {
+      "criteriaPollutants": [
+        {
+          "pollutant": "PM2.5",
+          "primaryStandard": {
+            "annual": "9.0 ug/m3 (revised February 2024; previously 12.0)",
+            "24hour": "35 ug/m3"
+          },
+          "secondaryStandard": {
+            "annual": "15.0 ug/m3",
+            "24hour": "35 ug/m3"
+          },
+          "form": "Annual: 3-year average of annual mean; 24-hour: 98th percentile averaged over 3 years"
+        },
+        {
+          "pollutant": "PM10",
+          "primaryStandard": {
+            "24hour": "150 ug/m3"
+          },
+          "secondaryStandard": {
+            "24hour": "150 ug/m3"
+          },
+          "form": "Not to be exceeded more than once per year on average over 3 years"
+        },
+        {
+          "pollutant": "Ozone (O3)",
+          "primaryStandard": {
+            "8hour": "0.070 ppm (70 ppb)"
+          },
+          "secondaryStandard": {
+            "8hour": "0.070 ppm (70 ppb)"
+          },
+          "form": "Annual fourth-highest daily maximum 8-hour concentration, averaged over 3 years"
+        },
+        {
+          "pollutant": "Carbon Monoxide (CO)",
+          "primaryStandard": {
+            "8hour": "9 ppm",
+            "1hour": "35 ppm"
+          },
+          "secondaryStandard": "None",
+          "form": "Not to be exceeded more than once per year"
+        },
+        {
+          "pollutant": "Nitrogen Dioxide (NO2)",
+          "primaryStandard": {
+            "annual": "53 ppb (100 ug/m3)",
+            "1hour": "100 ppb"
+          },
+          "secondaryStandard": {
+            "annual": "53 ppb"
+          },
+          "form": "Annual: annual mean; 1-hour: 98th percentile averaged over 3 years"
+        },
+        {
+          "pollutant": "Sulfur Dioxide (SO2)",
+          "primaryStandard": {
+            "1hour": "75 ppb"
+          },
+          "secondaryStandard": {
+            "3hour": "0.5 ppm (500 ppb)"
+          },
+          "form": "1-hour: 99th percentile of daily max, averaged over 3 years; 3-hour: not to be exceeded more than once per year"
+        },
+        {
+          "pollutant": "Lead (Pb)",
+          "primaryStandard": {
+            "rollingQuarter": "0.15 ug/m3"
+          },
+          "secondaryStandard": {
+            "rollingQuarter": "0.15 ug/m3"
+          },
+          "form": "Rolling 3-month average, not to be exceeded"
+        }
+      ],
+      "note": "PM2.5 annual standard was tightened from 12.0 to 9.0 ug/m3 in February 2024, the first update since 2012."
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["epa", "naaqs", "air-quality", "criteria-pollutants", "clean-air-act", "united-states"]
+  },
+  {
+    "source": "European Commission",
+    "category": "water_pollution",
+    "subcategory": "water-framework-directive",
+    "title": "EU Water Framework Directive: Quality Thresholds for Water Bodies",
+    "description": "The EU Water Framework Directive (2000/60/EC) established a framework for water protection across Europe, requiring all member states to achieve 'good status' for all water bodies. It defines ecological and chemical quality thresholds for rivers, lakes, transitional waters, and groundwater.",
+    "data": {
+      "directive": "Directive 2000/60/EC (adopted October 2000; key deadlines 2015, extended to 2027)",
+      "statusClassification": {
+        "ecological": {
+          "classes": ["High", "Good", "Moderate", "Poor", "Bad"],
+          "goodStatusThreshold": "Biological quality elements show only slight departure from undisturbed reference conditions",
+          "qualityElements": {
+            "biological": ["Phytoplankton", "Macrophytes and phytobenthos", "Benthic invertebrate fauna", "Fish fauna"],
+            "hydromorphological": ["Hydrological regime", "River continuity", "Morphological conditions"],
+            "physicochemical": ["Thermal conditions", "Oxygenation conditions", "Salinity", "Acidification status", "Nutrient conditions"]
+          }
+        },
+        "chemical": {
+          "classes": ["Good", "Failing to achieve good"],
+          "approach": "Environmental Quality Standards (EQS) set for 45 priority substances and 8 other pollutants",
+          "prioritySubstances": ["Mercury", "Cadmium", "Lead", "Nickel", "Benzene", "PFOS", "Atrazine", "Diclofenac", "17-alpha-ethinylestradiol"]
+        }
+      },
+      "thresholds": {
+        "rivers": {
+          "dissolvedOxygen": ">= 7 mg/L for good status (salmonid waters); >= 5 mg/L (cyprinid waters)",
+          "BOD5": "<= 3 mg/L (good); <= 6 mg/L (moderate)",
+          "totalPhosphorus": "<= 0.05 mg/L (good status in lowland rivers); varies by river type",
+          "totalNitrogen": "<= 2.5 mg/L (good status; varies by type)",
+          "ammonium": "<= 0.3 mg/L",
+          "pH": "6.0-9.0"
+        },
+        "lakes": {
+          "totalPhosphorus": "<= 0.025 mg/L (oligotrophic/mesotrophic); varies by lake type",
+          "chlorophyllA": "<= 10 ug/L (good status for deep stratified lakes)",
+          "secchiDepth": ">= 3 m (good status, deep lakes)",
+          "dissolvedOxygen": "No prolonged depletion of bottom waters"
+        },
+        "groundwater": {
+          "nitrates": "<= 50 mg/L (EU Nitrates Directive threshold)",
+          "pesticides": "<= 0.1 ug/L (individual); <= 0.5 ug/L (total)",
+          "quantitativeStatus": "Abstraction must not exceed long-term recharge rate"
+        }
+      },
+      "progress2024": {
+        "goodEcologicalStatus": "~44% of EU surface water bodies (2024 assessment)",
+        "goodChemicalStatus": "~80% (but only ~38% if ubiquitous substances like mercury excluded)",
+        "goodGroundwaterStatus": "~77% quantitative, ~75% chemical"
+      }
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["eu-wfd", "water-framework-directive", "water-quality", "rivers", "lakes", "groundwater"]
+  },
+  {
+    "source": "UNEP",
+    "category": "water_pollution",
+    "subcategory": "stockholm-convention",
+    "title": "Stockholm Convention: Persistent Organic Pollutants (POPs) Listed",
+    "description": "The Stockholm Convention on Persistent Organic Pollutants (2001) aims to eliminate or restrict the production and use of persistent organic pollutants. As of 2024, 35 chemicals or groups are listed across three annexes.",
+    "data": {
+      "convention": {
+        "adopted": "May 22, 2001",
+        "enteredIntoForce": "May 17, 2004",
+        "parties": 186,
+        "secretariat": "UNEP, Geneva"
+      },
+      "listedPOPs": {
+        "annexA_elimination": [
+          { "name": "Aldrin", "listed": 2001, "use": "Pesticide" },
+          { "name": "Chlordane", "listed": 2001, "use": "Pesticide" },
+          { "name": "Dieldrin", "listed": 2001, "use": "Pesticide" },
+          { "name": "Endrin", "listed": 2001, "use": "Pesticide" },
+          { "name": "Heptachlor", "listed": 2001, "use": "Pesticide" },
+          { "name": "Hexachlorobenzene (HCB)", "listed": 2001, "use": "Pesticide/Industrial" },
+          { "name": "Mirex", "listed": 2001, "use": "Pesticide" },
+          { "name": "Toxaphene", "listed": 2001, "use": "Pesticide" },
+          { "name": "Polychlorinated biphenyls (PCBs)", "listed": 2001, "use": "Industrial" },
+          { "name": "Alpha-hexachlorocyclohexane", "listed": 2009, "use": "Pesticide byproduct" },
+          { "name": "Beta-hexachlorocyclohexane", "listed": 2009, "use": "Pesticide byproduct" },
+          { "name": "Chlordecone", "listed": 2009, "use": "Pesticide" },
+          { "name": "Hexabromobiphenyl", "listed": 2009, "use": "Industrial (flame retardant)" },
+          { "name": "Lindane", "listed": 2009, "use": "Pesticide" },
+          { "name": "Pentachlorobenzene", "listed": 2009, "use": "Pesticide/Industrial" },
+          { "name": "Tetrabromodiphenyl ether and pentabromodiphenyl ether", "listed": 2009, "use": "Industrial (flame retardant)" },
+          { "name": "Hexabromodiphenyl ether and heptabromodiphenyl ether", "listed": 2009, "use": "Industrial (flame retardant)" },
+          { "name": "Endosulfan", "listed": 2011, "use": "Pesticide" },
+          { "name": "Hexachlorobutadiene (HCBD)", "listed": 2015, "use": "Industrial" },
+          { "name": "Pentachlorophenol (PCP)", "listed": 2015, "use": "Pesticide" },
+          { "name": "Polychlorinated naphthalenes", "listed": 2015, "use": "Industrial" },
+          { "name": "Hexachlorobutadiene", "listed": 2017, "use": "Industrial" },
+          { "name": "Decabromodiphenyl ether (DecaBDE)", "listed": 2017, "use": "Industrial (flame retardant)" },
+          { "name": "Short-chain chlorinated paraffins (SCCPs)", "listed": 2017, "use": "Industrial" },
+          { "name": "Dicofol", "listed": 2019, "use": "Pesticide" },
+          { "name": "Perfluorooctanoic acid (PFOA) and salts", "listed": 2019, "use": "Industrial" },
+          { "name": "PFHxS and salts", "listed": 2022, "use": "Industrial" },
+          { "name": "Dechlorane Plus", "listed": 2023, "use": "Industrial (flame retardant)" },
+          { "name": "UV-328", "listed": 2023, "use": "Industrial (UV stabilizer)" },
+          { "name": "Methoxychlor", "listed": 2023, "use": "Pesticide" },
+          { "name": "Long-chain PFCAs (C9-C21), their salts and related compounds", "listed": 2025, "use": "Industrial" }
+        ],
+        "annexB_restriction": [
+          { "name": "DDT", "listed": 2001, "use": "Restricted to disease vector control (malaria)" },
+          { "name": "Perfluorooctane sulfonic acid (PFOS) and salts", "listed": 2009, "use": "Restricted to specific acceptable purposes" }
+        ],
+        "annexC_unintentionalProduction": [
+          { "name": "Polychlorinated dibenzo-p-dioxins (PCDD)", "listed": 2001, "use": "Unintentional byproduct" },
+          { "name": "Polychlorinated dibenzofurans (PCDF)", "listed": 2001, "use": "Unintentional byproduct" }
+        ]
+      },
+      "totalListed": 35,
+      "note": "Count includes chemical groups (e.g., PCBs covers 209 congeners). Long-chain PFCAs listing was adopted at COP-12 in 2025."
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["stockholm-convention", "pops", "persistent-organic-pollutants", "chemical-pollution", "pfas", "pesticides"]
+  },
+  {
+    "source": "EU / US EPA / Various",
+    "category": "water_pollution",
+    "subcategory": "pfas-regulation",
+    "title": "PFAS Regulatory Status: Global Overview",
+    "description": "Per- and polyfluoroalkyl substances (PFAS), often called 'forever chemicals', are subject to rapidly evolving regulation worldwide. This entry summarizes the regulatory landscape across the EU, US, and key jurisdictions.",
+    "data": {
+      "overview": {
+        "definition": "PFAS are a class of ~15,000 synthetic fluorinated chemicals characterized by extremely strong carbon-fluorine bonds making them persistent in the environment",
+        "concerns": "Environmental persistence, bioaccumulation, association with cancer, immune suppression, endocrine disruption, reproductive harm",
+        "prevalence": "Detected in drinking water, groundwater, soil, food, and blood of 98%+ of people tested globally"
+      },
+      "euRegulation": {
+        "universalRestrictionProposal": {
+          "status": "Under review by ECHA (European Chemicals Agency); dossier submitted January 2023 by Germany, Netherlands, Denmark, Norway, Sweden",
+          "scope": "Proposes ban on manufacture, use, and sale of ~10,000 PFAS in the EU/EEA",
+          "timeline": "ECHA opinion expected 2025; Commission decision expected 2026-2027; transition periods of 1.5-12 years depending on use",
+          "exemptions": "Sector-specific derogations under review for medical devices, semiconductors, and fluoropolymers in specific applications"
+        },
+        "drinkingWater": "EU Drinking Water Directive (2020/2184): limit of 0.5 ug/L for total PFAS or 0.1 ug/L for sum of 20 individual PFAS (effective 2026)",
+        "reachRestrictions": "PFOS restricted since 2010; PFOA restricted since 2020; C9-C14 PFCAs restricted since 2023"
+      },
+      "usRegulation": {
+        "epaActionLevels": {
+          "drinkingWater": {
+            "pfoa": "4 ppt (ng/L) — Maximum Contaminant Level (MCL), finalized April 2024",
+            "pfos": "4 ppt (ng/L) — MCL, finalized April 2024",
+            "pfna": "10 ppt (ng/L) — MCL",
+            "pfhxs": "10 ppt (ng/L) — MCL",
+            "genx": "10 ppt (ng/L) — MCL",
+            "mixtures": "Hazard Index of 1 for mixtures of PFHxS, PFNA, HFPO-DA, PFBS",
+            "note": "First-ever enforceable PFAS drinking water limits in the US; compliance deadline 2029"
+          },
+          "superfundDesignation": "PFOA and PFOS designated as CERCLA hazardous substances (April 2024); retroactive cleanup liability applies"
+        },
+        "stateLevelLimits": {
+          "note": "Several US states have adopted limits stricter than federal standards",
+          "examples": [
+            { "state": "Michigan", "limit": "8 ppt PFOA, 16 ppt PFOS in drinking water" },
+            { "state": "Vermont", "limit": "20 ppt for 5 PFAS combined" },
+            { "state": "Massachusetts", "limit": "20 ppt for sum of 6 PFAS" },
+            { "state": "New Hampshire", "limit": "12 ppt PFOA, 15 ppt PFOS, 18 ppt PFHxS, 11 ppt PFNA" },
+            { "state": "Maine", "limit": "Banned intentionally added PFAS in all products by 2030" },
+            { "state": "Minnesota", "limit": "Banned intentionally added PFAS in many consumer products (2025+)" }
+          ]
+        }
+      },
+      "otherJurisdictions": {
+        "australia": "Drinking water guideline: 70 ng/L sum of PFOS and PFHxS; 560 ng/L for PFOA",
+        "canada": "Maximum acceptable concentration: 200 ng/L PFOS, 200 ng/L PFOA in drinking water (proposed 30 ng/L PFAS total)",
+        "denmark": "Total PFAS limit of 2 ng/L in drinking water (strictest globally)",
+        "japan": "Provisional target: 50 ng/L combined PFOS and PFOA"
+      }
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["pfas", "forever-chemicals", "regulation", "drinking-water", "eu-restriction", "epa", "echa"]
+  },
+  {
+    "source": "WHO",
+    "category": "water_pollution",
+    "subcategory": "drinking-water-quality",
+    "title": "WHO Drinking Water Quality Guidelines: Key Chemical Parameters",
+    "description": "WHO Guidelines for Drinking-water Quality (4th edition with 1st and 2nd addenda) provide health-based guideline values for chemical contaminants in drinking water, serving as the basis for national standards worldwide.",
+    "data": {
+      "edition": "4th edition, incorporating 1st addendum (2017) and 2nd addendum (2022)",
+      "keyParameters": {
+        "arsenic": { "guideline": "10 ug/L", "healthEffect": "Skin, bladder, lung cancers; cardiovascular disease" },
+        "lead": { "guideline": "10 ug/L (provisional; no safe threshold)", "healthEffect": "Neurodevelopmental effects in children, cardiovascular disease" },
+        "mercury": { "guideline": "6 ug/L (inorganic)", "healthEffect": "Kidney damage, neurological effects" },
+        "cadmium": { "guideline": "3 ug/L", "healthEffect": "Kidney damage, bone disease" },
+        "chromium": { "guideline": "50 ug/L (total)", "healthEffect": "Cr(VI): carcinogenic" },
+        "fluoride": { "guideline": "1.5 mg/L", "healthEffect": "Dental and skeletal fluorosis at high levels" },
+        "nitrate": { "guideline": "50 mg/L as NO3", "healthEffect": "Methemoglobinemia (blue baby syndrome) in infants" },
+        "nitrite": { "guideline": "3 mg/L as NO2 (acute); 0.2 mg/L (chronic)", "healthEffect": "Methemoglobinemia" },
+        "copper": { "guideline": "2 mg/L", "healthEffect": "Gastrointestinal effects, liver damage" },
+        "manganese": { "guideline": "0.08 mg/L (health-based provisional value)", "healthEffect": "Neurological effects" }
+      },
+      "microbiologicalIndicators": {
+        "eColi": "Must not be detectable in any 100 mL sample",
+        "totalColiforms": "Must not be detectable in any 100 mL sample in treated water entering distribution"
+      }
+    },
+    "year": 2022,
+    "verified": true,
+    "tags": ["who", "drinking-water", "water-quality", "chemical-contaminants", "guidelines"]
+  },
+  {
+    "source": "WHO / WRI",
+    "category": "water_pollution",
+    "subcategory": "water-sanitation-global",
+    "title": "Global Water and Sanitation Access Statistics",
+    "description": "Global access to safely managed drinking water and sanitation remains a critical challenge, with significant disparities between regions and between urban and rural populations.",
+    "data": {
+      "drinkingWater2022": {
+        "safelyManaged": "73% of global population (5.8 billion people)",
+        "atLeastBasic": "89% (7.1 billion)",
+        "limited": "4% (365 million; available but >30 minutes round trip)",
+        "unimproved": "3% (209 million)",
+        "surfaceWater": "4% (296 million; directly from rivers, lakes, etc.)",
+        "withoutSafeWater": "2.2 billion people lack safely managed drinking water services"
+      },
+      "sanitation2022": {
+        "safelyManaged": "57% of global population (4.6 billion)",
+        "atLeastBasic": "78% (6.2 billion)",
+        "limited": "7% (600 million; shared facilities)",
+        "unimproved": "11% (868 million)",
+        "openDefecation": "4% (419 million; down from 21% in 2000)"
+      },
+      "gccContext": {
+        "accessToSafeWater": "99%+ in all GCC states",
+        "primarySource": "Desalination provides majority of supply",
+        "challenge": "Energy-intensive water production; groundwater depletion; water demand growing at 5-8% per year"
+      }
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["water-access", "sanitation", "sdg6", "who", "wash"]
+  },
+  {
+    "source": "European Commission / IMD",
+    "category": "water_pollution",
+    "subcategory": "microplastics",
+    "title": "Microplastics: Sources, Pathways, and Regulatory Response",
+    "description": "Microplastics (plastic particles <5mm) have become a ubiquitous environmental contaminant found in all environmental compartments including deep oceans, Arctic ice, agricultural soils, and human blood. Regulatory responses are accelerating globally.",
+    "data": {
+      "sources": {
+        "primary": [
+          "Microbeads in personal care products",
+          "Plastic pellets (nurdles) lost during manufacturing and transport",
+          "Industrial abrasives"
+        ],
+        "secondary": [
+          "Tire wear particles (largest single source, ~28%)",
+          "Textile fiber shedding during washing (~35%)",
+          "Degradation of larger plastic debris",
+          "Road markings and coatings",
+          "City dust"
+        ]
+      },
+      "environmentalPresence": {
+        "oceans": "Estimated 75-199 million tonnes of plastic in oceans; 5.25 trillion microplastic particles floating at surface",
+        "freshwater": "Detected in all major river systems; concentrations up to 100,000 particles per m3 in polluted rivers",
+        "soil": "Agricultural soils receive microplastics via biosolids, compost, mulch films; 4-23x more microplastics in soil than oceans",
+        "air": "Microplastic fibers detected in indoor and outdoor air globally",
+        "humanBody": "Detected in human blood, lungs, placenta, and breast milk"
+      },
+      "regulation": {
+        "eu": {
+          "microbeadBan": "EU Regulation 2023/2055: restricts intentionally added microplastics in products; phased implementation 2023-2035",
+          "scope": "Covers synthetic polymer microparticles <5mm; includes glitter, microbeads, granular infill for artificial turf",
+          "plasticsTreaty": "EU supporting legally binding UN Global Plastics Treaty (negotiations ongoing)"
+        },
+        "us": {
+          "microbeadFreeWatersAct": "Microbead-Free Waters Act (2015): banned microbeads in rinse-off cosmetics",
+          "drinkingWater": "No federal limit for microplastics in drinking water; California first state to mandate testing"
+        }
+      },
+      "annualPlasticProduction": "400+ million tonnes (2022); projected to double by 2040 without intervention"
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["microplastics", "plastic-pollution", "regulation", "oceans", "health"]
+  },
+  {
+    "source": "Ellen MacArthur Foundation",
+    "category": "circular_economy",
+    "subcategory": "material-circularity-indicator",
+    "title": "Ellen MacArthur Foundation Material Circularity Indicator (MCI) Methodology",
+    "description": "The Material Circularity Indicator (MCI) measures how restorative the material flows of a product or company are. It ranges from 0 (fully linear) to 1 (fully circular), accounting for recycled input, recyclability, product lifetime, and functional units.",
+    "data": {
+      "methodology": {
+        "formula": "MCI = 1 - LFI * F(X)",
+        "components": {
+          "LFI": {
+            "name": "Linear Flow Index",
+            "formula": "LFI = (V + W) / (2M + (Wf - Wc))",
+            "description": "Measures the proportion of linear (virgin and waste) flow relative to total material flow",
+            "subComponents": {
+              "V": "Mass of virgin (non-recycled) feedstock",
+              "W": "Mass of unrecoverable waste",
+              "M": "Mass of product",
+              "Wf": "Mass of waste going to landfill/energy recovery",
+              "Wc": "Mass of waste collected for recycling/reuse"
+            }
+          },
+          "F(X)": {
+            "name": "Utility Factor",
+            "formula": "F(X) = 0.9 / X",
+            "description": "Adjusts for product utility — longer-lived or more intensively used products score better",
+            "X": "X = (L/Lav) * (U/Uav) where L=product lifetime, Lav=average lifetime in category, U=functional units of use, Uav=average functional units"
+          }
+        },
+        "scoring": {
+          "range": "0 to 1",
+          "0": "Fully linear: 100% virgin input, 100% to landfill, standard lifetime",
+          "1": "Fully circular: 100% recycled input, 100% recycled at end of life, infinite or maximized utility",
+          "typical": "Most products score 0.1-0.3"
+        }
+      },
+      "applicationLevels": [
+        { "level": "Product", "description": "MCI calculated for individual product/packaging" },
+        { "level": "Company", "description": "Weighted average MCI across product portfolio" },
+        { "level": "Material flow", "description": "MCI applied to specific material streams (e.g., plastics, metals)" }
+      ],
+      "complementaryIndicators": [
+        "Circular Material Use Rate (CMU) — Eurostat",
+        "Resource Productivity (GDP/DMC)",
+        "Waste generation per capita",
+        "Recycling rate by material"
+      ]
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["circular-economy", "mci", "material-circularity", "ellen-macarthur", "methodology"]
+  },
+  {
+    "source": "European Commission / Eurostat",
+    "category": "circular_economy",
+    "subcategory": "eu-targets",
+    "title": "EU Circular Economy Action Plan: Recycling Targets by Material to 2030",
+    "description": "The EU Circular Economy Action Plan (2020) and associated directives set binding recycling and waste reduction targets for member states, covering packaging, municipal waste, plastics, textiles, and specific material streams.",
+    "data": {
+      "municipalWasteRecycling": {
+        "2025target": "55% by weight",
+        "2030target": "60% by weight",
+        "2035target": "65% by weight",
+        "current2022": "49.6% (EU average)",
+        "landfillCap": "Maximum 10% of municipal waste to landfill by 2035"
+      },
+      "packagingWasteRecycling": {
+        "2025targets": {
+          "allPackaging": "65%",
+          "plastic": "50%",
+          "wood": "25%",
+          "ferrousMetals": "70%",
+          "aluminium": "50%",
+          "glass": "70%",
+          "paperAndCardboard": "75%"
+        },
+        "2030targets": {
+          "allPackaging": "70%",
+          "plastic": "55%",
+          "wood": "30%",
+          "ferrousMetals": "80%",
+          "aluminium": "60%",
+          "glass": "75%",
+          "paperAndCardboard": "85%"
+        }
+      },
+      "plasticSpecific": {
+        "singleUsePlasticsDirective": "Ban on specific single-use items (straws, cutlery, plates, stirrers, balloon sticks, EPS food containers) since July 2021",
+        "petBottleCollection": "90% separate collection by 2029",
+        "recycledContentInBottles": "25% by 2025, 30% by 2030",
+        "microplastics": "Restriction on intentionally added microplastics (2023)"
+      },
+      "textiles": {
+        "separateCollection": "Mandatory separate collection of textiles by January 2025",
+        "extendedProducerResponsibility": "EPR for textiles proposed under Waste Framework Directive revision",
+        "recyclingTarget": "No specific binding target yet; under development"
+      },
+      "batteries": {
+        "collectionTargets": "63% by 2027, 73% by 2030 (portable batteries)",
+        "recycledContent": "16% cobalt, 6% lithium, 6% nickel by 2031; increasing to 26%, 12%, 15% by 2036",
+        "recyclingEfficiency": "80% lithium-ion by 2031"
+      },
+      "ewaste": {
+        "collectionTarget": "65% of average weight of EEE placed on market in preceding 3 years, or 85% of WEEE generated",
+        "current": "~39% formal collection in EU (2022); significant informal flows"
+      }
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["circular-economy", "eu-targets", "recycling", "packaging", "plastics", "waste"]
+  },
+  {
+    "source": "EU / UNEP",
+    "category": "circular_economy",
+    "subcategory": "waste-hierarchy",
+    "title": "Waste Hierarchy Metrics: Prevention, Reuse, Recycling, Recovery, Disposal",
+    "description": "The waste hierarchy is the cornerstone of EU and international waste policy, ranking waste management options from most to least preferred. Each level has associated metrics and targets for measuring progress.",
+    "data": {
+      "hierarchy": [
+        {
+          "rank": 1,
+          "level": "Prevention",
+          "description": "Measures to reduce waste quantity and harmfulness before it is generated",
+          "metrics": [
+            "Waste generation per capita (kg/capita/year)",
+            "Waste intensity (kg waste per EUR GDP)",
+            "Food waste per capita",
+            "Material footprint per capita"
+          ],
+          "euTargets": "Reduce food waste by 30% per capita at retail and consumer level by 2030 (proposed); reduce total waste generation"
+        },
+        {
+          "rank": 2,
+          "level": "Reuse",
+          "description": "Products or components used again for the same or different purpose without reprocessing",
+          "metrics": [
+            "Reuse rate by product category (%)",
+            "Number of second-hand goods transactions",
+            "Repair and reuse infrastructure density",
+            "Refillable packaging share"
+          ],
+          "euTargets": "Packaging reuse targets by 2030: 10% of beverages, 10% of transport packaging, 40% of large appliance transport packaging"
+        },
+        {
+          "rank": 3,
+          "level": "Recycling",
+          "description": "Reprocessing of waste materials into new substances or products",
+          "metrics": [
+            "Recycling rate by material (%)",
+            "Circular Material Use Rate (CMU %)",
+            "Quality of recyclate (closed-loop vs open-loop)",
+            "Contamination rate in collected recyclables"
+          ],
+          "euTargets": "65% municipal waste recycling by 2035; material-specific packaging targets (see EU targets entry)"
+        },
+        {
+          "rank": 4,
+          "level": "Recovery (including energy recovery)",
+          "description": "Extraction of value from waste, mainly through incineration with energy recovery",
+          "metrics": [
+            "Energy recovery rate (%)",
+            "R1 energy efficiency formula compliance",
+            "Energy output per tonne of waste (MWh/t)"
+          ],
+          "note": "Energy recovery from waste is debated; EU treats it as less preferable than recycling but better than landfill"
+        },
+        {
+          "rank": 5,
+          "level": "Disposal (landfill)",
+          "description": "Final deposit of waste in or on land, without energy or material recovery",
+          "metrics": [
+            "Landfill rate (% of waste to landfill)",
+            "Landfill diversion rate",
+            "Methane capture rate at landfills"
+          ],
+          "euTargets": "Maximum 10% of municipal waste to landfill by 2035"
+        }
+      ]
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["waste-hierarchy", "circular-economy", "prevention", "reuse", "recycling", "disposal"]
+  },
+  {
+    "source": "World Bank / National Statistics",
+    "category": "circular_economy",
+    "subcategory": "gcc-waste-statistics",
+    "title": "GCC Waste Generation and Recycling Statistics by Country",
+    "description": "The GCC region has among the highest per capita waste generation rates globally, driven by high consumption patterns, construction activity, and limited historical recycling infrastructure. National strategies are rapidly evolving.",
+    "data": {
+      "byCountry": {
+        "uae": {
+          "wasteGenerationPerCapita": "1.9 kg/day (5.6 million tonnes total MSW, 2023)",
+          "recyclingRate": "~20% (2023; up from 7% in 2015)",
+          "targets": "75% waste diversion from landfill by 2030 (Abu Dhabi); zero waste to landfill by 2030 (Dubai)",
+          "keyPolicies": "Extended Producer Responsibility (EPR) under development; single-use plastic bag ban (Abu Dhabi 2022, Dubai 2024)",
+          "constructionWaste": "~60% of total waste stream; Emirates Green Building Council driving recycling"
+        },
+        "saudiArabia": {
+          "wasteGenerationPerCapita": "1.5 kg/day (approximately 18 million tonnes total MSW, 2023)",
+          "recyclingRate": "~5% (2023; very low but improving rapidly)",
+          "targets": "Saudi Green Initiative: 94% waste diversion from landfill by 2035",
+          "keyPolicies": "National Waste Management Center (MWAN) established; PPP contracts for waste management; Vision 2030 circular economy program",
+          "constructionWaste": "Major challenge; NEOM and The Line projects driving sustainable construction waste standards"
+        },
+        "qatar": {
+          "wasteGenerationPerCapita": "1.8 kg/day (~2.2 million tonnes total MSW, 2023)",
+          "recyclingRate": "~15% (2023)",
+          "targets": "Qatar National Vision 2030: divert 38% of waste from landfill by 2030",
+          "keyPolicies": "Domestic Solid Waste Management Center (DSWMC) operational; waste-to-energy plant planned",
+          "note": "Post-2022 World Cup waste management improvements"
+        },
+        "kuwait": {
+          "wasteGenerationPerCapita": "1.6 kg/day (~2.5 million tonnes total MSW, 2023)",
+          "recyclingRate": "~12% (2023)",
+          "targets": "Environment Public Authority (EPA) targets 60% waste diversion by 2035",
+          "keyPolicies": "Kabd waste-to-energy project; recycling mandates under development"
+        },
+        "bahrain": {
+          "wasteGenerationPerCapita": "1.7 kg/day (~0.9 million tonnes total MSW, 2023)",
+          "recyclingRate": "~8% (2023)",
+          "targets": "National Zero Waste Strategy (2030); divert 80% of MSW from landfill",
+          "keyPolicies": "Askar landfill at capacity; new integrated waste management facility under construction"
+        },
+        "oman": {
+          "wasteGenerationPerCapita": "1.2 kg/day (~2.0 million tonnes total MSW, 2023)",
+          "recyclingRate": "~10% (2023)",
+          "targets": "Oman Vision 2040: 80% waste diversion by 2030",
+          "keyPolicies": "Be'ah (Oman Environmental Services Holding Company) managing waste sector transformation; materials recovery facilities operational"
+        }
+      },
+      "gccAggregates": {
+        "totalMSW": "~31 million tonnes per year (2023)",
+        "averageRecyclingRate": "~12%",
+        "averagePerCapita": "1.6 kg/day (well above global average of ~0.74 kg/day)",
+        "wasteComposition": {
+          "organic": "40-50%",
+          "paper": "12-18%",
+          "plastics": "10-15%",
+          "metals": "3-5%",
+          "glass": "3-5%",
+          "constructionAndDemolition": "Separate stream, often 50-60% of total waste"
+        }
+      }
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["gcc", "waste-statistics", "recycling", "circular-economy", "uae", "saudi-arabia", "qatar", "kuwait", "bahrain", "oman"]
+  },
+  {
+    "source": "Circle Economy / CGRi",
+    "category": "circular_economy",
+    "subcategory": "circularity-gap",
+    "title": "Global Circularity Gap Report: Key Metrics",
+    "description": "The Circularity Gap Report, published annually by Circle Economy (now CGRi), measures the global circularity metric — the share of secondary materials in the total material input to the economy. As of 2024, the global economy is only 7.2% circular.",
+    "data": {
+      "globalCircularityRate": {
+        "2018": "9.1%",
+        "2020": "8.6%",
+        "2022": "7.2%",
+        "2024": "7.2% (no improvement)",
+        "trend": "Declining — total material extraction outpacing recycled material inputs"
+      },
+      "totalMaterialExtraction": {
+        "annual": "Over 100 billion tonnes of materials enter the global economy per year",
+        "breakdown": {
+          "minerals": "~48% (construction minerals, industrial minerals, ores)",
+          "biomass": "~25% (food, feed, timber, fibers)",
+          "fossilFuels": "~15% (coal, oil, gas)",
+          "metals": "~12% (iron, aluminum, copper, etc.)"
+        }
+      },
+      "recycledInputs": "~7.2 billion tonnes of secondary/recycled materials used per year",
+      "gapAnalysis": "92.8% of materials are either lost, degraded, or locked in long-lasting stocks (buildings, infrastructure)",
+      "keyLeverages": [
+        "Reduce consumption (sufficiency)",
+        "Extend product lifecycles (durability, repair, reuse)",
+        "Increase recycled material inputs (closing loops)",
+        "Regenerative approaches for biomass (sustainable agriculture and forestry)"
+      ]
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["circularity-gap", "circular-economy", "global-metrics", "material-flows", "recycling-rate"]
+  },
+  {
+    "source": "EU / Ellen MacArthur Foundation",
+    "category": "circular_economy",
+    "subcategory": "circular-business-models",
+    "title": "Circular Economy Business Models: Framework and Examples",
+    "description": "Circular economy business models design out waste and pollution, keep products and materials in use, and regenerate natural systems. This entry categorizes the major circular business model archetypes and their application contexts.",
+    "data": {
+      "businessModelArchetypes": [
+        {
+          "name": "Product-as-a-Service (PaaS)",
+          "description": "Customers pay for access/performance rather than ownership; manufacturer retains ownership and responsibility for maintenance, refurbishment, and end-of-life",
+          "examples": ["Philips Light-as-a-Service", "Rolls-Royce TotalCare (engines)", "Michelin tire leasing"],
+          "circularity": "Extends product life, incentivizes durability and repairability"
+        },
+        {
+          "name": "Sharing Platforms",
+          "description": "Enable shared access to underutilized assets, increasing utilization rate per product",
+          "examples": ["Car-sharing (Zipcar)", "Tool libraries", "Co-working spaces (WeWork)"],
+          "circularity": "Reduces total products needed to serve demand"
+        },
+        {
+          "name": "Remanufacturing and Refurbishment",
+          "description": "Products returned, restored to like-new condition, and resold with warranty",
+          "examples": ["Caterpillar Cat Reman", "Apple Certified Refurbished", "Renault Refactory"],
+          "circularity": "Retains ~85% of embedded energy and materials vs. new manufacturing"
+        },
+        {
+          "name": "Circular Supply Chain",
+          "description": "Replace virgin materials with recycled, renewable, or biodegradable inputs",
+          "examples": ["Interface carpet tiles (recycled nylon)", "Patagonia (recycled polyester)", "Fairphone (recycled materials)"],
+          "circularity": "Reduces extraction of virgin resources"
+        },
+        {
+          "name": "Product Life Extension",
+          "description": "Design for durability, repairability, and upgradability; offer repair services",
+          "examples": ["Patagonia Worn Wear", "iFixit repair ecosystem", "EU Right to Repair regulation"],
+          "circularity": "Delays end-of-life and reduces replacement demand"
+        },
+        {
+          "name": "Resource Recovery",
+          "description": "Industrial symbiosis and waste valorization — one company's waste becomes another's input",
+          "examples": ["Kalundborg Symbiosis (Denmark)", "SABIC TRUCIRCLE (chemical recycling)", "Novozymes (waste-to-enzymes)"],
+          "circularity": "Creates value from waste streams that would otherwise be disposed"
+        }
+      ]
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["circular-economy", "business-models", "product-as-a-service", "remanufacturing", "sharing-economy"]
+  }
+]
