@@ -10,11 +10,12 @@ import { registerFrameworkRoutes } from './modules/framework/framework.routes.js
 import { registerDataCollectionRoutes } from './modules/data-collection/data-collection.routes.js';
 import { registerCalculationRoutes } from './modules/calculation/calculation.routes.js';
 import { registerAgentRoutes } from './modules/agent/agent.routes.js';
+import { registerSharePointRoutes } from './modules/sharepoint/sharepoint.routes.js';
 
 dotenv.config();
 
 const FEATURES = {
-  sharepoint: false,
+  sharepoint: true,
   teamsBot: false,
 };
 
@@ -59,6 +60,9 @@ async function start() {
 
   // Register AI agent routes
   await registerAgentRoutes(app);
+
+  // Register SharePoint connector routes
+  await registerSharePointRoutes(app);
 
   const port = parseInt(process.env['PORT'] || '3001', 10);
 
