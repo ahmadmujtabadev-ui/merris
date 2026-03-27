@@ -4,6 +4,7 @@ import websocket from '@fastify/websocket';
 import dotenv from 'dotenv';
 import { logger } from './lib/logger.js';
 import { registerAuthRoutes } from './modules/auth/auth.routes.js';
+import { registerOrganizationRoutes } from './modules/organization/organization.routes.js';
 
 dotenv.config();
 
@@ -35,6 +36,9 @@ async function start() {
 
   // Register auth routes
   await registerAuthRoutes(app);
+
+  // Register organization routes
+  await registerOrganizationRoutes(app);
 
   const port = parseInt(process.env['PORT'] || '3001', 10);
 
