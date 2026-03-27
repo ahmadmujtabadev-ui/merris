@@ -11,6 +11,7 @@ import { registerDataCollectionRoutes } from './modules/data-collection/data-col
 import { registerCalculationRoutes } from './modules/calculation/calculation.routes.js';
 import { registerAgentRoutes } from './modules/agent/agent.routes.js';
 import { registerSharePointRoutes } from './modules/sharepoint/sharepoint.routes.js';
+import { registerReportRoutes } from './modules/report/report.routes.js';
 
 dotenv.config();
 
@@ -63,6 +64,9 @@ async function start() {
 
   // Register SharePoint connector routes
   await registerSharePointRoutes(app);
+
+  // Register report builder routes
+  await registerReportRoutes(app);
 
   const port = parseInt(process.env['PORT'] || '3001', 10);
 
