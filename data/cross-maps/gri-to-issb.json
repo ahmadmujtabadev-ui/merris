@@ -1,0 +1,21 @@
+{
+  "description": "Cross-framework mapping from GRI Standards 2021 to ISSB (IFRS S1 General + S2 Climate)",
+  "sourceFramework": "gri",
+  "targetFramework": "issb",
+  "version": "1.0",
+  "lastUpdated": "2025-01-01",
+  "notes": "GRI and ISSB represent complementary perspectives: GRI focuses on impact materiality (outward impacts on economy, environment, people), while ISSB focuses on financial materiality (impacts on enterprise value). Mapping is primarily partial due to this fundamental difference in materiality approach.",
+  "mappings": [
+    { "gri_code": "GRI 2-1", "gri_name": "Organizational details", "target_code": "IFRS S1-42", "target_name": "Reporting entity identification", "mapping": "partial", "notes": "ISSB requires entity identification but less detailed than GRI" },
+    { "gri_code": "GRI 2-2", "gri_name": "Entities included in sustainability reporting", "target_code": "IFRS S1-20", "target_name": "Reporting entity", "mapping": "equivalent", "notes": "Both require same reporting entity as financial statements" },
+    { "gri_code": "GRI 2-6", "gri_name": "Activities, value chain and other business relationships", "target_code": "IFRS S1-27", "target_name": "Strategy - Business model and value chain", "mapping": "partial", "notes": "ISSB focuses on how sustainability risks/opportunities affect the value chain" },
+    { "gri_code": "GRI 2-9", "gri_name": "Governance structure and composition", "target_code": "IFRS S1-26", "target_name": "Governance oversight", "mapping": "partial", "notes": "ISSB focuses on oversight of sustainability risks/opportunities" },
+    { "gri_code": "GRI 3-1", "gri_name": "Process to determine material topics", "target_code": "IFRS S1-30", "target_name": "Sustainability-related risks and opportunities", "mapping": "partial", "notes": "Fundamental materiality difference: GRI = impact materiality, ISSB = financial materiality" },
+    { "gri_code": "GRI 201-2", "gri_name": "Financial implications of climate change", "target_code": "IFRS S2-10", "target_name": "Climate-related risks and opportunities", "mapping": "equivalent", "notes": "Both address financial effects of climate risks and opportunities" },
+    { "gri_code": "GRI 302-1", "gri_name": "Energy consumption within the organization", "target_code": "IFRS S2-29b", "target_name": "GHG emissions intensity and energy", "mapping": "equivalent", "notes": "ISSB S2 requires energy consumption and renewable share" },
+    { "gri_code": "GRI 305-1", "gri_name": "Direct (Scope 1) GHG emissions", "target_code": "IFRS S2-29a", "target_name": "Greenhouse gas emissions", "mapping": "equivalent", "notes": "Both require Scope 1 in tCO2e per GHG Protocol" },
+    { "gri_code": "GRI 305-2", "gri_name": "Energy indirect (Scope 2) GHG emissions", "target_code": "IFRS S2-29a", "target_name": "Greenhouse gas emissions", "mapping": "equivalent", "notes": "Both require location-based and market-based Scope 2" },
+    { "gri_code": "GRI 305-3", "gri_name": "Other indirect (Scope 3) GHG emissions", "target_code": "IFRS S2-29a", "target_name": "Greenhouse gas emissions", "mapping": "equivalent", "notes": "ISSB mandates Scope 3 disclosure (with phase-in relief)" },
+    { "gri_code": "GRI 305-4", "gri_name": "GHG emissions intensity", "target_code": "IFRS S2-29b", "target_name": "GHG emissions intensity and energy", "mapping": "equivalent" }
+  ]
+}

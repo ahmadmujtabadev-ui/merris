@@ -1,0 +1,22 @@
+{
+  "description": "Cross-framework mapping from GRI Standards 2021 to CDP Climate Change Questionnaire 2025",
+  "sourceFramework": "gri",
+  "targetFramework": "cdp",
+  "version": "1.0",
+  "lastUpdated": "2025-01-01",
+  "notes": "CDP Climate Change questionnaire is structured as modules C0-C15. Most environmental GRI disclosures map to CDP modules. Social and governance GRI topics have limited CDP coverage as CDP focuses specifically on climate/environmental topics.",
+  "mappings": [
+    { "gri_code": "GRI 2-1", "gri_name": "Organizational details", "target_code": "CDP-C0.1", "target_name": "Reporting organization profile", "mapping": "equivalent" },
+    { "gri_code": "GRI 2-9", "gri_name": "Governance structure and composition", "target_code": "CDP-C1.1b", "target_name": "Board-level oversight of climate-related issues", "mapping": "partial", "notes": "CDP focuses on climate governance specifically" },
+    { "gri_code": "GRI 2-12", "gri_name": "Role of highest governance body", "target_code": "CDP-C1.1b", "target_name": "Board-level oversight of climate-related issues", "mapping": "partial" },
+    { "gri_code": "GRI 2-13", "gri_name": "Delegation of responsibility", "target_code": "CDP-C1.2a", "target_name": "Management-level responsibility for climate", "mapping": "partial" },
+    { "gri_code": "GRI 201-2", "gri_name": "Financial implications of climate change", "target_code": "CDP-C2.3a", "target_name": "Climate-related risks with financial impact", "mapping": "equivalent" },
+    { "gri_code": "GRI 302-1", "gri_name": "Energy consumption within the organization", "target_code": "CDP-C8.2a", "target_name": "Energy consumption and mix", "mapping": "equivalent" },
+    { "gri_code": "GRI 305-1", "gri_name": "Direct (Scope 1) GHG emissions", "target_code": "CDP-C6.1", "target_name": "Scope 1 emissions data", "mapping": "equivalent" },
+    { "gri_code": "GRI 305-2", "gri_name": "Energy indirect (Scope 2) GHG emissions", "target_code": "CDP-C6.3", "target_name": "Scope 2 emissions data", "mapping": "equivalent" },
+    { "gri_code": "GRI 305-3", "gri_name": "Other indirect (Scope 3) GHG emissions", "target_code": "CDP-C6.5", "target_name": "Scope 3 emissions data", "mapping": "equivalent" },
+    { "gri_code": "GRI 305-5", "gri_name": "Reduction of GHG emissions", "target_code": "CDP-C4.3b", "target_name": "Emission reduction initiatives", "mapping": "equivalent" },
+    { "gri_code": "GRI 303-1", "gri_name": "Interactions with water as a shared resource", "target_code": "CDP-W1.2", "target_name": "Water accounting methodology", "mapping": "partial", "notes": "CDP Water questionnaire (not Climate)" },
+    { "gri_code": "GRI 303-3", "gri_name": "Water withdrawal", "target_code": "CDP-W1.2b", "target_name": "Water withdrawals", "mapping": "equivalent", "notes": "CDP Water questionnaire" }
+  ]
+}

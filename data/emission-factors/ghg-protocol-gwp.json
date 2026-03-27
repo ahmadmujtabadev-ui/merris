@@ -1,0 +1,153 @@
+{
+  "description": "Global Warming Potentials (GWP) from IPCC Assessment Reports. GWP values convert non-CO2 gases to CO2 equivalents. AR5 (2013) is currently most widely used; AR6 (2021) is becoming the new standard.",
+  "lastUpdated": "2024-01-01",
+  "verified": true,
+  "source": "IPCC Fifth Assessment Report (AR5, 2013) and Sixth Assessment Report (AR6, 2021)",
+  "notes": "GWP-100 values (100-year time horizon). The GHG Protocol and most frameworks currently reference AR5 values. ESRS and ISSB are transitioning to AR6.",
+  "gases": [
+    {
+      "gas": "CO2",
+      "formula": "CO2",
+      "name": "Carbon dioxide",
+      "gwp_ar5_100yr": 1,
+      "gwp_ar6_100yr": 1,
+      "gwp_ar5_20yr": 1,
+      "gwp_ar6_20yr": 1,
+      "lifetime_years": null,
+      "notes": "Reference gas. GWP = 1 by definition.",
+      "kyotoProtocol": true
+    },
+    {
+      "gas": "CH4",
+      "formula": "CH4",
+      "name": "Methane",
+      "gwp_ar5_100yr": 28,
+      "gwp_ar6_100yr": 27.9,
+      "gwp_ar5_20yr": 84,
+      "gwp_ar6_20yr": 81.2,
+      "lifetime_years": 12.4,
+      "notes": "Fossil methane GWP in AR6 is 29.8 (includes climate-carbon feedback). Non-fossil methane is 27.0. Value shown is for fossil methane without feedback per AR5 convention.",
+      "kyotoProtocol": true
+    },
+    {
+      "gas": "N2O",
+      "formula": "N2O",
+      "name": "Nitrous oxide",
+      "gwp_ar5_100yr": 265,
+      "gwp_ar6_100yr": 273,
+      "gwp_ar5_20yr": 264,
+      "gwp_ar6_20yr": 273,
+      "lifetime_years": 121,
+      "notes": "Long-lived gas. Important for agriculture and industrial processes.",
+      "kyotoProtocol": true
+    },
+    {
+      "gas": "SF6",
+      "formula": "SF6",
+      "name": "Sulfur hexafluoride",
+      "gwp_ar5_100yr": 23500,
+      "gwp_ar6_100yr": 25200,
+      "gwp_ar5_20yr": 17500,
+      "gwp_ar6_20yr": 18300,
+      "lifetime_years": 3200,
+      "notes": "Most potent GHG. Used in electrical switchgear. Very long atmospheric lifetime.",
+      "kyotoProtocol": true
+    },
+    {
+      "gas": "NF3",
+      "formula": "NF3",
+      "name": "Nitrogen trifluoride",
+      "gwp_ar5_100yr": 16100,
+      "gwp_ar6_100yr": 17400,
+      "gwp_ar5_20yr": 12800,
+      "gwp_ar6_20yr": 13400,
+      "lifetime_years": 500,
+      "notes": "Used in semiconductor manufacturing.",
+      "kyotoProtocol": true
+    },
+    {
+      "gas": "HFC-134a",
+      "formula": "CH2FCF3",
+      "name": "1,1,1,2-Tetrafluoroethane",
+      "gwp_ar5_100yr": 1300,
+      "gwp_ar6_100yr": 1530,
+      "gwp_ar5_20yr": 3710,
+      "gwp_ar6_20yr": 4140,
+      "lifetime_years": 14,
+      "notes": "Common refrigerant in vehicle air conditioning. Being phased down under Kigali Amendment. Critical for GCC due to high cooling demand.",
+      "kyotoProtocol": true
+    },
+    {
+      "gas": "HFC-32",
+      "formula": "CH2F2",
+      "name": "Difluoromethane",
+      "gwp_ar5_100yr": 677,
+      "gwp_ar6_100yr": 771,
+      "gwp_ar5_20yr": 2530,
+      "gwp_ar6_20yr": 2690,
+      "lifetime_years": 5.4,
+      "notes": "Replacement refrigerant for R-410A. Lower GWP alternative used in newer AC systems.",
+      "kyotoProtocol": true
+    },
+    {
+      "gas": "HFC-125",
+      "formula": "CHF2CF3",
+      "name": "Pentafluoroethane",
+      "gwp_ar5_100yr": 3170,
+      "gwp_ar6_100yr": 3740,
+      "gwp_ar5_20yr": 6090,
+      "gwp_ar6_20yr": 6740,
+      "lifetime_years": 30,
+      "notes": "Component of R-410A and R-407C blends.",
+      "kyotoProtocol": true
+    },
+    {
+      "gas": "R-410A",
+      "formula": "HFC-32/HFC-125 50/50",
+      "name": "R-410A (blend)",
+      "gwp_ar5_100yr": 1924,
+      "gwp_ar6_100yr": 2256,
+      "gwp_ar5_20yr": 4310,
+      "gwp_ar6_20yr": 4715,
+      "lifetime_years": null,
+      "notes": "Most common commercial/residential AC refrigerant globally and in GCC. Blend of HFC-32 (50%) and HFC-125 (50%). Kigali phase-down applies.",
+      "kyotoProtocol": true
+    },
+    {
+      "gas": "R-407C",
+      "formula": "HFC-32/HFC-125/HFC-134a",
+      "name": "R-407C (blend)",
+      "gwp_ar5_100yr": 1624,
+      "gwp_ar6_100yr": 1907,
+      "gwp_ar5_20yr": 4115,
+      "gwp_ar6_20yr": 4545,
+      "lifetime_years": null,
+      "notes": "Zeotropic blend used in AC systems. Common retrofit refrigerant.",
+      "kyotoProtocol": true
+    },
+    {
+      "gas": "PFC-14",
+      "formula": "CF4",
+      "name": "Carbon tetrafluoride (Perfluoromethane)",
+      "gwp_ar5_100yr": 6630,
+      "gwp_ar6_100yr": 7380,
+      "gwp_ar5_20yr": 4880,
+      "gwp_ar6_20yr": 5300,
+      "lifetime_years": 50000,
+      "notes": "Extremely long atmospheric lifetime. Used in aluminium smelting (relevant for GCC aluminium industry).",
+      "kyotoProtocol": true
+    },
+    {
+      "gas": "PFC-116",
+      "formula": "C2F6",
+      "name": "Hexafluoroethane (Perfluoroethane)",
+      "gwp_ar5_100yr": 11100,
+      "gwp_ar6_100yr": 12400,
+      "gwp_ar5_20yr": 8210,
+      "gwp_ar6_20yr": 8940,
+      "lifetime_years": 10000,
+      "notes": "Used in aluminium smelting and semiconductor manufacturing.",
+      "kyotoProtocol": true
+    }
+  ]
+}
