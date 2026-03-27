@@ -1,0 +1,414 @@
+{
+  "id": "fw-pai-calc-2024",
+  "code": "pai-calc",
+  "name": "PAI Indicator Calculation Methods",
+  "version": "2024",
+  "description": "Detailed calculation methodologies for the 18 mandatory Principal Adverse Impact (PAI) indicators under SFDR Delegated Regulation (EU) 2022/1288, Annex I, Table 1. These methods are based on the Regulatory Technical Standards (RTS) and regulatory guidance from the European Supervisory Authorities (ESAs).",
+  "legalBasis": "Commission Delegated Regulation (EU) 2022/1288, Annex I, Table 1",
+  "generalNotes": {
+    "attributionFactor": "For investee companies: attribution_factor_i = current_value_of_investment_i / enterprise_value_including_cash_i. This represents the share of the investee's total impact attributable to the financial market participant.",
+    "enterpriseValue": "Enterprise value including cash = market capitalisation of equity at fiscal year end + total debt (book value) including current and non-current debt. For unlisted companies, use book value of equity + total debt.",
+    "currentValue": "The current value of the investment as at the reporting reference date (31 December).",
+    "weightingApproach": "Where weighted average is used: weight_i = current_value_of_investment_i / current_value_of_all_investments (portfolio weight).",
+    "referenceDate": "31 December of the reporting year. Where investee data is not available at that date, use most recent available data.",
+    "dataGaps": "Where investee company data is not available, the financial market participant should use best efforts to obtain the data, including estimations. Where data is estimated, disclose this and describe the methodology used."
+  },
+  "indicators": [
+    {
+      "pai": 1,
+      "name": "GHG emissions",
+      "category": "Climate and other environment-related indicators — Greenhouse gas emissions",
+      "applicableTo": "investee_companies",
+      "subIndicators": [
+        {
+          "name": "Scope 1 GHG emissions",
+          "formula": "Portfolio_Scope1 = SUM_i( (current_value_investment_i / enterprise_value_i) * Scope1_emissions_i )",
+          "unit": "tonnes CO2e",
+          "inputs": [
+            {"name": "current_value_investment_i", "description": "Current value of the financial market participant's investment in investee company i", "unit": "EUR"},
+            {"name": "enterprise_value_i", "description": "Enterprise value including cash of investee company i", "unit": "EUR"},
+            {"name": "Scope1_emissions_i", "description": "Total Scope 1 GHG emissions of investee company i (direct emissions from owned/controlled sources)", "unit": "tonnes CO2e"}
+          ],
+          "methodology": "GHG Protocol Corporate Standard. Scope 1 includes all direct GHG emissions from sources owned or controlled by the company (e.g., combustion in owned boilers, furnaces, vehicles, chemical production, fugitive emissions).",
+          "aggregation": "Sum of attributed emissions across all investee companies in the portfolio.",
+          "benchmark": "No regulatory threshold. Compare against sector benchmarks and previous periods.",
+          "verified": true
+        },
+        {
+          "name": "Scope 2 GHG emissions",
+          "formula": "Portfolio_Scope2 = SUM_i( (current_value_investment_i / enterprise_value_i) * Scope2_emissions_i )",
+          "unit": "tonnes CO2e",
+          "inputs": [
+            {"name": "current_value_investment_i", "description": "Current value of investment in investee company i", "unit": "EUR"},
+            {"name": "enterprise_value_i", "description": "Enterprise value including cash of investee company i", "unit": "EUR"},
+            {"name": "Scope2_emissions_i", "description": "Total Scope 2 GHG emissions of investee company i (indirect emissions from purchased electricity, steam, heating, cooling)", "unit": "tonnes CO2e"}
+          ],
+          "methodology": "GHG Protocol Corporate Standard. Scope 2 includes indirect GHG emissions from the generation of purchased electricity, steam, heating and cooling consumed by the company. Location-based method required; market-based method may be reported additionally.",
+          "aggregation": "Sum of attributed emissions across all investee companies in the portfolio.",
+          "verified": true
+        },
+        {
+          "name": "Scope 3 GHG emissions",
+          "formula": "Portfolio_Scope3 = SUM_i( (current_value_investment_i / enterprise_value_i) * Scope3_emissions_i )",
+          "unit": "tonnes CO2e",
+          "inputs": [
+            {"name": "current_value_investment_i", "description": "Current value of investment in investee company i", "unit": "EUR"},
+            {"name": "enterprise_value_i", "description": "Enterprise value including cash of investee company i", "unit": "EUR"},
+            {"name": "Scope3_emissions_i", "description": "Total Scope 3 GHG emissions of investee company i (all other indirect emissions in value chain)", "unit": "tonnes CO2e"}
+          ],
+          "methodology": "GHG Protocol Corporate Value Chain (Scope 3) Standard. Includes 15 categories of upstream and downstream emissions. Required from first reference period starting on or after 1 January 2023.",
+          "aggregation": "Sum of attributed emissions across all investee companies in the portfolio.",
+          "notes": "Scope 3 data quality is typically lower. Estimations and industry averages are commonly used. The RTS requires best efforts to obtain data.",
+          "verified": true
+        },
+        {
+          "name": "Total GHG emissions",
+          "formula": "Portfolio_Total_GHG = Portfolio_Scope1 + Portfolio_Scope2 + Portfolio_Scope3",
+          "unit": "tonnes CO2e",
+          "methodology": "Sum of portfolio-level Scope 1, 2 and 3 emissions.",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "pai": 2,
+      "name": "Carbon footprint",
+      "category": "Climate and other environment-related indicators — Greenhouse gas emissions",
+      "applicableTo": "investee_companies",
+      "formula": "Carbon_footprint = Portfolio_Total_GHG / current_value_of_all_investments_in_EUR_millions",
+      "expandedFormula": "Carbon_footprint = [ SUM_i( (current_value_investment_i / enterprise_value_i) * Total_GHG_emissions_i ) ] / (total_portfolio_value / 1,000,000)",
+      "unit": "tonnes CO2e per EUR million invested",
+      "inputs": [
+        {"name": "Portfolio_Total_GHG", "description": "Total GHG emissions attributed to the portfolio (PAI 1)", "unit": "tonnes CO2e"},
+        {"name": "current_value_of_all_investments", "description": "Total current market value of all investments in the portfolio", "unit": "EUR"}
+      ],
+      "methodology": "Normalise the portfolio's total attributed GHG emissions by the total market value of the portfolio expressed in millions of EUR. This gives a per-unit-invested emissions metric, enabling comparison across portfolios of different sizes.",
+      "aggregation": "Single portfolio-level metric.",
+      "benchmark": "No regulatory threshold. Industry average for equity portfolios approximately 50-150 tCO2e/EUR million. Paris-aligned benchmarks target significant reduction over time.",
+      "verified": true
+    },
+    {
+      "pai": 3,
+      "name": "GHG intensity of investee companies",
+      "category": "Climate and other environment-related indicators — Greenhouse gas emissions",
+      "applicableTo": "investee_companies",
+      "formula": "GHG_intensity = SUM_i( weight_i * (Total_GHG_emissions_i / revenue_i) )",
+      "expandedFormula": "GHG_intensity = SUM_i( (current_value_investment_i / current_value_all_investments) * (Total_GHG_emissions_i / revenue_EUR_millions_i) )",
+      "unit": "tonnes CO2e per EUR million revenue",
+      "inputs": [
+        {"name": "current_value_investment_i", "description": "Current value of investment in investee company i", "unit": "EUR"},
+        {"name": "current_value_all_investments", "description": "Total portfolio value", "unit": "EUR"},
+        {"name": "Total_GHG_emissions_i", "description": "Total GHG emissions (Scope 1+2+3) of investee company i", "unit": "tonnes CO2e"},
+        {"name": "revenue_i", "description": "Total revenue of investee company i", "unit": "EUR million"}
+      ],
+      "methodology": "Weighted average of investee companies' GHG intensity (emissions per unit revenue), where weights are portfolio weights. This measures how carbon-efficient the investee companies' revenue generation is.",
+      "aggregation": "Portfolio-weighted average.",
+      "benchmark": "Varies significantly by sector. High-carbon sectors (utilities, materials, energy) typically 100-5000+ tCO2e/EUR million revenue. Low-carbon sectors (technology, financials) typically < 50 tCO2e/EUR million revenue.",
+      "verified": true
+    },
+    {
+      "pai": 4,
+      "name": "Exposure to companies active in the fossil fuel sector",
+      "category": "Climate and other environment-related indicators — Greenhouse gas emissions",
+      "applicableTo": "investee_companies",
+      "formula": "Fossil_fuel_exposure = ( SUM(current_value_of_investments_in_fossil_fuel_companies) / current_value_of_all_investments ) * 100",
+      "unit": "percentage",
+      "inputs": [
+        {"name": "current_value_of_investments_in_fossil_fuel_companies", "description": "Sum of current values of investments in companies that derive any revenue from exploration, mining, extraction, production, processing, storage, refining or distribution of fossil fuels", "unit": "EUR"},
+        {"name": "current_value_of_all_investments", "description": "Total portfolio value", "unit": "EUR"}
+      ],
+      "methodology": "Binary classification: a company is counted as 'active in fossil fuels' if it derives ANY revenue from fossil fuel activities as defined in the RTS (hard coal/lignite, liquid fossil fuels, gaseous fossil fuels, electricity generation from fossil fuels). No materiality threshold — any involvement triggers inclusion.",
+      "fossilFuelDefinition": [
+        "Exploration, mining, extraction, production, processing, storage, refining or distribution of hard coal and lignite",
+        "Exploration, extraction, production, processing, storage, refining or distribution of liquid fossil fuels (oil)",
+        "Exploration, extraction, manufacturing, processing, storage, refining or distribution of gaseous fossil fuels (natural gas)",
+        "Generation of electricity from fossil fuel sources"
+      ],
+      "aggregation": "Simple share of portfolio value.",
+      "benchmark": "Paris Aligned Benchmark (PAB): maximum 0% revenue from coal, 10% from oil, 50% from gas. Climate Transition Benchmark (CTB): less restrictive.",
+      "verified": true
+    },
+    {
+      "pai": 5,
+      "name": "Share of non-renewable energy consumption and production",
+      "category": "Climate and other environment-related indicators — Greenhouse gas emissions",
+      "applicableTo": "investee_companies",
+      "formula": "Non_renewable_share = SUM_i( weight_i * ( (NR_consumption_i + NR_production_i) / (total_consumption_i + total_production_i) ) ) * 100",
+      "unit": "percentage",
+      "inputs": [
+        {"name": "weight_i", "description": "Portfolio weight: current_value_investment_i / current_value_all_investments", "unit": "ratio"},
+        {"name": "NR_consumption_i", "description": "Non-renewable energy consumed by investee company i", "unit": "GWh or MWh"},
+        {"name": "NR_production_i", "description": "Non-renewable energy produced by investee company i", "unit": "GWh or MWh"},
+        {"name": "total_consumption_i", "description": "Total energy consumed (renewable + non-renewable) by investee company i", "unit": "GWh or MWh"},
+        {"name": "total_production_i", "description": "Total energy produced (renewable + non-renewable) by investee company i", "unit": "GWh or MWh"}
+      ],
+      "methodology": "Weighted average of each investee company's non-renewable energy share. Non-renewable sources include coal, oil, natural gas, nuclear. Renewable sources include solar, wind, hydro, geothermal, biomass (sustainable).",
+      "aggregation": "Portfolio-weighted average.",
+      "benchmark": "Global average non-renewable share approximately 80% (2023). EU 2030 target: at least 42.5% renewables.",
+      "verified": true
+    },
+    {
+      "pai": 6,
+      "name": "Energy consumption intensity per high impact climate sector",
+      "category": "Climate and other environment-related indicators — Greenhouse gas emissions",
+      "applicableTo": "investee_companies",
+      "formula": "For each NACE sector s: Energy_intensity_s = SUM_i_in_s( weight_i_in_s * (energy_consumption_i / revenue_EUR_millions_i) )",
+      "unit": "GWh per EUR million revenue, per NACE sector",
+      "inputs": [
+        {"name": "energy_consumption_i", "description": "Total energy consumption of investee company i", "unit": "GWh"},
+        {"name": "revenue_i", "description": "Total revenue of investee company i", "unit": "EUR million"},
+        {"name": "NACE_sector_i", "description": "Primary NACE sector classification of investee company i", "unit": "NACE code"},
+        {"name": "weight_i_in_s", "description": "Portfolio weight within the specific NACE sector", "unit": "ratio"}
+      ],
+      "highImpactSectors": [
+        {"nace": "A", "name": "Agriculture, forestry and fishing"},
+        {"nace": "B", "name": "Mining and quarrying"},
+        {"nace": "C", "name": "Manufacturing"},
+        {"nace": "D", "name": "Electricity, gas, steam and air conditioning supply"},
+        {"nace": "E", "name": "Water supply; sewerage, waste management and remediation"},
+        {"nace": "F", "name": "Construction"},
+        {"nace": "G", "name": "Wholesale and retail trade; repair of motor vehicles"},
+        {"nace": "H", "name": "Transportation and storage"},
+        {"nace": "L", "name": "Real estate activities"}
+      ],
+      "methodology": "Calculated separately for each high impact sector (NACE A through H, and L). For each sector, compute the weighted average energy consumption intensity. Companies not in high impact sectors are excluded from this indicator.",
+      "aggregation": "Sector-specific weighted averages. Report one figure per applicable NACE sector.",
+      "benchmark": "Varies widely by sector. Compare against sector-specific benchmarks from EU ETS or industry associations.",
+      "verified": true
+    },
+    {
+      "pai": 7,
+      "name": "Activities negatively affecting biodiversity-sensitive areas",
+      "category": "Climate and other environment-related indicators — Biodiversity",
+      "applicableTo": "investee_companies",
+      "formula": "Biodiversity_impact = ( SUM(current_value_investments_in_companies_negatively_affecting_biodiversity) / current_value_of_all_investments ) * 100",
+      "unit": "percentage",
+      "inputs": [
+        {"name": "current_value_investments_negatively_affecting", "description": "Sum of current values of investments in companies with sites/operations located in or near biodiversity-sensitive areas where their activities negatively affect those areas", "unit": "EUR"},
+        {"name": "current_value_of_all_investments", "description": "Total portfolio value", "unit": "EUR"}
+      ],
+      "methodology": "Two-step assessment: (1) Identify investee companies with sites/operations in or near biodiversity-sensitive areas (Natura 2000, UNESCO World Heritage Sites, Key Biodiversity Areas, etc.). (2) Of those, identify companies whose activities negatively affect those areas. The share is based on current investment values.",
+      "biodiversitySensitiveAreas": [
+        "Natura 2000 network of protected areas",
+        "UNESCO World Heritage Sites (natural)",
+        "Key Biodiversity Areas (KBAs) as identified by IUCN",
+        "Other areas included under the Convention on Biological Diversity"
+      ],
+      "aggregation": "Simple share of portfolio value.",
+      "benchmark": "No regulatory threshold. Lower is better. Report qualitative description of affected areas.",
+      "verified": true
+    },
+    {
+      "pai": 8,
+      "name": "Emissions to water",
+      "category": "Climate and other environment-related indicators — Water",
+      "applicableTo": "investee_companies",
+      "formula": "Water_emissions = [ SUM_i( (current_value_investment_i / enterprise_value_i) * emissions_to_water_i ) ] / (current_value_all_investments / 1,000,000)",
+      "unit": "tonnes per EUR million invested",
+      "inputs": [
+        {"name": "current_value_investment_i", "description": "Current value of investment in investee company i", "unit": "EUR"},
+        {"name": "enterprise_value_i", "description": "Enterprise value including cash of investee company i", "unit": "EUR"},
+        {"name": "emissions_to_water_i", "description": "Total emissions to water by investee company i, covering priority substances under the Water Framework Directive", "unit": "tonnes"},
+        {"name": "current_value_all_investments", "description": "Total portfolio value", "unit": "EUR"}
+      ],
+      "methodology": "Attributed total emissions to water, normalised by portfolio value. Emissions to water include releases of priority substances as listed in the EU Water Framework Directive (Directive 2000/60/EC) and its daughter directives, including heavy metals, pesticides, and other hazardous substances.",
+      "aggregation": "Sum of attributed emissions, normalised per EUR million invested.",
+      "benchmark": "No regulatory threshold. Sector-specific — manufacturing, mining and agriculture sectors typically have higher emissions to water.",
+      "verified": true
+    },
+    {
+      "pai": 9,
+      "name": "Hazardous waste and radioactive waste ratio",
+      "category": "Climate and other environment-related indicators — Waste",
+      "applicableTo": "investee_companies",
+      "formula": "Hazardous_waste_ratio = [ SUM_i( (current_value_investment_i / enterprise_value_i) * (hazardous_waste_i + radioactive_waste_i) ) ] / (current_value_all_investments / 1,000,000)",
+      "unit": "tonnes per EUR million invested",
+      "inputs": [
+        {"name": "current_value_investment_i", "description": "Current value of investment in investee company i", "unit": "EUR"},
+        {"name": "enterprise_value_i", "description": "Enterprise value including cash of investee company i", "unit": "EUR"},
+        {"name": "hazardous_waste_i", "description": "Total hazardous waste generated by investee company i as defined under Directive 2008/98/EC", "unit": "tonnes"},
+        {"name": "radioactive_waste_i", "description": "Total radioactive waste generated by investee company i", "unit": "tonnes"},
+        {"name": "current_value_all_investments", "description": "Total portfolio value", "unit": "EUR"}
+      ],
+      "methodology": "Attributed total hazardous and radioactive waste, normalised by portfolio value. Hazardous waste is defined per EU Waste Framework Directive (2008/98/EC) and the European List of Waste. Radioactive waste as defined under Council Directive 2011/70/Euratom.",
+      "aggregation": "Sum of attributed waste, normalised per EUR million invested.",
+      "benchmark": "No regulatory threshold. Manufacturing, chemical, mining, and energy (nuclear) sectors typically produce more hazardous/radioactive waste.",
+      "verified": true
+    },
+    {
+      "pai": 10,
+      "name": "Violations of UN Global Compact principles and OECD Guidelines for Multinational Enterprises",
+      "category": "Social and employee, respect for human rights, anti-corruption and anti-bribery matters",
+      "applicableTo": "investee_companies",
+      "formula": "UNGC_violations_share = ( SUM(current_value_investments_in_violating_companies) / current_value_of_all_investments ) * 100",
+      "unit": "percentage",
+      "inputs": [
+        {"name": "current_value_investments_in_violating_companies", "description": "Sum of current values of investments in companies that have been involved in violations of the UNGC principles or OECD Guidelines", "unit": "EUR"},
+        {"name": "current_value_of_all_investments", "description": "Total portfolio value", "unit": "EUR"}
+      ],
+      "methodology": "Binary assessment per investee company: has the company been involved in violations of the UN Global Compact principles (human rights, labour, environment, anti-corruption) or the OECD Guidelines for Multinational Enterprises? Sources include OECD National Contact Point complaints, UN reports, credible news sources, and ESG data providers. Assessment covers the current reporting period.",
+      "ungcPrinciples": [
+        "Principle 1: Support and respect protection of internationally proclaimed human rights",
+        "Principle 2: Make sure not complicit in human rights abuses",
+        "Principle 3: Freedom of association and right to collective bargaining",
+        "Principle 4: Elimination of forced and compulsory labour",
+        "Principle 5: Effective abolition of child labour",
+        "Principle 6: Elimination of discrimination in employment",
+        "Principle 7: Support a precautionary approach to environmental challenges",
+        "Principle 8: Undertake initiatives to promote greater environmental responsibility",
+        "Principle 9: Encourage development of environmentally friendly technologies",
+        "Principle 10: Work against corruption including extortion and bribery"
+      ],
+      "aggregation": "Simple share of portfolio value.",
+      "benchmark": "Target: 0%. Any exposure indicates risk. Some exclusion policies use 0% tolerance.",
+      "verified": true
+    },
+    {
+      "pai": 11,
+      "name": "Lack of processes and compliance mechanisms to monitor compliance with UN Global Compact principles and OECD Guidelines",
+      "category": "Social and employee, respect for human rights, anti-corruption and anti-bribery matters",
+      "applicableTo": "investee_companies",
+      "formula": "No_compliance_share = ( SUM(current_value_investments_in_companies_without_compliance) / current_value_of_all_investments ) * 100",
+      "unit": "percentage",
+      "inputs": [
+        {"name": "current_value_investments_without_compliance", "description": "Sum of current values of investments in companies without policies to monitor compliance with UNGC/OECD or grievance mechanisms", "unit": "EUR"},
+        {"name": "current_value_of_all_investments", "description": "Total portfolio value", "unit": "EUR"}
+      ],
+      "methodology": "Binary assessment: does the investee company have (1) policies/processes to monitor compliance with the UNGC principles and OECD Guidelines, AND (2) grievance/complaints handling mechanisms to address violations? Companies lacking either are counted. Assessment based on company disclosures, sustainability reports, and ESG data providers.",
+      "aggregation": "Simple share of portfolio value.",
+      "benchmark": "Lower is better. Large-cap companies typically have compliance processes in place; SMEs may not. Engagement target for companies without.",
+      "verified": true
+    },
+    {
+      "pai": 12,
+      "name": "Unadjusted gender pay gap",
+      "category": "Social and employee, respect for human rights, anti-corruption and anti-bribery matters",
+      "applicableTo": "investee_companies",
+      "formula": "Portfolio_gender_pay_gap = SUM_i( weight_i * unadjusted_gender_pay_gap_i )",
+      "expandedFormula": "SUM_i( (current_value_investment_i / current_value_all_investments) * ((avg_male_earnings_i - avg_female_earnings_i) / avg_male_earnings_i * 100) )",
+      "unit": "percentage",
+      "inputs": [
+        {"name": "weight_i", "description": "Portfolio weight of investee company i", "unit": "ratio"},
+        {"name": "avg_male_earnings_i", "description": "Average gross hourly earnings of male employees of investee company i", "unit": "EUR/hour"},
+        {"name": "avg_female_earnings_i", "description": "Average gross hourly earnings of female employees of investee company i", "unit": "EUR/hour"}
+      ],
+      "methodology": "Weighted average of investee companies' unadjusted gender pay gaps. The unadjusted gender pay gap is defined as the difference between average gross hourly earnings of male and female paid employees as a percentage of male gross earnings. 'Unadjusted' means no adjustment for differences in individual characteristics (education, experience, sector, etc.). Definition aligns with Eurostat methodology.",
+      "aggregation": "Portfolio-weighted average.",
+      "benchmark": "EU average gender pay gap approximately 12-13% (2022). Target: lower is better, with 0% representing full parity. EU Pay Transparency Directive requires action if gap > 5%.",
+      "verified": true
+    },
+    {
+      "pai": 13,
+      "name": "Board gender diversity",
+      "category": "Social and employee, respect for human rights, anti-corruption and anti-bribery matters",
+      "applicableTo": "investee_companies",
+      "formula": "Portfolio_board_diversity = SUM_i( weight_i * (female_board_members_i / total_board_members_i * 100) )",
+      "unit": "percentage",
+      "inputs": [
+        {"name": "weight_i", "description": "Portfolio weight of investee company i", "unit": "ratio"},
+        {"name": "female_board_members_i", "description": "Number of female board members of investee company i", "unit": "count"},
+        {"name": "total_board_members_i", "description": "Total number of board members of investee company i", "unit": "count"}
+      ],
+      "methodology": "Weighted average of the ratio of female to total board members across investee companies. 'Board members' includes all members of the administrative, management and supervisory bodies (depending on governance structure — one-tier or two-tier board).",
+      "aggregation": "Portfolio-weighted average.",
+      "benchmark": "EU Women on Boards Directive: 40% of non-executive directors or 33% of all directors by June 2026. EU average approximately 33% (2023). Best practice: at least 40%.",
+      "verified": true
+    },
+    {
+      "pai": 14,
+      "name": "Exposure to controversial weapons",
+      "category": "Social and employee, respect for human rights, anti-corruption and anti-bribery matters",
+      "applicableTo": "investee_companies",
+      "formula": "Controversial_weapons_exposure = ( SUM(current_value_investments_in_controversial_weapons_companies) / current_value_of_all_investments ) * 100",
+      "unit": "percentage",
+      "inputs": [
+        {"name": "current_value_investments_in_controversial_weapons", "description": "Sum of current values of investments in companies involved in manufacture or sale of controversial weapons", "unit": "EUR"},
+        {"name": "current_value_of_all_investments", "description": "Total portfolio value", "unit": "EUR"}
+      ],
+      "methodology": "Binary assessment: is the investee company involved in the manufacture or selling of controversial weapons? Controversial weapons are defined as: anti-personnel mines (Ottawa Treaty), cluster munitions (Convention on Cluster Munitions), chemical weapons (Chemical Weapons Convention), biological weapons (Biological Weapons Convention). Involvement includes direct manufacture, components specifically designed for these weapons, and trading/distribution.",
+      "weaponDefinitions": {
+        "antiPersonnelMines": "Banned under the 1997 Ottawa Treaty (Mine Ban Treaty). Mines designed to be detonated by the presence, proximity or contact of a person.",
+        "clusterMunitions": "Banned under the 2008 Convention on Cluster Munitions. Munitions designed to disperse or release explosive submunitions.",
+        "chemicalWeapons": "Banned under the 1993 Chemical Weapons Convention. Toxic chemicals and their precursors intended for use as weapons.",
+        "biologicalWeapons": "Banned under the 1972 Biological Weapons Convention. Microbial or other biological agents or toxins for hostile purposes."
+      },
+      "aggregation": "Simple share of portfolio value.",
+      "benchmark": "Target: 0%. Most responsible investment policies mandate complete exclusion. EU PAB and CTB regulations require 0% exposure.",
+      "verified": true
+    },
+    {
+      "pai": 15,
+      "name": "GHG intensity",
+      "category": "Indicators applicable to investments in sovereigns and supranationals — Environmental",
+      "applicableTo": "sovereigns_and_supranationals",
+      "formula": "Sovereign_GHG_intensity = SUM_i( weight_i * (country_GHG_emissions_i / country_GDP_i) )",
+      "unit": "tonnes CO2e per EUR million GDP",
+      "inputs": [
+        {"name": "weight_i", "description": "Portfolio weight of sovereign/supranational investment i: current_value_sovereign_investment_i / current_value_all_sovereign_investments", "unit": "ratio"},
+        {"name": "country_GHG_emissions_i", "description": "Total GHG emissions of the country/region", "unit": "tonnes CO2e"},
+        {"name": "country_GDP_i", "description": "Gross Domestic Product of the country/region", "unit": "EUR million"}
+      ],
+      "methodology": "Weighted average of the GHG intensity (emissions per unit GDP) of sovereign/supranational issuers in the portfolio. GHG emissions data typically sourced from UNFCCC national inventories, World Bank, or IEA. GDP data from IMF, World Bank, or Eurostat.",
+      "aggregation": "Portfolio-weighted average across sovereign holdings.",
+      "benchmark": "Global average approximately 400-500 tCO2e/EUR million GDP. EU average approximately 200-300 tCO2e/EUR million GDP. Significant variation by country — fossil-fuel dependent economies much higher.",
+      "verified": true
+    },
+    {
+      "pai": 16,
+      "name": "Investee countries subject to social violations",
+      "category": "Indicators applicable to investments in sovereigns and supranationals — Social",
+      "applicableTo": "sovereigns_and_supranationals",
+      "formula": "Social_violations_count = COUNT(investee_countries_with_social_violations); Social_violations_share = Social_violations_count / total_investee_countries * 100",
+      "unit": "absolute number and percentage",
+      "inputs": [
+        {"name": "investee_country_list", "description": "List of all countries in which the portfolio holds sovereign/supranational investments", "unit": "list"},
+        {"name": "country_social_violation_flag", "description": "Whether the country is subject to social violations as referred to in international treaties, UN principles, and national law", "unit": "boolean"}
+      ],
+      "methodology": "Count the number of investee countries subject to social violations. Social violations are assessed against international treaties and conventions, UN principles and, where applicable, national law. Sources include UN Human Rights Council reports, Freedom House, ILO supervisory bodies, and EU sanctions lists.",
+      "socialViolationSources": [
+        "International treaties on human rights and civil liberties",
+        "UN Human Rights Council Universal Periodic Review findings",
+        "ILO Committee of Experts on the Application of Conventions",
+        "EU restrictive measures (sanctions) for human rights violations",
+        "International Criminal Court investigations"
+      ],
+      "aggregation": "Count and percentage of investee countries.",
+      "benchmark": "Target: 0 countries. Some investors apply sovereign exclusion lists based on severe human rights violations.",
+      "verified": true
+    },
+    {
+      "pai": 17,
+      "name": "Exposure to fossil fuels through real estate assets",
+      "category": "Indicators applicable to investments in real estate assets — Environmental",
+      "applicableTo": "real_estate_assets",
+      "formula": "RE_fossil_exposure = ( SUM(value_of_RE_assets_involved_in_fossil_fuels) / current_value_of_all_RE_investments ) * 100",
+      "unit": "percentage",
+      "inputs": [
+        {"name": "value_of_RE_assets_involved_in_fossil_fuels", "description": "Value of real estate assets involved in extraction, storage, transport or manufacture of fossil fuels", "unit": "EUR"},
+        {"name": "current_value_of_all_RE_investments", "description": "Total value of all real estate investments in the portfolio", "unit": "EUR"}
+      ],
+      "methodology": "Share of real estate investments that are involved in fossil fuel activities. A real estate asset is considered 'involved' if it is used for the extraction, storage, transport or manufacture of fossil fuels. This includes properties such as oil storage facilities, coal terminals, gas processing plants, and similar industrial real estate.",
+      "aggregation": "Simple share of real estate portfolio value.",
+      "benchmark": "Target: 0% for Paris-aligned portfolios.",
+      "verified": true
+    },
+    {
+      "pai": 18,
+      "name": "Exposure to energy-inefficient real estate assets",
+      "category": "Indicators applicable to investments in real estate assets — Environmental",
+      "applicableTo": "real_estate_assets",
+      "formula": "RE_energy_inefficient = ( SUM(value_of_energy_inefficient_RE_assets) / current_value_of_all_RE_investments ) * 100",
+      "unit": "percentage",
+      "inputs": [
+        {"name": "value_of_energy_inefficient_RE_assets", "description": "Value of real estate assets with EPC rating below C (or in the top 30% of energy consumption for non-EPC jurisdictions)", "unit": "EUR"},
+        {"name": "current_value_of_all_RE_investments", "description": "Total value of all real estate investments in the portfolio", "unit": "EUR"}
+      ],
+      "methodology": "Share of real estate investments in energy-inefficient assets. Energy-inefficient is defined as: (a) where Energy Performance Certificates (EPCs) are available: buildings with EPC rating below class C; (b) where EPCs are not available: buildings in the top 30% of the national energy consumption distribution. The assessment should cover all directly held real estate assets.",
+      "epcThreshold": "Below class C (i.e., class D, E, F, or G)",
+      "nonEpcFallback": "Top 30% of national energy consumption distribution for the relevant building type and location",
+      "aggregation": "Simple share of real estate portfolio value.",
+      "benchmark": "EU Energy Performance of Buildings Directive (recast) aims for all buildings to be at least EPC E by 2030 and EPC D by 2033 (residential). Decarbonisation pathway suggests reducing this share over time.",
+      "verified": true
+    }
+  ]
+}

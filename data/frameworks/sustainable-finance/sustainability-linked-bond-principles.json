@@ -1,0 +1,183 @@
+{
+  "id": "fw-slbp-2023",
+  "code": "slbp",
+  "name": "ICMA Sustainability-Linked Bond Principles",
+  "version": "2023",
+  "effectiveDate": "2023-06-01",
+  "issuingBody": "International Capital Market Association (ICMA)",
+  "region": "global",
+  "type": "voluntary",
+  "description": "The Sustainability-Linked Bond Principles (SLBP) are voluntary process guidelines that outline best practices for financial instruments where the financial and/or structural characteristics can vary depending on whether the issuer achieves predefined Sustainability/ESG objectives as measured through predefined Key Performance Indicators (KPIs) against Sustainability Performance Targets (SPTs).",
+  "keyDifference": "Unlike Green Bonds where proceeds are earmarked for specific green projects, SLBs can use proceeds for general corporate purposes. The sustainability ambition is expressed through forward-looking KPIs and SPTs, with financial consequences if targets are not met.",
+  "coreComponents": {
+    "selectionOfKPIs": {
+      "number": 1,
+      "name": "Selection of Key Performance Indicators (KPIs)",
+      "description": "KPIs should be relevant, core and material to the issuer's overall business, and of high strategic significance to the issuer's current and/or future operations.",
+      "selectionCriteria": [
+        {
+          "criterion": "Material",
+          "description": "Relevant and core to the issuer's overall business, of high strategic significance to current and/or future operations"
+        },
+        {
+          "criterion": "Quantifiable",
+          "description": "Measurable or quantifiable on a consistent methodological basis"
+        },
+        {
+          "criterion": "Externally verifiable",
+          "description": "Able to be verified by an external and independent party"
+        },
+        {
+          "criterion": "Benchmarkable",
+          "description": "Able to be benchmarked, i.e., as much as possible using an external reference or definitions to facilitate the assessment of the SPT's level of ambition"
+        }
+      ],
+      "disclosureRequirements": [
+        "Definition of each KPI including calculation methodology",
+        "Rationale for selection and relevance/materiality to issuer",
+        "Historical data (at least 3 years where feasible) for each KPI",
+        "Any limitations of the KPI",
+        "Scope/perimeter of KPI (e.g., % of revenue/operations covered)"
+      ],
+      "commonKPIs": [
+        {"name": "GHG emissions (Scope 1+2)", "unit": "tonnes CO2e", "sector": "All"},
+        {"name": "GHG emissions intensity", "unit": "tCO2e / unit of production or revenue", "sector": "All"},
+        {"name": "Renewable energy share", "unit": "percentage", "sector": "All"},
+        {"name": "Energy intensity", "unit": "MWh / unit of production or revenue", "sector": "Energy-intensive"},
+        {"name": "Water consumption intensity", "unit": "m3 / unit of production", "sector": "Water-intensive"},
+        {"name": "Waste recycling rate", "unit": "percentage", "sector": "Manufacturing"},
+        {"name": "Gender diversity (board/management)", "unit": "percentage female", "sector": "All"},
+        {"name": "Lost time injury frequency rate (LTIFR)", "unit": "incidents per million hours worked", "sector": "All"},
+        {"name": "ESG rating improvement", "unit": "rating level", "sector": "All"}
+      ]
+    },
+    "calibrationOfSPTs": {
+      "number": 2,
+      "name": "Calibration of Sustainability Performance Targets (SPTs)",
+      "description": "SPTs should be ambitious and represent a material improvement in the respective KPIs, be beyond a 'business as usual' trajectory, and where possible be compared to a benchmark or an external reference.",
+      "calibrationRequirements": [
+        {
+          "criterion": "Ambitious",
+          "description": "Must represent a material improvement in the KPI and be beyond 'business as usual' trajectory"
+        },
+        {
+          "criterion": "Science-based where possible",
+          "description": "Where applicable, benchmarked against recognised science-based scenarios (e.g., SBTi pathways, IEA Net Zero by 2050)"
+        },
+        {
+          "criterion": "Benchmarkable",
+          "description": "Compared where possible to an external reference: industry average, best-in-class, science-based scenarios, official national/international targets"
+        },
+        {
+          "criterion": "Consistent with strategy",
+          "description": "Aligned with the issuer's overall sustainability/ESG strategy"
+        },
+        {
+          "criterion": "Predetermined timeline",
+          "description": "Must include a target observation date(s) before or coinciding with bond maturity"
+        }
+      ],
+      "disclosureRequirements": [
+        "Target level for each KPI with target observation date(s)",
+        "Baseline (starting point) for each KPI",
+        "Timeline for target achievement, including intermediate milestones where relevant",
+        "Where applicable, illustration of SPT ambition relative to benchmark/science-based pathway",
+        "Any recalculation policies or methodology changes",
+        "Trigger event(s) for bond characteristics variation"
+      ],
+      "ambitionBenchmarks": [
+        "Science Based Targets initiative (SBTi) approved pathways",
+        "IEA Net Zero by 2050 scenario",
+        "National Determined Contributions (NDCs) under Paris Agreement",
+        "Sector-specific decarbonisation pathways (e.g., Transition Pathway Initiative)",
+        "Industry peer performance (median or top quartile)"
+      ]
+    },
+    "bondCharacteristics": {
+      "number": 3,
+      "name": "Bond characteristics",
+      "description": "The bond documentation should include the financial and/or structural impact of the KPI(s) not meeting or exceeding the predefined SPT(s).",
+      "variationMechanisms": [
+        {
+          "type": "Coupon step-up",
+          "description": "Most common mechanism. The coupon rate increases (typically 25 bps) if the issuer fails to achieve the SPT by the target observation date.",
+          "typicalRange": "12.5 - 75 bps step-up",
+          "marketStandard": "25 bps is the most common step-up",
+          "notes": "Step-up applies from the first coupon payment date following the target observation date"
+        },
+        {
+          "type": "Coupon step-down",
+          "description": "The coupon rate decreases if the issuer achieves or exceeds the SPT. Less common, sometimes combined with step-up.",
+          "notes": "Some issuers use a symmetric structure with both step-up (miss) and step-down (achieve)"
+        },
+        {
+          "type": "Premium payment at maturity",
+          "description": "A one-time premium payment to bondholders at maturity if SPTs are not met.",
+          "notes": "Less common than coupon step-up"
+        },
+        {
+          "type": "Donation to charity",
+          "description": "Issuer commits to donate a specified amount to a relevant charity or environmental/social cause if SPTs are not met.",
+          "notes": "Emerging mechanism, often combined with coupon step-up"
+        }
+      ],
+      "documentationRequirements": [
+        "Clear definition of trigger event(s) tied to SPT achievement/non-achievement",
+        "Specific financial consequences (e.g., step-up amount in bps)",
+        "Observation date(s) for KPI measurement",
+        "Fallback mechanisms if KPI cannot be calculated",
+        "Any provisions for changes to KPI methodology"
+      ]
+    },
+    "reporting": {
+      "number": 4,
+      "name": "Reporting",
+      "description": "Issuers should publish up-to-date information on KPI performance at least annually and in any case for any target observation date.",
+      "requirements": [
+        "Publish KPI performance at least annually",
+        "Include up-to-date information sufficient to allow investors to monitor SPT performance",
+        "Report on any material change in KPI methodology or perimeter",
+        "Provide any relevant information enabling investors to assess ambition of SPTs",
+        "Include verification assurance report (see Component 5)"
+      ],
+      "recommendedDisclosures": [
+        "Historical KPI performance track record",
+        "Any reassessment of KPI scope or methodology",
+        "Illustration of performance relative to SPT trajectory",
+        "Explanation of key factors contributing to KPI performance",
+        "Any updates to issuer's sustainability strategy"
+      ]
+    },
+    "verification": {
+      "number": 5,
+      "name": "Verification",
+      "description": "Issuers should seek independent and external verification of their performance level against each SPT for each KPI at least once a year, and in any case for any date/period relevant for assessing SPT performance leading to a potential adjustment of the SLB financial and/or structural characteristics, by a qualified external reviewer with relevant expertise.",
+      "requirements": [
+        "Independent external verification of KPI performance against SPTs",
+        "At minimum: annually and for any SPT observation date",
+        "Verification report to be made publicly available",
+        "Verifier should be qualified with relevant expertise",
+        "Limited or reasonable assurance recommended"
+      ],
+      "preIssuance": {
+        "name": "Pre-issuance external review",
+        "description": "Issuers are recommended to appoint an external reviewer to confirm alignment of the SLB with the five SLBP core components.",
+        "scope": [
+          "Relevance and materiality of KPIs",
+          "Ambition of SPTs",
+          "Adequacy of bond structural characteristics",
+          "Reporting commitments",
+          "Verification commitments"
+        ]
+      },
+      "assuranceStandards": ["ISAE 3000", "ISAE 3410 (for GHG statements)", "ISO 14064-3 (for GHG verification)"]
+    }
+  },
+  "structuralConsiderations": {
+    "observationDate": "Date on which KPI performance is measured against SPT. Typically set 1-2 years before bond maturity to allow time for verification and coupon adjustment.",
+    "reportingDate": "Date by which verified KPI performance must be published. Typically a number of months after observation date.",
+    "stepUpEffectiveDate": "First coupon payment date following the reporting date on which SPT non-achievement is confirmed.",
+    "multipleKPIs": "Where multiple KPIs are used, documentation should specify whether step-up applies per KPI (cumulative) or on a binary basis (any miss triggers full step-up).",
+    "refinancing": "SLBs can be refinanced into new SLBs, but issuers should consider the implications for SPT continuity and ambition."
+  }
+}

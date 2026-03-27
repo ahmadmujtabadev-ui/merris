@@ -1,0 +1,164 @@
+{
+  "id": "fw-gbp-2021",
+  "code": "gbp",
+  "name": "ICMA Green Bond Principles",
+  "version": "2021",
+  "effectiveDate": "2021-06-01",
+  "issuingBody": "International Capital Market Association (ICMA)",
+  "region": "global",
+  "type": "voluntary",
+  "description": "The Green Bond Principles (GBP) are voluntary process guidelines that recommend transparency and disclosure and promote integrity in the development of the Green Bond market by clarifying the approach for issuance of a Green Bond.",
+  "coreComponents": {
+    "useOfProceeds": {
+      "description": "The utilisation of the bond proceeds for Green Projects should be appropriately described in the legal documentation for the security. All designated Green Projects should provide clear environmental benefits, which will be assessed and, where feasible, quantified by the issuer.",
+      "eligibleCategories": [
+        {
+          "id": "gbp-cat-01",
+          "name": "Renewable energy",
+          "description": "Including production, transmission, appliances and products. Covers solar, wind, geothermal, biomass, hydropower, marine energy, and other renewable sources.",
+          "examples": ["Solar PV and CSP installations", "Onshore and offshore wind farms", "Geothermal energy plants", "Sustainable biomass energy", "Small and large-scale hydropower"]
+        },
+        {
+          "id": "gbp-cat-02",
+          "name": "Energy efficiency",
+          "description": "Such as in new and refurbished buildings, energy storage, district heating, smart grids, appliances and products.",
+          "examples": ["Green building construction/renovation", "Energy storage systems", "Smart grid infrastructure", "LED and efficient lighting", "Building management systems"]
+        },
+        {
+          "id": "gbp-cat-03",
+          "name": "Pollution prevention and control",
+          "description": "Including reduction of air emissions, greenhouse gas control, soil remediation, waste prevention, waste reduction, waste recycling and energy/emission-efficient waste to energy.",
+          "examples": ["Air pollution reduction equipment", "Soil remediation projects", "Waste recycling facilities", "Waste-to-energy plants", "Industrial pollution control"]
+        },
+        {
+          "id": "gbp-cat-04",
+          "name": "Environmentally sustainable management of living natural resources and land use",
+          "description": "Including environmentally sustainable agriculture, animal husbandry, climate smart farm inputs, fishery and aquaculture, forestry, preservation or restoration of natural landscapes.",
+          "examples": ["Sustainable agriculture", "Sustainable forestry and reforestation", "Ecosystem restoration", "Climate-smart farming inputs"]
+        },
+        {
+          "id": "gbp-cat-05",
+          "name": "Terrestrial and aquatic biodiversity conservation",
+          "description": "Including the protection of coastal, marine and watershed environments.",
+          "examples": ["Marine protected areas", "Biodiversity conservation projects", "Watershed protection", "Habitat restoration"]
+        },
+        {
+          "id": "gbp-cat-06",
+          "name": "Clean transportation",
+          "description": "Such as electric, hybrid, public, rail, non-motorised, multi-modal transportation, infrastructure for clean energy vehicles and reduction of harmful emissions.",
+          "examples": ["Electric vehicle infrastructure", "Public transport systems (BRT, metro, tram)", "Railway infrastructure", "Cycling infrastructure", "Clean fuel ships and aircraft"]
+        },
+        {
+          "id": "gbp-cat-07",
+          "name": "Sustainable water and wastewater management",
+          "description": "Including sustainable infrastructure for clean and/or drinking water, wastewater treatment, sustainable urban drainage systems and river training and other forms of flooding mitigation.",
+          "examples": ["Clean water supply systems", "Wastewater treatment plants", "Sustainable urban drainage", "Flood prevention infrastructure", "Water efficiency improvements"]
+        },
+        {
+          "id": "gbp-cat-08",
+          "name": "Climate change adaptation",
+          "description": "Including efforts to make infrastructure more resilient, e.g., development of climate resilient information systems such as climate observation and early warning systems.",
+          "examples": ["Climate-resilient infrastructure", "Early warning systems", "Climate observation networks", "Flood defence systems", "Drought-resilient agriculture"]
+        },
+        {
+          "id": "gbp-cat-09",
+          "name": "Circular economy adapted products, production technologies and processes",
+          "description": "Such as the design and introduction of reusable, recyclable and refurbished materials, components and products; circular tools and services; and/or certified eco-efficient products.",
+          "examples": ["Eco-efficient product design", "Remanufacturing facilities", "Product-as-a-service models", "Material recycling technologies"]
+        },
+        {
+          "id": "gbp-cat-10",
+          "name": "Green buildings",
+          "description": "Meeting regional, national or internationally recognised standards or certifications for environmental performance.",
+          "examples": ["LEED Platinum/Gold certified buildings", "BREEAM Excellent/Outstanding buildings", "EDGE certified buildings", "Passive house standard buildings", "National green building certifications"]
+        }
+      ]
+    },
+    "processForProjectEvaluation": {
+      "description": "The issuer of a Green Bond should clearly communicate to investors the environmental sustainability objectives, the process by which the issuer determines how the projects fit within the eligible Green Project categories, and the related eligibility criteria.",
+      "requirements": [
+        "Clearly communicate environmental sustainability objectives of the green projects",
+        "Describe the process for determining project eligibility",
+        "Define and disclose eligibility criteria, including exclusion criteria if applicable",
+        "Disclose any green standards or certifications referenced in project selection",
+        "Describe process for identifying and managing environmental and social risks associated with projects"
+      ],
+      "recommendedDisclosures": [
+        "Complementary information on processes to identify and manage perceived social and environmental risks",
+        "Information on alignment of projects with official or market-based taxonomies",
+        "Green standards or certifications referenced"
+      ]
+    },
+    "managementOfProceeds": {
+      "description": "The net proceeds of the Green Bond, or an amount equal to these net proceeds, should be credited to a sub-account, moved to a sub-portfolio or otherwise tracked by the issuer in an appropriate manner, and attested to by the issuer in a formal internal process.",
+      "requirements": [
+        "Track net proceeds in a sub-account, sub-portfolio, or equivalent",
+        "Attest to tracking in a formal internal process linked to lending/investment operations",
+        "Disclose intended types of temporary placement for unallocated proceeds",
+        "Balance of unallocated proceeds should be periodically adjusted",
+        "Recommend use of an external auditor or other third party to verify tracking"
+      ],
+      "temporaryPlacements": "Pending full allocation, unallocated proceeds should be held in cash, cash equivalents, or other liquid instruments, consistent with issuer's investment policy."
+    },
+    "reporting": {
+      "description": "Issuers should make readily available and keep current information on the use of proceeds, to be renewed annually until full allocation, and on a timely basis in case of material developments.",
+      "allocationReporting": {
+        "description": "Should include list of projects, amounts allocated, expected impact, and any unallocated balance.",
+        "requirements": [
+          "List of projects to which Green Bond proceeds have been allocated",
+          "Brief description of the projects",
+          "Amounts allocated per project or category",
+          "Expected impact of the projects",
+          "Share of proceeds used for financing vs. refinancing",
+          "Amount of unallocated proceeds"
+        ],
+        "frequency": "Annual until full allocation, and in case of material developments"
+      },
+      "impactReporting": {
+        "description": "Issuers should use qualitative and, where feasible, quantitative performance indicators to report on the environmental impact of projects.",
+        "requirements": [
+          "Use quantitative performance indicators where feasible",
+          "Disclose underlying methodology and/or assumptions",
+          "Report on a project-by-project basis or on a portfolio basis"
+        ],
+        "recommendedMetrics": [
+          {"category": "Renewable energy", "metrics": ["Annual GHG emissions reduced/avoided (tCO2e)", "Annual renewable energy generated (MWh)", "Capacity of renewable energy plant(s) (MW)"]},
+          {"category": "Energy efficiency", "metrics": ["Annual energy savings (MWh)", "Annual GHG emissions reduced/avoided (tCO2e)"]},
+          {"category": "Clean transportation", "metrics": ["Annual GHG emissions reduced/avoided (tCO2e)", "Reduction in number of private vehicles"]},
+          {"category": "Green buildings", "metrics": ["Level of certification achieved", "Annual energy savings (MWh/m2)", "Annual GHG emissions reduced/avoided (tCO2e)"]},
+          {"category": "Water management", "metrics": ["Annual absolute water savings (m3)", "Volume of wastewater treated (m3)", "Population served"]}
+        ]
+      }
+    }
+  },
+  "externalReview": {
+    "description": "The GBP recommend that issuers appoint (an) external review provider(s) to confirm the alignment of their Green Bond or Green Bond programme with the four core components of the GBP.",
+    "types": [
+      {
+        "name": "Second Party Opinion (SPO)",
+        "description": "An institution with environmental expertise that is independent from the issuer assesses the issuer's Green Bond Framework, evaluating alignment with the GBP and/or other green criteria.",
+        "providers": ["Sustainalytics (Morningstar)", "ISS ESG", "Vigeo Eiris (Moody's)", "CICERO", "S&P Global Ratings"]
+      },
+      {
+        "name": "Verification",
+        "description": "An issuer can have its Green Bond, associated Green Bond framework, or underlying assets independently verified by qualified parties. Verification focuses on alignment with internal or external criteria.",
+        "standards": ["ISAE 3000 (assurance engagement)", "ISO 14064 (GHG verification)"]
+      },
+      {
+        "name": "Certification",
+        "description": "An issuer can have its Green Bond or associated Green Bond framework or use of proceeds certified against a recognised external green standard or label.",
+        "examples": ["Climate Bonds Certification", "EU Green Bond Standard (EuGBS)"]
+      },
+      {
+        "name": "Green Bond Rating/Scoring",
+        "description": "An issuer can have its Green Bond or associated Green Bond framework rated or scored by qualified third parties, such as specialised research providers or rating agencies.",
+        "examples": ["Moody's Green Bond Assessments", "S&P Green Evaluations", "CBI certification grades"]
+      }
+    ]
+  },
+  "relatedGuidelines": [
+    {"name": "Green Bond Principles — Harmonised Framework for Impact Reporting", "year": 2022},
+    {"name": "Guidelines for Green, Social, Sustainability and Sustainability-Linked Bonds External Reviews", "year": 2022},
+    {"name": "EU Green Bond Standard (EuGBS) — Regulation (EU) 2023/2631", "year": 2023, "notes": "Voluntary EU standard based on GBP principles, requiring EU Taxonomy alignment for at least 85% of proceeds"}
+  ]
+}

@@ -1,0 +1,461 @@
+{
+  "id": "fw-sfdr-2024",
+  "code": "sfdr",
+  "name": "Sustainable Finance Disclosure Regulation",
+  "version": "2024",
+  "effectiveDate": "2021-03-10",
+  "lastAmended": "2023-06-28",
+  "issuingBody": "European Parliament and Council",
+  "region": "EU",
+  "type": "mandatory",
+  "legalBasis": "Regulation (EU) 2019/2088",
+  "delegatedActs": "Commission Delegated Regulation (EU) 2022/1288 (RTS)",
+  "description": "The SFDR establishes harmonised rules for financial market participants and financial advisers on transparency regarding the integration of sustainability risks, the consideration of adverse sustainability impacts in their processes, and the provision of sustainability-related information with respect to financial products.",
+  "fundClassification": {
+    "article6": {
+      "name": "Article 6 — Sustainability risk integration",
+      "description": "Products that integrate sustainability risks into investment decisions but do not promote environmental or social characteristics and do not have sustainable investment as their objective.",
+      "requirements": [
+        "Integrate sustainability risks into investment decision-making process",
+        "Describe manner in which sustainability risks are integrated",
+        "Describe likely impacts of sustainability risks on returns",
+        "Where sustainability risks are deemed not relevant, provide clear and concise explanation"
+      ],
+      "disclosureLevel": "entity_and_product",
+      "preContractualDisclosure": true,
+      "periodicDisclosure": false,
+      "websiteDisclosure": false
+    },
+    "article8": {
+      "name": "Article 8 — Promotion of environmental/social characteristics",
+      "description": "Products that promote, among other characteristics, environmental or social characteristics, or a combination of those characteristics, provided that the companies in which the investments are made follow good governance practices.",
+      "requirements": [
+        "Disclose how environmental or social characteristics are met",
+        "If an index is designated as a reference benchmark, describe how the index is consistent with those characteristics",
+        "Indicate where information on the methodology for the calculation of the index can be found",
+        "Pre-contractual disclosures per Annex II of RTS",
+        "Periodic disclosures per Annex IV of RTS",
+        "Website disclosures per Article 10"
+      ],
+      "disclosureLevel": "entity_and_product",
+      "preContractualDisclosure": true,
+      "periodicDisclosure": true,
+      "websiteDisclosure": true,
+      "subCategories": {
+        "article8": {
+          "name": "Article 8 (light green)",
+          "description": "Promotes E/S characteristics but does not commit to minimum proportion of sustainable investments"
+        },
+        "article8Plus": {
+          "name": "Article 8+ (dark green)",
+          "description": "Promotes E/S characteristics AND commits to making a minimum proportion of sustainable investments (as defined under Article 2(17) SFDR)"
+        }
+      }
+    },
+    "article9": {
+      "name": "Article 9 — Sustainable investment objective",
+      "description": "Products that have sustainable investment as their objective. Where an index has been designated as a reference benchmark, that index must be consistent with the sustainable investment objective.",
+      "requirements": [
+        "Disclose how the designated index is aligned with the sustainable investment objective",
+        "Explain why and how the index differs from a broad market index",
+        "Pre-contractual disclosures per Annex III of RTS",
+        "Periodic disclosures per Annex V of RTS",
+        "Website disclosures per Article 10",
+        "Where no EU Climate Transition Benchmark or EU Paris-Aligned Benchmark exists, provide detailed explanation of how the sustainable investment objective is achieved"
+      ],
+      "disclosureLevel": "entity_and_product",
+      "preContractualDisclosure": true,
+      "periodicDisclosure": true,
+      "websiteDisclosure": true
+    }
+  },
+  "principalAdverseImpacts": {
+    "description": "Principal adverse impacts (PAI) of investment decisions on sustainability factors. Financial market participants shall publish and maintain on their websites a statement on due diligence policies with respect to the principal adverse sustainability impacts of investment decisions.",
+    "referenceDate": "Calculated as at 31 December each year, published by 30 June following year",
+    "lookBackPeriod": "Current reporting period + comparison with previous 3 periods once available",
+    "mandatoryIndicators": {
+      "climateAndEnvironment": [
+        {
+          "number": 1,
+          "name": "GHG emissions",
+          "category": "Greenhouse gas emissions",
+          "applicableTo": "investee_companies",
+          "metrics": [
+            {
+              "name": "Scope 1 GHG emissions",
+              "definition": "Scope 1 GHG emissions generated by investee companies",
+              "unit": "tonnes CO2e",
+              "formula": "For each investee company i: Scope1_i. Portfolio total = SUM_i(attribution_factor_i * Scope1_i), where attribution_factor_i = current_value_investment_i / enterprise_value_i",
+              "dataInputs": ["current_value_of_investment", "enterprise_value_including_cash", "investee_scope1_emissions"],
+              "verified": true
+            },
+            {
+              "name": "Scope 2 GHG emissions",
+              "definition": "Scope 2 GHG emissions generated by investee companies",
+              "unit": "tonnes CO2e",
+              "formula": "For each investee company i: Scope2_i. Portfolio total = SUM_i(attribution_factor_i * Scope2_i), where attribution_factor_i = current_value_investment_i / enterprise_value_i",
+              "dataInputs": ["current_value_of_investment", "enterprise_value_including_cash", "investee_scope2_emissions"],
+              "verified": true
+            },
+            {
+              "name": "Scope 3 GHG emissions",
+              "definition": "Scope 3 GHG emissions generated by investee companies",
+              "unit": "tonnes CO2e",
+              "formula": "For each investee company i: Scope3_i. Portfolio total = SUM_i(attribution_factor_i * Scope3_i), where attribution_factor_i = current_value_investment_i / enterprise_value_i",
+              "dataInputs": ["current_value_of_investment", "enterprise_value_including_cash", "investee_scope3_emissions"],
+              "verified": true
+            },
+            {
+              "name": "Total GHG emissions",
+              "definition": "Total GHG emissions (Scope 1 + Scope 2 + Scope 3) generated by investee companies",
+              "unit": "tonnes CO2e",
+              "formula": "Total = Scope1 + Scope2 + Scope3 (from first reporting period onwards, including Scope 3 from 1 January 2023)",
+              "verified": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "name": "Carbon footprint",
+          "category": "Greenhouse gas emissions",
+          "applicableTo": "investee_companies",
+          "metric": "Carbon footprint",
+          "definition": "Carbon footprint of the portfolio, defined as total GHG emissions per million EUR invested",
+          "unit": "tonnes CO2e / EUR million invested",
+          "formula": "Carbon_footprint = SUM_i(attribution_factor_i * GHG_total_i) / current_value_of_all_investments_EUR_millions, where attribution_factor_i = current_value_investment_i / enterprise_value_i",
+          "dataInputs": ["current_value_of_investment", "enterprise_value_including_cash", "investee_total_ghg_emissions", "total_portfolio_value"],
+          "verified": true
+        },
+        {
+          "number": 3,
+          "name": "GHG intensity of investee companies",
+          "category": "Greenhouse gas emissions",
+          "applicableTo": "investee_companies",
+          "metric": "GHG intensity of investee companies",
+          "definition": "Weighted average GHG intensity of investee companies, per million EUR of revenue",
+          "unit": "tonnes CO2e / EUR million revenue",
+          "formula": "GHG_intensity = SUM_i(weight_i * (GHG_total_i / revenue_i)), where weight_i = current_value_investment_i / current_value_all_investments",
+          "dataInputs": ["current_value_of_investment", "total_portfolio_value", "investee_total_ghg_emissions", "investee_revenue"],
+          "verified": true
+        },
+        {
+          "number": 4,
+          "name": "Exposure to companies active in the fossil fuel sector",
+          "category": "Greenhouse gas emissions",
+          "applicableTo": "investee_companies",
+          "metric": "Share of investments in companies active in the fossil fuel sector",
+          "definition": "Share of investments in companies active in the fossil fuel sector, including extraction, processing, storage and transportation of fossil fuels",
+          "unit": "percentage",
+          "formula": "Fossil_fuel_exposure = SUM(current_value_of_investments_in_fossil_fuel_companies) / current_value_of_all_investments * 100",
+          "dataInputs": ["current_value_of_investment", "total_portfolio_value", "investee_fossil_fuel_activity_flag"],
+          "fossilFuelActivities": [
+            "Exploration, mining, extraction, production, processing, storage, refining or distribution of hard coal and lignite",
+            "Exploration, extraction, production, processing, storage, refining or distribution of liquid fossil fuels",
+            "Exploration, extraction, manufacturing, processing, storage, refining or distribution of gaseous fossil fuels",
+            "Generation of electricity from fossil fuel sources"
+          ],
+          "verified": true
+        },
+        {
+          "number": 5,
+          "name": "Share of non-renewable energy consumption and production",
+          "category": "Greenhouse gas emissions",
+          "applicableTo": "investee_companies",
+          "metric": "Share of non-renewable energy consumption and non-renewable energy production of investee companies from non-renewable energy sources compared to renewable energy sources, expressed as a percentage of total energy sources",
+          "unit": "percentage",
+          "formula": "Non_renewable_share = SUM_i(weight_i * (non_renewable_energy_consumption_i + non_renewable_energy_production_i) / (total_energy_consumption_i + total_energy_production_i)) * 100",
+          "dataInputs": ["current_value_of_investment", "total_portfolio_value", "investee_non_renewable_energy_consumption", "investee_non_renewable_energy_production", "investee_total_energy_consumption", "investee_total_energy_production"],
+          "verified": true
+        },
+        {
+          "number": 6,
+          "name": "Energy consumption intensity per high impact climate sector",
+          "category": "Greenhouse gas emissions",
+          "applicableTo": "investee_companies",
+          "metric": "Energy consumption in GWh per million EUR of revenue of investee companies, per high impact climate sector (NACE Sections A-H, L)",
+          "unit": "GWh / EUR million revenue",
+          "formula": "For each NACE sector s: Energy_intensity_s = SUM_i_in_s(weight_i * energy_consumption_i / revenue_i), where weight_i = current_value_investment_i / current_value_all_investments_in_sector_s",
+          "dataInputs": ["current_value_of_investment", "investee_nace_code", "investee_energy_consumption_gwh", "investee_revenue"],
+          "highImpactSectors": [
+            {"nace": "A", "name": "Agriculture, forestry and fishing"},
+            {"nace": "B", "name": "Mining and quarrying"},
+            {"nace": "C", "name": "Manufacturing"},
+            {"nace": "D", "name": "Electricity, gas, steam and air conditioning supply"},
+            {"nace": "E", "name": "Water supply; sewerage, waste management and remediation activities"},
+            {"nace": "F", "name": "Construction"},
+            {"nace": "G", "name": "Wholesale and retail trade; repair of motor vehicles and motorcycles"},
+            {"nace": "H", "name": "Transportation and storage"},
+            {"nace": "L", "name": "Real estate activities"}
+          ],
+          "verified": true
+        },
+        {
+          "number": 7,
+          "name": "Activities negatively affecting biodiversity-sensitive areas",
+          "category": "Biodiversity",
+          "applicableTo": "investee_companies",
+          "metric": "Share of investments in investee companies with sites/operations located in or near to biodiversity-sensitive areas where activities of those investee companies negatively affect those areas",
+          "unit": "percentage",
+          "formula": "Biodiversity_exposure = SUM(current_value_of_investments_in_companies_negatively_affecting_biodiversity) / current_value_of_all_investments * 100",
+          "dataInputs": ["current_value_of_investment", "total_portfolio_value", "investee_biodiversity_sensitive_area_flag", "investee_negative_biodiversity_impact_flag"],
+          "biodiversityAreas": ["Natura 2000 network", "UNESCO World Heritage Sites", "Key Biodiversity Areas (KBAs)", "Other areas under the Biodiversity Convention"],
+          "verified": true
+        },
+        {
+          "number": 8,
+          "name": "Emissions to water",
+          "category": "Water",
+          "applicableTo": "investee_companies",
+          "metric": "Tonnes of emissions to water generated by investee companies per million EUR invested, expressed as a weighted average",
+          "unit": "tonnes / EUR million invested",
+          "formula": "Water_emissions = SUM_i(weight_i * emissions_to_water_i / enterprise_value_i) * current_value_all_investments / 1000000",
+          "alternativeFormula": "SUM_i(attribution_factor_i * emissions_to_water_i) / current_value_of_all_investments_EUR_millions",
+          "dataInputs": ["current_value_of_investment", "enterprise_value_including_cash", "investee_emissions_to_water_tonnes", "total_portfolio_value"],
+          "verified": true
+        },
+        {
+          "number": 9,
+          "name": "Hazardous waste and radioactive waste ratio",
+          "category": "Waste",
+          "applicableTo": "investee_companies",
+          "metric": "Tonnes of hazardous waste and radioactive waste generated by investee companies per million EUR invested, expressed as a weighted average",
+          "unit": "tonnes / EUR million invested",
+          "formula": "Hazardous_waste_ratio = SUM_i(attribution_factor_i * hazardous_waste_i) / current_value_of_all_investments_EUR_millions, where attribution_factor_i = current_value_investment_i / enterprise_value_i",
+          "dataInputs": ["current_value_of_investment", "enterprise_value_including_cash", "investee_hazardous_waste_tonnes", "investee_radioactive_waste_tonnes", "total_portfolio_value"],
+          "verified": true
+        },
+        {
+          "number": 10,
+          "name": "Violations of UN Global Compact principles and OECD Guidelines for Multinational Enterprises",
+          "category": "Social and employee matters",
+          "applicableTo": "investee_companies",
+          "metric": "Share of investments in investee companies that have been involved in violations of the UNGC principles or OECD Guidelines for Multinational Enterprises",
+          "unit": "percentage",
+          "formula": "UNGC_violations = SUM(current_value_of_investments_in_violating_companies) / current_value_of_all_investments * 100",
+          "dataInputs": ["current_value_of_investment", "total_portfolio_value", "investee_ungc_oecd_violation_flag"],
+          "verified": true
+        },
+        {
+          "number": 11,
+          "name": "Lack of processes and compliance mechanisms to monitor compliance with UN Global Compact principles and OECD Guidelines for Multinational Enterprises",
+          "category": "Social and employee matters",
+          "applicableTo": "investee_companies",
+          "metric": "Share of investments in investee companies without policies to monitor compliance with the UNGC principles or OECD Guidelines for Multinational Enterprises or grievance/complaints handling mechanisms to address violations",
+          "unit": "percentage",
+          "formula": "No_compliance = SUM(current_value_of_investments_in_companies_without_compliance) / current_value_of_all_investments * 100",
+          "dataInputs": ["current_value_of_investment", "total_portfolio_value", "investee_ungc_oecd_compliance_policy_flag", "investee_grievance_mechanism_flag"],
+          "verified": true
+        },
+        {
+          "number": 12,
+          "name": "Unadjusted gender pay gap",
+          "category": "Social and employee matters",
+          "applicableTo": "investee_companies",
+          "metric": "Average unadjusted gender pay gap of investee companies",
+          "unit": "percentage",
+          "formula": "Gender_pay_gap = SUM_i(weight_i * unadjusted_gender_pay_gap_i), where weight_i = current_value_investment_i / current_value_all_investments. Unadjusted gender pay gap = (avg_male_pay - avg_female_pay) / avg_male_pay * 100",
+          "dataInputs": ["current_value_of_investment", "total_portfolio_value", "investee_avg_male_gross_hourly_earnings", "investee_avg_female_gross_hourly_earnings"],
+          "verified": true
+        },
+        {
+          "number": 13,
+          "name": "Board gender diversity",
+          "category": "Social and employee matters",
+          "applicableTo": "investee_companies",
+          "metric": "Average ratio of female to male board members in investee companies, expressed as a percentage of all board members",
+          "unit": "percentage",
+          "formula": "Board_diversity = SUM_i(weight_i * (female_board_members_i / total_board_members_i * 100)), where weight_i = current_value_investment_i / current_value_all_investments",
+          "dataInputs": ["current_value_of_investment", "total_portfolio_value", "investee_female_board_members", "investee_total_board_members"],
+          "verified": true
+        },
+        {
+          "number": 14,
+          "name": "Exposure to controversial weapons",
+          "category": "Social and employee matters",
+          "applicableTo": "investee_companies",
+          "metric": "Share of investments in investee companies involved in the manufacture or selling of controversial weapons (anti-personnel mines, cluster munitions, chemical weapons and biological weapons)",
+          "unit": "percentage",
+          "formula": "Controversial_weapons = SUM(current_value_of_investments_in_controversial_weapons_companies) / current_value_of_all_investments * 100",
+          "dataInputs": ["current_value_of_investment", "total_portfolio_value", "investee_controversial_weapons_flag"],
+          "weaponTypes": ["Anti-personnel mines", "Cluster munitions", "Chemical weapons", "Biological weapons"],
+          "verified": true
+        }
+      ],
+      "sovereignAndSupranational": [
+        {
+          "number": 15,
+          "name": "GHG intensity",
+          "category": "Environmental",
+          "applicableTo": "sovereigns_and_supranationals",
+          "metric": "GHG intensity of investee countries",
+          "unit": "tonnes CO2e / EUR million GDP",
+          "formula": "Sovereign_GHG_intensity = SUM_i(weight_i * (GHG_emissions_country_i / GDP_country_i)), where weight_i = current_value_investment_i / current_value_all_sovereign_investments",
+          "dataInputs": ["current_value_of_sovereign_investment", "total_sovereign_portfolio_value", "country_ghg_emissions", "country_gdp"],
+          "verified": true
+        },
+        {
+          "number": 16,
+          "name": "Investee countries subject to social violations",
+          "category": "Social",
+          "applicableTo": "sovereigns_and_supranationals",
+          "metric": "Number of investee countries subject to social violations (absolute number and relative number divided by all investee countries), as referred to in international treaties and conventions, United Nations principles and, where applicable, national law",
+          "unit": "count and percentage",
+          "formula": "Social_violations_count = COUNT(countries_with_social_violations). Social_violations_pct = Social_violations_count / total_investee_countries * 100",
+          "dataInputs": ["investee_country_list", "country_social_violation_flag"],
+          "verified": true
+        }
+      ],
+      "realEstate": [
+        {
+          "number": 17,
+          "name": "Exposure to fossil fuels through real estate assets",
+          "category": "Environmental",
+          "applicableTo": "real_estate_assets",
+          "metric": "Share of investments in real estate assets involved in the extraction, storage, transport or manufacture of fossil fuels",
+          "unit": "percentage",
+          "formula": "RE_fossil_exposure = SUM(value_of_real_estate_assets_involved_in_fossil_fuels) / current_value_of_all_real_estate_investments * 100",
+          "dataInputs": ["real_estate_asset_value", "total_real_estate_portfolio_value", "real_estate_fossil_fuel_involvement_flag"],
+          "verified": true
+        },
+        {
+          "number": 18,
+          "name": "Exposure to energy-inefficient real estate assets",
+          "category": "Environmental",
+          "applicableTo": "real_estate_assets",
+          "metric": "Share of investments in energy-inefficient real estate assets",
+          "unit": "percentage",
+          "formula": "RE_energy_inefficient = SUM(value_of_energy_inefficient_real_estate_assets) / current_value_of_all_real_estate_investments * 100. Energy-inefficient = EPC below C (or in top 30% of national energy consumption for non-EPC jurisdictions)",
+          "dataInputs": ["real_estate_asset_value", "total_real_estate_portfolio_value", "real_estate_epc_rating", "real_estate_energy_consumption"],
+          "verified": true
+        }
+      ]
+    },
+    "optionalIndicators": {
+      "climateAndEnvironment": [
+        {"number": 1, "name": "Emissions of inorganic pollutants", "category": "Emissions"},
+        {"number": 2, "name": "Emissions of air pollutants", "category": "Emissions"},
+        {"number": 3, "name": "Emissions of ozone depletion substances", "category": "Emissions"},
+        {"number": 4, "name": "Investments in companies without carbon emission reduction initiatives", "category": "Greenhouse gas emissions"},
+        {"number": 5, "name": "Breakdown of energy consumption by type of non-renewable sources", "category": "Energy performance"},
+        {"number": 6, "name": "Water usage and recycling", "category": "Water, waste and material emissions"},
+        {"number": 7, "name": "Investments in companies without water management policies", "category": "Water, waste and material emissions"},
+        {"number": 8, "name": "Exposure to areas of high water stress", "category": "Water, waste and material emissions"},
+        {"number": 9, "name": "Investments in companies producing chemicals", "category": "Water, waste and material emissions"},
+        {"number": 10, "name": "Land degradation, desertification, soil sealing", "category": "Water, waste and material emissions"},
+        {"number": 11, "name": "Investments in companies without sustainable land/agriculture practices", "category": "Water, waste and material emissions"},
+        {"number": 12, "name": "Investments in companies without sustainable oceans/seas practices", "category": "Water, waste and material emissions"},
+        {"number": 13, "name": "Non-recycled waste ratio", "category": "Water, waste and material emissions"},
+        {"number": 14, "name": "Natural species and protected areas", "category": "Water, waste and material emissions"},
+        {"number": 15, "name": "Deforestation", "category": "Water, waste and material emissions"},
+        {"number": 16, "name": "Share of securities not certified as green under future EU acts", "category": "Green securities"},
+        {"number": 17, "name": "Share of energy from nuclear sources", "category": "Energy performance"},
+        {"number": 18, "name": "Share of energy from non-renewable sources used by real estate assets", "category": "Real estate - Energy performance"},
+        {"number": 19, "name": "GHG emissions per square meter of real estate assets", "category": "Real estate - Greenhouse gas emissions"},
+        {"number": 20, "name": "Exposure to fossil fuels through real estate assets (additional breakdown)", "category": "Real estate - Energy performance"},
+        {"number": 21, "name": "Investments in real estate without consideration of energy efficiency", "category": "Real estate - Energy performance"},
+        {"number": 22, "name": "Average energy efficiency score of real estate assets", "category": "Real estate - Energy performance"},
+        {"number": 23, "name": "Share of bonds not certified as green", "category": "Green securities"},
+        {"number": 24, "name": "Carbon emissions per square meter for high-impact sectors", "category": "Greenhouse gas emissions"}
+      ],
+      "socialAndGovernance": [
+        {"number": 1, "name": "Investments in companies without workplace accident prevention policies", "category": "Social and employee matters"},
+        {"number": 2, "name": "Rate of accidents", "category": "Social and employee matters"},
+        {"number": 3, "name": "Number of days lost to injuries, accidents, fatalities or illness", "category": "Social and employee matters"},
+        {"number": 4, "name": "Lack of a supplier code of conduct", "category": "Social and employee matters"},
+        {"number": 5, "name": "Lack of grievance/complaints handling mechanism related to employee matters", "category": "Social and employee matters"},
+        {"number": 6, "name": "Insufficient whistleblower protection", "category": "Social and employee matters"},
+        {"number": 7, "name": "Incidents of discrimination", "category": "Social and employee matters"},
+        {"number": 8, "name": "Excessive CEO pay ratio", "category": "Social and employee matters"},
+        {"number": 9, "name": "Lack of a human rights policy", "category": "Human rights"},
+        {"number": 10, "name": "Lack of due diligence", "category": "Human rights"},
+        {"number": 11, "name": "Lack of processes and measures for preventing trafficking in human beings", "category": "Human rights"},
+        {"number": 12, "name": "Operations and suppliers at significant risk of incidents of child labour", "category": "Human rights"},
+        {"number": 13, "name": "Operations and suppliers at significant risk of incidents of forced or compulsory labour", "category": "Human rights"},
+        {"number": 14, "name": "Number of identified cases of severe human rights issues and incidents", "category": "Human rights"},
+        {"number": 15, "name": "Lack of anti-corruption and anti-bribery policies", "category": "Anti-corruption and anti-bribery"},
+        {"number": 16, "name": "Cases of insufficient action taken to address breaches of standards of anti-corruption and anti-bribery", "category": "Anti-corruption and anti-bribery"},
+        {"number": 17, "name": "Number of convictions and amount of fines for violation of anti-corruption and anti-bribery laws", "category": "Anti-corruption and anti-bribery"},
+        {"number": 18, "name": "Average income inequality score", "category": "Sovereigns - Social"},
+        {"number": 19, "name": "Average freedom of expression score", "category": "Sovereigns - Social"},
+        {"number": 20, "name": "Average human rights performance", "category": "Sovereigns - Human rights"},
+        {"number": 21, "name": "Average rule of law score", "category": "Sovereigns - Governance"},
+        {"number": 22, "name": "Average corruption score", "category": "Sovereigns - Governance"}
+      ]
+    }
+  },
+  "disclosureRequirements": {
+    "preContractual": {
+      "description": "Disclosures to be included in pre-contractual documents (prospectus, KIID, etc.)",
+      "article8": {
+        "template": "Annex II of Delegated Regulation (EU) 2022/1288",
+        "requiredSections": [
+          "Environmental and/or social characteristics promoted",
+          "Investment strategy description",
+          "Proportion of investments",
+          "Monitoring of E/S characteristics",
+          "Methodologies used",
+          "Data sources and processing",
+          "Limitations to methodologies and data",
+          "Due diligence procedures",
+          "Engagement policies",
+          "Designated reference benchmark (if applicable)"
+        ]
+      },
+      "article9": {
+        "template": "Annex III of Delegated Regulation (EU) 2022/1288",
+        "requiredSections": [
+          "Sustainable investment objective",
+          "No significant harm to any sustainable investment objective",
+          "Investment strategy description",
+          "Proportion of investments",
+          "Monitoring of sustainable investment objective",
+          "Methodologies used",
+          "Data sources and processing",
+          "Limitations to methodologies and data",
+          "Due diligence procedures",
+          "Engagement policies",
+          "Attainment of the sustainable investment objective"
+        ]
+      }
+    },
+    "periodic": {
+      "description": "Annual disclosures in periodic reports of the financial product",
+      "article8": {
+        "template": "Annex IV of Delegated Regulation (EU) 2022/1288",
+        "requiredSections": [
+          "Extent to which E/S characteristics were met",
+          "Top investments",
+          "Proportion of sustainability-related investments",
+          "Actions taken to meet E/S characteristics",
+          "How the reference benchmark was used (if applicable)"
+        ]
+      },
+      "article9": {
+        "template": "Annex V of Delegated Regulation (EU) 2022/1288",
+        "requiredSections": [
+          "Extent to which sustainable investment objective was attained",
+          "Top investments",
+          "Proportion of sustainability-related investments",
+          "Actions taken to attain the sustainable investment objective",
+          "How the reference benchmark was used"
+        ]
+      }
+    },
+    "website": {
+      "description": "Ongoing disclosures on the financial market participant's website",
+      "article10Requirements": [
+        "Description of the E/S characteristics or sustainable investment objective",
+        "Information on methodologies used to assess, measure and monitor",
+        "Pre-contractual and periodic information",
+        "Summary of the product",
+        "Updated at least annually"
+      ]
+    },
+    "entityLevel": {
+      "description": "Entity-level disclosures required of financial market participants",
+      "article3": "Integration of sustainability risks in investment decisions — policies published on website",
+      "article4": "Adverse sustainability impacts — statement on website (comply or explain for entities with <500 employees)",
+      "article5": "Sustainability risks in remuneration policies — information on website"
+    }
+  }
+}

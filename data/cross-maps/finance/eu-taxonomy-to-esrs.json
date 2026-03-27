@@ -1,0 +1,194 @@
+{
+  "description": "Cross-framework mapping from EU Taxonomy environmental objectives to ESRS (European Sustainability Reporting Standards) disclosure requirements",
+  "sourceFramework": "eu-taxonomy",
+  "targetFramework": "esrs",
+  "version": "1.0",
+  "lastUpdated": "2025-06-01",
+  "notes": "Mapping between the 6 EU Taxonomy environmental objectives and corresponding ESRS topical standards. Companies reporting under CSRD must disclose Taxonomy KPIs (turnover, CapEx, OpEx) as part of their ESRS reporting. ESRS 2 Appendix C explicitly references Taxonomy disclosure requirements. This mapping identifies which ESRS disclosures provide the underlying data for Taxonomy assessments.",
+  "mappings": [
+    {
+      "source_code": "Taxonomy-Obj1",
+      "source_name": "Climate change mitigation",
+      "target_code": "ESRS E1",
+      "target_name": "Climate change",
+      "mapping": "equivalent",
+      "notes": "ESRS E1 covers all climate-related disclosures including GHG emissions, energy, transition plans. Taxonomy Objective 1 substantial contribution criteria directly correspond to ESRS E1 metrics."
+    },
+    {
+      "source_code": "Taxonomy-Obj1",
+      "source_name": "Climate change mitigation — GHG emissions thresholds",
+      "target_code": "ESRS E1-6",
+      "target_name": "Gross Scopes 1, 2, 3 and total GHG emissions",
+      "mapping": "equivalent",
+      "notes": "Taxonomy technical screening criteria often set GHG emission thresholds (e.g., < 100 gCO2e/kWh for electricity generation). ESRS E1-6 requires disclosure of Scope 1, 2, 3 emissions data that feeds into Taxonomy alignment assessment."
+    },
+    {
+      "source_code": "Taxonomy-Obj1",
+      "source_name": "Climate change mitigation — Energy performance",
+      "target_code": "ESRS E1-5",
+      "target_name": "Energy consumption and mix",
+      "mapping": "equivalent",
+      "notes": "Taxonomy criteria for buildings, manufacturing and other activities reference energy consumption and renewable energy share. ESRS E1-5 requires disclosure of total energy consumption, renewable vs non-renewable breakdown, and energy intensity."
+    },
+    {
+      "source_code": "Taxonomy-Obj1",
+      "source_name": "Climate change mitigation — Transition plans",
+      "target_code": "ESRS E1-1",
+      "target_name": "Transition plan for climate change mitigation",
+      "mapping": "equivalent",
+      "notes": "ESRS E1-1 requires disclosure of transition plan aligned with limiting global warming to 1.5°C. Taxonomy alignment of CapEx plans directly relates to the transition plan disclosures under ESRS."
+    },
+    {
+      "source_code": "Taxonomy-Obj1",
+      "source_name": "Climate change mitigation — Targets",
+      "target_code": "ESRS E1-4",
+      "target_name": "Targets related to climate change mitigation and adaptation",
+      "mapping": "equivalent",
+      "notes": "ESRS E1-4 requires GHG emission reduction targets. Taxonomy alignment assessment considers whether activities support Paris-aligned decarbonisation."
+    },
+    {
+      "source_code": "Taxonomy-Obj2",
+      "source_name": "Climate change adaptation",
+      "target_code": "ESRS E1",
+      "target_name": "Climate change",
+      "mapping": "equivalent",
+      "notes": "Taxonomy Objective 2 adaptation criteria overlap with ESRS E1 requirements on climate risk assessment, physical risks, and adaptation measures."
+    },
+    {
+      "source_code": "Taxonomy-Obj2",
+      "source_name": "Climate change adaptation — Risk assessment",
+      "target_code": "ESRS E1-9",
+      "target_name": "Anticipated financial effects from material physical and transition risks",
+      "mapping": "equivalent",
+      "notes": "Taxonomy DNSH Appendix A requires climate risk and vulnerability assessment. ESRS E1-9 requires disclosure of anticipated financial effects from physical and transition risks. Both require analysis of acute and chronic physical risks."
+    },
+    {
+      "source_code": "Taxonomy-Obj3",
+      "source_name": "Sustainable use and protection of water and marine resources",
+      "target_code": "ESRS E3",
+      "target_name": "Water and marine resources",
+      "mapping": "equivalent",
+      "notes": "Taxonomy Objective 3 criteria align with ESRS E3 disclosures on water consumption, water management policies, and impact on water bodies."
+    },
+    {
+      "source_code": "Taxonomy-Obj3",
+      "source_name": "Water — Consumption and management",
+      "target_code": "ESRS E3-4",
+      "target_name": "Water consumption",
+      "mapping": "equivalent",
+      "notes": "Taxonomy water criteria reference Water Framework Directive good status requirements. ESRS E3-4 requires disclosure of total water consumption and water consumption in water-stressed areas."
+    },
+    {
+      "source_code": "Taxonomy-Obj3",
+      "source_name": "Water — Policies and targets",
+      "target_code": "ESRS E3-1",
+      "target_name": "Policies related to water and marine resources",
+      "mapping": "equivalent",
+      "notes": "ESRS E3-1 requires disclosure of policies to manage water impacts, directly relevant to Taxonomy water DNSH criteria."
+    },
+    {
+      "source_code": "Taxonomy-Obj4",
+      "source_name": "Transition to a circular economy",
+      "target_code": "ESRS E5",
+      "target_name": "Resource use and circular economy",
+      "mapping": "equivalent",
+      "notes": "Taxonomy Objective 4 criteria on waste prevention, reuse and recycling align with ESRS E5 disclosures."
+    },
+    {
+      "source_code": "Taxonomy-Obj4",
+      "source_name": "Circular economy — Resource inflows",
+      "target_code": "ESRS E5-4",
+      "target_name": "Resource inflows",
+      "mapping": "equivalent",
+      "notes": "Taxonomy construction criteria require minimum recycled content and reuse. ESRS E5-4 requires disclosure of resource inflows including recycled/secondary materials."
+    },
+    {
+      "source_code": "Taxonomy-Obj4",
+      "source_name": "Circular economy — Waste",
+      "target_code": "ESRS E5-5",
+      "target_name": "Resource outflows",
+      "mapping": "equivalent",
+      "notes": "Taxonomy DNSH criteria for circular economy reference waste hierarchy and recycling rates (e.g., 70% CDW recycling for construction). ESRS E5-5 requires disclosure of waste generated and waste treatment including recycling rates."
+    },
+    {
+      "source_code": "Taxonomy-Obj5",
+      "source_name": "Pollution prevention and control",
+      "target_code": "ESRS E2",
+      "target_name": "Pollution",
+      "mapping": "equivalent",
+      "notes": "Taxonomy Objective 5 criteria on pollution prevention align with ESRS E2 disclosures on pollutant emissions to air, water, and soil."
+    },
+    {
+      "source_code": "Taxonomy-Obj5",
+      "source_name": "Pollution — Air emissions",
+      "target_code": "ESRS E2-4",
+      "target_name": "Pollution of air, water and soil",
+      "mapping": "equivalent",
+      "notes": "Taxonomy DNSH pollution criteria reference BAT-AEL limits under Industrial Emissions Directive. ESRS E2-4 requires disclosure of pollutant emissions quantities."
+    },
+    {
+      "source_code": "Taxonomy-Obj5",
+      "source_name": "Pollution — Substances of concern",
+      "target_code": "ESRS E2-5",
+      "target_name": "Substances of concern and substances of very high concern",
+      "mapping": "equivalent",
+      "notes": "Taxonomy DNSH criteria require building materials not to contain substances of very high concern (SVHC). ESRS E2-5 requires disclosure of substances of concern produced or used."
+    },
+    {
+      "source_code": "Taxonomy-Obj6",
+      "source_name": "Protection and restoration of biodiversity and ecosystems",
+      "target_code": "ESRS E4",
+      "target_name": "Biodiversity and ecosystems",
+      "mapping": "equivalent",
+      "notes": "Taxonomy Objective 6 criteria on biodiversity conservation align with ESRS E4 disclosures."
+    },
+    {
+      "source_code": "Taxonomy-Obj6",
+      "source_name": "Biodiversity — Impact assessment",
+      "target_code": "ESRS E4-5",
+      "target_name": "Impact metrics related to biodiversity and ecosystems change",
+      "mapping": "equivalent",
+      "notes": "Taxonomy DNSH Appendix D requires EIA for biodiversity-sensitive areas. ESRS E4-5 requires disclosure of impact metrics including sites near protected areas."
+    },
+    {
+      "source_code": "Taxonomy-DNSH-Adaptation",
+      "source_name": "DNSH to Climate adaptation (Appendix A)",
+      "target_code": "ESRS E1-9",
+      "target_name": "Anticipated financial effects from material physical and transition risks",
+      "mapping": "equivalent",
+      "notes": "Taxonomy Appendix A DNSH requires climate risk assessment considering acute and chronic physical risks. ESRS E1-9 requires the same climate risk analysis."
+    },
+    {
+      "source_code": "Taxonomy-MinSafeguards",
+      "source_name": "Minimum social safeguards (Article 18)",
+      "target_code": "ESRS S1",
+      "target_name": "Own workforce",
+      "mapping": "partial",
+      "notes": "Taxonomy minimum safeguards reference OECD Guidelines, UNGPs, ILO standards. ESRS S1 covers own workforce topics including due diligence. Partial because safeguards also cover supply chain (ESRS S2) and communities (ESRS S3)."
+    },
+    {
+      "source_code": "Taxonomy-MinSafeguards",
+      "source_name": "Minimum social safeguards — Human rights due diligence",
+      "target_code": "ESRS S1-1",
+      "target_name": "Policies related to own workforce",
+      "mapping": "partial",
+      "notes": "Taxonomy safeguards require human rights due diligence per UNGPs. ESRS S1-1 requires disclosure of policies related to own workforce including human rights commitments."
+    },
+    {
+      "source_code": "Taxonomy-MinSafeguards",
+      "source_name": "Minimum social safeguards — Anti-corruption",
+      "target_code": "ESRS G1-3",
+      "target_name": "Prevention and detection of corruption and bribery",
+      "mapping": "equivalent",
+      "notes": "Taxonomy minimum safeguards cover anti-corruption (referencing OECD Guidelines Chapter VII). ESRS G1-3 requires disclosure of anti-corruption policies and prevention measures."
+    },
+    {
+      "source_code": "Taxonomy-KPIs",
+      "source_name": "Taxonomy reporting KPIs (Turnover, CapEx, OpEx)",
+      "target_code": "ESRS 2-BP-2",
+      "target_name": "Disclosures in relation to specific circumstances",
+      "mapping": "related",
+      "notes": "ESRS 2 Appendix C requires undertakings to disclose Taxonomy-related information. The Taxonomy Disclosures Delegated Act specifies the KPI templates. ESRS integrates but does not duplicate Taxonomy reporting requirements."
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "id": "fw-cbs-v4",
+  "code": "cbs",
+  "name": "Climate Bonds Standard",
+  "version": "4.0",
+  "effectiveDate": "2023-01-01",
+  "issuingBody": "Climate Bonds Initiative (CBI)",
+  "region": "global",
+  "type": "voluntary",
+  "description": "The Climate Bonds Standard and Certification Scheme is an investor-focused labelling scheme for bonds and loans. It allows investors and intermediaries to easily assess whether bonds and loans are aligned with the goals of the Paris Agreement. Version 4.0 introduces enhanced requirements for transition finance and entity-level credibility.",
+  "certificationProcess": {
+    "overview": "The Climate Bonds Certification is a two-step process: pre-issuance certification (confirming intended use of proceeds and framework alignment) and post-issuance certification (confirming actual allocation of proceeds).",
+    "steps": [
+      {
+        "step": 1,
+        "name": "Pre-Issuance Certification",
+        "description": "Before or at the time of issuance. Issuer appoints an Approved Verifier who assesses conformance with the Climate Bonds Standard, including proposed use of proceeds and alignment with sector-specific criteria.",
+        "requirements": [
+          "Nominated projects and assets meet applicable Sector Criteria",
+          "Internal processes and controls for tracking, managing proceeds, and reporting are adequate",
+          "Issuer's climate strategy and transition plan assessed (v4.0 requirement)"
+        ],
+        "timeline": "Typically 4-6 weeks before issuance"
+      },
+      {
+        "step": 2,
+        "name": "Post-Issuance Certification",
+        "description": "Within 24 months of issuance. Issuer confirms that proceeds have been allocated as described in the pre-issuance application.",
+        "requirements": [
+          "Proceeds allocated to eligible green projects/assets",
+          "Allocation reporting completed",
+          "Ongoing compliance with Sector Criteria confirmed",
+          "Post-issuance verification report from Approved Verifier"
+        ],
+        "timeline": "Within 24 months of issuance"
+      }
+    ],
+    "approvedVerifiers": "CBI maintains a list of Approved Verifiers who are authorised to conduct Climate Bonds verification. These are typically major audit/assurance firms and specialist ESG verifiers.",
+    "certificationMark": "Certified Climate Bond — use of the certification mark is conditional on maintaining post-issuance compliance.",
+    "fees": "Certification fees are based on the size of the issuance and range from $1,000 to $10,000+ depending on deal size."
+  },
+  "sectorCriteria": {
+    "description": "The Climate Bonds Taxonomy provides sector-specific eligibility criteria. Each sector has detailed technical criteria that projects/assets must meet to qualify for certification.",
+    "sectors": [
+      {
+        "id": "cbs-solar",
+        "name": "Solar Energy",
+        "version": "2.1",
+        "eligibleActivities": [
+          "Solar PV manufacturing",
+          "Solar PV electricity generation",
+          "Concentrated Solar Power (CSP) generation",
+          "Solar thermal heating and cooling",
+          "Dedicated solar energy infrastructure (grid connection, transmission)"
+        ],
+        "criteria": {
+          "automaticEligibility": "All solar PV and CSP generation facilities are automatically eligible. No technology-specific thresholds apply.",
+          "exclusions": ["Facilities co-located with fossil fuel generation (unless clearly separated)", "Solar facilities on land cleared of high carbon stock/high conservation value areas after 2020"]
+        },
+        "reporting": ["Installed capacity (MW)", "Annual energy generation (MWh)", "GHG emissions avoided (tCO2e)"]
+      },
+      {
+        "id": "cbs-wind",
+        "name": "Wind Energy",
+        "version": "2.1",
+        "eligibleActivities": [
+          "Onshore wind energy generation",
+          "Offshore wind energy generation",
+          "Wind turbine component manufacturing",
+          "Dedicated wind energy infrastructure (grid connection, substations)"
+        ],
+        "criteria": {
+          "automaticEligibility": "All onshore and offshore wind generation facilities are automatically eligible.",
+          "exclusions": ["Facilities that have not completed Environmental Impact Assessment where required"]
+        },
+        "reporting": ["Installed capacity (MW)", "Annual energy generation (MWh)", "GHG emissions avoided (tCO2e)", "Capacity factor (%)"]
+      },
+      {
+        "id": "cbs-buildings",
+        "name": "Buildings",
+        "version": "1.1",
+        "eligibleActivities": [
+          "Construction of new low-carbon buildings",
+          "Upgrade/retrofit of existing buildings",
+          "Acquisition of existing low-carbon buildings"
+        ],
+        "criteria": {
+          "newBuildings": {
+            "requirement": "Must be within the top 15% of building stock by carbon emissions in the local jurisdiction, OR meet a recognised green building certification (minimum level specified per certification system).",
+            "certifications": {
+              "LEED": "Gold or above",
+              "BREEAM": "Excellent or above",
+              "EDGE": "EDGE certified (20% improvement)",
+              "GreenStar": "5 Star or above",
+              "DGNB": "Gold or above"
+            }
+          },
+          "existingBuildings": {
+            "requirement": "Must be within the top 15% of building stock, OR achieve at least a 30% improvement in energy intensity through retrofit."
+          },
+          "upgrades": {
+            "requirement": "Must achieve a minimum 30% improvement in energy performance or carbon intensity."
+          }
+        },
+        "reporting": ["Energy Performance Certificate (EPC) rating or equivalent", "Energy intensity (kWh/m2/year)", "Carbon intensity (kgCO2e/m2/year)", "Green building certification level"]
+      },
+      {
+        "id": "cbs-transport",
+        "name": "Low Carbon Transport",
+        "version": "2.0",
+        "eligibleActivities": [
+          "Electric and hydrogen vehicles and charging infrastructure",
+          "Public passenger transport (bus, rail, metro, tram)",
+          "Rail freight transport",
+          "Cycling infrastructure",
+          "Low-carbon shipping (vessels meeting emissions thresholds)"
+        ],
+        "criteria": {
+          "privateVehicles": {
+            "requirement": "Zero direct (tailpipe) emissions only (BEV, FCEV). ICE and conventional hybrids are excluded.",
+            "threshold": "0 gCO2/km direct emissions"
+          },
+          "publicTransport": {
+            "buses": "Zero direct emissions, OR meeting specified gCO2/pkm threshold declining over time",
+            "rail": "Electrified rail is automatically eligible. Diesel rail excluded unless part of an electrification programme.",
+            "metro_tram": "Automatically eligible"
+          },
+          "shipping": {
+            "requirement": "Must demonstrate emissions intensity at least 40% below the IMO 2008 baseline, declining to zero by 2050.",
+            "metric": "gCO2/t-nm (grams CO2 per tonne-nautical mile)"
+          }
+        },
+        "reporting": ["Annual GHG emissions avoided (tCO2e)", "Passenger-km or tonne-km served", "Fuel efficiency metrics", "Share of zero-emission fleet"]
+      },
+      {
+        "id": "cbs-water",
+        "name": "Water Infrastructure",
+        "version": "1.0",
+        "eligibleActivities": [
+          "Water treatment and supply",
+          "Wastewater treatment",
+          "Flood defence and stormwater management",
+          "Natural water retention measures (nature-based solutions)",
+          "Water efficiency improvements"
+        ],
+        "criteria": {
+          "waterTreatment": {
+            "requirement": "Facility must meet applicable environmental discharge standards. Energy efficiency measures should be in place or planned.",
+            "exclusion": "Desalination plants powered predominantly by fossil fuels are excluded unless they meet specific energy efficiency criteria."
+          },
+          "floodDefence": {
+            "requirement": "Projects must be informed by climate risk assessments incorporating future climate projections."
+          }
+        },
+        "reporting": ["Volume of water treated/supplied (m3)", "Energy consumption per volume treated (kWh/m3)", "Population served", "Flood risk reduction achieved"]
+      }
+    ]
+  },
+  "v4Enhancements": {
+    "description": "Version 4.0 of the Climate Bonds Standard introduced significant enhancements focused on entity-level credibility and transition planning.",
+    "entityLevelRequirements": {
+      "transitionPlan": {
+        "description": "Issuers must have a credible entity-level transition plan aligned with 1.5°C pathways.",
+        "requirements": [
+          "Paris-aligned GHG emission reduction targets covering Scope 1, 2 and material Scope 3",
+          "Short-term (5 years), medium-term (2030) and long-term (2050) targets",
+          "Decarbonisation strategy and actions to achieve targets",
+          "Governance arrangements for transition plan oversight",
+          "Disclosure of transition plan in accordance with recognised frameworks (e.g., TCFD, ISSB)"
+        ]
+      },
+      "noNewFossilFuels": {
+        "description": "Issuers cannot be expanding fossil fuel production or reserves.",
+        "requirements": [
+          "No new fossil fuel exploration or production projects",
+          "No expansion of existing fossil fuel extraction capacity",
+          "Phase-out plan for existing fossil fuel activities (if applicable)"
+        ]
+      },
+      "lobbyingAlignment": {
+        "description": "Issuer's lobbying activities must be aligned with Paris Agreement goals.",
+        "requirements": [
+          "No lobbying against climate policy",
+          "Disclosure of trade association memberships and alignment assessment"
+        ]
+      }
+    },
+    "transitionLabels": {
+      "description": "v4.0 introduces specific provisions for transition finance — recognising that hard-to-abate sectors need pathways to decarbonise.",
+      "requirements": [
+        "Entity-level transition plan meeting CBI requirements",
+        "Sector-specific pathway alignment",
+        "Measurable interim targets",
+        "Independent verification of transition plan credibility"
+      ]
+    }
+  },
+  "postIssuanceReporting": {
+    "frequency": "Annual until proceeds are fully allocated, then at least annually for the life of the bond",
+    "requirements": [
+      {
+        "type": "Allocation reporting",
+        "details": ["Total proceeds allocated per eligible category", "Geographic distribution of projects", "Share of financing vs. refinancing", "Balance of unallocated proceeds"]
+      },
+      {
+        "type": "Eligibility reporting",
+        "details": ["Confirmation that nominated projects/assets continue to meet Sector Criteria", "Any changes to the project/asset portfolio", "Any project/asset substitutions"]
+      },
+      {
+        "type": "Impact reporting",
+        "details": ["GHG emissions avoided/reduced (tCO2e)", "Sector-specific impact metrics as defined in Sector Criteria", "Methodology and assumptions used for impact calculations"]
+      },
+      {
+        "type": "Entity-level reporting (v4.0)",
+        "details": ["Progress against transition plan targets", "Entity-wide GHG emissions (Scope 1, 2, 3)", "Key actions taken in the reporting period"]
+      }
+    ]
+  }
+}

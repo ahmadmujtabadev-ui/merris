@@ -1,0 +1,170 @@
+{
+  "description": "Cross-framework mapping from SFDR disclosure requirements and PAI indicators to TCFD recommendations",
+  "sourceFramework": "sfdr",
+  "targetFramework": "tcfd",
+  "version": "1.0",
+  "lastUpdated": "2025-06-01",
+  "notes": "Mapping between SFDR entity-level and product-level disclosures to TCFD's four pillars (Governance, Strategy, Risk Management, Metrics and Targets). SFDR focuses on financial market participants' sustainability disclosures; TCFD focuses on climate-related financial disclosures. Overlap is significant in climate-related areas but SFDR has broader ESG scope. TCFD recommendations were effectively superseded by ISSB IFRS S2 from 2024, but remain widely referenced.",
+  "mappings": [
+    {
+      "source_code": "SFDR-Art3",
+      "source_name": "Integration of sustainability risks in investment decision-making (entity-level policy)",
+      "target_code": "TCFD-RM-a",
+      "target_name": "Risk Management — Processes for identifying and assessing climate-related risks",
+      "mapping": "partial",
+      "notes": "SFDR Article 3 requires policies on sustainability risk integration. TCFD RM-a asks for processes to identify/assess climate-related risks. SFDR is broader (all sustainability risks), TCFD is climate-specific but deeper."
+    },
+    {
+      "source_code": "SFDR-Art3",
+      "source_name": "Integration of sustainability risks in investment decision-making",
+      "target_code": "TCFD-RM-b",
+      "target_name": "Risk Management — Processes for managing climate-related risks",
+      "mapping": "partial",
+      "notes": "SFDR Article 3 policies describe how sustainability risks are managed in investment decisions. TCFD RM-b asks how climate risks are managed. Overlap on climate dimension."
+    },
+    {
+      "source_code": "SFDR-Art4",
+      "source_name": "Adverse sustainability impacts statement (entity-level PAI statement)",
+      "target_code": "TCFD-M&T-a",
+      "target_name": "Metrics and Targets — Metrics used to assess climate-related risks and opportunities",
+      "mapping": "partial",
+      "notes": "SFDR Article 4 PAI statement includes climate metrics (PAI 1-6). TCFD M&T-a asks for climate metrics. PAI indicators provide specific quantitative metrics that overlap with TCFD metrics guidance."
+    },
+    {
+      "source_code": "SFDR-Art5",
+      "source_name": "Sustainability risks in remuneration policies",
+      "target_code": "TCFD-Gov-b",
+      "target_name": "Governance — Management's role in assessing and managing climate-related risks and opportunities",
+      "mapping": "related",
+      "notes": "SFDR Article 5 requires information on how remuneration integrates sustainability risks. TCFD Governance (b) describes management's role including incentive structures. Indirect overlap on governance integration."
+    },
+    {
+      "source_code": "SFDR-Art6",
+      "source_name": "Pre-contractual disclosure of sustainability risk integration (product-level)",
+      "target_code": "TCFD-Str-a",
+      "target_name": "Strategy — Climate-related risks and opportunities identified over short, medium and long term",
+      "mapping": "partial",
+      "notes": "SFDR Article 6 requires description of likely impacts of sustainability risks on returns. TCFD Strategy (a) asks for identification of climate risks over different time horizons. Both address how risks affect financial performance."
+    },
+    {
+      "source_code": "SFDR-Art6",
+      "source_name": "Pre-contractual disclosure — likely impact of sustainability risks on returns",
+      "target_code": "TCFD-Str-b",
+      "target_name": "Strategy — Impact of climate-related risks and opportunities on business, strategy and financial planning",
+      "mapping": "partial",
+      "notes": "SFDR Article 6 requires assessment of likely impacts on product returns. TCFD Strategy (b) asks for impact on business and financial planning. Both assess financial impact of sustainability/climate risks."
+    },
+    {
+      "source_code": "PAI-1",
+      "source_name": "GHG emissions (Scope 1, 2, 3)",
+      "target_code": "TCFD-M&T-b",
+      "target_name": "Metrics and Targets — Scope 1, Scope 2, and if appropriate Scope 3 GHG emissions",
+      "mapping": "equivalent",
+      "notes": "Direct alignment. Both require disclosure of Scope 1, 2 and 3 GHG emissions. SFDR aggregates at portfolio level using attribution; TCFD recommends entity-level reporting. The underlying data requirement is identical."
+    },
+    {
+      "source_code": "PAI-2",
+      "source_name": "Carbon footprint",
+      "target_code": "TCFD-M&T-a",
+      "target_name": "Metrics and Targets — Metrics used to assess climate-related risks and opportunities",
+      "mapping": "equivalent",
+      "notes": "Carbon footprint (tCO2e/EUR million invested) is a key climate metric. TCFD guidance for asset managers specifically recommends weighted average carbon intensity and total carbon emissions — closely aligned with PAI 2."
+    },
+    {
+      "source_code": "PAI-3",
+      "source_name": "GHG intensity of investee companies",
+      "target_code": "TCFD-M&T-a",
+      "target_name": "Metrics and Targets — Metrics used to assess climate-related risks and opportunities",
+      "mapping": "equivalent",
+      "notes": "TCFD supplemental guidance for asset managers recommends 'Weighted Average Carbon Intensity' (tCO2e/USD million revenue) — this is essentially PAI 3 with a different currency denomination."
+    },
+    {
+      "source_code": "PAI-4",
+      "source_name": "Exposure to companies active in the fossil fuel sector",
+      "target_code": "TCFD-M&T-a",
+      "target_name": "Metrics and Targets — Metrics used to assess climate-related risks and opportunities",
+      "mapping": "equivalent",
+      "notes": "TCFD guidance recommends disclosure of exposure to carbon-related assets (fossil fuels). PAI 4 provides a specific quantitative metric for this. TCFD's concept of 'carbon-related assets' aligns with SFDR fossil fuel sector definition."
+    },
+    {
+      "source_code": "PAI-5",
+      "source_name": "Share of non-renewable energy consumption and production",
+      "target_code": "TCFD-M&T-a",
+      "target_name": "Metrics and Targets — Metrics used to assess climate-related risks and opportunities",
+      "mapping": "partial",
+      "notes": "TCFD recommends energy-related metrics including proportion from renewable sources. PAI 5 measures the non-renewable share (inverse perspective). Same underlying data, different framing."
+    },
+    {
+      "source_code": "PAI-6",
+      "source_name": "Energy consumption intensity per high impact climate sector",
+      "target_code": "TCFD-M&T-a",
+      "target_name": "Metrics and Targets — Metrics used to assess climate-related risks and opportunities",
+      "mapping": "partial",
+      "notes": "TCFD recommends sector-specific energy intensity metrics. PAI 6 provides this broken down by NACE high-impact sectors. Conceptually aligned."
+    },
+    {
+      "source_code": "SFDR-Art8-PreContractual",
+      "source_name": "Article 8 pre-contractual disclosures (Annex II) — Environmental characteristics promoted",
+      "target_code": "TCFD-Str-b",
+      "target_name": "Strategy — Impact on business, strategy and financial planning",
+      "mapping": "partial",
+      "notes": "SFDR Article 8 pre-contractual disclosures describe how E/S characteristics are promoted in the investment strategy. Where characteristics are climate-related, this overlaps with TCFD strategy disclosures."
+    },
+    {
+      "source_code": "SFDR-Art9-PreContractual",
+      "source_name": "Article 9 pre-contractual disclosures (Annex III) — Sustainable investment objective",
+      "target_code": "TCFD-Str-b",
+      "target_name": "Strategy — Impact on business, strategy and financial planning",
+      "mapping": "partial",
+      "notes": "SFDR Article 9 products with climate-related sustainable investment objectives (e.g., Paris-aligned) provide strategy-level disclosure comparable to TCFD strategy pillar. SFDR is product-level; TCFD is entity-level."
+    },
+    {
+      "source_code": "SFDR-Art8-Periodic",
+      "source_name": "Article 8 periodic disclosures (Annex IV) — Extent to which E/S characteristics met",
+      "target_code": "TCFD-M&T-c",
+      "target_name": "Metrics and Targets — Targets used to manage climate-related risks and progress against targets",
+      "mapping": "partial",
+      "notes": "SFDR periodic reporting on attainment of E/S characteristics parallels TCFD's request for progress against climate targets. Both involve backward-looking performance assessment."
+    },
+    {
+      "source_code": "SFDR-Art9-Periodic",
+      "source_name": "Article 9 periodic disclosures (Annex V) — Extent to which sustainable investment objective attained",
+      "target_code": "TCFD-M&T-c",
+      "target_name": "Metrics and Targets — Targets used to manage climate-related risks and progress against targets",
+      "mapping": "partial",
+      "notes": "SFDR Article 9 periodic reporting on sustainable investment objective attainment overlaps with TCFD target progress reporting, particularly for climate-focused Article 9 funds."
+    },
+    {
+      "source_code": "SFDR-Art10-Website",
+      "source_name": "Website disclosures — methodologies and data sources",
+      "target_code": "TCFD-RM-c",
+      "target_name": "Risk Management — Integration of climate risk processes into overall risk management",
+      "mapping": "related",
+      "notes": "SFDR Article 10 website disclosures on methodologies and data sources relate to TCFD's process transparency requirements. Both aim for transparency on how sustainability/climate considerations are implemented."
+    },
+    {
+      "source_code": "SFDR-PAI-Statement",
+      "source_name": "Entity-level PAI statement — engagement policies",
+      "target_code": "TCFD-RM-b",
+      "target_name": "Risk Management — Processes for managing climate-related risks",
+      "mapping": "partial",
+      "notes": "SFDR PAI statement requires description of engagement policies to address adverse impacts. TCFD Risk Management describes processes for managing climate risks, which may include engagement. Overlap on how risks are actively managed."
+    },
+    {
+      "source_code": "SFDR-PAI-Statement",
+      "source_name": "Entity-level PAI statement — actions taken and planned",
+      "target_code": "TCFD-Str-c",
+      "target_name": "Strategy — Resilience of strategy under different climate scenarios",
+      "mapping": "related",
+      "notes": "SFDR PAI statement includes actions taken to mitigate adverse impacts. TCFD Strategy (c) asks about resilience under different scenarios. Both look at forward-looking response to sustainability/climate challenges, but from different angles."
+    },
+    {
+      "source_code": "PAI-15",
+      "source_name": "GHG intensity of sovereigns",
+      "target_code": "TCFD-M&T-a",
+      "target_name": "Metrics and Targets — Metrics used to assess climate-related risks",
+      "mapping": "partial",
+      "notes": "PAI 15 measures sovereign GHG intensity (tCO2e/EUR million GDP). TCFD guidance for asset owners recommends disclosure of portfolio-level climate metrics including for sovereign holdings. Conceptually aligned for sovereign bond portfolios."
+    }
+  ]
+}

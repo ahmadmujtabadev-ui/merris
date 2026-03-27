@@ -1,0 +1,415 @@
+{
+  "id": "fw-eu-taxonomy-2024",
+  "code": "eu-taxonomy",
+  "name": "EU Taxonomy Regulation",
+  "version": "2024",
+  "effectiveDate": "2020-07-12",
+  "lastAmended": "2023-06-27",
+  "issuingBody": "European Parliament and Council",
+  "region": "EU",
+  "type": "mandatory",
+  "legalBasis": "Regulation (EU) 2020/852",
+  "delegatedActs": [
+    "Climate Delegated Act (EU) 2021/2139",
+    "Complementary Climate Delegated Act (EU) 2022/1214 (nuclear and gas)",
+    "Environmental Delegated Act (EU) 2023/2486 (remaining four objectives)",
+    "Disclosures Delegated Act (EU) 2021/2178"
+  ],
+  "description": "The EU Taxonomy is a classification system establishing a list of environmentally sustainable economic activities. It provides a common language for investors, companies, and policymakers to identify which economic activities can be considered environmentally sustainable.",
+  "definitions": {
+    "taxonomyEligible": "An economic activity that is described in the EU Taxonomy delegated acts, irrespective of whether it meets any or all of the technical screening criteria. Eligibility simply means the activity is covered by the Taxonomy.",
+    "taxonomyAligned": "An economic activity that meets ALL of the following: (1) makes a substantial contribution to one or more environmental objectives, (2) does no significant harm (DNSH) to any other environmental objective, (3) complies with minimum social safeguards, AND (4) complies with technical screening criteria set out in the delegated acts.",
+    "substantialContribution": "The activity makes a substantial contribution to one of the six environmental objectives as defined in Articles 10-15 of the Taxonomy Regulation.",
+    "doNoSignificantHarm": "The activity does not significantly harm any of the other five environmental objectives, as determined by the DNSH criteria in the delegated acts.",
+    "minimumSafeguards": "The company carrying out the activity implements procedures to ensure alignment with the OECD Guidelines for Multinational Enterprises, UN Guiding Principles on Business and Human Rights, ILO Declaration on Fundamental Principles and Rights at Work, and the International Bill of Human Rights."
+  },
+  "environmentalObjectives": [
+    {
+      "number": 1,
+      "id": "climate_mitigation",
+      "name": "Climate change mitigation",
+      "article": "Article 10",
+      "description": "An economic activity shall qualify as contributing substantially to climate change mitigation where that activity contributes substantially to the stabilisation of GHG concentrations in the atmosphere at a level which prevents dangerous anthropogenic interference with the climate system, consistent with the long-term temperature goal of the Paris Agreement.",
+      "substantialContributionCriteria": [
+        "Generating, transmitting, storing, distributing or using renewable energy",
+        "Improving energy efficiency",
+        "Increasing clean or climate-neutral mobility",
+        "Switching to use of sustainably sourced renewable materials",
+        "Increasing use of environmentally safe carbon capture and utilisation (CCU) and carbon capture and storage (CCS) technologies",
+        "Strengthening land carbon sinks",
+        "Establishing energy infrastructure needed for decarbonisation",
+        "Producing clean and efficient fuels from renewable or carbon-neutral sources",
+        "Enabling any of the above activities"
+      ],
+      "effectiveDate": "2022-01-01"
+    },
+    {
+      "number": 2,
+      "id": "climate_adaptation",
+      "name": "Climate change adaptation",
+      "article": "Article 11",
+      "description": "An economic activity shall qualify as contributing substantially to climate change adaptation where that activity includes adaptation solutions that either substantially reduce the risk of the adverse impact of the current climate and the expected future climate on that economic activity itself, or substantially reduce the risk without increasing the risk of an adverse impact on people, nature or assets.",
+      "substantialContributionCriteria": [
+        "Reducing material physical climate risks to the activity",
+        "Providing adaptation solutions that reduce material physical climate risks of other activities, people, nature or assets",
+        "Based on robust climate projections"
+      ],
+      "effectiveDate": "2022-01-01"
+    },
+    {
+      "number": 3,
+      "id": "water",
+      "name": "Sustainable use and protection of water and marine resources",
+      "article": "Article 12",
+      "description": "An economic activity shall qualify as contributing substantially to the sustainable use and protection of water and marine resources where that activity contributes substantially to achieving the good status of bodies of water or preventing their deterioration, or to achieving the good environmental status of marine waters.",
+      "effectiveDate": "2024-01-01"
+    },
+    {
+      "number": 4,
+      "id": "circular_economy",
+      "name": "Transition to a circular economy",
+      "article": "Article 13",
+      "description": "An economic activity shall qualify as contributing substantially to the transition to a circular economy, including waste prevention, re-use and recycling.",
+      "effectiveDate": "2024-01-01"
+    },
+    {
+      "number": 5,
+      "id": "pollution",
+      "name": "Pollution prevention and control",
+      "article": "Article 14",
+      "description": "An economic activity shall qualify as contributing substantially to pollution prevention and control where that activity contributes substantially to pollution prevention and control.",
+      "effectiveDate": "2024-01-01"
+    },
+    {
+      "number": 6,
+      "id": "biodiversity",
+      "name": "Protection and restoration of biodiversity and ecosystems",
+      "article": "Article 15",
+      "description": "An economic activity shall qualify as contributing substantially to the protection and restoration of biodiversity and ecosystems where that activity contributes substantially to protecting, conserving or restoring biodiversity or to achieving the good condition of ecosystems.",
+      "effectiveDate": "2024-01-01"
+    }
+  ],
+  "technicalScreeningCriteria": {
+    "description": "Activity-level criteria defining when an economic activity makes a substantial contribution to an environmental objective and does no significant harm to other objectives. Organised by NACE code.",
+    "activities": [
+      {
+        "naceCode": "D35.11",
+        "activityCode": "4.1",
+        "name": "Electricity generation using solar photovoltaic technology",
+        "sector": "Energy",
+        "substantialContribution": {
+          "objective": "climate_mitigation",
+          "criteria": "The activity generates electricity using solar PV technology. Life-cycle GHG emissions from the generation of electricity from solar PV are lower than 100 gCO2e/kWh, declining to net-zero by 2050.",
+          "threshold": "< 100 gCO2e/kWh (life-cycle)"
+        },
+        "dnsh": {
+          "climate_adaptation": "The activity complies with the criteria set out in Appendix A (generic DNSH for adaptation: climate risk assessment and adaptation plan).",
+          "water": "N/A",
+          "circular_economy": "The activity assesses availability of and, where feasible, adopts techniques that support reuse and use of secondary raw materials and components in manufacturing, dismantling and end-of-life management.",
+          "pollution": "N/A",
+          "biodiversity": "The activity complies with Appendix D (generic DNSH for biodiversity: Environmental Impact Assessment)."
+        }
+      },
+      {
+        "naceCode": "D35.11",
+        "activityCode": "4.3",
+        "name": "Electricity generation from wind power",
+        "sector": "Energy",
+        "substantialContribution": {
+          "objective": "climate_mitigation",
+          "criteria": "The activity generates electricity from wind power. Life-cycle GHG emissions are lower than 100 gCO2e/kWh.",
+          "threshold": "< 100 gCO2e/kWh (life-cycle)"
+        },
+        "dnsh": {
+          "climate_adaptation": "Appendix A applies.",
+          "water": "N/A for onshore wind. For offshore wind: Environmental Impact Assessment addressing marine environment.",
+          "circular_economy": "Assess and adopt techniques for reuse, recycling of blades and components.",
+          "pollution": "N/A",
+          "biodiversity": "Environmental Impact Assessment including assessment of impact on birds and bats (onshore) or marine mammals (offshore). Appendix D applies."
+        }
+      },
+      {
+        "naceCode": "D35.11",
+        "activityCode": "4.5",
+        "name": "Electricity generation from hydropower",
+        "sector": "Energy",
+        "substantialContribution": {
+          "objective": "climate_mitigation",
+          "criteria": "Life-cycle GHG emissions lower than 100 gCO2e/kWh. For power plants > 10 MW: power density > 5 W/m2 OR life-cycle GHG < 100 gCO2e/kWh (third-party verified).",
+          "threshold": "< 100 gCO2e/kWh OR > 5 W/m2 power density"
+        },
+        "dnsh": {
+          "climate_adaptation": "Appendix A applies.",
+          "water": "Comply with Water Framework Directive. Maintain ecological flow. Implement mitigation measures for upstream/downstream fish migration.",
+          "circular_economy": "N/A",
+          "pollution": "N/A",
+          "biodiversity": "Environmental Impact Assessment. Comply with Natura 2000 requirements. Appendix D applies."
+        }
+      },
+      {
+        "naceCode": "D35.11",
+        "activityCode": "4.27",
+        "name": "Electricity generation from nuclear energy in existing installations",
+        "sector": "Energy",
+        "substantialContribution": {
+          "objective": "climate_mitigation",
+          "criteria": "Activity complies with Complementary Delegated Act (EU) 2022/1214. Modification authorised before 2040. Includes life extension or power uprate. Complies with nuclear safety directives. Adequate funding for decommissioning and waste management.",
+          "threshold": "Subject to specific conditions in Complementary Climate Delegated Act"
+        },
+        "dnsh": {
+          "climate_adaptation": "Appendix A applies.",
+          "water": "Comply with Water Framework Directive.",
+          "circular_economy": "Radioactive waste management plan in place.",
+          "pollution": "Non-radioactive emissions within or below Industrial Emissions Directive limits.",
+          "biodiversity": "Environmental Impact Assessment. Appendix D applies."
+        },
+        "notes": "Added by Complementary Climate Delegated Act (EU) 2022/1214. Controversial — subject to specific conditions and sunset provisions."
+      },
+      {
+        "naceCode": "D35.11",
+        "activityCode": "4.29",
+        "name": "Electricity generation from fossil gaseous fuels",
+        "sector": "Energy",
+        "substantialContribution": {
+          "objective": "climate_mitigation",
+          "criteria": "Life-cycle emissions < 100 gCO2e/kWh, OR direct emissions < 270 gCO2e/kWh or annual average < 550 kgCO2e/kW (over 20 years) — subject to transitional conditions. Must replace higher-emitting facility. Cannot exceed 15% more capacity. Full switch to renewable/low-carbon gases by 2035.",
+          "threshold": "< 100 gCO2e/kWh (life-cycle) OR transitional: < 270 gCO2e/kWh direct"
+        },
+        "dnsh": {
+          "climate_adaptation": "Appendix A applies.",
+          "water": "Comply with Water Framework Directive.",
+          "circular_economy": "N/A",
+          "pollution": "Emissions within Industrial Emissions Directive BAT-AEL limits.",
+          "biodiversity": "Environmental Impact Assessment. Appendix D applies."
+        },
+        "notes": "Added by Complementary Climate Delegated Act (EU) 2022/1214. Transitional activity with strict conditions."
+      },
+      {
+        "naceCode": "F41.1, F41.2",
+        "activityCode": "7.1",
+        "name": "Construction of new buildings",
+        "sector": "Construction and real estate",
+        "substantialContribution": {
+          "objective": "climate_mitigation",
+          "criteria": "Primary Energy Demand (PED) at least 10% lower than the threshold set for NZEB requirements. For buildings > 5000 m2: life-cycle Global Warming Potential (GWP) calculated and disclosed. Airtightness and thermal integrity tested.",
+          "threshold": "PED ≥ 10% below NZEB threshold; GWP disclosure for large buildings"
+        },
+        "dnsh": {
+          "climate_adaptation": "Appendix A applies.",
+          "water": "Water flow rates: wash hand basin ≤ 6 l/min, showers ≤ 8 l/min, WC ≤ 6 l per flush, urinals ≤ 2 l per flush.",
+          "circular_economy": "At least 70% (by weight) of non-hazardous construction and demolition waste prepared for reuse, recycling and other material recovery.",
+          "pollution": "Building components and materials do not contain asbestos or substances of very high concern. Measures to reduce noise, dust and pollutant emissions during construction.",
+          "biodiversity": "Appendix D applies. Not built on arable land or greenfield of high biodiversity value."
+        }
+      },
+      {
+        "naceCode": "F41, F43",
+        "activityCode": "7.2",
+        "name": "Renovation of existing buildings",
+        "sector": "Construction and real estate",
+        "substantialContribution": {
+          "objective": "climate_mitigation",
+          "criteria": "The renovation achieves at least 30% reduction in primary energy demand, OR the renovation concerns individual measures relating to installation/replacement of energy-efficient equipment (as listed in the delegated act).",
+          "threshold": "≥ 30% PED reduction OR qualifying individual measures"
+        },
+        "dnsh": {
+          "climate_adaptation": "Appendix A applies.",
+          "water": "Where installed, water appliances meet water flow rate limits.",
+          "circular_economy": "At least 70% (by weight) of non-hazardous construction and demolition waste prepared for reuse/recycling.",
+          "pollution": "No substances of very high concern in components installed. Asbestos management.",
+          "biodiversity": "N/A"
+        }
+      },
+      {
+        "naceCode": "L68",
+        "activityCode": "7.7",
+        "name": "Acquisition and ownership of buildings",
+        "sector": "Construction and real estate",
+        "substantialContribution": {
+          "objective": "climate_mitigation",
+          "criteria": "Buildings built before 31 December 2020: EPC class A, or within top 15% of national/regional building stock in terms of PED. Buildings built after 31 December 2020: meet criteria of Activity 7.1 at time of construction.",
+          "threshold": "EPC A or top 15% PED for pre-2021; Activity 7.1 criteria for post-2020"
+        },
+        "dnsh": {
+          "climate_adaptation": "Appendix A applies.",
+          "water": "N/A",
+          "circular_economy": "N/A",
+          "pollution": "N/A",
+          "biodiversity": "N/A"
+        }
+      },
+      {
+        "naceCode": "H49.1, H49.2",
+        "activityCode": "6.1",
+        "name": "Passenger interurban rail transport",
+        "sector": "Transport",
+        "substantialContribution": {
+          "objective": "climate_mitigation",
+          "criteria": "Zero direct (tailpipe) CO2 emissions, OR zero direct CO2 emissions when operated on a track with necessary infrastructure, and use of a conventional engine where such infrastructure is not available (bimodal).",
+          "threshold": "Zero direct CO2 emissions (or bimodal)"
+        },
+        "dnsh": {
+          "climate_adaptation": "Appendix A applies.",
+          "water": "N/A",
+          "circular_economy": "Waste management plan for reuse and recycling at end of life, in compliance with waste hierarchy.",
+          "pollution": "Engines meet Stage V emission limits. Tyres comply with noise limits. Rolling stock compliant with applicable noise TSI limits.",
+          "biodiversity": "Environmental Impact Assessment. Appendix D applies."
+        }
+      },
+      {
+        "naceCode": "H49.3.1",
+        "activityCode": "6.3",
+        "name": "Urban and suburban transport, road passenger transport",
+        "sector": "Transport",
+        "substantialContribution": {
+          "objective": "climate_mitigation",
+          "criteria": "Zero direct (tailpipe) CO2 emissions per vehicle-km (battery electric, hydrogen fuel cell). Until 31 December 2025: vehicles with specific direct emissions < 50 gCO2/km may qualify.",
+          "threshold": "Zero direct CO2 emissions (or < 50 gCO2/km until 2025)"
+        },
+        "dnsh": {
+          "climate_adaptation": "Appendix A applies.",
+          "water": "N/A",
+          "circular_economy": "Reusability, recyclability and recoverability measures in line with End-of-Life Vehicles Directive.",
+          "pollution": "Tyres comply with noise limits. Vehicles comply with Euro 6 or later.",
+          "biodiversity": "N/A"
+        }
+      },
+      {
+        "naceCode": "H50",
+        "activityCode": "6.7",
+        "name": "Inland passenger water transport",
+        "sector": "Transport",
+        "substantialContribution": {
+          "objective": "climate_mitigation",
+          "criteria": "Zero direct (tailpipe) CO2 emissions, OR hybrid/dual fuel vessels with at least 50% of energy from zero direct emission fuels/plug-in power for normal operation.",
+          "threshold": "Zero direct CO2 OR ≥ 50% zero-emission fuel/power"
+        },
+        "dnsh": {
+          "climate_adaptation": "Appendix A applies.",
+          "water": "Comply with International Convention for the Prevention of Pollution from Ships (MARPOL).",
+          "circular_economy": "Ship Recycling Regulation applies.",
+          "pollution": "Comply with MARPOL Annexes. Comply with Regulation on the use of alien and locally absent species in aquaculture.",
+          "biodiversity": "Environmental Impact Assessment where required. Appendix D applies."
+        }
+      },
+      {
+        "naceCode": "C23.5.1",
+        "activityCode": "3.7",
+        "name": "Manufacture of cement",
+        "sector": "Manufacturing",
+        "substantialContribution": {
+          "objective": "climate_mitigation",
+          "criteria": "Grey cement clinker: specific GHG emissions < 0.722 tCO2e/t clinker. Cement/alternative binder: specific emissions lower than 0.469 tCO2e/t of cement or alternative binder.",
+          "threshold": "< 0.722 tCO2e/t clinker OR < 0.469 tCO2e/t cement"
+        },
+        "dnsh": {
+          "climate_adaptation": "Appendix A applies.",
+          "water": "N/A",
+          "circular_economy": "N/A",
+          "pollution": "Emissions within BAT-AEL ranges of BAT conclusions for the cement, lime and magnesium oxide manufacturing industry.",
+          "biodiversity": "Environmental Impact Assessment. Appendix D applies."
+        }
+      },
+      {
+        "naceCode": "C24.1",
+        "activityCode": "3.9",
+        "name": "Manufacture of iron and steel",
+        "sector": "Manufacturing",
+        "substantialContribution": {
+          "objective": "climate_mitigation",
+          "criteria": "GHG emissions reduced by at least 30% relative to EU ETS benchmark value. For primary steel (integrated steelworks): < 1.331 tCO2e/t hot metal (30% below benchmark of 1.901). For EAF carbon steel: < 0.209 tCO2e/t product. For EAF alloy steel: < 0.266 tCO2e/t product.",
+          "threshold": "≥ 30% below EU ETS benchmark"
+        },
+        "dnsh": {
+          "climate_adaptation": "Appendix A applies.",
+          "water": "N/A",
+          "circular_economy": "N/A",
+          "pollution": "Emissions within BAT-AEL ranges for iron and steel production.",
+          "biodiversity": "Environmental Impact Assessment. Appendix D applies."
+        }
+      },
+      {
+        "naceCode": "C24.4.2",
+        "activityCode": "3.8",
+        "name": "Manufacture of aluminium",
+        "sector": "Manufacturing",
+        "substantialContribution": {
+          "objective": "climate_mitigation",
+          "criteria": "Primary aluminium: GHG emissions < 1.484 tCO2e/t aluminium (30% below EU ETS benchmark). Secondary aluminium (recycling): GHG emissions < 0.525 tCO2e/t aluminium.",
+          "threshold": "Primary: < 1.484 tCO2e/t; Secondary: < 0.525 tCO2e/t"
+        },
+        "dnsh": {
+          "climate_adaptation": "Appendix A applies.",
+          "water": "N/A",
+          "circular_economy": "N/A",
+          "pollution": "Emissions within BAT-AEL ranges for the non-ferrous metals industries.",
+          "biodiversity": "Environmental Impact Assessment. Appendix D applies."
+        }
+      },
+      {
+        "naceCode": "D35.11",
+        "activityCode": "4.2",
+        "name": "Electricity generation using concentrated solar power (CSP)",
+        "sector": "Energy",
+        "substantialContribution": {
+          "objective": "climate_mitigation",
+          "criteria": "Life-cycle GHG emissions from CSP < 100 gCO2e/kWh.",
+          "threshold": "< 100 gCO2e/kWh (life-cycle)"
+        },
+        "dnsh": {
+          "climate_adaptation": "Appendix A applies.",
+          "water": "Where dry cooling is not used, water use efficiency measures apply.",
+          "circular_economy": "Assess and adopt techniques for reuse and recycling.",
+          "pollution": "N/A",
+          "biodiversity": "Environmental Impact Assessment. Appendix D applies."
+        }
+      }
+    ]
+  },
+  "dnshGenericCriteria": {
+    "appendixA": {
+      "name": "Generic criteria for DNSH to Climate change adaptation",
+      "description": "Robust climate risk and vulnerability assessment. Identification of physical climate risks (acute and chronic). Assessment of adaptation solutions. Implementation of adaptation plan where material risks identified.",
+      "physicalRisks": {
+        "acute": ["Heat waves", "Droughts", "Floods", "Storms", "Wildfires"],
+        "chronic": ["Temperature changes", "Sea level rise", "Water stress", "Soil degradation", "Permafrost thawing"]
+      }
+    },
+    "appendixD": {
+      "name": "Generic criteria for DNSH to Biodiversity and ecosystems",
+      "description": "Environmental Impact Assessment (EIA) or equivalent screening completed. Where EIA has been carried out, the required mitigation and compensation measures are implemented. For sites/operations in or near biodiversity-sensitive areas, an appropriate assessment has been conducted.",
+      "biodiversitySensitiveAreas": ["Natura 2000", "UNESCO World Heritage Sites", "Key Biodiversity Areas", "Other protected areas"]
+    }
+  },
+  "minimumSafeguards": {
+    "description": "Article 18 of the Taxonomy Regulation requires that the economic activity is carried out in compliance with minimum safeguards.",
+    "references": [
+      "OECD Guidelines for Multinational Enterprises",
+      "UN Guiding Principles on Business and Human Rights (UNGPs)",
+      "ILO Declaration on Fundamental Principles and Rights at Work",
+      "International Bill of Human Rights"
+    ],
+    "areas": [
+      "Human rights (including labour rights)",
+      "Bribery/corruption",
+      "Taxation",
+      "Fair competition"
+    ],
+    "platformGuidance": "The Platform on Sustainable Finance published guidance in October 2022 recommending assessment across four topics: human rights, corruption/bribery, taxation, and fair competition. Companies should have adequate due diligence processes and not be found in violation of these standards."
+  },
+  "reportingRequirements": {
+    "nonFinancialUndertakings": {
+      "kpis": [
+        {"name": "Turnover KPI", "formula": "Taxonomy-aligned turnover / Total turnover * 100", "description": "Share of net turnover from products or services associated with Taxonomy-aligned economic activities"},
+        {"name": "CapEx KPI", "formula": "Taxonomy-aligned CapEx / Total CapEx * 100", "description": "Share of capital expenditure related to assets or processes associated with Taxonomy-aligned economic activities"},
+        {"name": "OpEx KPI", "formula": "Taxonomy-aligned OpEx / Total OpEx * 100", "description": "Share of operating expenditure related to assets or processes associated with Taxonomy-aligned economic activities"}
+      ],
+      "reportingFormat": "Standardised tables as per Annex II of Disclosures Delegated Act (EU) 2021/2178"
+    },
+    "financialUndertakings": {
+      "assetManagers": {"kpi": "Green Asset Ratio (GAR)", "formula": "Taxonomy-aligned investments / Total eligible AuM * 100"},
+      "creditInstitutions": {"kpi": "Green Asset Ratio (GAR)", "formula": "Taxonomy-aligned exposures / Total covered assets * 100"},
+      "insuranceUndertakings": {"kpi": "Taxonomy-aligned investment ratio + underwriting ratio"}
+    }
+  }
+}

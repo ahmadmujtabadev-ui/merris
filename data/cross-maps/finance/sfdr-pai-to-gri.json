@@ -1,0 +1,242 @@
+{
+  "description": "Cross-framework mapping from SFDR mandatory PAI indicators to GRI Standards 2021 disclosures",
+  "sourceFramework": "sfdr",
+  "targetFramework": "gri",
+  "version": "1.0",
+  "lastUpdated": "2025-06-01",
+  "notes": "Mapping between the 18 mandatory PAI indicators under SFDR RTS (Delegated Regulation EU 2022/1288) and equivalent or related GRI disclosures. PAI indicators are investor-level metrics (portfolio aggregation), while GRI disclosures are entity-level. The mapping identifies the underlying entity-level GRI data that feeds into PAI calculations.",
+  "mappings": [
+    {
+      "source_code": "PAI-1",
+      "source_name": "GHG emissions (Scope 1, 2, 3, Total)",
+      "target_code": "GRI 305-1",
+      "target_name": "Direct (Scope 1) GHG emissions",
+      "mapping": "equivalent",
+      "notes": "GRI 305-1 provides the entity-level Scope 1 emissions data needed for PAI 1. Both require GHG Protocol methodology and CO2e units."
+    },
+    {
+      "source_code": "PAI-1",
+      "source_name": "GHG emissions (Scope 1, 2, 3, Total)",
+      "target_code": "GRI 305-2",
+      "target_name": "Energy indirect (Scope 2) GHG emissions",
+      "mapping": "equivalent",
+      "notes": "GRI 305-2 provides entity-level Scope 2 emissions. GRI requires both location-based and market-based; PAI uses location-based as primary."
+    },
+    {
+      "source_code": "PAI-1",
+      "source_name": "GHG emissions (Scope 1, 2, 3, Total)",
+      "target_code": "GRI 305-3",
+      "target_name": "Other indirect (Scope 3) GHG emissions",
+      "mapping": "equivalent",
+      "notes": "GRI 305-3 provides entity-level Scope 3 emissions across 15 categories. PAI requires total Scope 3; GRI may report by category."
+    },
+    {
+      "source_code": "PAI-2",
+      "source_name": "Carbon footprint",
+      "target_code": "GRI 305-1",
+      "target_name": "Direct (Scope 1) GHG emissions",
+      "mapping": "partial",
+      "notes": "PAI 2 normalises total GHG by portfolio value (investor metric). GRI 305-1/2/3 provide entity-level numerator data. No direct GRI equivalent for portfolio-level carbon footprint."
+    },
+    {
+      "source_code": "PAI-2",
+      "source_name": "Carbon footprint",
+      "target_code": "GRI 305-2",
+      "target_name": "Energy indirect (Scope 2) GHG emissions",
+      "mapping": "partial",
+      "notes": "Scope 2 component of the carbon footprint numerator."
+    },
+    {
+      "source_code": "PAI-3",
+      "source_name": "GHG intensity of investee companies",
+      "target_code": "GRI 305-4",
+      "target_name": "GHG emissions intensity",
+      "mapping": "equivalent",
+      "notes": "GRI 305-4 requires entity-level GHG intensity per chosen denominator (revenue, production, etc.). PAI 3 uses revenue as denominator. Direct match when GRI uses revenue."
+    },
+    {
+      "source_code": "PAI-4",
+      "source_name": "Exposure to companies active in the fossil fuel sector",
+      "target_code": "GRI 201-1",
+      "target_name": "Direct economic value generated and distributed",
+      "mapping": "related",
+      "notes": "No direct GRI equivalent for fossil fuel activity classification. GRI 201-1 revenue breakdown can help identify fossil fuel revenue. Sector-specific GRI/SASB disclosures more directly relevant."
+    },
+    {
+      "source_code": "PAI-5",
+      "source_name": "Share of non-renewable energy consumption and production",
+      "target_code": "GRI 302-1",
+      "target_name": "Energy consumption within the organization",
+      "mapping": "equivalent",
+      "notes": "GRI 302-1 requires breakdown of energy consumption by fuel type (renewable vs non-renewable). Provides the entity-level data needed for PAI 5."
+    },
+    {
+      "source_code": "PAI-6",
+      "source_name": "Energy consumption intensity per high impact climate sector",
+      "target_code": "GRI 302-3",
+      "target_name": "Energy intensity",
+      "mapping": "equivalent",
+      "notes": "GRI 302-3 requires entity-level energy intensity ratio. PAI 6 adds sector segmentation by NACE code. The entity-level intensity from GRI feeds directly into PAI 6 calculation."
+    },
+    {
+      "source_code": "PAI-7",
+      "source_name": "Activities negatively affecting biodiversity-sensitive areas",
+      "target_code": "GRI 304-1",
+      "target_name": "Operational sites owned, leased, managed in, or adjacent to, protected areas and areas of high biodiversity value outside protected areas",
+      "mapping": "equivalent",
+      "notes": "GRI 304-1 identifies sites near protected/biodiversity-sensitive areas. PAI 7 further requires assessment of negative impact. GRI 304-2 on significant impacts complements."
+    },
+    {
+      "source_code": "PAI-7",
+      "source_name": "Activities negatively affecting biodiversity-sensitive areas",
+      "target_code": "GRI 304-2",
+      "target_name": "Significant impacts of activities, products and services on biodiversity",
+      "mapping": "equivalent",
+      "notes": "GRI 304-2 describes significant impacts on biodiversity — directly relevant to the 'negatively affecting' criterion in PAI 7."
+    },
+    {
+      "source_code": "PAI-8",
+      "source_name": "Emissions to water",
+      "target_code": "GRI 303-4",
+      "target_name": "Water discharge",
+      "mapping": "partial",
+      "notes": "GRI 303-4 covers water discharge including quality. PAI 8 specifically targets emissions of priority substances to water (per Water Framework Directive). GRI 303-4 is broader and may not itemise priority substances specifically."
+    },
+    {
+      "source_code": "PAI-8",
+      "source_name": "Emissions to water",
+      "target_code": "GRI 306-1",
+      "target_name": "Waste generation and significant waste-related impacts",
+      "mapping": "related",
+      "notes": "GRI 306 series covers waste and effluents. GRI 306-1 describes waste-related impacts that may include water emissions, but is not a direct match for PAI 8 priority substance emissions."
+    },
+    {
+      "source_code": "PAI-9",
+      "source_name": "Hazardous waste and radioactive waste ratio",
+      "target_code": "GRI 306-3",
+      "target_name": "Waste generated",
+      "mapping": "equivalent",
+      "notes": "GRI 306-3 requires reporting total waste by composition and by hazardous/non-hazardous. Provides the entity-level hazardous waste data needed for PAI 9."
+    },
+    {
+      "source_code": "PAI-9",
+      "source_name": "Hazardous waste and radioactive waste ratio",
+      "target_code": "GRI 306-4",
+      "target_name": "Waste diverted from disposal",
+      "mapping": "related",
+      "notes": "GRI 306-4 breaks down hazardous and non-hazardous waste diverted from disposal. Provides supplementary detail for PAI 9."
+    },
+    {
+      "source_code": "PAI-10",
+      "source_name": "Violations of UN Global Compact principles and OECD Guidelines",
+      "target_code": "GRI 2-27",
+      "target_name": "Compliance with laws and regulations",
+      "mapping": "partial",
+      "notes": "GRI 2-27 covers compliance with laws and regulations broadly. PAI 10 is specifically about UNGC/OECD violations. GRI 2-27 would capture some but not all relevant violations."
+    },
+    {
+      "source_code": "PAI-10",
+      "source_name": "Violations of UN Global Compact principles and OECD Guidelines",
+      "target_code": "GRI 406-1",
+      "target_name": "Incidents of discrimination and corrective actions taken",
+      "mapping": "related",
+      "notes": "Discrimination incidents may constitute UNGC Principle 6 violations. GRI 406-1 provides entity-level data on one dimension of UNGC compliance."
+    },
+    {
+      "source_code": "PAI-10",
+      "source_name": "Violations of UN Global Compact principles and OECD Guidelines",
+      "target_code": "GRI 408-1",
+      "target_name": "Operations and suppliers at significant risk for incidents of child labour",
+      "mapping": "related",
+      "notes": "Child labour incidents relate to UNGC Principle 5. GRI 408-1 provides relevant data for one dimension of the UNGC violation assessment."
+    },
+    {
+      "source_code": "PAI-10",
+      "source_name": "Violations of UN Global Compact principles and OECD Guidelines",
+      "target_code": "GRI 409-1",
+      "target_name": "Operations and suppliers at significant risk for incidents of forced or compulsory labour",
+      "mapping": "related",
+      "notes": "Forced labour incidents relate to UNGC Principle 4. GRI 409-1 provides relevant data."
+    },
+    {
+      "source_code": "PAI-11",
+      "source_name": "Lack of processes and compliance mechanisms to monitor UNGC/OECD compliance",
+      "target_code": "GRI 2-23",
+      "target_name": "Policy commitments",
+      "mapping": "partial",
+      "notes": "GRI 2-23 requires disclosure of policy commitments for responsible business conduct, including references to UNGC and OECD Guidelines. PAI 11 specifically asks whether policies/mechanisms exist."
+    },
+    {
+      "source_code": "PAI-11",
+      "source_name": "Lack of processes and compliance mechanisms to monitor UNGC/OECD compliance",
+      "target_code": "GRI 2-25",
+      "target_name": "Processes to remediate negative impacts",
+      "mapping": "partial",
+      "notes": "GRI 2-25 covers grievance mechanisms and remediation processes. PAI 11 asks specifically about grievance/complaints handling mechanisms for UNGC/OECD violations."
+    },
+    {
+      "source_code": "PAI-11",
+      "source_name": "Lack of processes and compliance mechanisms to monitor UNGC/OECD compliance",
+      "target_code": "GRI 2-26",
+      "target_name": "Mechanisms for seeking advice and raising concerns",
+      "mapping": "partial",
+      "notes": "GRI 2-26 covers mechanisms for raising concerns (whistleblowing). Relevant to the grievance mechanism aspect of PAI 11."
+    },
+    {
+      "source_code": "PAI-12",
+      "source_name": "Unadjusted gender pay gap",
+      "target_code": "GRI 405-2",
+      "target_name": "Ratio of basic salary and remuneration of women to men",
+      "mapping": "equivalent",
+      "notes": "GRI 405-2 requires disclosure of ratio of basic salary and remuneration of women to men by employee category and significant locations of operation. Directly maps to the entity-level data needed for PAI 12, though GRI uses ratio while PAI uses gap percentage."
+    },
+    {
+      "source_code": "PAI-13",
+      "source_name": "Board gender diversity",
+      "target_code": "GRI 405-1",
+      "target_name": "Diversity of governance bodies and employees",
+      "mapping": "equivalent",
+      "notes": "GRI 405-1 requires disclosure of gender composition of governance bodies. Directly provides the entity-level board gender diversity data needed for PAI 13."
+    },
+    {
+      "source_code": "PAI-14",
+      "source_name": "Exposure to controversial weapons",
+      "target_code": "GRI 2-6",
+      "target_name": "Activities, value chain and other business relationships",
+      "mapping": "related",
+      "notes": "No direct GRI equivalent for controversial weapons involvement. GRI 2-6 on activities and value chain may provide some context. Assessment typically relies on specialised ESG data providers and screening tools rather than GRI disclosures."
+    },
+    {
+      "source_code": "PAI-15",
+      "source_name": "GHG intensity (sovereign)",
+      "target_code": "N/A",
+      "target_name": "No GRI equivalent",
+      "mapping": "related",
+      "notes": "GRI Standards apply to organizations, not sovereign entities. PAI 15 uses country-level GHG/GDP data from UNFCCC, IEA, or World Bank. No GRI mapping applicable."
+    },
+    {
+      "source_code": "PAI-16",
+      "source_name": "Investee countries subject to social violations (sovereign)",
+      "target_code": "N/A",
+      "target_name": "No GRI equivalent",
+      "mapping": "related",
+      "notes": "GRI Standards apply to organizations, not sovereign entities. PAI 16 uses country-level human rights assessments. No GRI mapping applicable."
+    },
+    {
+      "source_code": "PAI-17",
+      "source_name": "Exposure to fossil fuels through real estate assets",
+      "target_code": "GRI 302-1",
+      "target_name": "Energy consumption within the organization",
+      "mapping": "related",
+      "notes": "No direct GRI equivalent for real estate fossil fuel involvement. GRI 302-1 energy consumption data may indicate fossil fuel use in real estate operations. PAI 17 is specifically about the use/function of the real estate asset."
+    },
+    {
+      "source_code": "PAI-18",
+      "source_name": "Exposure to energy-inefficient real estate assets",
+      "target_code": "GRI 302-3",
+      "target_name": "Energy intensity",
+      "mapping": "partial",
+      "notes": "GRI 302-3 energy intensity could be reported per square meter for real estate. PAI 18 uses EPC ratings (A-G) or top 30% energy consumption threshold. GRI provides underlying energy data but not the EPC classification."
+    }
+  ]
+}
