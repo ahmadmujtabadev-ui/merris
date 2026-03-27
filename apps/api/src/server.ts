@@ -8,6 +8,7 @@ import { registerOrganizationRoutes } from './modules/organization/organization.
 import { registerIngestionRoutes } from './modules/ingestion/ingestion.routes.js';
 import { registerFrameworkRoutes } from './modules/framework/framework.routes.js';
 import { registerDataCollectionRoutes } from './modules/data-collection/data-collection.routes.js';
+import { registerCalculationRoutes } from './modules/calculation/calculation.routes.js';
 
 dotenv.config();
 
@@ -51,6 +52,9 @@ async function start() {
 
   // Register data collection routes
   await registerDataCollectionRoutes(app);
+
+  // Register calculation engine routes
+  await registerCalculationRoutes(app);
 
   const port = parseInt(process.env['PORT'] || '3001', 10);
 

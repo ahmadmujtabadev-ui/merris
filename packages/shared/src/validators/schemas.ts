@@ -340,18 +340,34 @@ export const CalculationMethodSchema = z.enum([
   'intensity_revenue',
   'intensity_employee',
   'yoy_change',
+  // Climate Risk (17-21)
+  'carbon_budget_remaining',
+  'physical_risk_score',
+  'stranded_asset_value',
+  'carbon_price_impact',
+  'sbti_validation',
+  // Sustainable Finance (22-26)
+  'portfolio_carbon_footprint',
+  'portfolio_carbon_intensity',
+  'eu_taxonomy_alignment',
+  'green_bond_allocation',
+  'waci',
+  // Environmental (27-29)
+  'water_footprint',
+  'biodiversity_msa_loss',
+  'circular_economy_mci',
 ]);
 
 export const CalculationRequestSchema = z.object({
   method: CalculationMethodSchema,
-  inputs: z.record(z.union([z.number(), z.string()])),
+  inputs: z.record(z.any()),
   engagementId: z.string(),
   disclosureRef: z.string(),
 });
 
 export const CalculationResultSchema = z.object({
   method: CalculationMethodSchema,
-  result: z.number(),
+  result: z.union([z.number(), z.record(z.any())]),
   unit: z.string(),
   inputs: z.record(z.any()),
   emissionFactors: z.array(EmissionFactorSchema).optional(),
