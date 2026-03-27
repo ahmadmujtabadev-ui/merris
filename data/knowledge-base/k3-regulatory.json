@@ -1,0 +1,1351 @@
+[
+  {
+    "jurisdiction": "EU",
+    "category": "eu_regulation",
+    "name": "Corporate Sustainability Reporting Directive",
+    "shortName": "CSRD",
+    "description": "EU Directive 2022/2464 requiring companies to report on sustainability matters using European Sustainability Reporting Standards (ESRS). Replaces and expands the Non-Financial Reporting Directive (NFRD).",
+    "effectiveDate": "2024-01-01",
+    "applicableTo": ["Large EU companies (>250 employees)", "Listed SMEs", "Non-EU companies with >EUR 150M EU revenue", "Companies meeting 2 of 3: >250 employees, >EUR 50M revenue, >EUR 25M total assets"],
+    "requirements": [
+      { "article": "Article 19a", "title": "Sustainability reporting in management report", "description": "Companies must include sustainability information in the management report, covering environmental, social, and governance matters.", "mandatory": true },
+      { "article": "Article 19a(2)", "title": "Double materiality assessment", "description": "Companies must assess both impact materiality (company's impact on people and environment) and financial materiality (sustainability matters affecting the company's financials).", "mandatory": true },
+      { "article": "Article 19a(2)(a)", "title": "Business model and strategy resilience", "description": "Describe the resilience of the business model and strategy to sustainability risks, including climate transition plans.", "mandatory": true },
+      { "article": "Article 26", "title": "Assurance of sustainability reporting", "description": "Sustainability reports must be subject to limited assurance (moving to reasonable assurance by 2028).", "mandatory": true },
+      { "article": "Article 29d", "title": "Digital tagging (XBRL)", "description": "Sustainability information must be marked up in XHTML using ESEF digital taxonomy.", "mandatory": true }
+    ],
+    "penalties": "Member States set penalties. Fines for non-compliance vary by country. Directors can face personal liability.",
+    "sourceUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022L2464",
+    "data": {
+      "timeline": {
+        "FY2024": "Large listed companies (former NFRD scope) - first reports due 2025",
+        "FY2025": "Large companies meeting 2 of 3 thresholds - first reports due 2026",
+        "FY2026": "Listed SMEs (may delay until FY2028) - first reports due 2027",
+        "FY2028": "Non-EU companies with >EUR 150M EU revenue - first reports due 2029"
+      },
+      "estimatedCompaniesInScope": 50000,
+      "reportingStandard": "ESRS (European Sustainability Reporting Standards)",
+      "assuranceProvider": "Statutory auditor or independent assurance provider",
+      "interplayWith": ["EU Taxonomy", "SFDR", "CSDDD"]
+    },
+    "year": 2022,
+    "verified": true,
+    "tags": ["CSRD", "reporting", "double-materiality", "assurance", "ESRS"]
+  },
+  {
+    "jurisdiction": "EU",
+    "category": "eu_regulation",
+    "name": "European Sustainability Reporting Standards - Cross-Cutting Standards",
+    "shortName": "ESRS 1 & 2",
+    "description": "ESRS 1 (General Requirements) and ESRS 2 (General Disclosures) are the foundational cross-cutting standards applicable to all CSRD reporters. ESRS 2 is always mandatory.",
+    "effectiveDate": "2024-01-01",
+    "applicableTo": ["All companies subject to CSRD"],
+    "requirements": [
+      { "article": "ESRS 1", "title": "General Requirements", "description": "Sets out the architecture, conventions, and fundamental concepts for ESRS reporting including double materiality, value chain, time horizons, and due diligence.", "mandatory": true },
+      { "article": "ESRS 2 GOV-1", "title": "Role of administrative, management and supervisory bodies", "description": "Disclose composition, roles, and ESG expertise of governance bodies.", "mandatory": true },
+      { "article": "ESRS 2 GOV-2", "title": "Information provided to and sustainability matters addressed by governance bodies", "description": "Disclose how governance bodies are informed and address sustainability topics.", "mandatory": true },
+      { "article": "ESRS 2 GOV-3", "title": "Integration of sustainability into incentive schemes", "description": "Disclose whether and how sustainability performance is linked to remuneration.", "mandatory": true },
+      { "article": "ESRS 2 SBM-1", "title": "Strategy, business model and value chain", "description": "Describe business model, strategy, and value chain in relation to sustainability.", "mandatory": true },
+      { "article": "ESRS 2 SBM-3", "title": "Material impacts, risks and opportunities", "description": "Describe material impacts, risks, and opportunities arising from the double materiality assessment.", "mandatory": true },
+      { "article": "ESRS 2 IRO-1", "title": "Process to identify and assess material IROs", "description": "Describe the process used to identify and assess impacts, risks, and opportunities.", "mandatory": true }
+    ],
+    "penalties": "As per CSRD national transposition",
+    "data": {
+      "ESRS2_datapoints": "Approximately 100+ mandatory datapoints",
+      "note": "ESRS 2 is the only fully mandatory standard; all other topical standards are subject to materiality assessment"
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["ESRS", "governance", "strategy", "materiality", "cross-cutting"]
+  },
+  {
+    "jurisdiction": "EU",
+    "category": "eu_regulation",
+    "name": "European Sustainability Reporting Standards - Environmental Standards",
+    "shortName": "ESRS E1-E5",
+    "description": "ESRS Environmental standards covering climate change (E1), pollution (E2), water and marine resources (E3), biodiversity and ecosystems (E4), and resource use and circular economy (E5).",
+    "effectiveDate": "2024-01-01",
+    "applicableTo": ["Companies subject to CSRD where topic is material"],
+    "requirements": [
+      { "article": "ESRS E1", "title": "Climate Change", "description": "Transition plans, GHG emission targets (Scope 1/2/3), energy consumption, carbon pricing exposure, financial effects of climate risks. Includes alignment with 1.5C pathway requirements.", "mandatory": false },
+      { "article": "ESRS E1-6", "title": "Gross Scopes 1, 2, 3 and Total GHG emissions", "description": "Mandatory GHG disclosure using GHG Protocol methodology. Scope 3 can be phased in over first year.", "mandatory": false },
+      { "article": "ESRS E1-9", "title": "Anticipated financial effects from climate-related physical and transition risks", "description": "Quantified financial effects of physical and transition risks on assets, revenue, and costs.", "mandatory": false },
+      { "article": "ESRS E2", "title": "Pollution", "description": "Pollution of air, water, soil; substances of concern; microplastics. Includes pollutant emission targets.", "mandatory": false },
+      { "article": "ESRS E3", "title": "Water and Marine Resources", "description": "Water consumption, withdrawal, discharge; water stress areas; marine resource management.", "mandatory": false },
+      { "article": "ESRS E4", "title": "Biodiversity and Ecosystems", "description": "Impact on biodiversity; land use change; species at risk; ecosystem services; alignment with Kunming-Montreal GBF.", "mandatory": false },
+      { "article": "ESRS E5", "title": "Resource Use and Circular Economy", "description": "Resource inflows/outflows; waste management; product design for circularity; recycled content.", "mandatory": false }
+    ],
+    "data": {
+      "E1_datapoints": "~80 datapoints including transition plan, targets, GHG emissions, energy, carbon credits",
+      "E2_datapoints": "~30 datapoints on pollutant emissions and substances of concern",
+      "E3_datapoints": "~25 datapoints on water consumption, stress areas",
+      "E4_datapoints": "~40 datapoints on biodiversity impact and dependencies",
+      "E5_datapoints": "~30 datapoints on resource use and waste",
+      "note": "Subject to materiality assessment except ESRS E1 transition plan disclosure which has heightened expectations"
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["ESRS", "environment", "climate", "pollution", "biodiversity", "water", "circular-economy"]
+  },
+  {
+    "jurisdiction": "EU",
+    "category": "eu_regulation",
+    "name": "European Sustainability Reporting Standards - Social and Governance Standards",
+    "shortName": "ESRS S1-S4 & G1",
+    "description": "ESRS Social standards covering own workforce (S1), workers in the value chain (S2), affected communities (S3), consumers and end-users (S4), plus Governance standard on business conduct (G1).",
+    "effectiveDate": "2024-01-01",
+    "applicableTo": ["Companies subject to CSRD where topic is material"],
+    "requirements": [
+      { "article": "ESRS S1", "title": "Own Workforce", "description": "Working conditions, equal treatment, health & safety, training, living wages, social dialogue, workforce diversity metrics, pay gap reporting.", "mandatory": false },
+      { "article": "ESRS S2", "title": "Workers in the Value Chain", "description": "Due diligence on working conditions, forced labor, child labor in supply chain. Remediation processes.", "mandatory": false },
+      { "article": "ESRS S3", "title": "Affected Communities", "description": "Impact on local and indigenous communities, land rights, health impacts, community engagement.", "mandatory": false },
+      { "article": "ESRS S4", "title": "Consumers and End-Users", "description": "Product safety, data privacy, accessibility, responsible marketing, financial inclusion.", "mandatory": false },
+      { "article": "ESRS G1", "title": "Business Conduct", "description": "Anti-corruption, anti-bribery, political engagement, lobbying, payment practices, supplier relationships, whistleblower protection.", "mandatory": false }
+    ],
+    "data": {
+      "S1_datapoints": "~90 datapoints including diversity, pay gap, H&S, training",
+      "S2_datapoints": "~30 datapoints on supply chain labor practices",
+      "S3_datapoints": "~25 datapoints on community impacts",
+      "S4_datapoints": "~25 datapoints on consumer/user impacts",
+      "G1_datapoints": "~20 datapoints on business conduct",
+      "total_ESRS_datapoints": "Approximately 1,100+ datapoints across all 12 standards"
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["ESRS", "social", "governance", "workforce", "supply-chain", "business-conduct"]
+  },
+  {
+    "jurisdiction": "EU",
+    "category": "eu_regulation",
+    "name": "EU Taxonomy for Sustainable Activities",
+    "shortName": "EU Taxonomy",
+    "description": "Regulation (EU) 2020/852 establishing a classification system for environmentally sustainable economic activities. Requires disclosure of revenue, CapEx, and OpEx alignment.",
+    "effectiveDate": "2022-01-01",
+    "applicableTo": ["CSRD-scope companies", "Financial market participants under SFDR", "EU/Member State public measures"],
+    "requirements": [
+      { "article": "Article 3", "title": "Criteria for environmentally sustainable activities", "description": "An activity is taxonomy-aligned if it: (1) substantially contributes to one of 6 objectives, (2) does no significant harm (DNSH) to the other 5, (3) complies with minimum safeguards (OECD Guidelines, UNGPs).", "mandatory": true },
+      { "article": "Article 8", "title": "Transparency of undertakings in non-financial statements", "description": "Non-financial companies must disclose proportion of Taxonomy-eligible and Taxonomy-aligned turnover, CapEx, and OpEx.", "mandatory": true },
+      { "article": "Article 5-7", "title": "Financial product disclosures", "description": "Financial products marketed as sustainable must disclose the proportion of Taxonomy-aligned investments.", "mandatory": true }
+    ],
+    "data": {
+      "sixObjectives": [
+        { "number": 1, "name": "Climate change mitigation", "TSC_status": "Delegated Act adopted June 2021" },
+        { "number": 2, "name": "Climate change adaptation", "TSC_status": "Delegated Act adopted June 2021" },
+        { "number": 3, "name": "Sustainable use and protection of water and marine resources", "TSC_status": "Delegated Act adopted June 2023" },
+        { "number": 4, "name": "Transition to a circular economy", "TSC_status": "Delegated Act adopted June 2023" },
+        { "number": 5, "name": "Pollution prevention and control", "TSC_status": "Delegated Act adopted June 2023" },
+        { "number": 6, "name": "Protection and restoration of biodiversity and ecosystems", "TSC_status": "Delegated Act adopted June 2023" }
+      ],
+      "keyTechnicalScreeningCriteria": {
+        "climateChange_mitigation_examples": {
+          "electricityGeneration_solar": "Life-cycle GHG emissions < 100 gCO2e/kWh",
+          "buildings_newConstruction": "Primary energy demand at least 10% below nZEB threshold",
+          "transport_cars": "Zero direct (tailpipe) CO2 emissions",
+          "manufacturing_steel": "GHG emissions below sector benchmarks (EU ETS benchmarks)"
+        }
+      },
+      "minimumSafeguards": ["OECD MNE Guidelines", "UN Guiding Principles on Business and Human Rights", "ILO Core Conventions", "International Bill of Human Rights"],
+      "controversialInclusions": {
+        "naturalGas": "Included as transitional activity under strict conditions (lifecycle <270 gCO2e/kWh, switching from coal)",
+        "nuclear": "Included as transitional activity (new plants with approved waste management plan)"
+      }
+    },
+    "year": 2020,
+    "verified": true,
+    "tags": ["taxonomy", "classification", "green-activities", "DNSH", "CapEx", "alignment"]
+  },
+  {
+    "jurisdiction": "EU",
+    "category": "eu_regulation",
+    "name": "Sustainable Finance Disclosure Regulation",
+    "shortName": "SFDR",
+    "description": "Regulation (EU) 2019/2088 requiring financial market participants to disclose sustainability-related information at entity and product level. Classifies products as Article 6, 8, or 9.",
+    "effectiveDate": "2021-03-10",
+    "applicableTo": ["Asset managers", "Banks (portfolio management)", "Insurance companies", "Pension funds", "Investment advisors"],
+    "requirements": [
+      { "article": "Article 3", "title": "Entity-level sustainability risk integration", "description": "Publish policies on integration of sustainability risks in investment decision-making.", "mandatory": true },
+      { "article": "Article 4", "title": "Principal Adverse Impact (PAI) statements", "description": "Entity-level disclosure of principal adverse impacts of investment decisions on sustainability factors. Comply-or-explain for entities <500 employees.", "mandatory": false },
+      { "article": "Article 6", "title": "Product-level sustainability risk disclosure", "description": "All financial products must describe how sustainability risks are integrated. Baseline category (no sustainability claims).", "mandatory": true },
+      { "article": "Article 8", "title": "Products promoting environmental or social characteristics", "description": "'Light green' products that promote E or S characteristics. Must disclose how characteristics are met and proportion of aligned investments.", "mandatory": true },
+      { "article": "Article 9", "title": "Products with sustainable investment objectives", "description": "'Dark green' products with explicit sustainable investment objectives. Must demonstrate how the objective is achieved and DNSH.", "mandatory": true },
+      { "article": "Article 7", "title": "PAI at product level", "description": "Article 8 and 9 products must disclose how PAIs are considered.", "mandatory": true }
+    ],
+    "data": {
+      "PAI_indicators": {
+        "mandatory_14": [
+          "GHG emissions (Scope 1, 2, 3, total)",
+          "Carbon footprint",
+          "GHG intensity of investee companies",
+          "Exposure to fossil fuel sector",
+          "Non-renewable energy share",
+          "Energy consumption intensity per high impact climate sector",
+          "Biodiversity-sensitive areas activities",
+          "Emissions to water",
+          "Hazardous waste ratio",
+          "UNGC and OECD principles violations",
+          "Lack of UNGC/OECD compliance processes",
+          "Unadjusted gender pay gap",
+          "Board gender diversity",
+          "Controversial weapons exposure"
+        ],
+        "optional_count": 46,
+        "optional_examples": ["Water recycling", "Deforestation policy", "Human rights due diligence"]
+      },
+      "productClassification_AUM_EU": {
+        "Article6_pct": 47,
+        "Article8_pct": 49,
+        "Article9_pct": 4,
+        "note": "As of Q2 2024; Article 9 declined from peak due to reclassifications"
+      }
+    },
+    "year": 2019,
+    "verified": true,
+    "tags": ["SFDR", "financial-products", "PAI", "Article-8", "Article-9", "ESG-funds"]
+  },
+  {
+    "jurisdiction": "EU",
+    "category": "eu_regulation",
+    "name": "Corporate Sustainability Due Diligence Directive",
+    "shortName": "CSDDD",
+    "description": "Directive (EU) 2024/1760 requiring large companies to identify, prevent, mitigate, and account for adverse human rights and environmental impacts in their operations and value chains.",
+    "effectiveDate": "2027-07-26",
+    "applicableTo": ["EU companies >1,000 employees and >EUR 450M net worldwide turnover", "Non-EU companies >EUR 450M net turnover generated in EU"],
+    "requirements": [
+      { "article": "Article 5", "title": "Due diligence policy", "description": "Adopt and put into effect a due diligence policy covering human rights and environmental impacts.", "mandatory": true },
+      { "article": "Article 6", "title": "Identifying actual and potential adverse impacts", "description": "Map operations and value chain to identify adverse impacts on human rights and environment.", "mandatory": true },
+      { "article": "Article 7-8", "title": "Preventing and mitigating potential adverse impacts", "description": "Take appropriate measures to prevent, or where not possible, mitigate potential adverse impacts.", "mandatory": true },
+      { "article": "Article 9-10", "title": "Bringing actual adverse impacts to an end", "description": "Bring actual adverse impacts to an end and provide remediation.", "mandatory": true },
+      { "article": "Article 15", "title": "Climate transition plan", "description": "Adopt and implement a transition plan for climate change mitigation aligned with 1.5C / Paris Agreement.", "mandatory": true },
+      { "article": "Article 22", "title": "Civil liability", "description": "Companies can be held civilly liable for damage caused by failure to comply with due diligence obligations.", "mandatory": true }
+    ],
+    "penalties": "Fines up to 5% of worldwide net turnover. Civil liability. Naming and shaming by supervisory authorities.",
+    "data": {
+      "timeline": {
+        "2027": "Companies >5,000 employees & >EUR 1.5B turnover",
+        "2028": "Companies >3,000 employees & >EUR 900M turnover",
+        "2029": "Companies >1,000 employees & >EUR 450M turnover"
+      },
+      "scopeNarrowedFrom_original": "Original proposal had lower thresholds (500 employees); scope reduced in final text",
+      "valueChainScope": "Direct and indirect business partners in upstream; direct partners in downstream",
+      "annex_humanRights": "References ICCPR, ICESCR, UNCRC, ILO conventions",
+      "annex_environment": "References Paris Agreement, CBD, Basel Convention, Minamata Convention, Stockholm Convention"
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["CSDDD", "due-diligence", "human-rights", "supply-chain", "civil-liability"]
+  },
+  {
+    "jurisdiction": "EU",
+    "category": "eu_regulation",
+    "name": "Carbon Border Adjustment Mechanism",
+    "shortName": "CBAM",
+    "description": "Regulation (EU) 2023/956 imposing a carbon price on imports of carbon-intensive goods to prevent carbon leakage and ensure a level playing field with EU ETS.",
+    "effectiveDate": "2023-10-01",
+    "applicableTo": ["Importers of covered goods into EU"],
+    "requirements": [
+      { "article": "Article 6", "title": "CBAM reporting obligations (transitional)", "description": "Quarterly reports on embedded emissions in imported goods during transitional period (Oct 2023 - Dec 2025).", "mandatory": true },
+      { "article": "Article 7", "title": "CBAM certificates", "description": "From 2026, importers must purchase and surrender CBAM certificates corresponding to embedded emissions, at EU ETS carbon price.", "mandatory": true },
+      { "article": "Article 9", "title": "Calculation of embedded emissions", "description": "Must calculate actual embedded emissions based on production data; default values available as fallback.", "mandatory": true }
+    ],
+    "penalties": "Penalties at least 3x the average EU ETS certificate price for unreported emissions.",
+    "data": {
+      "coveredSectors": ["Cement", "Iron and steel", "Aluminium", "Fertilizers", "Electricity", "Hydrogen"],
+      "timeline": {
+        "2023-2025": "Transitional period - reporting only, no financial obligations",
+        "2026": "Definitive system begins - certificates must be purchased",
+        "2026-2034": "Gradual phase-in of CBAM as free EU ETS allowances phase out"
+      },
+      "calculationMethodology": {
+        "embeddedEmissions": "Direct emissions from production + indirect emissions from electricity (for some products)",
+        "deduction": "Carbon price already paid in country of origin can be deducted",
+        "defaultValues": "EU will provide default emission values based on worst-performing installations"
+      },
+      "estimatedImportsCovered_billionEUR": 46,
+      "keyImpact": "Significant impact on exports from China, Russia, Turkey, India to EU in covered sectors"
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["CBAM", "carbon-border", "trade", "carbon-leakage", "imports"]
+  },
+  {
+    "jurisdiction": "EU",
+    "category": "eu_regulation",
+    "name": "EU Emissions Trading System",
+    "shortName": "EU ETS",
+    "description": "Directive 2003/87/EC (as amended) establishing the world's first and largest carbon market. Cap-and-trade system covering ~40% of EU GHG emissions. Reformed under Fit for 55.",
+    "effectiveDate": "2005-01-01",
+    "applicableTo": ["Power plants >20MW", "Energy-intensive industry", "Aviation (intra-EEA)", "Maritime (from 2024)", "Buildings and road transport (ETS2 from 2027)"],
+    "requirements": [
+      { "article": "Article 9", "title": "EU-wide cap and linear reduction factor", "description": "Overall emission cap decreasing by 4.3% per year from 2024 (increased from 2.2% under Fit for 55).", "mandatory": true },
+      { "article": "Article 12", "title": "Surrender of allowances", "description": "Covered installations must surrender allowances equal to their verified emissions each year.", "mandatory": true },
+      { "article": "Article 14-15", "title": "Monitoring, reporting and verification (MRV)", "description": "Annual emissions monitoring, reporting by operators, and third-party verification.", "mandatory": true },
+      { "article": "Article 10a", "title": "Free allocation and benchmarks", "description": "Free allowances allocated based on product benchmarks. Free allocation being phased out 2026-2034 as CBAM phases in.", "mandatory": true }
+    ],
+    "penalties": "EUR 100 per tonne excess emissions + obligation to surrender missing allowances.",
+    "data": {
+      "carbonPriceHistory_EUR_tCO2": {
+        "2013": 5,
+        "2015": 8,
+        "2017": 6,
+        "2019": 25,
+        "2020": 30,
+        "2021": 55,
+        "2022": 80,
+        "2023_peak": 100,
+        "2024_average": 65,
+        "note": "Price peaked at ~EUR 100 in Feb 2023; Market Stability Reserve has supported prices since 2019"
+      },
+      "emissionsCoverage_pct_EU": 40,
+      "sectorsCovered": ["Power generation", "Manufacturing (steel, cement, glass, ceramics, chemicals)", "Aviation (intra-EEA)", "Maritime (from 2024)"],
+      "ETS2": {
+        "description": "New ETS for buildings and road transport starting 2027",
+        "socialClimateFund": "EUR 65 billion fund to support vulnerable households during transition"
+      },
+      "totalEmissionsReduction_since2005_pct": 41,
+      "Fit_for_55_target": "62% reduction by 2030 vs 2005"
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["EU-ETS", "carbon-market", "cap-and-trade", "carbon-price", "emissions-trading"]
+  },
+  {
+    "jurisdiction": "EU",
+    "category": "eu_regulation",
+    "name": "EU Deforestation Regulation",
+    "shortName": "EUDR",
+    "description": "Regulation (EU) 2023/1115 prohibiting the placing on the EU market of commodities and products linked to deforestation or forest degradation after December 2020 cutoff date.",
+    "effectiveDate": "2025-12-30",
+    "applicableTo": ["Operators and traders of covered commodities in EU market"],
+    "requirements": [
+      { "article": "Article 3", "title": "Prohibition", "description": "Covered products must be deforestation-free, produced in accordance with relevant legislation of the country of production, and covered by a due diligence statement.", "mandatory": true },
+      { "article": "Article 8-10", "title": "Due diligence", "description": "Operators must collect geolocation data, assess risk of non-compliance, and mitigate identified risks.", "mandatory": true },
+      { "article": "Article 4", "title": "Due diligence statement", "description": "Submit due diligence statement to competent authority before placing products on market or exporting.", "mandatory": true }
+    ],
+    "penalties": "Fines proportionate to environmental damage; up to 4% of annual EU turnover. Confiscation of products. Exclusion from public procurement.",
+    "data": {
+      "coveredCommodities": ["Palm oil", "Soy", "Wood", "Coffee", "Cocoa", "Rubber", "Cattle"],
+      "cutoffDate": "2020-12-31",
+      "geolocationRequirement": "Plot-level geolocation coordinates required for all production areas",
+      "countryBenchmarking": "EU will classify countries as low, standard, or high risk; due diligence requirements vary accordingly",
+      "timeline_note": "Implementation delayed from Dec 2024 to Dec 2025 for large operators, June 2026 for SMEs"
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["deforestation", "supply-chain", "commodities", "due-diligence", "EUDR"]
+  },
+  {
+    "jurisdiction": "EU",
+    "category": "eu_regulation",
+    "name": "EU Green Bond Standard",
+    "shortName": "EU GBS",
+    "description": "Regulation (EU) 2023/2631 establishing voluntary requirements for European Green Bonds (EuGB), requiring alignment with EU Taxonomy and external review.",
+    "effectiveDate": "2024-12-21",
+    "applicableTo": ["Bond issuers wishing to use the 'European Green Bond' or 'EuGB' designation"],
+    "requirements": [
+      { "article": "Article 3", "title": "Use of proceeds", "description": "At least 85% of proceeds must be allocated to Taxonomy-aligned activities. Up to 15% flexibility pocket for activities not yet covered by Taxonomy.", "mandatory": true },
+      { "article": "Article 9-10", "title": "Allocation reporting", "description": "Annual allocation reports showing how proceeds are deployed, reviewed by external reviewer.", "mandatory": true },
+      { "article": "Article 13", "title": "External review", "description": "Pre-issuance and post-issuance external review by registered and ESMA-supervised reviewers.", "mandatory": true }
+    ],
+    "data": {
+      "voluntary": true,
+      "taxonomyAlignmentRequired_pct": 85,
+      "flexibilityPocket_pct": 15,
+      "greenBondMarketSize_2024_billionUSD": 600,
+      "EUshareOfGlobalGreenBonds_pct": 50
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["green-bonds", "taxonomy", "sustainable-finance", "EuGB"]
+  },
+  {
+    "jurisdiction": "EU",
+    "category": "eu_regulation",
+    "name": "EU Green Claims Directive (proposed)",
+    "shortName": "EU Green Claims",
+    "description": "Proposed EU Directive on substantiation and communication of environmental claims and environmental labeling. Aims to combat greenwashing by requiring scientific substantiation of green claims.",
+    "effectiveDate": "2026-01-01",
+    "applicableTo": ["Companies making voluntary environmental claims to EU consumers"],
+    "requirements": [
+      { "title": "Substantiation requirement", "description": "Environmental claims must be substantiated by a recognized scientific methodology, based on primary data where possible, covering the full life cycle.", "mandatory": true },
+      { "title": "Verification", "description": "Claims must be verified by an accredited third-party verifier before use.", "mandatory": true },
+      { "title": "Communication rules", "description": "Claims must specify whether they relate to the entire product or specific aspects; cannot use generic terms ('green', 'eco-friendly') without substantiation.", "mandatory": true }
+    ],
+    "penalties": "Member States to set penalties. Expected to include fines and product withdrawal.",
+    "data": {
+      "status": "Proposed March 2023. Political agreement reached. Final adoption pending.",
+      "scope": "Business-to-consumer environmental claims",
+      "keyRestrictions": [
+        "Ban on claims based solely on carbon offsets",
+        "Ban on unsubstantiated aggregate environmental scores",
+        "Only EU/Member State-recognized environmental labels allowed"
+      ]
+    },
+    "year": 2023,
+    "verified": false,
+    "tags": ["greenwashing", "green-claims", "consumer-protection", "labeling"]
+  },
+  {
+    "jurisdiction": "Saudi Arabia",
+    "category": "gcc_regulation",
+    "name": "Saudi Exchange ESG Disclosure Guidelines",
+    "shortName": "Tadawul ESG Guide",
+    "description": "Saudi Exchange (Tadawul) ESG Disclosure Guidelines issued in 2021, defining 29 ESG KPIs for listed companies. Initially comply-or-explain, with phased mandatory implementation.",
+    "effectiveDate": "2021-01-01",
+    "applicableTo": ["All companies listed on the Saudi Exchange (Tadawul)"],
+    "requirements": [
+      { "title": "Annual ESG disclosure", "description": "Listed companies must disclose ESG performance annually, initially on comply-or-explain basis.", "mandatory": false },
+      { "title": "29 ESG Metrics", "description": "Companies must report against 29 defined KPIs across Environmental (9), Social (10), and Governance (10) dimensions.", "mandatory": false },
+      { "title": "Board responsibility", "description": "Board must oversee ESG strategy and disclosure.", "mandatory": true }
+    ],
+    "data": {
+      "29_KPIs": {
+        "environmental_9": [
+          { "id": "E1", "name": "GHG Emissions - Scope 1", "unit": "tCO2e" },
+          { "id": "E2", "name": "GHG Emissions - Scope 2", "unit": "tCO2e" },
+          { "id": "E3", "name": "GHG Emissions - Scope 3", "unit": "tCO2e" },
+          { "id": "E4", "name": "Energy Usage", "unit": "MWh" },
+          { "id": "E5", "name": "Energy Intensity", "unit": "MWh/revenue" },
+          { "id": "E6", "name": "Energy Mix", "unit": "% renewable" },
+          { "id": "E7", "name": "Water Usage", "unit": "m3" },
+          { "id": "E8", "name": "Environmental Operations", "unit": "Qualitative" },
+          { "id": "E9", "name": "Environmental Oversight", "unit": "Qualitative" }
+        ],
+        "social_10": [
+          { "id": "S1", "name": "Female Employees", "unit": "% of total" },
+          { "id": "S2", "name": "Female in Management", "unit": "% of management" },
+          { "id": "S3", "name": "Employee Turnover", "unit": "% annual" },
+          { "id": "S4", "name": "Nationalization (Saudization)", "unit": "% Saudi nationals" },
+          { "id": "S5", "name": "Employee Training", "unit": "Hours per employee" },
+          { "id": "S6", "name": "Employee Fatal Injuries", "unit": "Number" },
+          { "id": "S7", "name": "Injury Rate", "unit": "Per 200,000 hours" },
+          { "id": "S8", "name": "Global Health & Safety", "unit": "Qualitative" },
+          { "id": "S9", "name": "Child & Forced Labor", "unit": "Qualitative" },
+          { "id": "S10", "name": "Human Rights", "unit": "Qualitative" }
+        ],
+        "governance_10": [
+          { "id": "G1", "name": "Board Independence", "unit": "% independent directors" },
+          { "id": "G2", "name": "Board Gender Diversity", "unit": "% female board members" },
+          { "id": "G3", "name": "Board Composition", "unit": "Qualitative" },
+          { "id": "G4", "name": "Incentivized Pay", "unit": "Qualitative" },
+          { "id": "G5", "name": "Ethics and Prevention of Corruption", "unit": "Qualitative" },
+          { "id": "G6", "name": "Data Privacy", "unit": "Qualitative" },
+          { "id": "G7", "name": "Sustainability Reporting", "unit": "Yes/No + standard used" },
+          { "id": "G8", "name": "Disclosure Practices", "unit": "Qualitative" },
+          { "id": "G9", "name": "External Assurance", "unit": "Yes/No" },
+          { "id": "G10", "name": "ESG Oversight", "unit": "Qualitative" }
+        ]
+      },
+      "phasedMandatory": {
+        "2024": "Mandatory ESG reporting for top-tier listed companies",
+        "2025": "Expanding scope"
+      },
+      "alignment": "Aligned with GRI, SASB, TCFD, and Saudi Vision 2030"
+    },
+    "year": 2021,
+    "verified": true,
+    "tags": ["Saudi", "Tadawul", "KPIs", "ESG-disclosure", "GCC", "Vision-2030"]
+  },
+  {
+    "jurisdiction": "UAE",
+    "category": "gcc_regulation",
+    "name": "Abu Dhabi Securities Exchange ESG Disclosure Guidance",
+    "shortName": "ADX ESG Guide",
+    "description": "ADX ESG Disclosure Guidance (2023 update) requiring listed companies to report 31 ESG metrics. Mandatory for all ADX-listed entities.",
+    "effectiveDate": "2023-01-01",
+    "applicableTo": ["All companies listed on Abu Dhabi Securities Exchange (ADX)"],
+    "requirements": [
+      { "title": "Annual ESG report", "description": "All ADX-listed companies must publish an annual ESG report or integrate ESG disclosures into annual report.", "mandatory": true },
+      { "title": "31 ESG Metrics", "description": "Companies must report 31 defined metrics (10 Environmental, 11 Social, 10 Governance).", "mandatory": true },
+      { "title": "Third-party assurance", "description": "Encouraged to obtain independent third-party assurance on ESG data.", "mandatory": false }
+    ],
+    "data": {
+      "31_metrics": {
+        "environmental_10": [
+          "GHG emissions (Scope 1 & 2)", "GHG emissions intensity",
+          "Energy usage", "Energy intensity", "Energy mix",
+          "Water usage", "Water intensity",
+          "Waste generated", "Waste diverted from disposal",
+          "Environmental policy/management system"
+        ],
+        "social_11": [
+          "CEO pay ratio", "Gender pay ratio",
+          "Employee turnover rate", "Gender diversity (% female)",
+          "Temporary worker ratio", "Non-discrimination policy",
+          "Injury rate (LTIR)", "Fatalities",
+          "Global health & safety certifications",
+          "Child/forced labor policy", "Human rights policy"
+        ],
+        "governance_10": [
+          "Board independence (%)", "Board gender diversity (%)",
+          "Board ESG competence", "Incentivized pay linked to ESG",
+          "Ethics/anti-corruption policy", "Data privacy policy",
+          "Sustainability report published", "External assurance obtained",
+          "Disclosure practices", "ESG committee/governance oversight"
+        ]
+      },
+      "complianceRate_2023": "80%+ of listed companies publishing ESG reports",
+      "alignment": "Aligned with GRI, ISSB, TCFD"
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["ADX", "UAE", "Abu-Dhabi", "ESG-metrics", "GCC"]
+  },
+  {
+    "jurisdiction": "Qatar",
+    "category": "gcc_regulation",
+    "name": "Qatar Stock Exchange ESG Guidance",
+    "shortName": "QSE ESG Guidance",
+    "description": "Qatar Stock Exchange ESG Reporting Guidance requiring listed companies to provide ESG disclosures aligned with international frameworks.",
+    "effectiveDate": "2020-01-01",
+    "applicableTo": ["All companies listed on Qatar Stock Exchange"],
+    "requirements": [
+      { "title": "ESG reporting", "description": "Listed companies should publish an annual ESG/sustainability report using recognized international frameworks.", "mandatory": false },
+      { "title": "GRI alignment", "description": "QSE recommends alignment with GRI Standards as the primary reporting framework.", "mandatory": false },
+      { "title": "Key metrics", "description": "Report on material ESG topics relevant to the company's sector and operations.", "mandatory": false }
+    ],
+    "data": {
+      "status": "Voluntary but strongly encouraged; QSE provides capacity building and training",
+      "QSE_sustainability_index": "QSE launched a sustainability index tracking ESG leaders",
+      "keyMetrics_recommended": [
+        "GHG emissions (Scope 1 & 2)", "Energy consumption", "Water consumption",
+        "Qatarization rate", "Employee health and safety", "Board diversity",
+        "Anti-corruption measures", "Community investment"
+      ],
+      "alignment": "GRI, UNGC, SDGs",
+      "nationalContext": "Qatar National Vision 2030 drives ESG integration"
+    },
+    "year": 2020,
+    "verified": true,
+    "tags": ["QSE", "Qatar", "ESG-reporting", "GCC"]
+  },
+  {
+    "jurisdiction": "UAE",
+    "category": "gcc_regulation",
+    "name": "UAE Climate Change Law",
+    "shortName": "UAE Climate Law",
+    "description": "UAE Federal Decree-Law No. 11 of 2024 on Climate Change, establishing the legal framework for the UAE's climate commitments including net-zero by 2050 and NDC implementation.",
+    "effectiveDate": "2024-06-01",
+    "applicableTo": ["Federal and local government entities", "Large industrial emitters", "Regulated sectors"],
+    "requirements": [
+      { "title": "National emissions inventory", "description": "Establishment of a comprehensive national GHG emissions inventory and monitoring system.", "mandatory": true },
+      { "title": "GHG reporting for large emitters", "description": "Mandatory GHG emissions reporting for facilities exceeding specified thresholds.", "mandatory": true },
+      { "title": "Climate adaptation planning", "description": "Government entities must develop climate adaptation plans.", "mandatory": true },
+      { "title": "Carbon credits framework", "description": "Establishment of a national carbon credits and offsets framework.", "mandatory": true }
+    ],
+    "data": {
+      "keyProvisions": [
+        "Codifies UAE Net Zero by 2050 Strategic Initiative",
+        "Empowers Ministry of Climate Change and Environment to set sector emission targets",
+        "Establishes carbon credit registry and voluntary carbon market rules",
+        "Introduces climate change risk assessment requirements for key infrastructure",
+        "Supports green hydrogen and clean energy development"
+      ],
+      "UAE_NDC_targets": {
+        "2030": "31% reduction in GHG emissions vs BAU",
+        "2050": "Net-zero greenhouse gas emissions"
+      },
+      "context": "First comprehensive climate legislation in the GCC region; enacted during UAE COP28 presidency"
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["UAE", "climate-law", "net-zero", "GCC", "NDC"]
+  },
+  {
+    "jurisdiction": "Saudi Arabia",
+    "category": "gcc_regulation",
+    "name": "Saudi Green Initiative",
+    "shortName": "SGI",
+    "description": "Saudi Green Initiative launched in 2021 as the national framework for Saudi Arabia's environmental sustainability commitments, including climate, afforestation, and ecosystem restoration.",
+    "effectiveDate": "2021-10-23",
+    "applicableTo": ["National government programs", "Major corporations (encouraged)"],
+    "requirements": [
+      { "title": "National emission reduction", "description": "Saudi Arabia committed to reducing emissions by 278 MtCO2e annually by 2030 (from projected BAU).", "mandatory": true },
+      { "title": "Renewable energy targets", "description": "Generate 50% of electricity from renewable sources by 2030.", "mandatory": true },
+      { "title": "Afforestation", "description": "Plant 10 billion trees across Saudi Arabia.", "mandatory": true },
+      { "title": "Protected areas", "description": "Increase protected areas to over 30% of total land area.", "mandatory": true }
+    ],
+    "data": {
+      "targets": {
+        "netZero": "2060 (announced October 2021, Circular Carbon Economy approach)",
+        "emissionsReduction_2030_MtCO2e": 278,
+        "renewable_energy_target_2030_pct": 50,
+        "trees_target": "10 billion trees",
+        "protectedAreas_target_pct": 30,
+        "methaneEmissions_reduction_pct": 30
+      },
+      "keyPrograms": [
+        "REPDO (Renewable Energy Project Development Office)",
+        "NEOM green hydrogen project",
+        "National Circular Carbon Economy program",
+        "Saudi Carbon Credit framework",
+        "National Nature-based Solutions initiative"
+      ],
+      "investment": "Over $185 billion committed to green economy programs",
+      "circularCarbonEconomy": {
+        "4Rs": ["Reduce", "Reuse", "Recycle", "Remove"],
+        "note": "Saudi Arabia promotes CCS/CCUS and blue hydrogen as part of its transition strategy"
+      }
+    },
+    "year": 2021,
+    "verified": true,
+    "tags": ["Saudi", "SGI", "Vision-2030", "net-zero-2060", "renewables", "afforestation"]
+  },
+  {
+    "jurisdiction": "UAE",
+    "category": "gcc_regulation",
+    "name": "SCA Sustainable Finance Framework",
+    "shortName": "SCA ESG Framework",
+    "description": "UAE Securities and Commodities Authority framework for sustainable finance and ESG integration in capital markets, applicable to all UAE-listed companies and licensed financial institutions.",
+    "effectiveDate": "2023-01-01",
+    "applicableTo": ["UAE-listed companies", "Licensed financial institutions", "Fund managers"],
+    "requirements": [
+      { "title": "ESG disclosure for listed companies", "description": "All listed companies must disclose ESG information in their annual governance reports.", "mandatory": true },
+      { "title": "Green bond/sukuk framework", "description": "Framework for issuance of green, social, sustainability and sustainability-linked bonds/sukuk.", "mandatory": false },
+      { "title": "ESG fund classification", "description": "Requirements for funds marketed as ESG or sustainable, including minimum investment criteria.", "mandatory": true }
+    ],
+    "data": {
+      "keyElements": [
+        "ESG disclosure requirements for listed companies",
+        "Green/sustainable bond listing rules on ADX and DFM",
+        "ESG fund classification and anti-greenwashing rules",
+        "Climate risk management guidance for financial institutions"
+      ],
+      "UAEsustainableFinance_initiatives": [
+        "Abu Dhabi Sustainable Finance Declaration",
+        "Dubai Sustainable Finance Working Group",
+        "DIFC Sustainable Finance Framework",
+        "ADGM Sustainable Finance Agenda"
+      ]
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["SCA", "UAE", "sustainable-finance", "green-bonds", "ESG-funds"]
+  },
+  {
+    "jurisdiction": "International",
+    "category": "enforcement",
+    "name": "SEC v. DWS Group (Greenwashing Investigation)",
+    "shortName": "SEC v DWS",
+    "description": "SEC investigation and settlement with DWS Group (Deutsche Bank's asset management arm) over allegations of misrepresenting ESG integration practices in its investment processes.",
+    "effectiveDate": "2023-09-25",
+    "applicableTo": ["Asset managers globally (precedent)"],
+    "requirements": [],
+    "penalties": "USD 19 million settlement with SEC. Additional EUR 800,000 fine from BaFin (German regulator).",
+    "data": {
+      "parties": "SEC and BaFin vs. DWS Group (Deutsche Bank subsidiary)",
+      "jurisdiction": "United States (SEC) and Germany (BaFin)",
+      "allegation": "DWS overstated the extent to which ESG factors were integrated into its investment decision-making process; ESG was not consistently or systematically applied as claimed in marketing materials",
+      "outcome": "Settlement without admission of wrongdoing. DWS paid $19M to SEC. CEO resigned.",
+      "fineAmount_USD": 19000000,
+      "keyLesson": "Asset managers must ensure ESG integration claims in marketing match actual investment processes. Whistleblower protections critical.",
+      "timeline": "Whistleblower complaint 2021; SEC investigation 2022; settlement September 2023",
+      "triggeredBy": "Former DWS Head of Sustainability Desiree Fixler filed whistleblower complaint"
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["greenwashing", "SEC", "enforcement", "asset-management", "DWS"]
+  },
+  {
+    "jurisdiction": "UK",
+    "category": "enforcement",
+    "name": "HSBC Greenwashing Advertising Ruling",
+    "shortName": "HSBC ASA Ruling",
+    "description": "UK Advertising Standards Authority (ASA) ruled that HSBC advertisements were misleading by highlighting green initiatives without adequate context about the bank's ongoing fossil fuel financing.",
+    "effectiveDate": "2022-10-19",
+    "applicableTo": ["Financial institutions (advertising precedent)"],
+    "requirements": [],
+    "penalties": "Ads banned. Reputational damage. No financial penalty from ASA (non-financial regulator).",
+    "data": {
+      "parties": "ASA vs. HSBC UK",
+      "jurisdiction": "United Kingdom",
+      "allegation": "Two HSBC ads (2022) promoted the bank's tree-planting initiatives and net-zero commitments without disclosing that HSBC continued to finance fossil fuel expansion worth billions",
+      "outcome": "Ads ruled misleading and banned. ASA found they omitted material information about HSBC's ongoing fossil fuel financing.",
+      "fineAmount_USD": 0,
+      "keyLesson": "Selective green messaging without disclosing overall environmental impact constitutes greenwashing. Financial institutions must provide balanced picture of sustainability activities vs. total business.",
+      "impactOnIndustry": "Led to widespread review of financial sector advertising. FCA subsequently published anti-greenwashing rule (November 2024)."
+    },
+    "year": 2022,
+    "verified": true,
+    "tags": ["greenwashing", "HSBC", "advertising", "UK", "ASA"]
+  },
+  {
+    "jurisdiction": "Australia",
+    "category": "enforcement",
+    "name": "Santos Net-Zero Greenwashing Challenge",
+    "shortName": "Santos Greenwashing",
+    "description": "Australasian Centre for Corporate Responsibility (ACCR) filed Federal Court proceedings against Santos Ltd alleging its net-zero plan and 'clean energy' claims were misleading.",
+    "effectiveDate": "2023-11-24",
+    "applicableTo": ["Oil and gas companies (precedent)"],
+    "requirements": [],
+    "data": {
+      "parties": "ACCR v. Santos Ltd",
+      "jurisdiction": "Australia (Federal Court)",
+      "allegation": "Santos' 2020 annual report and climate report claimed a credible pathway to net-zero by 2040, relying heavily on unproven carbon capture and storage (CCS) and nature-based offsets; 'clean energy' description of natural gas was misleading",
+      "outcome": "Case ongoing as of 2024. Partial win for ACCR: court ruled the case can proceed on merits.",
+      "fineAmount_USD": 0,
+      "keyLesson": "Corporate net-zero plans relying on unproven or speculative technology (CCS, offsets) face legal challenge. 'Clean energy' label for fossil gas is contested.",
+      "significance": "First Australian court challenge to a company's net-zero plan. Test case for climate litigation globally."
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["greenwashing", "net-zero", "Santos", "Australia", "CCS", "climate-litigation"]
+  },
+  {
+    "jurisdiction": "Netherlands",
+    "category": "enforcement",
+    "name": "Milieudefensie v. Royal Dutch Shell",
+    "shortName": "Shell Climate Case",
+    "description": "Landmark climate litigation where The Hague District Court ordered Royal Dutch Shell to reduce its worldwide CO2 emissions by 45% by 2030 (vs 2019), including Scope 3 emissions.",
+    "effectiveDate": "2021-05-26",
+    "applicableTo": ["Major fossil fuel companies (precedent)"],
+    "requirements": [],
+    "penalties": "Court order to reduce emissions. Shell appealed.",
+    "data": {
+      "parties": "Milieudefensie (Friends of the Earth Netherlands) et al. v. Royal Dutch Shell plc",
+      "jurisdiction": "Netherlands (The Hague District Court; appeal pending at The Hague Court of Appeal)",
+      "allegation": "Shell's emission reduction policy was insufficient and violated its duty of care under Dutch civil law (Book 6, Section 162 Dutch Civil Code) and human rights obligations",
+      "outcome": "Court ordered Shell to reduce net CO2 emissions by 45% by end of 2030 vs 2019 levels across entire corporate group (Scope 1, 2, and 3). Shell appealed; appeal heard November 2024.",
+      "fineAmount_USD": 0,
+      "keyLesson": "Corporations can be held liable for climate impacts through duty-of-care doctrine. Scope 3 emissions obligations imposed. First time a court ordered a private company to align with Paris Agreement.",
+      "reductionOrder": {
+        "target": "Net 45% reduction in CO2 by end of 2030 vs 2019",
+        "scope": "Scope 1, 2, and 3 (including end-use of sold products)",
+        "legalBasis": "Dutch Civil Code unwritten standard of care interpreted through IPCC/Paris Agreement"
+      }
+    },
+    "year": 2021,
+    "verified": true,
+    "tags": ["climate-litigation", "Shell", "Netherlands", "Scope-3", "duty-of-care", "landmark"]
+  },
+  {
+    "jurisdiction": "USA",
+    "category": "enforcement",
+    "name": "SEC v. Goldman Sachs (ESG Fund Misrepresentation)",
+    "shortName": "SEC v Goldman ESG",
+    "description": "SEC settled charges against Goldman Sachs Asset Management for failures in policies and procedures involving ESG investments across two funds (ESG-labeled mutual fund and SMA strategy).",
+    "effectiveDate": "2022-11-22",
+    "applicableTo": ["Asset managers offering ESG products"],
+    "requirements": [],
+    "penalties": "USD 4 million civil penalty.",
+    "data": {
+      "parties": "SEC v. Goldman Sachs Asset Management, L.P.",
+      "jurisdiction": "United States (SEC)",
+      "allegation": "Goldman Sachs failed to follow its own policies for ESG integration between April 2017 and February 2020. Investments in an ESG fund were not consistently vetted through ESG questionnaires, and the firm lacked written policies for ESG research in the initial period.",
+      "outcome": "Goldman Sachs settled for $4M without admitting or denying findings. Required to implement compliance improvements.",
+      "fineAmount_USD": 4000000,
+      "keyLesson": "Even if ESG claims are not fraudulent, failure to follow documented ESG processes is an enforcement risk. Policies must match practice."
+    },
+    "year": 2022,
+    "verified": true,
+    "tags": ["SEC", "Goldman-Sachs", "ESG-funds", "enforcement", "compliance"]
+  },
+  {
+    "jurisdiction": "EU",
+    "category": "enforcement",
+    "name": "BaFin Investigation of Deutsche Bank / DWS Greenwashing",
+    "shortName": "BaFin DWS Investigation",
+    "description": "German financial regulator BaFin investigated DWS Group after whistleblower allegations that ESG-related claims in its 2020 annual report overstated ESG asset integration.",
+    "effectiveDate": "2022-06-01",
+    "applicableTo": ["EU-regulated asset managers"],
+    "requirements": [],
+    "penalties": "EUR 800,000 fine. Dawn raid on DWS offices by prosecutors.",
+    "data": {
+      "parties": "BaFin and Frankfurt Public Prosecutor vs. DWS Group",
+      "jurisdiction": "Germany",
+      "allegation": "DWS 2020 annual report stated that over half ($900B) of assets under management were ESG-integrated, but ESG criteria were not consistently applied across the claimed scope",
+      "outcome": "BaFin fined DWS EUR 800,000. Frankfurt prosecutors conducted dawn raid. DWS CEO Asoka Woehrmann resigned. Led to parallel SEC investigation and $19M US settlement.",
+      "fineAmount_USD": 870000,
+      "keyLesson": "Regulatory scrutiny is cross-border. Whistleblowers are empowered. ESG AUM claims must be verifiable.",
+      "crossBorderCoordination": "BaFin and SEC coordinated investigations, establishing precedent for cross-border ESG enforcement"
+    },
+    "year": 2022,
+    "verified": true,
+    "tags": ["BaFin", "DWS", "Germany", "greenwashing", "whistleblower"]
+  },
+  {
+    "jurisdiction": "USA",
+    "category": "enforcement",
+    "name": "New York v. JBS (Greenwashing Lawsuit)",
+    "shortName": "NY v JBS",
+    "description": "New York Attorney General filed lawsuit against JBS, the world's largest meat company, alleging its net-zero by 2040 pledge and related sustainability claims were misleading.",
+    "effectiveDate": "2024-02-28",
+    "applicableTo": ["Food/agriculture companies making climate commitments"],
+    "requirements": [],
+    "data": {
+      "parties": "New York Attorney General v. JBS S.A. / JBS USA",
+      "jurisdiction": "United States (New York State)",
+      "allegation": "JBS's net-zero by 2040 pledge was misleading because: the company's emissions were actually increasing; the claim lacked a credible plan; sustainability marketing misled consumers buying JBS products",
+      "outcome": "Case filed February 2024; litigation ongoing",
+      "fineAmount_USD": 0,
+      "keyLesson": "Net-zero pledges without credible reduction plans face legal risk. Consumer-facing sustainability claims in food sector under increased scrutiny. State attorneys general are active enforcers.",
+      "significance": "First lawsuit by a US state AG against a major food company for climate-related greenwashing"
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["greenwashing", "net-zero", "JBS", "food", "state-AG", "USA"]
+  },
+  {
+    "jurisdiction": "International",
+    "category": "enforcement",
+    "name": "ClientEarth v. Shell Board of Directors",
+    "shortName": "ClientEarth v Shell Board",
+    "description": "ClientEarth, as a Shell shareholder, filed derivative action against Shell's board of directors alleging breach of directors' duties by failing to adequately manage climate risk.",
+    "effectiveDate": "2023-02-09",
+    "applicableTo": ["Corporate directors globally (precedent)"],
+    "requirements": [],
+    "data": {
+      "parties": "ClientEarth v. Shell plc Board of Directors",
+      "jurisdiction": "England and Wales (High Court)",
+      "allegation": "Shell directors breached duties under UK Companies Act 2006 (s.172, s.174) by failing to adopt and implement a climate strategy aligned with Paris Agreement, exposing the company to material climate risk",
+      "outcome": "Dismissed by High Court in May 2023 on procedural grounds (permission to continue derivative claim denied). Court did not rule on merits. ClientEarth appealed; appeal dismissed July 2023.",
+      "fineAmount_USD": 0,
+      "keyLesson": "While this specific claim failed procedurally, it established that climate-related directors' duties claims are justiciable in principle. Increased focus on personal liability of directors for climate risk management.",
+      "significance": "First derivative claim against a company board specifically for climate risk management failures"
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["directors-duties", "climate-litigation", "Shell", "UK", "fiduciary"]
+  },
+  {
+    "jurisdiction": "France",
+    "category": "enforcement",
+    "name": "TotalEnergies Climate Litigation",
+    "shortName": "TotalEnergies Climate Cases",
+    "description": "Multiple climate lawsuits against TotalEnergies in French courts, including duty of vigilance claims and misleading advertising complaints.",
+    "effectiveDate": "2020-01-01",
+    "applicableTo": ["Major energy companies operating in EU"],
+    "requirements": [],
+    "data": {
+      "cases": [
+        {
+          "name": "Notre Affaire a Tous et al. v. TotalEnergies",
+          "year": 2020,
+          "basis": "French Duty of Vigilance Law (Loi de vigilance, 2017)",
+          "allegation": "TotalEnergies' vigilance plan fails to adequately address climate change risks and align with Paris Agreement",
+          "status": "Ongoing; procedural ruling in 2024 allowed case to proceed"
+        },
+        {
+          "name": "Greenpeace France v. TotalEnergies (advertising)",
+          "year": 2022,
+          "basis": "Consumer protection / misleading advertising",
+          "allegation": "TotalEnergies advertising presenting itself as a 'major player in the energy transition' was misleading given ongoing fossil fuel expansion",
+          "status": "Investigation by French advertising authority"
+        }
+      ],
+      "keyLesson": "France's Duty of Vigilance Law creates unique liability for large companies on environmental and human rights issues. Multiple legal avenues available for climate claims.",
+      "frenchDutyOfVigilanceLaw": "Law No. 2017-399 requires companies with 5,000+ employees in France (or 10,000+ worldwide) to establish, publish, and implement a vigilance plan"
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["TotalEnergies", "France", "vigilance-law", "climate-litigation", "advertising"]
+  },
+  {
+    "jurisdiction": "International",
+    "category": "enforcement",
+    "name": "ASIC v. Mercer Superannuation (Greenwashing)",
+    "shortName": "ASIC v Mercer",
+    "description": "Australian Securities and Investments Commission (ASIC) action against Mercer Superannuation for greenwashing in its Sustainable Plus investment options.",
+    "effectiveDate": "2023-03-07",
+    "applicableTo": ["Pension/superannuation funds (precedent)"],
+    "requirements": [],
+    "penalties": "AUD 11.3 million (approximately USD 7.3 million) penalty ordered by Federal Court.",
+    "data": {
+      "parties": "ASIC v. Mercer Superannuation (Australia) Limited",
+      "jurisdiction": "Australia (Federal Court)",
+      "allegation": "Mercer's 'Sustainable Plus' investment options held investments in companies involved in fossil fuels, alcohol, and gambling, contrary to marketing representations that these options excluded such investments",
+      "outcome": "Federal Court imposed AUD 11.3M penalty (November 2023). Mercer consented to declarations of contravention.",
+      "fineAmount_USD": 7300000,
+      "keyLesson": "Exclusion-based ESG claims must be accurately implemented. Pension funds face heightened scrutiny. ASIC is actively pursuing greenwashing enforcement.",
+      "ASIC_greenwashing_campaign": "Part of ASIC's broader greenwashing enforcement sweep; 35+ interventions since 2023"
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["ASIC", "Mercer", "Australia", "greenwashing", "pensions", "superannuation"]
+  },
+  {
+    "jurisdiction": "International",
+    "category": "international_standard",
+    "name": "Global Reporting Initiative Standards",
+    "shortName": "GRI Standards",
+    "description": "The GRI Standards are the world's most widely used sustainability reporting standards, enabling organizations to report their impacts on the economy, environment, and people.",
+    "effectiveDate": "2023-01-01",
+    "applicableTo": ["Any organization (voluntary)", "Referenced by 70+ jurisdictions", "Most widely used sustainability reporting framework globally"],
+    "requirements": [
+      { "article": "GRI 1", "title": "Foundation 2021", "description": "Sets out the purpose, system, and key concepts for using GRI Standards. Establishes reporting principles and requirements.", "mandatory": true },
+      { "article": "GRI 2", "title": "General Disclosures 2021", "description": "Report organizational details, governance, strategy, policies, practices, stakeholder engagement, and reporting process.", "mandatory": true },
+      { "article": "GRI 3", "title": "Material Topics 2021", "description": "Describe process to determine material topics, list of material topics, and management of each topic.", "mandatory": true },
+      { "article": "GRI 200", "title": "Economic Standards", "description": "Economic performance (201), market presence (202), indirect impacts (203), procurement (204), anti-corruption (205), anti-competitive behavior (206), tax (207).", "mandatory": false },
+      { "article": "GRI 300", "title": "Environmental Standards", "description": "Materials (301), energy (302), water (303), biodiversity (304), emissions (305), waste (306), supplier environmental assessment (308).", "mandatory": false },
+      { "article": "GRI 400", "title": "Social Standards", "description": "Employment (401), OHS (403), training (404), diversity (405), non-discrimination (406), human rights (407-412), local communities (413), supplier social assessment (414), customer health (416), privacy (418).", "mandatory": false }
+    ],
+    "data": {
+      "approach": "Impact materiality (organization's impact on economy, environment, and people)",
+      "adoptionStats": {
+        "reportersGlobally": "Over 14,000 organizations in 100+ countries",
+        "regulatoryReferences": "Referenced in regulations in 70+ jurisdictions",
+        "dominantInMarkets": ["Europe", "Asia-Pacific", "Latin America", "Middle East"]
+      },
+      "GRI_ESRS_interoperability": "ESRS and GRI have published interoperability mapping; GRI reporters can largely satisfy ESRS requirements",
+      "sectorStandards": {
+        "published": ["Oil and Gas (GRI 11)", "Coal (GRI 12)", "Agriculture/Aquaculture/Fishing (GRI 13)", "Mining (GRI 14)"],
+        "upcoming": ["Textiles", "Banking", "Financial services"]
+      }
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["GRI", "reporting", "impact-materiality", "sustainability", "standards"]
+  },
+  {
+    "jurisdiction": "International",
+    "category": "international_standard",
+    "name": "IFRS Sustainability Disclosure Standards - S1 General Requirements",
+    "shortName": "ISSB S1",
+    "description": "IFRS S1 General Requirements for Disclosure of Sustainability-related Financial Information. Sets out overall requirements for sustainability disclosures for capital markets, focusing on enterprise value.",
+    "effectiveDate": "2024-01-01",
+    "applicableTo": ["Jurisdictions adopting ISSB standards (voluntary adoption by jurisdiction)", "Adopted/referenced by UK, Japan, Singapore, Hong Kong, Australia, Brazil, Nigeria, others"],
+    "requirements": [
+      { "article": "Para 1-4", "title": "Objective and scope", "description": "Disclose information about sustainability-related risks and opportunities that could reasonably be expected to affect entity's cash flows, access to finance, or cost of capital.", "mandatory": true },
+      { "article": "Para 25-42", "title": "Governance", "description": "Disclose governance body oversight of sustainability risks/opportunities, management's role, and competence.", "mandatory": true },
+      { "article": "Para 43-49", "title": "Strategy", "description": "Disclose sustainability risks/opportunities, their effects on business model and value chain, strategy resilience, and financial effects.", "mandatory": true },
+      { "article": "Para 50-53", "title": "Risk management", "description": "Disclose processes to identify, assess, prioritize, and monitor sustainability risks/opportunities.", "mandatory": true },
+      { "article": "Para 54-59", "title": "Metrics and targets", "description": "Disclose metrics and targets used to measure and manage sustainability risks/opportunities.", "mandatory": true }
+    ],
+    "data": {
+      "developedBy": "International Sustainability Standards Board (ISSB), part of IFRS Foundation",
+      "published": "2023-06-26",
+      "effectiveFor": "Annual reporting periods beginning on or after 1 January 2024",
+      "approach": "Financial materiality (enterprise value / investor-focused)",
+      "TCFD_alignment": "Fully incorporates TCFD recommendations; TCFD disbanded and responsibilities transferred to ISSB",
+      "jurisdictionAdoption": {
+        "mandatory": ["UK (UK SDS)", "Brazil", "Nigeria", "Turkey", "Kenya", "Costa Rica"],
+        "voluntary_endorsed": ["Japan", "Singapore", "Hong Kong", "Australia", "Canada"],
+        "under_consideration": ["India", "South Korea", "Malaysia", "EU (interoperability)"]
+      },
+      "interoperabilityWithESRS": "ISSB and EFRAG have published interoperability guidance showing high degree of compatibility"
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["ISSB", "S1", "IFRS", "financial-materiality", "investor", "disclosure"]
+  },
+  {
+    "jurisdiction": "International",
+    "category": "international_standard",
+    "name": "IFRS S2 Climate-related Disclosures",
+    "shortName": "ISSB S2",
+    "description": "IFRS S2 Climate-related Disclosures requires entities to disclose information about climate-related risks and opportunities, including Scope 1, 2, and 3 GHG emissions and transition plans.",
+    "effectiveDate": "2024-01-01",
+    "applicableTo": ["Same jurisdictional adoption as ISSB S1"],
+    "requirements": [
+      { "article": "Para 13-22", "title": "Governance of climate risks and opportunities", "description": "Disclose board and management oversight of climate-related risks and opportunities.", "mandatory": true },
+      { "article": "Para 23-35", "title": "Strategy including scenario analysis", "description": "Disclose climate risks/opportunities, effects on strategy, scenario analysis, and transition plans.", "mandatory": true },
+      { "article": "Para 36-39", "title": "Risk management for climate", "description": "Disclose processes for identifying, assessing, managing climate risks and integration with overall risk management.", "mandatory": true },
+      { "article": "Para 29(a)", "title": "GHG emissions - Scope 1 and 2", "description": "Disclose absolute gross Scope 1 and 2 GHG emissions in metric tonnes CO2e using GHG Protocol.", "mandatory": true },
+      { "article": "Para 29(a)", "title": "GHG emissions - Scope 3", "description": "Disclose absolute gross Scope 3 GHG emissions in metric tonnes CO2e. One-year relief period for first-time adopters.", "mandatory": true },
+      { "article": "Para 33", "title": "Climate resilience and scenario analysis", "description": "Assess and disclose climate resilience using scenario analysis aligned with latest international agreements.", "mandatory": true }
+    ],
+    "data": {
+      "developedBy": "ISSB / IFRS Foundation",
+      "published": "2023-06-26",
+      "GHG_methodology": "GHG Protocol Corporate Standard (Scope 1 & 2) and Corporate Value Chain Standard (Scope 3)",
+      "industryGuidance": "Accompanied by industry-based guidance derived from SASB Standards for 68 industries",
+      "scope3_relief": "First annual reporting period: Scope 3 disclosure not required (one-year transition)",
+      "scenarioAnalysis": "Required; must include climate-related scenario consistent with latest international agreement on climate change"
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["ISSB", "S2", "climate", "GHG", "Scope-3", "scenario-analysis", "TCFD"]
+  },
+  {
+    "jurisdiction": "International",
+    "category": "international_standard",
+    "name": "Task Force on Climate-related Financial Disclosures",
+    "shortName": "TCFD",
+    "description": "TCFD framework of recommendations for climate-related financial disclosures, organized around four pillars: Governance, Strategy, Risk Management, and Metrics & Targets. Now subsumed into ISSB.",
+    "effectiveDate": "2017-06-29",
+    "applicableTo": ["All organizations (voluntary; increasingly mandated)", "Mandatory in UK, NZ, Japan, Singapore, HK"],
+    "requirements": [
+      { "title": "Governance (a)", "description": "Board's oversight of climate-related risks and opportunities.", "mandatory": true },
+      { "title": "Governance (b)", "description": "Management's role in assessing and managing climate-related risks and opportunities.", "mandatory": true },
+      { "title": "Strategy (a)", "description": "Climate-related risks and opportunities identified over short, medium, and long term.", "mandatory": true },
+      { "title": "Strategy (b)", "description": "Impact of climate-related risks and opportunities on the organization's businesses, strategy, and financial planning.", "mandatory": true },
+      { "title": "Strategy (c)", "description": "Resilience of organization's strategy under different climate scenarios, including a 2C or lower scenario.", "mandatory": true },
+      { "title": "Risk Management (a)", "description": "Processes for identifying and assessing climate-related risks.", "mandatory": true },
+      { "title": "Risk Management (b)", "description": "Processes for managing climate-related risks.", "mandatory": true },
+      { "title": "Risk Management (c)", "description": "How climate risk processes are integrated into overall risk management.", "mandatory": true },
+      { "title": "Metrics & Targets (a)", "description": "Metrics used to assess climate-related risks and opportunities in line with strategy and risk management.", "mandatory": true },
+      { "title": "Metrics & Targets (b)", "description": "Scope 1, Scope 2, and if appropriate, Scope 3 GHG emissions and related risks.", "mandatory": true },
+      { "title": "Metrics & Targets (c)", "description": "Targets used to manage climate-related risks and opportunities, and performance against targets.", "mandatory": true }
+    ],
+    "data": {
+      "fourPillars": ["Governance", "Strategy", "Risk Management", "Metrics and Targets"],
+      "11_recommendations": 11,
+      "adoptionRate_2023": "Over 4,000 organizations have expressed support",
+      "regulatoryMandates": {
+        "UK": "Mandatory for premium listed companies, large private companies, LLPs (2022)",
+        "NewZealand": "Mandatory for large financial institutions (2023)",
+        "Japan": "Mandatory for prime-listed companies on TSE (2023)",
+        "Singapore": "Mandatory for listed companies by 2025",
+        "HongKong": "Mandatory for all listed companies by 2025"
+      },
+      "status": "TCFD disbanded October 2023; responsibilities transferred to ISSB. ISSB S1/S2 fully incorporate and supersede TCFD recommendations.",
+      "legacy": "TCFD framework is the foundation of all major climate disclosure standards (ISSB, ESRS, SEC proposal)"
+    },
+    "year": 2017,
+    "verified": true,
+    "tags": ["TCFD", "climate-disclosure", "governance", "strategy", "risk-management", "metrics"]
+  },
+  {
+    "jurisdiction": "International",
+    "category": "international_standard",
+    "name": "CDP (formerly Carbon Disclosure Project)",
+    "shortName": "CDP",
+    "description": "CDP operates the global environmental disclosure system for companies, cities, states, and regions. Over 23,000 companies disclose through CDP, representing $67 trillion in market capitalization.",
+    "effectiveDate": "2000-01-01",
+    "applicableTo": ["Any company (voluntary; investor/customer requested)", "Over 23,000 companies disclose", "746 financial institutions with $136 trillion request disclosure"],
+    "requirements": [
+      { "title": "Climate Change Questionnaire", "description": "Comprehensive disclosure on governance, risks/opportunities, strategy, targets, emissions (Scope 1/2/3), energy, and verification.", "mandatory": false },
+      { "title": "Forests Questionnaire", "description": "Disclosure on commodity-driven deforestation risks across palm oil, soy, timber, cattle, cocoa, rubber, coffee.", "mandatory": false },
+      { "title": "Water Security Questionnaire", "description": "Disclosure on water risk assessment, water accounting, targets, governance, and value chain engagement.", "mandatory": false }
+    ],
+    "data": {
+      "scoringMethodology": {
+        "levels": ["D-", "D", "C-", "C", "B-", "B", "A-", "A"],
+        "criteria": {
+          "D": "Disclosure - providing information",
+          "C": "Awareness - evidence of knowledge of environmental issues",
+          "B": "Management - evidence of actions to address issues",
+          "A": "Leadership - best practice, strategic approach"
+        },
+        "A_list_2023": "Over 400 companies scored A across all three programs"
+      },
+      "questionStructure_climate": [
+        "C0: Introduction",
+        "C1: Governance",
+        "C2: Risks and opportunities",
+        "C3: Business strategy",
+        "C4: Targets and performance",
+        "C5: Emissions methodology",
+        "C6: Emissions data (Scope 1, 2, 3)",
+        "C7: Emissions breakdowns",
+        "C8: Energy",
+        "C9: Additional metrics",
+        "C10: Verification",
+        "C11: Carbon pricing",
+        "C12: Engagement",
+        "C13-C14: Sector-specific"
+      ],
+      "adoptionStats_2023": {
+        "companies_disclosing": 23000,
+        "investors_requesting": 746,
+        "investor_AUM_trillionUSD": 136,
+        "supplyChain_program_members": 380
+      },
+      "ISSB_alignment": "CDP has aligned its questionnaire with ISSB S2 from 2024 disclosure cycle; acts as primary channel for ISSB-aligned disclosure"
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["CDP", "disclosure", "scoring", "investors", "climate", "water", "forests"]
+  },
+  {
+    "jurisdiction": "International",
+    "category": "international_standard",
+    "name": "Science Based Targets Initiative - Target Setting Requirements",
+    "shortName": "SBTi",
+    "description": "SBTi provides a framework for companies to set GHG emission reduction targets aligned with climate science. Targets must be validated by SBTi and are based on sector-specific decarbonization pathways.",
+    "effectiveDate": "2015-01-01",
+    "applicableTo": ["Any company (voluntary)", "Over 9,000 companies committed; 4,200+ with validated targets"],
+    "requirements": [
+      { "title": "Near-term targets (required)", "description": "Companies must set near-term targets (5-10 years) to reduce Scope 1 and 2 emissions. 1.5C-aligned minimum 4.2% annual linear reduction.", "mandatory": true },
+      { "title": "Scope 3 target requirement", "description": "If Scope 3 emissions are more than 40% of total Scope 1+2+3, a Scope 3 target covering at least 67% of Scope 3 is required.", "mandatory": true },
+      { "title": "Net-zero targets (optional but encouraged)", "description": "Long-term targets to reach net-zero by 2050 at latest. Must reduce at least 90% of Scope 1+2+3; neutralize residual <10% with permanent CDR.", "mandatory": false },
+      { "title": "FLAG targets", "description": "Companies in land-intensive sectors (with >20% FLAG emissions) must set FLAG targets: zero deforestation by 2025, emissions pathway aligned with 1.5C.", "mandatory": true },
+      { "title": "Validation and annual reporting", "description": "Targets must be submitted to SBTi for validation. Companies must report progress annually via CDP.", "mandatory": true }
+    ],
+    "data": {
+      "targetSettingMethods": {
+        "absoluteContraction": "Reduce total emissions by required percentage (4.2%/yr for 1.5C)",
+        "sectoralDecarbonization": "Reduce emissions intensity following sector-specific pathways",
+        "economicIntensity": "Not accepted for 1.5C alignment"
+      },
+      "sectorSpecificGuidance": [
+        "Power generation", "Oil and gas", "Cement", "Steel",
+        "Transport (light-duty, heavy-duty, aviation, maritime)",
+        "Buildings (commercial, residential)", "Financial institutions",
+        "Forest, Land and Agriculture (FLAG)", "Chemicals", "Apparel and footwear"
+      ],
+      "netZero_criteria": {
+        "minimumReduction_pct": 90,
+        "residualNeutralization": "Remaining <10% must be neutralized with permanent CDR",
+        "beyondValueChain_mitigation": "Companies are expected to invest in BVCM in addition to in-value-chain reductions"
+      },
+      "financialInstitutions": {
+        "standard": "SBTi Financial Institutions Net-Zero Standard (launched October 2024)",
+        "requirement": "Portfolio alignment targets using sectoral pathways and portfolio coverage approach"
+      },
+      "controversy_2024": "SBTi Board decision in April 2024 to potentially allow carbon credits for Scope 3 targets was controversial and faced significant pushback from staff and stakeholders; subsequently paused for consultation"
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["SBTi", "science-based-targets", "net-zero", "validation", "1.5C"]
+  },
+  {
+    "jurisdiction": "International",
+    "category": "international_standard",
+    "name": "Taskforce on Nature-related Financial Disclosures",
+    "shortName": "TNFD",
+    "description": "TNFD provides a risk management and disclosure framework for organizations to report and act on evolving nature-related dependencies, impacts, risks, and opportunities.",
+    "effectiveDate": "2023-09-18",
+    "applicableTo": ["Any organization (voluntary, early adoption encouraged)", "320+ early adopters announced by January 2024"],
+    "requirements": [
+      { "title": "Governance", "description": "Disclose governance around nature-related dependencies, impacts, risks, and opportunities.", "mandatory": false },
+      { "title": "Strategy", "description": "Disclose actual and potential effects of nature-related issues on strategy and financial planning.", "mandatory": false },
+      { "title": "Risk & Impact Management", "description": "Disclose processes for identifying, assessing, prioritizing, and managing nature-related dependencies, impacts, risks, and opportunities.", "mandatory": false },
+      { "title": "Metrics & Targets", "description": "Disclose metrics and targets used to assess and manage nature-related issues. Includes core global and core sector metrics.", "mandatory": false }
+    ],
+    "data": {
+      "LEAPapproach": {
+        "L": "Locate interface with nature (priority locations, biomes, ecosystems)",
+        "E": "Evaluate dependencies and impacts on nature",
+        "A": "Assess nature-related risks and opportunities",
+        "P": "Prepare to respond and report"
+      },
+      "coreGlobalMetrics": [
+        "Land/freshwater/ocean use change (km2 or ha)",
+        "Pollutant releases to soil, water, air",
+        "GHG emissions (Scope 1/2/3)",
+        "Water withdrawal and consumption in water-stressed areas",
+        "Invasive alien species introduction",
+        "State of species (IUCN Red List)"
+      ],
+      "alignment": {
+        "ISSB": "TNFD designed to work with ISSB S1/S2",
+        "GBF": "Aligned with Kunming-Montreal Global Biodiversity Framework (Target 15)",
+        "ESRS_E4": "Compatible with ESRS E4 Biodiversity standard"
+      },
+      "earlyAdopters": "320+ organizations from 46 countries including Nestle, GSK, UBS, Norges Bank Investment Management"
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["TNFD", "nature", "biodiversity", "LEAP", "disclosure", "ecosystem"]
+  },
+  {
+    "jurisdiction": "International",
+    "category": "international_standard",
+    "name": "SASB Industry Standards (now part of ISSB)",
+    "shortName": "SASB Standards",
+    "description": "SASB Standards identify financially material sustainability topics and metrics for 77 industries across 11 sectors. Now maintained by the ISSB as industry-based guidance accompanying IFRS S1/S2.",
+    "effectiveDate": "2018-11-01",
+    "applicableTo": ["Companies in 77 industries (voluntary; referenced by investors and ISSB)"],
+    "requirements": [
+      { "title": "Industry-specific disclosure topics", "description": "Each industry standard identifies 3-8 disclosure topics deemed financially material for that industry.", "mandatory": false },
+      { "title": "Quantitative and qualitative metrics", "description": "Specific metrics per topic, including activity metrics (denominators) and accounting metrics.", "mandatory": false }
+    ],
+    "data": {
+      "11_sectors": [
+        "Consumer Goods", "Extractives & Minerals Processing", "Financials",
+        "Food & Beverage", "Health Care", "Infrastructure",
+        "Renewable Resources & Alternative Energy", "Resource Transformation",
+        "Services", "Technology & Communications", "Transportation"
+      ],
+      "total_industries": 77,
+      "approach": "Financial materiality (investor-focused); identifies what's material per industry",
+      "example_industries": {
+        "oilGasExploration": {
+          "topics": ["GHG Emissions", "Air Quality", "Water Management", "Biodiversity Impacts", "Security, Human Rights & Rights of Indigenous Peoples", "Community Relations", "Workforce Health & Safety", "Business Ethics & Transparency"],
+          "metricCount": 30
+        },
+        "commercialBanks": {
+          "topics": ["Data Security", "Financial Inclusion & Capacity Building", "Incorporation of ESG Factors in Credit Analysis", "Business Ethics", "Systemic Risk Management"],
+          "metricCount": 15
+        },
+        "electricUtilities": {
+          "topics": ["GHG Emissions & Energy Resource Planning", "Air Quality", "Water Management", "Coal Ash Management", "Energy Affordability", "Workforce Health & Safety", "Grid Resiliency"],
+          "metricCount": 20
+        }
+      },
+      "status": "SASB Standards consolidated under IFRS Foundation / ISSB in 2022. Continue as the industry-based guidance layer for ISSB S1/S2 disclosures."
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["SASB", "industry-standards", "financial-materiality", "ISSB", "metrics"]
+  },
+  {
+    "jurisdiction": "International",
+    "category": "international_standard",
+    "name": "ISO 14001 Environmental Management System",
+    "shortName": "ISO 14001",
+    "description": "ISO 14001:2015 specifies requirements for an environmental management system (EMS). Widely adopted; over 500,000 certifications globally. Often a prerequisite for ESG-credible operations.",
+    "effectiveDate": "2015-09-15",
+    "applicableTo": ["Any organization seeking to manage environmental responsibilities systematically"],
+    "requirements": [
+      { "title": "Environmental policy", "description": "Top management must establish an environmental policy appropriate to the organization's context.", "mandatory": true },
+      { "title": "Environmental aspects and impacts", "description": "Identify environmental aspects of activities, products, and services and determine significant impacts.", "mandatory": true },
+      { "title": "Compliance obligations", "description": "Identify and access applicable legal and other requirements.", "mandatory": true },
+      { "title": "Objectives and planning", "description": "Set measurable environmental objectives and plans to achieve them.", "mandatory": true },
+      { "title": "Operational control", "description": "Implement controls to manage significant environmental aspects.", "mandatory": true },
+      { "title": "Performance evaluation", "description": "Monitor, measure, analyze, and evaluate environmental performance.", "mandatory": true },
+      { "title": "Management review and continual improvement", "description": "Top management must periodically review the EMS and drive continual improvement.", "mandatory": true }
+    ],
+    "data": {
+      "certifications_global": "Over 500,000 (ISO Survey 2023)",
+      "topCountries": ["China", "Japan", "UK", "Italy", "Spain", "Germany", "India"],
+      "annex_SL_structure": "High-Level Structure (Annex SL) compatible with ISO 9001, ISO 45001, ISO 50001",
+      "notAPerformanceStandard": "ISO 14001 certifies the management system, not environmental performance levels"
+    },
+    "year": 2015,
+    "verified": true,
+    "tags": ["ISO-14001", "EMS", "certification", "management-system", "environmental"]
+  },
+  {
+    "jurisdiction": "International",
+    "category": "international_standard",
+    "name": "UN Guiding Principles on Business and Human Rights",
+    "shortName": "UNGPs",
+    "description": "The UN Guiding Principles on Business and Human Rights (2011) establish the authoritative global standard on business and human rights, structured around three pillars: Protect, Respect, Remedy.",
+    "effectiveDate": "2011-06-16",
+    "applicableTo": ["All business enterprises", "All States", "Referenced by CSDDD, ESRS, OECD Guidelines, SBTi minimum safeguards, EU Taxonomy"],
+    "requirements": [
+      { "title": "Pillar I: State Duty to Protect", "description": "States must protect against human rights abuse by third parties, including business enterprises.", "mandatory": true },
+      { "title": "Pillar II: Corporate Responsibility to Respect", "description": "Business enterprises should respect human rights through due diligence and remediation.", "mandatory": true },
+      { "title": "Pillar III: Access to Remedy", "description": "Effective judicial and non-judicial grievance mechanisms must be available to victims.", "mandatory": true },
+      { "article": "Principle 15", "title": "Human rights due diligence", "description": "Companies must conduct human rights due diligence to identify, prevent, mitigate, and account for adverse human rights impacts.", "mandatory": true },
+      { "article": "Principle 17", "title": "Ongoing process", "description": "Due diligence must be ongoing, covering the enterprise's own activities, value chain, and business relationships.", "mandatory": true }
+    ],
+    "data": {
+      "threePillars": [
+        "State Duty to Protect human rights",
+        "Corporate Responsibility to Respect human rights",
+        "Access to Remedy for victims of business-related abuse"
+      ],
+      "dueDiligenceElements": [
+        "Identify and assess actual and potential adverse impacts",
+        "Integrate findings and take appropriate action",
+        "Track effectiveness of responses",
+        "Communicate how impacts are addressed"
+      ],
+      "legalSignificance": "Soft law but increasingly hardened through: EU CSDDD, French Duty of Vigilance Law, German Supply Chain Act, EU Taxonomy minimum safeguards",
+      "salienceApproach": "UNGPs use 'salience' not 'materiality' - most salient human rights risks based on severity and likelihood"
+    },
+    "year": 2011,
+    "verified": true,
+    "tags": ["UNGPs", "human-rights", "due-diligence", "remedy", "business-and-human-rights"]
+  },
+  {
+    "jurisdiction": "International",
+    "category": "international_standard",
+    "name": "ICMA Green Bond Principles",
+    "shortName": "GBP",
+    "description": "International Capital Market Association (ICMA) Green Bond Principles provide voluntary process guidelines for issuing green bonds, covering use of proceeds, evaluation, management of proceeds, and reporting.",
+    "effectiveDate": "2014-01-13",
+    "applicableTo": ["Bond issuers (voluntary)", "Market standard for green bond issuance globally"],
+    "requirements": [
+      { "title": "Use of proceeds", "description": "Proceeds must be used for eligible green projects (renewable energy, energy efficiency, clean transport, etc.).", "mandatory": true },
+      { "title": "Process for project evaluation and selection", "description": "Issuer must clearly communicate environmental sustainability objectives and process for determining eligible projects.", "mandatory": true },
+      { "title": "Management of proceeds", "description": "Net proceeds must be tracked and managed in a sub-account or portfolio, verified by issuer.", "mandatory": true },
+      { "title": "Reporting", "description": "Annual report on allocation of proceeds and, where possible, environmental impact.", "mandatory": true }
+    ],
+    "data": {
+      "fourComponents": ["Use of Proceeds", "Process for Project Evaluation and Selection", "Management of Proceeds", "Reporting"],
+      "eligibleCategories": [
+        "Renewable energy", "Energy efficiency", "Pollution prevention and control",
+        "Environmentally sustainable management of natural resources and land use",
+        "Terrestrial and aquatic biodiversity conservation", "Clean transportation",
+        "Sustainable water and wastewater management", "Climate change adaptation",
+        "Circular economy products/production", "Green buildings"
+      ],
+      "externalReview": "Recommended but not mandatory (second party opinion, verification, certification, or scoring/rating)",
+      "marketSize_2024": "Cumulative green bond issuance exceeded $2.5 trillion globally",
+      "relatedPrinciples": ["Social Bond Principles (SBP)", "Sustainability Bond Guidelines (SBG)", "Sustainability-Linked Bond Principles (SLBP)"]
+    },
+    "year": 2021,
+    "verified": true,
+    "tags": ["green-bonds", "ICMA", "GBP", "use-of-proceeds", "sustainable-finance"]
+  },
+  {
+    "jurisdiction": "International",
+    "category": "guidance",
+    "name": "OECD Guidelines for Multinational Enterprises on Responsible Business Conduct",
+    "shortName": "OECD MNE Guidelines",
+    "description": "OECD Guidelines for Multinational Enterprises (updated 2023) provide recommendations on responsible business conduct covering human rights, environment, anti-corruption, consumer interests, and more.",
+    "effectiveDate": "2023-06-08",
+    "applicableTo": ["Multinational enterprises operating in or from OECD member countries", "Referenced by EU Taxonomy, CSDDD, ESRS as minimum safeguards"],
+    "requirements": [
+      { "title": "Human rights due diligence", "description": "Carry out risk-based due diligence to identify, prevent, mitigate adverse impacts on human rights, labour, environment.", "mandatory": false },
+      { "title": "Environment chapter", "description": "Establish environmental management systems; assess and manage environmental impacts throughout value chain; take precautionary approach.", "mandatory": false },
+      { "title": "Climate change (2023 update)", "description": "New provisions on climate change including setting science-based emission reduction targets and transition planning.", "mandatory": false },
+      { "title": "National Contact Points (NCPs)", "description": "Governments must establish NCPs to handle complaints (specific instances) against companies for alleged non-observance.", "mandatory": false }
+    ],
+    "data": {
+      "2023_update_highlights": [
+        "Strengthened environmental and climate due diligence expectations",
+        "New recommendations on climate change mitigation and adaptation",
+        "Enhanced technology and digital responsibility chapter",
+        "Stronger provisions on living wages",
+        "Expanded due diligence to cover all adverse impacts (not just human rights)"
+      ],
+      "adherent_countries": 51,
+      "NCP_mechanism": "Quasi-judicial grievance mechanism; NCPs mediate disputes between complainants and companies",
+      "relationship_to_EU_law": "EU Taxonomy minimum safeguards reference OECD Guidelines; CSDDD aligned with OECD due diligence standards"
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["OECD", "responsible-business", "due-diligence", "MNE", "guidelines"]
+  },
+  {
+    "jurisdiction": "International",
+    "category": "international_standard",
+    "name": "Net Zero Asset Owner Alliance Protocol",
+    "shortName": "NZAOA Target Setting Protocol",
+    "description": "UN-convened Net Zero Asset Owner Alliance target-setting protocol for asset owners committing to net-zero portfolio emissions by 2050, with interim targets.",
+    "effectiveDate": "2021-01-01",
+    "applicableTo": ["Asset owners (pension funds, insurers, sovereign wealth funds) committed to NZAOA"],
+    "requirements": [
+      { "title": "Portfolio decarbonization targets", "description": "Set interim targets to reduce portfolio financed emissions: 22-32% by 2025, 40-60% by 2030 vs 2019 baseline.", "mandatory": true },
+      { "title": "Sector targets", "description": "Set targets for high-emitting sectors in portfolio (utilities, oil & gas, steel, transport, real estate).", "mandatory": true },
+      { "title": "Engagement targets", "description": "Engage with investee companies to set science-based targets and align with net-zero.", "mandatory": true },
+      { "title": "Financing transition targets", "description": "Increase allocation to climate solutions (renewable energy, green bonds, climate tech).", "mandatory": true }
+    ],
+    "data": {
+      "members": "90+ asset owners with >$11 trillion AUM",
+      "targetRanges": {
+        "2025_interim": "22-32% reduction in portfolio emissions vs 2019",
+        "2030_interim": "40-60% reduction",
+        "2050": "Net-zero across all asset classes"
+      },
+      "assetClasses_covered": ["Listed equity", "Corporate bonds", "Sovereign bonds", "Real estate", "Infrastructure"],
+      "notableMembers": ["Allianz", "AXA", "CalPERS", "PensionDanmark", "Swiss Re", "Zurich Insurance"]
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["NZAOA", "net-zero", "asset-owners", "portfolio", "financed-emissions"]
+  },
+  {
+    "jurisdiction": "International",
+    "category": "guidance",
+    "name": "Transition Plan Taskforce Disclosure Framework",
+    "shortName": "TPT Framework",
+    "description": "UK Transition Plan Taskforce (TPT) Disclosure Framework setting out good practice for transition plan disclosures, designed to complement ISSB and be globally applicable.",
+    "effectiveDate": "2023-10-09",
+    "applicableTo": ["All entities disclosing transition plans (voluntary; expected to become UK requirement)"],
+    "requirements": [
+      { "title": "Ambition", "description": "Disclose objectives, priorities, and interim/long-term targets with clear timeframes.", "mandatory": false },
+      { "title": "Action", "description": "Disclose implementation strategy including decarbonization levers, business and operational changes, and engagement with value chain.", "mandatory": false },
+      { "title": "Accountability", "description": "Disclose governance, roles and responsibilities, skills, incentives, and progress tracking.", "mandatory": false }
+    ],
+    "data": {
+      "fiveElements": [
+        "Foundations (company context, theory of change)",
+        "Implementation Strategy (levers, timeline, milestones)",
+        "Engagement Strategy (value chain, industry, government, communities)",
+        "Metrics and Targets (GHG, energy, financial allocation)",
+        "Governance (oversight, roles, incentives, skills)"
+      ],
+      "designedToAccompany": "ISSB S2 transition plan disclosures; ESRS E1 transition plan requirements",
+      "UK_adoption": "Expected to be incorporated into UK Sustainability Disclosure Standards (UK SDS)",
+      "sectorGuidance": "Sector-specific guidance published for 7 sectors (asset management, banking, electric utilities, food & beverage, metals & mining, oil & gas, asset owners)"
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["TPT", "transition-plan", "net-zero", "disclosure", "UK"]
+  }
+]

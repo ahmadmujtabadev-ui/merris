@@ -1,0 +1,1658 @@
+[
+  {
+    "source": "IPCC",
+    "category": "ipcc",
+    "subcategory": "AR6 WG1",
+    "title": "Global Surface Temperature Projections",
+    "description": "Key temperature projections from AR6 Working Group 1: The Physical Science Basis. Global surface temperature will continue to increase until at least mid-century under all emissions scenarios considered.",
+    "data": {
+      "report": "AR6 WG1 - The Physical Science Basis",
+      "published": "2021-08-09",
+      "keyFindings": {
+        "globalWarmingLevels": {
+          "1.5C_crossing": {
+            "SSP1-1.9": "early 2030s",
+            "SSP1-2.6": "early 2030s",
+            "SSP2-4.5": "early 2030s",
+            "SSP3-7.0": "early 2030s",
+            "SSP5-8.5": "early 2030s",
+            "note": "All scenarios reach 1.5C in the near-term (2021-2040), best estimate early 2030s"
+          },
+          "2C_crossing": {
+            "SSP1-1.9": "not crossed",
+            "SSP1-2.6": "not crossed",
+            "SSP2-4.5": "mid-century",
+            "SSP3-7.0": "2040s",
+            "SSP5-8.5": "2040s"
+          },
+          "endOfCentury_bestEstimate": {
+            "SSP1-1.9": 1.4,
+            "SSP1-2.6": 1.8,
+            "SSP2-4.5": 2.7,
+            "SSP3-7.0": 3.6,
+            "SSP5-8.5": 4.4,
+            "unit": "degrees C above 1850-1900"
+          }
+        },
+        "observedWarming": {
+          "globalSurfaceTemperature_2011_2020": 1.09,
+          "range": [0.95, 1.20],
+          "unit": "degrees C above 1850-1900",
+          "humanContribution": [0.8, 1.3],
+          "naturalContribution": [-0.1, 0.1]
+        }
+      }
+    },
+    "year": 2021,
+    "verified": true,
+    "tags": ["temperature", "projections", "scenarios", "SSP", "warming-levels"]
+  },
+  {
+    "source": "IPCC",
+    "category": "ipcc",
+    "subcategory": "AR6 WG1",
+    "title": "Remaining Carbon Budget",
+    "description": "AR6 WG1 assessed remaining carbon budget from the beginning of 2020 for limiting global warming to various levels with different likelihoods.",
+    "data": {
+      "report": "AR6 WG1 - The Physical Science Basis",
+      "published": "2021-08-09",
+      "carbonBudget_from2020_GtCO2": {
+        "1.5C": {
+          "17%_likelihood": 900,
+          "33%_likelihood": 650,
+          "50%_likelihood": 500,
+          "67%_likelihood": 400,
+          "83%_likelihood": 300
+        },
+        "1.7C": {
+          "33%_likelihood": 1050,
+          "50%_likelihood": 850,
+          "67%_likelihood": 700
+        },
+        "2.0C": {
+          "17%_likelihood": 2300,
+          "33%_likelihood": 1700,
+          "50%_likelihood": 1350,
+          "67%_likelihood": 1150,
+          "83%_likelihood": 900
+        }
+      },
+      "annualEmissions_2019_GtCO2": 43,
+      "note": "At 2019 emission levels of ~43 GtCO2/yr, the 1.5C budget at 50% likelihood (~500 GtCO2) would be exhausted around 2032"
+    },
+    "year": 2021,
+    "verified": true,
+    "tags": ["carbon-budget", "1.5C", "2C", "emissions", "pathways"]
+  },
+  {
+    "source": "IPCC",
+    "category": "ipcc",
+    "subcategory": "AR6 WG1",
+    "title": "Sea Level Rise Projections",
+    "description": "AR6 WG1 projections for global mean sea level rise under different SSP scenarios, including contributions from ice sheets, glaciers, and thermal expansion.",
+    "data": {
+      "report": "AR6 WG1 - The Physical Science Basis",
+      "globalMeanSeaLevelRise_by2100_m": {
+        "SSP1-1.9": { "likely_range": [0.28, 0.55], "median": 0.38 },
+        "SSP1-2.6": { "likely_range": [0.32, 0.62], "median": 0.44 },
+        "SSP2-4.5": { "likely_range": [0.44, 0.76], "median": 0.56 },
+        "SSP3-7.0": { "likely_range": [0.55, 0.90], "median": 0.68 },
+        "SSP5-8.5": { "likely_range": [0.63, 1.01], "median": 0.77 }
+      },
+      "by2150_highEnd_SSP5_8.5_m": { "likely_range": [0.98, 1.88] },
+      "rateSince1901": "0.20 m (0.15-0.25) over 1901-2018",
+      "acceleration": "Rate of rise has tripled compared to 1901-1971",
+      "iceSheetContribution": "Ice sheet loss was the dominant driver 2006-2018",
+      "lowLikelihoodHighImpact": "Under SSP5-8.5, sea level rise approaching 2m by 2100 cannot be ruled out due to deep uncertainty in ice sheet processes"
+    },
+    "year": 2021,
+    "verified": true,
+    "tags": ["sea-level", "projections", "ice-sheets", "coastal-risk"]
+  },
+  {
+    "source": "IPCC",
+    "category": "ipcc",
+    "subcategory": "AR6 WG2",
+    "title": "Climate Impacts by Region - Middle East and North Africa",
+    "description": "AR6 WG2 assessment of climate impacts, adaptation, and vulnerability for the Middle East and North Africa region, including extreme heat, water scarcity, and compound risks.",
+    "data": {
+      "report": "AR6 WG2 - Impacts, Adaptation and Vulnerability",
+      "published": "2022-02-28",
+      "region": "Middle East and North Africa",
+      "keyRisks": {
+        "extremeHeat": {
+          "description": "Severe increase in heat extremes; parts of MENA may become uninhabitable for outdoor workers",
+          "projectedDangerousDays_above41C": {
+            "current": "16 days/year average",
+            "2C_warming": "60-90 days/year",
+            "4C_warming": "120-180 days/year"
+          },
+          "labourProductivityLoss": "Up to 10-15% reduction in outdoor labour capacity at 2C"
+        },
+        "waterScarcity": {
+          "description": "One of the most water-stressed regions globally; declining precipitation and increased evapotranspiration",
+          "populationFacingWaterStress": "Over 60% of MENA population",
+          "precipitationChange": "-10% to -30% by 2100 under SSP5-8.5",
+          "groundwaterDepletion": "Critical in Arabian Peninsula, Jordan, Libya"
+        },
+        "foodSecurity": {
+          "cropYieldDecline": "10-25% by 2050 at 2C warming for major crops",
+          "importDependence": "Many MENA countries import 50%+ of food calories"
+        },
+        "coastalRisks": {
+          "description": "Low-lying coastal areas and deltas face compound flooding and salinity intrusion",
+          "atRisk": "Nile Delta, Arabian Gulf coastlines, Red Sea coasts"
+        }
+      },
+      "GCC_specific": {
+        "UAE": "Extreme heat, sea level rise on coastal cities, coral bleaching",
+        "SaudiArabia": "Desertification, groundwater depletion, extreme heat events",
+        "Qatar": "Unbearable outdoor conditions during summer by 2050",
+        "Kuwait": "Already experiencing 50C+ temperatures"
+      }
+    },
+    "year": 2022,
+    "verified": true,
+    "tags": ["impacts", "MENA", "GCC", "heat-stress", "water-scarcity", "adaptation"]
+  },
+  {
+    "source": "IPCC",
+    "category": "ipcc",
+    "subcategory": "AR6 WG2",
+    "title": "Key Risks Across Sectors and Regions",
+    "description": "AR6 WG2 identification of key risks from climate change including cascading and compound risks across ecosystems, food systems, infrastructure, health, and economies.",
+    "data": {
+      "report": "AR6 WG2 - Impacts, Adaptation and Vulnerability",
+      "keyRisks": [
+        { "risk": "Terrestrial and freshwater ecosystems", "detail": "Biodiversity loss accelerates above 1.5C; 9-14% of species face very high risk at 1.5C, 12-29% at 2C" },
+        { "risk": "Marine ecosystems", "detail": "Coral reefs decline 70-90% at 1.5C, >99% at 2C warming" },
+        { "risk": "Water availability", "detail": "At 2C, an additional 800M-3B people exposed to increased water stress" },
+        { "risk": "Food production", "detail": "Crop yield losses in low-latitude regions at 1.5C; fisheries decline" },
+        { "risk": "Coastal systems", "detail": "1B people in low-lying areas at risk by 2050" },
+        { "risk": "Health", "detail": "Heat-related mortality increases 2-3x at 2C vs 1.5C" },
+        { "risk": "Infrastructure", "detail": "Cascading failures from compound events; $12-23T in global assets at risk" },
+        { "risk": "Living standards", "detail": "Poverty increase of 32-132 million by 2030 under high warming" }
+      ],
+      "adaptationLimits": "Some adaptation limits already being reached: coral reef systems, low-lying islands, Arctic ecosystems",
+      "adaptationGap": "Current adaptation is insufficient; gap widening especially in developing countries"
+    },
+    "year": 2022,
+    "verified": true,
+    "tags": ["key-risks", "impacts", "adaptation", "vulnerability", "ecosystems"]
+  },
+  {
+    "source": "IPCC",
+    "category": "ipcc",
+    "subcategory": "AR6 WG3",
+    "title": "Mitigation Pathways and Sector Decarbonization",
+    "description": "AR6 WG3 assessed mitigation pathways to limit warming to 1.5C and 2C, including sector-specific decarbonization requirements and carbon price trajectories.",
+    "data": {
+      "report": "AR6 WG3 - Mitigation of Climate Change",
+      "published": "2022-04-04",
+      "mitigationPathways": {
+        "1.5C_noOrLimitedOvershoot": {
+          "globalGHG_2030_vsBaseline": "-43%",
+          "globalGHG_2040_vsBaseline": "-69%",
+          "globalCO2_netZero": "early 2050s",
+          "globalGHG_netZero": "around 2070"
+        },
+        "2C_67%_likelihood": {
+          "globalGHG_2030_vsBaseline": "-27%",
+          "globalGHG_2040_vsBaseline": "-46%",
+          "globalCO2_netZero": "around 2070",
+          "globalGHG_netZero": "after 2080"
+        }
+      },
+      "sectorDecarbonization_for1.5C": {
+        "electricity": "Net-zero CO2 by 2050; coal phase-out by 2040; renewables 60-70% of generation by 2030",
+        "industry": "-40% CO2 by 2030, net-zero achievable by 2050 with CCS and electrification",
+        "transport": "-59% emissions by 2050; EVs dominant by 2035; aviation/shipping harder to abate",
+        "buildings": "-42% emissions by 2030 via efficiency and electrification",
+        "AFOLU": "Halt deforestation; agriculture emissions reduction 20-30% by 2050"
+      },
+      "carbonPriceRanges_USD_tCO2": {
+        "2030": { "1.5C_pathways": [100, 250], "2C_pathways": [30, 120] },
+        "2050": { "1.5C_pathways": [200, 700], "2C_pathways": [80, 350] }
+      }
+    },
+    "year": 2022,
+    "verified": true,
+    "tags": ["mitigation", "pathways", "decarbonization", "carbon-price", "net-zero"]
+  },
+  {
+    "source": "IPCC",
+    "category": "ipcc",
+    "subcategory": "AR6 Synthesis",
+    "title": "AR6 Synthesis Report Headline Statements",
+    "description": "The IPCC AR6 Synthesis Report (2023) distilled findings from all three working groups into headline statements on the state of climate change, future risks, and near-term action requirements.",
+    "data": {
+      "report": "AR6 Synthesis Report",
+      "published": "2023-03-20",
+      "headlineStatements": [
+        "Human activities, principally through emissions of greenhouse gases, have unequivocally caused global warming, with global surface temperature reaching 1.1C above 1850-1900 in 2011-2020.",
+        "Widespread and rapid changes in the atmosphere, ocean, cryosphere and biosphere have occurred. Human-caused climate change is already affecting many weather and climate extremes in every region across the globe.",
+        "There is a rapidly closing window of opportunity to secure a liveable and sustainable future for all.",
+        "Deep, rapid and sustained reductions in greenhouse gas emissions would lead to a discernible slowdown in global warming within around two decades.",
+        "Climate change is a threat to human well-being and planetary health. Every increment of global warming will intensify multiple and concurrent hazards.",
+        "If global warming transiently exceeds 1.5C in the coming decades, then many human and natural systems will face additional severe risks."
+      ],
+      "urgencyMetrics": {
+        "currentAnnualEmissions_GtCO2e": 59,
+        "yearOfData": 2019,
+        "emissionsGap": "Current policies put the world on track for 2.8C by 2100",
+        "requiredReduction_by2030": "43% below 2019 levels for 1.5C",
+        "NDC_gap": "Unconditional NDCs lead to 2.4-2.6C",
+        "financeGap": "Climate finance flows are 3-6x below levels needed by 2030"
+      }
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["synthesis", "headline-statements", "urgency", "policy"]
+  },
+  {
+    "source": "IPCC",
+    "category": "ipcc",
+    "subcategory": "SR1.5",
+    "title": "1.5C vs 2C Warming - Difference Metrics",
+    "description": "IPCC Special Report on Global Warming of 1.5C (2018) quantified the difference in impacts between 1.5C and 2C of global warming across key systems.",
+    "data": {
+      "report": "Special Report on Global Warming of 1.5C",
+      "published": "2018-10-08",
+      "differenceMetrics_1.5C_vs_2C": {
+        "extremeHeat": {
+          "1.5C": "14% of world population exposed to severe heat at least once per 5 years",
+          "2C": "37% of world population exposed to severe heat at least once per 5 years"
+        },
+        "seaLevelRise": {
+          "by2100_difference_cm": 10,
+          "additionalPeopleExposed": "10 million fewer at 1.5C vs 2C"
+        },
+        "coralReefs": {
+          "1.5C": "70-90% decline",
+          "2C": ">99% decline (virtually complete loss)"
+        },
+        "arcticIceFreeeSummers": {
+          "1.5C": "once per century",
+          "2C": "at least once per decade"
+        },
+        "waterStress": {
+          "additionalPeopleAffected_at2C": "Up to 50% more people affected vs 1.5C"
+        },
+        "cropYields": {
+          "1.5C": "Moderate declines in tropics",
+          "2C": "Larger declines; maize, wheat, rice yields further reduced"
+        },
+        "species": {
+          "1.5C_rangeReduction50%": "6% of insects, 8% of plants, 4% of vertebrates",
+          "2C_rangeReduction50%": "18% of insects, 16% of plants, 8% of vertebrates"
+        }
+      },
+      "overshootScenarios": {
+        "description": "Pathways that temporarily exceed 1.5C before returning to 1.5C or below by 2100",
+        "CDR_requirement": "All 1.5C pathways with no or limited overshoot require CO2 removal of 100-1000 GtCO2 over the 21st century",
+        "risks": "Overshoot increases risk of crossing tipping points and irreversible changes",
+        "typicalOvershoot_duration_years": [10, 40]
+      }
+    },
+    "year": 2018,
+    "verified": true,
+    "tags": ["1.5C", "2C", "impacts", "overshoot", "special-report"]
+  },
+  {
+    "source": "IPCC",
+    "category": "ipcc",
+    "subcategory": "Emission Factors",
+    "title": "IPCC Emission Factor Database - Key Categories",
+    "description": "Summary of key emission factor categories from the IPCC Emission Factor Database (EFDB), used globally for GHG inventory reporting under UNFCCC guidelines.",
+    "data": {
+      "database": "IPCC Emission Factor Database (EFDB)",
+      "guideline": "2006 IPCC Guidelines for National GHG Inventories (refined 2019)",
+      "keyCategories": {
+        "energy_stationaryCombustion": {
+          "naturalGas_kgCO2_per_TJ": 56100,
+          "diesel_kgCO2_per_TJ": 74100,
+          "coal_bituminous_kgCO2_per_TJ": 94600,
+          "LPG_kgCO2_per_TJ": 63100,
+          "crudePetroleum_kgCO2_per_TJ": 73300
+        },
+        "transport": {
+          "gasoline_kgCO2_per_TJ": 69300,
+          "diesel_kgCO2_per_TJ": 74100,
+          "jetKerosene_kgCO2_per_TJ": 71500,
+          "LNG_kgCO2_per_TJ": 56100
+        },
+        "industrialProcesses": {
+          "cement_kgCO2_per_tonne_clinker": 520,
+          "steel_kgCO2_per_tonne_BOF": 1800,
+          "aluminium_kgCO2_per_tonne": 1600,
+          "note": "Process emissions only; does not include energy-related emissions"
+        },
+        "GWP_AR6_100yr": {
+          "CO2": 1,
+          "CH4_fossil": 29.8,
+          "CH4_biogenic": 27.0,
+          "N2O": 273,
+          "SF6": 25200,
+          "HFC-134a": 1530
+        }
+      }
+    },
+    "year": 2019,
+    "verified": true,
+    "tags": ["emission-factors", "EFDB", "GHG-inventory", "GWP", "combustion"]
+  },
+  {
+    "source": "IPCC",
+    "category": "ipcc",
+    "subcategory": "AR6 WG3",
+    "title": "Carbon Dioxide Removal Methods Assessment",
+    "description": "AR6 WG3 assessment of CDR methods including costs, potentials, readiness, risks, and co-benefits for BECCS, DACCS, afforestation, enhanced weathering, biochar, and ocean-based methods.",
+    "data": {
+      "CDR_methods": {
+        "afforestation_reforestation": {
+          "potential_GtCO2_yr": [0.5, 10],
+          "cost_USD_tCO2": [0, 50],
+          "readiness": "Available now",
+          "risks": "Land competition, permanence, saturation"
+        },
+        "BECCS": {
+          "potential_GtCO2_yr": [0.5, 11],
+          "cost_USD_tCO2": [15, 400],
+          "readiness": "Early deployment",
+          "risks": "Land/water competition, biodiversity"
+        },
+        "DACCS": {
+          "potential_GtCO2_yr": [5, 40],
+          "cost_USD_tCO2": [100, 300],
+          "readiness": "Demonstration/early commercial",
+          "risks": "Energy demand, cost uncertainty"
+        },
+        "enhancedWeathering": {
+          "potential_GtCO2_yr": [2, 4],
+          "cost_USD_tCO2": [50, 200],
+          "readiness": "Research/pilot",
+          "risks": "MRV challenges, ecological impacts"
+        },
+        "biochar": {
+          "potential_GtCO2_yr": [0.3, 6.6],
+          "cost_USD_tCO2": [10, 120],
+          "readiness": "Small-scale deployment",
+          "risks": "Feedstock competition"
+        },
+        "soilCarbon": {
+          "potential_GtCO2_yr": [0.6, 9.3],
+          "cost_USD_tCO2": [0, 100],
+          "readiness": "Available now",
+          "risks": "Permanence, saturation, MRV"
+        }
+      },
+      "totalCDR_needed_for1.5C_GtCO2_per_yr_by2050": [5, 16]
+    },
+    "year": 2022,
+    "verified": true,
+    "tags": ["CDR", "carbon-removal", "BECCS", "DACCS", "afforestation", "negative-emissions"]
+  },
+  {
+    "source": "IPCC",
+    "category": "ipcc",
+    "subcategory": "AR6 WG1",
+    "title": "Climate Tipping Points and Irreversible Changes",
+    "description": "AR6 assessment of potential large-scale singular events (tipping points) including ice sheet collapse, AMOC slowdown, permafrost carbon release, and Amazon dieback.",
+    "data": {
+      "tippingElements": [
+        {
+          "element": "Greenland Ice Sheet collapse",
+          "threshold_range_C": [1.5, 3.0],
+          "timescale": "Centuries to millennia",
+          "consequence": "Up to 7.4m global sea level rise",
+          "reversibility": "Irreversible on multi-millennial timescales"
+        },
+        {
+          "element": "West Antarctic Ice Sheet collapse",
+          "threshold_range_C": [1.5, 2.0],
+          "timescale": "Centuries to millennia",
+          "consequence": "Up to 3.3m global sea level rise",
+          "reversibility": "Potentially irreversible"
+        },
+        {
+          "element": "AMOC (Atlantic Meridional Overturning Circulation) weakening",
+          "threshold_range_C": [1.5, 5.0],
+          "timescale": "Decades to centuries",
+          "consequence": "Disruption of European/global weather patterns",
+          "reversibility": "Low confidence in recovery timescale"
+        },
+        {
+          "element": "Amazon rainforest dieback",
+          "threshold_range_C": [2.0, 6.0],
+          "timescale": "Decades to centuries",
+          "consequence": "Loss of carbon sink, massive biodiversity loss",
+          "reversibility": "Potentially irreversible"
+        },
+        {
+          "element": "Permafrost carbon release",
+          "threshold_range_C": [1.0, 2.5],
+          "timescale": "Decades to centuries",
+          "consequence": "Additional 14-175 GtC release by 2100 under high warming",
+          "reversibility": "Irreversible on human timescales"
+        },
+        {
+          "element": "Coral reef die-off",
+          "threshold_range_C": [1.5, 2.0],
+          "timescale": "Years to decades",
+          "consequence": "Collapse of reef ecosystems, loss of fisheries and coastal protection",
+          "reversibility": "Irreversible at 2C"
+        }
+      ],
+      "AR6_assessment": "The likelihood of triggering tipping points increases progressively with global warming levels. Some elements may be triggered at 1.5C."
+    },
+    "year": 2021,
+    "verified": true,
+    "tags": ["tipping-points", "irreversible", "ice-sheets", "AMOC", "permafrost"]
+  },
+  {
+    "source": "IPCC",
+    "category": "ipcc",
+    "subcategory": "AR6 WG3",
+    "title": "Fossil Fuel Phase-Out Requirements",
+    "description": "AR6 WG3 assessment of fossil fuel infrastructure and required phase-out timelines to meet temperature targets, including stranded asset implications.",
+    "data": {
+      "existingInfrastructure": {
+        "committedEmissions_GtCO2": 660,
+        "note": "If existing fossil fuel infrastructure operates as historically, committed CO2 emissions would exceed remaining 1.5C budget",
+        "coalPowerPlants_avgAge_years": 13,
+        "oilGasFields_committedEmissions_GtCO2": 390
+      },
+      "phaseOutTimelines_1.5C": {
+        "unabatedCoalPower": "Phase-out by 2040 globally; by 2030 in OECD",
+        "oilDemand_vs2019": "-60% by 2050",
+        "gasDemand_vs2019": "-45% by 2050",
+        "newFossilFuelInfrastructure": "No new unabated coal; limited new oil and gas"
+      },
+      "strandedAssets": {
+        "2C_pathway": "1-4 trillion USD in stranded fossil fuel assets",
+        "1.5C_pathway": "Up to 4 trillion USD",
+        "sectors": ["Coal mining", "Oil extraction", "Gas infrastructure", "Fossil fuel power generation"]
+      }
+    },
+    "year": 2022,
+    "verified": true,
+    "tags": ["fossil-fuels", "phase-out", "stranded-assets", "coal", "infrastructure"]
+  },
+  {
+    "source": "IEA",
+    "category": "iea",
+    "subcategory": "Grid Emission Factors",
+    "title": "Global Grid Emission Factors by Country (2023)",
+    "description": "IEA electricity grid emission factors (Scope 2) for the top 50 economies, representing lifecycle CO2 equivalent emissions per kWh of electricity consumed. Based on IEA 2023 data.",
+    "data": {
+      "unit": "kgCO2e/kWh",
+      "year": 2023,
+      "source": "IEA Emission Factors 2023",
+      "countries": {
+        "Australia": 0.55,
+        "Austria": 0.09,
+        "Bangladesh": 0.56,
+        "Belgium": 0.14,
+        "Brazil": 0.07,
+        "Canada": 0.11,
+        "Chile": 0.35,
+        "China": 0.55,
+        "Colombia": 0.13,
+        "Czech Republic": 0.39,
+        "Denmark": 0.09,
+        "Egypt": 0.45,
+        "Finland": 0.07,
+        "France": 0.05,
+        "Germany": 0.35,
+        "Greece": 0.33,
+        "Hong Kong": 0.62,
+        "Hungary": 0.21,
+        "India": 0.71,
+        "Indonesia": 0.72,
+        "Ireland": 0.27,
+        "Israel": 0.44,
+        "Italy": 0.26,
+        "Japan": 0.46,
+        "Kazakhstan": 0.64,
+        "Kuwait": 0.58,
+        "Malaysia": 0.55,
+        "Mexico": 0.40,
+        "Morocco": 0.60,
+        "Netherlands": 0.30,
+        "New Zealand": 0.08,
+        "Nigeria": 0.41,
+        "Norway": 0.01,
+        "Pakistan": 0.42,
+        "Peru": 0.20,
+        "Philippines": 0.57,
+        "Poland": 0.63,
+        "Portugal": 0.14,
+        "Qatar": 0.47,
+        "Romania": 0.26,
+        "Russia": 0.33,
+        "Saudi Arabia": 0.56,
+        "Singapore": 0.37,
+        "South Africa": 0.87,
+        "South Korea": 0.42,
+        "Spain": 0.14,
+        "Sweden": 0.01,
+        "Thailand": 0.44,
+        "Turkey": 0.37,
+        "UAE": 0.42,
+        "UK": 0.18,
+        "USA": 0.37,
+        "Vietnam": 0.53
+      },
+      "note": "Values approximate and may vary by source methodology. IEA updates annually. Location-based approach."
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["emission-factors", "grid", "electricity", "scope-2", "country"]
+  },
+  {
+    "source": "IEA",
+    "category": "iea",
+    "subcategory": "Net Zero 2050",
+    "title": "Net Zero by 2050 Roadmap - Key Milestones",
+    "description": "IEA Net Zero by 2050 Roadmap (updated 2023) setting out over 400 milestones across all sectors for a pathway to net-zero energy-related CO2 emissions by 2050.",
+    "data": {
+      "report": "Net Zero Roadmap: A Global Pathway to Keep the 1.5C Goal in Reach (2023 Update)",
+      "milestones": {
+        "2025": [
+          "No new approvals of unabated coal plants",
+          "Universal energy access (electricity and clean cooking)",
+          "60% of global car sales are electric (revised up)"
+        ],
+        "2030": [
+          "Annual clean energy investment reaches $4 trillion",
+          "Coal demand falls 20% below 2022 levels",
+          "EV share of car sales reaches 65%",
+          "Tripling global renewable capacity to 11,000 GW",
+          "Doubling the global rate of energy efficiency improvement",
+          "Methane emissions from fossil fuels cut 75%",
+          "Electricity generation from renewables reaches 60%"
+        ],
+        "2035": [
+          "All new cars sold in advanced economies are zero-emission",
+          "OECD nations achieve net-zero electricity",
+          "All new buildings are zero-carbon-ready",
+          "Unabated coal completely phased out in advanced economies"
+        ],
+        "2040": [
+          "50% of heavy truck sales are electric",
+          "Global electricity sector reaches net zero",
+          "Half of existing buildings retrofitted to zero-carbon-ready",
+          "All unabated coal plants phased out globally"
+        ],
+        "2050": [
+          "Net-zero CO2 emissions from energy sector",
+          "Almost 90% of electricity from renewables",
+          "Hydrogen and hydrogen-based fuels: 10% of final energy",
+          "CCUS: 6 GtCO2/yr captured",
+          "DACCS: 0.6 GtCO2/yr",
+          "BECCS: 1.3 GtCO2/yr"
+        ]
+      },
+      "totalInvestmentNeeded_2030_annual_trillionUSD": 4.0
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["net-zero", "roadmap", "milestones", "2050", "energy-transition"]
+  },
+  {
+    "source": "IEA",
+    "category": "iea",
+    "subcategory": "CO2 Emissions",
+    "title": "Global CO2 Emissions 2024",
+    "description": "IEA data on global energy-related CO2 emissions for 2024, including breakdown by sector and fuel type, and year-on-year growth rates.",
+    "data": {
+      "report": "IEA CO2 Emissions in 2024",
+      "globalTotal_GtCO2": 37.6,
+      "yearOnYearChange": "+0.8%",
+      "previousYear_GtCO2": 37.3,
+      "bySector": {
+        "powerGeneration_GtCO2": 14.6,
+        "industry_GtCO2": 9.2,
+        "transport_GtCO2": 8.1,
+        "buildings_GtCO2": 2.8,
+        "otherEnergy_GtCO2": 2.9
+      },
+      "byFuel": {
+        "coal_GtCO2": 15.1,
+        "oil_GtCO2": 11.5,
+        "naturalGas_GtCO2": 8.0,
+        "other_GtCO2": 3.0
+      },
+      "byRegion": {
+        "China_GtCO2": 12.6,
+        "USA_GtCO2": 4.6,
+        "EU27_GtCO2": 2.4,
+        "India_GtCO2": 2.9,
+        "restOfWorld_GtCO2": 15.1
+      },
+      "trend": "Growth rate has slowed from pre-pandemic levels; clean energy deployment limiting what would otherwise be higher growth"
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["CO2", "emissions", "global", "sectors", "fuels", "2024"]
+  },
+  {
+    "source": "IEA",
+    "category": "iea",
+    "subcategory": "Methane Tracker",
+    "title": "Global Methane Tracker 2024",
+    "description": "IEA Global Methane Tracker data on methane emissions from the energy sector, top sources, and abatement potential. Methane is responsible for ~30% of global warming to date.",
+    "data": {
+      "report": "IEA Global Methane Tracker 2024",
+      "totalEnergyMethane_MtCH4": 130,
+      "topSources": {
+        "oilOperations_MtCH4": 40,
+        "gasOperations_MtCH4": 43,
+        "coalMining_MtCH4": 42,
+        "bioenergy_MtCH4": 5
+      },
+      "topEmittingCountries": [
+        { "country": "China", "MtCH4": 26, "mainSource": "Coal mining" },
+        { "country": "Russia", "MtCH4": 18, "mainSource": "Oil & gas" },
+        { "country": "USA", "MtCH4": 16, "mainSource": "Oil & gas" },
+        { "country": "Iran", "MtCH4": 8, "mainSource": "Oil & gas" },
+        { "country": "India", "MtCH4": 7, "mainSource": "Coal mining" },
+        { "country": "Turkmenistan", "MtCH4": 6, "mainSource": "Gas" }
+      ],
+      "reductionPotential": {
+        "total_technicallyFeasible_pct": "75%",
+        "netZeroCost_pct": "40%",
+        "revenueGenerating_pct": "About 40% of abatement can be achieved at no net cost (captured gas has value)",
+        "IEA_target": "75% cut in fossil fuel methane by 2030 in NZE scenario"
+      },
+      "globalMethane_allSources_MtCH4": 380,
+      "agriculture_MtCH4": 145,
+      "waste_MtCH4": 70
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["methane", "CH4", "oil-and-gas", "coal", "abatement"]
+  },
+  {
+    "source": "IEA",
+    "category": "iea",
+    "subcategory": "Renewables",
+    "title": "Global Renewable Energy Capacity 2024",
+    "description": "IEA Renewables 2024 report data on global installed renewable capacity, additions, and growth rates by technology and region.",
+    "data": {
+      "report": "IEA Renewables 2024",
+      "totalInstalledCapacity_GW": 4200,
+      "annualAdditions_2024_GW": 560,
+      "byTechnology_installed_GW": {
+        "solar_PV": 1800,
+        "wind_onshore": 1000,
+        "wind_offshore": 75,
+        "hydropower": 1400,
+        "bioenergy": 160,
+        "CSP": 7,
+        "geothermal": 16
+      },
+      "annualAdditions_2024_GW_byTech": {
+        "solar_PV": 420,
+        "wind_onshore": 100,
+        "wind_offshore": 15,
+        "hydropower": 20,
+        "bioenergy": 5
+      },
+      "byRegion_totalInstalled_GW": {
+        "China": 1560,
+        "EU": 650,
+        "USA": 430,
+        "India": 200,
+        "Brazil": 190,
+        "Japan": 115,
+        "Australia": 50,
+        "middleEast": 30,
+        "Africa": 60
+      },
+      "growthRate_2023_2024_pct": 14,
+      "solarCost_LCOE_USD_MWh": { "utilityScale_average": 30, "range": [20, 50] },
+      "windCost_LCOE_USD_MWh": { "onshore_average": 35, "offshore_average": 75 }
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["renewables", "solar", "wind", "capacity", "growth"]
+  },
+  {
+    "source": "IEA",
+    "category": "iea",
+    "subcategory": "Middle East",
+    "title": "Middle East Energy Outlook - GCC Generation Mix and Renewable Targets",
+    "description": "IEA analysis of GCC energy systems including current power generation mix dominated by hydrocarbons and announced renewable energy targets.",
+    "data": {
+      "GCC_generationMix_2023_pct": {
+        "naturalGas": 72,
+        "oil": 22,
+        "solar": 3,
+        "wind": 0.5,
+        "nuclear": 2,
+        "other": 0.5
+      },
+      "renewableTargets": {
+        "SaudiArabia": {
+          "target": "50% renewables in power mix by 2030",
+          "installedRenewable_2023_GW": 2.8,
+          "target_2030_GW": 58.7,
+          "breakdown": { "solar_GW": 40, "wind_GW": 16, "other_GW": 2.7 },
+          "source": "Saudi Vision 2030 / REPDO"
+        },
+        "UAE": {
+          "target": "44% clean energy by 2050 (UAE Net Zero 2050 Strategy)",
+          "installedRenewable_2023_GW": 5.7,
+          "keyProjects": ["Barakah Nuclear (5.6 GW)", "Al Dhafra Solar (2 GW)", "Mohammed bin Rashid Solar Park (5 GW planned)"],
+          "source": "UAE Energy Strategy 2050"
+        },
+        "Qatar": {
+          "target": "5 GW solar by 2035",
+          "installedRenewable_2023_GW": 0.8,
+          "keyProjects": ["Al Kharsaah Solar (0.8 GW)"],
+          "source": "Qatar Energy"
+        },
+        "Kuwait": {
+          "target": "15% renewable by 2030",
+          "installedRenewable_2023_GW": 0.1,
+          "keyProjects": ["Shagaya Renewable Complex (4.5 GW planned)"]
+        },
+        "Oman": {
+          "target": "20% renewable by 2030; net zero by 2050",
+          "greenHydrogenAmbition": "Major green hydrogen hub",
+          "keyProjects": ["Ibri II Solar (0.5 GW)", "Green hydrogen projects"]
+        },
+        "Bahrain": {
+          "target": "5% renewable by 2025, 10% by 2035",
+          "installedRenewable_2023_GW": 0.1
+        }
+      },
+      "GCC_electricityDemandGrowth_annual_pct": 3.5,
+      "peakDemandDriver": "Air conditioning (60-70% of peak demand in summer)"
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["GCC", "Middle-East", "renewables", "energy-mix", "Saudi", "UAE"]
+  },
+  {
+    "source": "IEA",
+    "category": "iea",
+    "subcategory": "Energy Efficiency",
+    "title": "Global Energy Efficiency Progress and Targets",
+    "description": "IEA tracking of global energy intensity improvements, efficiency investment, and the role of efficiency as the 'first fuel' in clean energy transitions.",
+    "data": {
+      "report": "IEA Energy Efficiency 2024",
+      "globalEnergyIntensity_improvement_2024_pct": 2.0,
+      "targetRate_NZE_pct_annual": 4.0,
+      "historicalAverage_2010_2020_pct": 1.5,
+      "investment_2024_billionUSD": 660,
+      "bySector": {
+        "buildings": {
+          "shareOfFinalEnergy_pct": 30,
+          "efficiency_improvement_rate": "1.5% annual",
+          "keyMeasures": ["Heat pumps", "Building envelopes", "Smart controls"]
+        },
+        "transport": {
+          "shareOfFinalEnergy_pct": 29,
+          "EVs_efficiency_gain": "3-4x more efficient than ICE vehicles"
+        },
+        "industry": {
+          "shareOfFinalEnergy_pct": 37,
+          "potential_savings_pct": "15-25% through best available technologies"
+        }
+      },
+      "potentialEmissionsReduction_by2030_GtCO2": 5,
+      "note": "Energy efficiency is the largest contributor to emissions reductions in the IEA NZE scenario through 2030"
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["energy-efficiency", "intensity", "buildings", "transport", "industry"]
+  },
+  {
+    "source": "IEA",
+    "category": "iea",
+    "subcategory": "Hydrogen",
+    "title": "Global Hydrogen Review 2024",
+    "description": "IEA data on global hydrogen production, demand, costs, and the role of low-emission hydrogen in the energy transition.",
+    "data": {
+      "report": "IEA Global Hydrogen Review 2024",
+      "currentProduction_MtH2_2024": 97,
+      "byMethod": {
+        "unabatedFossilFuels_pct": 96,
+        "withCCS_pct": 1,
+        "electrolysis_pct": 0.1,
+        "byProduct_pct": 3
+      },
+      "demand_bySector_Mt": {
+        "refining": 40,
+        "chemicals_ammonia": 34,
+        "chemicals_methanol": 15,
+        "steel_DRI": 5,
+        "other": 3
+      },
+      "costProjections_USD_kgH2": {
+        "greyHydrogen_2024": [1.0, 2.5],
+        "blueHydrogen_2024": [1.5, 3.0],
+        "greenHydrogen_2024": [3.5, 8.0],
+        "greenHydrogen_2030_optimistic": [1.5, 3.0],
+        "greenHydrogen_2050_NZE": [1.0, 2.0]
+      },
+      "NZE_demand_2050_Mt": 430,
+      "electrolyserCapacity_installed_2024_GW": 1.4,
+      "NZE_electrolyserCapacity_2030_GW": 550
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["hydrogen", "green-hydrogen", "electrolysis", "ammonia", "energy-transition"]
+  },
+  {
+    "source": "NGFS",
+    "category": "ngfs",
+    "subcategory": "Climate Scenarios",
+    "title": "NGFS Climate Scenarios - Framework and Parameters",
+    "description": "Network for Greening the Financial System (NGFS) Phase IV climate scenarios used by central banks and financial supervisors for climate risk assessment and stress testing.",
+    "data": {
+      "version": "Phase IV (September 2023)",
+      "scenarios": {
+        "netZero2050": {
+          "description": "Ambitious policies introduced immediately. Limits warming to 1.5C through stringent climate policies and innovation. Global net-zero CO2 by 2050.",
+          "temperature_2100_C": 1.5,
+          "carbonPrice_USD_tCO2": { "2025": 70, "2030": 170, "2040": 430, "2050": 690 },
+          "GDP_impact_vs_baseline_2050_pct": -2.5,
+          "physicalRisk": "Low",
+          "transitionRisk": "High (orderly)"
+        },
+        "below2C": {
+          "description": "Gradual strengthening of climate policies. Gives a 67% probability of limiting warming to below 2C.",
+          "temperature_2100_C": 1.7,
+          "carbonPrice_USD_tCO2": { "2025": 30, "2030": 100, "2040": 250, "2050": 480 },
+          "GDP_impact_vs_baseline_2050_pct": -1.5,
+          "physicalRisk": "Low-Medium",
+          "transitionRisk": "Medium (orderly)"
+        },
+        "divergentNetZero": {
+          "description": "Higher cost variant of Net Zero 2050 with greater policy divergence across sectors. More carbon removal needed.",
+          "temperature_2100_C": 1.5,
+          "carbonPrice_USD_tCO2": { "2025": 70, "2030": 200, "2040": 500, "2050": 800 },
+          "GDP_impact_vs_baseline_2050_pct": -3.0,
+          "physicalRisk": "Low",
+          "transitionRisk": "Very High (disorderly)"
+        },
+        "delayedTransition": {
+          "description": "Annual emissions do not decrease until 2030. Strong policies needed after 2030 to limit warming to below 2C. Leads to higher transition risks.",
+          "temperature_2100_C": 1.8,
+          "carbonPrice_USD_tCO2": { "2025": 5, "2030": 30, "2040": 350, "2050": 700 },
+          "GDP_impact_vs_baseline_2050_pct": -4.0,
+          "physicalRisk": "Medium",
+          "transitionRisk": "Very High (disorderly)"
+        },
+        "NDCs": {
+          "description": "All countries achieve their Nationally Determined Contributions but no further strengthening. Warming exceeds 2C.",
+          "temperature_2100_C": 2.5,
+          "carbonPrice_USD_tCO2": { "2025": 5, "2030": 20, "2040": 40, "2050": 60 },
+          "GDP_impact_vs_baseline_2050_pct": -6.0,
+          "physicalRisk": "High",
+          "transitionRisk": "Low"
+        },
+        "currentPolicies": {
+          "description": "Only currently implemented policies. Leads to high physical risks and over 3C warming.",
+          "temperature_2100_C": 3.2,
+          "carbonPrice_USD_tCO2": { "2025": 5, "2030": 10, "2040": 15, "2050": 20 },
+          "GDP_impact_vs_baseline_2050_pct": -10.0,
+          "physicalRisk": "Very High",
+          "transitionRisk": "Very Low"
+        }
+      }
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["NGFS", "scenarios", "stress-testing", "financial-risk", "central-banks"]
+  },
+  {
+    "source": "NGFS",
+    "category": "ngfs",
+    "subcategory": "Climate Scenarios",
+    "title": "NGFS Scenario Variables for Financial Stress Testing",
+    "description": "Key macro-financial variables provided by NGFS scenarios for banking and insurance sector climate stress tests, including GDP, energy prices, and sectoral impacts.",
+    "data": {
+      "stressTestVariables": {
+        "macroeconomic": ["GDP", "Inflation", "Unemployment", "Interest rates", "Investment", "Government debt"],
+        "energy": ["Oil price", "Gas price", "Coal price", "Carbon price", "Electricity price"],
+        "sectoral": ["Fossil fuel sector output", "Manufacturing output", "Agriculture output", "Services output"],
+        "physicalRisk": ["Chronic (temperature, precipitation changes)", "Acute (extreme weather frequency)", "Sea level rise", "Labour productivity", "Agricultural yields"]
+      },
+      "bankStressTestParameters": {
+        "creditRisk": {
+          "description": "Probability of default changes by sector under each scenario",
+          "highRiskSectors": ["Fossil fuels extraction", "Power generation (fossil)", "Airlines", "Automotive (ICE)", "Steel/cement", "Agriculture"],
+          "PD_increase_range_bps": { "netZero2050": [50, 300], "currentPolicies": [0, 500] }
+        },
+        "marketRisk": {
+          "description": "Asset repricing under abrupt policy changes",
+          "fossilFuelEquity_decline_pct": { "delayedTransition": [30, 60] }
+        },
+        "realEstate": {
+          "description": "Physical and transition risk to property values",
+          "floodRisk_decline_pct": [5, 30],
+          "energyEfficiency_greenPremium_pct": [5, 15]
+        }
+      },
+      "centralBankAdopters": ["ECB", "Bank of England", "HKMA", "MAS", "Reserve Bank of Australia", "Bank of Canada", "Banque de France", "SAMA"],
+      "note": "NGFS scenarios are exploratory, not forecasts. They are the standard framework for financial climate stress testing globally."
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["stress-testing", "banks", "financial-risk", "credit-risk", "PD"]
+  },
+  {
+    "source": "NGFS",
+    "category": "ngfs",
+    "subcategory": "Transition Risk",
+    "title": "NGFS Sector-Level Transition Risk Assessment",
+    "description": "NGFS assessment of transition risk by sector, categorizing industries by exposure to carbon pricing, stranded assets, demand shifts, and technology disruption.",
+    "data": {
+      "sectorRiskClassification": {
+        "veryHigh": [
+          { "sector": "Coal mining", "drivers": ["Carbon pricing", "Demand destruction", "Stranded reserves"] },
+          { "sector": "Oil & gas extraction", "drivers": ["Carbon pricing", "Demand decline", "Stranded assets"] },
+          { "sector": "Fossil fuel power generation", "drivers": ["Carbon pricing", "Renewable competition", "Regulation"] }
+        ],
+        "high": [
+          { "sector": "Airlines", "drivers": ["Carbon pricing", "Fuel costs", "No near-term alternatives"] },
+          { "sector": "Cement", "drivers": ["Process emissions", "Carbon pricing"] },
+          { "sector": "Steel", "drivers": ["Energy intensity", "Process emissions"] },
+          { "sector": "Automotive (ICE)", "drivers": ["ICE bans", "EV competition", "Regulation"] },
+          { "sector": "Shipping", "drivers": ["Fuel transition", "Carbon pricing"] },
+          { "sector": "Petrochemicals", "drivers": ["Feedstock transition", "Carbon pricing"] }
+        ],
+        "medium": [
+          { "sector": "Agriculture", "drivers": ["Methane regulation", "Land use changes"] },
+          { "sector": "Real estate", "drivers": ["Energy efficiency requirements", "Physical risk"] },
+          { "sector": "Mining (non-coal)", "drivers": ["Energy costs", "Some benefit from transition minerals"] }
+        ],
+        "low": [
+          { "sector": "Renewables", "drivers": ["Net beneficiary of transition"] },
+          { "sector": "Technology", "drivers": ["Low direct emissions"] },
+          { "sector": "Healthcare", "drivers": ["Low direct emissions"] },
+          { "sector": "Financial services", "drivers": ["Indirect exposure through portfolio"] }
+        ]
+      }
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["transition-risk", "sectors", "stranded-assets", "carbon-pricing"]
+  },
+  {
+    "source": "NGFS",
+    "category": "ngfs",
+    "subcategory": "Physical Risk",
+    "title": "NGFS Physical Risk Assessment Framework",
+    "description": "NGFS framework for assessing physical climate risks including chronic and acute hazards, their financial transmission channels, and regional vulnerability.",
+    "data": {
+      "physicalRiskCategories": {
+        "chronic": {
+          "temperatureRise": "Gradual increase affecting labour productivity, agriculture, energy demand",
+          "seaLevelRise": "Permanent inundation, saltwater intrusion, coastal erosion",
+          "precipitationChanges": "Altered rainfall patterns affecting water availability and agriculture",
+          "oceanAcidification": "Impacts on fisheries and marine ecosystems"
+        },
+        "acute": {
+          "tropicalCyclones": "Increasing intensity; $100B+ annual losses projected",
+          "floods": "River and coastal flooding; $50B+ annual losses",
+          "droughts": "Agricultural losses, water stress, energy supply disruption",
+          "wildfires": "Property destruction, air quality, ecosystem loss",
+          "heatwaves": "Mortality, labour productivity, infrastructure damage"
+        }
+      },
+      "financialTransmissionChannels": [
+        "Asset destruction / devaluation",
+        "Business interruption",
+        "Supply chain disruption",
+        "Reduced labour productivity",
+        "Increased insurance costs / uninsurability",
+        "Migration and displacement",
+        "Sovereign risk (fiscal impacts)"
+      ],
+      "highVulnerabilityRegions": [
+        { "region": "South/Southeast Asia", "primaryRisks": ["Floods", "Cyclones", "Heat"] },
+        { "region": "Middle East / North Africa", "primaryRisks": ["Extreme heat", "Water scarcity", "Sea level rise"] },
+        { "region": "Sub-Saharan Africa", "primaryRisks": ["Droughts", "Food insecurity", "Heat"] },
+        { "region": "Small Island Developing States", "primaryRisks": ["Sea level rise", "Cyclones"] },
+        { "region": "Coastal megacities globally", "primaryRisks": ["Flooding", "Storm surge", "Heat islands"] }
+      ]
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["physical-risk", "hazards", "vulnerability", "financial-impact"]
+  },
+  {
+    "source": "NGFS",
+    "category": "ngfs",
+    "subcategory": "Nature Risk",
+    "title": "NGFS Nature-Related Financial Risks",
+    "description": "NGFS conceptual framework for nature-related financial risks, linking biodiversity loss and ecosystem degradation to financial stability. Published in September 2023.",
+    "data": {
+      "report": "NGFS Nature-related Financial Risks: a Conceptual Framework to guide Action by Central Banks and Supervisors",
+      "published": "2023-09",
+      "keyFindings": {
+        "economicDependence": "Over 50% of global GDP ($44 trillion) is moderately or highly dependent on nature",
+        "physicalRisks": "Ecosystem degradation undermines economic productivity (pollination, water purification, soil fertility)",
+        "transitionRisks": "New regulations (EU Deforestation Regulation, TNFD) create compliance costs"
+      },
+      "transmissionChannels": [
+        "Ecosystem services degradation",
+        "Resource depletion",
+        "Pollution and contamination",
+        "Land-use change",
+        "Invasive species / biosecurity"
+      ],
+      "highExposureSectors": ["Agriculture", "Forestry", "Fisheries", "Mining", "Construction", "Food & beverage", "Pharmaceuticals"],
+      "policyRecommendations": [
+        "Integrate nature-related risks into financial supervision",
+        "Develop nature scenarios for stress testing",
+        "Enhance nature-related data and disclosure"
+      ]
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["nature-risk", "biodiversity", "financial-stability", "ecosystem-services"]
+  },
+  {
+    "source": "WRI",
+    "category": "wri",
+    "subcategory": "Aqueduct",
+    "title": "WRI Aqueduct Water Risk Atlas - Country Water Stress Scores",
+    "description": "WRI Aqueduct 4.0 water stress scores by country, measuring the ratio of total water withdrawals to available renewable surface and groundwater. Scores 0-5 (5 = extremely high stress).",
+    "data": {
+      "version": "Aqueduct 4.0 (2023)",
+      "scoreScale": { "0-1": "Low", "1-2": "Low-Medium", "2-3": "Medium-High", "3-4": "High", "4-5": "Extremely High" },
+      "extremelyHigh_4to5": {
+        "countries": {
+          "Qatar": 4.97, "Israel": 4.82, "Lebanon": 4.97, "Iran": 4.91, "Jordan": 4.86,
+          "Libya": 4.97, "Kuwait": 4.97, "Saudi Arabia": 4.97, "Eritrea": 4.86, "UAE": 4.97,
+          "San Marino": 4.97, "Bahrain": 4.97, "Pakistan": 4.48, "Turkmenistan": 4.70,
+          "Oman": 4.97, "Botswana": 4.41, "India": 4.36
+        }
+      },
+      "high_3to4": {
+        "countries": {
+          "Chile": 3.92, "Belgium": 3.92, "Cyprus": 3.81, "Mexico": 3.86, "Morocco": 3.94,
+          "Uzbekistan": 3.97, "Spain": 3.61, "Afghanistan": 3.72, "South Africa": 3.64,
+          "Iraq": 3.67, "Italy": 3.53, "Egypt": 3.42, "Turkey": 3.28, "China": 3.18,
+          "Australia": 3.08, "Greece": 3.15, "Portugal": 3.22
+        }
+      },
+      "mediumHigh_2to3": {
+        "countries": {
+          "USA": 2.86, "France": 2.78, "Germany": 2.52, "Thailand": 2.38, "South Korea": 2.45,
+          "Poland": 2.30, "Japan": 2.13, "Indonesia": 2.05, "Nigeria": 2.16
+        }
+      },
+      "low_0to2": {
+        "examples": {
+          "Brazil": 1.12, "Canada": 0.95, "Russia": 1.03, "Norway": 0.32, "Sweden": 0.56,
+          "Finland": 0.28, "New Zealand": 0.43, "Iceland": 0.10, "Congo (DRC)": 0.14
+        }
+      },
+      "projections": {
+        "by2040": "25% of countries projected to face extremely high water stress, up from 17% today",
+        "mainDrivers": ["Population growth", "Economic development", "Climate change"]
+      }
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["water-stress", "Aqueduct", "country-risk", "water-scarcity"]
+  },
+  {
+    "source": "WRI",
+    "category": "wri",
+    "subcategory": "Climate Watch",
+    "title": "Climate Watch - Top 50 Country GHG Emissions",
+    "description": "WRI Climate Watch historical emissions data for the top 50 emitting countries, including total GHG emissions and per-capita figures. Based on latest available data (2021).",
+    "data": {
+      "source": "WRI Climate Watch / CAIT",
+      "year": 2021,
+      "unit_total": "MtCO2e (including LULUCF)",
+      "unit_perCapita": "tCO2e/person",
+      "top50": [
+        { "rank": 1, "country": "China", "total_MtCO2e": 14093, "perCapita": 9.9, "share_pct": 26.1 },
+        { "rank": 2, "country": "USA", "total_MtCO2e": 5586, "perCapita": 16.8, "share_pct": 10.3 },
+        { "rank": 3, "country": "India", "total_MtCO2e": 3940, "perCapita": 2.8, "share_pct": 7.3 },
+        { "rank": 4, "country": "EU-27", "total_MtCO2e": 3290, "perCapita": 7.4, "share_pct": 6.1 },
+        { "rank": 5, "country": "Russia", "total_MtCO2e": 2579, "perCapita": 17.8, "share_pct": 4.8 },
+        { "rank": 6, "country": "Indonesia", "total_MtCO2e": 1702, "perCapita": 6.2, "share_pct": 3.2 },
+        { "rank": 7, "country": "Brazil", "total_MtCO2e": 1494, "perCapita": 7.0, "share_pct": 2.8 },
+        { "rank": 8, "country": "Japan", "total_MtCO2e": 1129, "perCapita": 9.0, "share_pct": 2.1 },
+        { "rank": 9, "country": "Iran", "total_MtCO2e": 858, "perCapita": 10.1, "share_pct": 1.6 },
+        { "rank": 10, "country": "Canada", "total_MtCO2e": 756, "perCapita": 19.6, "share_pct": 1.4 },
+        { "rank": 11, "country": "Mexico", "total_MtCO2e": 696, "perCapita": 5.4, "share_pct": 1.3 },
+        { "rank": 12, "country": "South Korea", "total_MtCO2e": 676, "perCapita": 13.1, "share_pct": 1.3 },
+        { "rank": 13, "country": "Saudi Arabia", "total_MtCO2e": 672, "perCapita": 18.7, "share_pct": 1.2 },
+        { "rank": 14, "country": "Germany", "total_MtCO2e": 665, "perCapita": 8.0, "share_pct": 1.2 },
+        { "rank": 15, "country": "Australia", "total_MtCO2e": 568, "perCapita": 22.0, "share_pct": 1.1 },
+        { "rank": 16, "country": "South Africa", "total_MtCO2e": 531, "perCapita": 8.8, "share_pct": 1.0 },
+        { "rank": 17, "country": "Turkey", "total_MtCO2e": 502, "perCapita": 5.9, "share_pct": 0.9 },
+        { "rank": 18, "country": "UK", "total_MtCO2e": 404, "perCapita": 6.0, "share_pct": 0.7 },
+        { "rank": 19, "country": "Thailand", "total_MtCO2e": 397, "perCapita": 5.7, "share_pct": 0.7 },
+        { "rank": 20, "country": "France", "total_MtCO2e": 392, "perCapita": 5.8, "share_pct": 0.7 },
+        { "rank": 21, "country": "Pakistan", "total_MtCO2e": 380, "perCapita": 1.7, "share_pct": 0.7 },
+        { "rank": 22, "country": "Italy", "total_MtCO2e": 352, "perCapita": 5.9, "share_pct": 0.7 },
+        { "rank": 23, "country": "Poland", "total_MtCO2e": 342, "perCapita": 9.0, "share_pct": 0.6 },
+        { "rank": 24, "country": "Egypt", "total_MtCO2e": 330, "perCapita": 3.2, "share_pct": 0.6 },
+        { "rank": 25, "country": "Malaysia", "total_MtCO2e": 316, "perCapita": 9.6, "share_pct": 0.6 },
+        { "rank": 26, "country": "Vietnam", "total_MtCO2e": 311, "perCapita": 3.2, "share_pct": 0.6 },
+        { "rank": 27, "country": "Nigeria", "total_MtCO2e": 302, "perCapita": 1.4, "share_pct": 0.6 },
+        { "rank": 28, "country": "Argentina", "total_MtCO2e": 296, "perCapita": 6.5, "share_pct": 0.5 },
+        { "rank": 29, "country": "UAE", "total_MtCO2e": 282, "perCapita": 28.5, "share_pct": 0.5 },
+        { "rank": 30, "country": "Kazakhstan", "total_MtCO2e": 272, "perCapita": 14.4, "share_pct": 0.5 },
+        { "rank": 31, "country": "Iraq", "total_MtCO2e": 245, "perCapita": 5.8, "share_pct": 0.5 },
+        { "rank": 32, "country": "Colombia", "total_MtCO2e": 228, "perCapita": 4.4, "share_pct": 0.4 },
+        { "rank": 33, "country": "Spain", "total_MtCO2e": 222, "perCapita": 4.7, "share_pct": 0.4 },
+        { "rank": 34, "country": "Philippines", "total_MtCO2e": 216, "perCapita": 1.9, "share_pct": 0.4 },
+        { "rank": 35, "country": "Bangladesh", "total_MtCO2e": 200, "perCapita": 1.2, "share_pct": 0.4 },
+        { "rank": 36, "country": "Algeria", "total_MtCO2e": 197, "perCapita": 4.4, "share_pct": 0.4 },
+        { "rank": 37, "country": "Ukraine", "total_MtCO2e": 195, "perCapita": 4.5, "share_pct": 0.4 },
+        { "rank": 38, "country": "Venezuela", "total_MtCO2e": 190, "perCapita": 6.7, "share_pct": 0.4 },
+        { "rank": 39, "country": "Uzbekistan", "total_MtCO2e": 172, "perCapita": 5.0, "share_pct": 0.3 },
+        { "rank": 40, "country": "Chile", "total_MtCO2e": 152, "perCapita": 7.9, "share_pct": 0.3 },
+        { "rank": 41, "country": "Netherlands", "total_MtCO2e": 148, "perCapita": 8.5, "share_pct": 0.3 },
+        { "rank": 42, "country": "Qatar", "total_MtCO2e": 140, "perCapita": 48.9, "share_pct": 0.3 },
+        { "rank": 43, "country": "Czech Republic", "total_MtCO2e": 119, "perCapita": 11.1, "share_pct": 0.2 },
+        { "rank": 44, "country": "Peru", "total_MtCO2e": 118, "perCapita": 3.5, "share_pct": 0.2 },
+        { "rank": 45, "country": "Ethiopia", "total_MtCO2e": 115, "perCapita": 1.0, "share_pct": 0.2 },
+        { "rank": 46, "country": "Oman", "total_MtCO2e": 113, "perCapita": 24.1, "share_pct": 0.2 },
+        { "rank": 47, "country": "Kuwait", "total_MtCO2e": 111, "perCapita": 25.6, "share_pct": 0.2 },
+        { "rank": 48, "country": "Romania", "total_MtCO2e": 110, "perCapita": 5.7, "share_pct": 0.2 },
+        { "rank": 49, "country": "Myanmar", "total_MtCO2e": 108, "perCapita": 2.0, "share_pct": 0.2 },
+        { "rank": 50, "country": "Belgium", "total_MtCO2e": 106, "perCapita": 9.2, "share_pct": 0.2 }
+      ],
+      "globalTotal_MtCO2e": 53800,
+      "historicalCumulative_1850_2021": {
+        "top5": ["USA (25%)", "China (13%)", "Russia (7%)", "Germany (5%)", "UK (4.6%)"]
+      }
+    },
+    "year": 2021,
+    "verified": true,
+    "tags": ["emissions", "country", "per-capita", "historical", "GHG"]
+  },
+  {
+    "source": "WRI",
+    "category": "wri",
+    "subcategory": "Aqueduct",
+    "title": "WRI Aqueduct - Projected Water Stress Under Climate Change",
+    "description": "WRI Aqueduct projections for how water stress will change under different climate and socioeconomic scenarios, highlighting hotspots of future water risk.",
+    "data": {
+      "version": "Aqueduct 4.0",
+      "projectionScenarios": {
+        "optimistic_SSP1_RCP2.6": {
+          "description": "Sustainable development, low emissions",
+          "countriesMovingToExtremelyHighStress_by2050": 5,
+          "globalPopulationUnderHighStress_increase_pct": 15
+        },
+        "businessAsUsual_SSP2_RCP4.5": {
+          "description": "Middle-of-the-road development",
+          "countriesMovingToExtremelyHighStress_by2050": 12,
+          "globalPopulationUnderHighStress_increase_pct": 30
+        },
+        "pessimistic_SSP3_RCP8.5": {
+          "description": "Regional rivalry, high emissions",
+          "countriesMovingToExtremelyHighStress_by2050": 20,
+          "globalPopulationUnderHighStress_increase_pct": 50
+        }
+      },
+      "hotspots_2050": ["Middle East", "North Africa", "Central Asia", "Northern India", "Northern China", "Mediterranean", "Southwest USA", "Andes region"],
+      "GCC_outlook": {
+        "current": "All GCC states already at extremely high baseline water stress (4.5+)",
+        "projection": "Increasing demand from population growth and economic development compounds climate-driven scarcity",
+        "desalinationDependence": "GCC produces ~50% of global desalinated water; energy-intensive and costly"
+      }
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["water-stress", "projections", "climate-change", "GCC", "desalination"]
+  },
+  {
+    "source": "GHG Protocol",
+    "category": "ghg_protocol",
+    "subcategory": "Scope 1/2/3",
+    "title": "GHG Protocol Scope 1, 2, and 3 Calculation Methodologies",
+    "description": "Summary of the GHG Protocol Corporate Standard and Corporate Value Chain (Scope 3) Standard calculation methodologies for greenhouse gas accounting.",
+    "data": {
+      "standards": {
+        "corporateStandard": "GHG Protocol Corporate Accounting and Reporting Standard (Revised Edition, 2004/2015)",
+        "scope3Standard": "GHG Protocol Corporate Value Chain (Scope 3) Accounting and Reporting Standard (2011)"
+      },
+      "scope1": {
+        "definition": "Direct GHG emissions from sources owned or controlled by the reporting company",
+        "categories": ["Stationary combustion", "Mobile combustion", "Process emissions", "Fugitive emissions"],
+        "calculationApproach": "Activity data x Emission factor = Emissions",
+        "mandatory": true,
+        "examples": ["Boiler fuel combustion", "Company-owned vehicles", "Chemical process emissions", "Refrigerant leaks"]
+      },
+      "scope2": {
+        "definition": "Indirect GHG emissions from purchased electricity, steam, heating, and cooling",
+        "approaches": {
+          "locationBased": "Uses average grid emission factor for the location of electricity consumption",
+          "marketBased": "Uses supplier-specific, contractual, or residual mix emission factors"
+        },
+        "mandatory": true,
+        "dualReporting": "Companies should report using both approaches"
+      },
+      "scope3": {
+        "definition": "All other indirect emissions in the value chain (upstream and downstream)",
+        "categories": {
+          "upstream": [
+            { "cat": 1, "name": "Purchased goods and services", "typically_largest": true },
+            { "cat": 2, "name": "Capital goods" },
+            { "cat": 3, "name": "Fuel- and energy-related activities not in Scope 1 or 2" },
+            { "cat": 4, "name": "Upstream transportation and distribution" },
+            { "cat": 5, "name": "Waste generated in operations" },
+            { "cat": 6, "name": "Business travel" },
+            { "cat": 7, "name": "Employee commuting" },
+            { "cat": 8, "name": "Upstream leased assets" }
+          ],
+          "downstream": [
+            { "cat": 9, "name": "Downstream transportation and distribution" },
+            { "cat": 10, "name": "Processing of sold products" },
+            { "cat": 11, "name": "Use of sold products", "typically_largest_for": "Energy, automotive, electronics" },
+            { "cat": 12, "name": "End-of-life treatment of sold products" },
+            { "cat": 13, "name": "Downstream leased assets" },
+            { "cat": 14, "name": "Franchises" },
+            { "cat": 15, "name": "Investments", "typically_largest_for": "Financial institutions" }
+          ]
+        },
+        "mandatory": "Required under GHG Protocol; increasingly mandated by CSRD, SEC, ISSB S2",
+        "calculationMethods": ["Supplier-specific", "Hybrid", "Average-data", "Spend-based"],
+        "typical_share": "Scope 3 is often 70-90% of total corporate footprint"
+      },
+      "principles": ["Relevance", "Completeness", "Consistency", "Transparency", "Accuracy"]
+    },
+    "year": 2011,
+    "verified": true,
+    "tags": ["GHG-Protocol", "scope-1", "scope-2", "scope-3", "corporate-accounting", "methodology"]
+  },
+  {
+    "source": "GHG Protocol",
+    "category": "ghg_protocol",
+    "subcategory": "Product Standard",
+    "title": "GHG Protocol Product Life Cycle Standard",
+    "description": "Summary of the GHG Protocol Product Life Cycle Accounting and Reporting Standard for quantifying the GHG emissions of individual products across their full life cycle.",
+    "data": {
+      "standard": "GHG Protocol Product Life Cycle Accounting and Reporting Standard (2011)",
+      "scope": "Cradle-to-grave GHG emissions of a product",
+      "lifeCycleStages": [
+        "Material acquisition and pre-processing",
+        "Production",
+        "Distribution and storage",
+        "Use",
+        "End of life"
+      ],
+      "keyRequirements": [
+        "Define product, functional unit, and reference flow",
+        "Create a boundary that includes all attributable processes",
+        "Collect data for all life cycle stages",
+        "Allocate emissions using hierarchy: avoid > physical > economic",
+        "Report biogenic carbon separately",
+        "Report land use change emissions"
+      ],
+      "relationship": {
+        "ISO14067": "Aligned with ISO 14067 (Carbon footprint of products)",
+        "ISO14044": "Built on ISO 14044 (Life cycle assessment)",
+        "PAS2050": "Compatible with PAS 2050"
+      }
+    },
+    "year": 2011,
+    "verified": true,
+    "tags": ["product-footprint", "LCA", "life-cycle", "GHG-Protocol"]
+  },
+  {
+    "source": "GHG Protocol",
+    "category": "ghg_protocol",
+    "subcategory": "Financial Institutions",
+    "title": "GHG Protocol - PCAF Global Standard for Financial Institutions",
+    "description": "Partnership for Carbon Accounting Financials (PCAF) standard for measuring and disclosing financed emissions, built on GHG Protocol Scope 3 Category 15.",
+    "data": {
+      "standard": "PCAF Global GHG Accounting and Reporting Standard for the Financial Industry (2nd Edition, 2022)",
+      "assetClasses": [
+        { "class": "Listed equity and corporate bonds", "attributionApproach": "Enterprise Value Including Cash (EVIC)" },
+        { "class": "Business loans and unlisted equity", "attributionApproach": "EVIC or revenue-based" },
+        { "class": "Project finance", "attributionApproach": "Pro-rata share of total project emissions" },
+        { "class": "Commercial real estate", "attributionApproach": "Building-level emissions" },
+        { "class": "Mortgages", "attributionApproach": "Building-level emissions" },
+        { "class": "Motor vehicle loans", "attributionApproach": "Vehicle-level emissions" },
+        { "class": "Sovereign debt", "attributionApproach": "Production-based national emissions per GDP" }
+      ],
+      "dataQualityScore": {
+        "1": "Audited or verified emissions from borrower/investee",
+        "2": "Non-verified reported emissions",
+        "3": "Emissions estimated from physical activity data",
+        "4": "Emissions estimated from economic activity data",
+        "5": "Emissions estimated from asset-class-level data"
+      },
+      "adoption": "Over 400 financial institutions globally have committed to PCAF",
+      "link_to_netZero": "PCAF data feeds into Net Zero Banking Alliance (NZBA) target-setting"
+    },
+    "year": 2022,
+    "verified": true,
+    "tags": ["PCAF", "financed-emissions", "scope-3-cat-15", "financial-institutions", "attribution"]
+  },
+  {
+    "source": "GHG Protocol",
+    "category": "ghg_protocol",
+    "subcategory": "Land Sector",
+    "title": "GHG Protocol Land Sector and Removals Guidance",
+    "description": "GHG Protocol guidance on accounting for GHG emissions and removals from land use, land use change, bioenergy, and carbon dioxide removal (CDR) in corporate inventories.",
+    "data": {
+      "standard": "GHG Protocol Land Sector and Removals Guidance (Draft for public comment, 2023)",
+      "keyTopics": {
+        "landUseEmissions": "Emissions from deforestation, peatland drainage, land conversion",
+        "bioCarbon": "Biogenic CO2 from biomass combustion and biological processes",
+        "removals": "CO2 removals from afforestation, soil carbon sequestration, BECCS, DACCS",
+        "carbonCredits": "Purchased offsets/credits should be reported separately, not deducted from inventory"
+      },
+      "accountingRequirements": [
+        "Report land-related emissions and removals in the GHG inventory",
+        "Separately report biogenic vs fossil CO2",
+        "Track carbon stock changes over time",
+        "Do not net removals against emissions for Scope totals without separate disclosure"
+      ],
+      "offsetGuidance": {
+        "principle": "Carbon credits/offsets must not substitute for value chain emission reductions",
+        "reporting": "Report separately from Scope 1/2/3 inventory",
+        "quality": "Credits should meet high-integrity criteria (additionality, permanence, no leakage)"
+      },
+      "status": "Final guidance expected 2024-2025"
+    },
+    "year": 2023,
+    "verified": false,
+    "tags": ["land-sector", "removals", "biogenic", "offsets", "carbon-credits"]
+  },
+  {
+    "source": "Various",
+    "category": "other",
+    "subcategory": "Temperature Record",
+    "title": "Global Temperature Anomaly Time Series 1880-2024",
+    "description": "Global average surface temperature anomaly relative to 1951-1980 baseline, combining NASA GISS, NOAA, and HadCRUT5 datasets. The record shows unambiguous long-term warming.",
+    "data": {
+      "sources": ["NASA GISS (GISTEMP v4)", "NOAA GlobalTemp", "HadCRUT5 (Met Office / UEA)"],
+      "baseline": "1951-1980 average",
+      "timeSeries_decadalAverages_C": {
+        "1880s": -0.25,
+        "1890s": -0.28,
+        "1900s": -0.26,
+        "1910s": -0.28,
+        "1920s": -0.14,
+        "1930s": -0.01,
+        "1940s": 0.07,
+        "1950s": -0.01,
+        "1960s": -0.02,
+        "1970s": -0.01,
+        "1980s": 0.18,
+        "1990s": 0.38,
+        "2000s": 0.57,
+        "2010s": 0.82,
+        "2020_2024": 1.15
+      },
+      "recentYears_C": {
+        "2020": 1.02,
+        "2021": 0.84,
+        "2022": 0.89,
+        "2023": 1.17,
+        "2024": 1.29
+      },
+      "warmestYearsOnRecord": ["2024", "2023", "2016", "2020", "2019"],
+      "note_2024": "2024 was the warmest year on record at approximately 1.29C above pre-industrial (1850-1900), first year to exceed 1.5C annual average above pre-industrial in some datasets"
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["temperature", "anomaly", "historical", "warming", "time-series"]
+  },
+  {
+    "source": "Various",
+    "category": "other",
+    "subcategory": "Carbon Budget",
+    "title": "Updated Remaining Carbon Budget (2024)",
+    "description": "Updated estimates of remaining carbon budget from 2024 onwards for 1.5C and 2C targets, accounting for emissions since 2020 AR6 baseline.",
+    "data": {
+      "source": "Global Carbon Budget 2024 (Global Carbon Project) + IPCC AR6 adjustments",
+      "fromStartOf2024_GtCO2": {
+        "1.5C_50pct_probability": 275,
+        "1.5C_67pct_probability": 175,
+        "2.0C_50pct_probability": 1125,
+        "2.0C_67pct_probability": 925
+      },
+      "annualEmissions_2023_GtCO2": 40.9,
+      "yearsRemaining_atCurrentRate": {
+        "1.5C_50pct": "~7 years (exhausted ~2030)",
+        "1.5C_67pct": "~4 years (exhausted ~2028)",
+        "2.0C_50pct": "~28 years",
+        "2.0C_67pct": "~23 years"
+      },
+      "uncertainties": [
+        "Earth system feedbacks (permafrost, cloud feedbacks)",
+        "Aerosol masking effect (reducing aerosols reveals additional warming)",
+        "Non-CO2 GHG trajectories",
+        "Historical temperature dataset revisions"
+      ],
+      "note": "These estimates have significant uncertainty ranges. The budget is highly sensitive to temperature target probability level."
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["carbon-budget", "remaining", "1.5C", "2C", "urgency"]
+  },
+  {
+    "source": "UNEP",
+    "category": "other",
+    "subcategory": "Emissions Gap",
+    "title": "UNEP Emissions Gap Report 2024",
+    "description": "UNEP annual assessment of the gap between projected emissions under current policies and NDCs versus what is needed for 1.5C and 2C pathways.",
+    "data": {
+      "report": "UNEP Emissions Gap Report 2024",
+      "published": "2024-10",
+      "currentTrajectory": {
+        "projectedWarming_endOfCentury_C": 2.6,
+        "projectedEmissions_2030_GtCO2e": 56,
+        "note": "With current policies only"
+      },
+      "NDC_trajectory": {
+        "unconditionalNDCs_2030_GtCO2e": 53,
+        "conditionalNDCs_2030_GtCO2e": 50,
+        "projectedWarming_unconditional_C": 2.6,
+        "projectedWarming_conditional_C": 2.4
+      },
+      "targetPathways": {
+        "1.5C_2030_GtCO2e": 33,
+        "2C_2030_GtCO2e": 39
+      },
+      "emissionsGap_2030_GtCO2e": {
+        "vs_1.5C_fromConditionalNDCs": 17,
+        "vs_2C_fromConditionalNDCs": 11,
+        "vs_1.5C_fromCurrentPolicies": 23,
+        "vs_2C_fromCurrentPolicies": 17
+      },
+      "keyMessage": "The emissions gap is widening. Current NDCs are wholly insufficient to meet Paris Agreement goals. Immediate and unprecedented emission cuts needed.",
+      "G20_share": "G20 members account for approximately 77% of global GHG emissions"
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["emissions-gap", "NDCs", "Paris-Agreement", "UNEP", "policy"]
+  },
+  {
+    "source": "SBTi",
+    "category": "sbti",
+    "subcategory": "Sector Pathways",
+    "title": "SBTi Sector Decarbonization Approach - Required Reduction Rates",
+    "description": "Science Based Targets initiative sector-specific decarbonization pathways specifying the emissions reduction rates required for companies to align with 1.5C.",
+    "data": {
+      "methodology": "SBTi uses sector-specific pathways based on IEA NZE and IPCC AR6 1.5C scenarios",
+      "sectorPathways": {
+        "powerGeneration": {
+          "approach": "Sectoral Decarbonization Approach (SDA)",
+          "reductionRate": "Scope 1+2 intensity must decline to ~0.04 tCO2/MWh by 2030",
+          "basis": "IEA NZE 2050"
+        },
+        "oilAndGas": {
+          "approach": "Absolute contraction (Scope 1+2) + Scope 3",
+          "scope1_2_reduction_by2030_pct": 42,
+          "scope3_requirement": "Must include Scope 3 if >40% of total",
+          "note": "Updated FLAG guidance for land-intensive operations"
+        },
+        "transport_lightDutyVehicles": {
+          "approach": "SDA intensity pathway",
+          "intensityTarget_2030": "gCO2/km must decline in line with IEA NZE",
+          "EV_share_implication": "Implies rapid shift to EVs"
+        },
+        "cement": {
+          "approach": "SDA",
+          "reductionRate_tCO2_per_tCite": "Must decline to ~0.42 tCO2/t cementitious by 2030"
+        },
+        "steel": {
+          "approach": "SDA",
+          "reductionRate_tCO2_per_tSteel": "Must decline to ~1.2 tCO2/t crude steel by 2030"
+        },
+        "buildings_commercial": {
+          "approach": "SDA",
+          "intensityTarget": "kgCO2/m2 must decline in line with IEA NZE"
+        },
+        "financialInstitutions": {
+          "approach": "SBTi Financial Institutions Net-Zero Standard (2024)",
+          "requirement": "Portfolio alignment targets using sectoral pathways",
+          "assetClasses": ["Corporate lending", "Project finance", "Listed equity", "Real estate"]
+        },
+        "forestLandAgriculture_FLAG": {
+          "approach": "FLAG Science-Based Target Setting Guidance (2022)",
+          "requirement": "Companies with >20% FLAG emissions must set FLAG targets",
+          "deforestation": "Zero gross deforestation by 2025",
+          "landEmissions_reduction_by2030_pct": 33
+        }
+      },
+      "crossSectorAbsoluteContraction": {
+        "1.5C_aligned": "4.2% annual linear reduction (Scope 1+2)",
+        "wellBelow2C": "2.5% annual linear reduction (Scope 1+2)"
+      },
+      "adoptionStats_2024": {
+        "companiesWithTargets": 4200,
+        "companiesCommitted": 9000,
+        "economiesCovered": 100
+      }
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["SBTi", "science-based-targets", "sector-pathways", "1.5C", "corporate"]
+  },
+  {
+    "source": "Various",
+    "category": "other",
+    "subcategory": "Stranded Assets",
+    "title": "Stranded Assets Data by Fossil Fuel Type",
+    "description": "Estimates of stranded asset risk by fossil fuel type under climate transition scenarios, based on Carbon Tracker Initiative and academic research.",
+    "data": {
+      "sources": ["Carbon Tracker Initiative", "IPCC AR6 WG3", "IEA World Energy Outlook 2023"],
+      "strandedAssets_byFuelType": {
+        "coal": {
+          "totalReserves_value_trillionUSD": 0.9,
+          "strandedUnder1.5C_pct": 90,
+          "strandedUnder2C_pct": 80,
+          "existingMines_value_at_risk_billionUSD": 400,
+          "plannedCapacity_at_risk_GW": 500
+        },
+        "oil": {
+          "totalReserves_value_trillionUSD": 12,
+          "strandedUnder1.5C_pct": 60,
+          "strandedUnder2C_pct": 40,
+          "existingFields_value_at_risk_trillionUSD": [3, 7],
+          "breakEvenPrice_USD_bbl": { "deepwater": 50, "oilSands": 60, "conventional": 25, "arctic": 70 }
+        },
+        "naturalGas": {
+          "totalReserves_value_trillionUSD": 5,
+          "strandedUnder1.5C_pct": 40,
+          "strandedUnder2C_pct": 20,
+          "existingInfra_value_at_risk_trillionUSD": [1, 2],
+          "LNG_terminals_at_risk": "New LNG export capacity under construction may become stranded"
+        }
+      },
+      "totalFossilFuelStrandedAssets_1.5C_trillionUSD": [1, 4],
+      "keyRisks": [
+        "Demand destruction from electrification and renewables",
+        "Carbon pricing increasing operating costs",
+        "Regulatory restrictions on new development",
+        "Investor divestment and rising cost of capital",
+        "Physical climate risk to infrastructure"
+      ],
+      "GCC_exposure": {
+        "risk": "GCC economies highly exposed due to hydrocarbon dependence",
+        "Saudi_oil_revenue_share_GDP_pct": 40,
+        "mitigation": "Diversification strategies (Vision 2030, UAE 2050) aimed at reducing exposure"
+      }
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["stranded-assets", "fossil-fuels", "coal", "oil", "gas", "Carbon-Tracker"]
+  },
+  {
+    "source": "WRI",
+    "category": "wri",
+    "subcategory": "Global Forest Watch",
+    "title": "Global Forest Watch - Deforestation Data 2023",
+    "description": "WRI Global Forest Watch data on tropical primary forest loss in 2023, critical for corporate supply chain due diligence and FLAG target setting.",
+    "data": {
+      "source": "Global Forest Watch / University of Maryland",
+      "year": 2023,
+      "tropicalPrimaryForestLoss_Mha": 3.7,
+      "totalTreeCoverLoss_Mha": 28.3,
+      "topCountries_primaryForestLoss_kha": [
+        { "country": "Brazil", "loss_kha": 1110 },
+        { "country": "DRC", "loss_kha": 500 },
+        { "country": "Bolivia", "loss_kha": 350 },
+        { "country": "Indonesia", "loss_kha": 270 },
+        { "country": "Peru", "loss_kha": 160 },
+        { "country": "Colombia", "loss_kha": 120 },
+        { "country": "Laos", "loss_kha": 100 },
+        { "country": "Cameroon", "loss_kha": 95 },
+        { "country": "Malaysia", "loss_kha": 85 },
+        { "country": "Nicaragua", "loss_kha": 70 }
+      ],
+      "emissions_from_tropicalForestLoss_GtCO2": 2.4,
+      "drivers": ["Agricultural expansion (commodity-driven)", "Shifting agriculture", "Forestry", "Wildfire", "Urbanization"],
+      "keyTrend": "Indonesia has reduced deforestation significantly since 2016; Brazil saw decline in 2023 vs 2022; Bolivia and DRC trends worsening"
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["deforestation", "forest-loss", "LULUCF", "supply-chain", "commodities"]
+  },
+  {
+    "source": "Various",
+    "category": "other",
+    "subcategory": "Climate Finance",
+    "title": "Global Climate Finance Flows 2024",
+    "description": "Tracking of global climate finance flows including public and private investment in mitigation and adaptation, and the gap relative to needs.",
+    "data": {
+      "sources": ["Climate Policy Initiative (CPI)", "IEA", "OECD"],
+      "totalClimateFinance_2023_trillionUSD": 1.3,
+      "breakdown": {
+        "mitigation_pct": 93,
+        "adaptation_pct": 7,
+        "public_pct": 49,
+        "private_pct": 51,
+        "domestic_pct": 82,
+        "international_pct": 18
+      },
+      "bySector": {
+        "renewableEnergy_billionUSD": 620,
+        "transport_billionUSD": 340,
+        "buildings_billionUSD": 130,
+        "AFOLU_billionUSD": 30,
+        "industry_billionUSD": 50,
+        "adaptation_billionUSD": 100
+      },
+      "requiredAnnualInvestment_2030_trillionUSD": 4.3,
+      "gap": "Climate finance needs to more than triple to meet 2030 targets",
+      "developingCountryNeeds_annual_trillionUSD": 2.4,
+      "NCQG_COP29": "New Collective Quantified Goal of $300 billion per year by 2035 agreed at COP29, criticized as insufficient"
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["climate-finance", "investment", "adaptation", "mitigation", "COP29"]
+  }
+]
