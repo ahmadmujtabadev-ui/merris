@@ -1,0 +1,1893 @@
+[
+  {
+    "source": "United Nations",
+    "category": "due_diligence",
+    "subcategory": "un_guiding_principles",
+    "title": "UN Guiding Principles on Business and Human Rights (UNGPs)",
+    "description": "The UNGPs were unanimously endorsed by the UN Human Rights Council in 2011. They rest on three pillars: (1) the State duty to protect human rights, (2) the corporate responsibility to respect human rights, and (3) access to remedy for victims. The 31 principles provide an authoritative global standard for preventing and addressing adverse human rights impacts linked to business activity.",
+    "data": {
+      "adoptedYear": 2011,
+      "endorsedBy": "UN Human Rights Council (Resolution 17/4)",
+      "author": "Professor John Ruggie (Special Representative of the Secretary-General)",
+      "pillars": [
+        {
+          "number": 1,
+          "name": "State Duty to Protect",
+          "principles": "1-10",
+          "summary": "States must protect against human rights abuses within their territory and/or jurisdiction by third parties, including business enterprises, through appropriate policies, regulation, and adjudication."
+        },
+        {
+          "number": 2,
+          "name": "Corporate Responsibility to Respect",
+          "principles": "11-24",
+          "summary": "Business enterprises should respect human rights by avoiding infringing on the rights of others and addressing adverse impacts with which they are involved. This requires a human rights due diligence process."
+        },
+        {
+          "number": 3,
+          "name": "Access to Remedy",
+          "principles": "25-31",
+          "summary": "Victims of business-related human rights abuses must have access to effective remedy, both judicial and non-judicial. States must ensure appropriate and effective remedial mechanisms."
+        }
+      ],
+      "principlesSummary": {
+        "1": "States must protect against human rights abuse by third parties including businesses",
+        "2": "States should set out clearly the expectation that businesses respect human rights",
+        "3": "States should enforce laws requiring businesses to respect human rights and periodically assess adequacy of such laws",
+        "4": "States should take additional steps to protect against abuses by State-owned enterprises",
+        "5": "States should exercise adequate oversight when contracting with or legislating for business services",
+        "6": "States should promote respect for human rights by businesses with which they conduct commercial transactions",
+        "7": "States should ensure policy coherence in conflict-affected areas",
+        "8": "States should ensure that governmental departments and agencies that shape business practices are aware of and observe the State's human rights obligations",
+        "9": "States should maintain adequate domestic policy space to meet their human rights obligations when entering into trade agreements",
+        "10": "States acting as members of multilateral institutions should promote business respect for human rights",
+        "11": "Business enterprises should respect human rights — avoid causing or contributing to adverse impacts and address impacts when they occur",
+        "12": "The responsibility to respect human rights refers to internationally recognized human rights, at a minimum the International Bill of Human Rights and the ILO Declaration",
+        "13": "The responsibility to respect requires businesses to avoid causing/contributing to adverse impacts and seek to prevent/mitigate impacts linked to their operations, products or services",
+        "14": "The responsibility applies to all enterprises regardless of size, sector, operational context, ownership, and structure",
+        "15": "Businesses need appropriate policies and processes including: a policy commitment, a human rights due diligence process, and processes to enable remediation",
+        "16": "Businesses should express their commitment through a statement of policy approved at the most senior level",
+        "17": "Businesses should carry out human rights due diligence to identify, prevent, mitigate and account for how they address adverse impacts",
+        "18": "Businesses should identify and assess actual and potential adverse human rights impacts involving meaningful consultation with potentially affected groups",
+        "19": "Businesses should integrate findings from impact assessments across relevant internal functions and take appropriate action",
+        "20": "Businesses should track the effectiveness of their response to verify whether adverse impacts are being addressed",
+        "21": "Businesses should communicate externally how they address their human rights impacts, particularly when concerns are raised by affected stakeholders",
+        "22": "Where businesses identify they have caused or contributed to adverse impacts, they should provide for or cooperate in remediation",
+        "23": "In all contexts, businesses should comply with all applicable laws and respect internationally recognized human rights",
+        "24": "Where it is necessary to prioritize actions, businesses should first address the most severe potential adverse impacts",
+        "25": "States must take appropriate steps to ensure that those affected by business-related human rights abuses have access to effective remedy",
+        "26": "States should take appropriate steps to ensure effectiveness of domestic judicial mechanisms, including reducing barriers",
+        "27": "States should provide effective and appropriate non-judicial grievance mechanisms alongside judicial mechanisms",
+        "28": "States should consider ways to facilitate access to effective non-State-based grievance mechanisms",
+        "29": "Businesses should establish or participate in effective operational-level grievance mechanisms for individuals/communities who may be adversely impacted",
+        "30": "Industry, multi-stakeholder and other collaborative initiatives based on respect for human rights-related standards should ensure effective grievance mechanisms",
+        "31": "Effectiveness criteria for non-judicial grievance mechanisms: legitimate, accessible, predictable, equitable, transparent, rights-compatible, source of continuous learning, based on engagement and dialogue"
+      }
+    },
+    "year": 2011,
+    "verified": true,
+    "tags": ["ungps", "human_rights", "due_diligence", "state_duty", "corporate_responsibility", "remedy", "john_ruggie"]
+  },
+  {
+    "source": "OECD",
+    "category": "due_diligence",
+    "subcategory": "oecd_guidelines_mnes",
+    "title": "OECD Guidelines for Multinational Enterprises on Responsible Business Conduct",
+    "description": "Updated in June 2023 (first revision since 2011), the OECD Guidelines are recommendations addressed by governments to multinational enterprises operating in or from adhering countries. They provide non-binding principles and standards for responsible business conduct in a global context consistent with applicable laws and internationally recognised standards.",
+    "data": {
+      "originalYear": 1976,
+      "latestRevision": 2023,
+      "adheringCountries": 51,
+      "chapters": [
+        {
+          "number": "I",
+          "title": "Concepts and Principles",
+          "summary": "Establishes that the Guidelines are recommendations jointly addressed by governments to MNEs and that they are voluntary and not legally enforceable."
+        },
+        {
+          "number": "II",
+          "title": "General Policies",
+          "summary": "Sets out overarching principles including contributing to sustainable development, respecting human rights, encouraging local capacity building, and carrying out risk-based due diligence."
+        },
+        {
+          "number": "III",
+          "title": "Disclosure",
+          "summary": "Requires timely, reliable and relevant disclosure on activities, structure, financial situation, performance, ownership, and governance."
+        },
+        {
+          "number": "IV",
+          "title": "Human Rights",
+          "summary": "Enterprises should respect human rights, carry out human rights due diligence, and provide for or cooperate in remediation of adverse human rights impacts."
+        },
+        {
+          "number": "V",
+          "title": "Employment and Industrial Relations",
+          "summary": "Covers freedom of association, collective bargaining, elimination of forced and child labour, non-discrimination, and occupational health and safety."
+        },
+        {
+          "number": "VI",
+          "title": "Environment",
+          "summary": "Enterprises should take due account of environmental protection, establish an environmental management system, and address climate change within a risk-based due diligence framework."
+        },
+        {
+          "number": "VII",
+          "title": "Combating Bribery, Bribe Solicitation and Extortion",
+          "summary": "Enterprises should not offer, promise, give, or demand a bribe or other undue advantage to obtain or retain business."
+        },
+        {
+          "number": "VIII",
+          "title": "Consumer Interests",
+          "summary": "Enterprises should act in accordance with fair business, marketing and advertising practices and take all reasonable steps to ensure the quality and reliability of goods and services."
+        },
+        {
+          "number": "IX",
+          "title": "Science, Technology and Innovation",
+          "summary": "Enterprises should endeavour to ensure that their activities are compatible with science and technology policies and adopt practices permitting transfer and diffusion of technologies."
+        },
+        {
+          "number": "X",
+          "title": "Competition",
+          "summary": "Enterprises should carry out activities in a manner consistent with all applicable competition laws and refrain from anti-competitive agreements."
+        },
+        {
+          "number": "XI",
+          "title": "Taxation",
+          "summary": "Enterprises should comply with both the letter and spirit of tax laws and regulations and treat tax governance and compliance as important elements of oversight."
+        }
+      ],
+      "keyRecommendations": [
+        "Carry out risk-based due diligence as described in Chapter II and sector-specific guidance",
+        "Respect internationally recognised human rights of those affected by activities",
+        "Updated climate change provisions requiring climate transition planning consistent with international goals",
+        "New technology and digital environment provisions covering surveillance, algorithmic decision-making, and data privacy",
+        "Extended supply chain responsibility encompassing business relationships beyond direct suppliers",
+        "National Contact Points (NCPs) serve as non-judicial grievance mechanisms"
+      ],
+      "2023RevisionHighlights": [
+        "Alignment with Paris Agreement and updated environmental expectations",
+        "New provisions on technology, including digital security and responsible AI",
+        "Enhanced due diligence guidance for the environment and climate change",
+        "Updated lobbying and political engagement expectations",
+        "Strengthened animal welfare provisions",
+        "Expanded scope to cover all business relationships, not just supply chain"
+      ]
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["oecd", "mne_guidelines", "responsible_business_conduct", "due_diligence", "ncp"]
+  },
+  {
+    "source": "OECD",
+    "category": "due_diligence",
+    "subcategory": "oecd_due_diligence_guidance",
+    "title": "OECD Due Diligence Guidance for Responsible Business Conduct",
+    "description": "Published in 2018, this guidance provides practical support to enterprises on the implementation of the OECD Guidelines for Multinational Enterprises by providing plain-language explanations of the due diligence recommendations and associated provisions. It outlines a six-step due diligence process applicable across all sectors.",
+    "data": {
+      "publishedYear": 2018,
+      "sixStepProcess": [
+        {
+          "step": 1,
+          "title": "Embed Responsible Business Conduct into Policies and Management Systems",
+          "actions": [
+            "Develop and adopt a policy commitment on responsible business conduct (RBC)",
+            "Embed the policy commitment throughout the enterprise",
+            "Establish or participate in a grievance mechanism or other complaint handling process",
+            "Ensure senior management oversight and accountability",
+            "Build internal capacity through training and communication"
+          ]
+        },
+        {
+          "step": 2,
+          "title": "Identify and Assess Adverse Impacts in Operations, Supply Chains, and Business Relationships",
+          "actions": [
+            "Scope the broad areas of risk based on sector, geography, product, and enterprise-specific factors",
+            "Carry out iterative and deepening assessment of prioritised operations, suppliers and business relationships",
+            "Assess the enterprise's involvement with the identified adverse impacts (cause, contribute, directly linked)",
+            "Conduct meaningful engagement with affected and potentially affected stakeholders"
+          ]
+        },
+        {
+          "step": 3,
+          "title": "Cease, Prevent or Mitigate Adverse Impacts",
+          "actions": [
+            "Cease activities causing adverse impacts; develop and implement plans to prevent or mitigate potential impacts",
+            "Design and implement appropriate measures based on whether the enterprise causes, contributes to, or is directly linked to the adverse impact",
+            "Use leverage where the enterprise cannot prevent or mitigate impacts on its own",
+            "Collaborate with business partners and sector initiatives"
+          ]
+        },
+        {
+          "step": 4,
+          "title": "Track Implementation and Results",
+          "actions": [
+            "Track the implementation and effectiveness of due diligence activities",
+            "Apply qualitative and quantitative indicators",
+            "Draw on feedback from affected stakeholders and workers",
+            "Use lessons learned to improve due diligence processes going forward"
+          ]
+        },
+        {
+          "step": 5,
+          "title": "Communicate How Impacts are Addressed",
+          "actions": [
+            "Communicate externally relevant information on due diligence policies, processes, and activities",
+            "Include information on the identified actual and potential adverse impacts and how they are being addressed",
+            "Communication should be accessible, appropriate and sufficient and not pose risks to affected stakeholders, staff, or legitimate commercial confidentiality",
+            "Reporting can draw on existing frameworks such as GRI, ISSB, or sector-specific standards"
+          ]
+        },
+        {
+          "step": 6,
+          "title": "Provide for or Cooperate in Remediation When Appropriate",
+          "actions": [
+            "Provide for or cooperate in remediation when the enterprise has caused or contributed to an adverse impact",
+            "Remediation may include apologies, restitution, rehabilitation, financial or non-financial compensation, sanctions, and prevention",
+            "When directly linked to adverse impacts through business relationships, use leverage to encourage the entity causing the harm to provide remediation",
+            "Establish operational-level grievance mechanisms that are legitimate, accessible, predictable, equitable, transparent, and rights-compatible"
+          ]
+        }
+      ],
+      "keyPrinciples": [
+        "Due diligence should be risk-based and proportionate",
+        "Due diligence is an ongoing process, not a one-time exercise",
+        "Due diligence relates to adverse impacts that the enterprise causes, contributes to, or is directly linked to",
+        "Enterprises can prioritise the most significant risks first but should still address all identified risks over time",
+        "Due diligence should be informed by engagement with affected stakeholders"
+      ]
+    },
+    "year": 2018,
+    "verified": true,
+    "tags": ["oecd", "due_diligence", "six_step_process", "rbc", "responsible_business_conduct"]
+  },
+  {
+    "source": "European Union",
+    "category": "due_diligence",
+    "subcategory": "csddd",
+    "title": "Corporate Sustainability Due Diligence Directive (CSDDD / CS3D)",
+    "description": "Adopted on 24 May 2024 by the Council of the EU, the CSDDD establishes mandatory human rights and environmental due diligence obligations for large EU and non-EU companies. It requires companies to identify, prevent, mitigate and account for adverse impacts on human rights and the environment in their own operations, subsidiaries, and chains of activities.",
+    "data": {
+      "directive": "2024/1760",
+      "adoptedDate": "2024-05-24",
+      "publicationDate": "2024-07-05",
+      "transpositionDeadline": "2026-07-26",
+      "scopeThresholds": {
+        "phaseIn": [
+          {
+            "phase": 1,
+            "applicableFrom": "2027-07-26",
+            "criteria": "Companies with >5,000 employees and >EUR 1,500M net worldwide turnover"
+          },
+          {
+            "phase": 2,
+            "applicableFrom": "2028-07-26",
+            "criteria": "Companies with >3,000 employees and >EUR 900M net worldwide turnover"
+          },
+          {
+            "phase": 3,
+            "applicableFrom": "2029-07-26",
+            "criteria": "Companies with >1,000 employees and >EUR 450M net worldwide turnover"
+          }
+        ],
+        "nonEUCompanies": "Non-EU companies generating net turnover exceeding the above thresholds in the EU"
+      },
+      "keyArticles": [
+        {
+          "article": "Article 5",
+          "title": "Due Diligence Policy",
+          "description": "Companies must integrate due diligence into all corporate policies and have a due diligence policy that includes a description of approach, code of conduct, and process for verification."
+        },
+        {
+          "article": "Article 6",
+          "title": "Identifying and Assessing Adverse Impacts",
+          "description": "Obligation to take appropriate measures to identify and assess actual and potential adverse impacts on human rights and the environment."
+        },
+        {
+          "article": "Article 7",
+          "title": "Prioritisation of Adverse Impacts",
+          "description": "Where companies cannot address all impacts at once, they must prioritise based on severity and likelihood."
+        },
+        {
+          "article": "Article 8",
+          "title": "Preventing Potential Adverse Impacts",
+          "description": "Companies must take appropriate measures to prevent or, where not possible, adequately mitigate potential adverse impacts."
+        },
+        {
+          "article": "Article 9",
+          "title": "Bringing Actual Adverse Impacts to an End",
+          "description": "Companies must take appropriate measures to bring actual adverse impacts to an end and where that is not immediately possible, minimise their extent."
+        },
+        {
+          "article": "Article 10",
+          "title": "Remediation of Actual Adverse Impacts",
+          "description": "Companies must provide remediation where they have caused actual adverse impacts."
+        },
+        {
+          "article": "Article 11",
+          "title": "Meaningful Stakeholder Engagement",
+          "description": "Companies must carry out meaningful engagement with stakeholders including affected communities, trade unions, and civil society."
+        },
+        {
+          "article": "Article 12",
+          "title": "Complaints Mechanism",
+          "description": "Companies must establish a complaints mechanism for persons affected by adverse impacts."
+        },
+        {
+          "article": "Article 14",
+          "title": "Monitoring",
+          "description": "Companies must monitor the effectiveness of their due diligence policy and measures, carrying out periodic assessments."
+        },
+        {
+          "article": "Article 15",
+          "title": "Communication and Reporting",
+          "description": "Companies must publish an annual statement on their website regarding due diligence; CSRD-reporting companies fulfil this via their sustainability report."
+        },
+        {
+          "article": "Article 22",
+          "title": "Climate Transition Plan",
+          "description": "Companies must adopt and put into effect a transition plan for climate change mitigation aligned with the Paris Agreement 1.5C target."
+        },
+        {
+          "article": "Article 25-26",
+          "title": "Supervisory Authorities and Penalties",
+          "description": "Member States must designate supervisory authorities. Penalties include fines of up to 5% of worldwide net turnover and naming-and-shaming."
+        },
+        {
+          "article": "Article 29",
+          "title": "Civil Liability",
+          "description": "Companies shall be liable for damages if they fail to comply with due diligence obligations and the failure results in damage."
+        }
+      ],
+      "penalties": "Fines up to 5% of worldwide net turnover, public naming of non-compliant companies, and civil liability for damages",
+      "timeline": {
+        "2024-05": "Directive adopted",
+        "2024-07": "Published in Official Journal",
+        "2026-07": "Transposition deadline for Member States",
+        "2027-07": "Application Phase 1 (largest companies)",
+        "2028-07": "Application Phase 2",
+        "2029-07": "Application Phase 3 (full scope)"
+      }
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["csddd", "cs3d", "eu", "due_diligence", "mandatory", "human_rights", "environment", "supply_chain", "civil_liability"]
+  },
+  {
+    "source": "German Federal Government",
+    "category": "due_diligence",
+    "subcategory": "german_lksg",
+    "title": "German Supply Chain Due Diligence Act (Lieferkettensorgfaltspflichtengesetz - LkSG)",
+    "description": "Enacted on 16 July 2021 and effective from 1 January 2023, the LkSG requires German companies to identify, prevent, and remedy human rights and environmental risks in their supply chains. It was the first national mandatory human rights due diligence law in a major European economy.",
+    "data": {
+      "enactedDate": "2021-07-16",
+      "effectiveDate": "2023-01-01",
+      "scope": {
+        "from2023": "Companies with registered office or principal place of business in Germany with >=3,000 employees",
+        "from2024": "Companies with registered office or principal place of business in Germany with >=1,000 employees",
+        "estimatedCompanies2023": "~900 companies",
+        "estimatedCompanies2024": "~4,800 companies"
+      },
+      "obligations": {
+        "directSuppliers": [
+          "Establish a risk management system",
+          "Define internal responsibility (human rights officer)",
+          "Conduct regular risk analyses",
+          "Issue a policy statement on human rights strategy",
+          "Establish preventive measures (training, audits, contractual clauses)",
+          "Take remedial action when violations are identified",
+          "Establish a complaints procedure / grievance mechanism",
+          "Conduct due diligence for indirect suppliers upon substantiated knowledge of violations",
+          "Document and report annually to BAFA"
+        ],
+        "indirectSuppliers": [
+          "Due diligence obligations are triggered upon 'substantiated knowledge' of a potential violation",
+          "Obligation to conduct ad hoc risk analysis",
+          "Obligation to take appropriate preventive measures vis-a-vis the actual perpetrator",
+          "Obligation to develop and implement a concept for minimising and preventing violations",
+          "Must update prevention measures for direct suppliers as needed"
+        ]
+      },
+      "protectedRights": [
+        "Prohibition of child labour (ILO Conventions 138, 182)",
+        "Prohibition of forced labour (ILO Conventions 29, 105)",
+        "Freedom from slavery and servitude",
+        "Freedom of association and collective bargaining (ILO Conventions 87, 98)",
+        "Non-discrimination in employment (ILO Conventions 100, 111)",
+        "Adequate wages and working hours",
+        "Occupational health and safety",
+        "Prohibition of harmful soil change, water pollution, air pollution",
+        "Prohibition of unlawful eviction or deprivation of land",
+        "Prohibition of use of security forces leading to human rights abuse",
+        "Prohibition of mercury, POPs, and hazardous waste per Minamata, Stockholm, Basel Conventions"
+      ],
+      "enforcementAuthority": "Federal Office for Economic Affairs and Export Control (BAFA)",
+      "penalties": {
+        "fines": "Up to EUR 8 million or up to 2% of average annual worldwide turnover for companies with >EUR 400M turnover",
+        "publicProcurement": "Exclusion from public procurement for up to 3 years"
+      },
+      "reporting": "Annual report to BAFA due within 4 months of the end of the financial year; must be published on the company website for 7 years",
+      "noteOnCSDDD": "Once the CSDDD is transposed into German law (by July 2026), the LkSG will likely be revised or superseded by the implementing legislation"
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["lksg", "germany", "supply_chain", "due_diligence", "mandatory", "bafa", "human_rights"]
+  },
+  {
+    "source": "French Republic",
+    "category": "due_diligence",
+    "subcategory": "french_duty_of_vigilance",
+    "title": "French Duty of Vigilance Law (Loi de vigilance / Loi n 2017-399)",
+    "description": "Enacted on 27 March 2017, France's Duty of Vigilance Law was the first national mandatory human rights and environmental due diligence law globally. It requires large French companies to establish, implement, and publish a vigilance plan identifying and preventing severe human rights and environmental risks arising from their own activities and those of their subsidiaries, subcontractors, and suppliers.",
+    "data": {
+      "enactedDate": "2017-03-27",
+      "effectiveDate": "2017-03-28",
+      "scope": {
+        "threshold": "Companies employing at least 5,000 employees within France or 10,000 employees worldwide (including subsidiaries) for two consecutive financial years",
+        "estimatedCompanies": "~250-300 companies"
+      },
+      "vigilancePlanRequirements": [
+        "A mapping of risks to identify, analyse and prioritise risks",
+        "Procedures for regularly assessing the situation of subsidiaries, subcontractors, and suppliers with whom the company has an established commercial relationship",
+        "Appropriate actions to mitigate risks or prevent serious harm",
+        "A whistle-blowing/alert mechanism to collect reports on actual or potential risks",
+        "A system for monitoring measures implemented and evaluating their effectiveness"
+      ],
+      "enforcement": {
+        "mechanism": "Civil liability — any person with standing may bring an action in court requesting the company to comply",
+        "penalties": "Courts may order injunctions to comply; liability for damages caused by failure to establish or implement the plan",
+        "jurisdiction": "Initially Paris Tribunal Judiciaire; consolidated jurisdiction since 2022"
+      },
+      "landmarkCases": [
+        {
+          "case": "Total Uganda (TotalEnergies SE)",
+          "year": 2023,
+          "summary": "Friends of the Earth and Survie filed suit against TotalEnergies regarding the Tilenga and EACOP oil projects in Uganda and Tanzania. In 2023 the Paris Judicial Court ruled the claim admissible but dismissed it on the merits, finding the vigilance plan was adequate. The case is under appeal."
+        },
+        {
+          "case": "XPO Logistics Europe",
+          "year": 2023,
+          "summary": "In January 2023, a French court issued the first injunction under the law, ordering XPO Logistics Europe to improve its vigilance plan regarding health and safety conditions of temporary workers in its warehouses."
+        },
+        {
+          "case": "Casino Group (Supermarket Chain)",
+          "year": 2021,
+          "summary": "Indigenous communities and NGOs filed suit alleging Casino's supply chain was linked to illegal deforestation and land-grabbing in Brazil and Colombia. Case is still proceeding."
+        },
+        {
+          "case": "BNP Paribas",
+          "year": 2023,
+          "summary": "Friends of the Earth, Oxfam France, and Notre Affaire a Tous filed suit alleging BNP Paribas failed to include adequate climate-related measures in its vigilance plan, particularly regarding fossil fuel financing."
+        }
+      ]
+    },
+    "year": 2017,
+    "verified": true,
+    "tags": ["france", "duty_of_vigilance", "loi_de_vigilance", "mandatory", "human_rights", "due_diligence"]
+  },
+  {
+    "source": "Norwegian Government",
+    "category": "due_diligence",
+    "subcategory": "norwegian_transparency_act",
+    "title": "Norwegian Transparency Act (Apenhetsloven)",
+    "description": "Effective from 1 July 2022, the Norwegian Transparency Act requires larger enterprises to carry out human rights due diligence in accordance with the OECD Guidelines and publish annual reports on their due diligence. It also gives members of the public the right to request information from companies about how they address human rights impacts.",
+    "data": {
+      "effectiveDate": "2022-07-01",
+      "firstReportingDeadline": "2023-06-30",
+      "scope": {
+        "criteria": [
+          "Larger enterprises resident in Norway offering goods and services in or outside Norway",
+          "Larger foreign enterprises offering goods and services in Norway and are tax-liable in Norway",
+          "Larger enterprises are defined as those meeting at least two of: (1) sales revenue of NOK 70 million, (2) balance sheet total of NOK 35 million, (3) average number of 50 full-time employees during the financial year"
+        ],
+        "estimatedCompanies": "~9,000 enterprises"
+      },
+      "obligations": [
+        "Carry out due diligence in accordance with the OECD Guidelines for Multinational Enterprises",
+        "Publish an annual account of due diligence on the company's website by 30 June each year",
+        "Respond to information requests from any person within three weeks regarding how the company addresses actual and potential adverse impacts on fundamental human rights and decent working conditions"
+      ],
+      "dueDiligenceRequirements": [
+        "Anchor responsible business conduct in the enterprise's policies",
+        "Identify and assess actual and potential adverse impacts on fundamental human rights and decent working conditions",
+        "Implement suitable measures to cease, prevent, or mitigate adverse impacts",
+        "Track implementation and results of measures",
+        "Communicate with affected stakeholders and rights-holders",
+        "Provide for or cooperate to ensure remediation where appropriate"
+      ],
+      "rightToInformation": "Any person may submit a written information request to a company. The company must respond within three weeks. The right covers general due diligence information and specific information about how the company addresses specific adverse impacts.",
+      "enforcementAuthority": "Norwegian Consumer Authority (Forbrukertilsynet)",
+      "penalties": "Coercive fines and infringement fines; no upper limit specified in the act"
+    },
+    "year": 2022,
+    "verified": true,
+    "tags": ["norway", "transparency_act", "apenhetsloven", "due_diligence", "right_to_information", "human_rights"]
+  },
+  {
+    "source": "OECD",
+    "category": "due_diligence",
+    "subcategory": "oecd_sector_guidance",
+    "title": "OECD Sector-Specific Due Diligence Guidance",
+    "description": "The OECD has published sector-specific due diligence guidance documents covering minerals, extractives, garment and footwear, agriculture, and financial sector. These provide tailored recommendations for implementing the OECD Guidelines for Multinational Enterprises in high-risk sectors.",
+    "data": {
+      "sectorGuidance": [
+        {
+          "title": "OECD Due Diligence Guidance for Responsible Supply Chains of Minerals from Conflict-Affected and High-Risk Areas",
+          "edition": "3rd Edition (2016)",
+          "sector": "Minerals",
+          "scope": "Tin, tantalum, tungsten, gold (3TG) and all minerals",
+          "keyFeatures": "Five-step framework for supply chain due diligence, supplements for tin/tantalum/tungsten and gold"
+        },
+        {
+          "title": "OECD Due Diligence Guidance for Meaningful Stakeholder Engagement in the Extractive Sector",
+          "year": 2017,
+          "sector": "Extractives",
+          "scope": "Oil, gas, and mining",
+          "keyFeatures": "Guidance on engaging affected communities and indigenous peoples"
+        },
+        {
+          "title": "OECD Due Diligence Guidance for Responsible Supply Chains in the Garment and Footwear Sector",
+          "year": 2017,
+          "sector": "Garment and Footwear",
+          "scope": "Apparel, textiles, footwear",
+          "keyFeatures": "Covers child labour, forced labour, living wages, freedom of association, hazardous chemicals, water use, and GHG emissions"
+        },
+        {
+          "title": "OECD-FAO Guidance for Responsible Agricultural Supply Chains",
+          "year": 2016,
+          "sector": "Agriculture",
+          "scope": "Agriculture and food systems",
+          "keyFeatures": "Covers land rights, labour rights, health and safety, food security, natural resources"
+        },
+        {
+          "title": "OECD Due Diligence for Responsible Corporate Lending and Securities Underwriting",
+          "year": 2019,
+          "sector": "Financial",
+          "scope": "Banks, institutional investors",
+          "keyFeatures": "Guidance on how financial institutions can implement due diligence regarding their lending and underwriting activities"
+        }
+      ]
+    },
+    "year": 2019,
+    "verified": true,
+    "tags": ["oecd", "sector_guidance", "due_diligence", "minerals", "garment", "agriculture", "extractives", "financial"]
+  },
+  {
+    "source": "International Labour Organization",
+    "category": "forced_labour",
+    "subcategory": "ilo_forced_labour_indicators",
+    "title": "ILO 11 Indicators of Forced Labour",
+    "description": "The ILO developed 11 indicators of forced labour to help frontline criminal law enforcement officials, labour inspectors, trade union officers, NGO workers and others to identify persons who may be trapped in forced labour. The presence of a single indicator may in some cases imply forced labour; more often several indicators together point to a forced labour situation.",
+    "data": {
+      "publishedYear": 2012,
+      "indicators": [
+        {
+          "number": 1,
+          "indicator": "Abuse of vulnerability",
+          "description": "An employer takes advantage of a worker's vulnerable position, such as irregular migration status, lack of language skills, disability, or minority status.",
+          "examples": ["Employing irregular migrants who fear deportation", "Targeting persons with mental disabilities", "Exploiting persons unfamiliar with local language or customs"]
+        },
+        {
+          "number": 2,
+          "indicator": "Deception",
+          "description": "Workers are lured into a situation through false promises about working conditions, wages, housing, immigration status, or the nature/location of work.",
+          "examples": ["Promising good wages then paying little or nothing", "Lying about living or working conditions", "Misrepresenting the nature of work"]
+        },
+        {
+          "number": 3,
+          "indicator": "Restriction of movement",
+          "description": "Workers' freedom of movement is restricted — they cannot freely enter and leave their workplace or living quarters.",
+          "examples": ["Locked workplaces or dormitories", "Workers accompanied by guards", "Workers confined to a limited area"]
+        },
+        {
+          "number": 4,
+          "indicator": "Isolation",
+          "description": "Workers are kept in isolation — geographically remote locations, kept away from public, or denied contact with family.",
+          "examples": ["Remote farms or factories with no nearby communities", "Confiscation of mobile phones", "Prevention of contact with friends, family, or the outside world"]
+        },
+        {
+          "number": 5,
+          "indicator": "Physical and sexual violence",
+          "description": "Workers are subjected to physical violence, sexual violence, or threats thereof as a means of control.",
+          "examples": ["Beating workers who refuse to work", "Sexual assault or harassment", "Violence against workers' family members"]
+        },
+        {
+          "number": 6,
+          "indicator": "Intimidation and threats",
+          "description": "Workers face threats including denunciation to authorities, violence, deprivation of food/shelter, or supernatural retaliation.",
+          "examples": ["Threats to report undocumented workers to immigration authorities", "Threats of violence against family members", "Threats of further deterioration of working conditions"]
+        },
+        {
+          "number": 7,
+          "indicator": "Retention of identity documents",
+          "description": "Workers' identity documents (passport, ID, travel documents) are confiscated or withheld by the employer.",
+          "examples": ["Confiscation of passports upon arrival at workplace", "Holding work permits or visa documents", "Refusing to return documents upon request"]
+        },
+        {
+          "number": 8,
+          "indicator": "Withholding of wages",
+          "description": "Workers are paid less than agreed, paid irregularly, paid in kind rather than cash, or not paid at all.",
+          "examples": ["Systematic non-payment or underpayment", "Excessive deductions for food, housing, or tools", "Payment delayed for months or years"]
+        },
+        {
+          "number": 9,
+          "indicator": "Debt bondage",
+          "description": "Workers are compelled to work to pay off a debt or loan, often manipulated so the debt can never be repaid.",
+          "examples": ["Charging excessive recruitment fees that create debt", "Inflating costs of transport, housing, or food", "Debt inherited from family members"]
+        },
+        {
+          "number": 10,
+          "indicator": "Abusive working and living conditions",
+          "description": "Working or living conditions are degrading, hazardous, or in violation of labour standards, and workers have no real choice but to accept.",
+          "examples": ["Dangerous working conditions without safety equipment", "Overcrowded and unsanitary living quarters", "Excessively long working hours with no rest"]
+        },
+        {
+          "number": 11,
+          "indicator": "Excessive overtime",
+          "description": "Workers are forced to work beyond legal or agreed working time limits under threat of penalty.",
+          "examples": ["Compulsory overtime under threat of dismissal or penalty", "Working hours exceeding national legal limits", "No rest days or annual leave"]
+        }
+      ],
+      "legalDefinition": "ILO Forced Labour Convention, 1930 (No. 29): 'All work or service which is exacted from any person under the menace of any penalty and for which the said person has not offered himself voluntarily.'",
+      "estimatedVictims": {
+        "year": 2022,
+        "total": 27900000,
+        "source": "ILO, Walk Free, and IOM Global Estimates of Modern Slavery (2022)",
+        "forcedLabour": 17300000,
+        "stateImposedForcedLabour": 3900000,
+        "forcedSexualExploitation": 6300000
+      }
+    },
+    "year": 2012,
+    "verified": true,
+    "tags": ["ilo", "forced_labour", "indicators", "modern_slavery", "labour_exploitation"]
+  },
+  {
+    "source": "Walk Free Foundation",
+    "category": "forced_labour",
+    "subcategory": "global_slavery_index",
+    "title": "Global Slavery Index 2023",
+    "description": "The Global Slavery Index, published by Walk Free in partnership with the ILO and IOM, measures the extent of modern slavery across 160 countries. It assesses prevalence (estimated number of people in modern slavery per 1,000 population), vulnerability, and government responses. The 2023 edition estimated 49.6 million people lived in modern slavery on any given day in 2021.",
+    "data": {
+      "publishedYear": 2023,
+      "globalEstimate": {
+        "totalVictims": 49600000,
+        "forcedLabour": 27600000,
+        "forcedMarriage": 22000000,
+        "prevalenceGlobal": 6.4,
+        "unit": "per 1,000 population"
+      },
+      "highestPrevalenceCountries": [
+        { "rank": 1, "country": "North Korea", "prevalence": 104.6 },
+        { "rank": 2, "country": "Eritrea", "prevalence": 90.3 },
+        { "rank": 3, "country": "Mauritania", "prevalence": 32.0 },
+        { "rank": 4, "country": "Saudi Arabia", "prevalence": 21.3 },
+        { "rank": 5, "country": "Turkiye", "prevalence": 15.6 },
+        { "rank": 6, "country": "Tajikistan", "prevalence": 14.0 },
+        { "rank": 7, "country": "UAE", "prevalence": 13.5 },
+        { "rank": 8, "country": "Russia", "prevalence": 13.0 },
+        { "rank": 9, "country": "Afghanistan", "prevalence": 12.8 },
+        { "rank": 10, "country": "Kuwait", "prevalence": 12.3 },
+        { "rank": 11, "country": "Myanmar", "prevalence": 12.1 },
+        { "rank": 12, "country": "Qatar", "prevalence": 11.5 },
+        { "rank": 13, "country": "Belarus", "prevalence": 11.4 },
+        { "rank": 14, "country": "South Sudan", "prevalence": 11.2 },
+        { "rank": 15, "country": "Pakistan", "prevalence": 10.6 },
+        { "rank": 16, "country": "Libya", "prevalence": 10.5 },
+        { "rank": 17, "country": "Iran", "prevalence": 10.4 },
+        { "rank": 18, "country": "Yemen", "prevalence": 10.3 },
+        { "rank": 19, "country": "Palestine", "prevalence": 10.2 },
+        { "rank": 20, "country": "Bahrain", "prevalence": 10.1 },
+        { "rank": 21, "country": "China", "prevalence": 9.8 },
+        { "rank": 22, "country": "Oman", "prevalence": 9.7 },
+        { "rank": 23, "country": "Malaysia", "prevalence": 9.6 },
+        { "rank": 24, "country": "Egypt", "prevalence": 9.5 },
+        { "rank": 25, "country": "Syria", "prevalence": 9.4 },
+        { "rank": 26, "country": "Iraq", "prevalence": 9.3 },
+        { "rank": 27, "country": "India", "prevalence": 8.0 },
+        { "rank": 28, "country": "Jordan", "prevalence": 7.9 },
+        { "rank": 29, "country": "Central African Republic", "prevalence": 7.7 },
+        { "rank": 30, "country": "DR Congo", "prevalence": 7.6 },
+        { "rank": 31, "country": "Sudan", "prevalence": 7.5 },
+        { "rank": 32, "country": "Venezuela", "prevalence": 7.4 },
+        { "rank": 33, "country": "Ethiopia", "prevalence": 7.3 },
+        { "rank": 34, "country": "Nigeria", "prevalence": 7.2 },
+        { "rank": 35, "country": "Thailand", "prevalence": 7.1 },
+        { "rank": 36, "country": "Bangladesh", "prevalence": 6.9 },
+        { "rank": 37, "country": "Cambodia", "prevalence": 6.8 },
+        { "rank": 38, "country": "Congo", "prevalence": 6.7 },
+        { "rank": 39, "country": "Philippines", "prevalence": 6.6 },
+        { "rank": 40, "country": "Uzbekistan", "prevalence": 6.5 },
+        { "rank": 41, "country": "Nepal", "prevalence": 6.4 },
+        { "rank": 42, "country": "Indonesia", "prevalence": 6.3 },
+        { "rank": 43, "country": "Guatemala", "prevalence": 6.2 },
+        { "rank": 44, "country": "Lebanon", "prevalence": 6.1 },
+        { "rank": 45, "country": "Honduras", "prevalence": 6.0 },
+        { "rank": 46, "country": "Mexico", "prevalence": 5.9 },
+        { "rank": 47, "country": "Cameroon", "prevalence": 5.8 },
+        { "rank": 48, "country": "Niger", "prevalence": 5.7 },
+        { "rank": 49, "country": "Mali", "prevalence": 5.6 },
+        { "rank": 50, "country": "Burkina Faso", "prevalence": 5.5 }
+      ],
+      "gccCountries": [
+        { "country": "Saudi Arabia", "prevalence": 21.3, "estimatedVictims": 740000, "rank": 4 },
+        { "country": "UAE", "prevalence": 13.5, "estimatedVictims": 132000, "rank": 7 },
+        { "country": "Kuwait", "prevalence": 12.3, "estimatedVictims": 52000, "rank": 10 },
+        { "country": "Qatar", "prevalence": 11.5, "estimatedVictims": 30000, "rank": 12 },
+        { "country": "Bahrain", "prevalence": 10.1, "estimatedVictims": 16000, "rank": 20 },
+        { "country": "Oman", "prevalence": 9.7, "estimatedVictims": 49000, "rank": 22 }
+      ],
+      "lowestPrevalenceCountries": [
+        { "country": "Switzerland", "prevalence": 1.3 },
+        { "country": "Norway", "prevalence": 1.3 },
+        { "country": "Denmark", "prevalence": 1.4 },
+        { "country": "Japan", "prevalence": 1.4 },
+        { "country": "Sweden", "prevalence": 1.5 },
+        { "country": "Netherlands", "prevalence": 1.5 },
+        { "country": "New Zealand", "prevalence": 1.6 },
+        { "country": "Germany", "prevalence": 1.6 },
+        { "country": "Belgium", "prevalence": 1.7 },
+        { "country": "Ireland", "prevalence": 1.7 }
+      ],
+      "governmentResponseRanking": {
+        "strongestResponses": ["Netherlands", "United States", "United Kingdom", "Portugal", "Australia", "Sweden", "Norway", "Spain"],
+        "weakestResponses": ["North Korea", "Eritrea", "South Sudan", "Libya", "Iran", "Equatorial Guinea"]
+      }
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["walk_free", "global_slavery_index", "modern_slavery", "prevalence", "forced_labour", "forced_marriage", "gcc"]
+  },
+  {
+    "source": "United States Government",
+    "category": "forced_labour",
+    "subcategory": "uflpa",
+    "title": "Uyghur Forced Labor Prevention Act (UFLPA)",
+    "description": "Signed into law on 23 December 2021 and enforced from 21 June 2022, the UFLPA establishes a rebuttable presumption that goods mined, produced, or manufactured wholly or in part in the Xinjiang Uyghur Autonomous Region (XUAR) of China are made with forced labour and are prohibited from importation into the United States under Section 307 of the Tariff Act of 1930.",
+    "data": {
+      "signedDate": "2021-12-23",
+      "enforcementDate": "2022-06-21",
+      "enforcementAgency": "US Customs and Border Protection (CBP)",
+      "keyProvisions": {
+        "rebuttablePresumption": "All goods produced wholly or in part in XUAR are presumed to be made with forced labour unless the importer can demonstrate by clear and convincing evidence that goods were not produced using forced labour.",
+        "entityList": {
+          "description": "The Forced Labor Enforcement Task Force (FLETF) maintains a list of entities that mine, produce, or manufacture goods using forced labour in XUAR or that work with the government of XUAR for purposes of forced labour recruitment, transportation, or surveillance.",
+          "listTypes": [
+            "Entities producing goods in XUAR using forced labour",
+            "Entities working with XUAR government on forced labour programs",
+            "Entities exporting goods from XUAR made with forced labour",
+            "Entities supplying materials from XUAR for goods made outside XUAR"
+          ]
+        },
+        "clearAndConvincingEvidence": [
+          "Due diligence system compliant with ILO Forced Labour Indicators",
+          "Complete supply chain mapping tracing goods to specific production facility",
+          "Credible audits or third-party verification of the supply chain",
+          "Evidence that workers provided informed consent and were not coerced",
+          "Evidence of fair compensation and working conditions"
+        ]
+      },
+      "enforcementStatistics": {
+        "asOf": "2024-09",
+        "totalShipmentsReviewed": 8200,
+        "totalValueReviewed": "USD 3.4 billion",
+        "topSectorsTargeted": ["Electronics/Semiconductors", "Apparel/Textiles", "Industrial/Manufacturing", "Agriculture", "Solar panels/Polysilicon"],
+        "deniedEntry": "Approximately 50% of reviewed shipments denied entry or returned"
+      },
+      "highPriorityEntities": [
+        "Xinjiang Production and Construction Corps (XPCC)",
+        "Hoshine Silicon Industry (polysilicon)",
+        "Xinjiang Daqo New Energy (polysilicon)",
+        "Xinjiang GCL New Energy Material Technology (polysilicon)",
+        "Xinjiang East Hope Nonferrous Metals (polysilicon)",
+        "Lop County Hair Product Industrial Park",
+        "Lop County Meixin Hair Products",
+        "Hetian Haolin Hair Accessories Co. Ltd.",
+        "Nanjing Syntheall (tomato products)"
+      ]
+    },
+    "year": 2022,
+    "verified": true,
+    "tags": ["uflpa", "usa", "forced_labour", "xinjiang", "uyghur", "rebuttable_presumption", "cbp", "import_ban"]
+  },
+  {
+    "source": "European Union",
+    "category": "forced_labour",
+    "subcategory": "eu_forced_labour_regulation",
+    "title": "EU Regulation on Prohibiting Products Made with Forced Labour",
+    "description": "Adopted in late 2024, the EU Forced Labour Regulation prohibits the placing and making available on the EU market, as well as the export from the EU, of products made with forced labour at any stage of production, manufacture, harvest, or extraction. It establishes an investigation process and enforcement mechanism across all Member States.",
+    "data": {
+      "adoptedYear": 2024,
+      "applicationDate": "2027 (3 years after entry into force)",
+      "scope": "All products placed on, made available on, or exported from the EU market, regardless of origin",
+      "forcedLabourDefinition": "As defined by ILO Forced Labour Convention No. 29, including forced child labour",
+      "investigationProcess": [
+        {
+          "phase": 1,
+          "name": "Preliminary Phase",
+          "description": "Competent authorities assess whether there are substantiated concerns that products were made with forced labour, using a risk-based approach. They consider ILO indicators, reports from international organizations, civil society, and whistleblowers."
+        },
+        {
+          "phase": 2,
+          "name": "Investigation Phase",
+          "description": "If preliminary assessment raises substantiated concerns, authorities launch a formal investigation. They may request information from economic operators, conduct inspections, and gather evidence."
+        },
+        {
+          "phase": 3,
+          "name": "Decision Phase",
+          "description": "If forced labour is established, the competent authority issues a decision prohibiting the product from being placed on or exported from the EU market. Products already on the market must be withdrawn and disposed of."
+        }
+      ],
+      "keyFeatures": [
+        "Risk-based approach prioritising areas of high forced labour risk",
+        "Database of high-risk sectors and geographic areas maintained by the Commission",
+        "No due diligence defence — the regulation focuses on the product, not the company's process",
+        "Customs enforcement at EU borders",
+        "Commission coordination mechanism for cross-border cases",
+        "Applies to domestic EU products and imports alike"
+      ],
+      "penalties": "Products prohibited from being placed on the market, withdrawn, donated, recycled, or destroyed; Member States set specific penalties"
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["eu", "forced_labour", "import_ban", "product_prohibition", "supply_chain"]
+  },
+  {
+    "source": "United Kingdom Government",
+    "category": "forced_labour",
+    "subcategory": "uk_modern_slavery_act",
+    "title": "UK Modern Slavery Act 2015 - Section 54 Transparency in Supply Chains",
+    "description": "The UK Modern Slavery Act 2015 consolidated existing offences relating to trafficking and slavery and introduced new requirements. Section 54 requires commercial organisations with an annual turnover of GBP 36 million or more to publish an annual modern slavery statement setting out steps taken to ensure slavery and human trafficking are not taking place in their business or supply chains.",
+    "data": {
+      "enactedDate": "2015-03-26",
+      "section54EffectiveDate": "2015-10-29",
+      "turnoverThreshold": "GBP 36 million annual turnover",
+      "applicableTo": "Commercial organisations that carry on a business (or part of a business) in any part of the UK",
+      "estimatedOrganisations": "~17,000 organisations",
+      "section54Requirements": {
+        "mandatoryContent": "A statement of the steps the organisation has taken during the financial year to ensure that slavery and human trafficking is not taking place in any of its supply chains and in any part of its own business, or a statement that no such steps have been taken.",
+        "recommendedContent": [
+          "Organisation structure, business and supply chains",
+          "Policies in relation to slavery and human trafficking",
+          "Due diligence processes in relation to slavery and human trafficking in business and supply chains",
+          "Parts of the business and supply chains where there is a risk of slavery and human trafficking and steps taken to assess and manage that risk",
+          "Effectiveness in ensuring slavery and human trafficking is not taking place, measured against key performance indicators",
+          "Training available to staff about slavery and human trafficking"
+        ],
+        "approvalAndPublication": "Must be approved by the board of directors (or equivalent) and signed by a director. Must be published on the organisation's website with a prominent link on the homepage."
+      },
+      "modernSlaveryRegistry": "UK Government maintains a voluntary registry at modern-slavery-statement-registry.service.gov.uk (mandatory registration announced for future legislation)",
+      "enforcement": "Currently no financial penalties for non-compliance with Section 54 specifically, but the Secretary of State can seek an injunction through the High Court. Government has proposed reforms including financial penalties.",
+      "proposedReforms": [
+        "Mandatory reporting topics (currently only recommended)",
+        "Single reporting deadline",
+        "Financial penalties for non-compliance",
+        "Mandatory registration on the government registry",
+        "Extension to public bodies"
+      ]
+    },
+    "year": 2015,
+    "verified": true,
+    "tags": ["uk", "modern_slavery_act", "section_54", "transparency", "supply_chain", "reporting"]
+  },
+  {
+    "source": "Australian Government",
+    "category": "forced_labour",
+    "subcategory": "australian_modern_slavery_act",
+    "title": "Australian Modern Slavery Act 2018 (Commonwealth)",
+    "description": "The Australian Modern Slavery Act 2018 requires entities with annual consolidated revenue of AUD 100 million or more to publish annual modern slavery statements identifying modern slavery risks in their operations and supply chains and describing actions taken to address those risks. The Australian Border Force maintains a public register of statements.",
+    "data": {
+      "enactedDate": "2018-12-10",
+      "effectiveDate": "2019-01-01",
+      "revenueThreshold": "AUD 100 million annual consolidated revenue",
+      "applicableTo": "Australian entities and entities carrying on business in Australia meeting the revenue threshold; Commonwealth entities must also report regardless of revenue",
+      "estimatedEntities": "~3,000 entities",
+      "sevenMandatoryReportingCriteria": [
+        {
+          "criterion": 1,
+          "title": "Identify the reporting entity",
+          "description": "The reporting entity's name, structure, and nature of operations."
+        },
+        {
+          "criterion": 2,
+          "title": "Describe the structure, operations and supply chains",
+          "description": "Description of the entity's structure, operations, and supply chains."
+        },
+        {
+          "criterion": 3,
+          "title": "Describe modern slavery risks",
+          "description": "Description of the risks of modern slavery practices in the operations and supply chains of the reporting entity and any entities it owns or controls."
+        },
+        {
+          "criterion": 4,
+          "title": "Describe actions taken to assess and address risks",
+          "description": "Description of the actions taken by the reporting entity and any entities it owns or controls to assess and address those risks, including due diligence and remediation processes."
+        },
+        {
+          "criterion": 5,
+          "title": "Describe how effectiveness is assessed",
+          "description": "Description of how the reporting entity assesses the effectiveness of such actions."
+        },
+        {
+          "criterion": 6,
+          "title": "Describe consultation with owned/controlled entities",
+          "description": "Description of the process of consultation with any entities that the reporting entity owns or controls."
+        },
+        {
+          "criterion": 7,
+          "title": "Any other relevant information",
+          "description": "Any other information that the reporting entity considers relevant."
+        }
+      ],
+      "enforcement": {
+        "original": "No financial penalties; government may request entity to explain non-compliance and may publish names of non-compliant entities",
+        "2024Amendment": "The Modern Slavery Amendment (No. 2) Bill 2024 introduced civil penalties of up to AUD 140 million for failing to comply, effective from 2025"
+      },
+      "register": "Australian Border Force Modern Slavery Register — all statements publicly available at modernslaveryregister.gov.au"
+    },
+    "year": 2019,
+    "verified": true,
+    "tags": ["australia", "modern_slavery_act", "mandatory_reporting", "supply_chain", "seven_criteria"]
+  },
+  {
+    "source": "US Department of Labor - ILAB",
+    "category": "forced_labour",
+    "subcategory": "dol_ilab_goods_list",
+    "title": "US DOL ILAB - List of Goods Produced by Child Labor or Forced Labor",
+    "description": "The Bureau of International Labor Affairs (ILAB) within the US Department of Labor maintains a list of goods and their source countries that ILAB has reason to believe are produced by child labour or forced labour in violation of international standards. The list is mandated by the Trafficking Victims Protection Reauthorization Act (TVPRA) and is updated regularly.",
+    "data": {
+      "latestUpdate": 2024,
+      "totalGoods": 159,
+      "totalCountries": 78,
+      "goodsByCountry": [
+        { "country": "Afghanistan", "goods": ["Bricks", "Carpets", "Coal", "Opium", "Tobacco"] },
+        { "country": "Angola", "goods": ["Diamonds"] },
+        { "country": "Argentina", "goods": ["Blueberries", "Bricks", "Cotton", "Garlic", "Grapes", "Olive Oil", "Tobacco", "Yerba Mate"] },
+        { "country": "Azerbaijan", "goods": ["Cotton"] },
+        { "country": "Bangladesh", "goods": ["Bricks", "Dried Fish", "Garments", "Glass Bangles", "Leather", "Salt", "Shrimp"] },
+        { "country": "Belize", "goods": ["Bananas", "Sugar Cane"] },
+        { "country": "Benin", "goods": ["Cotton", "Crushed Granite"] },
+        { "country": "Bolivia", "goods": ["Bricks", "Brazil Nuts/Chestnuts", "Cattle", "Corn", "Gold", "Peanuts", "Silver", "Sugarcane", "Tin"] },
+        { "country": "Brazil", "goods": ["Bricks", "Cashews", "Cattle", "Ceramics", "Charcoal", "Cocoa", "Coffee", "Cotton", "Footwear", "Garments", "Gold", "Manioc/Cassava", "Pineapples", "Rice", "Sisal", "Sugarcane", "Timber", "Tobacco"] },
+        { "country": "Burkina Faso", "goods": ["Cotton", "Gold"] },
+        { "country": "Burma/Myanmar", "goods": ["Bamboo", "Beans", "Bricks", "Jade", "Rice", "Rubber", "Rubies", "Sesame", "Shrimp", "Sugarcane", "Sunflowers", "Teak"] },
+        { "country": "Cambodia", "goods": ["Bricks", "Fish", "Rubber", "Salt", "Sugarcane", "Tobacco"] },
+        { "country": "Cameroon", "goods": ["Cocoa"] },
+        { "country": "Central African Republic", "goods": ["Diamonds"] },
+        { "country": "Chad", "goods": ["Cattle", "Natron"] },
+        { "country": "Chile", "goods": ["Fish"] },
+        { "country": "China", "goods": ["Artificial Flowers", "Bricks", "Christmas Decorations", "Coal", "Cotton", "Electronics", "Fireworks", "Fish", "Footwear", "Garments", "Gloves", "Hair Products", "Nails", "Polysilicon", "Textiles", "Thread/Yarn", "Tomato Products", "Toys"] },
+        { "country": "Colombia", "goods": ["Bricks", "Coca", "Coffee", "Emeralds", "Gold", "Pornography", "Sugarcane"] },
+        { "country": "Cote d'Ivoire", "goods": ["Cocoa", "Coffee", "Gold"] },
+        { "country": "DR Congo", "goods": ["Cassiterite/Tin", "Cobalt", "Coltan/Tantalum", "Copper", "Diamonds", "Gold", "Heterogenite", "Wolframite/Tungsten"] },
+        { "country": "Dominican Republic", "goods": ["Coffee", "Rice", "Sugarcane", "Tomatoes"] },
+        { "country": "Ecuador", "goods": ["Bananas", "Bricks", "Flowers", "Gold"] },
+        { "country": "Egypt", "goods": ["Cotton", "Limestone"] },
+        { "country": "El Salvador", "goods": ["Coffee", "Fireworks", "Shellfish", "Sugarcane"] },
+        { "country": "Eswatini", "goods": ["Sugarcane"] },
+        { "country": "Ethiopia", "goods": ["Coffee", "Gold", "Sesame", "Sugarcane", "Tobacco"] },
+        { "country": "Ghana", "goods": ["Cocoa", "Fish", "Gold", "Tilapia"] },
+        { "country": "Guatemala", "goods": ["Broccoli", "Coffee", "Corn", "Fireworks", "Gravel", "Sugarcane"] },
+        { "country": "Guinea", "goods": ["Cashews", "Cocoa", "Coffee", "Diamonds", "Gold"] },
+        { "country": "Honduras", "goods": ["Coffee", "Lobster", "Melons"] },
+        { "country": "India", "goods": ["Bidis", "Bricks", "Carpets", "Cotton", "Cottonseed", "Fireworks", "Footwear", "Garments", "Gems", "Glass Bangles", "Granite", "Leather", "Locks", "Matches", "Mica", "Rice", "Sandstone", "Silk Fabric", "Silk Thread", "Stones", "Sugarcane", "Thread/Yarn", "Tobacco"] },
+        { "country": "Indonesia", "goods": ["Fish", "Gold", "Oil (Palm)", "Rubber", "Tin", "Tobacco"] },
+        { "country": "Iran", "goods": ["Bricks"] },
+        { "country": "Iraq", "goods": ["Bricks"] },
+        { "country": "Kazakhstan", "goods": ["Cotton", "Tobacco"] },
+        { "country": "Kenya", "goods": ["Coffee", "Cut Flowers", "Miraa/Khat", "Rice", "Sisal", "Sugarcane", "Tea", "Tobacco"] },
+        { "country": "North Korea", "goods": ["Bricks", "Cement", "Coal", "Fish", "Gold", "Iron", "Textiles", "Timber"] },
+        { "country": "Liberia", "goods": ["Diamonds", "Rubber"] },
+        { "country": "Madagascar", "goods": ["Mica", "Sapphires", "Vanilla"] },
+        { "country": "Malawi", "goods": ["Tea", "Tobacco"] },
+        { "country": "Malaysia", "goods": ["Electronics", "Garments", "Oil (Palm)", "Rubber Gloves"] },
+        { "country": "Mali", "goods": ["Cotton", "Gold", "Rice"] },
+        { "country": "Mexico", "goods": ["Beans", "Chile Peppers", "Coffee", "Cucumbers", "Eggplants", "Melons", "Onions", "Sugarcane", "Tobacco", "Tomatoes"] },
+        { "country": "Mongolia", "goods": ["Coal", "Fluorspar", "Gold"] },
+        { "country": "Mozambique", "goods": ["Tobacco"] },
+        { "country": "Nepal", "goods": ["Bricks", "Carpets", "Embellished Textiles", "Stones"] },
+        { "country": "Nicaragua", "goods": ["Bananas", "Coffee", "Gold", "Gravel", "Shellfish", "Sugarcane", "Tobacco"] },
+        { "country": "Niger", "goods": ["Cattle", "Gold", "Salt", "Trona"] },
+        { "country": "Nigeria", "goods": ["Cocoa", "Granite/Gravel"] },
+        { "country": "Pakistan", "goods": ["Bricks", "Carpets", "Coal", "Cotton", "Glass Bangles", "Leather", "Sugarcane", "Surgical Instruments", "Textiles", "Thread/Yarn", "Wheat"] },
+        { "country": "Panama", "goods": ["Coffee", "Sugarcane"] },
+        { "country": "Paraguay", "goods": ["Bricks", "Cattle", "Corn", "Sugarcane"] },
+        { "country": "Peru", "goods": ["Brazil Nuts/Chestnuts", "Bricks", "Coca", "Fish", "Gold", "Timber"] },
+        { "country": "Philippines", "goods": ["Bananas", "Coconuts", "Corn", "Fashion Accessories", "Fish", "Gold", "Hogs", "Pornography", "Pyrotechnics", "Rice", "Rubber", "Sugarcane", "Tobacco"] },
+        { "country": "Russia", "goods": ["Bricks", "Timber"] },
+        { "country": "Rwanda", "goods": ["Cassiterite/Tin", "Coltan/Tantalum", "Gold", "Tea", "Wolframite/Tungsten"] },
+        { "country": "Senegal", "goods": ["Gold"] },
+        { "country": "Sierra Leone", "goods": ["Cocoa", "Coffee", "Diamonds", "Gold", "Granite"] },
+        { "country": "South Sudan", "goods": ["Cattle"] },
+        { "country": "Sri Lanka", "goods": ["Fish"] },
+        { "country": "Sudan", "goods": ["Gold"] },
+        { "country": "Suriname", "goods": ["Gold"] },
+        { "country": "Tanzania", "goods": ["Cloves", "Coffee", "Gold", "Tanzanite", "Tea", "Tobacco"] },
+        { "country": "Thailand", "goods": ["Fish", "Garments", "Pornography", "Poultry", "Shrimp", "Sugarcane"] },
+        { "country": "Togo", "goods": ["Cocoa", "Coffee"] },
+        { "country": "Turkmenistan", "goods": ["Cotton"] },
+        { "country": "Uganda", "goods": ["Bricks", "Cattle", "Charcoal", "Coffee", "Fish", "Gold", "Rice", "Sugarcane", "Tea", "Tobacco", "Vanilla"] },
+        { "country": "Ukraine", "goods": ["Amber", "Coal", "Timber"] },
+        { "country": "Uzbekistan", "goods": ["Cotton", "Silk"] },
+        { "country": "Venezuela", "goods": ["Gold"] },
+        { "country": "Vietnam", "goods": ["Bricks", "Cashews", "Coffee", "Fish", "Footwear", "Furniture", "Garments", "Leather", "Pepper", "Rice", "Rubber", "Sugarcane", "Timber"] },
+        { "country": "Zambia", "goods": ["Emeralds", "Gems", "Tobacco"] },
+        { "country": "Zimbabwe", "goods": ["Chrome", "Diamonds", "Gold", "Tobacco"] }
+      ]
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["dol", "ilab", "child_labour", "forced_labour", "tvpra", "goods_list", "country_risk"]
+  },
+  {
+    "source": "European Union",
+    "category": "conflict_minerals",
+    "subcategory": "eu_conflict_minerals_regulation",
+    "title": "EU Conflict Minerals Regulation (Regulation 2017/821)",
+    "description": "The EU Conflict Minerals Regulation entered into force on 1 January 2021 and establishes supply chain due diligence obligations for EU importers of tin, tantalum, tungsten, and gold (3TG). It requires importers above certain volume thresholds to identify and address risks of financing conflict or human rights abuses in their supply chains.",
+    "data": {
+      "regulationNumber": "2017/821",
+      "effectiveDate": "2021-01-01",
+      "minerals": [
+        {
+          "mineral": "Tin",
+          "chemicalSymbol": "Sn",
+          "oreNames": ["Cassiterite"],
+          "annualImportThreshold": "5,000 kg"
+        },
+        {
+          "mineral": "Tantalum",
+          "chemicalSymbol": "Ta",
+          "oreNames": ["Coltan/Columbite-tantalite"],
+          "annualImportThreshold": "100 kg"
+        },
+        {
+          "mineral": "Tungsten",
+          "chemicalSymbol": "W",
+          "oreNames": ["Wolframite"],
+          "annualImportThreshold": "25,000 kg"
+        },
+        {
+          "mineral": "Gold",
+          "chemicalSymbol": "Au",
+          "oreNames": ["Gold ore"],
+          "annualImportThreshold": "100 kg"
+        }
+      ],
+      "importerObligations": [
+        "Establish a strong company management system for supply chain due diligence",
+        "Identify and assess risks in the supply chain",
+        "Design and implement a strategy to respond to identified risks",
+        "Carry out an independent third-party audit of supply chain due diligence",
+        "Report annually on supply chain due diligence"
+      ],
+      "scope": {
+        "inScope": "EU importers of 3TG minerals and metals above volume thresholds importing as ores, concentrates, or metals",
+        "outOfScope": "Importers of finished or semi-finished products containing 3TG (downstream users encouraged to report voluntarily), recycled metals, importers below volume thresholds"
+      },
+      "alignedStandard": "OECD Due Diligence Guidance for Responsible Supply Chains of Minerals from Conflict-Affected and High-Risk Areas",
+      "competentAuthorities": "Each EU Member State designates one or more competent authorities to verify compliance",
+      "estimatedImportersInScope": "~600-1,000 EU importers"
+    },
+    "year": 2021,
+    "verified": true,
+    "tags": ["eu", "conflict_minerals", "3tg", "tin", "tantalum", "tungsten", "gold", "due_diligence", "cahras"]
+  },
+  {
+    "source": "United States Government",
+    "category": "conflict_minerals",
+    "subcategory": "dodd_frank_1502",
+    "title": "Dodd-Frank Act Section 1502 - Conflict Minerals",
+    "description": "Section 1502 of the Dodd-Frank Wall Street Reform and Consumer Protection Act (2010) requires SEC-reporting companies to determine whether their products contain tin, tantalum, tungsten, or gold (3TG) that originated in the Democratic Republic of the Congo (DRC) or adjoining countries, and to disclose their findings. Companies must conduct a Reasonable Country of Origin Inquiry (RCOI) and file Form SD with the SEC.",
+    "data": {
+      "enactedDate": "2010-07-21",
+      "secFinalRuleDate": "2012-08-22",
+      "applicableTo": "SEC-reporting companies (issuers) that manufacture or contract to manufacture products containing 3TG that are necessary to the functionality or production of those products",
+      "minerals": ["Tin", "Tantalum", "Tungsten", "Gold"],
+      "coveredCountries": {
+        "drc": "Democratic Republic of the Congo",
+        "adjoiningCountries": ["Angola", "Burundi", "Central African Republic", "Republic of Congo", "Rwanda", "South Sudan", "Tanzania", "Uganda", "Zambia"]
+      },
+      "complianceProcess": [
+        {
+          "step": 1,
+          "title": "Determine if 3TG are necessary to the product",
+          "description": "Assess whether tin, tantalum, tungsten, or gold are contained in and necessary to the functionality or production of the company's products."
+        },
+        {
+          "step": 2,
+          "title": "Reasonable Country of Origin Inquiry (RCOI)",
+          "description": "Conduct a good-faith inquiry reasonably designed to determine whether the conflict minerals originated in the DRC or adjoining countries or came from recycled or scrap sources."
+        },
+        {
+          "step": 3,
+          "title": "Due Diligence (if needed)",
+          "description": "If RCOI indicates minerals may have originated in covered countries and are not from recycled/scrap sources, conduct due diligence on the source and chain of custody conformant with a nationally or internationally recognized framework (e.g., OECD Guidance)."
+        },
+        {
+          "step": 4,
+          "title": "File Form SD with the SEC",
+          "description": "File a specialized disclosure form (Form SD) with the SEC by May 31 of each year. If due diligence was required, attach a Conflict Minerals Report (CMR) as an exhibit."
+        }
+      ],
+      "conflictMineralsReport": {
+        "requiredContent": [
+          "Description of due diligence measures taken",
+          "Description of products not found to be DRC conflict free (if applicable)",
+          "Facilities used to process the conflict minerals",
+          "Country of origin of the conflict minerals",
+          "Steps taken to mitigate the risk that conflict minerals benefit armed groups"
+        ],
+        "auditRequirement": "The CMR must include an independent private sector audit (IPSA) of the report — though this requirement was effectively suspended by a 2014 court ruling and SEC no-action relief"
+      },
+      "filingStatistics": {
+        "year": 2023,
+        "approximateFilersAnnually": 1200,
+        "commonIndustries": ["Electronics", "Aerospace & Defense", "Automotive", "Medical Devices", "Jewelry"]
+      }
+    },
+    "year": 2012,
+    "verified": true,
+    "tags": ["dodd_frank", "section_1502", "conflict_minerals", "3tg", "sec", "form_sd", "rcoi", "drc"]
+  },
+  {
+    "source": "OECD",
+    "category": "conflict_minerals",
+    "subcategory": "oecd_5_step_minerals_guidance",
+    "title": "OECD 5-Step Framework for Minerals Due Diligence",
+    "description": "The OECD Due Diligence Guidance for Responsible Supply Chains of Minerals from Conflict-Affected and High-Risk Areas provides a five-step framework that represents the internationally recognised standard for minerals supply chain due diligence. It is referenced by the EU Conflict Minerals Regulation, Dodd-Frank Section 1502, and the Chinese Due Diligence Guidelines for Responsible Mineral Supply Chains.",
+    "data": {
+      "edition": "3rd Edition (2016)",
+      "fiveSteps": [
+        {
+          "step": 1,
+          "title": "Establish Strong Company Management Systems",
+          "actions": [
+            "Adopt and commit to a supply chain policy for minerals originating from CAHRAs",
+            "Structure internal management to support supply chain due diligence",
+            "Establish a system of controls and transparency over the mineral supply chain, including a chain of custody or traceability system",
+            "Strengthen company engagement with suppliers by incorporating the due diligence policy into contracts",
+            "Establish a company-level or industry-wide grievance mechanism"
+          ]
+        },
+        {
+          "step": 2,
+          "title": "Identify and Assess Risks in the Supply Chain",
+          "actions": [
+            "Identify risks of adverse impacts by mapping the factual circumstances and context of activities in the mineral supply chain",
+            "Assess risks of adverse impacts by evaluating the factual circumstances against the standards in the company's supply chain policy",
+            "Consider on-the-ground assessments in CAHRAs and use publicly available and third-party information on supply chain risks",
+            "Assess own position and capacity to influence suppliers to prevent or mitigate identified risks"
+          ]
+        },
+        {
+          "step": 3,
+          "title": "Design and Implement a Strategy to Respond to Identified Risks",
+          "actions": [
+            "Report findings of the supply chain risk assessment to senior management",
+            "Devise and adopt a risk management plan based on the identified risks",
+            "Implement the risk management plan, monitor and track performance against targets, and communicate results to designated senior management",
+            "Consider options for risk mitigation, including continued engagement with measurable improvement, temporary or permanent disengagement"
+          ]
+        },
+        {
+          "step": 4,
+          "title": "Carry Out Independent Third-Party Audit of Supply Chain Due Diligence",
+          "actions": [
+            "At identified points in the supply chain (e.g., smelters/refiners), carry out independent third-party audit of due diligence practices",
+            "Ensure the audit scope and criteria are consistent with this Guidance",
+            "Publish audit summary results or make them available to downstream companies"
+          ]
+        },
+        {
+          "step": 5,
+          "title": "Report on Supply Chain Due Diligence",
+          "actions": [
+            "Report publicly on supply chain due diligence policies, practices, and outcomes",
+            "Include a description of the steps taken to implement the five-step framework",
+            "Provide information on identified risks and steps taken to manage those risks"
+          ]
+        }
+      ],
+      "supplements": [
+        {
+          "name": "Supplement on Tin, Tantalum and Tungsten",
+          "scope": "Upstream companies from mine to smelter/refiner",
+          "keyRequirement": "Smelters/refiners are the key choke point for due diligence in the 3T supply chain"
+        },
+        {
+          "name": "Supplement on Gold",
+          "scope": "The full gold supply chain from mine to retail",
+          "keyRequirement": "Covers both large-scale and artisanal/small-scale mining; addresses money laundering risks"
+        }
+      ]
+    },
+    "year": 2016,
+    "verified": true,
+    "tags": ["oecd", "conflict_minerals", "5_step_framework", "due_diligence", "minerals", "cahras", "smelters"]
+  },
+  {
+    "source": "European Commission",
+    "category": "conflict_minerals",
+    "subcategory": "cahras",
+    "title": "Conflict-Affected and High-Risk Areas (CAHRAs) - Definition and Examples",
+    "description": "Conflict-Affected and High-Risk Areas (CAHRAs) are regions where armed conflict, widespread violence, governance collapse, or systematic human rights abuses create risks that minerals extraction and trade finance conflict or human rights violations. The EU maintains an indicative, non-exhaustive and regularly updated list of CAHRAs.",
+    "data": {
+      "definition": "Areas in a state of armed conflict, fragile post-conflict areas, and areas witnessing weak or non-existent governance and security, such as failed states, and widespread and systematic violations of international law, including human rights abuses (as per Annex II of OECD Due Diligence Guidance).",
+      "euIndicativeList": {
+        "note": "The European Commission publishes an indicative, non-exhaustive list updated periodically. The list is intended as a starting point, not a safe harbour — companies must conduct their own risk assessment.",
+        "lastUpdated": 2024,
+        "exampleAreas": [
+          { "region": "Africa", "areas": ["DR Congo (especially eastern provinces)", "Central African Republic", "South Sudan", "Sudan (Darfur, South Kordofan)", "Mali (northern and central regions)", "Burkina Faso", "Niger (western and northern regions)", "Mozambique (Cabo Delgado)", "Ethiopia (Tigray, Amhara, Oromia)", "Somalia", "Libya", "Cameroon (Anglophone regions)"] },
+          { "region": "Asia", "areas": ["Myanmar/Burma", "Afghanistan", "Parts of Pakistan (FATA, Balochistan)", "Parts of Philippines (Mindanao)", "Parts of India (Jharkhand, Chhattisgarh — naxalite-affected)"] },
+          { "region": "Middle East", "areas": ["Syria", "Yemen", "Iraq (parts)", "Palestine/Gaza"] },
+          { "region": "Latin America", "areas": ["Colombia (certain departments)", "Venezuela", "Parts of Mexico (certain states)"] },
+          { "region": "Europe", "areas": ["Ukraine (occupied territories and conflict zones)"] }
+        ]
+      },
+      "riskFactors": [
+        "Active armed conflict or post-conflict instability",
+        "Presence of armed groups (state or non-state) controlling mining areas",
+        "Weak rule of law and governance",
+        "Widespread human rights violations",
+        "High levels of corruption",
+        "Artisanal and small-scale mining with limited regulatory oversight"
+      ]
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["cahras", "conflict_affected", "high_risk_areas", "conflict_minerals", "eu", "oecd"]
+  },
+  {
+    "source": "Responsible Minerals Initiative",
+    "category": "conflict_minerals",
+    "subcategory": "rmi_rmap",
+    "title": "Responsible Minerals Initiative (RMI) - Responsible Minerals Assurance Process (RMAP)",
+    "description": "The Responsible Minerals Assurance Process (RMAP) is an independent third-party assessment program managed by the Responsible Minerals Initiative (RMI) that evaluates smelters' and refiners' management systems and sourcing practices against the OECD Due Diligence Guidance. RMAP is the most widely used smelter/refiner audit program globally.",
+    "data": {
+      "managedBy": "Responsible Minerals Initiative (RMI), a program of the Responsible Business Alliance (RBA)",
+      "coveredMinerals": ["Tin", "Tantalum", "Tungsten", "Gold", "Cobalt", "Mica"],
+      "smelterStatus": {
+        "conformant": "Smelter/refiner has been assessed and found to be in conformance with the applicable RMAP standard",
+        "active": "Smelter/refiner is undergoing the assessment process and is actively engaged with RMAP",
+        "nonConformant": "Smelter/refiner has been assessed and found not to be in conformance"
+      },
+      "auditProcess": [
+        "Smelter/refiner initiates engagement with RMI and signs a Letter of Intent",
+        "Independent third-party auditor conducts on-site assessment",
+        "Assessment evaluates management systems, sourcing policies, risk assessment processes, and chain of custody documentation",
+        "Auditor issues a finding of conformant, non-conformant, or areas requiring improvement",
+        "Conformant status is valid for 3 years; annual check-ins between full assessments",
+        "Results are published in the RMAP Public Smelter & Refiner List"
+      ],
+      "statistics": {
+        "asOf": "2024",
+        "totalSmeltersInScope": "~400+",
+        "conformantSmelters": "~300+",
+        "activeSmelters": "~50+",
+        "memberCompanies": "~500+ member companies across 15+ industries"
+      },
+      "tools": [
+        {
+          "name": "Conflict Minerals Reporting Template (CMRT)",
+          "description": "Standardized template used by companies to collect and share information about the smelters/refiners in their supply chain for 3TG minerals"
+        },
+        {
+          "name": "Extended Minerals Reporting Template (EMRT)",
+          "description": "Template for reporting on cobalt and mica supply chains"
+        },
+        {
+          "name": "Smelter & Refiner List",
+          "description": "Public list of smelters/refiners and their RMAP conformance status, updated quarterly"
+        }
+      ]
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["rmi", "rmap", "smelter_audit", "conflict_minerals", "3tg", "cobalt", "mica", "rba"]
+  },
+  {
+    "source": "Multiple Sources",
+    "category": "conflict_minerals",
+    "subcategory": "cobalt_due_diligence",
+    "title": "Cobalt Supply Chain Due Diligence - DRC Context and Risks",
+    "description": "Cobalt is a critical mineral for lithium-ion batteries used in electric vehicles, consumer electronics, and energy storage. Approximately 70% of global cobalt production comes from the Democratic Republic of the Congo (DRC), where artisanal and small-scale mining (ASM) is associated with child labour, hazardous working conditions, and environmental degradation.",
+    "data": {
+      "globalProduction": {
+        "year": 2023,
+        "totalTonnes": 210000,
+        "drcSharePercent": 73,
+        "otherProducers": [
+          { "country": "Indonesia", "sharePercent": 6 },
+          { "country": "Russia", "sharePercent": 4 },
+          { "country": "Australia", "sharePercent": 3 },
+          { "country": "Philippines", "sharePercent": 3 },
+          { "country": "Canada", "sharePercent": 2 }
+        ]
+      },
+      "drcContext": {
+        "totalMiners": "Estimated 150,000-200,000 artisanal miners in DRC cobalt sector",
+        "childLabour": "Estimated 40,000 children working in DRC cobalt ASM (UNICEF/Amnesty, 2016 estimate)",
+        "keyProvinces": ["Haut-Katanga", "Lualaba"],
+        "asmShareOfDRCProduction": "15-30% of DRC cobalt output comes from ASM",
+        "majorIndustrialProducers": ["Glencore (Mutanda, Kamoto)", "CMOC Group (Tenke Fungurume)", "ERG (Boss Mining/Metalkol)", "Chemaf/Shalina Resources"]
+      },
+      "risks": [
+        "Child labour in artisanal cobalt mines",
+        "Hazardous working conditions (tunnel collapses, dust exposure, toxic materials)",
+        "Environmental contamination of water sources and agricultural land",
+        "Exploitation of workers by intermediaries (negociants)",
+        "Conflict financing — some ASM areas controlled by armed groups",
+        "Radioactive materials — cobalt in DRC occurs alongside uranium deposits",
+        "Community displacement for mining concessions"
+      ],
+      "dueDiligenceInitiatives": [
+        {
+          "name": "Cobalt Refiner Supply Chain Due Diligence Standard (RMAP for Cobalt)",
+          "organization": "RMI",
+          "description": "Third-party audit program for cobalt refiners aligned with OECD Guidance"
+        },
+        {
+          "name": "Fair Cobalt Alliance (FCA)",
+          "organization": "Multi-stakeholder",
+          "description": "Industry alliance working to improve conditions in ASM cobalt mining communities in DRC"
+        },
+        {
+          "name": "Cobalt for Development (C4D)",
+          "organization": "GIZ/BMW/BASF/Samsung SDI",
+          "description": "Project supporting responsible ASM in DRC"
+        },
+        {
+          "name": "Re|Source",
+          "organization": "Glencore, ERG, Eurasian Resources Group, Umicore",
+          "description": "Blockchain-based traceability platform for cobalt supply chains"
+        },
+        {
+          "name": "The Cobalt Institute Responsible Sourcing Framework",
+          "organization": "Cobalt Institute",
+          "description": "Industry framework for responsible cobalt sourcing aligned with OECD Guidance"
+        }
+      ]
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["cobalt", "drc", "child_labour", "asm", "lithium_ion", "ev", "due_diligence", "conflict_minerals"]
+  },
+  {
+    "source": "European Union",
+    "category": "conflict_minerals",
+    "subcategory": "eudr",
+    "title": "EU Deforestation Regulation (EUDR) - Regulation 2023/1115",
+    "description": "The EU Deforestation Regulation, adopted on 29 June 2023, prohibits the placing on or export from the EU market of specific commodities and derived products unless they are deforestation-free, produced in accordance with the legislation of the country of production, and covered by a due diligence statement. Originally set to apply from 30 December 2024, its application was postponed to 30 December 2025 for large operators and 30 June 2026 for micro/small enterprises.",
+    "data": {
+      "regulationNumber": "2023/1115",
+      "adoptedDate": "2023-06-29",
+      "applicationDate": {
+        "largeOperators": "2025-12-30",
+        "microSmallEnterprises": "2026-06-30"
+      },
+      "commodities": [
+        {
+          "commodity": "Palm Oil",
+          "derivedProducts": ["Palm kernel oil", "Glycerol", "Margarine", "Oleic acid", "Stearic acid"],
+          "majorSourceCountries": ["Indonesia", "Malaysia", "Thailand", "Colombia", "Nigeria"]
+        },
+        {
+          "commodity": "Soy",
+          "derivedProducts": ["Soybean oil", "Soy meal", "Soy protein", "Soy sauce", "Tofu"],
+          "majorSourceCountries": ["Brazil", "United States", "Argentina", "China", "India"]
+        },
+        {
+          "commodity": "Cattle",
+          "derivedProducts": ["Beef", "Leather", "Tallow", "Gelatin", "Bone meal"],
+          "majorSourceCountries": ["Brazil", "Argentina", "Australia", "United States", "India"]
+        },
+        {
+          "commodity": "Cocoa",
+          "derivedProducts": ["Cocoa butter", "Cocoa powder", "Chocolate", "Cocoa paste"],
+          "majorSourceCountries": ["Cote d'Ivoire", "Ghana", "Ecuador", "Cameroon", "Nigeria"]
+        },
+        {
+          "commodity": "Coffee",
+          "derivedProducts": ["Roasted coffee", "Coffee extracts", "Coffee husks"],
+          "majorSourceCountries": ["Brazil", "Vietnam", "Colombia", "Indonesia", "Ethiopia"]
+        },
+        {
+          "commodity": "Rubber",
+          "derivedProducts": ["Tyres", "Latex", "Rubber footwear", "Rubber gloves"],
+          "majorSourceCountries": ["Thailand", "Indonesia", "Vietnam", "Cote d'Ivoire", "India"]
+        },
+        {
+          "commodity": "Wood",
+          "derivedProducts": ["Timber", "Plywood", "Pulp", "Paper", "Printed materials", "Furniture", "Charcoal"],
+          "majorSourceCountries": ["Brazil", "Indonesia", "Russia", "Canada", "China"]
+        }
+      ],
+      "keyRequirements": [
+        "Products must be deforestation-free (no deforestation after 31 December 2020 cut-off date)",
+        "Products must be produced in accordance with the relevant legislation of the country of production",
+        "Operators must submit a due diligence statement to competent authorities before placing or exporting products",
+        "Geolocation data of all plots of land where commodities were produced must be provided",
+        "Operators must collect information, assess risk, and mitigate risk (three-step due diligence)"
+      ],
+      "countryBenchmarking": {
+        "description": "The Commission will classify countries (or parts thereof) as low, standard, or high risk for deforestation",
+        "lowRisk": "Simplified due diligence (no risk assessment/mitigation needed)",
+        "standardRisk": "Full due diligence required",
+        "highRisk": "Enhanced due diligence with additional scrutiny"
+      },
+      "penalties": "Up to 4% of the operator's annual turnover in the EU; confiscation of products; temporary exclusion from public procurement and access to public financing"
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["eudr", "deforestation", "palm_oil", "soy", "cattle", "cocoa", "coffee", "rubber", "wood", "due_diligence", "eu"]
+  },
+  {
+    "source": "Transparency International",
+    "category": "country_risk",
+    "subcategory": "cpi_2024",
+    "title": "Transparency International Corruption Perceptions Index (CPI) 2024",
+    "description": "The Corruption Perceptions Index (CPI) ranks 180 countries and territories by their perceived levels of public sector corruption on a scale from 0 (highly corrupt) to 100 (very clean), using data from 13 external sources. The 2024 CPI found that most countries have made little to no progress in tackling corruption, with the global average score stagnating at 43 out of 100.",
+    "data": {
+      "year": 2024,
+      "scale": "0 (highly corrupt) to 100 (very clean)",
+      "globalAverage": 43,
+      "numberOfCountries": 180,
+      "topCountries": [
+        { "rank": 1, "country": "Denmark", "score": 90 },
+        { "rank": 2, "country": "Finland", "score": 87 },
+        { "rank": 3, "country": "New Zealand", "score": 87 },
+        { "rank": 4, "country": "Norway", "score": 84 },
+        { "rank": 5, "country": "Singapore", "score": 83 },
+        { "rank": 6, "country": "Sweden", "score": 82 },
+        { "rank": 7, "country": "Switzerland", "score": 82 },
+        { "rank": 8, "country": "Netherlands", "score": 79 },
+        { "rank": 9, "country": "Germany", "score": 78 },
+        { "rank": 10, "country": "Luxembourg", "score": 78 },
+        { "rank": 11, "country": "Ireland", "score": 77 },
+        { "rank": 12, "country": "Iceland", "score": 76 },
+        { "rank": 13, "country": "Estonia", "score": 76 },
+        { "rank": 14, "country": "Australia", "score": 75 },
+        { "rank": 15, "country": "Japan", "score": 74 },
+        { "rank": 16, "country": "Canada", "score": 74 },
+        { "rank": 17, "country": "United Kingdom", "score": 74 },
+        { "rank": 18, "country": "Austria", "score": 73 },
+        { "rank": 19, "country": "Hong Kong", "score": 73 },
+        { "rank": 20, "country": "Belgium", "score": 72 },
+        { "rank": 21, "country": "France", "score": 71 },
+        { "rank": 22, "country": "Uruguay", "score": 71 },
+        { "rank": 23, "country": "United States", "score": 69 },
+        { "rank": 24, "country": "Bhutan", "score": 68 },
+        { "rank": 25, "country": "Chile", "score": 67 },
+        { "rank": 26, "country": "Barbados", "score": 67 },
+        { "rank": 27, "country": "Israel", "score": 66 },
+        { "rank": 28, "country": "Seychelles", "score": 66 },
+        { "rank": 29, "country": "Taiwan", "score": 65 },
+        { "rank": 30, "country": "UAE", "score": 65 },
+        { "rank": 31, "country": "Portugal", "score": 64 },
+        { "rank": 32, "country": "South Korea", "score": 63 },
+        { "rank": 33, "country": "Cabo Verde", "score": 63 },
+        { "rank": 34, "country": "Qatar", "score": 62 },
+        { "rank": 35, "country": "Botswana", "score": 61 },
+        { "rank": 36, "country": "Lithuania", "score": 61 },
+        { "rank": 37, "country": "Spain", "score": 60 },
+        { "rank": 38, "country": "Slovenia", "score": 59 },
+        { "rank": 39, "country": "Latvia", "score": 59 },
+        { "rank": 40, "country": "Costa Rica", "score": 58 },
+        { "rank": 41, "country": "Italy", "score": 56 },
+        { "rank": 42, "country": "Georgia", "score": 56 },
+        { "rank": 43, "country": "Poland", "score": 55 },
+        { "rank": 44, "country": "Czech Republic", "score": 55 },
+        { "rank": 45, "country": "Dominica", "score": 55 },
+        { "rank": 46, "country": "Malaysia", "score": 50 },
+        { "rank": 47, "country": "Saudi Arabia", "score": 50 },
+        { "rank": 48, "country": "Rwanda", "score": 50 },
+        { "rank": 49, "country": "Greece", "score": 49 },
+        { "rank": 50, "country": "Mauritius", "score": 49 }
+      ],
+      "gccCountries": [
+        { "country": "UAE", "score": 65, "rank": 30 },
+        { "country": "Qatar", "score": 62, "rank": 34 },
+        { "country": "Saudi Arabia", "score": 50, "rank": 47 },
+        { "country": "Oman", "score": 47, "rank": 55 },
+        { "country": "Bahrain", "score": 44, "rank": 63 },
+        { "country": "Kuwait", "score": 42, "rank": 68 }
+      ],
+      "bottomCountries": [
+        { "rank": 180, "country": "Somalia", "score": 11 },
+        { "rank": 179, "country": "South Sudan", "score": 12 },
+        { "rank": 178, "country": "Syria", "score": 13 },
+        { "rank": 177, "country": "Venezuela", "score": 13 },
+        { "rank": 176, "country": "Yemen", "score": 14 },
+        { "rank": 175, "country": "Libya", "score": 15 },
+        { "rank": 174, "country": "Equatorial Guinea", "score": 16 },
+        { "rank": 173, "country": "North Korea", "score": 17 },
+        { "rank": 172, "country": "Haiti", "score": 17 },
+        { "rank": 171, "country": "Turkmenistan", "score": 18 }
+      ]
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["transparency_international", "cpi", "corruption", "country_risk", "governance", "gcc"]
+  },
+  {
+    "source": "Freedom House",
+    "category": "country_risk",
+    "subcategory": "freedom_in_the_world_2024",
+    "title": "Freedom House - Freedom in the World 2024",
+    "description": "Freedom in the World is an annual global report on political rights and civil liberties published by Freedom House. It rates countries and territories on a scale of 0-100 (100 being most free) and classifies them as Free, Partly Free, or Not Free. The 2024 report covering the year 2023 found a continued global decline in freedom for the 18th consecutive year.",
+    "data": {
+      "year": 2024,
+      "coveringYear": 2023,
+      "totalCountries": 195,
+      "totalTerritories": 15,
+      "globalSummary": {
+        "free": 83,
+        "partlyFree": 55,
+        "notFree": 57,
+        "freedomDeclinedIn": 52,
+        "freedomImprovedIn": 21,
+        "consecutiveYearsOfDecline": 18
+      },
+      "topRatedFree": [
+        { "country": "Finland", "score": 100, "status": "Free" },
+        { "country": "Sweden", "score": 100, "status": "Free" },
+        { "country": "Norway", "score": 100, "status": "Free" },
+        { "country": "New Zealand", "score": 99, "status": "Free" },
+        { "country": "Denmark", "score": 97, "status": "Free" },
+        { "country": "Ireland", "score": 97, "status": "Free" },
+        { "country": "Switzerland", "score": 96, "status": "Free" },
+        { "country": "Canada", "score": 96, "status": "Free" },
+        { "country": "Netherlands", "score": 96, "status": "Free" },
+        { "country": "Australia", "score": 95, "status": "Free" },
+        { "country": "Iceland", "score": 95, "status": "Free" },
+        { "country": "Portugal", "score": 95, "status": "Free" },
+        { "country": "Estonia", "score": 94, "status": "Free" },
+        { "country": "Germany", "score": 94, "status": "Free" },
+        { "country": "Uruguay", "score": 94, "status": "Free" }
+      ],
+      "gccCountries": [
+        { "country": "Kuwait", "score": 36, "status": "Partly Free" },
+        { "country": "Qatar", "score": 25, "status": "Not Free" },
+        { "country": "Oman", "score": 23, "status": "Not Free" },
+        { "country": "Bahrain", "score": 12, "status": "Not Free" },
+        { "country": "UAE", "score": 17, "status": "Not Free" },
+        { "country": "Saudi Arabia", "score": 8, "status": "Not Free" }
+      ],
+      "lowestRated": [
+        { "country": "South Sudan", "score": -2, "status": "Not Free" },
+        { "country": "Syria", "score": -1, "status": "Not Free" },
+        { "country": "Turkmenistan", "score": 2, "status": "Not Free" },
+        { "country": "Eritrea", "score": 2, "status": "Not Free" },
+        { "country": "North Korea", "score": 3, "status": "Not Free" },
+        { "country": "Tibet", "score": 1, "status": "Not Free" },
+        { "country": "Afghanistan", "score": 8, "status": "Not Free" },
+        { "country": "Saudi Arabia", "score": 8, "status": "Not Free" },
+        { "country": "Somalia", "score": 7, "status": "Not Free" },
+        { "country": "Equatorial Guinea", "score": 5, "status": "Not Free" }
+      ],
+      "majorCountries": [
+        { "country": "United States", "score": 83, "status": "Free" },
+        { "country": "United Kingdom", "score": 91, "status": "Free" },
+        { "country": "France", "score": 89, "status": "Free" },
+        { "country": "Japan", "score": 96, "status": "Free" },
+        { "country": "India", "score": 50, "status": "Partly Free" },
+        { "country": "Brazil", "score": 72, "status": "Free" },
+        { "country": "China", "score": 9, "status": "Not Free" },
+        { "country": "Russia", "score": 13, "status": "Not Free" },
+        { "country": "Turkiye", "score": 32, "status": "Not Free" },
+        { "country": "Mexico", "score": 53, "status": "Partly Free" },
+        { "country": "South Africa", "score": 79, "status": "Free" },
+        { "country": "Indonesia", "score": 57, "status": "Partly Free" },
+        { "country": "Nigeria", "score": 43, "status": "Partly Free" },
+        { "country": "Egypt", "score": 18, "status": "Not Free" },
+        { "country": "Pakistan", "score": 35, "status": "Partly Free" }
+      ]
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["freedom_house", "political_rights", "civil_liberties", "country_risk", "democracy", "gcc"]
+  },
+  {
+    "source": "International Trade Union Confederation",
+    "category": "country_risk",
+    "subcategory": "ituc_global_rights_index",
+    "title": "ITUC Global Rights Index 2024",
+    "description": "The ITUC Global Rights Index ranks 149 countries on a scale of 1-5+ based on the degree of respect for workers' rights. It measures violations of internationally recognised collective labour rights by governments and employers. The 2024 edition found that 87% of countries violated the right to strike and 79% violated the right to collective bargaining.",
+    "data": {
+      "year": 2024,
+      "scale": {
+        "1": "Sporadic violations of rights — collective labour rights are generally guaranteed",
+        "2": "Repeated violations of rights — certain rights have come under repeated attack",
+        "3": "Regular violations of rights — governments and/or companies regularly interfere in collective labour rights",
+        "4": "Systematic violations of rights — the government and/or companies are engaged in serious efforts to crush workers' voice",
+        "5": "No guarantee of rights — legislation does not guarantee fundamental rights; workers are exposed to autocratic regimes and unfair labour practices",
+        "5+": "No guarantee of rights due to the breakdown of the rule of law — workers have effectively no access to rights in law or practice"
+      },
+      "globalFindings": {
+        "percentViolatingRightToStrike": 87,
+        "percentViolatingRightToCollectiveBargaining": 79,
+        "percentRestrictingFreedomOfSpeech": 74,
+        "percentWorkersFacedArbitraryArrestDetention": 69,
+        "worstRegion": "Middle East and North Africa",
+        "worstRegionAverageRating": 4.74
+      },
+      "ratingsByCountry": {
+        "rating1": [
+          "Austria", "Denmark", "Finland", "Germany", "Iceland", "Ireland",
+          "Italy", "Netherlands", "Norway", "Sweden", "Uruguay"
+        ],
+        "rating2": [
+          "Australia", "Belgium", "Canada", "Chile", "Czech Republic",
+          "Estonia", "France", "Japan", "Latvia", "Lithuania", "New Zealand",
+          "Poland", "Portugal", "Romania", "Slovakia", "Slovenia", "South Africa",
+          "Spain", "Switzerland", "United Kingdom"
+        ],
+        "rating3": [
+          "Argentina", "Barbados", "Bolivia", "Botswana", "Brazil",
+          "Costa Rica", "Dominican Republic", "Ghana", "Israel", "Jamaica",
+          "Kenya", "Malawi", "Mexico", "Mongolia", "Mozambique", "Nepal",
+          "Niger", "North Macedonia", "Panama", "Paraguay", "Peru",
+          "Senegal", "Serbia", "Sierra Leone", "Tanzania", "Thailand",
+          "Togo", "Trinidad and Tobago", "Tunisia", "Uganda"
+        ],
+        "rating4": [
+          "Albania", "Cambodia", "Colombia", "Ecuador", "El Salvador",
+          "Ethiopia", "Georgia", "Guatemala", "Honduras", "Indonesia",
+          "Jordan", "Madagascar", "Malaysia", "Morocco", "Nicaragua",
+          "Nigeria", "Pakistan", "Paraguay", "Philippines", "South Korea",
+          "Sri Lanka", "Ukraine", "Zambia", "Zimbabwe"
+        ],
+        "rating5": [
+          "Algeria", "Bahrain", "Bangladesh", "China", "Cuba",
+          "Egypt", "Eswatini", "Haiti", "India", "Iran",
+          "Iraq", "Kazakhstan", "Kuwait", "Laos", "Lebanon",
+          "Oman", "Qatar", "Russia", "Saudi Arabia", "Thailand",
+          "Turkiye", "Turkmenistan", "UAE", "Vietnam"
+        ],
+        "rating5plus": [
+          "Afghanistan", "Belarus", "Eritrea", "Libya", "Myanmar",
+          "Palestine", "South Sudan", "Sudan", "Syria", "Yemen"
+        ]
+      },
+      "gccCountries": [
+        { "country": "Saudi Arabia", "rating": 5, "keyViolations": ["No right to form trade unions", "Migrant workers face severe exploitation", "Kafala system"] },
+        { "country": "UAE", "rating": 5, "keyViolations": ["Trade unions are banned", "Migrant workers face forced labour conditions", "No collective bargaining rights"] },
+        { "country": "Qatar", "rating": 5, "keyViolations": ["Trade unions are not permitted for migrant workers", "Limited reforms to Kafala system", "Restrictions on freedom of association"] },
+        { "country": "Kuwait", "rating": 5, "keyViolations": ["Migrant workers excluded from labour law protections", "Right to strike severely limited"] },
+        { "country": "Bahrain", "rating": 5, "keyViolations": ["Workers dismissed for trade union activity", "Migrant workers face exploitation", "Restrictions on collective bargaining"] },
+        { "country": "Oman", "rating": 5, "keyViolations": ["Right to strike severely restricted", "Limited freedom of association", "Migrant workers face exploitation"] }
+      ]
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["ituc", "workers_rights", "global_rights_index", "trade_unions", "collective_bargaining", "country_risk", "gcc"]
+  },
+  {
+    "source": "Yale Center for Environmental Law & Policy / Columbia CIESIN",
+    "category": "country_risk",
+    "subcategory": "epi_2024",
+    "title": "Environmental Performance Index (EPI) 2024",
+    "description": "The Environmental Performance Index (EPI) is a biennial data-driven analysis produced by Yale and Columbia universities that ranks 180 countries on 58 performance indicators across 11 issue categories covering climate change, environmental health, and ecosystem vitality. The 2024 EPI evaluates how close countries are to established environmental policy targets.",
+    "data": {
+      "year": 2024,
+      "publishers": ["Yale Center for Environmental Law & Policy", "Columbia University CIESIN"],
+      "scale": "0-100 (higher = better environmental performance)",
+      "numberOfCountries": 180,
+      "issueCategories": [
+        "Air Quality", "Sanitation & Drinking Water", "Heavy Metals", "Waste Management",
+        "Biodiversity & Habitat", "Ecosystem Services", "Fisheries", "Acid Rain",
+        "Water Resources", "Agriculture", "Climate Change"
+      ],
+      "topCountries": [
+        { "rank": 1, "country": "Estonia", "score": 75.3 },
+        { "rank": 2, "country": "Luxembourg", "score": 75.0 },
+        { "rank": 3, "country": "Germany", "score": 74.6 },
+        { "rank": 4, "country": "Finland", "score": 73.3 },
+        { "rank": 5, "country": "United Kingdom", "score": 72.7 },
+        { "rank": 6, "country": "Sweden", "score": 72.3 },
+        { "rank": 7, "country": "Austria", "score": 72.0 },
+        { "rank": 8, "country": "France", "score": 71.2 },
+        { "rank": 9, "country": "Denmark", "score": 70.5 },
+        { "rank": 10, "country": "Netherlands", "score": 70.1 },
+        { "rank": 11, "country": "Norway", "score": 69.6 },
+        { "rank": 12, "country": "Japan", "score": 68.5 },
+        { "rank": 13, "country": "Australia", "score": 67.3 },
+        { "rank": 14, "country": "Switzerland", "score": 67.1 },
+        { "rank": 15, "country": "Belgium", "score": 66.8 },
+        { "rank": 16, "country": "South Korea", "score": 65.4 },
+        { "rank": 17, "country": "New Zealand", "score": 65.0 },
+        { "rank": 18, "country": "Spain", "score": 64.8 },
+        { "rank": 19, "country": "Portugal", "score": 64.3 },
+        { "rank": 20, "country": "Italy", "score": 63.7 },
+        { "rank": 21, "country": "Ireland", "score": 63.2 },
+        { "rank": 22, "country": "Iceland", "score": 62.9 },
+        { "rank": 23, "country": "Canada", "score": 62.5 },
+        { "rank": 24, "country": "Czech Republic", "score": 62.0 },
+        { "rank": 25, "country": "Slovenia", "score": 61.8 },
+        { "rank": 26, "country": "Lithuania", "score": 61.3 },
+        { "rank": 27, "country": "Latvia", "score": 60.9 },
+        { "rank": 28, "country": "Slovakia", "score": 60.4 },
+        { "rank": 29, "country": "Poland", "score": 59.7 },
+        { "rank": 30, "country": "Croatia", "score": 59.2 },
+        { "rank": 31, "country": "United States", "score": 58.7 },
+        { "rank": 32, "country": "Hungary", "score": 58.1 },
+        { "rank": 33, "country": "Romania", "score": 57.5 },
+        { "rank": 34, "country": "Greece", "score": 57.0 },
+        { "rank": 35, "country": "Chile", "score": 56.3 },
+        { "rank": 36, "country": "Malta", "score": 55.9 },
+        { "rank": 37, "country": "Cyprus", "score": 55.4 },
+        { "rank": 38, "country": "Bulgaria", "score": 54.8 },
+        { "rank": 39, "country": "Israel", "score": 54.3 },
+        { "rank": 40, "country": "Singapore", "score": 53.8 },
+        { "rank": 41, "country": "Costa Rica", "score": 53.4 },
+        { "rank": 42, "country": "Uruguay", "score": 53.0 },
+        { "rank": 43, "country": "China", "score": 52.5 },
+        { "rank": 44, "country": "Argentina", "score": 51.8 },
+        { "rank": 45, "country": "Brazil", "score": 51.2 },
+        { "rank": 46, "country": "Malaysia", "score": 50.8 },
+        { "rank": 47, "country": "Thailand", "score": 50.3 },
+        { "rank": 48, "country": "Mexico", "score": 49.7 },
+        { "rank": 49, "country": "Colombia", "score": 49.2 },
+        { "rank": 50, "country": "Turkiye", "score": 48.7 }
+      ],
+      "gccCountries": [
+        { "country": "UAE", "score": 44.2, "rank": 68 },
+        { "country": "Bahrain", "score": 40.5, "rank": 85 },
+        { "country": "Saudi Arabia", "score": 39.8, "rank": 90 },
+        { "country": "Oman", "score": 38.1, "rank": 98 },
+        { "country": "Qatar", "score": 37.5, "rank": 102 },
+        { "country": "Kuwait", "score": 36.8, "rank": 108 }
+      ],
+      "bottomCountries": [
+        { "rank": 180, "country": "Myanmar", "score": 14.4 },
+        { "rank": 179, "country": "Vietnam", "score": 16.7 },
+        { "rank": 178, "country": "Pakistan", "score": 18.1 },
+        { "rank": 177, "country": "Laos", "score": 18.9 },
+        { "rank": 176, "country": "India", "score": 19.2 }
+      ]
+    },
+    "year": 2024,
+    "verified": true,
+    "tags": ["epi", "environmental_performance", "yale", "country_risk", "climate", "biodiversity", "gcc"]
+  },
+  {
+    "source": "World Bank",
+    "category": "country_risk",
+    "subcategory": "wgi_2023",
+    "title": "World Bank Worldwide Governance Indicators (WGI) 2023",
+    "description": "The Worldwide Governance Indicators (WGI) project reports aggregate and individual governance indicators for over 200 countries and territories, capturing six dimensions of governance: Voice and Accountability, Political Stability, Government Effectiveness, Regulatory Quality, Rule of Law, and Control of Corruption. Indicators range from -2.5 (weakest) to +2.5 (strongest).",
+    "data": {
+      "year": 2023,
+      "scale": "Percentile rank 0-100 and estimate -2.5 to +2.5",
+      "sixDimensions": [
+        {
+          "indicator": "Voice and Accountability",
+          "description": "Captures perceptions of the extent to which a country's citizens are able to participate in selecting their government, freedom of expression, freedom of association, and free media."
+        },
+        {
+          "indicator": "Political Stability and Absence of Violence/Terrorism",
+          "description": "Captures perceptions of the likelihood of political instability and/or politically-motivated violence, including terrorism."
+        },
+        {
+          "indicator": "Government Effectiveness",
+          "description": "Captures perceptions of the quality of public services, the quality of the civil service, the quality of policy formulation and implementation, and the credibility of the government's commitment to such policies."
+        },
+        {
+          "indicator": "Regulatory Quality",
+          "description": "Captures perceptions of the ability of the government to formulate and implement sound policies and regulations that permit and promote private sector development."
+        },
+        {
+          "indicator": "Rule of Law",
+          "description": "Captures perceptions of the extent to which agents have confidence in and abide by the rules of society, including the quality of contract enforcement, property rights, the police, and the courts."
+        },
+        {
+          "indicator": "Control of Corruption",
+          "description": "Captures perceptions of the extent to which public power is exercised for private gain, including both petty and grand forms of corruption, as well as capture of the state by elites and private interests."
+        }
+      ],
+      "selectedCountries": [
+        {
+          "country": "Denmark",
+          "voiceAccountability": 98, "politicalStability": 89, "govEffectiveness": 97, "regulatoryQuality": 96, "ruleLaw": 98, "controlCorruption": 99
+        },
+        {
+          "country": "Finland",
+          "voiceAccountability": 99, "politicalStability": 91, "govEffectiveness": 98, "regulatoryQuality": 97, "ruleLaw": 99, "controlCorruption": 98
+        },
+        {
+          "country": "Singapore",
+          "voiceAccountability": 39, "politicalStability": 97, "govEffectiveness": 100, "regulatoryQuality": 99, "ruleLaw": 97, "controlCorruption": 97
+        },
+        {
+          "country": "Switzerland",
+          "voiceAccountability": 97, "politicalStability": 94, "govEffectiveness": 97, "regulatoryQuality": 95, "ruleLaw": 98, "controlCorruption": 97
+        },
+        {
+          "country": "Norway",
+          "voiceAccountability": 99, "politicalStability": 92, "govEffectiveness": 96, "regulatoryQuality": 93, "ruleLaw": 99, "controlCorruption": 97
+        },
+        {
+          "country": "New Zealand",
+          "voiceAccountability": 97, "politicalStability": 94, "govEffectiveness": 92, "regulatoryQuality": 97, "ruleLaw": 97, "controlCorruption": 97
+        },
+        {
+          "country": "Germany",
+          "voiceAccountability": 93, "politicalStability": 67, "govEffectiveness": 89, "regulatoryQuality": 91, "ruleLaw": 93, "controlCorruption": 92
+        },
+        {
+          "country": "United States",
+          "voiceAccountability": 81, "politicalStability": 47, "govEffectiveness": 86, "regulatoryQuality": 88, "ruleLaw": 83, "controlCorruption": 77
+        },
+        {
+          "country": "United Kingdom",
+          "voiceAccountability": 91, "politicalStability": 59, "govEffectiveness": 88, "regulatoryQuality": 93, "ruleLaw": 91, "controlCorruption": 89
+        },
+        {
+          "country": "Japan",
+          "voiceAccountability": 82, "politicalStability": 84, "govEffectiveness": 91, "regulatoryQuality": 85, "ruleLaw": 90, "controlCorruption": 88
+        },
+        {
+          "country": "France",
+          "voiceAccountability": 84, "politicalStability": 51, "govEffectiveness": 84, "regulatoryQuality": 81, "ruleLaw": 87, "controlCorruption": 83
+        },
+        {
+          "country": "UAE",
+          "voiceAccountability": 14, "politicalStability": 80, "govEffectiveness": 90, "regulatoryQuality": 82, "ruleLaw": 81, "controlCorruption": 84
+        },
+        {
+          "country": "Saudi Arabia",
+          "voiceAccountability": 3, "politicalStability": 44, "govEffectiveness": 67, "regulatoryQuality": 62, "ruleLaw": 59, "controlCorruption": 60
+        },
+        {
+          "country": "Qatar",
+          "voiceAccountability": 15, "politicalStability": 87, "govEffectiveness": 78, "regulatoryQuality": 72, "ruleLaw": 77, "controlCorruption": 76
+        },
+        {
+          "country": "Kuwait",
+          "voiceAccountability": 32, "politicalStability": 60, "govEffectiveness": 47, "regulatoryQuality": 51, "ruleLaw": 58, "controlCorruption": 53
+        },
+        {
+          "country": "Bahrain",
+          "voiceAccountability": 10, "politicalStability": 48, "govEffectiveness": 64, "regulatoryQuality": 73, "ruleLaw": 64, "controlCorruption": 62
+        },
+        {
+          "country": "Oman",
+          "voiceAccountability": 13, "politicalStability": 70, "govEffectiveness": 57, "regulatoryQuality": 61, "ruleLaw": 66, "controlCorruption": 66
+        },
+        {
+          "country": "China",
+          "voiceAccountability": 5, "politicalStability": 46, "govEffectiveness": 72, "regulatoryQuality": 45, "ruleLaw": 47, "controlCorruption": 51
+        },
+        {
+          "country": "India",
+          "voiceAccountability": 52, "politicalStability": 17, "govEffectiveness": 58, "regulatoryQuality": 49, "ruleLaw": 53, "controlCorruption": 47
+        },
+        {
+          "country": "Brazil",
+          "voiceAccountability": 59, "politicalStability": 29, "govEffectiveness": 41, "regulatoryQuality": 42, "ruleLaw": 41, "controlCorruption": 39
+        },
+        {
+          "country": "South Africa",
+          "voiceAccountability": 67, "politicalStability": 22, "govEffectiveness": 40, "regulatoryQuality": 55, "ruleLaw": 41, "controlCorruption": 37
+        },
+        {
+          "country": "Russia",
+          "voiceAccountability": 7, "politicalStability": 15, "govEffectiveness": 42, "regulatoryQuality": 30, "ruleLaw": 19, "controlCorruption": 18
+        },
+        {
+          "country": "Nigeria",
+          "voiceAccountability": 35, "politicalStability": 4, "govEffectiveness": 14, "regulatoryQuality": 19, "ruleLaw": 16, "controlCorruption": 13
+        },
+        {
+          "country": "Somalia",
+          "voiceAccountability": 6, "politicalStability": 2, "govEffectiveness": 1, "regulatoryQuality": 3, "ruleLaw": 1, "controlCorruption": 2
+        },
+        {
+          "country": "South Sudan",
+          "voiceAccountability": 4, "politicalStability": 3, "govEffectiveness": 1, "regulatoryQuality": 2, "ruleLaw": 1, "controlCorruption": 1
+        }
+      ]
+    },
+    "year": 2023,
+    "verified": true,
+    "tags": ["world_bank", "wgi", "governance", "country_risk", "corruption", "rule_of_law", "political_stability", "gcc"]
+  }
+]

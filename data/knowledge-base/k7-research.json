@@ -1,0 +1,1372 @@
+[
+  {
+    "source": "UK HM Treasury",
+    "category": "academic",
+    "authors": ["Nicholas Stern"],
+    "title": "Stern Review: The Economics of Climate Change",
+    "publication": "HM Treasury / Cambridge University Press",
+    "year": 2006,
+    "abstract": "The Stern Review, commissioned by the UK Government, assessed the economics of climate change and concluded that the benefits of strong, early action on climate change far outweigh the costs of inaction. It estimated that unmitigated climate change could reduce global GDP by 5-20%, while the cost of stabilising greenhouse gas concentrations could be limited to around 1% of global GDP per year.",
+    "keyFindings": [
+      "Unmitigated climate change could cost the world at least 5% of GDP per year, rising to 20% or more if non-market impacts and risk are included",
+      "The cost of action to stabilise greenhouse gases at 500-550 ppm CO2e is approximately 1% of global GDP per year by 2050",
+      "Climate change is the greatest market failure the world has ever seen — externalities of greenhouse gas emissions are not priced into market transactions",
+      "Three policy elements are essential: carbon pricing, technology policy, and removal of barriers to behavioural change",
+      "Developing countries will be hit earliest and hardest by climate change despite having contributed least to the problem"
+    ],
+    "relevantSectors": ["All sectors", "Energy", "Finance", "Insurance", "Agriculture"],
+    "data": {
+      "type": "landmark_report",
+      "pages": 700,
+      "commissioner": "UK Chancellor of the Exchequer Gordon Brown",
+      "impactNote": "Widely credited with shifting the economic debate on climate change from 'whether to act' to 'how much and how fast'"
+    },
+    "citationKey": "stern2006",
+    "verified": true,
+    "tags": ["climate_economics", "landmark", "cost_benefit", "gdp_impact", "carbon_pricing"]
+  },
+  {
+    "source": "Bank of England",
+    "category": "academic",
+    "authors": ["Mark Carney"],
+    "title": "Breaking the Tragedy of the Horizon - Climate Change and Financial Stability",
+    "publication": "Speech at Lloyd's of London",
+    "year": 2015,
+    "abstract": "In this landmark speech delivered while Governor of the Bank of England and Chairman of the Financial Stability Board (FSB), Mark Carney identified the 'tragedy of the horizon' — the catastrophic impacts of climate change will be felt beyond the traditional horizons of most actors, imposing costs on future generations that the current generation has no direct incentive to fix. He outlined three climate-related financial risks: physical, transition, and liability.",
+    "keyFindings": [
+      "Climate change creates three categories of financial risk: physical risks (damage from weather events), transition risks (revaluation from adjustment to a low-carbon economy), and liability risks (compensation claims from those suffering climate losses)",
+      "The catastrophic impacts of climate change will be felt beyond the traditional horizons of most business cycles, political cycles, and regulatory authorities — the tragedy of the horizon",
+      "The insurance industry is at the front line — since the 1980s, weather-related insurance losses have increased from ~$10 billion to ~$50 billion per year",
+      "Better disclosure of climate-related financial risks is essential — leading to the creation of the Task Force on Climate-related Financial Disclosures (TCFD)",
+      "Financial policymakers must factor climate change into financial stability monitoring and stress testing"
+    ],
+    "relevantSectors": ["Finance", "Insurance", "Banking", "Central Banking"],
+    "data": {
+      "type": "landmark_speech",
+      "venue": "Lloyd's of London",
+      "date": "2015-09-29",
+      "impactNote": "Directly led to the creation of the FSB Task Force on Climate-related Financial Disclosures (TCFD) in December 2015"
+    },
+    "citationKey": "carney2015",
+    "verified": true,
+    "tags": ["tragedy_of_the_horizon", "financial_stability", "tcfd", "physical_risk", "transition_risk", "liability_risk"]
+  },
+  {
+    "source": "Columbia University / University of Melbourne",
+    "category": "academic",
+    "authors": ["Patrick Bolton", "Marcin Kacperczyk"],
+    "title": "Do Investors Care About Carbon Risk?",
+    "publication": "Journal of Financial Economics",
+    "year": 2021,
+    "abstract": "This paper examines whether carbon emissions affect the cross-section of US stock returns. Using data on firms' direct (Scope 1) and indirect (Scope 2 and 3) carbon emissions, the authors find that stocks of firms with higher total carbon emissions earn higher returns, controlling for known risk factors. This carbon premium is not explained by differences in unexpected profitability or other risk characteristics.",
+    "keyFindings": [
+      "Stocks of firms with higher total CO2 emissions (Scope 1+2+3) earn higher returns, suggesting investors demand compensation for carbon risk",
+      "A one standard deviation increase in total emissions is associated with approximately 1.8% higher annualised returns",
+      "The carbon premium exists for both direct (Scope 1) emissions and indirect (Scope 2+3) emissions, but is strongest for Scope 1",
+      "The carbon premium is not driven by differences in unexpected profitability, operating leverage, or default risk",
+      "Institutional investors, particularly those with longer horizons, are increasingly divesting from high-carbon firms"
+    ],
+    "relevantSectors": ["Finance", "Asset Management", "Energy", "Industrials"],
+    "data": {
+      "type": "peer_reviewed_paper",
+      "journal": "Journal of Financial Economics",
+      "volume": 142,
+      "issue": 2,
+      "pages": "517-549",
+      "doi": "10.1016/j.jfineco.2021.05.008"
+    },
+    "citationKey": "bolton_kacperczyk2021",
+    "verified": true,
+    "tags": ["carbon_risk", "stock_returns", "carbon_premium", "scope_1_2_3", "cross_section"]
+  },
+  {
+    "source": "University of Geneva / University of Texas",
+    "category": "academic",
+    "authors": ["Philipp Krueger", "Zacharias Sautner", "Laura T. Starks"],
+    "title": "The Importance of Climate Risks for Institutional Investors",
+    "publication": "Review of Financial Studies",
+    "year": 2020,
+    "abstract": "This paper surveys 439 institutional investors globally about their views on climate risks and how these risks affect their investment decisions. The survey reveals that a majority of investors believe climate risks have financial implications for their portfolios and that these risks, particularly regulatory risks, have already begun to materialise.",
+    "keyFindings": [
+      "Over 50% of institutional investors believe climate risks have financial implications for their portfolio companies today, not just in the long term",
+      "Regulatory risk is viewed as the most important climate risk channel, followed by technology risk and physical risk",
+      "Investors primarily address climate risks through engagement and voting rather than divestment",
+      "European investors are significantly more concerned about climate risks than US investors",
+      "Barriers to climate risk integration include lack of data, lack of standards, and fiduciary duty concerns"
+    ],
+    "relevantSectors": ["Asset Management", "Pension Funds", "Insurance", "Banking"],
+    "data": {
+      "type": "peer_reviewed_paper",
+      "journal": "Review of Financial Studies",
+      "volume": 33,
+      "issue": 3,
+      "pages": "1067-1111",
+      "doi": "10.1093/rfs/hhz137",
+      "sampleSize": 439
+    },
+    "citationKey": "krueger_sautner_starks2020",
+    "verified": true,
+    "tags": ["institutional_investors", "climate_risk", "survey", "engagement", "regulatory_risk"]
+  },
+  {
+    "source": "MIT / University of Zurich",
+    "category": "academic",
+    "authors": ["Florian Berg", "Julian F. Koelbel", "Roberto Rigobon"],
+    "title": "Aggregate Confusion: The Divergence of ESG Ratings",
+    "publication": "Review of Finance",
+    "year": 2022,
+    "abstract": "This paper analyses the divergence of ESG ratings from six prominent rating agencies (KLD/MSCI, Sustainalytics, Moody's/Vigeo Eiris, S&P Global/RobecoSAM, Refinitiv, and MSCI IVA). The authors decompose the divergence into three sources: scope (what categories are measured), measurement (how categories are measured), and weight (how categories are aggregated). They find that measurement divergence is the largest driver.",
+    "keyFindings": [
+      "The average correlation between ESG ratings from different providers is 0.54, compared to 0.99 for credit ratings",
+      "Measurement divergence (different indicators for the same category) accounts for 56% of total divergence",
+      "Scope divergence (different categories being rated) accounts for 38% of total divergence",
+      "Weight divergence (different aggregation weights) accounts for only 6% of total divergence",
+      "A rater effect exists: if a rating agency rates a company favourably in one category, it tends to rate it favourably in other categories too"
+    ],
+    "relevantSectors": ["Asset Management", "ESG Rating Agencies", "Finance", "Corporate Governance"],
+    "data": {
+      "type": "peer_reviewed_paper",
+      "journal": "Review of Finance",
+      "volume": 26,
+      "issue": 6,
+      "pages": "1315-1344",
+      "doi": "10.1093/rof/rfac033",
+      "ratingAgenciesStudied": ["KLD/MSCI", "Sustainalytics", "Moody's/Vigeo Eiris", "S&P Global/RobecoSAM", "Refinitiv", "MSCI IVA"]
+    },
+    "citationKey": "berg_koelbel_rigobon2022",
+    "verified": true,
+    "tags": ["esg_ratings", "divergence", "aggregate_confusion", "measurement", "scope", "weight"]
+  },
+  {
+    "source": "University of Geneva / Erasmus University Rotterdam",
+    "category": "academic",
+    "authors": ["Rajna Gibson Brandon", "Simon Glossner", "Philipp Krueger", "Pedro Matos", "Tom Steffen"],
+    "title": "ESG Rating Disagreement and Stock Returns",
+    "publication": "Review of Finance",
+    "year": 2021,
+    "abstract": "This paper investigates how disagreement among ESG rating agencies affects stock returns. Using ESG ratings from seven providers, the authors find that ESG rating disagreement is positively associated with subsequent stock return volatility and negatively associated with subsequent stock returns. Firms with high ESG rating disagreement have lower institutional ownership.",
+    "keyFindings": [
+      "High ESG rating disagreement is associated with higher stock return volatility",
+      "ESG disagreement is negatively associated with subsequent stock returns, suggesting investors demand a risk premium for ESG uncertainty",
+      "Firms with high ESG rating disagreement have lower institutional ownership, particularly from ESG-sensitive investors",
+      "Disagreement is higher for firms in environmentally sensitive industries and for non-US firms",
+      "The effects of ESG disagreement are distinct from and additive to the level of ESG ratings"
+    ],
+    "relevantSectors": ["Asset Management", "ESG Rating Agencies", "Finance"],
+    "data": {
+      "type": "peer_reviewed_paper",
+      "journal": "Review of Finance",
+      "volume": 25,
+      "issue": 6,
+      "pages": "1497-1524",
+      "doi": "10.1093/rof/rfab049"
+    },
+    "citationKey": "gibson_brandon_etal2021",
+    "verified": true,
+    "tags": ["esg_ratings", "disagreement", "stock_returns", "volatility", "institutional_investors"]
+  },
+  {
+    "source": "London Business School",
+    "category": "academic",
+    "authors": ["Alex Edmans"],
+    "title": "Grow the Pie: How Great Companies Deliver Both Purpose and Profit",
+    "publication": "Cambridge University Press",
+    "year": 2020,
+    "abstract": "In this influential book, Alex Edmans argues that companies should focus on creating value for all stakeholders (growing the pie) rather than splitting a fixed pie between investors and society. Drawing on rigorous evidence, he shows that purposeful companies that invest in their workers, communities, and the environment generate superior long-term financial returns.",
+    "keyFindings": [
+      "Companies listed in the '100 Best Companies to Work For' in America outperformed their peers by 2.3-3.8% per year over a 28-year period",
+      "Purpose should not be pursued at the expense of profit — genuinely purposeful companies grow the pie for all stakeholders",
+      "The pieconomics framework: focus on growing the pie (total value created) rather than splitting it (zero-sum redistribution)",
+      "Intrinsic motivation (purpose, meaning, autonomy) generates more sustainable performance than extrinsic motivation (targets, bonuses, KPIs)",
+      "Evidence-based approach to stakeholder capitalism that avoids both shareholder primacy and unfocused stakeholderism"
+    ],
+    "relevantSectors": ["All sectors", "Corporate Governance", "Finance"],
+    "data": {
+      "type": "book",
+      "publisher": "Cambridge University Press",
+      "isbn": "978-1108494854",
+      "edition": "1st",
+      "pages": 416
+    },
+    "citationKey": "edmans2020",
+    "verified": true,
+    "tags": ["stakeholder_capitalism", "purpose", "grow_the_pie", "pieconomics", "employee_satisfaction"]
+  },
+  {
+    "source": "Boston College",
+    "category": "academic",
+    "authors": ["Caroline Flammer"],
+    "title": "Corporate Green Bonds",
+    "publication": "Journal of Financial Economics",
+    "year": 2021,
+    "abstract": "This paper studies the effect of corporate green bond issuance on firms' environmental and financial performance. Using a sample of corporate green bonds issued between 2013 and 2018, the author finds that green bond issuance leads to improvements in environmental performance (lower CO2 emissions) and that the stock market reacts positively to green bond announcements.",
+    "keyFindings": [
+      "Corporate green bond issuance leads to improvements in environmental performance: CO2 emissions decrease significantly after issuance",
+      "The stock market reacts positively to green bond announcements, with average cumulative abnormal returns of approximately 0.49%",
+      "Green bonds attract a broader investor base, including long-term and ESG-oriented institutional investors",
+      "Green bonds certified by third parties (e.g., Climate Bonds Initiative) generate larger positive market reactions",
+      "The environmental improvements are real and not driven by greenwashing — firms genuinely improve their environmental footprint after issuing green bonds"
+    ],
+    "relevantSectors": ["Finance", "Banking", "Corporate Finance", "Energy"],
+    "data": {
+      "type": "peer_reviewed_paper",
+      "journal": "Journal of Financial Economics",
+      "volume": 142,
+      "issue": 2,
+      "pages": "499-516",
+      "doi": "10.1016/j.jfineco.2021.01.010"
+    },
+    "citationKey": "flammer2021",
+    "verified": true,
+    "tags": ["green_bonds", "environmental_performance", "corporate_finance", "co2_emissions"]
+  },
+  {
+    "source": "Harvard Business School / Boston University",
+    "category": "academic",
+    "authors": ["Jose Azar", "Miguel Duro", "Igor Kadach", "Gaizka Ormazabal"],
+    "title": "The Big Three and Corporate Carbon Emissions Around the World",
+    "publication": "Journal of Financial Economics",
+    "year": 2021,
+    "abstract": "This paper examines whether the Big Three index fund managers (BlackRock, Vanguard, State Street) affect the carbon emissions of their portfolio companies. Using variation in Big Three ownership driven by Russell index reconstitutions, the authors find that greater Big Three ownership is associated with subsequent reductions in corporate carbon emissions.",
+    "keyFindings": [
+      "Greater ownership by the Big Three index fund managers is associated with subsequent reductions in firms' Scope 1 carbon emissions",
+      "A one standard deviation increase in Big Three ownership is associated with approximately a 10% reduction in subsequent carbon emissions",
+      "The effect operates through engagement (private dialogue and voting) rather than divestment",
+      "The Big Three's influence on emissions is stronger in countries with weaker climate regulations, suggesting they fill a regulatory gap",
+      "The carbon reduction effect is concentrated in firms where the Big Three have greater voting power"
+    ],
+    "relevantSectors": ["Asset Management", "Index Funds", "All sectors"],
+    "data": {
+      "type": "peer_reviewed_paper",
+      "journal": "Journal of Financial Economics",
+      "volume": 142,
+      "issue": 2,
+      "pages": "674-696",
+      "doi": "10.1016/j.jfineco.2021.05.007"
+    },
+    "citationKey": "azar_etal2021",
+    "verified": true,
+    "tags": ["big_three", "index_funds", "carbon_emissions", "engagement", "blackrock", "vanguard", "state_street"]
+  },
+  {
+    "source": "University of Chicago / Boston University / NBER",
+    "category": "academic",
+    "authors": ["Lubos Pastor", "Robert F. Stambaugh", "Lucian A. Taylor"],
+    "title": "Sustainable Investing in Equilibrium",
+    "publication": "Journal of Financial Economics",
+    "year": 2021,
+    "abstract": "This paper develops an equilibrium model of sustainable investing that explains why green assets have lower expected returns than brown assets in equilibrium, but can have higher realised returns during a transition period as ESG preferences strengthen. The model reconciles the apparent contradiction between ESG theory (green should earn less) and empirical evidence (green has outperformed).",
+    "keyFindings": [
+      "In equilibrium, green assets have lower expected returns than brown assets because ESG-conscious investors accept lower returns to hold green assets (a 'greenium')",
+      "Green assets can nevertheless outperform brown assets during a transition period when ESG preferences are strengthening and investors shift portfolios toward green assets",
+      "The model predicts that as ESG investing becomes more widespread, the greenium will increase and future expected returns on green assets will decrease further",
+      "ESG investing can have real effects: by raising the cost of capital for brown firms, it encourages them to improve their ESG profiles",
+      "The paper provides a theoretical foundation for understanding the CAPM for sustainable investing (S-CAPM)"
+    ],
+    "relevantSectors": ["Asset Management", "Finance", "All sectors"],
+    "data": {
+      "type": "peer_reviewed_paper",
+      "journal": "Journal of Financial Economics",
+      "volume": 142,
+      "issue": 2,
+      "pages": "550-571",
+      "doi": "10.1016/j.jfineco.2020.12.011"
+    },
+    "citationKey": "pastor_stambaugh_taylor2021",
+    "verified": true,
+    "tags": ["sustainable_investing", "equilibrium", "greenium", "expected_returns", "esg_preferences"]
+  },
+  {
+    "source": "Frankfurt School of Finance & Management",
+    "category": "academic",
+    "authors": ["Emirhan Ilhan", "Zacharias Sautner", "Grigory Vilkov"],
+    "title": "Carbon Tail Risk",
+    "publication": "Review of Financial Studies",
+    "year": 2021,
+    "abstract": "This paper examines how climate policy uncertainty affects the pricing of options on carbon-intensive firms. The authors find that options on stocks of carbon-intensive firms are more expensive, particularly out-of-the-money put options, indicating that investors perceive greater downside (tail) risk for these firms from potential climate policy changes.",
+    "keyFindings": [
+      "Options on carbon-intensive firms are significantly more expensive than options on low-carbon firms, reflecting higher perceived risk",
+      "The cost of downside protection (put options) is disproportionately higher for carbon-intensive firms, indicating carbon tail risk",
+      "Carbon tail risk increases around climate policy events such as COP meetings and major climate policy announcements",
+      "Institutional investors with longer horizons and climate-aware mandates are more sensitive to carbon tail risk",
+      "Carbon tail risk is distinct from other known risk factors and is not explained by standard option pricing models"
+    ],
+    "relevantSectors": ["Finance", "Energy", "Industrials", "Utilities"],
+    "data": {
+      "type": "peer_reviewed_paper",
+      "journal": "Review of Financial Studies",
+      "volume": 34,
+      "issue": 3,
+      "pages": "1540-1571",
+      "doi": "10.1093/rfs/hhaa071"
+    },
+    "citationKey": "ilhan_sautner_vilkov2021",
+    "verified": true,
+    "tags": ["carbon_tail_risk", "options_pricing", "climate_policy", "downside_risk", "carbon_intensive"]
+  },
+  {
+    "source": "Yale University / University of Pennsylvania / Columbia University",
+    "category": "academic",
+    "authors": ["Stefano Giglio", "Bryan Kelly", "Johannes Stroebel"],
+    "title": "Climate Finance",
+    "publication": "Annual Review of Financial Economics",
+    "year": 2021,
+    "abstract": "This comprehensive review article surveys the rapidly growing academic literature on climate finance. The authors cover four main topics: how financial markets price physical and transition climate risks, how climate risks affect asset allocation and portfolio choice, the role of green finance instruments, and the design of climate stress tests for financial institutions.",
+    "keyFindings": [
+      "Climate risks are increasingly priced in financial markets, but pricing remains incomplete due to deep uncertainty about climate outcomes",
+      "Physical climate risks (extreme weather, sea level rise) are partially reflected in real estate and equity prices, but evidence suggests systematic underpricing",
+      "Transition risks from climate policy are reflected in carbon-intensive stocks, particularly around policy announcements",
+      "Green bonds trade at a small premium (2-3 bps yield discount), suggesting investors accept slightly lower returns for green labelling",
+      "Climate stress testing by central banks and regulators is rapidly evolving but faces methodological challenges including long time horizons, non-linearity, and model uncertainty"
+    ],
+    "relevantSectors": ["Finance", "Banking", "Insurance", "Asset Management", "Real Estate"],
+    "data": {
+      "type": "peer_reviewed_paper",
+      "journal": "Annual Review of Financial Economics",
+      "volume": 13,
+      "pages": "15-36",
+      "doi": "10.1146/annurev-financial-102620-103311"
+    },
+    "citationKey": "giglio_kelly_stroebel2021",
+    "verified": true,
+    "tags": ["climate_finance", "literature_review", "physical_risk", "transition_risk", "green_bonds", "stress_testing"]
+  },
+  {
+    "source": "Columbia University",
+    "category": "academic",
+    "authors": ["Harrison Hong", "G. Andrew Karolyi", "Jose A. Scheinkman"],
+    "title": "Climate Finance",
+    "publication": "Review of Financial Studies",
+    "year": 2020,
+    "abstract": "This paper introduces a special issue of the Review of Financial Studies devoted to climate finance. The authors discuss the scope and importance of climate finance research and summarise the key contributions of the papers in the special issue, covering climate risk measurement, asset pricing implications, corporate response to climate change, and financial innovation.",
+    "keyFindings": [
+      "Climate change presents unique challenges for finance: deep uncertainty, non-linearity, long horizons, and potential irreversibility",
+      "The mispricing of climate risk in financial markets creates both risks and opportunities for investors",
+      "Corporate responses to climate change (mitigation, adaptation, disclosure) are increasingly driven by investor and regulatory pressure rather than voluntary action alone",
+      "Financial innovation (green bonds, carbon markets, catastrophe bonds) plays an important role in financing the climate transition",
+      "Interdisciplinary collaboration between climate scientists, economists, and financial researchers is essential for understanding climate-financial interactions"
+    ],
+    "relevantSectors": ["Finance", "Banking", "Insurance", "Asset Management"],
+    "data": {
+      "type": "peer_reviewed_paper",
+      "journal": "Review of Financial Studies",
+      "volume": 33,
+      "issue": 3,
+      "pages": "1011-1023",
+      "doi": "10.1093/rfs/hhz146"
+    },
+    "citationKey": "hong_karolyi_scheinkman2020",
+    "verified": true,
+    "tags": ["climate_finance", "special_issue", "mispricing", "financial_innovation"]
+  },
+  {
+    "source": "Cambridge Judge Business School / London Business School",
+    "category": "academic",
+    "authors": ["Elroy Dimson", "Oguzhan Karakas", "Xi Li"],
+    "title": "Active Ownership",
+    "publication": "Review of Financial Studies",
+    "year": 2015,
+    "abstract": "This paper examines the effectiveness of shareholder engagement on environmental, social, and governance (ESG) issues. Using a proprietary dataset of engagements by a large institutional investor, the authors find that successful engagements (where the targeted company implements the requested changes) are associated with positive abnormal returns and improvements in operating performance.",
+    "keyFindings": [
+      "Successful ESG engagements generate cumulative abnormal returns of approximately 2.3% over the year following the engagement",
+      "Governance engagements have the highest success rate (~60%), followed by environmental (~25%) and social (~18%) engagements",
+      "Success is more likely when the investor engages collaboratively with other institutional investors",
+      "Targeted companies show improvements in operating performance (profitability, efficiency) following successful engagements",
+      "Active ownership through engagement is a viable and effective strategy for value creation, complementing or substituting for exit/divestment"
+    ],
+    "relevantSectors": ["Asset Management", "Corporate Governance", "All sectors"],
+    "data": {
+      "type": "peer_reviewed_paper",
+      "journal": "Review of Financial Studies",
+      "volume": 28,
+      "issue": 12,
+      "pages": "3225-3268",
+      "doi": "10.1093/rfs/hhv044"
+    },
+    "citationKey": "dimson_karakas_li2015",
+    "verified": true,
+    "tags": ["active_ownership", "shareholder_engagement", "esg_engagement", "abnormal_returns"]
+  },
+  {
+    "source": "London School of Economics",
+    "category": "academic",
+    "authors": ["Simon Dietz", "James Rising", "Thomas Stoerk", "Gernot Wagner"],
+    "title": "Economic Impacts of Tipping Points in the Climate System",
+    "publication": "Proceedings of the National Academy of Sciences (PNAS)",
+    "year": 2021,
+    "abstract": "This paper incorporates climate tipping points into an economic assessment of climate change and finds that the risk of tipping points substantially increases the social cost of carbon. Using a stochastic integrated assessment model, the authors show that accounting for tipping points like the collapse of the Atlantic Meridional Overturning Circulation or the disintegration of polar ice sheets raises the optimal carbon price and implies more aggressive near-term emissions reductions.",
+    "keyFindings": [
+      "Including climate tipping points in economic models raises the social cost of carbon by approximately 25% on average",
+      "The risk of tipping points justifies more aggressive near-term emissions reduction, even under standard economic discounting",
+      "Multiple interacting tipping points can cascade and amplify each other, creating potentially catastrophic economic outcomes",
+      "Standard integrated assessment models that ignore tipping points systematically underestimate the economic damages from climate change",
+      "The tail risk from tipping points is more important than the mean effect — the right tail of the damage distribution is heavily fattened"
+    ],
+    "relevantSectors": ["All sectors", "Energy", "Finance", "Insurance"],
+    "data": {
+      "type": "peer_reviewed_paper",
+      "journal": "Proceedings of the National Academy of Sciences",
+      "volume": 118,
+      "issue": 34,
+      "doi": "10.1073/pnas.2103081118"
+    },
+    "citationKey": "dietz_etal2021",
+    "verified": true,
+    "tags": ["tipping_points", "social_cost_of_carbon", "climate_economics", "integrated_assessment", "tail_risk"]
+  },
+  {
+    "source": "UNFCCC",
+    "category": "cop_outcomes",
+    "authors": [],
+    "title": "COP28 Dubai - Global Stocktake and Key Outcomes",
+    "publication": "UNFCCC Decision 1/CMA.5",
+    "year": 2023,
+    "abstract": "COP28 in Dubai (30 November - 13 December 2023) concluded with the first-ever Global Stocktake under the Paris Agreement. The outcome text called for 'transitioning away from fossil fuels in energy systems, in a just, orderly and equitable manner,' marking the first time fossil fuels were explicitly addressed in a COP decision. The conference also operationalised the Loss and Damage Fund and set targets for tripling renewable energy capacity.",
+    "keyFindings": [
+      "First-ever Global Stocktake: recognised that the world is not on track to meet Paris Agreement goals and called for accelerated action",
+      "Historic language on fossil fuels: called for 'transitioning away from fossil fuels in energy systems, in a just, orderly and equitable manner, accelerating action in this critical decade'",
+      "Tripling renewables: agreed to triple global renewable energy capacity to at least 11,000 GW and double the global average annual rate of energy efficiency improvements to over 4% by 2030",
+      "Loss and Damage Fund operationalised with initial pledges totalling ~$792 million, hosted by the World Bank on an interim basis",
+      "Global Methane Pledge: over 150 countries committed to reduce methane emissions 30% by 2030 from 2020 levels"
+    ],
+    "relevantSectors": ["Energy", "Finance", "All sectors"],
+    "data": {
+      "type": "cop_decision",
+      "location": "Dubai, UAE",
+      "dates": "30 November - 13 December 2023",
+      "presidency": "Sultan Al Jaber (UAE)",
+      "participants": "~85,000 registered participants",
+      "lossAndDamagePledges": {
+        "total": "~$792 million",
+        "topPledges": [
+          { "country": "UAE", "amount": "$100 million" },
+          { "country": "Germany", "amount": "$100 million" },
+          { "country": "UK", "amount": "$75 million" },
+          { "country": "Japan", "amount": "$10 million" },
+          { "country": "USA", "amount": "$17.5 million" }
+        ]
+      }
+    },
+    "citationKey": "cop28_2023",
+    "verified": true,
+    "tags": ["cop28", "global_stocktake", "fossil_fuels", "renewables", "loss_and_damage", "dubai"]
+  },
+  {
+    "source": "UNFCCC",
+    "category": "cop_outcomes",
+    "authors": [],
+    "title": "COP29 Baku - New Collective Quantified Goal on Climate Finance",
+    "publication": "UNFCCC Decision 1/CMA.6",
+    "year": 2024,
+    "abstract": "COP29 in Baku, Azerbaijan (11-22 November 2024) was dubbed the 'Finance COP'. The headline outcome was the New Collective Quantified Goal (NCQG) on climate finance, which set a target of at least $300 billion per year by 2035 from developed to developing countries. The goal was criticised by many developing nations and civil society as inadequate given estimated needs of $1 trillion or more annually.",
+    "keyFindings": [
+      "New Collective Quantified Goal (NCQG): developed countries to mobilise at least $300 billion per year in climate finance for developing countries by 2035, up from the $100 billion goal",
+      "Broader $1.3 trillion goal: called on all actors to scale climate finance to $1.3 trillion per year by 2035 from all public and private sources",
+      "Article 6 carbon market rules: finalised rules for international carbon market mechanisms, enabling cross-border carbon credit trading",
+      "Adaptation: progress on the Global Goal on Adaptation framework with indicators and targets",
+      "Controversy: many developing nations, SIDS, and LDCs criticised the $300 billion target as grossly insufficient compared to the $1+ trillion estimated annual need"
+    ],
+    "relevantSectors": ["Finance", "Energy", "All sectors"],
+    "data": {
+      "type": "cop_decision",
+      "location": "Baku, Azerbaijan",
+      "dates": "11-22 November 2024",
+      "presidency": "Mukhtar Babayev (Azerbaijan)",
+      "ncqgDetails": {
+        "coreGoal": "$300 billion per year by 2035",
+        "broaderGoal": "$1.3 trillion per year by 2035 from all sources",
+        "previousGoal": "$100 billion per year by 2020 (achieved in 2022)",
+        "sourcesOfFunding": "Public finance, multilateral development banks, private finance mobilised by public interventions"
+      }
+    },
+    "citationKey": "cop29_2024",
+    "verified": true,
+    "tags": ["cop29", "climate_finance", "ncqg", "baku", "article_6", "carbon_markets"]
+  },
+  {
+    "source": "UNFCCC",
+    "category": "cop_outcomes",
+    "authors": [],
+    "title": "Paris Agreement Article 6 - International Carbon Market Mechanisms",
+    "publication": "UNFCCC / Paris Agreement",
+    "year": 2024,
+    "abstract": "Article 6 of the Paris Agreement establishes mechanisms for international carbon market cooperation. The rules were substantially finalised at COP26 (Glasgow, 2021) and further refined through COP29 (Baku, 2024). Article 6 comprises three main mechanisms: cooperative approaches (6.2), a centralised crediting mechanism (6.4), and non-market approaches (6.8).",
+    "keyFindings": [
+      "Article 6.2: Allows countries to transfer 'internationally transferred mitigation outcomes' (ITMOs) bilaterally or multilaterally, with corresponding adjustments to avoid double counting",
+      "Article 6.4: Establishes a new centralised UN carbon crediting mechanism (successor to CDM), governed by a Supervisory Body, for generating tradeable credits from emissions reduction projects",
+      "Article 6.8: Provides a framework for non-market approaches to sustainable development, including finance, technology transfer, and capacity building",
+      "Corresponding adjustments: when a country transfers credits internationally, it must add back those emissions to its own national accounts to prevent double counting",
+      "Rules finalised at COP29 in Baku (2024) include methodological standards for Article 6.4, registry design, and governance procedures"
+    ],
+    "relevantSectors": ["Energy", "Finance", "Carbon Markets", "All sectors"],
+    "data": {
+      "type": "treaty_provision",
+      "mechanisms": {
+        "article62": {
+          "name": "Cooperative Approaches",
+          "type": "Bilateral/multilateral transfers of ITMOs",
+          "governance": "Decentralised — participating countries set rules bilaterally",
+          "status": "Operational — several bilateral agreements signed (e.g., Switzerland-Peru, Japan-multiple countries)"
+        },
+        "article64": {
+          "name": "Article 6.4 Mechanism",
+          "type": "Centralised UN crediting mechanism",
+          "governance": "Supervised by the Article 6.4 Supervisory Body under the CMA",
+          "status": "Operationalisation ongoing — methodological standards adopted at COP29"
+        },
+        "article68": {
+          "name": "Non-Market Approaches",
+          "type": "Framework for non-market cooperation",
+          "governance": "Under the Glasgow Committee on Non-Market Approaches",
+          "status": "Framework established; implementation ongoing"
+        }
+      }
+    },
+    "citationKey": "paris_article6_2024",
+    "verified": true,
+    "tags": ["paris_agreement", "article_6", "carbon_markets", "itmo", "corresponding_adjustments", "cdm"]
+  },
+  {
+    "source": "UNFCCC",
+    "category": "cop_outcomes",
+    "authors": [],
+    "title": "Loss and Damage Fund - Structure, Pledges, and Operationalisation",
+    "publication": "UNFCCC / COP27-COP28 Decisions",
+    "year": 2023,
+    "abstract": "The Loss and Damage Fund was established at COP27 in Sharm el-Sheikh (2022) and operationalised at COP28 in Dubai (2023). It is designed to provide financial assistance to developing countries particularly vulnerable to the adverse effects of climate change. The fund is hosted by the World Bank on an interim basis for an initial four-year period.",
+    "keyFindings": [
+      "Established at COP27 (2022) after decades of advocacy by developing nations, particularly SIDS and LDCs",
+      "Operationalised at COP28 (2023) with initial pledges of approximately $792 million from over 20 countries",
+      "Interim hosting: World Bank hosts the fund for an initial 4-year period, subject to conditions including equitable governance and direct access for vulnerable countries",
+      "Governance: a 26-member Board with balanced representation between developed and developing countries",
+      "Eligibility: developing countries particularly vulnerable to adverse effects of climate change, with priority for LDCs, SIDS, and African countries"
+    ],
+    "relevantSectors": ["Finance", "Insurance", "All sectors"],
+    "data": {
+      "type": "institutional_mechanism",
+      "host": "World Bank (interim, 4-year period)",
+      "boardComposition": "26 members: 14 from developing countries, 12 from developed countries",
+      "initialPledges": [
+        { "country": "UAE", "amount": "$100 million" },
+        { "country": "Germany", "amount": "$100 million" },
+        { "country": "UK", "amount": "$75 million" },
+        { "country": "Italy", "amount": "$100 million" },
+        { "country": "France", "amount": "$100 million" },
+        { "country": "Japan", "amount": "$10 million" },
+        { "country": "USA", "amount": "$17.5 million" },
+        { "country": "EU", "amount": "$125 million" },
+        { "country": "Denmark", "amount": "$50 million" }
+      ],
+      "totalPledged": "~$792 million",
+      "estimatedNeed": "$400 billion per year by 2030 (estimates vary widely)",
+      "timeline": {
+        "2022-11": "Established at COP27 in Sharm el-Sheikh",
+        "2023-12": "Operationalised at COP28 in Dubai with initial pledges",
+        "2024": "Board established, initial disbursements planned"
+      }
+    },
+    "citationKey": "loss_damage_fund_2023",
+    "verified": true,
+    "tags": ["loss_and_damage", "cop27", "cop28", "climate_finance", "sids", "ldcs", "world_bank"]
+  },
+  {
+    "source": "UNFCCC",
+    "category": "cop_outcomes",
+    "authors": [],
+    "title": "COP28 UAE Consensus - Global Stocktake Decision Text Analysis",
+    "publication": "UNFCCC Decision 1/CMA.5 (UAE Consensus)",
+    "year": 2023,
+    "abstract": "The UAE Consensus represents the outcome document of the first Global Stocktake under the Paris Agreement. The 21-page decision text covers mitigation, adaptation, means of implementation, and loss and damage. It represents the most comprehensive assessment of collective progress toward Paris Agreement goals and sets out a roadmap for accelerating climate action.",
+    "keyFindings": [
+      "Recognises that limiting warming to 1.5C requires global GHG emissions to be reduced by 43% by 2030 and 60% by 2035 relative to 2019 levels",
+      "Calls for tripling renewable energy capacity globally and doubling the global average annual rate of energy efficiency improvements by 2030",
+      "Calls for accelerating efforts towards phase-down of unabated coal power and phasing out inefficient fossil fuel subsidies that do not address energy poverty or just transition",
+      "Recognises the need for transitional fuels in facilitating the energy transition while ensuring energy security — controversial provision interpreted as supporting natural gas",
+      "Calls on Parties to submit ambitious next-round NDCs (Nationally Determined Contributions) by early 2025, economy-wide and covering all greenhouse gases"
+    ],
+    "relevantSectors": ["Energy", "Finance", "All sectors"],
+    "data": {
+      "type": "cop_decision_analysis",
+      "decisionNumber": "1/CMA.5",
+      "commonName": "UAE Consensus",
+      "pages": 21,
+      "paragraphs": 196,
+      "keyParagraphs": {
+        "28": "Transitioning away from fossil fuels in energy systems",
+        "29": "Tripling renewable energy and doubling energy efficiency by 2030",
+        "30": "Accelerating zero- and low-emission technologies including nuclear, CCUS, and low-carbon hydrogen",
+        "36": "Phase-down of unabated coal power",
+        "37": "Phasing out inefficient fossil fuel subsidies"
+      }
+    },
+    "citationKey": "uae_consensus_2023",
+    "verified": true,
+    "tags": ["cop28", "uae_consensus", "global_stocktake", "fossil_fuels", "renewables", "ndc"]
+  },
+  {
+    "source": "KPMG",
+    "category": "big4_consulting",
+    "authors": [],
+    "title": "KPMG Survey of Sustainability Reporting 2024",
+    "publication": "KPMG International",
+    "year": 2024,
+    "abstract": "KPMG's biennial survey of sustainability reporting analysed reporting practices of 5,800 companies across 58 countries and territories. The 2024 edition found that sustainability reporting is now nearly universal among the world's largest companies, with growing adoption of TCFD recommendations and increasing use of third-party assurance.",
+    "keyFindings": [
+      "96% of the world's largest 250 companies (G250) now report on sustainability, up from 64% in 2005",
+      "79% of the N100 (top 100 companies in each surveyed country) report on sustainability",
+      "65% of G250 companies now acknowledge climate change as a financial risk in their reporting",
+      "Third-party assurance of sustainability data rose to 64% of G250 companies, up from 44% four years ago",
+      "TCFD-aligned reporting adopted by 78% of G250 companies; early ISSB/IFRS S1-S2 adoption observed"
+    ],
+    "relevantSectors": ["All sectors", "Accounting", "Consulting"],
+    "data": {
+      "type": "industry_survey",
+      "sampleSize": 5800,
+      "countriesCovered": 58,
+      "previousEditions": [2022, 2020, 2017, 2015, 2013, 2011, 2008, 2005, 2002, 1999, 1996, 1993]
+    },
+    "citationKey": "kpmg_sustainability_2024",
+    "verified": true,
+    "tags": ["kpmg", "sustainability_reporting", "survey", "tcfd", "assurance", "g250"]
+  },
+  {
+    "source": "PwC",
+    "category": "big4_consulting",
+    "authors": [],
+    "title": "PwC Global Investor Survey 2024",
+    "publication": "PricewaterhouseCoopers International",
+    "year": 2024,
+    "abstract": "PwC's annual Global Investor Survey canvassed over 340 institutional investors and analysts across 27 territories on their views on ESG, sustainability, and value creation. The 2024 edition revealed that investors continue to integrate ESG factors into decision-making but are increasingly focused on financially material sustainability issues rather than broad ESG scores.",
+    "keyFindings": [
+      "75% of investors say ESG factors are important to their investment decision-making, though down from 82% in 2023 as focus shifts to material issues",
+      "Climate change remains the top ESG priority for investors, cited by 68% of respondents",
+      "57% of investors have divested or would consider divesting from companies with inadequate sustainability strategies",
+      "Investors increasingly want companies to quantify the financial impact of sustainability risks and opportunities in their reporting",
+      "AI and technology governance emerged as a rising ESG concern, with 45% of investors flagging it as material"
+    ],
+    "relevantSectors": ["Finance", "Asset Management", "All sectors"],
+    "data": {
+      "type": "investor_survey",
+      "sampleSize": 345,
+      "territoriesCovered": 27
+    },
+    "citationKey": "pwc_investor_survey_2024",
+    "verified": true,
+    "tags": ["pwc", "investor_survey", "esg_integration", "climate_change", "materiality"]
+  },
+  {
+    "source": "EY",
+    "category": "big4_consulting",
+    "authors": [],
+    "title": "EY Global Climate Risk Barometer 2024",
+    "publication": "Ernst & Young Global Limited",
+    "year": 2024,
+    "abstract": "The EY Global Climate Risk Barometer assesses the quality and maturity of climate-related financial disclosures aligned with TCFD recommendations across 1,500+ companies in 51 jurisdictions. The 2024 edition found steady improvement in disclosure quality, but significant gaps remain, particularly in scenario analysis and quantification of financial impacts.",
+    "keyFindings": [
+      "89% of companies assessed now provide some form of TCFD-aligned disclosure, up from 78% in 2022",
+      "Only 41% of companies disclose quantified financial impacts of climate risks — a critical gap for investor decision-making",
+      "Scenario analysis adoption reached 60%, but quality varies widely — many companies use only qualitative or high-level scenarios",
+      "European companies lead on disclosure quality (average score 62/100), followed by Asia-Pacific (48/100) and Americas (44/100)",
+      "Financial services sector leads on TCFD adoption (72%), followed by energy (65%) and materials (58%)"
+    ],
+    "relevantSectors": ["All sectors", "Finance", "Energy"],
+    "data": {
+      "type": "benchmarking_report",
+      "companiesAssessed": 1500,
+      "jurisdictionsCovered": 51,
+      "framework": "TCFD"
+    },
+    "citationKey": "ey_climate_barometer_2024",
+    "verified": true,
+    "tags": ["ey", "tcfd", "climate_risk", "disclosure", "scenario_analysis", "barometer"]
+  },
+  {
+    "source": "Deloitte",
+    "category": "big4_consulting",
+    "authors": [],
+    "title": "Deloitte 2024 CxO Sustainability Report",
+    "publication": "Deloitte Global",
+    "year": 2024,
+    "abstract": "Deloitte's annual CxO Sustainability Report surveyed over 2,100 C-suite executives across 27 countries on their sustainability strategies, actions, and barriers. The 2024 edition found that C-suite leaders are increasingly treating sustainability as a business imperative, but face challenges in measuring impact, securing investment, and navigating regulatory complexity.",
+    "keyFindings": [
+      "82% of C-suite executives are personally concerned about climate change, up from 75% in 2023",
+      "61% of organisations have increased their sustainability investments over the past year",
+      "Top barriers to sustainability action: regulatory complexity (cited by 47%), difficulty measuring ROI (43%), and competing business priorities (41%)",
+      "42% of CxOs report that climate change has already had a tangible impact on their company's strategy and operations",
+      "Only 28% of organisations have set science-based targets, revealing a gap between ambition and action"
+    ],
+    "relevantSectors": ["All sectors", "Corporate Governance"],
+    "data": {
+      "type": "executive_survey",
+      "sampleSize": 2100,
+      "countriesCovered": 27,
+      "respondentLevel": "C-suite executives"
+    },
+    "citationKey": "deloitte_cxo_2024",
+    "verified": true,
+    "tags": ["deloitte", "c_suite", "sustainability_strategy", "barriers", "investment"]
+  },
+  {
+    "source": "McKinsey & Company",
+    "category": "big4_consulting",
+    "authors": [],
+    "title": "The State of ESG: Building Credible Sustainability Programs",
+    "publication": "McKinsey Sustainability",
+    "year": 2024,
+    "abstract": "McKinsey's comprehensive analysis of the state of ESG examines how companies can build credible, value-creating sustainability programs amid growing regulatory pressure, stakeholder expectations, and the backlash against perceived greenwashing. The report draws on proprietary data analysis, case studies, and McKinsey's Global Sustainability Survey.",
+    "keyFindings": [
+      "Companies in the top quartile of ESG performance outperform bottom quartile peers by 10-20% on key financial metrics (ROE, total shareholder return)",
+      "Over $35 trillion in assets under management globally are now managed with ESG criteria, representing ~36% of total AUM",
+      "The ESG regulatory landscape has become 3x more complex since 2019, with over 600 ESG-related regulations globally",
+      "60% of consumers say they would pay more for sustainably packaged products, but actual purchase behaviour shows a smaller premium acceptance of ~5-10%",
+      "Greenwashing risk is the top concern for ESG leaders, with 73% of companies investing in improved data and reporting infrastructure"
+    ],
+    "relevantSectors": ["All sectors", "Strategy", "Finance"],
+    "data": {
+      "type": "research_report",
+      "dataPoints": "Analysis of 2,000+ companies across 15 sectors"
+    },
+    "citationKey": "mckinsey_state_esg_2024",
+    "verified": true,
+    "tags": ["mckinsey", "esg", "financial_performance", "greenwashing", "regulation", "aum"]
+  },
+  {
+    "source": "BCG (Boston Consulting Group)",
+    "category": "big4_consulting",
+    "authors": [],
+    "title": "Total Societal Impact: A New Lens for Strategy",
+    "publication": "Boston Consulting Group Henderson Institute",
+    "year": 2017,
+    "abstract": "BCG's Total Societal Impact (TSI) framework proposes a new lens for corporate strategy that captures the total benefit a company provides to society through its products, operations, and value chain. The report argues that companies with high TSI generate higher valuations and shareholder returns, providing a business case for purpose-driven strategy.",
+    "keyFindings": [
+      "Companies with above-average TSI enjoy valuation premiums of 3-19% across all industries studied",
+      "TSI encompasses employment, tax payments, local investment, environmental stewardship, and product/service impact on society",
+      "In the consumer goods sector, companies with highest TSI scores achieved total shareholder returns 11 percentage points higher than peers over 5 years",
+      "Investors increasingly consider non-financial value creation, creating a market incentive for high TSI",
+      "The framework provides a common language for boards, executives, and investors to discuss societal value creation alongside financial value"
+    ],
+    "relevantSectors": ["All sectors", "Strategy", "Consumer Goods"],
+    "data": {
+      "type": "strategic_framework",
+      "sectorsAnalysed": ["Consumer goods", "Technology", "Energy", "Industrials", "Financial services"],
+      "companiesAnalysed": "300+ global companies"
+    },
+    "citationKey": "bcg_tsi_2017",
+    "verified": true,
+    "tags": ["bcg", "total_societal_impact", "tsi", "valuation", "purpose", "strategy"]
+  },
+  {
+    "source": "KPMG",
+    "category": "big4_consulting",
+    "authors": [],
+    "title": "KPMG ESG Assurance Maturity Index 2024",
+    "publication": "KPMG International",
+    "year": 2024,
+    "abstract": "KPMG's ESG Assurance Maturity Index assesses the readiness of organisations for mandatory ESG assurance requirements, including those under the EU's CSRD and the SEC's climate disclosure rules. The report benchmarks assurance practices across regions and identifies key gaps in data quality, internal controls, and assurance provider capacity.",
+    "keyFindings": [
+      "Only 35% of companies are rated as 'assurance-ready' for CSRD requirements, despite the 2024-2025 compliance timeline",
+      "European companies are most advanced in assurance readiness (45%), followed by Asia-Pacific (30%) and North America (25%)",
+      "The most common assurance gaps are: ESG data quality and internal controls (68%), Scope 3 emissions data (62%), and social metrics (55%)",
+      "Demand for ESG assurance services is expected to grow 40% by 2026, creating a significant skills gap in the audit profession",
+      "Limited assurance remains the norm (85% of current engagements), but regulatory requirements are moving toward reasonable assurance"
+    ],
+    "relevantSectors": ["All sectors", "Accounting", "Finance"],
+    "data": {
+      "type": "benchmarking_report",
+      "regionsAssessed": ["Europe", "North America", "Asia-Pacific", "Middle East & Africa", "Latin America"]
+    },
+    "citationKey": "kpmg_assurance_2024",
+    "verified": true,
+    "tags": ["kpmg", "esg_assurance", "csrd", "readiness", "limited_assurance", "reasonable_assurance"]
+  },
+  {
+    "source": "PwC",
+    "category": "big4_consulting",
+    "authors": [],
+    "title": "CSRD Implementation: Lessons from Early Adopters",
+    "publication": "PricewaterhouseCoopers",
+    "year": 2024,
+    "abstract": "PwC's analysis of early CSRD adopters examines the practical challenges and lessons learned from companies that have begun implementing the European Sustainability Reporting Standards (ESRS). Based on engagements with 100+ companies in the first wave of CSRD reporters, the report provides actionable guidance on double materiality assessment, data collection, and reporting architecture.",
+    "keyFindings": [
+      "Double materiality assessment takes 3-6 months on average and requires engagement with 15-25 stakeholder groups",
+      "Average number of ESRS data points companies must report on: 800-1,200 (after materiality filtering from the full ~1,200 data points)",
+      "Top implementation challenges: data availability across value chain (cited by 82%), integrating sustainability into existing ERP systems (67%), and cross-functional coordination (58%)",
+      "Companies underestimate the effort required for Scope 3 emissions calculation — averaging 6-12 months for first comprehensive calculation",
+      "Early adopters that integrated CSRD with existing TCFD/GRI/ISSB reporting saved 30-40% of implementation effort through data reuse"
+    ],
+    "relevantSectors": ["All sectors", "Accounting", "Consulting"],
+    "data": {
+      "type": "implementation_guide",
+      "companiesStudied": "100+ early adopters"
+    },
+    "citationKey": "pwc_csrd_2024",
+    "verified": true,
+    "tags": ["pwc", "csrd", "esrs", "double_materiality", "implementation", "early_adopters"]
+  },
+  {
+    "source": "EY",
+    "category": "big4_consulting",
+    "authors": [],
+    "title": "How Boards are Governing Sustainability",
+    "publication": "Ernst & Young Global Limited",
+    "year": 2024,
+    "abstract": "EY's report on board-level sustainability governance examines how corporate boards are integrating ESG oversight into their structures, processes, and competencies. Based on a survey of 500 board members and interviews with 50 chairs and lead directors, the report found that sustainability governance is rapidly evolving but significant capability gaps persist.",
+    "keyFindings": [
+      "72% of boards now have a dedicated sustainability or ESG committee, up from 34% in 2020",
+      "Only 28% of board members rate their board's climate expertise as 'strong' or 'very strong'",
+      "55% of boards now link executive compensation to sustainability KPIs, up from 22% in 2020",
+      "Top governance challenges: keeping pace with regulatory change (59%), ensuring data quality for board-level reporting (52%), and balancing short-term financial pressures with long-term sustainability goals (48%)",
+      "Boards that actively govern sustainability report higher confidence in their company's long-term resilience (67% vs 39% for boards without active governance)"
+    ],
+    "relevantSectors": ["Corporate Governance", "All sectors"],
+    "data": {
+      "type": "governance_survey",
+      "boardMembersSurveyed": 500,
+      "interviewsConducted": 50
+    },
+    "citationKey": "ey_boards_sustainability_2024",
+    "verified": true,
+    "tags": ["ey", "board_governance", "sustainability_committee", "executive_compensation", "esg_oversight"]
+  },
+  {
+    "source": "Deloitte",
+    "category": "big4_consulting",
+    "authors": [],
+    "title": "Deloitte Climate Check 2024: Business Views on Climate Action",
+    "publication": "Deloitte Global",
+    "year": 2024,
+    "abstract": "Deloitte's Climate Check survey examines business leaders' perspectives on climate change, climate policy, and the energy transition. Surveying over 3,000 business leaders across 20 countries, it provides insight into how businesses perceive climate risks and opportunities and what actions they are taking.",
+    "keyFindings": [
+      "76% of business leaders agree that the world is at a tipping point for responding to climate change",
+      "68% report that extreme weather events have already affected their operations or supply chains in the past year",
+      "52% of businesses have increased climate-related capital expenditure, with an average increase of 15% year-over-year",
+      "Top opportunity areas identified: energy efficiency (71%), renewable energy procurement (58%), and circular economy models (43%)",
+      "Regional variation: 84% of European leaders see climate as a strategic priority vs 61% of North American and 77% of Asia-Pacific leaders"
+    ],
+    "relevantSectors": ["All sectors", "Energy", "Strategy"],
+    "data": {
+      "type": "business_survey",
+      "sampleSize": 3000,
+      "countriesCovered": 20
+    },
+    "citationKey": "deloitte_climate_check_2024",
+    "verified": true,
+    "tags": ["deloitte", "climate_action", "energy_transition", "business_leaders", "extreme_weather"]
+  },
+  {
+    "source": "McKinsey & Company",
+    "category": "big4_consulting",
+    "authors": [],
+    "title": "Net-Zero Transitions: What It Would Take",
+    "publication": "McKinsey Global Institute",
+    "year": 2022,
+    "abstract": "McKinsey's comprehensive analysis of the global transition to net-zero emissions by 2050 examines the changes required across energy systems, land use, industrial processes, and consumer behaviour. The report quantifies the capital investment needed, the economic shifts involved, and the implications for employment and livelihoods across sectors and regions.",
+    "keyFindings": [
+      "Achieving net zero by 2050 requires $275 trillion in cumulative capital spending on physical assets across the energy and land-use systems through 2050 (~$9.2 trillion per year)",
+      "Annual spending on physical assets for the energy and land-use systems would need to increase by $3.5 trillion per year from current levels",
+      "The fossil fuel sector could see demand decline by ~55% for coal and ~70% for oil by 2050 in a net-zero scenario",
+      "Approximately 200 million jobs could be created in clean energy and sustainability sectors, while 185 million jobs in fossil fuel and high-carbon sectors could be displaced",
+      "Developing economies face the greatest transition challenge, requiring $1 trillion annually in external financing to achieve net zero"
+    ],
+    "relevantSectors": ["Energy", "Industrials", "Agriculture", "Transport", "Buildings", "Finance"],
+    "data": {
+      "type": "research_report",
+      "pages": 224,
+      "scenario": "Network for Greening the Financial System (NGFS) Net-Zero 2050 scenario"
+    },
+    "citationKey": "mckinsey_net_zero_2022",
+    "verified": true,
+    "tags": ["mckinsey", "net_zero", "capital_investment", "energy_transition", "jobs", "stranded_assets"]
+  },
+  {
+    "source": "Bain & Company",
+    "category": "big4_consulting",
+    "authors": [],
+    "title": "Sustainability as a Competitive Advantage: The New ESG Playbook",
+    "publication": "Bain & Company",
+    "year": 2023,
+    "abstract": "Bain's research examines how leading companies are turning sustainability into a source of competitive advantage rather than treating it as a compliance cost. Based on analysis of 500+ companies across industries, the report identifies five strategic archetypes for sustainability-driven value creation.",
+    "keyFindings": [
+      "Companies that integrate sustainability into core strategy achieve 15-25% higher EBITDA margins than peers treating sustainability as a compliance exercise",
+      "Five sustainability archetypes identified: Green Premium Leaders, Efficiency Champions, Circular Disruptors, Purpose-Driven Brands, and Sustainable Supply Chain Orchestrators",
+      "68% of consumers in developed markets are willing to pay a 5-10% premium for demonstrably sustainable products",
+      "Sustainability leaders attract and retain talent more effectively — 40% lower voluntary turnover compared to industry average",
+      "The cost of inaction is rising faster than the cost of action: regulatory penalties, carbon costs, and reputational risks are increasing at 10-15% per year"
+    ],
+    "relevantSectors": ["All sectors", "Consumer Goods", "Strategy"],
+    "data": {
+      "type": "strategic_research",
+      "companiesAnalysed": "500+"
+    },
+    "citationKey": "bain_sustainability_2023",
+    "verified": true,
+    "tags": ["bain", "competitive_advantage", "sustainability_strategy", "ebitda", "green_premium"]
+  },
+  {
+    "source": "Oliver Wyman",
+    "category": "big4_consulting",
+    "authors": [],
+    "title": "Climate Risk in Financial Services: Turning Strategy into Action",
+    "publication": "Oliver Wyman / Marsh McLennan",
+    "year": 2023,
+    "abstract": "Oliver Wyman's report examines how financial services firms — banks, insurers, and asset managers — are embedding climate risk management into their operations. Drawing on engagements with 100+ financial institutions and regulatory analysis, the report identifies best practices and common pitfalls in climate risk integration.",
+    "keyFindings": [
+      "Climate-related losses in the insurance sector exceeded $100 billion per year for the fourth consecutive year in 2023",
+      "Only 23% of banks have fully integrated climate risk into their credit risk assessment processes",
+      "Regulators in 30+ jurisdictions have issued climate risk management guidelines or requirements for financial institutions",
+      "Physical risk exposure: banks with high concentration in climate-vulnerable geographies face 5-15% additional credit losses under adverse climate scenarios",
+      "Transition risk modelling remains nascent — fewer than 15% of financial institutions use granular, sector-level transition risk models"
+    ],
+    "relevantSectors": ["Banking", "Insurance", "Asset Management", "Financial Services"],
+    "data": {
+      "type": "industry_report",
+      "institutionsConsulted": "100+"
+    },
+    "citationKey": "oliver_wyman_climate_risk_2023",
+    "verified": true,
+    "tags": ["oliver_wyman", "climate_risk", "financial_services", "banking", "insurance", "credit_risk"]
+  },
+  {
+    "source": "Roland Berger",
+    "category": "big4_consulting",
+    "authors": [],
+    "title": "Sustainability in the Middle East: From Ambition to Action",
+    "publication": "Roland Berger Middle East",
+    "year": 2024,
+    "abstract": "Roland Berger's analysis of sustainability in the Middle East examines the region's unique position as both a major fossil fuel producer and an increasingly ambitious player in the energy transition. The report covers regulatory developments, corporate adoption, and green finance growth across GCC countries and the broader MENA region.",
+    "keyFindings": [
+      "GCC countries have committed $200+ billion to renewable energy and green hydrogen projects through 2030",
+      "Saudi Arabia's Vision 2030 includes a target of 50% renewable energy in the electricity mix by 2030, up from ~1% in 2020",
+      "UAE Net Zero 2050 strategy includes $160 billion in clean energy investment",
+      "ESG reporting adoption in GCC listed companies grew from ~15% in 2020 to ~60% in 2024, driven by exchange requirements in Saudi Arabia (Tadawul), UAE (ADX, DFM), and Qatar (QSE)",
+      "Green and sustainable bond issuance in MENA reached $20 billion cumulative by end of 2024, with UAE and Saudi Arabia accounting for over 70%"
+    ],
+    "relevantSectors": ["Energy", "Finance", "All sectors"],
+    "data": {
+      "type": "regional_report",
+      "regionCovered": "GCC / MENA",
+      "countriesFocused": ["Saudi Arabia", "UAE", "Qatar", "Oman", "Bahrain", "Kuwait"]
+    },
+    "citationKey": "roland_berger_middle_east_2024",
+    "verified": true,
+    "tags": ["roland_berger", "middle_east", "gcc", "renewable_energy", "green_hydrogen", "vision_2030"]
+  },
+  {
+    "source": "Strategy& (PwC)",
+    "category": "big4_consulting",
+    "authors": [],
+    "title": "The ESG Software Market: From Spreadsheets to Enterprise Platforms",
+    "publication": "Strategy& / PwC",
+    "year": 2024,
+    "abstract": "Strategy&'s analysis of the ESG software market examines the rapid growth of technology solutions for ESG data management, reporting, and analytics. The report maps the competitive landscape, identifies key buying criteria, and projects market growth as mandatory disclosure requirements drive enterprise adoption.",
+    "keyFindings": [
+      "The global ESG software market was valued at approximately $1.3 billion in 2023 and is projected to reach $4.5 billion by 2028 (CAGR ~28%)",
+      "CSRD, SEC climate rules, and ISSB standards are the primary demand drivers, converting voluntary adopters into mandatory buyers",
+      "Market is consolidating: 10 major platforms now account for ~45% of enterprise market share, up from ~25% in 2021",
+      "Key buying criteria: regulatory coverage breadth (cited by 78%), integration with existing ERP/financial systems (72%), and automated data collection (68%)",
+      "Major players include Workiva, Sphera, Diligent, Persefoni, Watershed, Plan A, Sweep, SAP Sustainability, Salesforce Net Zero, and MSCI ESG Manager"
+    ],
+    "relevantSectors": ["Technology", "All sectors", "Finance", "Consulting"],
+    "data": {
+      "type": "market_analysis",
+      "marketSize2023": "$1.3 billion",
+      "projectedMarketSize2028": "$4.5 billion",
+      "cagr": "28%"
+    },
+    "citationKey": "strategy_and_esg_software_2024",
+    "verified": true,
+    "tags": ["strategy_and", "esg_software", "market_size", "csrd", "technology", "reporting_platforms"]
+  },
+  {
+    "source": "IPIECA",
+    "category": "sector_body",
+    "authors": [],
+    "title": "IPIECA Sustainability Reporting Guidance for the Oil and Gas Industry (4th Edition)",
+    "publication": "IPIECA",
+    "year": 2020,
+    "abstract": "IPIECA's sustainability reporting guidance provides a comprehensive framework for oil and gas companies to report on ESG performance. The 4th edition aligns with TCFD, GRI, SASB, and the SDGs, covering governance, climate and energy, environment, safety and health, social, and human rights indicators.",
+    "keyFindings": [
+      "Covers 21 sustainability reporting indicators across six themes: governance, climate and energy, environment, safety and health, social, and human rights",
+      "Aligned with TCFD recommendations for climate-related financial disclosure in the oil and gas sector",
+      "Provides sector-specific guidance on Scope 1, 2, and 3 emissions reporting including methodologies for upstream, midstream, and downstream operations",
+      "Includes guidance on methane emissions reporting and target-setting for the oil and gas sector",
+      "Used by the majority of major international oil companies as the primary framework for sustainability reporting"
+    ],
+    "relevantSectors": ["Oil and Gas", "Energy"],
+    "data": {
+      "edition": "4th Edition",
+      "themes": 6,
+      "indicators": 21,
+      "alignedWith": ["TCFD", "GRI", "SASB", "SDGs"]
+    },
+    "citationKey": "ipieca_reporting_2020",
+    "verified": true,
+    "tags": ["ipieca", "oil_gas", "sustainability_reporting", "tcfd", "emissions"]
+  },
+  {
+    "source": "WBCSD",
+    "category": "sector_body",
+    "authors": [],
+    "title": "Reporting Matters 2024: Driving Improvement in Sustainability Reporting",
+    "publication": "World Business Council for Sustainable Development",
+    "year": 2024,
+    "abstract": "WBCSD's annual Reporting Matters review analyses the sustainability reports of 170+ WBCSD member companies to assess reporting quality and identify best practices. The 2024 edition evaluates alignment with emerging standards including ISSB, CSRD/ESRS, and TNFD alongside established frameworks.",
+    "keyFindings": [
+      "Average reporting quality among WBCSD members improved for the 10th consecutive year, though the pace of improvement is slowing",
+      "78% of companies now integrate sustainability information into their mainstream financial reports, up from 55% in 2020",
+      "ISSB-aligned reporting is emerging: 32% of members are already preparing for IFRS S1/S2 compliance or voluntary adoption",
+      "Biodiversity and nature-related disclosure remains the weakest area, with only 22% of companies providing substantive nature-related information",
+      "Double materiality: 45% of European members are already conducting double materiality assessments ahead of CSRD requirements"
+    ],
+    "relevantSectors": ["All sectors", "Corporate Governance"],
+    "data": {
+      "type": "annual_review",
+      "companiesAssessed": "170+",
+      "yearsConducted": "2014-2024"
+    },
+    "citationKey": "wbcsd_reporting_matters_2024",
+    "verified": true,
+    "tags": ["wbcsd", "reporting_matters", "sustainability_reporting", "issb", "csrd", "biodiversity"]
+  },
+  {
+    "source": "GRESB",
+    "category": "sector_body",
+    "authors": [],
+    "title": "GRESB Real Estate Assessment Results 2024",
+    "publication": "GRESB BV",
+    "year": 2024,
+    "abstract": "GRESB (Global Real Estate Sustainability Benchmark) is the leading ESG benchmark for real estate and infrastructure investments. The 2024 assessment covers 2,200+ property companies, REITs, and funds, evaluating their ESG performance across management, performance, and development indicators. GRESB scores are used by 170+ institutional investors representing $51 trillion in AUM.",
+    "keyFindings": [
+      "2,200+ property companies and funds participated in the 2024 assessment, covering $8.6 trillion in gross asset value",
+      "Global average GRESB score: 75/100, up from 73 in 2023 and 68 in 2020",
+      "97% of participants have a sustainability policy, and 84% have set greenhouse gas emissions reduction targets",
+      "Energy intensity decreased by 3.2% year-on-year across the portfolio; like-for-like GHG emissions decreased by 4.1%",
+      "170+ institutional investors use GRESB data for investment decisions, representing over $51 trillion in AUM"
+    ],
+    "relevantSectors": ["Real Estate", "Infrastructure", "Finance"],
+    "data": {
+      "type": "benchmark_results",
+      "participants": 2200,
+      "grossAssetValue": "$8.6 trillion",
+      "investorMembers": 170,
+      "investorAUM": "$51 trillion"
+    },
+    "citationKey": "gresb_real_estate_2024",
+    "verified": true,
+    "tags": ["gresb", "real_estate", "benchmark", "esg_performance", "reits", "infrastructure"]
+  },
+  {
+    "source": "ICMM",
+    "category": "sector_body",
+    "authors": [],
+    "title": "ICMM Mining Principles: Performance Expectations",
+    "publication": "International Council on Mining and Metals",
+    "year": 2022,
+    "abstract": "ICMM's Mining Principles comprise 10 principles and 39 performance expectations that define good practice ESG requirements for the mining and metals industry. Member companies must implement all principles and submit to independent third-party validation. The principles cover governance, human rights, environmental stewardship, community engagement, and responsible production.",
+    "keyFindings": [
+      "10 principles covering ethical business, decision-making, human rights, risk management, health and safety, environmental performance, conservation of biodiversity, responsible production, social performance, and stakeholder engagement",
+      "39 detailed performance expectations that ICMM members must demonstrate compliance with through independent validation",
+      "Updated in 2022 to include enhanced climate change commitments: members must set Scope 1 and 2 reduction targets consistent with the Paris Agreement",
+      "All 26 ICMM member companies (representing ~30% of the global mining industry by revenue) must undergo independent site-level validation",
+      "Performance expectations cover tailings management (aligned with the Global Industry Standard on Tailings Management), water stewardship, and closure planning"
+    ],
+    "relevantSectors": ["Mining", "Metals"],
+    "data": {
+      "type": "industry_standard",
+      "principles": 10,
+      "performanceExpectations": 39,
+      "memberCompanies": 26,
+      "memberCompaniesShareOfRevenue": "~30% of global mining industry"
+    },
+    "citationKey": "icmm_mining_principles_2022",
+    "verified": true,
+    "tags": ["icmm", "mining", "metals", "principles", "tailings", "human_rights", "climate"]
+  },
+  {
+    "source": "UNEP FI",
+    "category": "sector_body",
+    "authors": [],
+    "title": "Principles for Responsible Banking: Annual Progress Report 2024",
+    "publication": "United Nations Environment Programme Finance Initiative",
+    "year": 2024,
+    "abstract": "The Principles for Responsible Banking (PRB), launched in 2019, are a framework for integrating sustainability into banking strategy and practice. The 2024 progress report covers the 320+ signatory banks representing over 50% of global banking assets and assesses their progress on impact analysis, target-setting, and alignment with societal goals.",
+    "keyFindings": [
+      "320+ signatory banks representing over $93 trillion in assets (>50% of global banking assets)",
+      "78% of signatories have completed impact analysis to identify their most significant positive and negative impacts",
+      "62% have set quantitative targets on at least two significant impact areas",
+      "Climate is the most common target area (89% of target-setters), followed by financial inclusion (34%) and gender equality (21%)",
+      "Annual reporting and civil society review have driven improved transparency, but implementation quality varies significantly across regions"
+    ],
+    "relevantSectors": ["Banking", "Finance"],
+    "data": {
+      "type": "progress_report",
+      "signatories": "320+",
+      "totalAssets": "$93 trillion",
+      "launchYear": 2019
+    },
+    "citationKey": "unep_fi_prb_2024",
+    "verified": true,
+    "tags": ["unep_fi", "principles_responsible_banking", "prb", "banking", "impact_analysis", "targets"]
+  },
+  {
+    "source": "UN PRI",
+    "category": "sector_body",
+    "authors": [],
+    "title": "UN PRI Annual Report 2024",
+    "publication": "United Nations Principles for Responsible Investment",
+    "year": 2024,
+    "abstract": "The UN PRI's annual report details the activities and progress of the world's largest voluntary corporate sustainability initiative for institutional investors. With over 5,300 signatories managing over $120 trillion in assets, the PRI is the leading framework for responsible investment. The 2024 report covers signatory engagement, stewardship outcomes, and priorities for sustainable finance.",
+    "keyFindings": [
+      "Over 5,300 signatories from 80+ countries, managing over $120 trillion in assets under management",
+      "83% of asset owner signatories incorporate ESG factors into their investment decisions",
+      "Stewardship: 68% of signatories reported engaging with portfolio companies on climate change, making it the most common engagement topic",
+      "Priority areas for 2024-2027: climate transition planning, nature and biodiversity, human rights in investment, and responsible AI",
+      "Minimum requirements for signatories were enhanced in 2024, with new accountability measures including potential delisting for non-compliance"
+    ],
+    "relevantSectors": ["Asset Management", "Pension Funds", "Insurance", "Finance"],
+    "data": {
+      "type": "annual_report",
+      "signatories": "5,300+",
+      "countriesCovered": "80+",
+      "totalAUM": "$120+ trillion"
+    },
+    "citationKey": "unpri_annual_2024",
+    "verified": true,
+    "tags": ["unpri", "pri", "responsible_investment", "stewardship", "engagement", "aum"]
+  },
+  {
+    "source": "CDP",
+    "category": "sector_body",
+    "authors": [],
+    "title": "CDP Global Climate Report 2024: Tracking Corporate Climate Action",
+    "publication": "CDP (formerly Carbon Disclosure Project)",
+    "year": 2024,
+    "abstract": "CDP's annual global climate report analyses climate disclosure data from over 23,000 companies representing more than 66% of global market capitalisation. The 2024 report tracks corporate progress on emissions measurement, target-setting, and climate action, and finds that while disclosure is increasing, the pace of emissions reduction remains insufficient for 1.5C alignment.",
+    "keyFindings": [
+      "Over 23,000 companies disclosed through CDP in 2024, a 24% increase from 2023 and more than double from 2020",
+      "Only 0.4% of disclosing companies have credible 1.5C-aligned transition plans across their full value chain",
+      "Companies representing 37% of global emissions have set science-based targets, but only 21% are on track to achieve them",
+      "CDP scores: only 2% of companies achieved an A rating, while 26% scored C or D (awareness/disclosure level only)",
+      "Financial institutions disclosing through CDP collectively manage $142 trillion in assets — but financed emissions remain largely unaddressed"
+    ],
+    "relevantSectors": ["All sectors", "Energy", "Finance"],
+    "data": {
+      "type": "annual_report",
+      "companiesDisclosing": 23000,
+      "marketCapCoverage": "66%+",
+      "citiesCovered": 1100,
+      "statesRegionsCovered": 400
+    },
+    "citationKey": "cdp_climate_2024",
+    "verified": true,
+    "tags": ["cdp", "climate_disclosure", "emissions", "science_based_targets", "transition_plans"]
+  },
+  {
+    "source": "CDP",
+    "category": "sector_body",
+    "authors": [],
+    "title": "CDP Global Water Report 2024: Turning the Tide on Water Security",
+    "publication": "CDP",
+    "year": 2024,
+    "abstract": "CDP's global water report analyses water-related disclosures from over 4,100 companies. The report assesses corporate water risk exposure, governance, strategy, and targets, finding that while water risk awareness is growing, corporate action remains insufficient to address escalating water scarcity and quality challenges.",
+    "keyFindings": [
+      "4,100+ companies disclosed water-related data through CDP in 2024, driven by investor and purchaser requests",
+      "71% of reporting companies identify water as a substantive business risk, up from 61% in 2020",
+      "Only 45% of companies with substantive water risks have set water-related targets",
+      "Financial impact: companies reported $9.2 billion in water-related costs and losses in 2023",
+      "Water-stressed regions: 40% of reporting companies have operations in areas of high or extremely high water stress"
+    ],
+    "relevantSectors": ["All sectors", "Agriculture", "Mining", "Energy", "Consumer Goods"],
+    "data": {
+      "type": "annual_report",
+      "companiesDisclosing": 4100,
+      "waterRelatedCostsReported": "$9.2 billion"
+    },
+    "citationKey": "cdp_water_2024",
+    "verified": true,
+    "tags": ["cdp", "water_security", "water_risk", "water_stress", "disclosure"]
+  },
+  {
+    "source": "World Economic Forum",
+    "category": "sector_body",
+    "authors": [],
+    "title": "WEF Global Risks Report 2025",
+    "publication": "World Economic Forum",
+    "year": 2025,
+    "abstract": "The 20th edition of the WEF Global Risks Report draws on the perspectives of over 900 global experts and leaders to identify and assess the most pressing risks facing the world. Environmental risks continue to dominate the long-term risk landscape, with extreme weather, critical change to Earth systems, and biodiversity loss ranked as the top long-term risks.",
+    "keyFindings": [
+      "Top 5 long-term risks (10-year horizon): extreme weather events, critical change to Earth systems, biodiversity loss and ecosystem collapse, natural resource shortages, and pollution",
+      "Environmental risks account for 5 of the top 10 long-term risks for the second consecutive year",
+      "Misinformation and disinformation ranked as the #1 short-term risk (2-year horizon)",
+      "Geoeconomic confrontation and societal polarisation are amplifying the difficulty of coordinated climate and sustainability action",
+      "Over 60% of respondents rated state-based armed conflict as a significant short-term risk, up from 40% in 2023"
+    ],
+    "relevantSectors": ["All sectors", "Finance", "Government"],
+    "data": {
+      "type": "annual_report",
+      "edition": "20th",
+      "respondents": 900,
+      "topShortTermRisks": ["Misinformation and disinformation", "Extreme weather events", "Societal polarisation", "Cyber insecurity", "State-based armed conflict"],
+      "topLongTermRisks": ["Extreme weather events", "Critical change to Earth systems", "Biodiversity loss and ecosystem collapse", "Natural resource shortages", "Pollution"]
+    },
+    "citationKey": "wef_global_risks_2025",
+    "verified": true,
+    "tags": ["wef", "global_risks", "extreme_weather", "biodiversity", "misinformation"]
+  },
+  {
+    "source": "World Economic Forum",
+    "category": "sector_body",
+    "authors": [],
+    "title": "WEF Stakeholder Capitalism Metrics",
+    "publication": "World Economic Forum / International Business Council",
+    "year": 2020,
+    "abstract": "Developed by the WEF International Business Council (IBC) in collaboration with the Big Four accounting firms, the Stakeholder Capitalism Metrics provide a common set of ESG disclosures for companies to report on. The framework covers 21 core and 34 expanded metrics across four pillars: governance, planet, people, and prosperity.",
+    "keyFindings": [
+      "21 core and 34 expanded metrics across four pillars: Governance (5 core), Planet (5 core), People (6 core), Prosperity (5 core)",
+      "Adopted by 150+ of the world's largest companies in the IBC community as a common baseline for ESG reporting",
+      "Designed to be interoperable with existing frameworks (GRI, SASB, TCFD) to reduce reporting burden",
+      "The metrics were subsequently incorporated into the ISSB standards development process",
+      "Key metrics include: greenhouse gas emissions (Scopes 1-3), diversity metrics, tax payments by jurisdiction, employee wellbeing, and anti-corruption training"
+    ],
+    "relevantSectors": ["All sectors", "Corporate Governance"],
+    "data": {
+      "type": "reporting_framework",
+      "pillars": 4,
+      "coreMetrics": 21,
+      "expandedMetrics": 34,
+      "adoptingCompanies": "150+"
+    },
+    "citationKey": "wef_stakeholder_metrics_2020",
+    "verified": true,
+    "tags": ["wef", "stakeholder_capitalism", "metrics", "ibc", "governance", "planet", "people", "prosperity"]
+  },
+  {
+    "source": "GRI",
+    "category": "sector_body",
+    "authors": [],
+    "title": "GRI Sustainability Reporting Trends and Outlook 2025",
+    "publication": "Global Reporting Initiative",
+    "year": 2025,
+    "abstract": "GRI's analysis of global sustainability reporting trends examines the evolving landscape of corporate disclosure as mandatory requirements (CSRD/ESRS, ISSB) intersect with GRI's impact-focused voluntary standards. The report covers adoption rates, interoperability developments, and emerging topics in sustainability disclosure.",
+    "keyFindings": [
+      "GRI Standards are used by 78% of the world's 250 largest companies and by over 10,000 organisations in 100+ countries",
+      "GRI and ISSB/IFRS Foundation signed a Memorandum of Understanding to ensure interoperability between impact materiality (GRI) and financial materiality (ISSB) approaches",
+      "CSRD explicitly references GRI Standards: European Sustainability Reporting Standards (ESRS) are designed to be interoperable with GRI",
+      "New and updated sector standards released for: oil and gas (2024), coal (2024), agriculture/aquaculture/fishing (2024), and mining (2024)",
+      "Emerging topics gaining traction in GRI reporting: living wages, just transition, biodiversity impacts, and artificial intelligence governance"
+    ],
+    "relevantSectors": ["All sectors"],
+    "data": {
+      "type": "trends_report",
+      "organisationsUsingGRI": "10,000+",
+      "countriesCovered": "100+",
+      "g250Adoption": "78%"
+    },
+    "citationKey": "gri_trends_2025",
+    "verified": true,
+    "tags": ["gri", "sustainability_reporting", "standards", "esrs", "interoperability", "sector_standards"]
+  },
+  {
+    "source": "IFRS Foundation / ISSB",
+    "category": "sector_body",
+    "authors": [],
+    "title": "ISSB State of Disclosure Report 2024",
+    "publication": "IFRS Foundation / International Sustainability Standards Board",
+    "year": 2024,
+    "abstract": "The ISSB's State of Disclosure report assesses the global adoption trajectory of IFRS S1 (General Requirements for Disclosure of Sustainability-related Financial Information) and IFRS S2 (Climate-related Disclosures). The report maps jurisdictional adoption decisions and provides baseline data on corporate readiness for ISSB-aligned reporting.",
+    "keyFindings": [
+      "20+ jurisdictions have committed to or are actively considering adoption of ISSB standards, including the UK, Japan, Singapore, Australia, Brazil, Nigeria, and Hong Kong",
+      "IFRS S1 and S2 became effective on 1 January 2024, with early adoption encouraged",
+      "Building blocks approach: ISSB standards serve as the global baseline, with jurisdictions free to add requirements (e.g., EU's double materiality layer via CSRD/ESRS)",
+      "SASB Standards were consolidated under the ISSB and are referenced as the primary source of industry-specific disclosure guidance within IFRS S1",
+      "Challenges: readiness for Scope 3 emissions disclosure remains the most cited implementation barrier across jurisdictions"
+    ],
+    "relevantSectors": ["All sectors", "Accounting", "Finance"],
+    "data": {
+      "type": "adoption_report",
+      "standardsEffective": "1 January 2024",
+      "jurisdictionsAdopting": "20+",
+      "sasbStandards": "77 industry standards consolidated under ISSB"
+    },
+    "citationKey": "issb_disclosure_2024",
+    "verified": true,
+    "tags": ["issb", "ifrs_s1", "ifrs_s2", "sasb", "disclosure", "adoption", "global_baseline"]
+  },
+  {
+    "source": "IIF",
+    "category": "sector_body",
+    "authors": [],
+    "title": "IIF Green, Social, Sustainability and Sustainability-Linked Bond Market Report 2024",
+    "publication": "Institute of International Finance",
+    "year": 2024,
+    "abstract": "The IIF's annual report on the sustainable bond market tracks issuance volumes, trends, and market dynamics for green, social, sustainability, and sustainability-linked bonds. The 2024 report covers cumulative issuance of over $4 trillion and analyses the continued evolution of the sustainable debt market.",
+    "keyFindings": [
+      "Global sustainable bond issuance reached $935 billion in 2024, a 12% increase from 2023",
+      "Cumulative green, social, sustainability and sustainability-linked bond issuance surpassed $4.5 trillion by end of 2024",
+      "Green bonds remain dominant at 58% of total sustainable bond issuance, followed by sustainability bonds (22%), social bonds (12%), and sustainability-linked bonds (8%)",
+      "Greenium (yield discount for green vs conventional bonds) averaged 2-5 basis points in 2024, narrowing from 5-8 bps in 2022",
+      "Emerging market sustainable bond issuance grew 35% year-on-year, led by China, India, and Brazil"
+    ],
+    "relevantSectors": ["Finance", "Banking", "All sectors"],
+    "data": {
+      "type": "market_report",
+      "issuance2024": "$935 billion",
+      "cumulativeIssuance": "$4.5 trillion+",
+      "greenBondShare": "58%"
+    },
+    "citationKey": "iif_sustainable_bonds_2024",
+    "verified": true,
+    "tags": ["iif", "green_bonds", "sustainable_bonds", "social_bonds", "sustainability_linked", "greenium"]
+  },
+  {
+    "source": "WBCSD",
+    "category": "sector_body",
+    "authors": [],
+    "title": "Vision 2050: Time to Transform",
+    "publication": "World Business Council for Sustainable Development",
+    "year": 2021,
+    "abstract": "WBCSD's Vision 2050 refresh provides a business-led framework for achieving a world where 9+ billion people can live well within planetary boundaries by 2050. The framework identifies nine transformation pathways across the economic system and defines the actions needed from business, finance, and policy in each decade to 2050.",
+    "keyFindings": [
+      "Nine transformation pathways: energy, transport and mobility, living spaces, products and materials, financial products and services, connectivity, health and wellbeing, water and sanitation, and food",
+      "Achieving the 2050 vision requires systems-level change, not incremental improvements — business models must fundamentally shift",
+      "The 'decade of delivery' (2020-2030) is critical: actions in this decade will determine whether 2050 goals are achievable",
+      "True value accounting: businesses must move beyond financial-only metrics to account for social and environmental externalities",
+      "Reinvention pathway: companies must move through three phases — optimize (reduce negative impacts), transform (change business models), and reinvent (create regenerative systems)"
+    ],
+    "relevantSectors": ["All sectors", "Strategy"],
+    "data": {
+      "type": "strategic_framework",
+      "transformationPathways": 9,
+      "memberCompaniesContributing": "200+",
+      "previousEdition": 2010
+    },
+    "citationKey": "wbcsd_vision2050_2021",
+    "verified": true,
+    "tags": ["wbcsd", "vision_2050", "transformation", "planetary_boundaries", "systems_change"]
+  },
+  {
+    "source": "IPIECA",
+    "category": "sector_body",
+    "authors": [],
+    "title": "IPIECA Climate Change: A Guide for the Oil and Gas Industry",
+    "publication": "IPIECA",
+    "year": 2023,
+    "abstract": "IPIECA's climate guide provides the oil and gas industry with a comprehensive resource for understanding and responding to climate change. It covers the science, policy, regulatory, and business dimensions of climate change and provides practical guidance on emissions management, climate risk assessment, and low-carbon transition strategies.",
+    "keyFindings": [
+      "The oil and gas sector accounts for approximately 42% of global energy-related CO2 emissions (Scope 1+2+3)",
+      "Methane emissions reduction is the most cost-effective near-term climate action for the sector — abating 75% of oil and gas methane emissions is achievable at zero net cost",
+      "CCUS deployment must scale from current ~45 Mtpa capacity to 5,000+ Mtpa by 2050 in net-zero scenarios",
+      "Low-carbon hydrogen production is a major transition opportunity: clean hydrogen demand could reach 530 Mt per year by 2050",
+      "TCFD-aligned reporting is now expected by investors and regulators across all major jurisdictions where oil and gas companies operate"
+    ],
+    "relevantSectors": ["Oil and Gas", "Energy"],
+    "data": {
+      "type": "sector_guide",
+      "topics": ["Climate science", "Policy and regulation", "Emissions management", "Carbon pricing", "Energy transition", "CCUS", "Hydrogen", "Nature-based solutions"],
+      "previousEdition": 2019
+    },
+    "citationKey": "ipieca_climate_guide_2023",
+    "verified": true,
+    "tags": ["ipieca", "oil_gas", "climate_change", "methane", "ccus", "hydrogen", "energy_transition"]
+  }
+]
