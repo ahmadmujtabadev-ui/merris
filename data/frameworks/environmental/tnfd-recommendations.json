@@ -1,0 +1,408 @@
+{
+  "id": "fw-tnfd-v1",
+  "code": "tnfd",
+  "name": "Taskforce on Nature-related Financial Disclosures Recommendations",
+  "version": "1.0",
+  "effectiveDate": "2023-09-18",
+  "issuingBody": "Taskforce on Nature-related Financial Disclosures (TNFD)",
+  "region": "global",
+  "type": "voluntary",
+  "leapApproach": {
+    "description": "The LEAP approach is an integrated assessment process for nature-related risk and opportunity management. It guides organisations through scoping, entry points, and iterative assessment of their nature-related issues.",
+    "phases": [
+      {
+        "code": "L",
+        "name": "Locate",
+        "description": "Locate the interface with nature by identifying where the organisation's direct operations, and its upstream and downstream value chain activities, are located. Map priority locations by overlaying business footprints with biodiversity-important areas.",
+        "steps": [
+          "Span the business footprint: identify sectors, business units, value chains, and geographies",
+          "Locate the interface with nature: identify biomes, ecosystems, and their condition at each location",
+          "Identify priority locations: assess sensitivity, importance, and integrity of ecosystems at the interface"
+        ]
+      },
+      {
+        "code": "E",
+        "name": "Evaluate",
+        "description": "Evaluate the organisation's dependencies and impacts on nature at priority locations. Identify the environmental assets and ecosystem services relevant to the organisation.",
+        "steps": [
+          "Identify relevant environmental assets and ecosystem services at each priority location",
+          "Identify dependencies on nature: assess which ecosystem services the organisation depends on",
+          "Identify impacts on nature: assess the organisation's impacts on ecosystems and species"
+        ]
+      },
+      {
+        "code": "A",
+        "name": "Assess",
+        "description": "Assess the material nature-related risks and opportunities for the organisation. Translate dependencies and impacts into business risks and opportunities.",
+        "steps": [
+          "Identify risk and opportunity factors: physical, transition, and systemic risk types",
+          "Assess the existing risk mitigation and management approach",
+          "Assess additional risk mitigation and risk management required",
+          "Identify nature-related opportunities: resource efficiency, products/services, markets, capital flows, reputation"
+        ]
+      },
+      {
+        "code": "P",
+        "name": "Prepare",
+        "description": "Prepare to respond to and report on material nature-related issues. Determine strategy, set targets, define metrics, and prepare disclosures.",
+        "steps": [
+          "Strategy and resource allocation decisions in response to identified risks and opportunities",
+          "Set targets and define metrics for nature-related risk and opportunity management",
+          "Prepare disclosures aligned with TNFD recommended disclosures",
+          "Present disclosures to the board and integrate into reporting"
+        ]
+      }
+    ]
+  },
+  "natureDependenciesAndImpacts": {
+    "categories": [
+      {
+        "code": "LAND",
+        "name": "Land/Freshwater/Ocean use change",
+        "description": "Conversion or degradation of terrestrial, freshwater, or marine habitats",
+        "examples": ["Deforestation", "Wetland drainage", "Seabed trawling", "Urbanisation"]
+      },
+      {
+        "code": "EXPLOIT",
+        "name": "Resource exploitation",
+        "description": "Harvesting, extraction, or consumption of living organisms or abiotic resources beyond sustainable levels",
+        "examples": ["Overfishing", "Overharvesting", "Excessive groundwater extraction"]
+      },
+      {
+        "code": "CLIMATE",
+        "name": "Climate change",
+        "description": "Changes in climate conditions affecting ecosystems and species",
+        "examples": ["Temperature increases", "Ocean acidification", "Sea level rise", "Extreme weather events"]
+      },
+      {
+        "code": "POLLUTION",
+        "name": "Pollution",
+        "description": "Introduction of contaminants into the natural environment",
+        "examples": ["Air emissions", "Water discharge", "Soil contamination", "Light and noise pollution", "Plastics"]
+      },
+      {
+        "code": "INVASIVE",
+        "name": "Invasive alien species",
+        "description": "Introduction or spread of non-native species that threaten ecosystems, habitats, or native species",
+        "examples": ["Ballast water discharge", "Agricultural imports", "Landscaping with non-native species"]
+      }
+    ]
+  },
+  "sectorGuidance": [
+    {
+      "sector": "Agriculture",
+      "sectorCode": "AGR",
+      "notes": "Focus on land use change, water usage, pollinator dependencies, soil health, agrochemical impacts. High dependency on ecosystem services including pollination, water regulation, and soil fertility.",
+      "priorityImpactDrivers": ["LAND", "POLLUTION", "EXPLOIT", "CLIMATE"]
+    },
+    {
+      "sector": "Mining and metals",
+      "sectorCode": "MIN",
+      "notes": "Focus on land disturbance, water contamination, biodiversity offsets, tailings management, closure planning. Often located in or near sensitive ecosystems.",
+      "priorityImpactDrivers": ["LAND", "POLLUTION", "EXPLOIT"]
+    },
+    {
+      "sector": "Financial institutions",
+      "sectorCode": "FIN",
+      "notes": "Focus on portfolio-level nature-related risks, financed impacts and dependencies, engagement with investees, credit risk from nature loss, integration of nature into investment analysis.",
+      "priorityImpactDrivers": ["LAND", "POLLUTION", "EXPLOIT", "CLIMATE", "INVASIVE"]
+    },
+    {
+      "sector": "Oil and gas",
+      "sectorCode": "ONG",
+      "notes": "Focus on operational site impacts, pipeline corridors, offshore operations, spill risk, flaring emissions, decommissioning. High impact on land, freshwater, and marine ecosystems.",
+      "priorityImpactDrivers": ["LAND", "POLLUTION", "CLIMATE", "EXPLOIT"]
+    },
+    {
+      "sector": "Food and beverage",
+      "sectorCode": "FNB",
+      "notes": "Focus on supply chain traceability, deforestation-free sourcing, water stewardship, packaging waste, and dependencies on natural inputs. Complex upstream nature dependencies.",
+      "priorityImpactDrivers": ["LAND", "EXPLOIT", "POLLUTION", "CLIMATE"]
+    },
+    {
+      "sector": "Infrastructure and real estate",
+      "sectorCode": "INF",
+      "notes": "Focus on site selection, habitat fragmentation, green infrastructure, nature-based solutions, construction impacts, and operational resource consumption.",
+      "priorityImpactDrivers": ["LAND", "POLLUTION", "CLIMATE"]
+    }
+  ],
+  "structure": {
+    "topics": [
+      {
+        "code": "TNFD-GOV",
+        "name": "Governance",
+        "description": "Disclose the organisation's governance around nature-related dependencies, impacts, risks and opportunities.",
+        "disclosures": [
+          {
+            "id": "tnfd-gov-a",
+            "frameworkId": "fw-tnfd-v1",
+            "code": "TNFD-GOV-A",
+            "name": "Board oversight of nature-related dependencies, impacts, risks and opportunities",
+            "description": "Describe the board's oversight of nature-related dependencies, impacts, risks and opportunities.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the board's oversight of nature-related dependencies, impacts, risks and opportunities, including the governance body or committee responsible, how and how often it is informed, and how it considers nature-related issues in overseeing strategy, major plans, risk management policies, annual budgets, and targets.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-GOV-A", "mappingType": "aligned" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-9", "mappingType": "partial" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-GOV-1", "mappingType": "partial" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S1-6a", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "tnfd-gov-b",
+            "frameworkId": "fw-tnfd-v1",
+            "code": "TNFD-GOV-B",
+            "name": "Management's role in assessing and managing nature-related dependencies, impacts, risks and opportunities",
+            "description": "Describe management's role in assessing and managing nature-related dependencies, impacts, risks and opportunities.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe management's role, including whether dedicated responsibilities are assigned, integration into existing management processes, and how management is informed about and monitors nature-related issues.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-GOV-B", "mappingType": "aligned" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-13", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "tnfd-gov-c",
+            "frameworkId": "fw-tnfd-v1",
+            "code": "TNFD-GOV-C",
+            "name": "Human rights policies and engagement with Indigenous Peoples and local communities",
+            "description": "Describe the organisation's human rights policies and engagement activities with respect to Indigenous Peoples, Local Communities, affected and other stakeholders, in the organisation's assessment of, and response to, nature-related dependencies, impacts, risks and opportunities.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe due diligence processes on human rights relevant to nature, engagement with Indigenous Peoples and Local Communities (IPLCs), and how the organisation integrates stakeholder views into its nature-related strategy and risk management.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-29", "mappingType": "partial" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 411-1", "mappingType": "partial" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "TNFD-STRAT",
+        "name": "Strategy",
+        "description": "Disclose the actual and potential effects of nature-related dependencies, impacts, risks and opportunities on the organisation's businesses, strategy and financial planning.",
+        "disclosures": [
+          {
+            "id": "tnfd-strat-a",
+            "frameworkId": "fw-tnfd-v1",
+            "code": "TNFD-STRAT-A",
+            "name": "Nature-related dependencies, impacts, risks and opportunities identified",
+            "description": "Describe the nature-related dependencies, impacts, risks and opportunities the organisation has identified over the short, medium and long term.",
+            "topic": "strategy",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe nature-related dependencies, impacts, risks and opportunities identified over the short, medium and long term. Include the locations where they are identified and explain the relationship between dependencies, impacts, risks and opportunities.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-STRAT-A", "mappingType": "aligned" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E4-1", "mappingType": "partial" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S1-10", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "tnfd-strat-b",
+            "frameworkId": "fw-tnfd-v1",
+            "code": "TNFD-STRAT-B",
+            "name": "Effect on business model, value chain, strategy and financial planning",
+            "description": "Describe the effect nature-related dependencies, impacts, risks and opportunities have had on the organisation's business model, value chain, strategy and financial planning, including any transition plans or analysis.",
+            "topic": "strategy",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe how nature-related dependencies, impacts, risks and opportunities have affected the organisation's business model, value chain, strategy (including transition plans) and financial planning (including capital allocation), and how these may change over time.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-STRAT-B", "mappingType": "aligned" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E4-1", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "tnfd-strat-c",
+            "frameworkId": "fw-tnfd-v1",
+            "code": "TNFD-STRAT-C",
+            "name": "Resilience of strategy",
+            "description": "Describe the resilience of the organisation's strategy to nature-related risks and opportunities, taking into consideration different scenarios.",
+            "topic": "strategy",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the resilience of the organisation's strategy considering different scenarios, including consistency with low nature-loss futures and global policy goals (e.g. GBF targets). Include scenario analysis methodology and time horizons used.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-STRAT-C", "mappingType": "aligned" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S1-15", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "tnfd-strat-d",
+            "frameworkId": "fw-tnfd-v1",
+            "code": "TNFD-STRAT-D",
+            "name": "Location of assets and activities in priority areas",
+            "description": "Disclose the locations of assets and/or activities in the organisation's direct operations and, where possible and appropriate, upstream and downstream value chain(s) that meet the criteria for priority locations.",
+            "topic": "strategy",
+            "dataType": "mixed",
+            "requiredMetrics": [
+              { "name": "Priority location count", "unit": "count", "description": "Number of identified priority locations where business interfaces with sensitive nature areas" },
+              { "name": "Area in sensitive regions", "unit": "hectares", "description": "Total area of operations in or near Key Biodiversity Areas, protected areas, or areas of high biodiversity value" }
+            ],
+            "guidanceText": "Disclose priority locations based on the LEAP Locate phase, including overlaps with Key Biodiversity Areas, protected areas, areas of high biodiversity importance, areas of high ecosystem integrity, areas of rapid decline, and areas of high physical water risk.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 304-1", "mappingType": "partial" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "TNFD-RISK",
+        "name": "Risk & Impact Management",
+        "description": "Disclose how the organisation identifies, assesses, manages and, where appropriate, prioritises nature-related dependencies, impacts, risks and opportunities.",
+        "disclosures": [
+          {
+            "id": "tnfd-risk-a",
+            "frameworkId": "fw-tnfd-v1",
+            "code": "TNFD-RISK-A",
+            "name": "Processes for identifying, assessing and prioritising nature-related dependencies, impacts, risks and opportunities",
+            "description": "Describe the organisation's processes for identifying, assessing and prioritising nature-related dependencies, impacts, risks and opportunities in its direct operations and upstream and downstream value chain(s).",
+            "topic": "risk-impact-management",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe identification and assessment processes including scope, nature of tools and methodologies used (e.g. LEAP, ENCORE, IBAT), how the organisation prioritises nature-related issues, and engagement with Indigenous Peoples and Local Communities.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-RISK-A", "mappingType": "aligned" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S1-36", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "tnfd-risk-b",
+            "frameworkId": "fw-tnfd-v1",
+            "code": "TNFD-RISK-B",
+            "name": "Processes for managing nature-related dependencies, impacts, risks and opportunities",
+            "description": "Describe the organisation's processes for managing nature-related dependencies, impacts, risks and opportunities.",
+            "topic": "risk-impact-management",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe management processes including the mitigation hierarchy (avoid, minimise, restore, offset), how the organisation prioritises, and decisions about trade-offs and residual impacts.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-RISK-B", "mappingType": "aligned" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E4-3", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "tnfd-risk-c",
+            "frameworkId": "fw-tnfd-v1",
+            "code": "TNFD-RISK-C",
+            "name": "Integration into overall risk management",
+            "description": "Describe how nature-related risk identification, assessment and management processes are integrated into the organisation's overall risk management.",
+            "topic": "risk-impact-management",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe how nature-related risks are integrated into the enterprise risk management framework, including linkages with climate-related risk processes, how nature risk is incorporated into existing risk categories, and escalation procedures.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-RISK-C", "mappingType": "aligned" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "TNFD-MET",
+        "name": "Metrics and Targets",
+        "description": "Disclose the metrics and targets used to assess and manage material nature-related dependencies, impacts, risks and opportunities.",
+        "disclosures": [
+          {
+            "id": "tnfd-met-a",
+            "frameworkId": "fw-tnfd-v1",
+            "code": "TNFD-MET-A",
+            "name": "Metrics used to assess and manage nature-related dependencies, impacts, risks and opportunities",
+            "description": "Disclose the metrics used by the organisation to assess and manage material nature-related risks and opportunities.",
+            "topic": "metrics",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Land/freshwater/ocean use change", "unit": "hectares", "description": "Extent of land/freshwater/ocean use change by type (e.g. conversion, restoration)" },
+              { "name": "Extent of land/freshwater/ocean use", "unit": "hectares", "description": "Total extent by management type and ecosystem type" },
+              { "name": "Pollutants released to soil, water and air", "unit": "tonnes", "description": "Quantity and type of pollutants released" },
+              { "name": "Volume of freshwater consumption", "unit": "megalitres", "description": "Total volume in water-stressed areas and other areas" },
+              { "name": "Amount of waste generated", "unit": "tonnes", "description": "Total waste by type and disposal method" },
+              { "name": "GHG emissions", "unit": "tCO2e", "description": "Scope 1, 2, and 3 where material to nature impacts" }
+            ],
+            "guidanceText": "Disclose core global and core sector metrics. Core global metrics include land/freshwater/ocean use change, pollutants, freshwater consumption, waste, and GHG emissions. Include absolute and intensity metrics.",
+            "sectorSpecific": true,
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-MET-A", "mappingType": "partial" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 304-1", "mappingType": "partial" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 304-4", "mappingType": "partial" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E4-4", "mappingType": "partial" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E4-5", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "tnfd-met-b",
+            "frameworkId": "fw-tnfd-v1",
+            "code": "TNFD-MET-B",
+            "name": "Targets and goals used to manage nature-related dependencies, impacts, risks and opportunities",
+            "description": "Describe the targets and goals used by the organisation to manage nature-related dependencies, impacts, risks and opportunities and its performance against these.",
+            "topic": "targets",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Nature-related targets", "unit": "various", "description": "Nature-related targets including alignment to GBF goals, science-based targets for nature (SBTN), or equivalent" },
+              { "name": "Target baseline year", "unit": "year", "description": "Baseline year for each target" },
+              { "name": "Target completion year", "unit": "year", "description": "Target year for achievement" }
+            ],
+            "guidanceText": "Describe targets for nature-related risk and opportunity management, including how targets align with the Kunming-Montreal Global Biodiversity Framework and any science-based targets for nature. Report performance against targets.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-MET-B", "mappingType": "aligned" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E4-4", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "tnfd-met-c",
+            "frameworkId": "fw-tnfd-v1",
+            "code": "TNFD-MET-C",
+            "name": "Biodiversity offsets",
+            "description": "Disclose the organisation's approach to and use of biodiversity offsets, including the type, quantum, and integrity of offsets.",
+            "topic": "metrics",
+            "dataType": "mixed",
+            "requiredMetrics": [
+              { "name": "Biodiversity offset area", "unit": "hectares", "description": "Total area of biodiversity offset sites" },
+              { "name": "Offset type", "unit": "categorical", "description": "Type of offset: averted loss, restoration, or creation" }
+            ],
+            "guidanceText": "Disclose the approach to biodiversity offsets including type, third-party verification, alignment with the mitigation hierarchy, location, and ecological equivalence of offset sites relative to impact sites.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 304-3", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "tnfd-met-d",
+            "frameworkId": "fw-tnfd-v1",
+            "code": "TNFD-MET-D",
+            "name": "State of nature",
+            "description": "Disclose the state of nature indicators related to the organisation's material nature-related issues, including ecosystem condition and species at priority locations.",
+            "topic": "metrics",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Ecosystem condition", "unit": "score", "description": "Condition of ecosystems at priority locations using recognised metrics" },
+              { "name": "Species listed on IUCN Red List with habitats in areas affected", "unit": "count", "description": "Number by IUCN threat category (CR, EN, VU)" }
+            ],
+            "guidanceText": "Disclose the state of nature at priority locations, including ecosystem extent and condition, species extinction risk, and how these are changing over time.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 304-4", "mappingType": "partial" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E4-5", "mappingType": "partial" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

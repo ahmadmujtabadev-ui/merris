@@ -1,0 +1,350 @@
+{
+  "id": "fw-biodiversity-metrics",
+  "code": "biodiversity-metrics",
+  "name": "Key Biodiversity Indicators and Metrics",
+  "version": "2024",
+  "description": "Reference data for biodiversity assessment metrics used in environmental compliance and nature-related disclosures, including STAR, MSA, BII, NNL/NPI, IUCN Red List, and KBAs.",
+  "region": "global",
+  "type": "reference",
+  "metrics": [
+    {
+      "code": "STAR",
+      "name": "Species Threat Abatement and Restoration",
+      "description": "STAR is a metric developed by IUCN that quantifies the potential contribution that threat abatement and habitat restoration activities in a specific area can make to reducing global species extinction risk. STAR scores range from 0 (no contribution possible) upward, with higher values indicating greater potential for reducing extinction risk.",
+      "developer": "IUCN",
+      "publicationYear": 2021,
+      "components": [
+        {
+          "name": "STAR Threat Abatement (STAR-T)",
+          "description": "Measures the potential reduction in extinction risk achievable through threat abatement at a location. Based on the proportion of each species' habitat at the site and the threats affecting them.",
+          "calculationBasis": "Sum across species of (species weight based on IUCN Red List category * proportion of species' range at location * threat intensity score)"
+        },
+        {
+          "name": "STAR Restoration (STAR-R)",
+          "description": "Measures the potential reduction in extinction risk achievable through habitat restoration at a location. Based on the proportion of lost habitat that could be restored.",
+          "calculationBasis": "Sum across species of (species weight * proportion of species' restorable habitat at location)"
+        }
+      ],
+      "dataSources": [
+        "IUCN Red List of Threatened Species (species ranges and threat classifications)",
+        "IUCN-CMP Unified Classification of Direct Threats (threat types and severity)",
+        "Species Habitat Suitability models"
+      ],
+      "speciesCoverage": "Mammals, birds, amphibians (currently); expanding to reptiles, selected invertebrates, and plants",
+      "spatialResolution": "Available at approximately 5 km grid cell resolution globally",
+      "limitations": [
+        "Currently limited to well-assessed taxonomic groups",
+        "Does not capture all dimensions of biodiversity (e.g., genetic diversity, ecosystem functions)",
+        "Threat abatement scores assume effective threat management"
+      ],
+      "crossReferences": [
+        { "frameworkCode": "tnfd", "disclosureCode": "TNFD-MET-D", "mappingType": "partial" },
+        { "frameworkCode": "gri", "disclosureCode": "GRI 304-4", "mappingType": "partial" }
+      ]
+    },
+    {
+      "code": "MSA",
+      "name": "Mean Species Abundance",
+      "description": "MSA is an indicator of local biodiversity intactness relative to the original undisturbed ecosystem. It measures the mean abundance of original species relative to their abundance in the undisturbed reference situation, expressed as a value between 0 (completely degraded) and 1 (pristine, undisturbed).",
+      "developer": "PBL Netherlands Environmental Assessment Agency (GLOBIO model)",
+      "publicationYear": 2006,
+      "calculationApproach": {
+        "formula": "MSA = Product of (MSA_landuse * MSA_climate * MSA_nitrogen * MSA_fragmentation * MSA_infrastructure)",
+        "description": "MSA is calculated as the product of partial MSA values for each pressure factor. Each partial MSA represents the fraction of original biodiversity remaining under that pressure.",
+        "pressureFactors": [
+          {
+            "factor": "MSA_landuse",
+            "description": "Effect of land use type and intensity on species abundance",
+            "landUseIntensityFactors": [
+              { "landUseType": "Primary vegetation (intact)", "msa": 1.0 },
+              { "landUseType": "Primary vegetation (light use)", "msa": 0.9 },
+              { "landUseType": "Secondary vegetation (mature)", "msa": 0.7 },
+              { "landUseType": "Secondary vegetation (young)", "msa": 0.5 },
+              { "landUseType": "Managed forest (reduced impact logging)", "msa": 0.7 },
+              { "landUseType": "Managed forest (conventional)", "msa": 0.5 },
+              { "landUseType": "Plantation forest", "msa": 0.3 },
+              { "landUseType": "Agroforestry", "msa": 0.5 },
+              { "landUseType": "Extensive agriculture / low-input cropland", "msa": 0.3 },
+              { "landUseType": "Intensive agriculture / high-input cropland", "msa": 0.1 },
+              { "landUseType": "Extensive grazing / rangeland", "msa": 0.6 },
+              { "landUseType": "Intensive grazing / managed pasture", "msa": 0.3 },
+              { "landUseType": "Urban / built-up", "msa": 0.05 },
+              { "landUseType": "Bare / degraded", "msa": 0.02 }
+            ],
+            "note": "Values are approximate global averages from GLOBIO3 model and may vary by biome and taxon"
+          },
+          {
+            "factor": "MSA_climate",
+            "description": "Effect of climate change on species abundance, modelled as a function of temperature change"
+          },
+          {
+            "factor": "MSA_nitrogen",
+            "description": "Effect of atmospheric nitrogen deposition on species abundance"
+          },
+          {
+            "factor": "MSA_fragmentation",
+            "description": "Effect of habitat fragmentation on species abundance, based on patch size and connectivity"
+          },
+          {
+            "factor": "MSA_infrastructure",
+            "description": "Effect of infrastructure (roads, buildings) proximity on species abundance"
+          }
+        ]
+      },
+      "dataSources": [
+        "GLOBIO model (PBL Netherlands)",
+        "Land use / land cover data (ESA CCI, Copernicus Global Land)",
+        "Species occurrence data (GBIF, national biodiversity databases)",
+        "Meta-analyses of species responses to land use change"
+      ],
+      "spatialResolution": "Typically 10 km or 50 km grid cells for global assessments; can be adapted to finer resolution with local data",
+      "limitations": [
+        "Relies on dose-response relationships from meta-analyses that may not capture local variability",
+        "Pressure factors are multiplicative, assuming independence which may not hold",
+        "Reference state (undisturbed ecosystem) may be difficult to define in some regions"
+      ],
+      "crossReferences": [
+        { "frameworkCode": "tnfd", "disclosureCode": "TNFD-MET-D", "mappingType": "partial" }
+      ]
+    },
+    {
+      "code": "BII",
+      "name": "Biodiversity Intactness Index",
+      "description": "The BII estimates the average proportion of natural biodiversity remaining in a local area. It combines data on how land use and related pressures affect species' local abundances, weighted by species richness. BII ranges from 0% (no original biodiversity remaining) to 100% (fully intact). The proposed planetary boundary for BII is 90%, meaning a safe operating space threshold.",
+      "developer": "Natural History Museum, London / PREDICTS project (Hudson et al.)",
+      "publicationYear": 2016,
+      "baseline": {
+        "description": "The reference condition is the species composition and abundance that would be expected in the absence of significant human land use and related pressures. This is approximated using data from minimally disturbed sites.",
+        "referenceState": "Pre-industrial or minimally disturbed ecosystem"
+      },
+      "calculationApproach": "BII is calculated using statistical models (mixed-effects models) fitted to the PREDICTS database, which contains biodiversity survey data from thousands of sites worldwide. The models estimate species abundance as a function of land use type, land use intensity, and human population density. BII is then mapped spatially using land use / land cover datasets.",
+      "currentGlobalEstimate": {
+        "value": "Approximately 75%",
+        "year": 2016,
+        "source": "Newbold et al. (2016) Nature 520:45-50",
+        "note": "Below the proposed safe planetary boundary of 90%"
+      },
+      "dataSources": [
+        "PREDICTS database (Natural History Museum) — >32,000 species at >26,000 sites",
+        "Land use data (ESA CCI Land Cover, Copernicus)",
+        "Human population density data (SEDAC GPW)"
+      ],
+      "spatialResolution": "Approximately 1 km globally (when combined with high-resolution land use data)",
+      "limitations": [
+        "Taxonomic bias toward well-studied groups (plants, arthropods, vertebrates)",
+        "Geographic bias toward temperate regions with more survey data",
+        "Does not capture genetic or functional diversity",
+        "Reference state is modelled, not directly observed in most locations"
+      ],
+      "crossReferences": [
+        { "frameworkCode": "tnfd", "disclosureCode": "TNFD-MET-D", "mappingType": "partial" }
+      ]
+    },
+    {
+      "code": "NNL-NPI",
+      "name": "No Net Loss / Net Positive Impact",
+      "description": "No Net Loss (NNL) and Net Positive Impact (NPI) are outcome-based targets for biodiversity management. NNL means that biodiversity losses from a project are fully compensated through avoidance, minimisation, restoration, and offsets, resulting in no overall decline. NPI (also called Net Gain or Biodiversity Net Gain) requires that gains exceed losses, resulting in an overall improvement.",
+      "definitions": {
+        "noNetLoss": {
+          "description": "The point at which project-related impacts on biodiversity are balanced by measures taken to avoid and minimise the impacts, to undertake on-site restoration, and finally to offset residual impacts, so that no overall loss of biodiversity remains.",
+          "applicability": "Expected for projects in natural habitats (IFC PS6), increasingly required by regulation (e.g., EU Nature Restoration Law)",
+          "timeframe": "Typically assessed over the project lifecycle"
+        },
+        "netPositiveImpact": {
+          "description": "The point at which project-related impacts on biodiversity are more than fully compensated, resulting in an overall net gain in biodiversity compared to the pre-project baseline.",
+          "applicability": "Expected for projects in critical habitats (IFC PS6), adopted as corporate biodiversity commitments",
+          "timeframe": "Typically assessed over the project lifecycle, may require in-perpetuity management of offset sites"
+        }
+      },
+      "measurementApproaches": [
+        {
+          "approach": "Habitat hectares method",
+          "description": "Combines habitat extent (area) with habitat quality (condition score) to produce a composite metric. Losses and gains are calculated in habitat-hectare units, allowing comparison.",
+          "advantages": ["Intuitive", "Widely used in offset schemes"],
+          "limitations": ["May not capture species-level outcomes", "Condition scoring can be subjective"]
+        },
+        {
+          "approach": "Species-based metrics",
+          "description": "Tracks the population status of priority species (e.g., IUCN listed) in impact and offset areas. Requires species surveys and population modelling.",
+          "advantages": ["Directly measures species outcomes", "Aligned with IUCN Red List"],
+          "limitations": ["Data-intensive", "Difficult to apply across all species"]
+        },
+        {
+          "approach": "DEFRA Biodiversity Metric (England)",
+          "description": "The UK's statutory metric for Biodiversity Net Gain (BNG), using habitat area, distinctiveness, condition, strategic significance, and connectivity to calculate biodiversity units. Projects must achieve a minimum 10% net gain.",
+          "version": "Metric 4.0 (2023)",
+          "advantages": ["Standardised and mandatory", "Legally enforceable"],
+          "limitations": ["Jurisdiction-specific", "Habitat-focused rather than species-focused"]
+        },
+        {
+          "approach": "BBOP/IUCN principles-based",
+          "description": "Applies the Business and Biodiversity Offsets Programme (BBOP) principles: no net loss of biodiversity, adherence to the mitigation hierarchy, landscape context, additionality, long-term outcomes, and stakeholder participation.",
+          "advantages": ["Comprehensive", "Globally recognised principles"],
+          "limitations": ["Not a specific calculation tool", "Requires interpretation and adaptation"]
+        }
+      ],
+      "mitigationHierarchy": {
+        "description": "The mitigation hierarchy is fundamental to achieving NNL/NPI. It requires sequential application of: Avoid > Minimise > Restore > Offset. Offsets are the last resort after all other steps are exhausted.",
+        "steps": [
+          { "step": "Avoid", "description": "Prevent impacts from occurring entirely (e.g., site selection, project design)" },
+          { "step": "Minimise", "description": "Reduce the duration, intensity, and extent of unavoidable impacts" },
+          { "step": "Restore", "description": "Rehabilitate degraded ecosystems within the project footprint" },
+          { "step": "Offset", "description": "Compensate for residual, unavoidable impacts through measurable conservation outcomes elsewhere" }
+        ]
+      },
+      "crossReferences": [
+        { "frameworkCode": "tnfd", "disclosureCode": "TNFD-MET-C", "mappingType": "partial" },
+        { "frameworkCode": "tnfd", "disclosureCode": "TNFD-RISK-B", "mappingType": "partial" },
+        { "frameworkCode": "gri", "disclosureCode": "GRI 304-3", "mappingType": "partial" }
+      ]
+    },
+    {
+      "code": "IUCN-RL",
+      "name": "IUCN Red List Categories",
+      "description": "The IUCN Red List of Threatened Species is the world's most comprehensive inventory of the global conservation status of biological species. It classifies species into categories based on extinction risk, providing the basis for biodiversity impact assessments.",
+      "developer": "International Union for Conservation of Nature (IUCN)",
+      "categories": [
+        {
+          "code": "EX",
+          "name": "Extinct",
+          "description": "No reasonable doubt that the last individual has died. A taxon is presumed Extinct when exhaustive surveys in known and/or expected habitat, at appropriate times, throughout its historic range have failed to record an individual."
+        },
+        {
+          "code": "EW",
+          "name": "Extinct in the Wild",
+          "description": "Known only to survive in cultivation, in captivity, or as a naturalised population(s) well outside the past range."
+        },
+        {
+          "code": "CR",
+          "name": "Critically Endangered",
+          "description": "Facing an extremely high risk of extinction in the wild. Criteria include population reduction >=90% over 10 years/3 generations, extent of occurrence <100 km2, population size <250 mature individuals, or quantitative analysis showing >=50% probability of extinction within 10 years/3 generations."
+        },
+        {
+          "code": "EN",
+          "name": "Endangered",
+          "description": "Facing a very high risk of extinction in the wild. Criteria include population reduction >=70% over 10 years/3 generations, extent of occurrence <5,000 km2, population size <2,500 mature individuals, or quantitative analysis showing >=20% probability of extinction within 20 years/5 generations."
+        },
+        {
+          "code": "VU",
+          "name": "Vulnerable",
+          "description": "Facing a high risk of extinction in the wild. Criteria include population reduction >=50% over 10 years/3 generations, extent of occurrence <20,000 km2, population size <10,000 mature individuals, or quantitative analysis showing >=10% probability of extinction within 100 years."
+        },
+        {
+          "code": "NT",
+          "name": "Near Threatened",
+          "description": "Close to qualifying for, or is likely to qualify for, a threatened category in the near future."
+        },
+        {
+          "code": "LC",
+          "name": "Least Concern",
+          "description": "Evaluated but does not qualify for Critically Endangered, Endangered, Vulnerable, or Near Threatened. Widespread and abundant taxa are included in this category."
+        },
+        {
+          "code": "DD",
+          "name": "Data Deficient",
+          "description": "Inadequate information to make a direct or indirect assessment of its risk of extinction based on its distribution and/or population status."
+        },
+        {
+          "code": "NE",
+          "name": "Not Evaluated",
+          "description": "Has not yet been evaluated against the IUCN Red List criteria."
+        }
+      ],
+      "useInAssessments": {
+        "description": "IUCN Red List categories are used in EIA and ESG assessments to identify species of conservation concern that may be affected by a project. Key applications include:",
+        "applications": [
+          "Critical Habitat Screening: presence of CR or EN species triggers IFC Performance Standard 6 Critical Habitat requirements",
+          "Biodiversity significance scoring: species weighting in metrics like STAR uses RL category (CR=4, EN=3, VU=2, NT=1)",
+          "Impact significance assessment: effects on threatened species typically result in higher impact significance ratings",
+          "No Net Loss requirements: projects affecting CR or EN species are typically required to achieve Net Positive Impact",
+          "TNFD disclosures: TNFD-MET-D requires disclosure of IUCN-listed species in areas affected by operations"
+        ]
+      },
+      "dataSources": [
+        "IUCN Red List API (https://apiv3.iucnredlist.org/)",
+        "IUCN Red List Spatial Data (species range maps)",
+        "IBAT (Integrated Biodiversity Assessment Tool)"
+      ],
+      "crossReferences": [
+        { "frameworkCode": "tnfd", "disclosureCode": "TNFD-MET-D", "mappingType": "partial" },
+        { "frameworkCode": "gri", "disclosureCode": "GRI 304-4", "mappingType": "equivalent" },
+        { "frameworkCode": "esrs", "disclosureCode": "ESRS E4-5", "mappingType": "partial" }
+      ]
+    },
+    {
+      "code": "KBA",
+      "name": "Key Biodiversity Areas",
+      "description": "Key Biodiversity Areas (KBAs) are sites contributing significantly to the global persistence of biodiversity, identified using a globally standardised set of criteria and thresholds. KBAs are the successor to Important Bird Areas (IBAs), Important Plant Areas (IPAs), and Alliance for Zero Extinction (AZE) sites, unified under a single standard.",
+      "developer": "IUCN / Key Biodiversity Areas Partnership",
+      "standard": "A Global Standard for the Identification of Key Biodiversity Areas (IUCN, 2016)",
+      "identificationCriteria": [
+        {
+          "criterion": "A1: Threatened species",
+          "description": "Site holds a significant proportion of the global population of a CR, EN, or VU species"
+        },
+        {
+          "criterion": "A2: Geographically restricted species",
+          "description": "Site holds a significant proportion of the global population of a species with restricted range"
+        },
+        {
+          "criterion": "B1: Individual geographically restricted assemblages",
+          "description": "Site holds a significant component of a geographically restricted group of species"
+        },
+        {
+          "criterion": "B2: Co-occurring geographically restricted species",
+          "description": "Site has an exceptional number of geographically restricted species"
+        },
+        {
+          "criterion": "B3: Geographically restricted assemblages",
+          "description": "Site holds a significant proportion of the global extent of a geographically restricted ecosystem type"
+        },
+        {
+          "criterion": "C: Ecological integrity",
+          "description": "Site has outstanding ecological integrity"
+        },
+        {
+          "criterion": "D1: Demographic aggregations",
+          "description": "Site holds a significant proportion of a species' global population during key life cycle stages"
+        },
+        {
+          "criterion": "D2: Ecological refugia",
+          "description": "Site is an important refuge for species during environmental stress"
+        },
+        {
+          "criterion": "D3: Recruitment sources",
+          "description": "Site contributes significantly to maintaining species populations in surrounding areas"
+        },
+        {
+          "criterion": "E: Biological processes",
+          "description": "Site has outstanding examples of biological processes"
+        }
+      ],
+      "proximityScoringGuidance": {
+        "description": "For EIA and ESG assessments, proximity to KBAs is a key factor in determining project risk and disclosure requirements.",
+        "scoringLevels": [
+          { "proximity": "Within KBA boundary", "score": "Very High", "implications": "Avoidance strongly preferred. Full biodiversity assessment required. NPI target applies. TNFD priority location." },
+          { "proximity": "0-5 km from KBA boundary", "score": "High", "implications": "Buffer zone assessment required. Indirect impacts (noise, light, water, air) must be assessed. NNL target applies." },
+          { "proximity": "5-15 km from KBA boundary", "score": "Moderate", "implications": "Connectivity assessment recommended. Cumulative impact consideration required." },
+          { "proximity": "15-50 km from KBA boundary", "score": "Low", "implications": "Desktop screening sufficient. Focus on upstream/downstream hydrological connectivity." },
+          { "proximity": ">50 km from KBA boundary", "score": "Negligible", "implications": "No specific KBA-related assessment required unless hydrological or ecological connectivity exists." }
+        ]
+      },
+      "dataSources": [
+        "World Database of Key Biodiversity Areas (www.keybiodiversityareas.org)",
+        "IBAT (Integrated Biodiversity Assessment Tool) — commercial tool integrating KBAs with other protected area layers",
+        "BirdLife International Data Zone (for IBAs that are also KBAs)"
+      ],
+      "statistics": {
+        "totalKBAs": "Approximately 16,300 (as of 2024)",
+        "countriesCovered": 190,
+        "totalAreaKm2": "Approximately 22 million km2",
+        "percentProtected": "Approximately 47% of identified KBAs overlap with protected areas"
+      },
+      "crossReferences": [
+        { "frameworkCode": "tnfd", "disclosureCode": "TNFD-STRAT-D", "mappingType": "partial" },
+        { "frameworkCode": "gri", "disclosureCode": "GRI 304-1", "mappingType": "partial" },
+        { "frameworkCode": "esrs", "disclosureCode": "ESRS E4-5", "mappingType": "partial" }
+      ]
+    }
+  ]
+}

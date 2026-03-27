@@ -1,0 +1,376 @@
+{
+  "id": "fw-water-stewardship",
+  "code": "water-stewardship",
+  "name": "Water Stewardship Standards and Metrics",
+  "version": "2024",
+  "description": "Reference framework for water stewardship covering the Alliance for Water Stewardship (AWS) Standard, CEO Water Mandate, water footprint methodology, and WRI Aqueduct risk indicators.",
+  "region": "global",
+  "type": "reference",
+  "awsStandard": {
+    "name": "Alliance for Water Stewardship International Water Stewardship Standard",
+    "version": "2.0",
+    "effectiveDate": "2019-03-22",
+    "developer": "Alliance for Water Stewardship (AWS)",
+    "description": "The AWS Standard provides a globally applicable framework for major water users to understand their water use and impacts, and to work collaboratively and transparently for sustainable water management within the catchment context.",
+    "waterRiskAssessmentMethodology": {
+      "description": "AWS defines a 5-step approach to water stewardship, progressing from understanding to continuous improvement.",
+      "steps": [
+        {
+          "step": 1,
+          "name": "Gather and Understand",
+          "code": "AWS-STEP1",
+          "description": "Gather data to understand the site's water-related status, risks, and opportunities, and the shared water challenges in the catchment.",
+          "actions": [
+            "Map the site's water balance (inputs, outputs, consumption, discharge)",
+            "Understand the catchment context: physical, regulatory, governance, and stakeholder landscape",
+            "Identify shared water challenges: scarcity, quality, ecosystem health, WASH access, governance",
+            "Assess water-related risks and opportunities for the site and catchment",
+            "Understand the site's indirect water use (supply chain and product use)"
+          ]
+        },
+        {
+          "step": 2,
+          "name": "Commit and Plan",
+          "code": "AWS-STEP2",
+          "description": "Commit to being a responsible water steward and develop a water stewardship plan that responds to shared water challenges.",
+          "actions": [
+            "Make a public commitment to water stewardship",
+            "Develop a water stewardship plan with targets, actions, and timelines",
+            "Allocate resources and assign responsibilities",
+            "Plan for collective action with other stakeholders in the catchment"
+          ]
+        },
+        {
+          "step": 3,
+          "name": "Implement",
+          "code": "AWS-STEP3",
+          "description": "Implement the water stewardship plan, including internal water management improvements and collective action in the catchment.",
+          "actions": [
+            "Implement water balance improvements (efficiency, reuse, alternative sources)",
+            "Maintain or improve water quality of discharges",
+            "Protect and restore Important Water-Related Areas (IWRAs)",
+            "Provide access to safe water, sanitation, and hygiene (WASH) for workers",
+            "Engage in collective action to address shared water challenges"
+          ]
+        },
+        {
+          "step": 4,
+          "name": "Evaluate",
+          "code": "AWS-STEP4",
+          "description": "Evaluate the site's water stewardship performance and the effectiveness of collective actions.",
+          "actions": [
+            "Evaluate water stewardship performance against plan targets",
+            "Assess the effectiveness of collective actions",
+            "Review incident responses and emergency preparedness",
+            "Report on water stewardship performance annually"
+          ]
+        },
+        {
+          "step": 5,
+          "name": "Communicate and Disclose",
+          "code": "AWS-STEP5",
+          "description": "Communicate and disclose water stewardship efforts, performance, and ongoing challenges transparently.",
+          "actions": [
+            "Disclose water stewardship activities, performance, and challenges publicly",
+            "Share knowledge and lessons with other water users and stakeholders",
+            "Contribute to collective governance of the catchment",
+            "Support public policy for sustainable water management"
+          ]
+        }
+      ]
+    },
+    "certificationLevels": [
+      { "level": "Core", "description": "Meets all core criteria of the AWS Standard" },
+      { "level": "Gold", "description": "Meets core plus advanced criteria demonstrating leadership in water stewardship" },
+      { "level": "Platinum", "description": "Meets core and gold criteria plus demonstrates excellence, innovation, and advocacy in water stewardship" }
+    ],
+    "crossReferences": [
+      { "frameworkCode": "gri", "disclosureCode": "GRI 303-1", "mappingType": "partial" },
+      { "frameworkCode": "gri", "disclosureCode": "GRI 303-2", "mappingType": "partial" },
+      { "frameworkCode": "cdp", "disclosureCode": "CDP-W2.1", "mappingType": "partial" }
+    ]
+  },
+  "ceoWaterMandate": {
+    "name": "UN Global Compact CEO Water Mandate",
+    "description": "The CEO Water Mandate is a UN Global Compact initiative that mobilises business leaders on water, sanitation, and the SDGs. It provides a platform for companies to commit to advancing water stewardship, WASH, and water-related SDG targets.",
+    "commitmentAreas": [
+      {
+        "area": "Direct Operations",
+        "description": "Measure and reduce water use, ensure wastewater quality, and increase water efficiency in own operations.",
+        "keyMetrics": [
+          "Total water withdrawal by source",
+          "Total water consumption",
+          "Total water discharge by destination and quality",
+          "Water recycling and reuse rate",
+          "Water efficiency (water use per unit of production)"
+        ]
+      },
+      {
+        "area": "Supply Chain and Watershed Management",
+        "description": "Engage with suppliers and stakeholders to improve water management across the value chain and in shared watersheds.",
+        "keyMetrics": [
+          "Number of suppliers assessed for water risk",
+          "Supply chain water footprint",
+          "Participation in watershed-level initiatives"
+        ]
+      },
+      {
+        "area": "Collective Action",
+        "description": "Advance water stewardship through partnerships, public-private collaboration, and support for effective water governance.",
+        "keyMetrics": [
+          "Number of collective action partnerships",
+          "Investment in collective action projects",
+          "Policy engagement activities"
+        ]
+      },
+      {
+        "area": "Community Engagement",
+        "description": "Support communities' access to safe water, sanitation, and hygiene (WASH), particularly in water-stressed areas.",
+        "keyMetrics": [
+          "Number of people reached with WASH programmes",
+          "Investment in community water projects"
+        ]
+      },
+      {
+        "area": "Public Policy",
+        "description": "Support good water governance and contribute to public policy dialogue on water management.",
+        "keyMetrics": [
+          "Policy submissions and advocacy activities",
+          "Participation in multi-stakeholder water governance platforms"
+        ]
+      },
+      {
+        "area": "Transparency",
+        "description": "Report annually on water stewardship activities and progress, including through CDP Water, GRI, and other frameworks.",
+        "keyMetrics": [
+          "CDP Water score",
+          "Disclosure completeness in annual reports"
+        ]
+      }
+    ],
+    "crossReferences": [
+      { "frameworkCode": "gri", "disclosureCode": "GRI 303-3", "mappingType": "partial" },
+      { "frameworkCode": "gri", "disclosureCode": "GRI 303-4", "mappingType": "partial" },
+      { "frameworkCode": "gri", "disclosureCode": "GRI 303-5", "mappingType": "partial" },
+      { "frameworkCode": "cdp", "disclosureCode": "CDP-W1.2", "mappingType": "partial" }
+    ]
+  },
+  "waterFootprint": {
+    "name": "Water Footprint Assessment (ISO 14046 / Water Footprint Network)",
+    "description": "Water footprint assessment quantifies the total volume of freshwater used to produce goods and services along the supply chain. It distinguishes between blue, green, and grey water footprints.",
+    "components": [
+      {
+        "code": "BLUE",
+        "name": "Blue Water Footprint",
+        "description": "Volume of surface water and groundwater consumed (evaporated, incorporated into product, or transferred to another catchment) in the production of a good or service.",
+        "unit": "m3 or litres",
+        "sources": ["Rivers and lakes (surface water)", "Aquifers (groundwater)"],
+        "significance": "Directly reduces available water for other users and ecosystems. Most relevant in water-stressed regions.",
+        "calculationNote": "Blue water footprint = water withdrawn - water returned to the same catchment at the same quality"
+      },
+      {
+        "code": "GREEN",
+        "name": "Green Water Footprint",
+        "description": "Volume of rainwater consumed during the production process, particularly relevant to agriculture and forestry. This is rainwater that is evapotranspired or incorporated into the product.",
+        "unit": "m3 or litres",
+        "sources": ["Rainwater stored in the root zone of the soil (soil moisture)"],
+        "significance": "Represents the use of soil moisture from rainfall. Most relevant for agricultural products. Generally considered less impactful than blue water use.",
+        "calculationNote": "Green water footprint = total crop evapotranspiration - effective precipitation that would have been evapotranspired regardless"
+      },
+      {
+        "code": "GREY",
+        "name": "Grey Water Footprint",
+        "description": "Volume of freshwater required to assimilate the load of pollutants in discharge water to meet ambient water quality standards. It represents the pollution dimension of water use.",
+        "unit": "m3 or litres",
+        "sources": ["Not a physical water use but a theoretical volume representing pollution assimilation capacity"],
+        "significance": "Indicates the water pollution intensity of production. A large grey water footprint signals significant water quality impacts.",
+        "calculationNote": "Grey water footprint = pollutant load / (maximum acceptable concentration - natural background concentration)"
+      }
+    ],
+    "standards": [
+      { "name": "ISO 14046:2014", "description": "International standard for water footprint assessment, principles, requirements, and guidelines. Focuses on environmental impacts." },
+      { "name": "Water Footprint Network Manual", "description": "Water Footprint Assessment Manual (Hoekstra et al., 2011) — comprehensive methodology for blue, green, and grey water footprint calculation." }
+    ],
+    "crossReferences": [
+      { "frameworkCode": "gri", "disclosureCode": "GRI 303-5", "mappingType": "partial" },
+      { "frameworkCode": "cdp", "disclosureCode": "CDP-W1.2b", "mappingType": "partial" },
+      { "frameworkCode": "tnfd", "disclosureCode": "TNFD-MET-A", "mappingType": "partial" }
+    ]
+  },
+  "watershedMetrics": {
+    "description": "Key metrics for assessing water risk and stress at the watershed level.",
+    "metrics": [
+      {
+        "code": "WSI",
+        "name": "Water Stress Index",
+        "description": "Ratio of total annual water withdrawals to total available annual renewable water supply in a catchment. Higher values indicate greater competition for water resources.",
+        "formula": "WSI = Total water withdrawals / Total renewable water supply",
+        "unit": "ratio (0 to >1)",
+        "thresholds": [
+          { "range": "<0.1", "category": "Low stress" },
+          { "range": "0.1-0.2", "category": "Low-medium stress" },
+          { "range": "0.2-0.4", "category": "Medium-high stress" },
+          { "range": "0.4-0.8", "category": "High stress" },
+          { "range": ">0.8", "category": "Extremely high stress" }
+        ],
+        "source": "WRI Aqueduct / FAO AQUASTAT"
+      },
+      {
+        "code": "BWS",
+        "name": "Baseline Water Stress",
+        "description": "Ratio of total water withdrawals to total available renewable surface and groundwater supply, accounting for upstream consumptive use. The primary indicator in WRI Aqueduct.",
+        "formula": "BWS = Total withdrawals / (Mean available blue water)",
+        "unit": "ratio",
+        "thresholds": [
+          { "range": "<10%", "category": "Low (<0.1)", "score": 0 },
+          { "range": "10-20%", "category": "Low-medium (0.1-0.2)", "score": 1 },
+          { "range": "20-40%", "category": "Medium-high (0.2-0.4)", "score": 2 },
+          { "range": "40-80%", "category": "High (0.4-0.8)", "score": 3 },
+          { "range": ">80%", "category": "Extremely high (>0.8)", "score": 4 }
+        ],
+        "source": "WRI Aqueduct 4.0 (2023)"
+      },
+      {
+        "code": "WD",
+        "name": "Water Depletion",
+        "description": "Ratio of total water consumption to total available renewable water supply. Unlike water stress (which uses withdrawals), depletion uses consumption (the portion of withdrawn water not returned to the basin).",
+        "formula": "WD = Total water consumption / Total renewable water supply",
+        "unit": "ratio",
+        "thresholds": [
+          { "range": "<5%", "category": "Low" },
+          { "range": "5-25%", "category": "Low-medium" },
+          { "range": "25-50%", "category": "Medium-high" },
+          { "range": "50-75%", "category": "High" },
+          { "range": ">75%", "category": "Extremely high" }
+        ],
+        "source": "WRI Aqueduct 4.0 (2023)"
+      }
+    ]
+  },
+  "wriAqueductIndicators": {
+    "name": "WRI Aqueduct Water Risk Atlas",
+    "version": "4.0",
+    "year": 2023,
+    "description": "The World Resources Institute (WRI) Aqueduct Water Risk Atlas maps and analyses current and future water risks globally. Aqueduct 4.0 uses the latest hydrological models and socioeconomic data.",
+    "riskCategories": [
+      {
+        "category": "Physical Risk Quantity",
+        "indicators": [
+          { "code": "AQ-BWS", "name": "Baseline Water Stress", "description": "Ratio of total water withdrawals to available renewable supply", "weight": "high" },
+          { "code": "AQ-BWT", "name": "Baseline Water Depletion", "description": "Ratio of total water consumption to available renewable supply", "weight": "high" },
+          { "code": "AQ-IWR", "name": "Interannual Variability", "description": "Year-to-year variation in available water supply", "weight": "medium" },
+          { "code": "AQ-SV", "name": "Seasonal Variability", "description": "Within-year variation in available water supply", "weight": "medium" },
+          { "code": "AQ-GWD", "name": "Groundwater Table Decline", "description": "Rate of decline of groundwater levels", "weight": "high" },
+          { "code": "AQ-DRS", "name": "Drought Risk", "description": "Probability and severity of drought events", "weight": "high" },
+          { "code": "AQ-RFR", "name": "Riverine Flood Risk", "description": "Probability and severity of riverine flooding", "weight": "medium" },
+          { "code": "AQ-CFR", "name": "Coastal Flood Risk", "description": "Probability and severity of coastal flooding from storm surge and sea-level rise", "weight": "medium" }
+        ]
+      },
+      {
+        "category": "Physical Risk Quality",
+        "indicators": [
+          { "code": "AQ-UCW", "name": "Untreated Connected Wastewater", "description": "Percentage of domestic wastewater that is connected to a treatment facility but not treated to at least secondary level", "weight": "medium" },
+          { "code": "AQ-CCW", "name": "Coastal Eutrophication Potential", "description": "Potential for riverine nitrogen and phosphorus loading to stimulate algal blooms in coastal waters", "weight": "medium" }
+        ]
+      },
+      {
+        "category": "Regulatory and Reputational Risk",
+        "indicators": [
+          { "code": "AQ-UDW", "name": "Unimproved/No Drinking Water", "description": "Percentage of population without access to improved drinking water source", "weight": "medium" },
+          { "code": "AQ-USS", "name": "Unimproved/No Sanitation", "description": "Percentage of population without access to improved sanitation", "weight": "medium" },
+          { "code": "AQ-RRI", "name": "Peak RepRisk ESG country score", "description": "Country-level ESG risk exposure score as it relates to water issues", "weight": "low" }
+        ]
+      }
+    ],
+    "overallWaterRiskScore": {
+      "description": "Composite score combining all indicators with category-specific weights. Scored 0-5.",
+      "scoring": [
+        { "score": "0-1", "category": "Low risk" },
+        { "score": "1-2", "category": "Low-medium risk" },
+        { "score": "2-3", "category": "Medium-high risk" },
+        { "score": "3-4", "category": "High risk" },
+        { "score": "4-5", "category": "Extremely high risk" }
+      ]
+    },
+    "futureProjections": {
+      "description": "Aqueduct 4.0 provides future projections of water stress and supply under different climate and socioeconomic scenarios.",
+      "scenarios": ["SSP2-RCP4.5 (middle of the road)", "SSP3-RCP7.0 (regional rivalry)", "SSP5-RCP8.5 (fossil-fuelled development)"],
+      "timeHorizons": ["2030", "2050", "2080"]
+    },
+    "crossReferences": [
+      { "frameworkCode": "cdp", "disclosureCode": "CDP-W3.3", "mappingType": "partial" },
+      { "frameworkCode": "tnfd", "disclosureCode": "TNFD-STRAT-D", "mappingType": "partial" }
+    ]
+  },
+  "sasbWaterMetricsBySector": {
+    "description": "SASB (now part of IFRS Foundation / ISSB) identifies sector-specific water-related disclosure topics and metrics for financially material water issues.",
+    "sectors": [
+      {
+        "sector": "Oil & Gas - Exploration and Production",
+        "sasbIndustry": "EM-EP",
+        "waterMetrics": [
+          { "code": "EM-EP-140a.1", "name": "Total fresh water withdrawn", "unit": "thousand m3", "description": "Total volume of fresh water withdrawn, with percentage in water-stressed regions" },
+          { "code": "EM-EP-140a.2", "name": "Volume of produced water and flowback generated", "unit": "thousand m3", "description": "Volume, with percentage discharged, injected, recycled; hydrocarbon content in discharged water" },
+          { "code": "EM-EP-140a.3", "name": "Percentage of hydraulically fractured wells with full chemical disclosure", "unit": "%", "description": "Through FracFocus" }
+        ]
+      },
+      {
+        "sector": "Electric Utilities & Power Generators",
+        "sasbIndustry": "IF-EU",
+        "waterMetrics": [
+          { "code": "IF-EU-140a.1", "name": "Total water withdrawn", "unit": "thousand m3", "description": "With percentage from water-stressed regions, by fuel type" },
+          { "code": "IF-EU-140a.2", "name": "Number of incidents of non-compliance with water permits, standards, regulations", "unit": "count", "description": "Includes violations of discharge permits" },
+          { "code": "IF-EU-140a.3", "name": "Description of water management risks and strategies", "unit": "narrative", "description": "Discussion of risks and strategy, including cooling water and once-through vs closed-loop" }
+        ]
+      },
+      {
+        "sector": "Food & Beverage - Agricultural Products",
+        "sasbIndustry": "FB-AG",
+        "waterMetrics": [
+          { "code": "FB-AG-140a.1", "name": "Total water withdrawn", "unit": "thousand m3", "description": "With percentage in water-stressed regions" },
+          { "code": "FB-AG-140a.2", "name": "Description of water management risks and discussion of strategies", "unit": "narrative", "description": "Including irrigation practices, water efficiency, and sourcing from water-stressed regions" }
+        ]
+      },
+      {
+        "sector": "Metals & Mining",
+        "sasbIndustry": "EM-MM",
+        "waterMetrics": [
+          { "code": "EM-MM-140a.1", "name": "Total fresh water withdrawn", "unit": "thousand m3", "description": "With percentage in water-stressed regions and percentage recycled" },
+          { "code": "EM-MM-140a.2", "name": "Number of incidents of non-compliance with water permits", "unit": "count", "description": "Including acid mine drainage incidents" }
+        ]
+      },
+      {
+        "sector": "Real Estate",
+        "sasbIndustry": "IF-RE",
+        "waterMetrics": [
+          { "code": "IF-RE-140a.1", "name": "Water withdrawal data coverage", "unit": "% of floor area", "description": "Percentage of floor area for which water withdrawal data is available" },
+          { "code": "IF-RE-140a.2", "name": "Total water withdrawn by portfolio area with/without water stress", "unit": "thousand m3", "description": "Disaggregated by water-stressed and non-water-stressed regions" },
+          { "code": "IF-RE-140a.3", "name": "Like-for-like change in water withdrawn for portfolio area", "unit": "%", "description": "Year-over-year change for same-store portfolio" },
+          { "code": "IF-RE-140a.4", "name": "Description of water management risks and strategies", "unit": "narrative", "description": "Including efficiency measures and water recycling" }
+        ]
+      },
+      {
+        "sector": "Chemicals",
+        "sasbIndustry": "RT-CH",
+        "waterMetrics": [
+          { "code": "RT-CH-140a.1", "name": "Total water withdrawn", "unit": "thousand m3", "description": "With percentage in water-stressed regions and percentage recycled" },
+          { "code": "RT-CH-140a.2", "name": "Number of incidents of non-compliance with water permits", "unit": "count", "description": "Violations of discharge permits or water quality standards" },
+          { "code": "RT-CH-140a.3", "name": "Description of water management risks", "unit": "narrative", "description": "Including process water use, cooling water, and chemical discharge management" }
+        ]
+      },
+      {
+        "sector": "Semiconductors",
+        "sasbIndustry": "TC-SC",
+        "waterMetrics": [
+          { "code": "TC-SC-140a.1", "name": "Total water withdrawn", "unit": "thousand m3", "description": "With percentage in water-stressed regions and percentage recycled. Semiconductor manufacturing is water-intensive (ultrapure water for wafer fabrication)." }
+        ]
+      }
+    ],
+    "crossReferences": [
+      { "frameworkCode": "issb", "disclosureCode": "IFRS S2-Industry", "mappingType": "equivalent" },
+      { "frameworkCode": "gri", "disclosureCode": "GRI 303-3", "mappingType": "partial" },
+      { "frameworkCode": "gri", "disclosureCode": "GRI 303-5", "mappingType": "partial" },
+      { "frameworkCode": "cdp", "disclosureCode": "CDP-W1.2", "mappingType": "partial" }
+    ]
+  }
+}

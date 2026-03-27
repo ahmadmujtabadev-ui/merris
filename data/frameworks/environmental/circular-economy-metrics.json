@@ -1,0 +1,311 @@
+{
+  "id": "fw-circular-economy",
+  "code": "circular-economy-metrics",
+  "name": "Circular Economy Metrics and Indicators",
+  "version": "2024",
+  "description": "Reference framework for circular economy measurement, including the Material Circularity Indicator (Ellen MacArthur Foundation), waste hierarchy metrics, product lifecycle indicators, and the EU Circular Economy Monitoring Framework.",
+  "region": "global",
+  "type": "reference",
+  "materialCircularityIndicator": {
+    "developer": "Ellen MacArthur Foundation / Granta Design",
+    "publicationYear": 2015,
+    "updatedYear": 2019,
+    "description": "The Material Circularity Indicator (MCI) measures how restorative the material flows of a product or company are. It ranges from 0 (fully linear) to 1 (fully circular), accounting for the proportion of recycled/reused input, the destination of outputs (recycling, reuse, disposal), product utility (lifespan and intensity of use), and the efficiency of recycling processes.",
+    "formulaComponents": [
+      {
+        "component": "V",
+        "name": "Virgin material input fraction",
+        "formula": "V = M * (1 - Fr - Fu)",
+        "description": "Mass of virgin material input, where M is total mass, Fr is fraction of feedstock from recycled sources, and Fu is fraction from reused sources.",
+        "range": "0 to M"
+      },
+      {
+        "component": "W",
+        "name": "Unrecoverable waste",
+        "formula": "W = M * (1 - Cr - Cu) * (1 - Ef)",
+        "description": "Mass of material ending up as waste (landfill/incineration without energy recovery), where Cr is fraction collected for recycling, Cu is fraction going to reuse, and Ef is efficiency of the recycling process.",
+        "range": "0 to M"
+      },
+      {
+        "component": "LFI",
+        "name": "Linear Flow Index",
+        "formula": "LFI = (V + W) / (2 * M)",
+        "description": "Measures the proportion of material flowing linearly through the system. LFI = 0 means fully circular, LFI = 1 means fully linear.",
+        "range": "0 to 1"
+      },
+      {
+        "component": "F(X)",
+        "name": "Utility factor",
+        "formula": "F(X) = 0.9 / X, where X = (L / Lav) * (U / Uav)",
+        "description": "Accounts for product utility compared to industry average. L = actual product lifetime, Lav = industry average lifetime, U = actual functional units of use (intensity), Uav = industry average functional units. A longer-lived, more intensively used product scores higher.",
+        "range": "0.9/X approaches 0 for very long-lived intensive products"
+      },
+      {
+        "component": "MCI",
+        "name": "Material Circularity Indicator",
+        "formula": "MCI = max(0, 1 - LFI * F(X))",
+        "description": "The final MCI score. Combines linear flow with utility correction. Higher values indicate more circular material flows.",
+        "range": "0 to 1"
+      }
+    ],
+    "scoringInterpretation": [
+      { "range": "0.0 - 0.2", "interpretation": "Highly linear. Predominantly virgin inputs and waste outputs. Little to no recycled content or end-of-life recovery." },
+      { "range": "0.2 - 0.4", "interpretation": "Mostly linear with some circular elements. Limited recycled content or some end-of-life recycling." },
+      { "range": "0.4 - 0.6", "interpretation": "Moderate circularity. Meaningful recycled inputs and/or end-of-life recovery. Room for improvement." },
+      { "range": "0.6 - 0.8", "interpretation": "Good circularity. High recycled content, effective end-of-life recovery, and/or extended product life." },
+      { "range": "0.8 - 1.0", "interpretation": "Excellent circularity. Predominantly recycled/reused inputs, high end-of-life recovery, and extended utility." }
+    ],
+    "applicationLevels": [
+      { "level": "Product", "description": "Assess individual product circularity" },
+      { "level": "Company", "description": "Aggregate across product portfolio (revenue-weighted)" },
+      { "level": "Facility", "description": "Assess material flows at a specific site" }
+    ],
+    "crossReferences": [
+      { "frameworkCode": "gri", "disclosureCode": "GRI 301-2", "mappingType": "partial" },
+      { "frameworkCode": "gri", "disclosureCode": "GRI 306-2", "mappingType": "partial" },
+      { "frameworkCode": "esrs", "disclosureCode": "ESRS E5-5", "mappingType": "partial" }
+    ]
+  },
+  "wasteHierarchyMetrics": {
+    "description": "Metrics aligned with the EU Waste Hierarchy (Directive 2008/98/EC, Article 4), which establishes a priority order for waste management: prevention > reuse > recycling > other recovery > disposal.",
+    "metrics": [
+      {
+        "code": "PREVENTION-RATE",
+        "name": "Waste Prevention Rate",
+        "formula": "1 - (Total waste generated / Revenue or production output)",
+        "unit": "Intensity ratio or % reduction from baseline year",
+        "description": "Measures the decoupling of waste generation from economic output. Tracks year-on-year reduction in waste intensity.",
+        "hierarchyLevel": "Prevention (highest priority)",
+        "dataRequirements": ["Total waste generated (tonnes)", "Revenue or production volume", "Baseline year data"]
+      },
+      {
+        "code": "REUSE-RATE",
+        "name": "Reuse Rate",
+        "formula": "Mass of materials/products reused / Total mass of materials/products",
+        "unit": "%",
+        "description": "Proportion of materials or products that are reused for the same or different purpose without significant reprocessing.",
+        "hierarchyLevel": "Reuse",
+        "dataRequirements": ["Mass of reused materials (tonnes)", "Total waste or material throughput (tonnes)"]
+      },
+      {
+        "code": "RECYCLING-RATE",
+        "name": "Recycling Rate",
+        "formula": "Mass of waste recycled / Total waste generated",
+        "unit": "%",
+        "description": "Proportion of waste that is recycled into secondary raw materials. Includes mechanical and chemical recycling, composting, and anaerobic digestion of bio-waste.",
+        "hierarchyLevel": "Recycling",
+        "dataRequirements": ["Mass of waste sent to recycling (tonnes)", "Total waste generated (tonnes)", "Recycling process efficiency rates"],
+        "euTargets": [
+          { "target": "Municipal waste recycling rate >= 55%", "year": 2025, "source": "Directive 2018/851 amending 2008/98/EC" },
+          { "target": "Municipal waste recycling rate >= 60%", "year": 2030, "source": "Directive 2018/851" },
+          { "target": "Municipal waste recycling rate >= 65%", "year": 2035, "source": "Directive 2018/851" },
+          { "target": "Packaging waste recycling rate >= 65%", "year": 2025, "source": "Directive 2018/852 amending 94/62/EC" },
+          { "target": "Packaging waste recycling rate >= 70%", "year": 2030, "source": "Directive 2018/852" }
+        ]
+      },
+      {
+        "code": "RECOVERY-RATE",
+        "name": "Recovery Rate (other than recycling)",
+        "formula": "Mass of waste sent to energy recovery / Total waste generated",
+        "unit": "%",
+        "description": "Proportion of waste processed through incineration with energy recovery or other recovery operations (backfilling, etc.).",
+        "hierarchyLevel": "Other recovery",
+        "dataRequirements": ["Mass of waste to energy recovery (tonnes)", "Energy recovered (MWh)"]
+      },
+      {
+        "code": "DISPOSAL-RATE",
+        "name": "Disposal Rate (landfill + incineration without recovery)",
+        "formula": "Mass of waste disposed / Total waste generated",
+        "unit": "%",
+        "description": "Proportion of waste sent to landfill or incinerated without energy recovery. Lower is better.",
+        "hierarchyLevel": "Disposal (lowest priority)",
+        "dataRequirements": ["Mass of waste to landfill (tonnes)", "Mass of waste to incineration without energy recovery (tonnes)"],
+        "euTargets": [
+          { "target": "Municipal waste to landfill <= 10%", "year": 2035, "source": "Directive 2018/850 amending 1999/31/EC" }
+        ]
+      },
+      {
+        "code": "DIVERSION-RATE",
+        "name": "Waste Diversion Rate",
+        "formula": "(Total waste - Waste to landfill and incineration without recovery) / Total waste",
+        "unit": "%",
+        "description": "Overall rate of waste diverted from disposal (landfill and incineration without energy recovery). Combines reuse, recycling, and recovery.",
+        "hierarchyLevel": "Composite",
+        "dataRequirements": ["Total waste generated (tonnes)", "Waste to disposal (tonnes)"]
+      }
+    ],
+    "crossReferences": [
+      { "frameworkCode": "gri", "disclosureCode": "GRI 306-3", "mappingType": "partial" },
+      { "frameworkCode": "gri", "disclosureCode": "GRI 306-4", "mappingType": "partial" },
+      { "frameworkCode": "gri", "disclosureCode": "GRI 306-5", "mappingType": "partial" },
+      { "frameworkCode": "esrs", "disclosureCode": "ESRS E5-5", "mappingType": "partial" },
+      { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E12", "mappingType": "partial" }
+    ]
+  },
+  "productLifecycleIndicators": {
+    "description": "Indicators measuring the circularity of products across their lifecycle, from design through end-of-life.",
+    "indicators": [
+      {
+        "code": "DFC-SCORE",
+        "name": "Design for Circularity Score",
+        "description": "Composite score assessing how well a product is designed for circularity, covering disassembly, repairability, modularity, material selection, and end-of-life pathways.",
+        "components": [
+          { "name": "Disassembly ease", "weight": 0.2, "description": "Ability to disassemble product into components using standard tools. Scored 0-10." },
+          { "name": "Repairability", "weight": 0.2, "description": "Availability of spare parts, repair documentation, and ease of common repairs. Aligned with EU repairability scoring." },
+          { "name": "Modularity", "weight": 0.15, "description": "Use of modular design allowing component replacement and upgrade." },
+          { "name": "Material homogeneity", "weight": 0.15, "description": "Use of mono-materials or easily separable material combinations." },
+          { "name": "Hazardous substance avoidance", "weight": 0.15, "description": "Avoidance of substances that impede recycling (e.g., SVHC, halogenated flame retardants)." },
+          { "name": "Recyclability labelling", "weight": 0.15, "description": "Clear material identification and sorting instructions." }
+        ],
+        "scoringRange": "0-100",
+        "crossReferences": [
+          { "frameworkCode": "esrs", "disclosureCode": "ESRS E5-4", "mappingType": "partial" }
+        ]
+      },
+      {
+        "code": "RECYCLABILITY-RATE",
+        "name": "Recyclability Rate",
+        "formula": "Mass of product components that can be recycled / Total product mass",
+        "unit": "%",
+        "description": "Theoretical percentage of product mass that is recyclable given current recycling infrastructure and technology. Differs from actual recycling rate, which depends on collection and sorting.",
+        "assessmentMethod": "Material-by-material assessment against local recycling capability"
+      },
+      {
+        "code": "RECYCLED-CONTENT",
+        "name": "Recycled Content Percentage",
+        "formula": "Mass of recycled material inputs / Total material input mass",
+        "unit": "%",
+        "description": "Proportion of product mass derived from recycled sources (post-consumer and pre-consumer). Key metric under the EU Sustainable Products Regulation.",
+        "dataRequirements": ["Mass of pre-consumer recycled content", "Mass of post-consumer recycled content", "Total product mass"],
+        "euRequirements": [
+          { "requirement": "Minimum recycled content in plastic beverage bottles: 25%", "year": 2025, "source": "Single-Use Plastics Directive 2019/904" },
+          { "requirement": "Minimum recycled content in all plastic beverage bottles: 30%", "year": 2030, "source": "Single-Use Plastics Directive 2019/904" }
+        ],
+        "crossReferences": [
+          { "frameworkCode": "gri", "disclosureCode": "GRI 301-2", "mappingType": "equivalent" },
+          { "frameworkCode": "esrs", "disclosureCode": "ESRS E5-5", "mappingType": "partial" }
+        ]
+      },
+      {
+        "code": "PRODUCT-LIFETIME",
+        "name": "Product Lifetime Extension",
+        "description": "Metrics measuring actual or designed product lifetime relative to industry average, including warranty periods, maintenance support duration, and software update availability.",
+        "subMetrics": [
+          { "name": "Average product lifetime", "unit": "years", "description": "Mean time to end-of-life or replacement" },
+          { "name": "Warranty period", "unit": "years", "description": "Period of manufacturer warranty coverage" },
+          { "name": "Spare parts availability", "unit": "years", "description": "Duration after sale for which spare parts are guaranteed available" },
+          { "name": "Lifetime vs industry average", "unit": "ratio", "description": "Product lifetime divided by industry average lifetime" }
+        ]
+      }
+    ]
+  },
+  "euCircularEconomyMonitoringFramework": {
+    "description": "The EU Circular Economy Monitoring Framework tracks progress towards a circular economy across 11 indicators grouped into 4 themes. Established by COM(2018)29 and updated in 2023.",
+    "source": "European Commission / Eurostat (2023 revision)",
+    "themes": [
+      {
+        "theme": "Production and Consumption",
+        "indicators": [
+          {
+            "code": "EU-CE-1a",
+            "name": "EU self-sufficiency for raw materials",
+            "unit": "%",
+            "description": "Share of domestic production in domestic material consumption for critical raw materials."
+          },
+          {
+            "code": "EU-CE-1b",
+            "name": "Green public procurement",
+            "unit": "% of public contracts with environmental criteria",
+            "description": "Share of public procurement procedures that include environmental criteria."
+          },
+          {
+            "code": "EU-CE-1c",
+            "name": "Waste generation",
+            "unit": "kg per capita and per GDP unit",
+            "description": "Total waste generation (excluding major mineral wastes) per capita and per unit of GDP."
+          },
+          {
+            "code": "EU-CE-1d",
+            "name": "Food waste",
+            "unit": "kg per capita",
+            "description": "Food waste generation per capita across the supply chain.",
+            "euTarget": "Reduce food waste per capita by 30% by 2025 (retail and consumer) and 50% by 2030"
+          }
+        ]
+      },
+      {
+        "theme": "Waste Management",
+        "indicators": [
+          {
+            "code": "EU-CE-2a",
+            "name": "Recycling rates",
+            "unit": "%",
+            "description": "Recycling rate of municipal waste, all waste excluding major mineral waste, and specific waste streams (packaging, WEEE, bio-waste, construction and demolition)."
+          },
+          {
+            "code": "EU-CE-2b",
+            "name": "Recycling of specific waste streams",
+            "unit": "%",
+            "description": "Recycling rates for packaging waste (overall and by material: plastic, wood, ferrous metals, aluminium, glass, paper and cardboard), WEEE, bio-waste, and construction/demolition waste.",
+            "euTargets": [
+              { "stream": "Packaging (overall)", "target": "65%", "year": 2025 },
+              { "stream": "Packaging (overall)", "target": "70%", "year": 2030 },
+              { "stream": "Plastic packaging", "target": "50%", "year": 2025 },
+              { "stream": "Plastic packaging", "target": "55%", "year": 2030 },
+              { "stream": "Wood packaging", "target": "25%", "year": 2025 },
+              { "stream": "Wood packaging", "target": "30%", "year": 2030 },
+              { "stream": "Ferrous metals packaging", "target": "70%", "year": 2025 },
+              { "stream": "Ferrous metals packaging", "target": "80%", "year": 2030 },
+              { "stream": "Aluminium packaging", "target": "50%", "year": 2025 },
+              { "stream": "Aluminium packaging", "target": "60%", "year": 2030 },
+              { "stream": "Glass packaging", "target": "70%", "year": 2025 },
+              { "stream": "Glass packaging", "target": "75%", "year": 2030 },
+              { "stream": "Paper and cardboard packaging", "target": "75%", "year": 2025 },
+              { "stream": "Paper and cardboard packaging", "target": "85%", "year": 2030 }
+            ]
+          }
+        ]
+      },
+      {
+        "theme": "Secondary Raw Materials",
+        "indicators": [
+          {
+            "code": "EU-CE-3a",
+            "name": "Contribution of recycled materials to raw materials demand (circular material use rate)",
+            "unit": "%",
+            "description": "Share of material resources used that came from recycled waste materials (secondary raw materials) as a proportion of overall material use. EU average was approximately 11.7% in 2022.",
+            "euTarget": "Double the circular material use rate by 2030 (from ~11% baseline)"
+          },
+          {
+            "code": "EU-CE-3b",
+            "name": "Trade in recyclable raw materials",
+            "unit": "tonnes and EUR",
+            "description": "Trade flows (imports and exports) of recyclable raw materials between EU Member States and with third countries."
+          }
+        ]
+      },
+      {
+        "theme": "Competitiveness and Innovation",
+        "indicators": [
+          {
+            "code": "EU-CE-4a",
+            "name": "Private investment, jobs and gross value added related to circular economy sectors",
+            "unit": "EUR and count",
+            "description": "Economic indicators for circular economy sectors including waste management, repair, reuse, and rental/leasing."
+          },
+          {
+            "code": "EU-CE-4b",
+            "name": "Patents related to recycling and secondary raw materials",
+            "unit": "count",
+            "description": "Number of patents filed in recycling and secondary raw materials technologies."
+          }
+        ]
+      }
+    ],
+    "crossReferences": [
+      { "frameworkCode": "esrs", "disclosureCode": "ESRS E5-1", "mappingType": "partial" },
+      { "frameworkCode": "esrs", "disclosureCode": "ESRS E5-5", "mappingType": "partial" },
+      { "frameworkCode": "esrs", "disclosureCode": "ESRS E5-6", "mappingType": "partial" }
+    ]
+  }
+}

@@ -1,0 +1,418 @@
+{
+  "id": "fw-pollution-standards",
+  "code": "pollution-monitoring",
+  "name": "Pollution Monitoring Standards and Thresholds",
+  "version": "2024",
+  "description": "Comprehensive reference of pollution standards and regulatory thresholds for air quality, water quality, soil contamination, and noise, covering WHO, US EPA, and EU standards.",
+  "region": "global",
+  "type": "reference",
+  "airQuality": {
+    "description": "Ambient air quality standards and guidelines for key pollutants. Thresholds are expressed as concentrations not to be exceeded over specified averaging periods.",
+    "pollutants": [
+      {
+        "parameter": "PM2.5",
+        "fullName": "Fine Particulate Matter (diameter <= 2.5 micrometres)",
+        "unit": "ug/m3",
+        "healthSignificance": "Penetrates deep into the lungs and bloodstream, causing cardiovascular disease, respiratory illness, lung cancer, and premature death. No safe threshold identified.",
+        "thresholds": [
+          { "standard": "WHO 2021", "source": "WHO Global Air Quality Guidelines (2021)", "averagingPeriod": "annual mean", "value": 5, "level": "guideline" },
+          { "standard": "WHO 2021", "source": "WHO Global Air Quality Guidelines (2021)", "averagingPeriod": "24-hour mean", "value": 15, "level": "guideline", "note": "99th percentile (3-4 exceedance days per year)" },
+          { "standard": "WHO 2021 IT-1", "source": "WHO Global Air Quality Guidelines (2021)", "averagingPeriod": "annual mean", "value": 35, "level": "interim-target-1" },
+          { "standard": "WHO 2021 IT-2", "source": "WHO Global Air Quality Guidelines (2021)", "averagingPeriod": "annual mean", "value": 25, "level": "interim-target-2" },
+          { "standard": "WHO 2021 IT-3", "source": "WHO Global Air Quality Guidelines (2021)", "averagingPeriod": "annual mean", "value": 15, "level": "interim-target-3" },
+          { "standard": "WHO 2021 IT-4", "source": "WHO Global Air Quality Guidelines (2021)", "averagingPeriod": "annual mean", "value": 10, "level": "interim-target-4" },
+          { "standard": "US EPA NAAQS", "source": "40 CFR Part 50 (revised 2024)", "averagingPeriod": "annual mean", "value": 9.0, "level": "primary", "note": "Revised from 12.0 in February 2024" },
+          { "standard": "US EPA NAAQS", "source": "40 CFR Part 50", "averagingPeriod": "24-hour", "value": 35, "level": "primary", "note": "98th percentile, averaged over 3 years" },
+          { "standard": "EU Air Quality Directive", "source": "Directive 2008/50/EC", "averagingPeriod": "annual mean", "value": 25, "level": "limit", "note": "Proposed revision to 10 ug/m3 under the 2022 Zero Pollution Package" },
+          { "standard": "EU Air Quality Directive", "source": "Directive 2008/50/EC", "averagingPeriod": "annual mean", "value": 20, "level": "exposure-reduction-target" }
+        ]
+      },
+      {
+        "parameter": "PM10",
+        "fullName": "Coarse Particulate Matter (diameter <= 10 micrometres)",
+        "unit": "ug/m3",
+        "healthSignificance": "Causes respiratory and cardiovascular morbidity, exacerbates asthma, and contributes to premature mortality.",
+        "thresholds": [
+          { "standard": "WHO 2021", "source": "WHO Global Air Quality Guidelines (2021)", "averagingPeriod": "annual mean", "value": 15, "level": "guideline" },
+          { "standard": "WHO 2021", "source": "WHO Global Air Quality Guidelines (2021)", "averagingPeriod": "24-hour mean", "value": 45, "level": "guideline", "note": "99th percentile" },
+          { "standard": "WHO 2021 IT-1", "source": "WHO Global Air Quality Guidelines (2021)", "averagingPeriod": "annual mean", "value": 70, "level": "interim-target-1" },
+          { "standard": "WHO 2021 IT-2", "source": "WHO Global Air Quality Guidelines (2021)", "averagingPeriod": "annual mean", "value": 50, "level": "interim-target-2" },
+          { "standard": "WHO 2021 IT-3", "source": "WHO Global Air Quality Guidelines (2021)", "averagingPeriod": "annual mean", "value": 30, "level": "interim-target-3" },
+          { "standard": "WHO 2021 IT-4", "source": "WHO Global Air Quality Guidelines (2021)", "averagingPeriod": "annual mean", "value": 20, "level": "interim-target-4" },
+          { "standard": "US EPA NAAQS", "source": "40 CFR Part 50", "averagingPeriod": "24-hour", "value": 150, "level": "primary-and-secondary", "note": "Not to be exceeded more than once per year on average over 3 years" },
+          { "standard": "EU Air Quality Directive", "source": "Directive 2008/50/EC", "averagingPeriod": "annual mean", "value": 40, "level": "limit" },
+          { "standard": "EU Air Quality Directive", "source": "Directive 2008/50/EC", "averagingPeriod": "24-hour", "value": 50, "level": "limit", "note": "Not to be exceeded more than 35 days per year" }
+        ]
+      },
+      {
+        "parameter": "NO2",
+        "fullName": "Nitrogen Dioxide",
+        "unit": "ug/m3",
+        "healthSignificance": "Respiratory irritant, exacerbates asthma, increases susceptibility to respiratory infections. Precursor to ground-level ozone and secondary PM2.5.",
+        "thresholds": [
+          { "standard": "WHO 2021", "source": "WHO Global Air Quality Guidelines (2021)", "averagingPeriod": "annual mean", "value": 10, "level": "guideline" },
+          { "standard": "WHO 2021", "source": "WHO Global Air Quality Guidelines (2021)", "averagingPeriod": "24-hour mean", "value": 25, "level": "guideline", "note": "99th percentile" },
+          { "standard": "US EPA NAAQS", "source": "40 CFR Part 50", "averagingPeriod": "annual mean", "value": 100, "level": "primary", "note": "53 ppb equivalent" },
+          { "standard": "US EPA NAAQS", "source": "40 CFR Part 50", "averagingPeriod": "1-hour", "value": 188, "level": "primary", "note": "100 ppb; 98th percentile of daily 1-hour max, averaged over 3 years" },
+          { "standard": "EU Air Quality Directive", "source": "Directive 2008/50/EC", "averagingPeriod": "annual mean", "value": 40, "level": "limit" },
+          { "standard": "EU Air Quality Directive", "source": "Directive 2008/50/EC", "averagingPeriod": "1-hour", "value": 200, "level": "limit", "note": "Not to be exceeded more than 18 times per year" }
+        ]
+      },
+      {
+        "parameter": "SO2",
+        "fullName": "Sulphur Dioxide",
+        "unit": "ug/m3",
+        "healthSignificance": "Irritant to respiratory system, exacerbates asthma. Precursor to sulphate aerosols (PM2.5) and acid deposition affecting ecosystems.",
+        "thresholds": [
+          { "standard": "WHO 2021", "source": "WHO Global Air Quality Guidelines (2021)", "averagingPeriod": "24-hour mean", "value": 40, "level": "guideline", "note": "99th percentile" },
+          { "standard": "US EPA NAAQS", "source": "40 CFR Part 50 (2010)", "averagingPeriod": "1-hour", "value": 196, "level": "primary", "note": "75 ppb; 99th percentile of daily 1-hour max, averaged over 3 years" },
+          { "standard": "US EPA NAAQS", "source": "40 CFR Part 50", "averagingPeriod": "3-hour", "value": 1300, "level": "secondary", "note": "0.5 ppm; not to be exceeded more than once per year" },
+          { "standard": "EU Air Quality Directive", "source": "Directive 2008/50/EC", "averagingPeriod": "1-hour", "value": 350, "level": "limit", "note": "Not to be exceeded more than 24 times per year" },
+          { "standard": "EU Air Quality Directive", "source": "Directive 2008/50/EC", "averagingPeriod": "24-hour", "value": 125, "level": "limit", "note": "Not to be exceeded more than 3 times per year" }
+        ]
+      },
+      {
+        "parameter": "O3",
+        "fullName": "Ozone (ground-level)",
+        "unit": "ug/m3",
+        "healthSignificance": "Causes respiratory morbidity, reduces lung function, triggers asthma attacks. Damages crops and vegetation. Formed from NOx and VOCs in sunlight.",
+        "thresholds": [
+          { "standard": "WHO 2021", "source": "WHO Global Air Quality Guidelines (2021)", "averagingPeriod": "peak season (6-month)", "value": 60, "level": "guideline" },
+          { "standard": "WHO 2021", "source": "WHO Global Air Quality Guidelines (2021)", "averagingPeriod": "8-hour mean", "value": 100, "level": "guideline", "note": "99th percentile" },
+          { "standard": "US EPA NAAQS", "source": "40 CFR Part 50 (2015)", "averagingPeriod": "8-hour", "value": 137, "level": "primary-and-secondary", "note": "0.070 ppm; annual 4th highest daily max, averaged over 3 years" },
+          { "standard": "EU Air Quality Directive", "source": "Directive 2008/50/EC", "averagingPeriod": "8-hour", "value": 120, "level": "target", "note": "Not to be exceeded more than 25 days per year averaged over 3 years" }
+        ]
+      },
+      {
+        "parameter": "CO",
+        "fullName": "Carbon Monoxide",
+        "unit": "mg/m3",
+        "healthSignificance": "Reduces oxygen-carrying capacity of blood (carboxyhaemoglobin formation). At high concentrations causes headache, dizziness, impaired judgement, and death.",
+        "thresholds": [
+          { "standard": "WHO 2021", "source": "WHO Global Air Quality Guidelines (2021)", "averagingPeriod": "24-hour mean", "value": 4, "level": "guideline" },
+          { "standard": "US EPA NAAQS", "source": "40 CFR Part 50", "averagingPeriod": "8-hour", "value": 10, "level": "primary", "note": "9 ppm; not to be exceeded more than once per year" },
+          { "standard": "US EPA NAAQS", "source": "40 CFR Part 50", "averagingPeriod": "1-hour", "value": 40, "level": "primary", "note": "35 ppm; not to be exceeded more than once per year" },
+          { "standard": "EU Air Quality Directive", "source": "Directive 2008/50/EC", "averagingPeriod": "8-hour (max daily rolling)", "value": 10, "level": "limit" }
+        ]
+      },
+      {
+        "parameter": "VOCs",
+        "fullName": "Volatile Organic Compounds (Benzene as indicator)",
+        "unit": "ug/m3",
+        "healthSignificance": "Benzene is a known human carcinogen (Group 1, IARC). Other VOCs cause respiratory irritation and are ozone precursors. No safe level for benzene carcinogenicity.",
+        "thresholds": [
+          { "standard": "WHO 2000", "source": "WHO Air Quality Guidelines for Europe, 2nd edition (2000)", "averagingPeriod": "annual mean (benzene)", "value": "no safe level", "level": "guideline", "note": "Unit risk estimate: 6 x 10^-6 per ug/m3 (lifetime excess risk of leukaemia)" },
+          { "standard": "US EPA NAAQS", "source": "40 CFR Part 50", "averagingPeriod": "n/a", "value": "no NAAQS for benzene", "level": "n/a", "note": "Benzene regulated as Hazardous Air Pollutant (HAP) under Section 112 of Clean Air Act" },
+          { "standard": "EU Air Quality Directive", "source": "Directive 2008/50/EC (Annex XIV)", "averagingPeriod": "annual mean (benzene)", "value": 5, "level": "limit" }
+        ]
+      }
+    ]
+  },
+  "waterQuality": {
+    "description": "Water quality parameters and regulatory thresholds for surface water discharge and ambient water quality.",
+    "parameters": [
+      {
+        "parameter": "BOD5",
+        "fullName": "Biochemical Oxygen Demand (5-day)",
+        "unit": "mg/L",
+        "ecologicalSignificance": "Indicates the amount of dissolved oxygen consumed by biological organisms to decompose organic matter. High BOD depletes dissolved oxygen, causing fish kills and ecosystem degradation.",
+        "thresholds": [
+          { "standard": "EPA (US)", "source": "EPA recommended water quality criteria for secondary treatment (40 CFR 133)", "value": 30, "applicability": "Secondary treatment effluent limit (monthly average)", "note": "7-day average: 45 mg/L" },
+          { "standard": "EU Water Framework Directive", "source": "Directive 2000/60/EC; Urban Wastewater Treatment Directive 91/271/EEC", "value": 25, "applicability": "Urban wastewater treatment plant discharge limit" },
+          { "standard": "General ambient (good status)", "source": "Typical classification boundary", "value": "<=4", "applicability": "Good ecological status for rivers" }
+        ]
+      },
+      {
+        "parameter": "COD",
+        "fullName": "Chemical Oxygen Demand",
+        "unit": "mg/L",
+        "ecologicalSignificance": "Measures total quantity of oxygen required to oxidise all organic and inorganic matter. Broader than BOD; indicates total organic pollution load.",
+        "thresholds": [
+          { "standard": "EU Urban Wastewater Treatment Directive", "source": "Directive 91/271/EEC (Annex I, Table 1)", "value": 125, "applicability": "Discharge limit for treatment plants >2,000 population equivalent" },
+          { "standard": "IFC/World Bank", "source": "IFC EHS Guidelines: General (2007)", "value": 125, "applicability": "General effluent guideline for direct discharge" }
+        ]
+      },
+      {
+        "parameter": "TSS",
+        "fullName": "Total Suspended Solids",
+        "unit": "mg/L",
+        "ecologicalSignificance": "Reduces light penetration, smothers benthic organisms, clogs fish gills, and transports bound pollutants.",
+        "thresholds": [
+          { "standard": "EPA (US)", "source": "40 CFR 133 (secondary treatment)", "value": 30, "applicability": "Monthly average effluent limit for secondary treatment", "note": "7-day average: 45 mg/L" },
+          { "standard": "EU Urban Wastewater Treatment Directive", "source": "Directive 91/271/EEC", "value": 35, "applicability": "Discharge limit (or 90% minimum removal)" },
+          { "standard": "IFC/World Bank", "source": "IFC EHS Guidelines: General (2007)", "value": 50, "applicability": "General effluent guideline" }
+        ]
+      },
+      {
+        "parameter": "pH",
+        "fullName": "pH (acidity/alkalinity)",
+        "unit": "pH units",
+        "ecologicalSignificance": "Extreme pH values are lethal to aquatic organisms and affect the solubility and toxicity of metals and other pollutants.",
+        "thresholds": [
+          { "standard": "EPA (US)", "source": "EPA Quality Criteria for Water (Gold Book, 1986)", "value": "6.5-9.0", "applicability": "Freshwater aquatic life criteria" },
+          { "standard": "EU Water Framework Directive", "source": "Typical good status classification", "value": "6.0-9.0", "applicability": "General environmental quality" },
+          { "standard": "IFC/World Bank", "source": "IFC EHS Guidelines: General (2007)", "value": "6.0-9.0", "applicability": "General effluent guideline" }
+        ]
+      },
+      {
+        "parameter": "Cd",
+        "fullName": "Cadmium",
+        "unit": "ug/L",
+        "ecologicalSignificance": "Highly toxic heavy metal. Bioaccumulates in aquatic organisms and enters the food chain. Causes kidney damage in humans and is a Group 1 carcinogen (IARC).",
+        "thresholds": [
+          { "standard": "EPA (US)", "source": "EPA National Recommended Water Quality Criteria (2016)", "value": 0.25, "applicability": "Freshwater chronic criterion (hardness-dependent; value at 100 mg/L CaCO3)" },
+          { "standard": "EU Environmental Quality Standards", "source": "Directive 2013/39/EU (Priority Substances)", "value": "0.08-0.25", "applicability": "Annual average EQS for inland surface waters (varies by water hardness class)", "note": "MAC-EQS: 0.45-1.5 ug/L" },
+          { "standard": "EU Drinking Water Directive", "source": "Directive 2020/2184", "value": 5, "applicability": "Drinking water parametric value" }
+        ]
+      },
+      {
+        "parameter": "Cr",
+        "fullName": "Chromium (total)",
+        "unit": "ug/L",
+        "ecologicalSignificance": "Cr(VI) is highly toxic and a known human carcinogen. Cr(III) is less toxic. Both forms affect aquatic organisms at elevated concentrations.",
+        "thresholds": [
+          { "standard": "EPA (US)", "source": "EPA National Recommended Water Quality Criteria", "value": 11, "applicability": "Freshwater chronic criterion for Cr(VI)" },
+          { "standard": "EPA (US)", "source": "EPA National Recommended Water Quality Criteria", "value": 74, "applicability": "Freshwater chronic criterion for Cr(III) (hardness-dependent; value at 100 mg/L CaCO3)" },
+          { "standard": "EU Drinking Water Directive", "source": "Directive 2020/2184", "value": 25, "applicability": "Drinking water parametric value for chromium (total)", "note": "Revised from 50 ug/L" }
+        ]
+      },
+      {
+        "parameter": "Cu",
+        "fullName": "Copper",
+        "unit": "ug/L",
+        "ecologicalSignificance": "Essential trace element at low concentrations but toxic to aquatic organisms (especially invertebrates and fish) at elevated levels. Bioaccumulates.",
+        "thresholds": [
+          { "standard": "EPA (US)", "source": "EPA National Recommended Water Quality Criteria", "value": 9.0, "applicability": "Freshwater chronic criterion (hardness-dependent; value at 100 mg/L CaCO3)" },
+          { "standard": "EU Drinking Water Directive", "source": "Directive 2020/2184", "value": 2000, "applicability": "Drinking water parametric value" }
+        ]
+      },
+      {
+        "parameter": "Pb",
+        "fullName": "Lead",
+        "unit": "ug/L",
+        "ecologicalSignificance": "Neurotoxin that bioaccumulates. Causes neurological and developmental damage in children. Toxic to aquatic organisms at low concentrations.",
+        "thresholds": [
+          { "standard": "EPA (US)", "source": "EPA National Recommended Water Quality Criteria", "value": 2.5, "applicability": "Freshwater chronic criterion (hardness-dependent; value at 100 mg/L CaCO3)" },
+          { "standard": "EU Environmental Quality Standards", "source": "Directive 2013/39/EU", "value": 1.2, "applicability": "Annual average EQS for inland surface waters", "note": "Based on bioavailable concentration" },
+          { "standard": "EU Drinking Water Directive", "source": "Directive 2020/2184", "value": 5, "applicability": "Drinking water parametric value", "note": "Revised from 10 ug/L; effective 2036" }
+        ]
+      },
+      {
+        "parameter": "Hg",
+        "fullName": "Mercury",
+        "unit": "ug/L",
+        "ecologicalSignificance": "Highly toxic neurotoxin. Methylmercury bioaccumulates through the food chain. Damages nervous system, kidneys, and developing foetuses. Subject to Minamata Convention.",
+        "thresholds": [
+          { "standard": "EPA (US)", "source": "EPA National Recommended Water Quality Criteria", "value": 0.77, "applicability": "Freshwater chronic criterion" },
+          { "standard": "EU Environmental Quality Standards", "source": "Directive 2013/39/EU", "value": 0.07, "applicability": "Maximum allowable concentration (MAC-EQS) for inland surface waters", "note": "Annual average EQS: 0.05 ug/L" },
+          { "standard": "EU Drinking Water Directive", "source": "Directive 2020/2184", "value": 1, "applicability": "Drinking water parametric value" }
+        ]
+      },
+      {
+        "parameter": "Ni",
+        "fullName": "Nickel",
+        "unit": "ug/L",
+        "ecologicalSignificance": "Toxic to aquatic organisms, particularly algae and invertebrates. Can cause dermatitis and respiratory effects in humans. Group 1 carcinogen (nickel compounds).",
+        "thresholds": [
+          { "standard": "EPA (US)", "source": "EPA National Recommended Water Quality Criteria", "value": 52, "applicability": "Freshwater chronic criterion (hardness-dependent; value at 100 mg/L CaCO3)" },
+          { "standard": "EU Environmental Quality Standards", "source": "Directive 2013/39/EU", "value": 4, "applicability": "Annual average EQS for inland surface waters (bioavailable concentration)", "note": "MAC-EQS: 34 ug/L" },
+          { "standard": "EU Drinking Water Directive", "source": "Directive 2020/2184", "value": 20, "applicability": "Drinking water parametric value" }
+        ]
+      },
+      {
+        "parameter": "Zn",
+        "fullName": "Zinc",
+        "unit": "ug/L",
+        "ecologicalSignificance": "Essential trace element but toxic to aquatic organisms at elevated concentrations, particularly fish and invertebrates.",
+        "thresholds": [
+          { "standard": "EPA (US)", "source": "EPA National Recommended Water Quality Criteria", "value": 120, "applicability": "Freshwater chronic criterion (hardness-dependent; value at 100 mg/L CaCO3)" },
+          { "standard": "EU (general guidance)", "source": "Commonly applied EQS values used by Member States", "value": "8-125", "applicability": "Varies by Member State; not a priority substance under WFD" }
+        ]
+      },
+      {
+        "parameter": "Total Nitrogen",
+        "fullName": "Total Nitrogen (TN)",
+        "unit": "mg/L",
+        "ecologicalSignificance": "Major cause of eutrophication in water bodies. Excess nitrogen leads to algal blooms, oxygen depletion, and loss of biodiversity.",
+        "thresholds": [
+          { "standard": "EU Urban Wastewater Treatment Directive", "source": "Directive 91/271/EEC (Annex I)", "value": 10, "applicability": "Discharge limit for sensitive area treatment plants (>100,000 PE); annual mean", "note": "15 mg/L for 10,000-100,000 PE" },
+          { "standard": "IFC/World Bank", "source": "IFC EHS Guidelines: General (2007)", "value": 10, "applicability": "General effluent guideline for direct discharge" }
+        ]
+      },
+      {
+        "parameter": "Total Phosphorus",
+        "fullName": "Total Phosphorus (TP)",
+        "unit": "mg/L",
+        "ecologicalSignificance": "Key limiting nutrient for eutrophication in freshwater systems. Even small increases can trigger algal blooms and ecosystem degradation.",
+        "thresholds": [
+          { "standard": "EU Urban Wastewater Treatment Directive", "source": "Directive 91/271/EEC (Annex I)", "value": 1, "applicability": "Discharge limit for sensitive area treatment plants (>100,000 PE); annual mean", "note": "2 mg/L for 10,000-100,000 PE" },
+          { "standard": "IFC/World Bank", "source": "IFC EHS Guidelines: General (2007)", "value": 2, "applicability": "General effluent guideline for direct discharge" },
+          { "standard": "EPA (US) guidance", "source": "EPA Nutrient Criteria guidance", "value": "0.01-0.075", "applicability": "Ambient criteria for lakes and reservoirs (ecoregion-dependent)" }
+        ]
+      }
+    ]
+  },
+  "soilContamination": {
+    "description": "Soil screening levels and intervention values for key contaminants. Used to assess whether soil quality poses a risk to human health or the environment.",
+    "parameters": [
+      {
+        "parameter": "Cadmium (Cd)",
+        "unit": "mg/kg dry weight",
+        "thresholds": [
+          { "standard": "EPA RSL", "source": "EPA Regional Screening Levels (November 2024 update)", "value": 0.71, "applicability": "Residential soil screening level", "note": "Target cancer risk 1E-6; target HQ 0.1" },
+          { "standard": "EPA RSL", "source": "EPA Regional Screening Levels", "value": 7.5, "applicability": "Industrial soil screening level" },
+          { "standard": "Dutch Intervention Value", "source": "Dutch Soil Remediation Circular (2013)", "value": 12, "applicability": "Intervention value (serious contamination level triggering remediation assessment)" },
+          { "standard": "Dutch Target Value", "source": "Dutch Soil Remediation Circular (2013)", "value": 0.8, "applicability": "Target value (negligible risk level)" }
+        ]
+      },
+      {
+        "parameter": "Chromium (Cr III)",
+        "unit": "mg/kg dry weight",
+        "thresholds": [
+          { "standard": "EPA RSL", "source": "EPA Regional Screening Levels", "value": 120000, "applicability": "Residential soil screening level (non-cancer)" },
+          { "standard": "Dutch Intervention Value", "source": "Dutch Soil Remediation Circular (2013)", "value": 380, "applicability": "Intervention value (total chromium)" },
+          { "standard": "Dutch Target Value", "source": "Dutch Soil Remediation Circular (2013)", "value": 100, "applicability": "Target value (total chromium)" }
+        ]
+      },
+      {
+        "parameter": "Chromium (Cr VI)",
+        "unit": "mg/kg dry weight",
+        "thresholds": [
+          { "standard": "EPA RSL", "source": "EPA Regional Screening Levels", "value": 0.29, "applicability": "Residential soil screening level (cancer risk)" },
+          { "standard": "EPA RSL", "source": "EPA Regional Screening Levels", "value": 5.6, "applicability": "Industrial soil screening level" }
+        ]
+      },
+      {
+        "parameter": "Lead (Pb)",
+        "unit": "mg/kg dry weight",
+        "thresholds": [
+          { "standard": "EPA RSL", "source": "EPA Regional Screening Levels (2024)", "value": 200, "applicability": "Residential soil screening level", "note": "Based on IEUBK model for children; EPA proposed lowering to 100 in 2024" },
+          { "standard": "EPA RSL", "source": "EPA Regional Screening Levels", "value": 800, "applicability": "Industrial soil screening level" },
+          { "standard": "Dutch Intervention Value", "source": "Dutch Soil Remediation Circular (2013)", "value": 530, "applicability": "Intervention value" },
+          { "standard": "Dutch Target Value", "source": "Dutch Soil Remediation Circular (2013)", "value": 85, "applicability": "Target value" }
+        ]
+      },
+      {
+        "parameter": "Mercury (Hg)",
+        "unit": "mg/kg dry weight",
+        "thresholds": [
+          { "standard": "EPA RSL", "source": "EPA Regional Screening Levels", "value": 1.1, "applicability": "Residential soil screening level (elemental mercury, non-cancer)" },
+          { "standard": "Dutch Intervention Value", "source": "Dutch Soil Remediation Circular (2013)", "value": 10, "applicability": "Intervention value (inorganic mercury)" },
+          { "standard": "Dutch Target Value", "source": "Dutch Soil Remediation Circular (2013)", "value": 0.3, "applicability": "Target value" }
+        ]
+      },
+      {
+        "parameter": "TPH (Total Petroleum Hydrocarbons)",
+        "unit": "mg/kg dry weight",
+        "thresholds": [
+          { "standard": "Dutch Intervention Value", "source": "Dutch Soil Remediation Circular (2013)", "value": 5000, "applicability": "Intervention value (mineral oil C10-C40)" },
+          { "standard": "Dutch Target Value", "source": "Dutch Soil Remediation Circular (2013)", "value": 50, "applicability": "Target value (mineral oil)" },
+          { "standard": "EPA RSL (aliphatic)", "source": "EPA Regional Screening Levels", "value": "varies by fraction", "applicability": "EPA uses carbon range fractions (C5-C8, C9-C18, C19-C36) rather than total TPH", "note": "Residential: C9-C18 aliphatics = 1600 mg/kg; C19-C36 aliphatics = 23000 mg/kg" }
+        ]
+      },
+      {
+        "parameter": "Benzene (BTEX component)",
+        "unit": "mg/kg dry weight",
+        "thresholds": [
+          { "standard": "EPA RSL", "source": "EPA Regional Screening Levels", "value": 1.1, "applicability": "Residential soil screening level (cancer risk)" },
+          { "standard": "EPA RSL", "source": "EPA Regional Screening Levels", "value": 5.6, "applicability": "Industrial soil screening level" },
+          { "standard": "Dutch Intervention Value", "source": "Dutch Soil Remediation Circular (2013)", "value": 1, "applicability": "Intervention value" },
+          { "standard": "Dutch Target Value", "source": "Dutch Soil Remediation Circular (2013)", "value": 0.01, "applicability": "Target value" }
+        ]
+      },
+      {
+        "parameter": "Toluene (BTEX component)",
+        "unit": "mg/kg dry weight",
+        "thresholds": [
+          { "standard": "EPA RSL", "source": "EPA Regional Screening Levels", "value": 4900, "applicability": "Residential soil screening level (non-cancer)" },
+          { "standard": "Dutch Intervention Value", "source": "Dutch Soil Remediation Circular (2013)", "value": 130, "applicability": "Intervention value" },
+          { "standard": "Dutch Target Value", "source": "Dutch Soil Remediation Circular (2013)", "value": 0.01, "applicability": "Target value" }
+        ]
+      },
+      {
+        "parameter": "Ethylbenzene (BTEX component)",
+        "unit": "mg/kg dry weight",
+        "thresholds": [
+          { "standard": "EPA RSL", "source": "EPA Regional Screening Levels", "value": 5.8, "applicability": "Residential soil screening level (cancer risk)" },
+          { "standard": "Dutch Intervention Value", "source": "Dutch Soil Remediation Circular (2013)", "value": 50, "applicability": "Intervention value" }
+        ]
+      },
+      {
+        "parameter": "Xylenes (BTEX component)",
+        "unit": "mg/kg dry weight",
+        "thresholds": [
+          { "standard": "EPA RSL", "source": "EPA Regional Screening Levels", "value": 630, "applicability": "Residential soil screening level (non-cancer)" },
+          { "standard": "Dutch Intervention Value", "source": "Dutch Soil Remediation Circular (2013)", "value": 25, "applicability": "Intervention value" }
+        ]
+      },
+      {
+        "parameter": "Benzo(a)pyrene (PAH indicator)",
+        "unit": "mg/kg dry weight",
+        "thresholds": [
+          { "standard": "EPA RSL", "source": "EPA Regional Screening Levels", "value": 0.11, "applicability": "Residential soil screening level (cancer risk)" },
+          { "standard": "EPA RSL", "source": "EPA Regional Screening Levels", "value": 2.1, "applicability": "Industrial soil screening level" },
+          { "standard": "Dutch Intervention Value", "source": "Dutch Soil Remediation Circular (2013)", "value": 0.76, "applicability": "Intervention value" },
+          { "standard": "Dutch Target Value", "source": "Dutch Soil Remediation Circular (2013)", "value": 0.003, "applicability": "Target value" }
+        ],
+        "note": "Benzo(a)pyrene is used as a marker for the PAH group; total PAH (sum of 10) Dutch intervention value = 40 mg/kg"
+      },
+      {
+        "parameter": "Total PAH (sum of 10 RIVM)",
+        "unit": "mg/kg dry weight",
+        "thresholds": [
+          { "standard": "Dutch Intervention Value", "source": "Dutch Soil Remediation Circular (2013)", "value": 40, "applicability": "Intervention value (sum of 10 PAHs per RIVM)" },
+          { "standard": "Dutch Target Value", "source": "Dutch Soil Remediation Circular (2013)", "value": 1, "applicability": "Target value" }
+        ]
+      },
+      {
+        "parameter": "PFOS (PFAS component)",
+        "unit": "ug/kg dry weight",
+        "thresholds": [
+          { "standard": "EPA RSL", "source": "EPA Regional Screening Levels (2024)", "value": 0.57, "applicability": "Residential soil screening level", "note": "Based on updated 2024 toxicity values", "verified": true },
+          { "standard": "EPA RSL", "source": "EPA Regional Screening Levels (2024)", "value": 7.3, "applicability": "Industrial soil screening level" },
+          { "standard": "Dutch RIVM", "source": "RIVM Provisional Intervention Values (2020)", "value": 3.8, "applicability": "Provisional intervention value for PFOS in soil (residential function)" }
+        ]
+      },
+      {
+        "parameter": "PFOA (PFAS component)",
+        "unit": "ug/kg dry weight",
+        "thresholds": [
+          { "standard": "EPA RSL", "source": "EPA Regional Screening Levels (2024)", "value": 0.17, "applicability": "Residential soil screening level", "note": "Based on updated 2024 toxicity values", "verified": true },
+          { "standard": "EPA RSL", "source": "EPA Regional Screening Levels (2024)", "value": 2.2, "applicability": "Industrial soil screening level" },
+          { "standard": "Dutch RIVM", "source": "RIVM Provisional Intervention Values (2020)", "value": 1.4, "applicability": "Provisional intervention value for PFOA in soil (residential function)" }
+        ]
+      }
+    ]
+  },
+  "noise": {
+    "description": "Environmental noise guidelines and regulatory thresholds for the protection of human health and well-being.",
+    "parameters": [
+      {
+        "parameter": "Lden",
+        "fullName": "Day-Evening-Night Noise Level",
+        "unit": "dB(A)",
+        "description": "Weighted 24-hour equivalent noise level with 5 dB penalty for evening (19:00-23:00) and 10 dB penalty for night (23:00-07:00) periods. Used as the primary indicator in the EU Environmental Noise Directive.",
+        "thresholds": [
+          { "standard": "WHO 2018", "source": "WHO Environmental Noise Guidelines for the European Region (2018)", "value": 53, "applicability": "Road traffic noise: strongly recommended not to exceed to reduce health effects", "sourceType": "road traffic" },
+          { "standard": "WHO 2018", "source": "WHO Environmental Noise Guidelines for the European Region (2018)", "value": 54, "applicability": "Railway noise: strongly recommended not to exceed", "sourceType": "railway" },
+          { "standard": "WHO 2018", "source": "WHO Environmental Noise Guidelines for the European Region (2018)", "value": 45, "applicability": "Aircraft noise: strongly recommended not to exceed", "sourceType": "aircraft" },
+          { "standard": "WHO 2018", "source": "WHO Environmental Noise Guidelines for the European Region (2018)", "value": 50, "applicability": "Wind turbine noise: conditionally recommended not to exceed", "sourceType": "wind turbine" },
+          { "standard": "EU Environmental Noise Directive", "source": "Directive 2002/49/EC", "value": 55, "applicability": "Threshold for strategic noise mapping in agglomerations (indicative)", "note": "Member States set their own limit values; 55 dB Lden is a common action planning threshold" }
+        ]
+      },
+      {
+        "parameter": "Lnight",
+        "fullName": "Night-time Noise Level",
+        "unit": "dB(A)",
+        "description": "Equivalent continuous noise level during the night period (23:00-07:00). Night-time noise is particularly harmful, causing sleep disturbance, cardiovascular effects, and annoyance.",
+        "thresholds": [
+          { "standard": "WHO 2018", "source": "WHO Environmental Noise Guidelines for the European Region (2018)", "value": 45, "applicability": "Road traffic noise: strongly recommended not to exceed for night-time", "sourceType": "road traffic" },
+          { "standard": "WHO 2018", "source": "WHO Environmental Noise Guidelines for the European Region (2018)", "value": 44, "applicability": "Railway noise: strongly recommended not to exceed for night-time", "sourceType": "railway" },
+          { "standard": "WHO 2018", "source": "WHO Environmental Noise Guidelines for the European Region (2018)", "value": 40, "applicability": "Aircraft noise: strongly recommended not to exceed for night-time", "sourceType": "aircraft" },
+          { "standard": "WHO 2009", "source": "WHO Night Noise Guidelines for Europe (2009)", "value": 40, "applicability": "General night noise guideline for health protection", "note": "Interim target: 55 dB Lnight for countries unable to meet guideline in short term" },
+          { "standard": "EU Environmental Noise Directive", "source": "Directive 2002/49/EC", "value": 50, "applicability": "Threshold for strategic noise mapping (indicative)", "note": "Member States set their own values; 50 dB Lnight is a common action planning threshold" }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,501 @@
+{
+  "id": "fw-eia-multi",
+  "code": "eia",
+  "name": "Environmental Impact Assessment Requirements",
+  "version": "2024",
+  "description": "Multi-jurisdictional Environmental Impact Assessment (EIA) requirements covering the EU EIA Directive and GCC regulatory frameworks.",
+  "region": "multi-jurisdictional",
+  "type": "mandatory",
+  "eiaProcess": {
+    "stages": [
+      {
+        "code": "SCREENING",
+        "name": "Screening",
+        "order": 1,
+        "description": "Determine whether a proposed project requires an EIA based on project type, size, location, and potential environmental significance.",
+        "outputs": ["Screening determination", "Project categorisation (Category A/B/C or Annex I/II)"],
+        "keyConsiderations": [
+          "Project type and size thresholds",
+          "Location sensitivity (proximity to protected areas, water bodies, population centres)",
+          "Cumulative effects with other existing or planned projects",
+          "Transboundary potential"
+        ]
+      },
+      {
+        "code": "SCOPING",
+        "name": "Scoping",
+        "order": 2,
+        "description": "Determine the scope and level of detail of the EIA, identify key issues and impacts to assess, define the study area, and establish the assessment methodology.",
+        "outputs": ["Scoping report", "Terms of Reference for the EIA study"],
+        "keyConsiderations": [
+          "Identification of valued environmental and social components",
+          "Spatial and temporal boundaries of the assessment",
+          "Baseline data requirements",
+          "Stakeholder identification and engagement plan",
+          "Assessment methodologies for each impact category",
+          "Alternatives to be considered"
+        ]
+      },
+      {
+        "code": "ASSESSMENT",
+        "name": "Impact Assessment",
+        "order": 3,
+        "description": "Systematic identification, prediction, and evaluation of potential environmental and social impacts of the proposed project, including baseline studies, impact prediction, and significance evaluation.",
+        "outputs": ["Environmental Impact Statement (EIS)", "Technical appendices", "Non-technical summary"],
+        "keyConsiderations": [
+          "Baseline environmental conditions",
+          "Impact prediction using modelling, expert judgement, or analogy",
+          "Significance evaluation using defined criteria",
+          "Cumulative impact assessment",
+          "Assessment of alternatives (including no-project alternative)",
+          "Mitigation measures following the mitigation hierarchy",
+          "Environmental Management Plan (EMP)",
+          "Monitoring programme design"
+        ]
+      },
+      {
+        "code": "REVIEW",
+        "name": "Review",
+        "order": 4,
+        "description": "Independent review of the EIS by the competent authority and public/stakeholder review to ensure adequacy, accuracy, and completeness.",
+        "outputs": ["Review report", "Public comments summary", "Supplementary information requests"],
+        "keyConsiderations": [
+          "Completeness of impact identification",
+          "Adequacy of baseline data",
+          "Appropriateness of prediction methods",
+          "Effectiveness of proposed mitigation",
+          "Quality of the Environmental Management Plan",
+          "Public and stakeholder input"
+        ]
+      },
+      {
+        "code": "DECISION",
+        "name": "Decision-making",
+        "order": 5,
+        "description": "The competent authority makes a decision on whether to approve the project, with or without conditions, based on the EIS, review findings, and public consultation.",
+        "outputs": ["Environmental approval/permit", "Conditions of approval", "Refusal notice"],
+        "keyConsiderations": [
+          "Significance of residual impacts",
+          "Adequacy of mitigation commitments",
+          "Public interest considerations",
+          "Compliance with environmental standards and policies",
+          "Conditions and monitoring requirements"
+        ]
+      },
+      {
+        "code": "MONITORING",
+        "name": "Post-decision Monitoring",
+        "order": 6,
+        "description": "Implementation of the Environmental Management Plan, monitoring of actual impacts, and auditing of compliance with approval conditions.",
+        "outputs": ["Monitoring reports", "Compliance audit reports", "Adaptive management actions"],
+        "keyConsiderations": [
+          "Verification of impact predictions",
+          "Effectiveness of mitigation measures",
+          "Compliance with approval conditions",
+          "Adaptive management and corrective actions",
+          "Periodic review and reporting"
+        ]
+      }
+    ]
+  },
+  "jurisdictionalRequirements": {
+    "eu": {
+      "directive": "2014/52/EU",
+      "directiveName": "Directive 2014/52/EU amending Directive 2011/92/EU on the assessment of the effects of certain public and private projects on the environment",
+      "effectiveDate": "2017-05-16",
+      "competentAuthorities": "Designated by each EU Member State",
+      "projectCategories": {
+        "annexI": {
+          "description": "Projects requiring mandatory EIA in all cases",
+          "examples": [
+            "Crude oil refineries",
+            "Thermal power stations >= 300 MW",
+            "Nuclear power stations and reactors",
+            "Integrated steel smelting installations",
+            "Installations for asbestos extraction/processing",
+            "Integrated chemical installations",
+            "Motorways and express roads",
+            "Railways for long-distance traffic",
+            "Airports with runway >= 2100m",
+            "Inland waterways and ports for >= 1350 tonne vessels",
+            "Waste disposal installations for incineration/treatment of hazardous waste",
+            "Groundwater abstraction or recharge >= 10 million m3/year",
+            "Dams/water storage >= 10 million m3",
+            "Pipelines for gas, oil, chemicals >= 800mm diameter and >= 40 km",
+            "Industrial installations for pulp from timber",
+            "Large-scale primary extraction of minerals (quarrying, open-cast mining, peat extraction)"
+          ]
+        },
+        "annexII": {
+          "description": "Projects requiring screening to determine if EIA is needed based on case-by-case examination or thresholds set by Member States",
+          "examples": [
+            "Agriculture (land consolidation, water management, afforestation, intensive livestock)",
+            "Extractive industry (quarries, open-cast mining, underground mining, surface drilling)",
+            "Energy industry (industrial installations for electricity/steam/hot water, pipelines, surface storage of natural gas, underground storage of combustible gases)",
+            "Metalworking and glass industry",
+            "Chemical industry (not covered by Annex I)",
+            "Food industry",
+            "Textile, leather, wood, and paper industries",
+            "Infrastructure projects (industrial estate development, urban development, ski-runs, marinas)",
+            "Tourism and leisure (holiday villages, hotel complexes outside urban areas, theme parks)"
+          ]
+        }
+      },
+      "requiredContent": [
+        "Description of the project (location, design, size, characteristics during construction and operation)",
+        "Description of reasonable alternatives studied and reasons for the chosen option",
+        "Description of the relevant aspects of the current state of the environment (baseline)",
+        "Description of factors likely to be significantly affected: population, human health, biodiversity, land, soil, water, air, climate, material assets, cultural heritage, landscape",
+        "Description of likely significant effects on the environment resulting from construction, existence, use, and where relevant, demolition",
+        "Description of forecasting methods and evidence used to identify and assess significant effects",
+        "Description of measures envisaged to avoid, prevent, reduce, or offset significant adverse effects",
+        "Description of expected significant adverse effects resulting from the vulnerability of the project to risks of major accidents and/or disasters",
+        "A non-technical summary",
+        "Reference list of studies and sources used",
+        "A monitoring programme for significant adverse effects"
+      ]
+    },
+    "gcc": {
+      "saudi": {
+        "authority": "National Center for Environmental Compliance (NCEC)",
+        "previousAuthority": "General Authority of Meteorology and Environmental Protection (GAMEP) / Presidency of Meteorology and Environment (PME)",
+        "legislation": "General Environmental Law (Royal Decree No. M/165, 2020); EIA Regulation",
+        "projectCategories": {
+          "categoryA": "Major projects with potentially significant impacts requiring full EIA",
+          "categoryB": "Projects with moderate impacts requiring limited environmental assessment",
+          "categoryC": "Projects with minimal impacts requiring environmental registration only"
+        },
+        "requiredContent": [
+          "Project description and justification",
+          "Description of the existing environment (baseline)",
+          "Analysis of alternatives",
+          "Identification and assessment of environmental and social impacts",
+          "Environmental Management and Monitoring Plan (EMMP)",
+          "Emergency response plan",
+          "Decommissioning and closure plan (where applicable)",
+          "Public disclosure and consultation records"
+        ],
+        "keyStandards": [
+          "Saudi Ambient Air Quality Standards",
+          "Saudi Wastewater Discharge Standards",
+          "Saudi Noise Standards",
+          "NCEC environmental permits and licences"
+        ]
+      },
+      "uae": {
+        "authority": "Federal Authority for Nuclear Regulation (FANR) for nuclear; Ministry of Climate Change and Environment (MoCCaE) + local authorities (EAD Abu Dhabi, EPDA Ras Al Khaimah, etc.)",
+        "legislation": "Federal Law No. 24 of 1999 (Protection and Development of the Environment); Cabinet Decision No. 37 of 2001 (EIA Regulations); Emirate-level regulations",
+        "projectCategories": {
+          "category1": "Projects requiring full Strategic Environmental Assessment (SEA) or EIA",
+          "category2": "Projects requiring Environmental Management Plan (EMP) only",
+          "category3": "Projects exempt from EIA, requiring no-objection certificate (NOC)"
+        },
+        "requiredContent": [
+          "Project description",
+          "Policy, legal, and institutional framework",
+          "Baseline environmental conditions",
+          "Assessment of environmental impacts",
+          "Analysis of alternatives",
+          "Environmental Management Plan",
+          "Monitoring plan",
+          "Stakeholder consultation"
+        ],
+        "keyStandards": [
+          "UAE Federal Environmental Standards",
+          "Abu Dhabi EHSMS (Environmental, Health & Safety Management System)",
+          "Dubai Municipality environmental regulations"
+        ]
+      },
+      "qatar": {
+        "authority": "Ministry of Municipality and Environment (MME) / Environmental Protection Department",
+        "legislation": "Law No. 30 of 2002 (Environmental Protection Law); EIA guidelines",
+        "projectCategories": {
+          "category1": "Major industrial and infrastructure projects requiring full EIA",
+          "category2": "Medium-scale projects requiring simplified environmental assessment",
+          "category3": "Small projects requiring environmental permit only"
+        },
+        "requiredContent": [
+          "Executive summary",
+          "Project description",
+          "Regulatory framework applicable",
+          "Description of the existing environment",
+          "Impact prediction and evaluation",
+          "Mitigation measures",
+          "Environmental Management Plan",
+          "Monitoring programme",
+          "Emergency preparedness and response"
+        ],
+        "keyStandards": [
+          "Qatar National Ambient Air Quality Standards",
+          "Qatar Wastewater Reuse Guidelines",
+          "Qatar Marine Water Quality Standards",
+          "QP HSE Regulations (for oil and gas)"
+        ]
+      }
+    }
+  },
+  "impactCategories": [
+    {
+      "code": "AIR",
+      "name": "Air Quality",
+      "description": "Impacts on ambient and local air quality from emissions of pollutants including particulate matter, nitrogen oxides, sulphur dioxide, volatile organic compounds, carbon monoxide, and hazardous air pollutants.",
+      "assessmentMethodology": [
+        "Emissions inventory and source characterisation",
+        "Atmospheric dispersion modelling (AERMOD, CALPUFF, ADMS)",
+        "Ambient air quality monitoring (baseline)",
+        "Comparison with applicable ambient air quality standards"
+      ],
+      "significanceCriteria": {
+        "major": "Predicted exceedance of ambient air quality standards at sensitive receptor locations",
+        "moderate": "Predicted contribution >25% of applicable standard at any sensitive receptor",
+        "minor": "Predicted contribution >10% but <25% of applicable standard",
+        "negligible": "Predicted contribution <10% of applicable standard"
+      },
+      "mitigationHierarchy": [
+        "Avoidance: process selection to eliminate emissions sources",
+        "Minimisation: pollution control equipment (scrubbers, filters, SCR/SNCR)",
+        "Restoration: not typically applicable",
+        "Offset: emissions trading or offset programmes"
+      ]
+    },
+    {
+      "code": "WATER",
+      "name": "Water Resources",
+      "description": "Impacts on surface water and groundwater quantity and quality, including water abstraction, discharge of effluents, changes to hydrology and drainage patterns.",
+      "assessmentMethodology": [
+        "Hydrological survey and water balance assessment",
+        "Hydrogeological assessment for groundwater",
+        "Water quality sampling and analysis (baseline)",
+        "Water quality modelling for discharge scenarios",
+        "Flood risk assessment"
+      ],
+      "significanceCriteria": {
+        "major": "Significant alteration of water body status or exceedance of discharge standards affecting downstream users or ecology",
+        "moderate": "Measurable deterioration in water quality or quantity but within regulatory limits",
+        "minor": "Localised and temporary effects on water quality or quantity",
+        "negligible": "No measurable change in water quality or quantity"
+      },
+      "mitigationHierarchy": [
+        "Avoidance: water-efficient process design, closed-loop cooling systems",
+        "Minimisation: wastewater treatment, stormwater management, efficient irrigation",
+        "Restoration: riparian zone restoration, wetland enhancement",
+        "Offset: water replenishment projects in the same watershed"
+      ]
+    },
+    {
+      "code": "SOIL",
+      "name": "Soil and Land",
+      "description": "Impacts on soil quality, land use, land stability, and contamination risks from construction and operational activities.",
+      "assessmentMethodology": [
+        "Soil survey and geotechnical investigation",
+        "Contaminated land assessment (Phase I/II Environmental Site Assessment)",
+        "Land use analysis and mapping",
+        "Erosion risk assessment",
+        "Soil quality sampling and analysis"
+      ],
+      "significanceCriteria": {
+        "major": "Widespread soil contamination above intervention values, loss of prime agricultural land, or significant landslide risk",
+        "moderate": "Localised soil contamination, measurable loss of soil function, or moderate erosion",
+        "minor": "Limited and reversible soil disturbance within the project footprint",
+        "negligible": "No measurable change to soil quality or function"
+      },
+      "mitigationHierarchy": [
+        "Avoidance: site selection to avoid sensitive soils, brownfield preference",
+        "Minimisation: erosion control, soil management plans, spill prevention",
+        "Restoration: soil remediation, topsoil reinstatement, revegetation",
+        "Offset: agricultural land improvement or soil conservation projects"
+      ]
+    },
+    {
+      "code": "BIODIVERSITY",
+      "name": "Biodiversity",
+      "description": "Impacts on habitats, flora, fauna, and ecological connectivity, including effects on protected species, critical habitats, and ecosystem services.",
+      "assessmentMethodology": [
+        "Phase 1 habitat survey and extended Phase 2 surveys (species-specific)",
+        "Ecological baseline surveys (seasonal, multi-year for large projects)",
+        "Critical habitat assessment (IFC PS6 criteria)",
+        "Habitat suitability modelling",
+        "Population viability analysis for key species",
+        "Ecosystem services assessment (LEAP, ENCORE)"
+      ],
+      "significanceCriteria": {
+        "major": "Loss or fragmentation of critical habitat, significant impact on IUCN CR/EN species population viability, or loss of irreplaceable biodiversity",
+        "moderate": "Measurable loss of natural/modified habitat, impact on VU species or high conservation value areas",
+        "minor": "Localised habitat disturbance with low ecological sensitivity, affecting common species",
+        "negligible": "No measurable impact on habitats or species of conservation concern"
+      },
+      "mitigationHierarchy": [
+        "Avoidance: site and route selection to avoid critical habitats and Key Biodiversity Areas",
+        "Minimisation: reduced footprint, construction timing to avoid sensitive periods, wildlife crossings",
+        "Restoration: habitat reinstatement, native species planting, ecological connectivity restoration",
+        "Offset: biodiversity offsets achieving no net loss or net gain (measurable conservation outcomes)"
+      ]
+    },
+    {
+      "code": "NOISE",
+      "name": "Noise and Vibration",
+      "description": "Impacts from construction and operational noise and vibration on sensitive receptors including residential areas, hospitals, schools, and wildlife habitats.",
+      "assessmentMethodology": [
+        "Baseline noise monitoring (LAeq, LA90, LAmax at receptor locations)",
+        "Noise modelling and prediction (ISO 9613-2, CRTN, CadnaA)",
+        "Vibration measurement and prediction (BS 5228, BS 7385)",
+        "Assessment against applicable noise standards and guidelines"
+      ],
+      "significanceCriteria": {
+        "major": "Exceedance of statutory noise limits at sensitive receptors, or levels causing significant adverse health effects",
+        "moderate": "Noticeable increase (>5 dB) above baseline at sensitive receptors",
+        "minor": "Perceivable increase (3-5 dB) above baseline",
+        "negligible": "Imperceivable increase (<3 dB) above baseline"
+      },
+      "mitigationHierarchy": [
+        "Avoidance: site layout optimisation, setback distances",
+        "Minimisation: noise barriers, equipment enclosures, low-noise equipment, restricted working hours",
+        "Restoration: not typically applicable",
+        "Offset: insulation programmes for affected properties"
+      ]
+    },
+    {
+      "code": "VISUAL",
+      "name": "Visual and Landscape",
+      "description": "Impacts on landscape character, visual amenity, and scenic quality from project infrastructure, lighting, and land use change.",
+      "assessmentMethodology": [
+        "Landscape and Visual Impact Assessment (LVIA) per GLVIA3",
+        "Zone of Theoretical Visibility (ZTV) mapping",
+        "Photomontages and visualisations from key viewpoints",
+        "Landscape character assessment",
+        "Night-time assessment for lighting impacts"
+      ],
+      "significanceCriteria": {
+        "major": "Fundamental change to a landscape of high sensitivity, or dominant visual impact from key viewpoints",
+        "moderate": "Noticeable change to landscape character or visual amenity",
+        "minor": "Slight change, not altering the overall landscape character",
+        "negligible": "No discernible change to landscape or visual amenity"
+      },
+      "mitigationHierarchy": [
+        "Avoidance: site selection and layout to avoid sensitive landscapes and viewpoints",
+        "Minimisation: architectural design, colour and material selection, landscape screening, lighting design (dark-sky compliant)",
+        "Restoration: landscape reinstatement and planting schemes",
+        "Offset: landscape enhancement or conservation in the surrounding area"
+      ]
+    },
+    {
+      "code": "SOCIOECO",
+      "name": "Socioeconomic",
+      "description": "Impacts on local communities including employment, livelihoods, housing, public services, health, land acquisition, and community cohesion.",
+      "assessmentMethodology": [
+        "Socioeconomic baseline survey (census data, household surveys, key informant interviews)",
+        "Stakeholder analysis and engagement",
+        "Land acquisition and resettlement assessment (if applicable)",
+        "Health Impact Assessment (HIA) for major projects",
+        "Economic impact modelling (input-output analysis, multiplier effects)"
+      ],
+      "significanceCriteria": {
+        "major": "Physical displacement of communities, loss of primary livelihood source, or significant adverse health outcomes",
+        "moderate": "Measurable change in employment, access to services, or community dynamics",
+        "minor": "Localised and temporary disruption to community activities",
+        "negligible": "No measurable socioeconomic impact"
+      },
+      "mitigationHierarchy": [
+        "Avoidance: site selection to avoid displacement and livelihood disruption",
+        "Minimisation: local hiring, community investment, livelihood restoration programmes",
+        "Restoration: resettlement action plans meeting IFC PS5 standards",
+        "Offset: community development programmes, benefit-sharing mechanisms"
+      ]
+    },
+    {
+      "code": "CULTURAL",
+      "name": "Cultural Heritage",
+      "description": "Impacts on tangible cultural heritage (archaeological sites, historic buildings, monuments) and intangible cultural heritage (traditions, practices, sacred sites).",
+      "assessmentMethodology": [
+        "Desktop study of heritage databases and historical records",
+        "Archaeological field survey and investigation",
+        "Built heritage assessment",
+        "Consultation with relevant heritage authorities and local communities",
+        "Chance find procedures"
+      ],
+      "significanceCriteria": {
+        "major": "Destruction or major alteration of nationally/internationally significant heritage assets",
+        "moderate": "Partial damage or setting alteration of significant heritage assets",
+        "minor": "Limited and reversible impact on heritage assets of local significance",
+        "negligible": "No impact on known heritage assets"
+      },
+      "mitigationHierarchy": [
+        "Avoidance: project redesign to avoid heritage assets and their settings",
+        "Minimisation: archaeological excavation and recording, protective measures during construction",
+        "Restoration: conservation and restoration of affected heritage assets",
+        "Offset: support for heritage conservation programmes"
+      ]
+    },
+    {
+      "code": "TRAFFIC",
+      "name": "Traffic and Transport",
+      "description": "Impacts from construction and operational traffic on road network capacity, road safety, pedestrian and cyclist amenity, and access to properties.",
+      "assessmentMethodology": [
+        "Traffic surveys (automatic and manual counts)",
+        "Transport Assessment / Traffic Impact Assessment",
+        "Road safety audit",
+        "Capacity analysis and junction modelling",
+        "Construction traffic management planning"
+      ],
+      "significanceCriteria": {
+        "major": "Significant increase in traffic volumes (>30%) on sensitive routes, or material road safety risk",
+        "moderate": "Noticeable increase in traffic (10-30%) on affected routes",
+        "minor": "Minor increase in traffic (<10%) on affected routes",
+        "negligible": "No discernible change in traffic conditions"
+      },
+      "mitigationHierarchy": [
+        "Avoidance: alternative transport modes (rail, pipeline, conveyor), site access design",
+        "Minimisation: construction traffic management plans, route restrictions, timing controls",
+        "Restoration: road reinstatement after construction",
+        "Offset: road improvement contributions, public transport investment"
+      ]
+    },
+    {
+      "code": "WASTE",
+      "name": "Waste Management",
+      "description": "Impacts from generation, storage, transport, treatment, and disposal of solid and liquid wastes, including hazardous wastes.",
+      "assessmentMethodology": [
+        "Waste inventory and characterisation",
+        "Waste management options assessment (waste hierarchy)",
+        "Capacity assessment of receiving facilities",
+        "Risk assessment for hazardous waste handling and transport"
+      ],
+      "significanceCriteria": {
+        "major": "Generation of significant hazardous waste quantities without adequate disposal facilities, or risk of uncontrolled waste release",
+        "moderate": "Significant non-hazardous waste generation requiring new disposal capacity",
+        "minor": "Moderate waste generation manageable within existing facilities and practices",
+        "negligible": "Minimal waste generation with established management routes"
+      },
+      "mitigationHierarchy": [
+        "Avoidance: process design to eliminate waste streams, design for deconstruction",
+        "Minimisation: waste reduction at source, reuse and recycling programmes",
+        "Restoration: remediation of contaminated land from historical waste disposal",
+        "Offset: waste-to-energy or beneficial reuse projects"
+      ]
+    },
+    {
+      "code": "CLIMATE",
+      "name": "Climate",
+      "description": "Climate-related impacts including project GHG emissions contribution and project vulnerability to climate change effects.",
+      "assessmentMethodology": [
+        "GHG emissions inventory (Scope 1, 2, 3 per GHG Protocol)",
+        "Carbon footprint assessment (construction and operational phases)",
+        "Climate change vulnerability assessment",
+        "Climate change risk assessment (RCP/SSP scenarios)",
+        "Alignment with national and sectoral carbon budgets"
+      ],
+      "significanceCriteria": {
+        "major": "Annual emissions >100,000 tCO2e, or project undermines national climate commitments",
+        "moderate": "Annual emissions 25,000-100,000 tCO2e",
+        "minor": "Annual emissions <25,000 tCO2e with mitigation measures in place",
+        "negligible": "Negligible emissions or net-zero design"
+      },
+      "mitigationHierarchy": [
+        "Avoidance: project alternatives with lower carbon intensity",
+        "Minimisation: energy efficiency, renewable energy, low-carbon materials, electrification",
+        "Restoration: ecosystem restoration for carbon sequestration",
+        "Offset: verified carbon offsets for residual emissions"
+      ]
+    }
+  ]
+}
