@@ -7,6 +7,7 @@ module.exports = {
   mode: isProduction ? "production" : "development",
   entry: {
     taskpane: "./src/taskpane/taskpane.ts",
+    commands: "./src/commands/commands.ts",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -34,6 +35,11 @@ module.exports = {
       template: "./src/taskpane/taskpane.html",
       filename: "taskpane.html",
       chunks: ["taskpane"],
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/commands/commands.html",
+      filename: "commands.html",
+      chunks: ["commands"],
     }),
   ],
   devServer: {

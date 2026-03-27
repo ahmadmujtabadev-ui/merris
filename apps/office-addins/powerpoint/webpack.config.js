@@ -40,6 +40,11 @@ module.exports = {
       filename: "taskpane.html",
       chunks: ["taskpane"],
     }),
+    new HtmlWebpackPlugin({
+      template: "./src/commands/commands.html",
+      filename: "commands.html",
+      chunks: ["commands"],
+    }),
   ],
   devServer: {
     port: 3005,

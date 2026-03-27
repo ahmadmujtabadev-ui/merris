@@ -1,8 +1,13 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
+import path from 'path';
 import Fastify from 'fastify';
 import cors from '@fastify/cors';
+import fastifyStatic from '@fastify/static';
 import websocket from '@fastify/websocket';
-import dotenv from 'dotenv';
 import { logger } from './lib/logger.js';
+import { connectDB } from './lib/db.js';
 import { registerAuthRoutes } from './modules/auth/auth.routes.js';
 import { registerOrganizationRoutes } from './modules/organization/organization.routes.js';
 import { registerIngestionRoutes } from './modules/ingestion/ingestion.routes.js';
@@ -17,8 +22,6 @@ import { registerQARoutes } from './modules/qa/qa.routes.js';
 import { registerAssuranceRoutes } from './modules/assurance/assurance.routes.js';
 import { registerWorkflowRoutes } from './modules/workflow/workflow.routes.js';
 
-dotenv.config();
-
 const FEATURES = {
   sharepoint: true,
   teamsBot: false,
@@ -29,12 +32,47 @@ const app = Fastify({
 });
 
 async function start() {
+  await connectDB();
+
   await app.register(cors, {
     origin: process.env['NEXT_PUBLIC_APP_URL'] || 'http://localhost:3000',
     credentials: true,
   });
 
   await app.register(websocket);
+
+  // Serve Office add-in static files
+  const addinsRoot = path.resolve(__dirname, '../../office-addins');
+
+  await app.register(fastifyStatic, {
+    root: path.join(addinsRoot, 'excel/dist'),
+    prefix: '/addins/excel/',
+    decorateReply: false,
+  });
+
+  await app.register(fastifyStatic, {
+    root: path.join(addinsRoot, 'word/dist'),
+    prefix: '/addins/word/',
+    decorateReply: false,
+  });
+
+  await app.register(fastifyStatic, {
+    root: path.join(addinsRoot, 'powerpoint/dist'),
+    prefix: '/addins/powerpoint/',
+    decorateReply: false,
+  });
+
+  await app.register(fastifyStatic, {
+    root: path.join(addinsRoot, 'outlook/dist'),
+    prefix: '/addins/outlook/',
+    decorateReply: false,
+  });
+
+  await app.register(fastifyStatic, {
+    root: path.resolve(__dirname, '../public/addins/assets'),
+    prefix: '/addins/assets/',
+    decorateReply: false,
+  });
 
   // Health check
   app.get('/api/v1/health', async (_request, _reply) => {

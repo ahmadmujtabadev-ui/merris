@@ -10,8 +10,8 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Merris ESG Agent" />
   <Description DefaultValue="AI-powered ESG email assistant for Outlook. Generate data request emails from gap registers and process incoming attachments for ESG engagements." />
-  <IconUrl DefaultValue="https://localhost:3004/assets/icon-64.png" />
-  <HighResolutionIconUrl DefaultValue="https://localhost:3004/assets/icon-128.png" />
+  <IconUrl DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev/addins/assets/icon-64.png" />
+  <HighResolutionIconUrl DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev/addins/assets/icon-128.png" />
   <SupportUrl DefaultValue="https://merris.app/support" />
 
   <Hosts>
@@ -27,13 +27,13 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://localhost:3004/taskpane.html" />
+        <SourceLocation DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev/addins/outlook/taskpane.html" />
         <RequestedHeight>450</RequestedHeight>
       </DesktopSettings>
     </Form>
     <Form xsi:type="ItemEdit">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://localhost:3004/taskpane.html" />
+        <SourceLocation DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev/addins/outlook/taskpane.html" />
         <RequestedHeight>450</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -109,12 +109,12 @@
 
     <Resources>
       <bt:Images>
-        <bt:Image id="icon16" DefaultValue="https://localhost:3004/assets/icon-16.png" />
-        <bt:Image id="icon32" DefaultValue="https://localhost:3004/assets/icon-32.png" />
-        <bt:Image id="icon80" DefaultValue="https://localhost:3004/assets/icon-80.png" />
+        <bt:Image id="icon16" DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev/addins/assets/icon-16.png" />
+        <bt:Image id="icon32" DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev/addins/assets/icon-32.png" />
+        <bt:Image id="icon80" DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev/addins/assets/icon-80.png" />
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="taskpaneUrl" DefaultValue="https://localhost:3004/taskpane.html" />
+        <bt:Url id="taskpaneUrl" DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev/addins/outlook/taskpane.html" />
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="groupLabel" DefaultValue="Merris ESG" />

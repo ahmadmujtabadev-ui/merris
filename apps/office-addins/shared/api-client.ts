@@ -3,7 +3,7 @@
  * Wraps fetch with JWT auth and base URL configuration.
  */
 
-const DEFAULT_BASE_URL = "https://merris.app/api/v1";
+const DEFAULT_BASE_URL = "https://distinct-uncoincidentally-brycen.ngrok-free.dev/api/v1";
 
 let _baseUrl: string = DEFAULT_BASE_URL;
 let _token: string | null = null;

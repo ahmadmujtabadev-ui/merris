@@ -10,8 +10,8 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Merris ESG" />
   <Description DefaultValue="AI-powered ESG presentation assistant for PowerPoint. Insert charts, generate slides, and apply branding from the Merris platform." />
-  <IconUrl DefaultValue="https://localhost:3005/assets/icon-64.png" />
-  <HighResolutionIconUrl DefaultValue="https://localhost:3005/assets/icon-128.png" />
+  <IconUrl DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev/addins/assets/icon-64.png" />
+  <HighResolutionIconUrl DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev/addins/assets/icon-128.png" />
   <SupportUrl DefaultValue="https://merris.app/support" />
 
   <Hosts>
@@ -25,7 +25,7 @@
   </Requirements>
 
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://localhost:3005/taskpane.html" />
+    <SourceLocation DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev/addins/powerpoint/taskpane.html" />
   </DefaultSettings>
 
   <Permissions>ReadWriteDocument</Permissions>
@@ -123,12 +123,12 @@
 
     <Resources>
       <bt:Images>
-        <bt:Image id="icon16" DefaultValue="https://localhost:3005/assets/icon-16.png" />
-        <bt:Image id="icon32" DefaultValue="https://localhost:3005/assets/icon-32.png" />
-        <bt:Image id="icon80" DefaultValue="https://localhost:3005/assets/icon-80.png" />
+        <bt:Image id="icon16" DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev/addins/assets/icon-16.png" />
+        <bt:Image id="icon32" DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev/addins/assets/icon-32.png" />
+        <bt:Image id="icon80" DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev/addins/assets/icon-80.png" />
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="taskpaneUrl" DefaultValue="https://localhost:3005/taskpane.html" />
+        <bt:Url id="taskpaneUrl" DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev/addins/powerpoint/taskpane.html" />
         <bt:Url id="learnMoreUrl" DefaultValue="https://merris.app/docs/powerpoint" />
       </bt:Urls>
       <bt:ShortStrings>
