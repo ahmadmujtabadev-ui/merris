@@ -1,0 +1,293 @@
+{
+  "id": "climate-risk-stress-test-frameworks",
+  "code": "climate-stress-tests",
+  "name": "Climate Stress Test Frameworks for Financial Institutions",
+  "description": "Regulatory climate stress test frameworks from ECB, Bank of England, and NGFS, including scenario parameters, required outputs, and reporting formats.",
+  "version": "2024",
+  "lastUpdated": "2025-01-01",
+  "source": "ECB, Bank of England, NGFS",
+  "verified": true,
+  "frameworks": [
+    {
+      "id": "climate-stress-test-ecb",
+      "code": "ecb-cst-2022",
+      "name": "ECB Climate Stress Test",
+      "category": "regulatory_stress_test",
+      "issuingBody": "European Central Bank",
+      "region": "EU / Euro Area",
+      "firstExercise": "2022",
+      "frequency": "biennial (planned)",
+      "source": "ECB",
+      "verified": true,
+      "parameters": {
+        "scope": {
+          "institutions": "All significant institutions (SIs) under ECB direct supervision (~104 banks)",
+          "riskTypes": ["credit_risk", "market_risk", "operational_risk", "reputational_risk"],
+          "portfolioCoverage": "All material exposures including corporate lending, mortgages, sovereign, and market portfolios",
+          "timeHorizon_years": 30,
+          "granularity": "Counterparty-level for top exposures, sector-level for remainder"
+        },
+        "scenarios": [
+          {
+            "name": "Orderly Transition",
+            "ngfsAlignment": "Net Zero 2050",
+            "temperatureOutcome_C": 1.5,
+            "carbonPrice2030_EUR_tCO2": 100,
+            "carbonPrice2050_EUR_tCO2": 350,
+            "gdpImpact2030_pct": -1.5,
+            "description": "Early, ambitious policy action. Carbon prices rise steadily. Physical risks limited."
+          },
+          {
+            "name": "Disorderly Transition",
+            "ngfsAlignment": "Delayed Transition",
+            "temperatureOutcome_C": 1.8,
+            "carbonPrice2030_EUR_tCO2": 30,
+            "carbonPrice2050_EUR_tCO2": 550,
+            "gdpImpact2030_pct": -0.5,
+            "gdpImpact2050_pct": -5.0,
+            "description": "Delayed action followed by sudden, severe policy tightening after 2030. Sharp carbon price spike."
+          },
+          {
+            "name": "Hot House World",
+            "ngfsAlignment": "Current Policies",
+            "temperatureOutcome_C": 3.0,
+            "carbonPrice2030_EUR_tCO2": 10,
+            "carbonPrice2050_EUR_tCO2": 15,
+            "gdpImpact2050_pct": -8.0,
+            "description": "No additional policy action. Severe physical risks materialize. GDP severely impacted long-term."
+          }
+        ],
+        "requiredOutputs": [
+          {
+            "output": "Credit risk impact",
+            "description": "Expected credit losses (ECL) under each scenario by sector and geography",
+            "metric": "Increase in provisions / ECL (EUR)",
+            "granularity": "NACE sector level"
+          },
+          {
+            "output": "Market risk impact",
+            "description": "Mark-to-market losses on securities and derivatives portfolios",
+            "metric": "P&L impact (EUR)",
+            "granularity": "Asset class level"
+          },
+          {
+            "output": "Operational risk assessment",
+            "description": "Qualitative assessment of physical risk exposure to own operations",
+            "metric": "Narrative + scoring",
+            "granularity": "Entity level"
+          },
+          {
+            "output": "Income impact",
+            "description": "Impact on net interest income and fee income from transition",
+            "metric": "NII change (%)",
+            "granularity": "Business line level"
+          }
+        ],
+        "reportingFormat": {
+          "templates": "ECB standardized templates",
+          "submissionFormat": "XBRL + narrative report",
+          "reviewProcess": "ECB supervisory assessment, results published in aggregate"
+        }
+      }
+    },
+    {
+      "id": "climate-stress-test-boe-cbes",
+      "code": "boe-cbes-2021",
+      "name": "Bank of England Climate Biennial Exploratory Scenario (CBES)",
+      "category": "regulatory_stress_test",
+      "issuingBody": "Bank of England / Prudential Regulation Authority",
+      "region": "UK",
+      "firstExercise": "2021",
+      "frequency": "biennial",
+      "source": "Bank of England",
+      "verified": true,
+      "parameters": {
+        "scope": {
+          "institutions": "Major UK banks and insurers (~19 firms in 2021: 7 banks/building societies, 12 insurers)",
+          "riskTypes": ["credit_risk", "market_risk", "insurance_risk", "operational_risk"],
+          "portfolioCoverage": "UK and global exposures. Banks: lending portfolios. Insurers: investment and underwriting portfolios.",
+          "timeHorizon_years": 30,
+          "granularity": "Sector and geography level"
+        },
+        "scenarios": [
+          {
+            "name": "Early Action (EA)",
+            "ngfsAlignment": "Net Zero 2050",
+            "temperatureOutcome_C": 1.8,
+            "carbonPrice2030_GBP_tCO2": 75,
+            "carbonPrice2050_GBP_tCO2": 250,
+            "ukGdpImpact_cumulative_pct": -3.0,
+            "description": "Strong, early policy action. Gradual transition. Physical risks limited. Manageable financial impact."
+          },
+          {
+            "name": "Late Action (LA)",
+            "ngfsAlignment": "Delayed Transition",
+            "temperatureOutcome_C": 1.8,
+            "carbonPrice2030_GBP_tCO2": 20,
+            "carbonPrice2050_GBP_tCO2": 450,
+            "ukGdpImpact_cumulative_pct": -6.0,
+            "description": "Delayed policy action until 2031. Sudden, sharp tightening required. Higher transition costs and financial disruption."
+          },
+          {
+            "name": "No Additional Action (NAA)",
+            "ngfsAlignment": "Current Policies",
+            "temperatureOutcome_C": 3.3,
+            "carbonPrice2030_GBP_tCO2": 5,
+            "carbonPrice2050_GBP_tCO2": 10,
+            "ukGdpImpact_cumulative_pct": -10.0,
+            "description": "No new climate policy. Severe physical risks by 2050. Chronic GDP loss, particularly in vulnerable regions."
+          }
+        ],
+        "requiredOutputs": [
+          {
+            "output": "Credit losses by sector",
+            "description": "Projected credit impairments across NACE sectors under each scenario",
+            "metric": "Cumulative impairment charge (GBP)",
+            "granularity": "NACE sector, UK vs non-UK"
+          },
+          {
+            "output": "Market value changes",
+            "description": "Impact on traded asset valuations including equities, bonds, and derivatives",
+            "metric": "Mark-to-market P&L (GBP)",
+            "granularity": "Asset class and sector"
+          },
+          {
+            "output": "Insurance underwriting impact",
+            "description": "Changes in claims frequency/severity for property, casualty, life insurance",
+            "metric": "Change in claims ratio (%)",
+            "granularity": "Line of business, geography"
+          },
+          {
+            "output": "Business model viability",
+            "description": "Strategic assessment of business model resilience and adaptation plans",
+            "metric": "Qualitative narrative",
+            "granularity": "Entity level"
+          }
+        ],
+        "reportingFormat": {
+          "templates": "BoE standardized templates with qualitative questionnaires",
+          "submissionFormat": "Spreadsheet templates + narrative report",
+          "reviewProcess": "PRA supervisory review, aggregate results published. Not used for capital requirements."
+        }
+      }
+    },
+    {
+      "id": "climate-stress-test-ngfs",
+      "code": "ngfs-scenarios-v4",
+      "name": "NGFS Climate Scenarios (Phase IV)",
+      "category": "reference_scenarios",
+      "issuingBody": "Network for Greening the Financial System",
+      "region": "global",
+      "latestPhase": "Phase IV (September 2023)",
+      "source": "NGFS",
+      "verified": true,
+      "parameters": {
+        "scope": {
+          "purpose": "Reference scenarios for central banks and financial supervisors to assess climate-related financial risks",
+          "models": ["REMIND-MAgPIE", "MESSAGEix-GLOBIOM", "GCAM"],
+          "variables": "Macro-financial variables (GDP, investment, energy prices), physical risk variables, transition risk variables",
+          "timeHorizon_years": "2020-2100",
+          "geographicCoverage": "Global with country-level disaggregation"
+        },
+        "scenarios": [
+          {
+            "name": "Net Zero 2050",
+            "code": "ngfs-nz2050",
+            "category": "orderly",
+            "temperatureOutcome_C": 1.5,
+            "carbonPrice2030_USD_tCO2": 135,
+            "carbonPrice2050_USD_tCO2": 365,
+            "globalGdpImpact2050_pct": -2.0,
+            "coalPhaseout": "2040-2050",
+            "renewableShare2050_pct": 67,
+            "description": "Stringent climate policies and innovation reaching net zero CO2 emissions around 2050. Gives 50% chance of limiting warming to 1.5\u00b0C."
+          },
+          {
+            "name": "Below 2\u00b0C",
+            "code": "ngfs-below2c",
+            "category": "orderly",
+            "temperatureOutcome_C": 1.7,
+            "carbonPrice2030_USD_tCO2": 85,
+            "carbonPrice2050_USD_tCO2": 225,
+            "globalGdpImpact2050_pct": -1.5,
+            "coalPhaseout": "2045-2060",
+            "renewableShare2050_pct": 55,
+            "description": "Gradual strengthening of climate policies giving a 67% chance of limiting warming to below 2\u00b0C."
+          },
+          {
+            "name": "Divergent Net Zero",
+            "code": "ngfs-divergent-nz",
+            "category": "disorderly",
+            "temperatureOutcome_C": 1.5,
+            "carbonPrice2030_USD_tCO2": 180,
+            "carbonPrice2050_USD_tCO2": 400,
+            "globalGdpImpact2050_pct": -3.0,
+            "description": "Reaches net zero by 2050 but with higher costs due to divergent policies across sectors. More disruptive, with limited CCS and greater reliance on demand reduction."
+          },
+          {
+            "name": "Delayed Transition",
+            "code": "ngfs-delayed",
+            "category": "disorderly",
+            "temperatureOutcome_C": 1.8,
+            "carbonPrice2030_USD_tCO2": 25,
+            "carbonPrice2050_USD_tCO2": 550,
+            "globalGdpImpact2050_pct": -4.5,
+            "description": "No new climate policies until 2030. Strong policies then compensate, requiring sharply higher carbon prices. Significant financial disruption."
+          },
+          {
+            "name": "Nationally Determined Contributions (NDCs)",
+            "code": "ngfs-ndcs",
+            "category": "hot_house_world",
+            "temperatureOutcome_C": 2.5,
+            "carbonPrice2030_USD_tCO2": 20,
+            "carbonPrice2050_USD_tCO2": 55,
+            "globalGdpImpact2050_pct": -6.0,
+            "description": "Countries implement current NDC pledges but no further ambition. Physical risks become significant by 2050."
+          },
+          {
+            "name": "Current Policies",
+            "code": "ngfs-current-policies",
+            "category": "hot_house_world",
+            "temperatureOutcome_C": 3.0,
+            "carbonPrice2030_USD_tCO2": 8,
+            "carbonPrice2050_USD_tCO2": 15,
+            "globalGdpImpact2050_pct": -10.0,
+            "description": "Only currently implemented policies. No further action. Leads to 3\u00b0C+ warming by 2100. Severe physical risks. Large GDP losses."
+          }
+        ],
+        "requiredOutputs": [
+          {
+            "output": "Macro-financial variables",
+            "description": "GDP, investment, consumption, government revenue projections by country/region",
+            "metric": "% change from baseline",
+            "granularity": "Country and sector level"
+          },
+          {
+            "output": "Energy system variables",
+            "description": "Energy prices, generation mix, final energy demand by fuel and sector",
+            "metric": "Absolute values + % change",
+            "granularity": "Country, fuel, sector"
+          },
+          {
+            "output": "Physical risk variables",
+            "description": "Temperature, precipitation, sea level, extreme event frequency by region",
+            "metric": "Absolute values by decade",
+            "granularity": "Country / grid cell level"
+          },
+          {
+            "output": "Transition risk variables",
+            "description": "Carbon prices, policy stringency, technology costs, stranded assets",
+            "metric": "Absolute values + % change",
+            "granularity": "Country and sector level"
+          }
+        ],
+        "reportingFormat": {
+          "dataAccess": "NGFS Scenario Explorer (IIASA hosted)",
+          "formats": ["CSV download", "API access", "Interactive explorer"],
+          "documentation": "NGFS Technical Documentation, published with each phase",
+          "updateCycle": "Annual updates with new model runs"
+        }
+      }
+    }
+  ]
+}

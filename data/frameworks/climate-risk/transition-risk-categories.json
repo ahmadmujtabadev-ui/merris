@@ -1,0 +1,343 @@
+{
+  "id": "climate-risk-transition-categories",
+  "code": "transition-risk-categories",
+  "name": "Climate Transition Risk Categories",
+  "description": "Comprehensive taxonomy of climate transition risks aligned with TCFD recommendations, covering policy & legal, technology, market, and reputation risks with probability, impact, time horizon, and sector mappings.",
+  "version": "2024",
+  "lastUpdated": "2025-01-01",
+  "source": "TCFD Recommendations 2017, NGFS Phase IV, IPCC AR6 WG3",
+  "verified": true,
+  "riskCategories": [
+    {
+      "id": "climate-risk-transition-policy-legal",
+      "code": "trans-policy-legal",
+      "name": "Policy & Legal",
+      "category": "transition",
+      "subcategory": "policy_legal",
+      "description": "Risks arising from government policies to constrain actions that contribute to climate change, as well as litigation risks.",
+      "source": "TCFD Recommendations",
+      "verified": true,
+      "risks": [
+        {
+          "id": "trans-policy-carbon-pricing",
+          "code": "carbon-pricing",
+          "name": "Carbon Pricing Mechanisms",
+          "description": "Implementation or escalation of carbon taxes, emissions trading schemes (ETS), or border carbon adjustment mechanisms (CBAM).",
+          "probabilityRange": { "2030": "0.70-0.90", "2050": "0.85-0.95" },
+          "impactMagnitude": {
+            "scale": "1-5",
+            "lowCarbon": 1,
+            "mediumCarbon": 3,
+            "highCarbon": 5,
+            "notes": "Impact proportional to emissions intensity. EU ETS ~EUR 60-100/tCO2 (2024). CBAM phasing in 2026-2034."
+          },
+          "timeHorizon": "short-to-medium (2025-2035)",
+          "affectedSectors": [
+            { "sector": "Energy", "nace": "D35", "exposure": "very_high" },
+            { "sector": "Materials / Cement", "nace": "C23", "exposure": "very_high" },
+            { "sector": "Materials / Steel", "nace": "C24", "exposure": "very_high" },
+            { "sector": "Chemicals", "nace": "C20", "exposure": "high" },
+            { "sector": "Aviation", "nace": "H51", "exposure": "high" },
+            { "sector": "Shipping", "nace": "H50", "exposure": "high" },
+            { "sector": "Agriculture", "nace": "A01", "exposure": "medium" }
+          ],
+          "existingPolicies": [
+            { "jurisdiction": "EU", "mechanism": "EU ETS + CBAM", "status": "active", "price_EUR_tCO2": 65 },
+            { "jurisdiction": "UK", "mechanism": "UK ETS", "status": "active", "price_GBP_tCO2": 45 },
+            { "jurisdiction": "China", "mechanism": "China National ETS", "status": "active", "price_CNY_tCO2": 80 },
+            { "jurisdiction": "Canada", "mechanism": "Federal Carbon Tax", "status": "active", "price_CAD_tCO2": 80 },
+            { "jurisdiction": "US-California", "mechanism": "Cap-and-Trade", "status": "active", "price_USD_tCO2": 35 }
+          ]
+        },
+        {
+          "id": "trans-policy-emissions-limits",
+          "code": "emissions-limits",
+          "name": "Emissions Reduction Mandates",
+          "description": "Mandatory emissions reduction targets, sector-specific limits, methane regulations, and phase-out requirements.",
+          "probabilityRange": { "2030": "0.75-0.90", "2050": "0.90-0.99" },
+          "impactMagnitude": {
+            "scale": "1-5",
+            "lowCarbon": 1,
+            "mediumCarbon": 3,
+            "highCarbon": 5,
+            "notes": "EU Fit for 55 mandates 55% reduction by 2030, net zero by 2050. Similar targets in US IRA, UK Net Zero Strategy."
+          },
+          "timeHorizon": "short-to-medium (2025-2035)",
+          "affectedSectors": [
+            { "sector": "Power Generation", "nace": "D35.1", "exposure": "very_high" },
+            { "sector": "Oil & Gas", "nace": "B06-B09", "exposure": "very_high" },
+            { "sector": "Automotive", "nace": "C29", "exposure": "very_high" },
+            { "sector": "Buildings / Real Estate", "nace": "L68", "exposure": "high" },
+            { "sector": "Heavy Industry", "nace": "C23-C25", "exposure": "high" }
+          ]
+        },
+        {
+          "id": "trans-policy-litigation",
+          "code": "litigation-risk",
+          "name": "Climate Litigation",
+          "description": "Legal proceedings related to climate change including failure to mitigate, failure to adapt, greenwashing, and fiduciary duty claims.",
+          "probabilityRange": { "2030": "0.40-0.60", "2050": "0.70-0.85" },
+          "impactMagnitude": {
+            "scale": "1-5",
+            "fossilFuels": 5,
+            "highEmitters": 4,
+            "financialInstitutions": 3,
+            "allCorporates": 2,
+            "notes": "1,800+ climate litigation cases globally as of 2023 (Grantham Research Institute). Trend accelerating."
+          },
+          "timeHorizon": "medium-to-long (2025-2050)",
+          "affectedSectors": [
+            { "sector": "Oil & Gas", "nace": "B06-B09", "exposure": "very_high" },
+            { "sector": "Coal Mining", "nace": "B05", "exposure": "very_high" },
+            { "sector": "Financial Services", "nace": "K64-K66", "exposure": "high" },
+            { "sector": "Food & Agriculture", "nace": "A01-C10", "exposure": "medium" },
+            { "sector": "All Corporates", "nace": "all", "exposure": "low_to_medium" }
+          ],
+          "litigationTypes": [
+            "failure to mitigate (duty of care)",
+            "failure to disclose climate risks",
+            "greenwashing / misleading claims",
+            "fiduciary duty (pension funds / asset managers)",
+            "human rights (climate as rights issue)",
+            "loss and damage claims"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "climate-risk-transition-technology",
+      "code": "trans-technology",
+      "name": "Technology",
+      "category": "transition",
+      "subcategory": "technology",
+      "description": "Risks from technological innovations that displace incumbent fossil-fuel-dependent systems.",
+      "source": "TCFD Recommendations, IEA World Energy Outlook 2023",
+      "verified": true,
+      "risks": [
+        {
+          "id": "trans-tech-renewable-disruption",
+          "code": "renewable-disruption",
+          "name": "Renewable Energy Cost Disruption",
+          "description": "Continued rapid decline in renewable energy costs making fossil fuel generation economically uncompetitive.",
+          "probabilityRange": { "2030": "0.90-0.99", "2050": "0.95-0.99" },
+          "impactMagnitude": {
+            "scale": "1-5",
+            "fossilGeneration": 5,
+            "fossilFuelSupply": 4,
+            "gridInfrastructure": 3,
+            "notes": "Solar PV LCOE declined 89% from 2010-2023. Already cheapest new-build generation in most markets."
+          },
+          "timeHorizon": "short (2025-2030)",
+          "affectedSectors": [
+            { "sector": "Fossil Fuel Power Generation", "nace": "D35.1", "exposure": "very_high" },
+            { "sector": "Coal Mining", "nace": "B05", "exposure": "very_high" },
+            { "sector": "Oil & Gas Upstream", "nace": "B06", "exposure": "high" },
+            { "sector": "Gas Distribution", "nace": "D35.2", "exposure": "high" }
+          ],
+          "costTrajectories": {
+            "solarPV_USD_MWh": { "2020": 57, "2025": 35, "2030": 25, "2040": 18, "2050": 14 },
+            "onshoreWind_USD_MWh": { "2020": 50, "2025": 40, "2030": 32, "2040": 26, "2050": 22 },
+            "offshoreWind_USD_MWh": { "2020": 115, "2025": 80, "2030": 58, "2040": 42, "2050": 35 },
+            "notes": "LCOE projections based on IRENA/BloombergNEF learning curves"
+          }
+        },
+        {
+          "id": "trans-tech-energy-storage",
+          "code": "energy-storage",
+          "name": "Energy Storage Breakthroughs",
+          "description": "Battery and storage cost declines enabling firm renewable energy and displacing peaking gas plants.",
+          "probabilityRange": { "2030": "0.80-0.90", "2050": "0.90-0.99" },
+          "impactMagnitude": {
+            "scale": "1-5",
+            "peakingGas": 5,
+            "gridStability": 3,
+            "EVadoption": 4,
+            "notes": "Li-ion battery pack prices fell from $1,100/kWh (2010) to $139/kWh (2023). Sub-$100/kWh expected by 2026."
+          },
+          "timeHorizon": "short-to-medium (2025-2035)",
+          "affectedSectors": [
+            { "sector": "Gas Peaking Plants", "nace": "D35.1", "exposure": "very_high" },
+            { "sector": "Automotive (ICE)", "nace": "C29", "exposure": "very_high" },
+            { "sector": "Oil Refining", "nace": "C19", "exposure": "high" }
+          ]
+        },
+        {
+          "id": "trans-tech-ccs",
+          "code": "ccs-viability",
+          "name": "Carbon Capture and Storage (CCS) Viability",
+          "description": "Risk that CCS technology fails to scale cost-effectively, undermining transition plans reliant on CCS for hard-to-abate sectors.",
+          "probabilityRange": { "2030": "0.30-0.50", "2050": "0.50-0.70" },
+          "impactMagnitude": {
+            "scale": "1-5",
+            "cementSteel": 4,
+            "oilGasWithCCS": 4,
+            "powerWithCCS": 3,
+            "notes": "Current CCS cost: $50-120/tCO2 for industrial, $60-130/tCO2 for power. Only ~40 MtCO2/yr captured globally (2023) vs IPCC pathways requiring 5-16 GtCO2/yr by 2050."
+          },
+          "timeHorizon": "medium (2030-2045)",
+          "affectedSectors": [
+            { "sector": "Cement", "nace": "C23.5", "exposure": "very_high" },
+            { "sector": "Steel", "nace": "C24", "exposure": "high" },
+            { "sector": "Oil & Gas (blue hydrogen)", "nace": "B06", "exposure": "high" },
+            { "sector": "Gas Power with CCS", "nace": "D35.1", "exposure": "high" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "climate-risk-transition-market",
+      "code": "trans-market",
+      "name": "Market",
+      "category": "transition",
+      "subcategory": "market",
+      "description": "Risks from shifts in supply and demand, commodity prices, and market signals driven by the energy transition.",
+      "source": "TCFD Recommendations, NGFS Phase IV",
+      "verified": true,
+      "risks": [
+        {
+          "id": "trans-market-demand-shift",
+          "code": "demand-shift",
+          "name": "Shifting Consumer and Market Demand",
+          "description": "Decline in demand for carbon-intensive products/services and increase in demand for low-carbon alternatives.",
+          "probabilityRange": { "2030": "0.70-0.85", "2050": "0.85-0.95" },
+          "impactMagnitude": {
+            "scale": "1-5",
+            "fossilFuels": 5,
+            "iceVehicles": 4,
+            "highCarbonProducts": 3,
+            "notes": "EV sales share: 18% globally in 2023, projected 50%+ by 2030 in key markets. Fossil fuel demand projected to peak before 2030 (IEA WEO 2023)."
+          },
+          "timeHorizon": "short-to-medium (2025-2035)",
+          "affectedSectors": [
+            { "sector": "Oil & Gas", "nace": "B06-B09", "exposure": "very_high" },
+            { "sector": "Automotive (ICE)", "nace": "C29", "exposure": "very_high" },
+            { "sector": "Coal", "nace": "B05", "exposure": "very_high" },
+            { "sector": "Airlines", "nace": "H51", "exposure": "high" },
+            { "sector": "Petrochemicals", "nace": "C20", "exposure": "high" }
+          ]
+        },
+        {
+          "id": "trans-market-commodity-prices",
+          "code": "commodity-price-volatility",
+          "name": "Commodity Price Changes",
+          "description": "Volatility and structural shifts in commodity prices for fossil fuels, critical minerals, and carbon credits.",
+          "probabilityRange": { "2030": "0.80-0.90", "2050": "0.85-0.95" },
+          "impactMagnitude": {
+            "scale": "1-5",
+            "fossilFuelProducers": 4,
+            "mineralDependentMfg": 3,
+            "energyIntensive": 3,
+            "notes": "Transition minerals (lithium, cobalt, nickel, rare earths) face supply constraints. Fossil fuel prices face long-term structural decline in orderly transition."
+          },
+          "timeHorizon": "short-to-long (2025-2050)",
+          "affectedSectors": [
+            { "sector": "Oil & Gas", "nace": "B06-B09", "exposure": "very_high" },
+            { "sector": "Mining (thermal coal)", "nace": "B05", "exposure": "very_high" },
+            { "sector": "Mining (critical minerals)", "nace": "B07", "exposure": "high_positive" },
+            { "sector": "Battery Manufacturing", "nace": "C27", "exposure": "high" },
+            { "sector": "Automotive", "nace": "C29", "exposure": "medium" }
+          ]
+        },
+        {
+          "id": "trans-market-stranded-assets",
+          "code": "stranded-assets",
+          "name": "Stranded Assets",
+          "description": "Assets that suffer unanticipated write-downs, devaluations, or conversion to liabilities before end of economic life due to climate transition.",
+          "probabilityRange": { "2030": "0.50-0.70", "2050": "0.75-0.90" },
+          "impactMagnitude": {
+            "scale": "1-5",
+            "coalAssets": 5,
+            "oilReserves": 4,
+            "gasInfrastructure": 3,
+            "notes": "Carbon Tracker: $1 trillion+ in fossil fuel assets at risk of stranding under 2\u00b0C pathway. ~80% of coal, 50% of gas, 30% of oil reserves are unburnable under 1.5\u00b0C."
+          },
+          "timeHorizon": "medium-to-long (2030-2050)",
+          "affectedSectors": [
+            { "sector": "Coal Mining & Generation", "nace": "B05/D35", "exposure": "very_high" },
+            { "sector": "Oil & Gas E&P", "nace": "B06", "exposure": "very_high" },
+            { "sector": "Gas Infrastructure", "nace": "D35.2/H49.5", "exposure": "high" },
+            { "sector": "Oil Refining", "nace": "C19", "exposure": "high" },
+            { "sector": "Fossil-dependent Real Estate", "nace": "L68", "exposure": "medium" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "climate-risk-transition-reputation",
+      "code": "trans-reputation",
+      "name": "Reputation",
+      "category": "transition",
+      "subcategory": "reputation",
+      "description": "Risks from changing public perception, consumer preferences, and stakeholder expectations regarding climate action.",
+      "source": "TCFD Recommendations",
+      "verified": true,
+      "risks": [
+        {
+          "id": "trans-rep-consumer-preferences",
+          "code": "consumer-preferences",
+          "name": "Shifting Consumer Preferences",
+          "description": "Consumers increasingly preferring low-carbon products/services and willing to pay premiums or switch brands based on climate performance.",
+          "probabilityRange": { "2030": "0.70-0.85", "2050": "0.80-0.90" },
+          "impactMagnitude": {
+            "scale": "1-5",
+            "consumerBrands": 3,
+            "airlines": 3,
+            "fastFashion": 3,
+            "notes": "Surveys show 60-70% of consumers consider sustainability in purchasing. Impact growing but still secondary to price for most categories."
+          },
+          "timeHorizon": "short-to-medium (2025-2035)",
+          "affectedSectors": [
+            { "sector": "Consumer Goods", "nace": "C10-C32", "exposure": "medium" },
+            { "sector": "Airlines", "nace": "H51", "exposure": "high" },
+            { "sector": "Fast Fashion", "nace": "C14", "exposure": "high" },
+            { "sector": "Automotive", "nace": "C29", "exposure": "high" },
+            { "sector": "Food & Beverage", "nace": "C10-C11", "exposure": "medium" }
+          ]
+        },
+        {
+          "id": "trans-rep-stigmatization",
+          "code": "stigmatization",
+          "name": "Sector Stigmatization",
+          "description": "Certain sectors becoming stigmatized similar to tobacco, facing financing restrictions, talent challenges, and social license erosion.",
+          "probabilityRange": { "2030": "0.60-0.80", "2050": "0.80-0.95" },
+          "impactMagnitude": {
+            "scale": "1-5",
+            "coal": 5,
+            "oilSands": 4,
+            "oilGas": 3,
+            "notes": "Major financial institutions divesting from coal. Insurance withdrawal accelerating. Over 1,500 institutions with $40+ trillion AUM have made fossil fuel divestment commitments."
+          },
+          "timeHorizon": "short-to-medium (2025-2035)",
+          "affectedSectors": [
+            { "sector": "Coal", "nace": "B05", "exposure": "very_high" },
+            { "sector": "Oil Sands / Tar Sands", "nace": "B06", "exposure": "very_high" },
+            { "sector": "Oil & Gas (conventional)", "nace": "B06-B09", "exposure": "high" },
+            { "sector": "Fossil Fuel Financing", "nace": "K64", "exposure": "high" }
+          ]
+        },
+        {
+          "id": "trans-rep-stakeholder-activism",
+          "code": "stakeholder-activism",
+          "name": "Stakeholder Activism",
+          "description": "Investor, employee, and community activism demanding stronger climate action, including shareholder resolutions, protests, and divestment campaigns.",
+          "probabilityRange": { "2030": "0.80-0.90", "2050": "0.85-0.95" },
+          "impactMagnitude": {
+            "scale": "1-5",
+            "publicCompanies": 3,
+            "fossilFuels": 4,
+            "financialInstitutions": 3,
+            "notes": "Climate-related shareholder resolutions increasing year-on-year. Engine No. 1 / Exxon precedent. Say on Climate votes expanding."
+          },
+          "timeHorizon": "short (2025-2030)",
+          "affectedSectors": [
+            { "sector": "Oil & Gas", "nace": "B06-B09", "exposure": "very_high" },
+            { "sector": "Banks", "nace": "K64.1", "exposure": "high" },
+            { "sector": "Asset Management", "nace": "K66", "exposure": "high" },
+            { "sector": "Utilities", "nace": "D35", "exposure": "high" },
+            { "sector": "Mining", "nace": "B05-B08", "exposure": "high" }
+          ]
+        }
+      ]
+    }
+  ]
+}

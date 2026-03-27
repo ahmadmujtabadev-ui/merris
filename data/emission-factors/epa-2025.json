@@ -1,0 +1,199 @@
+{
+  "description": "US EPA Emission Factors Hub (2025 edition). Covers stationary combustion, mobile sources, refrigerants, and electricity by eGRID subregion. Based on EPA GHG Emission Factors Hub (April 2024 / updated for 2025 reporting year).",
+  "lastUpdated": "2025-01-01",
+  "verified": true,
+  "source": "US EPA GHG Emission Factors Hub, EPA eGRID 2022 (released January 2024)",
+  "notes": "Factors for corporate GHG inventory reporting aligned with GHG Protocol. CO2e includes CO2, CH4, and N2O using AR5 GWPs unless noted. Heat content values are HHV (higher heating value) per EPA convention.",
+  "stationaryCombustion": {
+    "description": "Emission factors for stationary fuel combustion (boilers, furnaces, heaters)",
+    "factors": [
+      {
+        "fuel": "Natural Gas",
+        "code": "stat-natgas",
+        "unit_input": "mmBtu",
+        "co2_kgPerUnit": 53.06,
+        "ch4_gPerUnit": 1.0,
+        "n2o_gPerUnit": 0.1,
+        "co2e_kgPerUnit": 53.11,
+        "heatContent": "1,020 Btu/scf",
+        "notes": "EPA Table 1. Weighted average for pipeline quality natural gas."
+      },
+      {
+        "fuel": "Bituminous Coal",
+        "code": "stat-coal-bit",
+        "unit_input": "mmBtu",
+        "co2_kgPerUnit": 93.28,
+        "ch4_gPerUnit": 11.0,
+        "n2o_gPerUnit": 1.6,
+        "co2e_kgPerUnit": 93.65,
+        "heatContent": "24.93 mmBtu/short ton",
+        "notes": "EPA Table 1. Bituminous coal for industrial/commercial boilers."
+      },
+      {
+        "fuel": "Sub-bituminous Coal",
+        "code": "stat-coal-sub",
+        "unit_input": "mmBtu",
+        "co2_kgPerUnit": 97.17,
+        "ch4_gPerUnit": 11.0,
+        "n2o_gPerUnit": 1.6,
+        "co2e_kgPerUnit": 97.54,
+        "heatContent": "17.25 mmBtu/short ton",
+        "notes": "EPA Table 1."
+      },
+      {
+        "fuel": "Distillate Fuel Oil No. 2 (Diesel)",
+        "code": "stat-diesel",
+        "unit_input": "gallon",
+        "co2_kgPerUnit": 10.21,
+        "ch4_gPerUnit": 0.41,
+        "n2o_gPerUnit": 0.08,
+        "co2e_kgPerUnit": 10.23,
+        "heatContent": "0.138 mmBtu/gallon",
+        "notes": "EPA Table 1. Also known as heating oil, diesel #2."
+      },
+      {
+        "fuel": "Residual Fuel Oil No. 6",
+        "code": "stat-fueloil6",
+        "unit_input": "gallon",
+        "co2_kgPerUnit": 11.27,
+        "ch4_gPerUnit": 0.45,
+        "n2o_gPerUnit": 0.09,
+        "co2e_kgPerUnit": 11.30,
+        "heatContent": "0.150 mmBtu/gallon",
+        "notes": "EPA Table 1. Heavy fuel oil / bunker C."
+      },
+      {
+        "fuel": "Propane (LPG)",
+        "code": "stat-propane",
+        "unit_input": "gallon",
+        "co2_kgPerUnit": 5.72,
+        "ch4_gPerUnit": 0.23,
+        "n2o_gPerUnit": 0.05,
+        "co2e_kgPerUnit": 5.74,
+        "heatContent": "0.091 mmBtu/gallon",
+        "notes": "EPA Table 1."
+      },
+      {
+        "fuel": "Kerosene",
+        "code": "stat-kerosene",
+        "unit_input": "gallon",
+        "co2_kgPerUnit": 10.15,
+        "ch4_gPerUnit": 0.41,
+        "n2o_gPerUnit": 0.08,
+        "co2e_kgPerUnit": 10.17,
+        "heatContent": "0.135 mmBtu/gallon",
+        "notes": "EPA Table 1."
+      },
+      {
+        "fuel": "Wood / Wood Waste",
+        "code": "stat-wood",
+        "unit_input": "mmBtu",
+        "co2_kgPerUnit": 93.80,
+        "ch4_gPerUnit": 7.2,
+        "n2o_gPerUnit": 3.6,
+        "co2e_kgPerUnit": 95.01,
+        "biogenic": true,
+        "notes": "EPA Table 1. CO2 is biogenic and typically reported separately."
+      }
+    ]
+  },
+  "mobileSources": {
+    "description": "Emission factors for mobile combustion sources (on-road vehicles)",
+    "factors": [
+      {
+        "fuel": "Motor Gasoline",
+        "code": "mob-gasoline",
+        "unit_input": "gallon",
+        "co2_kgPerUnit": 8.78,
+        "ch4_gPerUnit_passenger": 0.22,
+        "n2o_gPerUnit_passenger": 0.26,
+        "ch4_gPerUnit_lightTruck": 0.30,
+        "n2o_gPerUnit_lightTruck": 0.46,
+        "co2e_kgPerUnit_passenger": 8.86,
+        "co2e_kgPerUnit_lightTruck": 8.92,
+        "notes": "EPA Tables 2,3,4. CH4/N2O vary by vehicle type and model year. Values shown for post-2005 vehicles."
+      },
+      {
+        "fuel": "Diesel (On-road)",
+        "code": "mob-diesel",
+        "unit_input": "gallon",
+        "co2_kgPerUnit": 10.21,
+        "ch4_gPerUnit_passenger": 0.05,
+        "n2o_gPerUnit_passenger": 0.15,
+        "ch4_gPerUnit_heavyDuty": 0.05,
+        "n2o_gPerUnit_heavyDuty": 0.14,
+        "co2e_kgPerUnit_passenger": 10.25,
+        "co2e_kgPerUnit_heavyDuty": 10.25,
+        "notes": "EPA Tables 2,3,4. Post-2007 diesel vehicles with DPF."
+      },
+      {
+        "fuel": "Jet Fuel (Kerosene-type)",
+        "code": "mob-jetfuel",
+        "unit_input": "gallon",
+        "co2_kgPerUnit": 9.75,
+        "ch4_gPerUnit": 0.01,
+        "n2o_gPerUnit": 0.10,
+        "co2e_kgPerUnit": 9.78,
+        "notes": "EPA Table 5. For aviation."
+      },
+      {
+        "fuel": "Compressed Natural Gas (CNG)",
+        "code": "mob-cng",
+        "unit_input": "scf",
+        "co2_kgPerUnit": 0.0545,
+        "ch4_gPerUnit": 0.032,
+        "n2o_gPerUnit": 0.0003,
+        "co2e_kgPerUnit": 0.0554,
+        "notes": "EPA Table 2. Per standard cubic foot."
+      }
+    ]
+  },
+  "refrigerants": {
+    "description": "Common refrigerant GWP values and typical leak rates for emissions estimation",
+    "factors": [
+      { "refrigerant": "R-134a (HFC-134a)", "code": "ref-r134a", "gwp_ar5": 1300, "gwp_ar6": 1530, "typicalLeakRate_pct": 15, "commonUse": "Vehicle AC, commercial refrigeration" },
+      { "refrigerant": "R-410A", "code": "ref-r410a", "gwp_ar5": 1924, "gwp_ar6": 2088, "typicalLeakRate_pct": 12, "commonUse": "Residential and light commercial HVAC" },
+      { "refrigerant": "R-404A", "code": "ref-r404a", "gwp_ar5": 3922, "gwp_ar6": 4728, "typicalLeakRate_pct": 25, "commonUse": "Commercial refrigeration, supermarkets" },
+      { "refrigerant": "R-407C", "code": "ref-r407c", "gwp_ar5": 1624, "gwp_ar6": 1774, "typicalLeakRate_pct": 12, "commonUse": "Commercial AC retrofit" },
+      { "refrigerant": "R-32", "code": "ref-r32", "gwp_ar5": 677, "gwp_ar6": 771, "typicalLeakRate_pct": 8, "commonUse": "Next-gen residential AC" },
+      { "refrigerant": "R-22 (HCFC-22)", "code": "ref-r22", "gwp_ar5": 1760, "gwp_ar6": 1960, "typicalLeakRate_pct": 15, "commonUse": "Legacy AC systems (phase-out)" },
+      { "refrigerant": "R-290 (Propane)", "code": "ref-r290", "gwp_ar5": 3, "gwp_ar6": 0.02, "typicalLeakRate_pct": 5, "commonUse": "Natural refrigerant, small commercial" },
+      { "refrigerant": "R-744 (CO2)", "code": "ref-r744", "gwp_ar5": 1, "gwp_ar6": 1, "typicalLeakRate_pct": 20, "commonUse": "Transcritical systems, industrial" }
+    ]
+  },
+  "electricityByEgridSubregion": {
+    "description": "EPA eGRID subregion emission factors for purchased electricity (Scope 2). Based on eGRID2022 data (released January 2024).",
+    "year": 2022,
+    "unit": "kgCO2e/kWh",
+    "source": "EPA eGRID2022",
+    "factors": [
+      { "subregion": "AKGD", "name": "ASCC Alaska Grid", "factor": 0.437, "state_coverage": "AK (Railbelt)" },
+      { "subregion": "AKMS", "name": "ASCC Miscellaneous", "factor": 0.276, "state_coverage": "AK (non-Railbelt)" },
+      { "subregion": "AZNM", "name": "WECC Southwest", "factor": 0.383, "state_coverage": "AZ, NM" },
+      { "subregion": "CAMX", "name": "WECC California", "factor": 0.225, "state_coverage": "CA, parts of NV" },
+      { "subregion": "ERCT", "name": "ERCOT All", "factor": 0.386, "state_coverage": "TX (most)" },
+      { "subregion": "FRCC", "name": "FRCC All", "factor": 0.379, "state_coverage": "FL (most)" },
+      { "subregion": "HIMS", "name": "HICC Miscellaneous", "factor": 0.618, "state_coverage": "HI (Maui, Big Island)" },
+      { "subregion": "HIOA", "name": "HICC Oahu", "factor": 0.666, "state_coverage": "HI (Oahu)" },
+      { "subregion": "MROE", "name": "MRO East", "factor": 0.539, "state_coverage": "WI, parts of MI/MN" },
+      { "subregion": "MROW", "name": "MRO West", "factor": 0.412, "state_coverage": "MN, IA, ND, SD, parts of NE/MT" },
+      { "subregion": "NEWE", "name": "NPCC New England", "factor": 0.210, "state_coverage": "CT, ME, MA, NH, RI, VT" },
+      { "subregion": "NWPP", "name": "WECC Northwest", "factor": 0.257, "state_coverage": "WA, OR, ID, MT, parts of WY/NV/UT" },
+      { "subregion": "NYCW", "name": "NPCC NYC/Westchester", "factor": 0.227, "state_coverage": "NY (NYC + Westchester)" },
+      { "subregion": "NYLI", "name": "NPCC Long Island", "factor": 0.408, "state_coverage": "NY (Long Island)" },
+      { "subregion": "NYUP", "name": "NPCC Upstate NY", "factor": 0.090, "state_coverage": "NY (upstate)" },
+      { "subregion": "PRMS", "name": "Puerto Rico Misc", "factor": 0.730, "state_coverage": "PR" },
+      { "subregion": "RFCE", "name": "RFC East", "factor": 0.296, "state_coverage": "NJ, DE, MD, DC, parts of PA/VA" },
+      { "subregion": "RFCM", "name": "RFC Michigan", "factor": 0.445, "state_coverage": "MI (most)" },
+      { "subregion": "RFCW", "name": "RFC West", "factor": 0.470, "state_coverage": "OH, IN, WV, parts of PA/KY/VA" },
+      { "subregion": "RMPA", "name": "WECC Rockies", "factor": 0.522, "state_coverage": "CO, parts of WY/NE/SD" },
+      { "subregion": "SPNO", "name": "SPP North", "factor": 0.427, "state_coverage": "KS, NE, parts of OK/MO" },
+      { "subregion": "SPSO", "name": "SPP South", "factor": 0.408, "state_coverage": "OK, parts of TX/AR/LA/NM" },
+      { "subregion": "SRMV", "name": "SERC Mississippi Valley", "factor": 0.338, "state_coverage": "LA, AR, MS, parts of MO/TX" },
+      { "subregion": "SRMW", "name": "SERC Midwest", "factor": 0.656, "state_coverage": "MO (most), parts of IL" },
+      { "subregion": "SRSO", "name": "SERC South", "factor": 0.379, "state_coverage": "AL, GA, parts of MS/FL" },
+      { "subregion": "SRTV", "name": "SERC Tennessee Valley", "factor": 0.363, "state_coverage": "TN, parts of KY/AL/GA/MS/VA/NC" },
+      { "subregion": "SRVC", "name": "SERC Virginia/Carolina", "factor": 0.296, "state_coverage": "VA, NC, SC, parts of GA" }
+    ]
+  }
+}

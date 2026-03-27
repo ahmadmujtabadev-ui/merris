@@ -1,0 +1,320 @@
+{
+  "id": "climate-risk-scenarios",
+  "code": "tcfd-scenarios",
+  "name": "TCFD Climate Scenario Parameters (SSP-based)",
+  "description": "Standard climate scenario definitions aligned with IPCC AR6 SSP pathways for TCFD scenario analysis. Includes temperature pathways, carbon price trajectories, energy mix assumptions, physical risk parameters, and transition risk parameters.",
+  "version": "2023",
+  "lastUpdated": "2025-01-01",
+  "source": "IPCC AR6 WG1/WG3, NGFS Phase IV, IEA World Energy Outlook 2023",
+  "verified": true,
+  "scenarios": [
+    {
+      "id": "climate-risk-scenario-ssp1-19",
+      "code": "ssp1-19",
+      "name": "SSP1-1.9 (1.5\u00b0C aligned)",
+      "category": "scenario",
+      "description": "Very low GHG emissions pathway. CO2 emissions cut to net zero around 2050. Consistent with limiting warming to 1.5\u00b0C with no or limited overshoot.",
+      "source": "IPCC AR6",
+      "verified": true,
+      "parameters": {
+        "temperaturePathway": {
+          "peakWarming_C": 1.5,
+          "warming2030_C": 1.5,
+          "warming2050_C": 1.6,
+          "warming2100_C": 1.4,
+          "overshoot": "limited",
+          "notes": "Best estimate peak warming ~1.5\u00b0C in 2040s, declining to ~1.4\u00b0C by 2100 (AR6 WG1 Table SPM.1)"
+        },
+        "carbonPriceTrajectory_USD_tCO2": {
+          "2025": 75,
+          "2030": 135,
+          "2040": 245,
+          "2050": 365,
+          "2060": 430,
+          "2070": 490,
+          "2080": 530,
+          "2090": 565,
+          "2100": 600,
+          "notes": "Based on NGFS Net Zero 2050 scenario carbon price pathway. Prices in 2020 USD."
+        },
+        "energyMix2050": {
+          "renewables_pct": 67,
+          "nuclear_pct": 12,
+          "naturalGas_pct": 10,
+          "oil_pct": 7,
+          "coal_pct": 1,
+          "hydrogen_pct": 3,
+          "notes": "IEA Net Zero Emissions scenario primary energy shares by 2050"
+        },
+        "physicalRisk": {
+          "seaLevelRise_cm": {
+            "by2050": 20,
+            "by2100": 38,
+            "range2100_low": 28,
+            "range2100_high": 55,
+            "notes": "AR6 WG1 Table 9.9, median and likely range"
+          },
+          "extremeHeatDays_increase": {
+            "global_avg_days": 13.9,
+            "tropics_days": 41.4,
+            "midLatitude_days": 9.1,
+            "notes": "Additional days per year exceeding 35\u00b0C relative to 1995-2014 baseline (AR6 WG1 Ch 12)"
+          },
+          "precipitationChange_pct": {
+            "global_mean": 2.4,
+            "high_latitude_increase": 7.0,
+            "subtropical_decrease": -4.0,
+            "notes": "Annual mean precipitation change (%) at 1.5\u00b0C warming relative to 1850-1900 (AR6 WG1 Ch 8)"
+          }
+        },
+        "transitionRisk": {
+          "carbonTaxRate_USD_tCO2_2030": 135,
+          "strandedAssetProbability": {
+            "coal": 0.95,
+            "oil": 0.60,
+            "naturalGas": 0.30,
+            "notes": "Probability of significant asset value loss by 2050 under this pathway"
+          },
+          "technologyDisruptionTimeline": {
+            "coalPhaseout": 2040,
+            "iceVehicleBan": 2035,
+            "greenHydrogenParity": 2030,
+            "ccsMatureDeployment": 2035,
+            "notes": "Approximate year of major disruption milestone"
+          }
+        }
+      }
+    },
+    {
+      "id": "climate-risk-scenario-ssp1-26",
+      "code": "ssp1-26",
+      "name": "SSP1-2.6 (2\u00b0C aligned)",
+      "category": "scenario",
+      "description": "Low GHG emissions pathway. CO2 emissions declining to net zero after 2050. Consistent with limiting warming to below 2\u00b0C.",
+      "source": "IPCC AR6",
+      "verified": true,
+      "parameters": {
+        "temperaturePathway": {
+          "peakWarming_C": 1.8,
+          "warming2030_C": 1.5,
+          "warming2050_C": 1.7,
+          "warming2100_C": 1.8,
+          "overshoot": "none",
+          "notes": "Best estimate warming reaches ~1.8\u00b0C by 2100 (AR6 WG1 Table SPM.1)"
+        },
+        "carbonPriceTrajectory_USD_tCO2": {
+          "2025": 45,
+          "2030": 85,
+          "2040": 150,
+          "2050": 225,
+          "2060": 280,
+          "2070": 330,
+          "2080": 370,
+          "2090": 400,
+          "2100": 420,
+          "notes": "Based on NGFS Below 2\u00b0C scenario. Prices in 2020 USD."
+        },
+        "energyMix2050": {
+          "renewables_pct": 55,
+          "nuclear_pct": 10,
+          "naturalGas_pct": 17,
+          "oil_pct": 12,
+          "coal_pct": 3,
+          "hydrogen_pct": 3,
+          "notes": "Primary energy shares consistent with SSP1-2.6 marker scenario"
+        },
+        "physicalRisk": {
+          "seaLevelRise_cm": {
+            "by2050": 21,
+            "by2100": 44,
+            "range2100_low": 32,
+            "range2100_high": 62,
+            "notes": "AR6 WG1 Table 9.9, median and likely range"
+          },
+          "extremeHeatDays_increase": {
+            "global_avg_days": 18.1,
+            "tropics_days": 54.5,
+            "midLatitude_days": 12.3,
+            "notes": "Additional days per year exceeding 35\u00b0C relative to 1995-2014 baseline"
+          },
+          "precipitationChange_pct": {
+            "global_mean": 3.3,
+            "high_latitude_increase": 9.0,
+            "subtropical_decrease": -5.0,
+            "notes": "Annual mean precipitation change (%) at ~2\u00b0C warming"
+          }
+        },
+        "transitionRisk": {
+          "carbonTaxRate_USD_tCO2_2030": 85,
+          "strandedAssetProbability": {
+            "coal": 0.85,
+            "oil": 0.45,
+            "naturalGas": 0.20,
+            "notes": "Probability of significant asset value loss by 2050"
+          },
+          "technologyDisruptionTimeline": {
+            "coalPhaseout": 2045,
+            "iceVehicleBan": 2040,
+            "greenHydrogenParity": 2035,
+            "ccsMatureDeployment": 2040,
+            "notes": "Approximate year of major disruption milestone"
+          }
+        }
+      }
+    },
+    {
+      "id": "climate-risk-scenario-ssp2-45",
+      "code": "ssp2-45",
+      "name": "SSP2-4.5 (Moderate / Middle of the Road)",
+      "category": "scenario",
+      "description": "Intermediate GHG emissions pathway. CO2 emissions remain around current levels until mid-century, then declining. Warming of ~2.7\u00b0C by 2100.",
+      "source": "IPCC AR6",
+      "verified": true,
+      "parameters": {
+        "temperaturePathway": {
+          "peakWarming_C": 2.7,
+          "warming2030_C": 1.5,
+          "warming2050_C": 2.0,
+          "warming2100_C": 2.7,
+          "overshoot": "not applicable",
+          "notes": "Best estimate warming ~2.7\u00b0C by 2100 (AR6 WG1 Table SPM.1)"
+        },
+        "carbonPriceTrajectory_USD_tCO2": {
+          "2025": 15,
+          "2030": 30,
+          "2040": 55,
+          "2050": 90,
+          "2060": 120,
+          "2070": 150,
+          "2080": 175,
+          "2090": 195,
+          "2100": 210,
+          "notes": "Moderate policy ambition. Based on NGFS NDCs scenario trajectory."
+        },
+        "energyMix2050": {
+          "renewables_pct": 38,
+          "nuclear_pct": 8,
+          "naturalGas_pct": 22,
+          "oil_pct": 20,
+          "coal_pct": 9,
+          "hydrogen_pct": 3,
+          "notes": "Primary energy shares under middle-of-the-road assumptions"
+        },
+        "physicalRisk": {
+          "seaLevelRise_cm": {
+            "by2050": 23,
+            "by2100": 56,
+            "range2100_low": 44,
+            "range2100_high": 76,
+            "notes": "AR6 WG1 Table 9.9, median and likely range"
+          },
+          "extremeHeatDays_increase": {
+            "global_avg_days": 30.2,
+            "tropics_days": 89.7,
+            "midLatitude_days": 21.5,
+            "notes": "Additional days per year exceeding 35\u00b0C relative to 1995-2014 baseline"
+          },
+          "precipitationChange_pct": {
+            "global_mean": 5.1,
+            "high_latitude_increase": 13.0,
+            "subtropical_decrease": -7.5,
+            "notes": "Annual mean precipitation change (%) at ~2.7\u00b0C warming"
+          }
+        },
+        "transitionRisk": {
+          "carbonTaxRate_USD_tCO2_2030": 30,
+          "strandedAssetProbability": {
+            "coal": 0.50,
+            "oil": 0.20,
+            "naturalGas": 0.08,
+            "notes": "Probability of significant asset value loss by 2050"
+          },
+          "technologyDisruptionTimeline": {
+            "coalPhaseout": 2060,
+            "iceVehicleBan": 2050,
+            "greenHydrogenParity": 2045,
+            "ccsMatureDeployment": 2050,
+            "notes": "Approximate year of major disruption milestone"
+          }
+        }
+      }
+    },
+    {
+      "id": "climate-risk-scenario-ssp5-85",
+      "code": "ssp5-85",
+      "name": "SSP5-8.5 (Very High Emissions / 4\u00b0C+)",
+      "category": "scenario",
+      "description": "Very high GHG emissions pathway. CO2 emissions roughly double by 2050. Fossil-fueled development. Warming of ~4.4\u00b0C by 2100.",
+      "source": "IPCC AR6",
+      "verified": true,
+      "parameters": {
+        "temperaturePathway": {
+          "peakWarming_C": 4.4,
+          "warming2030_C": 1.6,
+          "warming2050_C": 2.4,
+          "warming2100_C": 4.4,
+          "overshoot": "not applicable",
+          "notes": "Best estimate warming ~4.4\u00b0C by 2100 (AR6 WG1 Table SPM.1). Very likely range 3.3-5.7\u00b0C."
+        },
+        "carbonPriceTrajectory_USD_tCO2": {
+          "2025": 5,
+          "2030": 8,
+          "2040": 12,
+          "2050": 18,
+          "2060": 25,
+          "2070": 32,
+          "2080": 40,
+          "2090": 48,
+          "2100": 55,
+          "notes": "Current Policies scenario. Minimal carbon pricing. Prices in 2020 USD."
+        },
+        "energyMix2050": {
+          "renewables_pct": 20,
+          "nuclear_pct": 5,
+          "naturalGas_pct": 25,
+          "oil_pct": 28,
+          "coal_pct": 20,
+          "hydrogen_pct": 2,
+          "notes": "Primary energy shares under fossil-fueled development assumptions"
+        },
+        "physicalRisk": {
+          "seaLevelRise_cm": {
+            "by2050": 25,
+            "by2100": 77,
+            "range2100_low": 63,
+            "range2100_high": 101,
+            "notes": "AR6 WG1 Table 9.9, median and likely range. Ice-sheet instability could add substantially."
+          },
+          "extremeHeatDays_increase": {
+            "global_avg_days": 52.1,
+            "tropics_days": 143.0,
+            "midLatitude_days": 38.6,
+            "notes": "Additional days per year exceeding 35\u00b0C relative to 1995-2014 baseline"
+          },
+          "precipitationChange_pct": {
+            "global_mean": 8.3,
+            "high_latitude_increase": 20.0,
+            "subtropical_decrease": -12.0,
+            "notes": "Annual mean precipitation change (%) at ~4.4\u00b0C warming"
+          }
+        },
+        "transitionRisk": {
+          "carbonTaxRate_USD_tCO2_2030": 8,
+          "strandedAssetProbability": {
+            "coal": 0.10,
+            "oil": 0.05,
+            "naturalGas": 0.02,
+            "notes": "Low transition risk but extreme physical risk. Stranded assets unlikely due to continued demand."
+          },
+          "technologyDisruptionTimeline": {
+            "coalPhaseout": null,
+            "iceVehicleBan": null,
+            "greenHydrogenParity": 2060,
+            "ccsMatureDeployment": 2060,
+            "notes": "No policy-driven phase-outs. Market-driven transitions only."
+          }
+        }
+      }
+    }
+  ]
+}

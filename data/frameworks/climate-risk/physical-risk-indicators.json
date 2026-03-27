@@ -1,0 +1,324 @@
+{
+  "id": "climate-risk-physical-indicators",
+  "code": "physical-risk-indicators",
+  "name": "Physical Climate Risk Indicators and Scoring Framework",
+  "description": "Comprehensive physical risk indicator taxonomy covering acute and chronic climate risks, with severity scales, likelihood scoring methodology, and asset vulnerability mapping factors.",
+  "version": "2024",
+  "lastUpdated": "2025-01-01",
+  "source": "IPCC AR6 WG2, TCFD Physical Risk Guidance, UNEP FI",
+  "verified": true,
+  "severityScale": {
+    "1": "Negligible - minimal impact on operations or asset value",
+    "2": "Low - minor disruption, manageable within normal operations",
+    "3": "Moderate - significant disruption requiring adaptive response",
+    "4": "High - severe impact, potential for major financial loss",
+    "5": "Critical - catastrophic impact, existential threat to assets/operations"
+  },
+  "likelihoodScale": {
+    "1": "Rare - less than 5% probability in any given year",
+    "2": "Unlikely - 5-20% probability",
+    "3": "Possible - 20-50% probability",
+    "4": "Likely - 50-80% probability",
+    "5": "Almost Certain - greater than 80% probability"
+  },
+  "acuteRisks": [
+    {
+      "id": "climate-risk-physical-acute-flood",
+      "code": "phys-acute-flood",
+      "name": "Flooding (Fluvial, Pluvial, Coastal)",
+      "category": "acute",
+      "subcategories": ["fluvial", "pluvial", "coastal", "flash"],
+      "description": "Flooding events caused by extreme rainfall, river overflow, storm surge, or coastal inundation.",
+      "source": "IPCC AR6 WG2",
+      "verified": true,
+      "parameters": {
+        "severityFactors": {
+          "floodDepth_m": { "low": 0.3, "moderate": 1.0, "high": 2.0, "critical": 3.0 },
+          "floodDuration_days": { "low": 1, "moderate": 3, "high": 7, "critical": 30 },
+          "returnPeriod_years": { "baseline": 100, "ssp1_26_2050": 50, "ssp2_45_2050": 25, "ssp5_85_2050": 10 }
+        },
+        "likelihoodScoring": {
+          "methodology": "Combine GCM-projected precipitation extremes with local hydrological modeling and historical flood frequency analysis",
+          "dataInputs": ["CMIP6 precipitation projections", "local elevation (DEM)", "historical flood records", "soil permeability", "urbanization index"],
+          "adjustmentFactors": ["proximity to water body", "drainage infrastructure quality", "land use change"]
+        },
+        "assetVulnerabilityMapping": {
+          "realEstate_commercial": { "baseSeverity": 4, "recoveryTime_months": 3, "insurabilityTrend": "decreasing" },
+          "realEstate_residential": { "baseSeverity": 4, "recoveryTime_months": 6, "insurabilityTrend": "decreasing" },
+          "infrastructure_transport": { "baseSeverity": 3, "recoveryTime_months": 2, "insurabilityTrend": "stable" },
+          "agriculture": { "baseSeverity": 5, "recoveryTime_months": 12, "insurabilityTrend": "decreasing" },
+          "manufacturing": { "baseSeverity": 4, "recoveryTime_months": 4, "insurabilityTrend": "decreasing" },
+          "datacenters": { "baseSeverity": 5, "recoveryTime_months": 2, "insurabilityTrend": "stable" }
+        }
+      }
+    },
+    {
+      "id": "climate-risk-physical-acute-cyclone",
+      "code": "phys-acute-cyclone",
+      "name": "Tropical Cyclones / Hurricanes / Typhoons",
+      "category": "acute",
+      "subcategories": ["tropical_cyclone", "hurricane", "typhoon", "extratropical_storm"],
+      "description": "High-intensity wind and storm events including tropical cyclones, hurricanes, and typhoons.",
+      "source": "IPCC AR6 WG1 Ch 11",
+      "verified": true,
+      "parameters": {
+        "severityFactors": {
+          "saffirSimpsonCategory": { "low": 1, "moderate": 2, "high": 3, "critical": 4 },
+          "maxWindSpeed_kmh": { "low": 119, "moderate": 178, "high": 209, "critical": 252 },
+          "stormSurge_m": { "low": 1.2, "moderate": 2.5, "high": 4.0, "critical": 5.5 }
+        },
+        "likelihoodScoring": {
+          "methodology": "Historical cyclone track analysis combined with SST warming projections and CMIP6 cyclone frequency models",
+          "dataInputs": ["IBTrACS historical records", "sea surface temperature projections", "CMIP6 TC frequency", "coastal exposure"],
+          "adjustmentFactors": ["latitude", "basin (Atlantic/Pacific/Indian)", "coastal vs inland distance"]
+        },
+        "assetVulnerabilityMapping": {
+          "realEstate_commercial": { "baseSeverity": 4, "recoveryTime_months": 6, "insurabilityTrend": "decreasing" },
+          "realEstate_residential": { "baseSeverity": 5, "recoveryTime_months": 12, "insurabilityTrend": "decreasing" },
+          "infrastructure_energy": { "baseSeverity": 4, "recoveryTime_months": 3, "insurabilityTrend": "stable" },
+          "agriculture": { "baseSeverity": 5, "recoveryTime_months": 12, "insurabilityTrend": "decreasing" },
+          "offshore_oil_gas": { "baseSeverity": 4, "recoveryTime_months": 2, "insurabilityTrend": "decreasing" }
+        },
+        "projectedChanges": {
+          "intensityIncrease_pct_per_C": 5,
+          "cat4_5_frequencyIncrease_pct": 13,
+          "rainfallRateIncrease_pct_per_C": 7,
+          "notes": "AR6 WG1: proportion of intense TCs projected to increase; total TC frequency may decrease. Rainfall rates increase ~7%/\u00b0C."
+        }
+      }
+    },
+    {
+      "id": "climate-risk-physical-acute-wildfire",
+      "code": "phys-acute-wildfire",
+      "name": "Wildfire",
+      "category": "acute",
+      "subcategories": ["forest_fire", "grassland_fire", "wildland_urban_interface"],
+      "description": "Wildfire events driven by heat, drought, and dry conditions, including direct damage and air quality impacts.",
+      "source": "IPCC AR6 WG2 Ch 2",
+      "verified": true,
+      "parameters": {
+        "severityFactors": {
+          "fireWeatherIndex": { "low": 15, "moderate": 30, "high": 50, "critical": 75 },
+          "burnArea_km2": { "low": 1, "moderate": 10, "high": 100, "critical": 1000 },
+          "airQualityImpact_PM25": { "low": 35, "moderate": 55, "high": 150, "critical": 300 }
+        },
+        "likelihoodScoring": {
+          "methodology": "Fire Weather Index projections from CMIP6, combined with vegetation type, moisture deficit modeling, and ignition probability",
+          "dataInputs": ["FWI projections", "vegetation fuel load", "soil moisture deficit", "historical fire perimeters", "human ignition density"],
+          "adjustmentFactors": ["fire management capacity", "vegetation type", "topography", "proximity to WUI"]
+        },
+        "assetVulnerabilityMapping": {
+          "realEstate_residential": { "baseSeverity": 5, "recoveryTime_months": 18, "insurabilityTrend": "rapidly_decreasing" },
+          "forestry": { "baseSeverity": 5, "recoveryTime_months": 120, "insurabilityTrend": "decreasing" },
+          "agriculture": { "baseSeverity": 4, "recoveryTime_months": 12, "insurabilityTrend": "decreasing" },
+          "tourism": { "baseSeverity": 3, "recoveryTime_months": 6, "insurabilityTrend": "stable" },
+          "infrastructure_energy": { "baseSeverity": 4, "recoveryTime_months": 6, "insurabilityTrend": "stable" }
+        },
+        "projectedChanges": {
+          "fireWeatherDaysIncrease_pct_2C": 30,
+          "fireWeatherDaysIncrease_pct_4C": 80,
+          "notes": "AR6 WG2: Fire weather conditions projected to increase substantially in many regions. Mediterranean, western N. America, and Australia particularly affected."
+        }
+      }
+    },
+    {
+      "id": "climate-risk-physical-acute-extremeHeat",
+      "code": "phys-acute-extreme-heat",
+      "name": "Extreme Heat Events",
+      "category": "acute",
+      "subcategories": ["heatwave", "heat_dome", "urban_heat_island"],
+      "description": "Periods of abnormally high temperatures that exceed critical thresholds for human health, infrastructure, and agriculture.",
+      "source": "IPCC AR6 WG1 Ch 11, WG2 Ch 7",
+      "verified": true,
+      "parameters": {
+        "severityFactors": {
+          "maxTemperature_C": { "low": 35, "moderate": 40, "high": 45, "critical": 50 },
+          "wetBulbTemperature_C": { "low": 28, "moderate": 31, "high": 33, "critical": 35 },
+          "heatwaveDuration_days": { "low": 3, "moderate": 7, "high": 14, "critical": 30 }
+        },
+        "likelihoodScoring": {
+          "methodology": "CMIP6 temperature extreme projections combined with urban heat island effect modeling and wet-bulb temperature analysis",
+          "dataInputs": ["CMIP6 TXx/TNn projections", "urban morphology data", "humidity projections", "historical heatwave records"],
+          "adjustmentFactors": ["urban heat island coefficient", "cooling infrastructure", "latitude", "altitude"]
+        },
+        "assetVulnerabilityMapping": {
+          "infrastructure_energy": { "baseSeverity": 4, "recoveryTime_months": 0.5, "insurabilityTrend": "stable" },
+          "agriculture": { "baseSeverity": 5, "recoveryTime_months": 6, "insurabilityTrend": "decreasing" },
+          "construction": { "baseSeverity": 3, "recoveryTime_months": 1, "insurabilityTrend": "stable" },
+          "outdoor_services": { "baseSeverity": 4, "recoveryTime_months": 0.5, "insurabilityTrend": "stable" },
+          "datacenters": { "baseSeverity": 3, "recoveryTime_months": 0.25, "insurabilityTrend": "stable" }
+        },
+        "projectedChanges": {
+          "extremeHeatFrequency_at2C": "4.1x baseline frequency",
+          "extremeHeatFrequency_at4C": "9.4x baseline frequency",
+          "notes": "AR6 WG1 SPM: A heatwave that occurred once per 50 years in pre-industrial climate is projected to occur 4.1x at 2\u00b0C and 9.4x at 4\u00b0C."
+        }
+      }
+    },
+    {
+      "id": "climate-risk-physical-acute-waterStress",
+      "code": "phys-acute-water-stress",
+      "name": "Acute Water Stress / Drought",
+      "category": "acute",
+      "subcategories": ["meteorological_drought", "hydrological_drought", "agricultural_drought"],
+      "description": "Severe water scarcity events leading to operational disruption, agricultural losses, and supply chain impacts.",
+      "source": "IPCC AR6 WG2 Ch 4",
+      "verified": true,
+      "parameters": {
+        "severityFactors": {
+          "standardizedPrecipitationIndex": { "low": -1.0, "moderate": -1.5, "high": -2.0, "critical": -2.5 },
+          "waterStressRatio": { "low": 0.4, "moderate": 0.6, "high": 0.8, "critical": 1.0 },
+          "droughtDuration_months": { "low": 3, "moderate": 6, "high": 12, "critical": 24 }
+        },
+        "likelihoodScoring": {
+          "methodology": "Combine CMIP6 SPEI projections with basin-level water balance modeling and demand projections",
+          "dataInputs": ["CMIP6 precipitation/evaporation", "WRI Aqueduct baseline water stress", "population growth projections", "industrial water demand"],
+          "adjustmentFactors": ["groundwater availability", "desalination capacity", "water storage infrastructure", "demand management"]
+        },
+        "assetVulnerabilityMapping": {
+          "agriculture": { "baseSeverity": 5, "recoveryTime_months": 12, "insurabilityTrend": "decreasing" },
+          "mining": { "baseSeverity": 4, "recoveryTime_months": 6, "insurabilityTrend": "stable" },
+          "manufacturing": { "baseSeverity": 3, "recoveryTime_months": 3, "insurabilityTrend": "stable" },
+          "thermalPowerGeneration": { "baseSeverity": 4, "recoveryTime_months": 3, "insurabilityTrend": "stable" },
+          "beverages_food": { "baseSeverity": 4, "recoveryTime_months": 6, "insurabilityTrend": "decreasing" }
+        }
+      }
+    }
+  ],
+  "chronicRisks": [
+    {
+      "id": "climate-risk-physical-chronic-sealevel",
+      "code": "phys-chronic-sealevel",
+      "name": "Sea Level Rise",
+      "category": "chronic",
+      "description": "Gradual increase in mean sea level due to thermal expansion and ice sheet/glacier melt, leading to permanent inundation, increased flooding frequency, saltwater intrusion.",
+      "source": "IPCC AR6 WG1 Ch 9",
+      "verified": true,
+      "parameters": {
+        "severityFactors": {
+          "sealevelRise_cm_by2100": {
+            "ssp1_19": 38,
+            "ssp1_26": 44,
+            "ssp2_45": 56,
+            "ssp5_85": 77,
+            "notes": "Median projections from AR6 WG1 Table 9.9"
+          },
+          "permanentInundationThreshold_cm": 50,
+          "saltwaterIntrusionThreshold_cm": 30
+        },
+        "likelihoodScoring": {
+          "methodology": "Regional sea level projections from AR6 combined with local subsidence rates and tidal amplification",
+          "dataInputs": ["AR6 regional SLR projections", "local subsidence rates", "tidal range", "storm surge climatology"],
+          "adjustmentFactors": ["vertical land motion", "coastal protection infrastructure", "natural barriers (mangroves/reefs)"]
+        },
+        "assetVulnerabilityMapping": {
+          "coastal_realEstate": { "baseSeverity": 5, "impactTimeHorizon": "2050-2100", "adaptationOptions": ["elevation", "managed_retreat", "sea_walls"] },
+          "ports_maritime": { "baseSeverity": 4, "impactTimeHorizon": "2040-2080", "adaptationOptions": ["infrastructure_upgrade", "relocation"] },
+          "coastal_infrastructure": { "baseSeverity": 4, "impactTimeHorizon": "2040-2080", "adaptationOptions": ["protection", "elevation", "relocation"] },
+          "coastal_agriculture": { "baseSeverity": 5, "impactTimeHorizon": "2030-2060", "adaptationOptions": ["saltTolerant_crops", "drainage", "retreat"] }
+        }
+      }
+    },
+    {
+      "id": "climate-risk-physical-chronic-temperature",
+      "code": "phys-chronic-temperature",
+      "name": "Mean Temperature Increase",
+      "category": "chronic",
+      "description": "Gradual increase in average temperatures affecting labor productivity, energy demand, crop yields, and ecosystem services.",
+      "source": "IPCC AR6 WG2",
+      "verified": true,
+      "parameters": {
+        "severityFactors": {
+          "globalMeanWarming_C": {
+            "ssp1_19_2100": 1.4,
+            "ssp1_26_2100": 1.8,
+            "ssp2_45_2100": 2.7,
+            "ssp5_85_2100": 4.4
+          },
+          "laborProductivityLoss_pct_per_C": 1.7,
+          "coolingDemandIncrease_pct_per_C": 6.0,
+          "cropYieldChange_pct_per_C": -5.0,
+          "notes": "Labor productivity loss is for outdoor workers in tropical regions. Crop yield change is global median for maize/wheat."
+        },
+        "likelihoodScoring": {
+          "methodology": "CMIP6 ensemble mean temperature projections with regional downscaling",
+          "dataInputs": ["CMIP6 ensemble projections", "regional downscaling models", "urban heat island data"],
+          "adjustmentFactors": ["altitude", "proximity to coast", "land use change"]
+        },
+        "assetVulnerabilityMapping": {
+          "agriculture": { "baseSeverity": 4, "impactTimeHorizon": "ongoing", "adaptationOptions": ["crop_switching", "irrigation", "shade_management"] },
+          "outdoor_labor": { "baseSeverity": 4, "impactTimeHorizon": "ongoing", "adaptationOptions": ["schedule_adjustment", "mechanization", "cooling_PPE"] },
+          "buildings_hvac": { "baseSeverity": 3, "impactTimeHorizon": "ongoing", "adaptationOptions": ["efficiency_upgrades", "passive_cooling", "district_cooling"] },
+          "healthcare": { "baseSeverity": 3, "impactTimeHorizon": "ongoing", "adaptationOptions": ["cooling_systems", "heat_action_plans"] }
+        }
+      }
+    },
+    {
+      "id": "climate-risk-physical-chronic-precipitation",
+      "code": "phys-chronic-precipitation",
+      "name": "Precipitation Pattern Changes",
+      "category": "chronic",
+      "description": "Long-term shifts in precipitation patterns including changes in seasonal distribution, intensity, and form (rain vs snow).",
+      "source": "IPCC AR6 WG1 Ch 8",
+      "verified": true,
+      "parameters": {
+        "severityFactors": {
+          "annualPrecipitationChange_pct": {
+            "highLatitude_increase_at2C": 9.0,
+            "subtropical_decrease_at2C": -5.0,
+            "monsoon_increase_at2C": 3.0,
+            "notes": "AR6 WG1 Ch 8. High latitudes get wetter, subtropics drier."
+          },
+          "extremePrecipitationIntensityIncrease_pct_per_C": 7.0,
+          "snowCoverDecline_pct_per_C": -8.0
+        },
+        "likelihoodScoring": {
+          "methodology": "CMIP6 precipitation projections with regional hydrological modeling",
+          "dataInputs": ["CMIP6 precipitation ensembles", "historical precipitation records", "topographic data"],
+          "adjustmentFactors": ["orographic effects", "land use change", "irrigation"]
+        },
+        "assetVulnerabilityMapping": {
+          "hydropower": { "baseSeverity": 4, "impactTimeHorizon": "2030-2060", "adaptationOptions": ["storage_expansion", "diversification", "efficiency"] },
+          "agriculture_rainfed": { "baseSeverity": 5, "impactTimeHorizon": "ongoing", "adaptationOptions": ["irrigation", "drought_resistant_varieties", "crop_insurance"] },
+          "water_utilities": { "baseSeverity": 4, "impactTimeHorizon": "2030-2060", "adaptationOptions": ["storage", "demand_management", "desalination"] },
+          "winter_tourism": { "baseSeverity": 4, "impactTimeHorizon": "2030-2050", "adaptationOptions": ["snowmaking", "diversification", "altitude_shift"] }
+        }
+      }
+    },
+    {
+      "id": "climate-risk-physical-chronic-drought",
+      "code": "phys-chronic-drought",
+      "name": "Chronic Drought / Aridification",
+      "category": "chronic",
+      "description": "Long-term drying trends and increasing drought frequency leading to permanent water scarcity in affected regions.",
+      "source": "IPCC AR6 WG2 Ch 4",
+      "verified": true,
+      "parameters": {
+        "severityFactors": {
+          "soilMoistureDecline_pct": {
+            "mediterranean_at2C": -15,
+            "southernAfrica_at2C": -20,
+            "centralAmerica_at2C": -12,
+            "notes": "AR6 WG1: Soil moisture declines projected for many subtropical and mid-latitude regions"
+          },
+          "riverFlowDecline_pct": {
+            "mediterranean_at2C": -20,
+            "southwestUS_at2C": -15,
+            "southernAustralia_at2C": -15
+          }
+        },
+        "likelihoodScoring": {
+          "methodology": "CMIP6 soil moisture and runoff projections with basin-level water balance",
+          "dataInputs": ["CMIP6 soil moisture projections", "runoff projections", "groundwater depletion rates", "demand projections"],
+          "adjustmentFactors": ["aquifer recharge rates", "desalination capacity", "water recycling"]
+        },
+        "assetVulnerabilityMapping": {
+          "agriculture": { "baseSeverity": 5, "impactTimeHorizon": "2030-2060", "adaptationOptions": ["efficient_irrigation", "crop_switching", "managed_retreat"] },
+          "mining": { "baseSeverity": 4, "impactTimeHorizon": "2030-2060", "adaptationOptions": ["water_recycling", "dry_processing"] },
+          "thermalPower": { "baseSeverity": 4, "impactTimeHorizon": "2030-2050", "adaptationOptions": ["dry_cooling", "renewable_transition"] },
+          "municipal_water": { "baseSeverity": 5, "impactTimeHorizon": "2030-2050", "adaptationOptions": ["conservation", "recycling", "desalination", "transfers"] }
+        }
+      }
+    }
+  ]
+}
