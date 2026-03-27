@@ -15,6 +15,7 @@ import { registerReportRoutes } from './modules/report/report.routes.js';
 import { registerPresentationRoutes } from './modules/presentation/presentation.routes.js';
 import { registerQARoutes } from './modules/qa/qa.routes.js';
 import { registerAssuranceRoutes } from './modules/assurance/assurance.routes.js';
+import { registerWorkflowRoutes } from './modules/workflow/workflow.routes.js';
 
 dotenv.config();
 
@@ -73,6 +74,15 @@ async function start() {
 
   // Register presentation generator routes
   await registerPresentationRoutes(app);
+
+  // Register QA consistency engine routes
+  await registerQARoutes(app);
+
+  // Register assurance evidence pack routes
+  await registerAssuranceRoutes(app);
+
+  // Register workflow engine routes
+  await registerWorkflowRoutes(app);
 
   const port = parseInt(process.env['PORT'] || '3001', 10);
 
