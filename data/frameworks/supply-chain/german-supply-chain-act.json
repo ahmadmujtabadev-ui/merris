@@ -1,0 +1,244 @@
+{
+  "id": "fw-lksg-2023",
+  "code": "lksg",
+  "name": "Lieferkettensorgfaltspflichtengesetz (German Supply Chain Due Diligence Act)",
+  "shortName": "LkSG",
+  "version": "2023",
+  "legislativeReference": "Gesetz über die unternehmerischen Sorgfaltspflichten zur Vermeidung von Menschenrechtsverletzungen in Lieferketten",
+  "effectiveDate": "2023-01-01",
+  "issuingBody": "Deutscher Bundestag (German Federal Parliament)",
+  "enforcementAuthority": "Bundesamt für Wirtschaft und Ausfuhrkontrolle (BAFA)",
+  "region": "DE",
+  "type": "mandatory",
+  "verified": true,
+  "scope": {
+    "description": "German companies and companies with a registered branch in Germany",
+    "phases": [
+      {
+        "applicationDate": "2023-01-01",
+        "criteria": {
+          "employees": 3000,
+          "note": "Companies with 3,000+ employees domiciled or with a branch office in Germany"
+        }
+      },
+      {
+        "applicationDate": "2024-01-01",
+        "criteria": {
+          "employees": 1000,
+          "note": "Extended to companies with 1,000+ employees"
+        }
+      }
+    ],
+    "employeeCountNote": "Includes temporary agency workers assigned for more than 6 months (Section 1(3))"
+  },
+  "dueDiligenceObligations": {
+    "description": "Risk-based due diligence obligations per Sections 3-10 LkSG",
+    "overarchingPrinciple": {
+      "section": "Section 3(1)",
+      "code": "LkSG-S3",
+      "description": "Obligation of effort, not of result (Bemühhenspflicht). Companies must take adequate measures based on the nature and extent of their business activity, their leverage, the severity of the expected adverse impact, the likelihood of occurrence, and the company's contribution to the adverse impact."
+    },
+    "directSupplierObligations": {
+      "description": "Obligations with regard to direct suppliers (Sections 5-7)",
+      "riskAnalysis": {
+        "section": "Section 5",
+        "code": "LkSG-S5",
+        "name": "Risk analysis (Risikoanalyse)",
+        "requirements": [
+          "Regular risk analysis (at least annually)",
+          "Ad-hoc risk analysis when the company must expect a significantly changed or expanded risk situation (e.g., new products, new business relationships, new country of operations)",
+          "Identify human rights and environmental risks in own business area and at direct suppliers",
+          "Weight and prioritise identified risks appropriately",
+          "Communicate findings of risk analysis to relevant decision-makers"
+        ]
+      },
+      "preventiveMeasures": {
+        "section": "Section 6",
+        "code": "LkSG-S6",
+        "name": "Preventive measures (Präventionsmaßnahmen)",
+        "ownBusinessArea": {
+          "description": "Measures within the company's own business area (Section 6(1)-(4))",
+          "measures": [
+            "Policy statement on human rights strategy (Grundsatzerklärung)",
+            "Determine appropriate procurement practices to prevent or minimise identified risks",
+            "Implement preventive measures anchored in own business area (e.g., training, risk-based control measures)"
+          ]
+        },
+        "directSuppliers": {
+          "description": "Measures vis-à-vis direct suppliers (Section 6(4))",
+          "measures": [
+            "Code of conduct: agree human rights and environmental expectations with suppliers",
+            "Procurement practices: include human rights clauses in supplier contracts",
+            "Training and capacity building for suppliers",
+            "Risk-based audits and inspections (contractual control mechanisms)",
+            "Agree upon contractual assurances from the direct supplier that it addresses human rights and environmental risks throughout its supply chain"
+          ]
+        }
+      },
+      "remedialMeasures": {
+        "section": "Section 7",
+        "code": "LkSG-S7",
+        "name": "Remedial measures (Abhilfemaßnahmen)",
+        "requirements": [
+          "Take remedial action immediately once a violation of a human rights or environmental obligation at a direct supplier is identified or substantiated",
+          "Jointly develop and implement a plan to end or minimise the violation with the direct supplier",
+          "Temporary suspension of the business relationship during efforts to minimise risk",
+          "Termination of the business relationship as a last resort if the violation is very serious, attempts at remediation have failed after a set deadline, and no milder measures are available"
+        ]
+      }
+    },
+    "indirectSupplierObligations": {
+      "section": "Section 9",
+      "code": "LkSG-S9",
+      "name": "Indirect supplier obligations (mittelbare Zulieferer)",
+      "trigger": "Substantiated knowledge (substantiierte Kenntnis) of a possible violation at an indirect supplier",
+      "description": "Obligations are triggered only upon obtaining substantiated knowledge that a human rights or environmental violation at an indirect supplier may have occurred. This is a trigger-based, not ongoing, obligation.",
+      "requirements": [
+        "Carry out a risk analysis without undue delay (Section 9(3) No. 1)",
+        "Establish appropriate preventive measures vis-à-vis the violating party (Section 9(3) No. 2)",
+        "Develop and implement a concept for preventing, ending, or minimising the violation (Section 9(3) No. 3)",
+        "Update the policy statement (Grundsatzerklärung) as necessary (Section 9(3) No. 4)"
+      ]
+    },
+    "complaintsProcedure": {
+      "section": "Section 8",
+      "code": "LkSG-S8",
+      "name": "Complaints procedure (Beschwerdeverfahren)",
+      "requirements": [
+        "Establish an accessible complaints mechanism for persons to report human rights and environmental risks or violations",
+        "Procedure must be publicly accessible and clearly described",
+        "Independence of the person responsible for operating the procedure",
+        "Duty of confidentiality for the identity of the complainant",
+        "Effective protection against disadvantage or punishment for complainants",
+        "May be operated jointly with other companies or use external complaints mechanisms (e.g., industry-wide)"
+      ]
+    }
+  },
+  "humanRightsRisks": {
+    "section": "Section 2(2)",
+    "code": "LkSG-S2-2",
+    "description": "Protected legal positions derived from international conventions listed in Section 2(2)",
+    "risks": [
+      {
+        "code": "LkSG-HR-1",
+        "name": "Child labour",
+        "description": "Employment of children below minimum age (ILO C138) or in worst forms of child labour (ILO C182)",
+        "references": ["ILO Convention No. 138", "ILO Convention No. 182"]
+      },
+      {
+        "code": "LkSG-HR-2",
+        "name": "Forced labour",
+        "description": "All forms of forced labour including slave labour, debt bondage, serfdom (ILO C29, C105)",
+        "references": ["ILO Convention No. 29", "ILO Convention No. 105"]
+      },
+      {
+        "code": "LkSG-HR-3",
+        "name": "Discrimination",
+        "description": "Unequal treatment in employment based on national or ethnic origin, social origin, health status, disability, sexual orientation, age, sex, political opinion, religion, or beliefs (ILO C111)",
+        "references": ["ILO Convention No. 111"]
+      },
+      {
+        "code": "LkSG-HR-4",
+        "name": "Freedom of association",
+        "description": "Failure to respect the right to form trade unions, the right to strike, and the right to collective bargaining (ILO C87, C98)",
+        "references": ["ILO Convention No. 87", "ILO Convention No. 98"]
+      },
+      {
+        "code": "LkSG-HR-5",
+        "name": "Unsafe working conditions",
+        "description": "Failure to ensure occupational health and safety in accordance with the law of the place of employment, including exposure to hazardous substances, lack of protective equipment",
+        "references": ["ILO Convention No. 155"]
+      },
+      {
+        "code": "LkSG-HR-6",
+        "name": "Fair wages",
+        "description": "Withholding an adequate wage — the wage defined by applicable law, which is at least the minimum wage defined by applicable law",
+        "references": ["ILO Convention No. 100"]
+      },
+      {
+        "code": "LkSG-HR-7",
+        "name": "Harmful soil change, water or air pollution, harmful noise emission, excessive water consumption",
+        "description": "Environmental degradation causing impairment of the natural bases for the preservation and production of food, denial of access to safe drinking water, or harm to health",
+        "references": ["Section 2(2) No. 9 LkSG"]
+      },
+      {
+        "code": "LkSG-HR-8",
+        "name": "Unlawful eviction or land taking",
+        "description": "Unlawful eviction or unlawful taking of land, forests, and waters whose use secures the livelihood of a person",
+        "references": ["Section 2(2) No. 10 LkSG"]
+      },
+      {
+        "code": "LkSG-HR-9",
+        "name": "Use of private or public security forces",
+        "description": "Use of private or public security forces leading to violations due to lack of instruction or control",
+        "references": ["Section 2(2) No. 12 LkSG"]
+      }
+    ]
+  },
+  "environmentalRisks": {
+    "section": "Section 2(3)",
+    "code": "LkSG-S2-3",
+    "description": "Environmental obligations derived from three international conventions",
+    "risks": [
+      {
+        "code": "LkSG-ENV-1",
+        "name": "Mercury and mercury waste (Minamata Convention)",
+        "description": "Production, use, handling of mercury and mercury compounds contrary to the Minamata Convention on Mercury",
+        "references": ["Minamata Convention on Mercury (2017)"]
+      },
+      {
+        "code": "LkSG-ENV-2",
+        "name": "Persistent organic pollutants (Stockholm Convention)",
+        "description": "Production, use, handling, collection, storage, and disposal of persistent organic pollutants contrary to the Stockholm Convention on POPs",
+        "references": ["Stockholm Convention on Persistent Organic Pollutants (2004)"]
+      },
+      {
+        "code": "LkSG-ENV-3",
+        "name": "Hazardous waste export (Basel Convention)",
+        "description": "Import and export of hazardous wastes contrary to the Basel Convention",
+        "references": ["Basel Convention on the Control of Transboundary Movements of Hazardous Wastes (1992)"]
+      }
+    ]
+  },
+  "reporting": {
+    "section": "Section 10",
+    "code": "LkSG-S10",
+    "name": "Annual reporting obligation (Berichtspflicht)",
+    "authority": "BAFA (Bundesamt für Wirtschaft und Ausfuhrkontrolle)",
+    "frequency": "Annual, covering the preceding financial year",
+    "deadline": "Within 4 months after end of financial year",
+    "publicDisclosure": "Report must be published on the company's website free of charge for 7 years",
+    "contentRequirements": [
+      "Whether and which human rights and environmental risks have been identified",
+      "Description of what the company has done to fulfil its due diligence obligations under Sections 4-9",
+      "Assessment of the impact and effectiveness of the measures taken",
+      "Conclusions drawn for future measures"
+    ],
+    "submissionTo": "BAFA electronic reporting portal"
+  },
+  "enforcement": {
+    "authority": "BAFA",
+    "powers": [
+      "Request information and documents (Section 14)",
+      "Summon persons to provide information (Section 15)",
+      "Enter business premises and conduct inspections (Section 16)",
+      "Issue orders to take specific actions to fulfil obligations (Section 17)"
+    ],
+    "sanctions": {
+      "fines": [
+        {
+          "violation": "Failure to comply with due diligence obligations (Sections 3-9)",
+          "amount": "Up to €8,000,000 or up to 2% of average annual worldwide turnover for companies with annual turnover exceeding €400 million"
+        },
+        {
+          "violation": "Failure to submit report or submitting materially incorrect report",
+          "amount": "Up to €500,000"
+        }
+      ],
+      "publicProcurementExclusion": {
+        "description": "Exclusion from public procurement for up to 3 years if fined above certain thresholds (Section 22)",
+        "threshold": "Fine of at least €175,000"
+      }
+    }
+  }
+}

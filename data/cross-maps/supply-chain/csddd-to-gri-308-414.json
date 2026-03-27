@@ -1,0 +1,117 @@
+{
+  "description": "Cross-framework mapping from CSDDD due diligence obligations to GRI 308 (Supplier Environmental Assessment) and GRI 414 (Supplier Social Assessment)",
+  "sourceFramework": "csddd",
+  "sourceFrameworkName": "EU Corporate Sustainability Due Diligence Directive (2024/1760)",
+  "targetFramework": "gri",
+  "targetFrameworkName": "GRI Standards 2021 — GRI 308 (Supplier Environmental Assessment) and GRI 414 (Supplier Social Assessment)",
+  "version": "1.0",
+  "lastUpdated": "2025-01-01",
+  "verified": true,
+  "notes": "Mapping between CSDDD due diligence process obligations and GRI 308/414 supplier assessment disclosures. GRI 308 and 414 focus on disclosure of supplier screening and assessment practices; CSDDD mandates the underlying due diligence processes. Companies reporting under GRI and subject to CSDDD can use their CSDDD due diligence outputs to fulfil GRI 308/414 disclosures.",
+  "mappings": [
+    {
+      "source_code": "CSDDD-Art7",
+      "source_name": "Integrating due diligence into policies and management systems",
+      "target_code": "GRI 308-1",
+      "target_name": "New suppliers that were screened using environmental criteria",
+      "mapping": "partial",
+      "notes": "CSDDD Art 7 policy integration provides the policy framework under which environmental supplier screening (GRI 308-1) would be conducted. CSDDD is broader (all adverse impacts) while GRI 308-1 is specifically about percentage of new suppliers screened."
+    },
+    {
+      "source_code": "CSDDD-Art7",
+      "source_name": "Integrating due diligence into policies and management systems",
+      "target_code": "GRI 414-1",
+      "target_name": "New suppliers that were screened using social criteria",
+      "mapping": "partial",
+      "notes": "CSDDD Art 7 policy integration provides the policy framework under which social supplier screening (GRI 414-1) would be conducted. CSDDD is broader while GRI 414-1 focuses on percentage of new suppliers screened using social criteria."
+    },
+    {
+      "source_code": "CSDDD-Art8",
+      "source_name": "Identifying and assessing actual and potential adverse impacts",
+      "target_code": "GRI 308-2",
+      "target_name": "Negative environmental impacts in the supply chain and actions taken",
+      "mapping": "equivalent",
+      "notes": "CSDDD Art 8 identification of environmental adverse impacts in the value chain directly supports GRI 308-2 disclosure of negative environmental impacts in the supply chain. CSDDD adds the obligation to consult stakeholders."
+    },
+    {
+      "source_code": "CSDDD-Art8",
+      "source_name": "Identifying and assessing actual and potential adverse impacts",
+      "target_code": "GRI 414-2",
+      "target_name": "Negative social impacts in the supply chain and actions taken",
+      "mapping": "equivalent",
+      "notes": "CSDDD Art 8 identification of human rights adverse impacts directly supports GRI 414-2 disclosure of negative social impacts in the supply chain."
+    },
+    {
+      "source_code": "CSDDD-Art10",
+      "source_name": "Preventing and mitigating potential adverse impacts",
+      "target_code": "GRI 308-2",
+      "target_name": "Negative environmental impacts in the supply chain and actions taken",
+      "mapping": "equivalent",
+      "notes": "CSDDD Art 10-11 prevention and mitigation measures map to GRI 308-2's requirement to disclose actions taken to address identified environmental impacts, including contractual assurances and capacity building."
+    },
+    {
+      "source_code": "CSDDD-Art10",
+      "source_name": "Preventing and mitigating potential adverse impacts",
+      "target_code": "GRI 414-2",
+      "target_name": "Negative social impacts in the supply chain and actions taken",
+      "mapping": "equivalent",
+      "notes": "CSDDD Art 10-11 prevention of human rights impacts maps to GRI 414-2's requirement to disclose actions taken including number of suppliers where improvements were agreed upon or relationships were terminated."
+    },
+    {
+      "source_code": "CSDDD-Art12",
+      "source_name": "Bringing actual adverse impacts to an end",
+      "target_code": "GRI 308-2",
+      "target_name": "Negative environmental impacts in the supply chain and actions taken",
+      "mapping": "equivalent",
+      "notes": "CSDDD Art 12 remediation of actual environmental impacts aligns with GRI 308-2 disclosure of actions taken. GRI 308-2 requests number of suppliers assessed, identified as having impacts, and significant impacts identified."
+    },
+    {
+      "source_code": "CSDDD-Art12",
+      "source_name": "Bringing actual adverse impacts to an end",
+      "target_code": "GRI 414-2",
+      "target_name": "Negative social impacts in the supply chain and actions taken",
+      "mapping": "equivalent",
+      "notes": "CSDDD Art 12 remediation of actual social/human rights impacts aligns with GRI 414-2. Both require actions including improvements agreed, relationships terminated as last resort."
+    },
+    {
+      "source_code": "CSDDD-Art14",
+      "source_name": "Establishing and maintaining a complaints procedure",
+      "target_code": "GRI 414-2",
+      "target_name": "Negative social impacts in the supply chain and actions taken",
+      "mapping": "partial",
+      "notes": "CSDDD Art 14 complaints procedure supports the grievance mechanisms referenced in GRI 414-2. GRI 414-2 does not explicitly require a complaints mechanism but asks about actions taken, which would include grievance handling."
+    },
+    {
+      "source_code": "CSDDD-Art15",
+      "source_name": "Monitoring the effectiveness of due diligence",
+      "target_code": "GRI 308-2",
+      "target_name": "Negative environmental impacts in the supply chain and actions taken",
+      "mapping": "partial",
+      "notes": "CSDDD Art 15 monitoring effectiveness feeds into GRI 308-2's quantitative disclosures (number of suppliers assessed, improvements agreed, relationships terminated). Monitoring provides the data for GRI reporting."
+    },
+    {
+      "source_code": "CSDDD-Art15",
+      "source_name": "Monitoring the effectiveness of due diligence",
+      "target_code": "GRI 414-2",
+      "target_name": "Negative social impacts in the supply chain and actions taken",
+      "mapping": "partial",
+      "notes": "CSDDD Art 15 monitoring effectiveness feeds into GRI 414-2's quantitative disclosures. GRI 414-2 requests metrics on supplier assessments, identified impacts, and improvement actions."
+    },
+    {
+      "source_code": "CSDDD-Art7",
+      "source_name": "Integrating due diligence into policies — code of conduct",
+      "target_code": "GRI 2-23",
+      "target_name": "Policy commitments",
+      "mapping": "related",
+      "notes": "CSDDD Art 7 code of conduct for employees and subsidiaries relates to GRI 2-23 policy commitments disclosure. GRI 2-23 is a general disclosure standard, not specific to supply chain, but covers the same policy commitment territory."
+    },
+    {
+      "source_code": "CSDDD-Art8",
+      "source_name": "Identifying and assessing actual and potential adverse impacts — stakeholder consultation",
+      "target_code": "GRI 2-29",
+      "target_name": "Approach to stakeholder engagement",
+      "mapping": "related",
+      "notes": "CSDDD Art 8 requires consulting affected stakeholders during impact identification. This relates to GRI 2-29's disclosure on approach to stakeholder engagement, though GRI 2-29 is a general disclosure."
+    }
+  ]
+}

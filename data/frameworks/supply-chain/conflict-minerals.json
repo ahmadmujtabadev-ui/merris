@@ -1,0 +1,237 @@
+{
+  "id": "fw-conflict-minerals",
+  "code": "conflict-minerals",
+  "name": "Conflict Minerals Regulations and Due Diligence Frameworks",
+  "version": "2024",
+  "type": "mandatory",
+  "verified": true,
+  "description": "Compilation of conflict minerals regulations covering 3TG (tin, tantalum, tungsten, gold) and responsible mineral sourcing frameworks",
+  "minerals": {
+    "3TG": [
+      { "symbol": "Sn", "name": "Tin", "ore": "Cassiterite", "keyUses": ["electronics solder", "tin plating", "packaging"] },
+      { "symbol": "Ta", "name": "Tantalum", "ore": "Coltan (columbite-tantalite)", "keyUses": ["capacitors", "medical devices", "jet engines"] },
+      { "symbol": "W", "name": "Tungsten", "ore": "Wolframite", "keyUses": ["cutting tools", "electronics", "lighting"] },
+      { "symbol": "Au", "name": "Gold", "ore": "Gold ore", "keyUses": ["electronics connectors", "jewellery", "dental", "investment"] }
+    ]
+  },
+  "regulations": [
+    {
+      "id": "eu-conflict-minerals",
+      "code": "EU-CMR",
+      "name": "EU Conflict Minerals Regulation",
+      "legislativeReference": "Regulation (EU) 2017/821",
+      "effectiveDate": "2021-01-01",
+      "issuingBody": "European Parliament and Council",
+      "jurisdiction": "EU",
+      "verified": true,
+      "scope": {
+        "description": "EU importers of tin, tantalum, tungsten, and gold (3TG) above de minimis volume thresholds",
+        "coveredEntities": "Union importers of minerals or metals containing or consisting of 3TG",
+        "volumeThresholds": {
+          "description": "Annex I of the Regulation sets volume thresholds; importers below thresholds are exempt",
+          "note": "Thresholds vary by mineral/metal form (e.g., tin ores: 5,000 kg/year, gold: 100 kg/year)"
+        },
+        "excludes": "Downstream manufacturers using 3TG in finished products are not directly covered but encouraged to conduct due diligence"
+      },
+      "importerObligations": [
+        {
+          "code": "EU-CMR-1",
+          "name": "Management system",
+          "description": "Adopt and clearly communicate supply chain policy for minerals and metals from conflict-affected and high-risk areas (CAHRAs)"
+        },
+        {
+          "code": "EU-CMR-2",
+          "name": "Risk management",
+          "description": "Identify and assess risks of adverse impacts in the mineral supply chain based on available information"
+        },
+        {
+          "code": "EU-CMR-3",
+          "name": "Third-party audit",
+          "description": "Carry out independent third-party audits of supply chain due diligence at points in the supply chain where the risk of adverse impacts is greatest"
+        },
+        {
+          "code": "EU-CMR-4",
+          "name": "Disclosure",
+          "description": "Report publicly on supply chain due diligence policies, practices, and risk assessment outcomes"
+        }
+      ],
+      "memberStateObligations": [
+        "Designate competent authorities for ex-post compliance checks",
+        "Carry out ex-post checks to ensure importers comply with obligations",
+        "Publish lists of recognised supply chain due diligence schemes"
+      ],
+      "cahras": {
+        "description": "Conflict-Affected and High-Risk Areas",
+        "definition": "Areas in a state of armed conflict, fragile post-conflict areas, and areas with weak or non-existent governance and security, including failed states, with widespread and systematic violations of international law including human rights abuses",
+        "indicativeList": "European Commission publishes a non-exhaustive, indicative, regularly updated list of CAHRAs",
+        "sourcesForIdentification": [
+          "UN Security Council reports",
+          "OECD risk assessments",
+          "European External Action Service (EEAS) analysis",
+          "Reports from civil society and research organisations"
+        ]
+      }
+    },
+    {
+      "id": "dodd-frank-1502",
+      "code": "DF-1502",
+      "name": "Dodd-Frank Wall Street Reform Act — Section 1502",
+      "legislativeReference": "Dodd-Frank Wall Street Reform and Consumer Protection Act, Section 1502 (15 U.S.C. § 78m(p))",
+      "effectiveDate": "2012-11-13",
+      "issuingBody": "United States Congress",
+      "enforcementAuthority": "U.S. Securities and Exchange Commission (SEC)",
+      "jurisdiction": "US",
+      "verified": true,
+      "scope": {
+        "description": "SEC-reporting companies (issuers) for which conflict minerals are necessary to the functionality or production of a product manufactured or contracted to be manufactured",
+        "coveredMinerals": "Tin, tantalum, tungsten, gold (3TG) and their derivatives",
+        "coveredCountries": "Democratic Republic of the Congo (DRC) and adjoining countries: Angola, Burundi, Central African Republic, Republic of the Congo, Rwanda, South Sudan, Tanzania, Uganda, Zambia",
+        "applicability": "Only SEC-reporting companies (public companies filing under the Exchange Act)"
+      },
+      "formSD": {
+        "name": "Form SD (Specialized Disclosure)",
+        "filingDeadline": "Filed annually with the SEC by May 31 for the prior calendar year",
+        "description": "Issuers must file Form SD describing their RCOI and, if necessary, due diligence measures",
+        "exhibits": [
+          {
+            "name": "Conflict Minerals Report",
+            "requirement": "Required if RCOI does not resolve that conflict minerals did not originate from covered countries or did not finance armed groups",
+            "contents": [
+              "Description of due diligence measures performed",
+              "Description of products manufactured or contracted to be manufactured that are not DRC conflict free",
+              "Facilities used to process the conflict minerals",
+              "Country of origin of the conflict minerals",
+              "Efforts to determine the mine or location of origin"
+            ]
+          }
+        ]
+      },
+      "rcoiProcess": {
+        "code": "DF-RCOI",
+        "name": "Reasonable Country of Origin Inquiry (RCOI)",
+        "description": "Initial inquiry to determine whether conflict minerals originated in covered countries or from recycled/scrap sources",
+        "steps": [
+          "Determine whether company manufactures or contracts to manufacture products containing 3TG",
+          "Determine whether 3TG are necessary to the functionality or production of the product",
+          "Conduct RCOI to determine country of origin",
+          "If RCOI indicates minerals may originate from covered countries, exercise due diligence per OECD framework"
+        ],
+        "outcomes": [
+          "If RCOI determines minerals did NOT originate from covered countries → disclose in Form SD, no Conflict Minerals Report required",
+          "If RCOI cannot determine origin or indicates covered country origin → perform due diligence and file Conflict Minerals Report"
+        ]
+      }
+    }
+  ],
+  "oecdGuidance": {
+    "id": "oecd-minerals-guidance",
+    "code": "OECD-DDG",
+    "name": "OECD Due Diligence Guidance for Responsible Supply Chains of Minerals from Conflict-Affected and High-Risk Areas",
+    "version": "Third Edition (2016)",
+    "issuingBody": "Organisation for Economic Co-operation and Development (OECD)",
+    "verified": true,
+    "description": "International standard for supply chain due diligence of minerals from conflict-affected and high-risk areas, referenced by both EU and US regulations",
+    "fiveStepFramework": [
+      {
+        "step": 1,
+        "code": "OECD-DDG-S1",
+        "name": "Establish strong company management systems",
+        "requirements": [
+          "Adopt and commit to a supply chain policy for minerals from CAHRAs",
+          "Structure internal management to support supply chain due diligence",
+          "Establish a system of controls and transparency over the mineral supply chain",
+          "Strengthen company engagement with suppliers",
+          "Establish a company-level or industry-wide grievance mechanism"
+        ]
+      },
+      {
+        "step": 2,
+        "code": "OECD-DDG-S2",
+        "name": "Identify and assess risk in the supply chain",
+        "requirements": [
+          "Map the factual circumstances of the supply chain",
+          "Identify risks by assessing factual circumstances against standards in the Guidance's model supply chain policy",
+          "Assess risks of adverse impacts in light of standards set out in Annex II"
+        ]
+      },
+      {
+        "step": 3,
+        "code": "OECD-DDG-S3",
+        "name": "Design and implement a strategy to respond to identified risks",
+        "requirements": [
+          "Report risk assessment findings to senior management",
+          "Devise and adopt a risk management plan",
+          "Implement the risk management plan, monitor and track performance",
+          "Undertake additional fact and risk assessments for risks requiring mitigation, or risk mitigation where a risk is identified"
+        ]
+      },
+      {
+        "step": 4,
+        "code": "OECD-DDG-S4",
+        "name": "Carry out independent third-party audit of supply chain due diligence",
+        "requirements": [
+          "Have supply chain due diligence practices audited by independent third parties",
+          "Audits may be conducted at industry level through joint audit arrangements",
+          "Audit scope should cover all elements of the due diligence process"
+        ]
+      },
+      {
+        "step": 5,
+        "code": "OECD-DDG-S5",
+        "name": "Report on supply chain due diligence",
+        "requirements": [
+          "Report publicly on supply chain due diligence policies and practices",
+          "Reports to include steps taken to implement the five-step framework",
+          "Report on identified risks and steps taken to manage those risks"
+        ]
+      }
+    ]
+  },
+  "responsibleMineralsInitiative": {
+    "id": "rmi",
+    "code": "RMI",
+    "name": "Responsible Minerals Initiative",
+    "description": "Industry initiative (formerly Conflict-Free Smelter Program) providing tools and resources for responsible mineral sourcing",
+    "managedBy": "Responsible Business Alliance (RBA)",
+    "verified": true,
+    "programmes": [
+      {
+        "code": "RMI-RMAP",
+        "name": "Responsible Minerals Assurance Process (RMAP)",
+        "description": "Third-party audit protocol to assess smelter/refiner management systems and sourcing practices against RMAP standards, aligned with OECD Guidance",
+        "scope": "Smelters and refiners of 3TG, cobalt, and mica",
+        "assessmentOutcomes": [
+          {
+            "status": "conformant",
+            "description": "Smelter/refiner has demonstrated conformance with applicable RMAP standard"
+          },
+          {
+            "status": "active",
+            "description": "Smelter/refiner is actively undergoing assessment or re-assessment"
+          },
+          {
+            "status": "non-conformant",
+            "description": "Smelter/refiner has been assessed and found not in conformance"
+          }
+        ],
+        "conformantSmelterList": {
+          "description": "Publicly available list of smelters and refiners that have been assessed as conformant with RMAP standards",
+          "accessUrl": "https://www.responsiblemineralsinitiative.org/smelters-refiners-lists/",
+          "updateFrequency": "Updated regularly as assessments are completed"
+        }
+      },
+      {
+        "code": "RMI-CMRT",
+        "name": "Conflict Minerals Reporting Template (CMRT)",
+        "description": "Standardised reporting template for sharing information about the origin of 3TG in supply chains",
+        "usage": "Widely adopted by companies to collect smelter/refiner information from their supply chains"
+      },
+      {
+        "code": "RMI-EMRT",
+        "name": "Extended Minerals Reporting Template (EMRT)",
+        "description": "Reporting template extending beyond 3TG to cover cobalt and mica",
+        "minerals": ["cobalt", "mica"]
+      }
+    ]
+  }
+}

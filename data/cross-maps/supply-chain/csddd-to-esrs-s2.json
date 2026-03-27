@@ -1,0 +1,109 @@
+{
+  "description": "Cross-framework mapping from CSDDD due diligence obligations to ESRS S2 (Workers in the Value Chain)",
+  "sourceFramework": "csddd",
+  "sourceFrameworkName": "EU Corporate Sustainability Due Diligence Directive (2024/1760)",
+  "targetFramework": "esrs-s2",
+  "targetFrameworkName": "ESRS S2 — Workers in the Value Chain",
+  "version": "1.0",
+  "lastUpdated": "2025-01-01",
+  "verified": true,
+  "notes": "Mapping based on the interplay between CSDDD due diligence process requirements and ESRS S2 disclosure requirements. CSDDD mandates the due diligence process; ESRS S2 mandates disclosure of policies, actions, targets, and metrics related to value chain workers. Companies subject to both must align their CSDDD due diligence process with ESRS S2 reporting.",
+  "mappings": [
+    {
+      "source_code": "CSDDD-Art7",
+      "source_name": "Integrating due diligence into policies and management systems",
+      "target_code": "ESRS S2-1",
+      "target_name": "Policies related to value chain workers",
+      "mapping": "equivalent",
+      "notes": "CSDDD Art 7 requires adoption of a due diligence policy; ESRS S2-1 requires disclosure of policies related to value chain workers including due diligence. The CSDDD policy feeds directly into S2-1 disclosure."
+    },
+    {
+      "source_code": "CSDDD-Art7",
+      "source_name": "Integrating due diligence into policies and management systems",
+      "target_code": "ESRS S2-2",
+      "target_name": "Processes for engaging with value chain workers about impacts",
+      "mapping": "partial",
+      "notes": "CSDDD Art 7 requires processes to implement due diligence; ESRS S2-2 specifically requires disclosure of engagement processes with value chain workers. CSDDD policy integration is broader but encompasses stakeholder engagement."
+    },
+    {
+      "source_code": "CSDDD-Art8",
+      "source_name": "Identifying and assessing actual and potential adverse impacts",
+      "target_code": "ESRS S2-2",
+      "target_name": "Processes for engaging with value chain workers about impacts",
+      "mapping": "partial",
+      "notes": "CSDDD Art 8 requires identification of impacts including stakeholder consultation; ESRS S2-2 requires disclosure of how the undertaking engages with value chain workers and their representatives to understand impacts."
+    },
+    {
+      "source_code": "CSDDD-Art8",
+      "source_name": "Identifying and assessing actual and potential adverse impacts",
+      "target_code": "ESRS 2-IRO-1",
+      "target_name": "Description of processes to identify and assess material impacts, risks and opportunities",
+      "mapping": "equivalent",
+      "notes": "CSDDD Art 8 impact identification aligns with the ESRS 2 cross-cutting requirement to describe the process for identifying and assessing material IROs, including for value chain workers."
+    },
+    {
+      "source_code": "CSDDD-Art8",
+      "source_name": "Identifying and assessing actual and potential adverse impacts — prioritisation (Art 9)",
+      "target_code": "ESRS S2-3",
+      "target_name": "Processes to remediate negative impacts and channels for value chain workers to raise concerns",
+      "mapping": "partial",
+      "notes": "CSDDD Art 8/9 prioritisation based on severity aligns with ESRS S2-3's requirement to disclose approaches to remediation and how severity of impacts is determined."
+    },
+    {
+      "source_code": "CSDDD-Art10",
+      "source_name": "Preventing and mitigating potential adverse impacts",
+      "target_code": "ESRS S2-4",
+      "target_name": "Taking action on material impacts on value chain workers, and approaches to managing material risks and pursuing material opportunities related to value chain workers, and effectiveness of those actions",
+      "mapping": "equivalent",
+      "notes": "CSDDD Art 10-11 prevention and mitigation obligations directly align with ESRS S2-4's requirement to disclose actions taken on material impacts on value chain workers."
+    },
+    {
+      "source_code": "CSDDD-Art12",
+      "source_name": "Bringing actual adverse impacts to an end",
+      "target_code": "ESRS S2-4",
+      "target_name": "Taking action on material impacts on value chain workers",
+      "mapping": "equivalent",
+      "notes": "CSDDD Art 12 remediation of actual impacts maps to ESRS S2-4 disclosure of actions taken to address actual impacts."
+    },
+    {
+      "source_code": "CSDDD-Art12",
+      "source_name": "Bringing actual adverse impacts to an end — remediation",
+      "target_code": "ESRS S2-3",
+      "target_name": "Processes to remediate negative impacts and channels for value chain workers to raise concerns",
+      "mapping": "equivalent",
+      "notes": "CSDDD Art 12 remediation requirements (including providing remediation where company caused impact) directly align with ESRS S2-3 remediation disclosure."
+    },
+    {
+      "source_code": "CSDDD-Art14",
+      "source_name": "Establishing and maintaining a complaints procedure",
+      "target_code": "ESRS S2-3",
+      "target_name": "Processes to remediate negative impacts and channels for value chain workers to raise concerns",
+      "mapping": "equivalent",
+      "notes": "CSDDD Art 14 complaints procedure maps directly to ESRS S2-3's requirement to disclose channels through which value chain workers can raise concerns."
+    },
+    {
+      "source_code": "CSDDD-Art15",
+      "source_name": "Monitoring the effectiveness of due diligence",
+      "target_code": "ESRS S2-4",
+      "target_name": "Taking action on material impacts — effectiveness of those actions",
+      "mapping": "equivalent",
+      "notes": "CSDDD Art 15 monitoring effectiveness maps to ESRS S2-4's requirement to disclose the effectiveness of actions taken."
+    },
+    {
+      "source_code": "CSDDD-Art15",
+      "source_name": "Monitoring the effectiveness of due diligence",
+      "target_code": "ESRS S2-5",
+      "target_name": "Targets related to managing material negative impacts, advancing positive impacts, and managing material risks and opportunities",
+      "mapping": "partial",
+      "notes": "CSDDD Art 15 monitoring feeds into target-setting and tracking disclosed under ESRS S2-5."
+    },
+    {
+      "source_code": "CSDDD-Art22",
+      "source_name": "Climate transition plan obligation",
+      "target_code": "ESRS E1-1",
+      "target_name": "Transition plan for climate change mitigation",
+      "mapping": "equivalent",
+      "notes": "CSDDD Art 22 transition plan obligation maps directly to ESRS E1-1 climate transition plan disclosure, though this is an environmental (not S2) disclosure."
+    }
+  ]
+}

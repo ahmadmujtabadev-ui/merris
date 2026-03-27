@@ -1,0 +1,539 @@
+{
+  "id": "fw-supplier-assessment",
+  "code": "supplier-assessment",
+  "name": "Supplier ESG Assessment Framework",
+  "version": "2024",
+  "type": "guidance",
+  "verified": true,
+  "description": "Standardised framework for assessing supplier ESG performance including questionnaire templates, scoring methodology, tier classification, and corrective action plans",
+  "scoringMethodology": {
+    "scale": {
+      "min": 1,
+      "max": 5,
+      "labels": {
+        "1": "Non-compliant — No evidence of policies, systems, or practices",
+        "2": "Initial — Some awareness but no formal systems; reactive approach",
+        "3": "Developing — Formal policies exist but implementation is inconsistent or incomplete",
+        "4": "Established — Systematic approach with documented processes, regular monitoring, and evidence of effectiveness",
+        "5": "Leading — Best-in-class practices, continuous improvement, third-party verified, industry leadership"
+      }
+    },
+    "overallScoreCalculation": "Weighted average across all categories",
+    "riskClassification": [
+      { "scoreRange": "1.0-2.0", "risk": "critical", "label": "Critical Risk", "action": "Immediate corrective action required; consider relationship suspension" },
+      { "scoreRange": "2.1-3.0", "risk": "high", "label": "High Risk", "action": "Corrective action plan within 30 days; enhanced monitoring" },
+      { "scoreRange": "3.1-3.9", "risk": "medium", "label": "Medium Risk", "action": "Improvement plan within 90 days; regular monitoring" },
+      { "scoreRange": "4.0-5.0", "risk": "low", "label": "Low Risk", "action": "Maintain current practices; annual reassessment" }
+    ]
+  },
+  "questionnaireCategories": [
+    {
+      "code": "SAF-ENV",
+      "name": "Environmental Management",
+      "weight": 0.20,
+      "description": "Assessment of supplier's environmental management systems, resource efficiency, emissions, and environmental compliance",
+      "questions": [
+        {
+          "code": "SAF-ENV-1",
+          "question": "Does the supplier have a certified Environmental Management System (e.g., ISO 14001)?",
+          "scoringGuidance": {
+            "1": "No environmental policy or management system",
+            "2": "Informal environmental practices, no documented policy",
+            "3": "Environmental policy exists; management system in development",
+            "4": "Certified EMS (ISO 14001 or equivalent) implemented and maintained",
+            "5": "Certified EMS with regular third-party audits, continuous improvement programme, and public reporting"
+          }
+        },
+        {
+          "code": "SAF-ENV-2",
+          "question": "Does the supplier measure and report greenhouse gas emissions (Scope 1, 2, and relevant Scope 3)?",
+          "scoringGuidance": {
+            "1": "No GHG measurement or reporting",
+            "2": "Awareness of GHG emissions but no systematic measurement",
+            "3": "Scope 1 and 2 measured; Scope 3 not yet addressed",
+            "4": "Scope 1, 2, and material Scope 3 measured and reported; reduction targets set",
+            "5": "Comprehensive GHG inventory (all scopes), science-based targets, third-party verified, annual disclosure"
+          }
+        },
+        {
+          "code": "SAF-ENV-3",
+          "question": "Does the supplier have water management practices and track water consumption?",
+          "scoringGuidance": {
+            "1": "No water management practices",
+            "2": "Basic awareness, no tracking",
+            "3": "Water consumption tracked; some conservation measures",
+            "4": "Comprehensive water management plan, reduction targets, wastewater treatment",
+            "5": "Water stewardship programme, water risk assessment, zero liquid discharge or water-positive targets"
+          }
+        },
+        {
+          "code": "SAF-ENV-4",
+          "question": "Does the supplier have a waste management programme including reduction, recycling, and proper disposal?",
+          "scoringGuidance": {
+            "1": "No waste management programme",
+            "2": "Basic waste disposal but no tracking or reduction goals",
+            "3": "Waste tracked; some recycling and reduction efforts",
+            "4": "Comprehensive waste management, diversion targets, hazardous waste properly handled",
+            "5": "Zero waste to landfill programme, circular economy practices, third-party audited"
+          }
+        },
+        {
+          "code": "SAF-ENV-5",
+          "question": "Does the supplier have processes to identify and manage environmental risks in its own supply chain?",
+          "scoringGuidance": {
+            "1": "No consideration of supply chain environmental risks",
+            "2": "Awareness but no formal processes",
+            "3": "Environmental criteria included in some procurement decisions",
+            "4": "Systematic environmental screening of suppliers, contractual environmental requirements",
+            "5": "Full supply chain environmental risk mapping, cascade of requirements, joint improvement programmes"
+          }
+        },
+        {
+          "code": "SAF-ENV-6",
+          "question": "Does the supplier comply with all applicable environmental laws and regulations, with no outstanding violations?",
+          "scoringGuidance": {
+            "1": "Significant ongoing regulatory violations",
+            "2": "Recent violations, corrective action underway",
+            "3": "Compliant with applicable laws; minor historical non-conformances resolved",
+            "4": "Full compliance, proactive regulatory engagement, internal compliance monitoring",
+            "5": "Exceeds regulatory requirements, participates in voluntary environmental initiatives"
+          }
+        }
+      ]
+    },
+    {
+      "code": "SAF-LABOUR",
+      "name": "Labour Practices",
+      "weight": 0.25,
+      "description": "Assessment of supplier's labour standards, worker rights, fair wages, working hours, and freedom of association",
+      "questions": [
+        {
+          "code": "SAF-LABOUR-1",
+          "question": "Does the supplier have policies prohibiting child labour and forced labour, aligned with ILO core conventions?",
+          "scoringGuidance": {
+            "1": "No policies on child or forced labour",
+            "2": "Informal prohibition but no documented policy or monitoring",
+            "3": "Written policy exists; basic age verification and employment contract practices",
+            "4": "Comprehensive policy aligned with ILO C138, C182, C29, C105; systematic monitoring and remediation",
+            "5": "ILO-aligned policy, third-party audited, supply chain cascade, participation in industry initiatives (e.g., Fair Labor Association)"
+          }
+        },
+        {
+          "code": "SAF-LABOUR-2",
+          "question": "Does the supplier ensure fair wages (at or above legal minimum) and reasonable working hours for all workers?",
+          "scoringGuidance": {
+            "1": "Evidence of below-minimum wages or excessive mandatory overtime",
+            "2": "Minimum wage compliance but excessive working hours or unpaid overtime",
+            "3": "Legal minimum wages paid; working hours within legal limits; overtime compensated",
+            "4": "Wages above local minimum; living wage analysis conducted; working hours well within limits",
+            "5": "Living wage paid; working hours optimised; worker satisfaction regularly assessed"
+          }
+        },
+        {
+          "code": "SAF-LABOUR-3",
+          "question": "Does the supplier respect freedom of association and the right to collective bargaining?",
+          "scoringGuidance": {
+            "1": "Active suppression of worker organising",
+            "2": "No explicit policy; worker committees or unions not actively supported",
+            "3": "Written policy respecting freedom of association; no active interference",
+            "4": "Active engagement with worker representatives; collective bargaining supported where applicable",
+            "5": "Formal collective bargaining agreements in place; worker representatives involved in decision-making"
+          }
+        },
+        {
+          "code": "SAF-LABOUR-4",
+          "question": "Does the supplier have a non-discrimination and equal opportunity policy covering hiring, promotion, and compensation?",
+          "scoringGuidance": {
+            "1": "No non-discrimination policy",
+            "2": "Informal practices; no documented policy",
+            "3": "Written non-discrimination policy; basic training provided",
+            "4": "Comprehensive policy covering all protected characteristics; diversity monitoring; grievance mechanism",
+            "5": "Diversity and inclusion programme, regular pay equity analysis, third-party benchmarked"
+          }
+        },
+        {
+          "code": "SAF-LABOUR-5",
+          "question": "Does the supplier ensure ethical recruitment practices (no recruitment fees, no document retention)?",
+          "scoringGuidance": {
+            "1": "Workers charged recruitment fees or documents confiscated",
+            "2": "No clear policy on recruitment practices",
+            "3": "Policy prohibiting recruitment fees; workers retain documents",
+            "4": "Employer Pays Principle adopted; recruitment agencies audited; migrant worker protections",
+            "5": "IRIS Standard or equivalent ethical recruitment certification; independent verification of recruitment channels"
+          }
+        },
+        {
+          "code": "SAF-LABOUR-6",
+          "question": "Does the supplier provide accessible and effective grievance mechanisms for workers?",
+          "scoringGuidance": {
+            "1": "No grievance mechanism available",
+            "2": "Informal complaint process only",
+            "3": "Formal grievance mechanism exists; available to all workers",
+            "4": "Confidential, accessible, culturally appropriate mechanism; non-retaliation policy; timely resolution",
+            "5": "Multi-channel grievance system (hotline, digital, in-person); independent oversight; worker trust verified through surveys"
+          }
+        },
+        {
+          "code": "SAF-LABOUR-7",
+          "question": "Does the supplier ensure equal treatment and protections for migrant, temporary, and contract workers?",
+          "scoringGuidance": {
+            "1": "Migrant/temporary workers exploited or excluded from protections",
+            "2": "Some protections but gaps in coverage",
+            "3": "Equal treatment policy exists for all worker categories",
+            "4": "Comprehensive protections, regular monitoring of conditions for all worker types",
+            "5": "All workers, regardless of status, receive equal benefits, protections, and grievance access; independently verified"
+          }
+        }
+      ]
+    },
+    {
+      "code": "SAF-HS",
+      "name": "Health and Safety",
+      "weight": 0.20,
+      "description": "Assessment of supplier's occupational health and safety management, incident tracking, and workplace conditions",
+      "questions": [
+        {
+          "code": "SAF-HS-1",
+          "question": "Does the supplier have a certified Occupational Health and Safety Management System (e.g., ISO 45001)?",
+          "scoringGuidance": {
+            "1": "No H&S management system",
+            "2": "Basic safety practices but no formal system",
+            "3": "H&S management system in place; working toward certification",
+            "4": "Certified OHS management system (ISO 45001 or equivalent)",
+            "5": "Certified OHS, zero-harm culture, industry-leading safety performance, continuous improvement"
+          }
+        },
+        {
+          "code": "SAF-HS-2",
+          "question": "Does the supplier track and report workplace incidents (injuries, illnesses, fatalities, near-misses)?",
+          "scoringGuidance": {
+            "1": "No incident tracking",
+            "2": "Major incidents recorded but no systematic tracking",
+            "3": "Incidents tracked; LTIFR calculated; reported to management",
+            "4": "Comprehensive incident tracking including near-misses; root cause analysis; trend reporting",
+            "5": "Real-time incident reporting, predictive safety analytics, benchmarked performance, public disclosure"
+          }
+        },
+        {
+          "code": "SAF-HS-3",
+          "question": "Does the supplier provide adequate personal protective equipment (PPE) and safety training to all workers?",
+          "scoringGuidance": {
+            "1": "No PPE provided or training conducted",
+            "2": "Some PPE available but not consistently used; minimal training",
+            "3": "Appropriate PPE provided; regular safety training conducted",
+            "4": "Comprehensive PPE programme, role-specific training, competency verification",
+            "5": "Advanced safety training including behavioural safety; PPE innovation; worker safety champions"
+          }
+        },
+        {
+          "code": "SAF-HS-4",
+          "question": "Does the supplier have emergency preparedness plans (fire safety, evacuation, first aid, chemical spill response)?",
+          "scoringGuidance": {
+            "1": "No emergency plans",
+            "2": "Basic fire extinguishers present; no formal plans",
+            "3": "Emergency plans documented; annual evacuation drills",
+            "4": "Comprehensive emergency preparedness; regular drills; trained first responders",
+            "5": "Advanced emergency preparedness, business continuity integration, community coordination"
+          }
+        },
+        {
+          "code": "SAF-HS-5",
+          "question": "Does the supplier manage hazardous materials and chemical safety in accordance with applicable regulations?",
+          "scoringGuidance": {
+            "1": "No hazardous materials management",
+            "2": "Some hazardous materials identified but no systematic management",
+            "3": "Chemical inventory maintained; SDS available; basic handling procedures",
+            "4": "Comprehensive chemical management programme; REACH/GHS compliance; exposure monitoring",
+            "5": "Substitution programme for hazardous chemicals; advanced exposure controls; third-party verified"
+          }
+        }
+      ]
+    },
+    {
+      "code": "SAF-ETHICS",
+      "name": "Ethics and Governance",
+      "weight": 0.15,
+      "description": "Assessment of supplier's business ethics, anti-corruption, data privacy, and governance practices",
+      "questions": [
+        {
+          "code": "SAF-ETHICS-1",
+          "question": "Does the supplier have a code of ethics/conduct covering anti-bribery, anti-corruption, and conflicts of interest?",
+          "scoringGuidance": {
+            "1": "No code of ethics",
+            "2": "Informal expectations; no documented code",
+            "3": "Written code of conduct; distributed to employees",
+            "4": "Comprehensive code, regular training, whistleblower channel, compliance investigations",
+            "5": "Third-party anti-corruption audits; certified compliance programme; public disclosure"
+          }
+        },
+        {
+          "code": "SAF-ETHICS-2",
+          "question": "Does the supplier have a confidential whistleblower/reporting mechanism for ethics violations?",
+          "scoringGuidance": {
+            "1": "No reporting mechanism",
+            "2": "Informal reporting only (e.g., direct to manager)",
+            "3": "Formal channel exists; basic non-retaliation policy",
+            "4": "Confidential, multi-channel reporting system; independent investigation; non-retaliation enforced",
+            "5": "Third-party managed hotline; anonymous reporting; board-level oversight of reported incidents"
+          }
+        },
+        {
+          "code": "SAF-ETHICS-3",
+          "question": "Does the supplier comply with applicable data privacy and protection laws (e.g., GDPR, CCPA)?",
+          "scoringGuidance": {
+            "1": "No data privacy practices",
+            "2": "Basic awareness but no formal programme",
+            "3": "Privacy policy exists; basic compliance measures",
+            "4": "Comprehensive data protection programme; DPO appointed; privacy impact assessments",
+            "5": "Privacy by design; certified (e.g., ISO 27701); regular third-party audits"
+          }
+        },
+        {
+          "code": "SAF-ETHICS-4",
+          "question": "Does the supplier have transparent tax practices and not engage in aggressive tax avoidance?",
+          "scoringGuidance": {
+            "1": "Evidence of tax evasion or fraudulent practices",
+            "2": "No tax transparency; aggressive structures",
+            "3": "Compliant with local tax laws; no public reporting",
+            "4": "Tax transparency policy; country-by-country reporting considered",
+            "5": "Public tax strategy; GRI 207 alignment; participates in responsible tax initiatives"
+          }
+        },
+        {
+          "code": "SAF-ETHICS-5",
+          "question": "Does the supplier have effective governance structures with clear accountability for ESG matters?",
+          "scoringGuidance": {
+            "1": "No governance structures for ESG",
+            "2": "ESG responsibility not formally assigned",
+            "3": "ESG responsibility assigned to specific function/individual",
+            "4": "Board-level ESG oversight; ESG KPIs in management performance evaluation",
+            "5": "Dedicated ESG committee; ESG integrated into strategy and risk management; external advisory"
+          }
+        }
+      ]
+    },
+    {
+      "code": "SAF-SCM",
+      "name": "Supply Chain Management",
+      "weight": 0.20,
+      "description": "Assessment of supplier's own supply chain due diligence, sub-supplier management, and traceability",
+      "questions": [
+        {
+          "code": "SAF-SCM-1",
+          "question": "Does the supplier have a supplier code of conduct that cascades ESG requirements to its own suppliers?",
+          "scoringGuidance": {
+            "1": "No supplier code of conduct",
+            "2": "Informal expectations of sub-suppliers",
+            "3": "Supplier code of conduct exists; communicated to key suppliers",
+            "4": "Code incorporated into contracts; compliance monitored; corrective action process",
+            "5": "Code cascaded to all tiers; regular audits; collaborative improvement programmes"
+          }
+        },
+        {
+          "code": "SAF-SCM-2",
+          "question": "Does the supplier conduct ESG risk assessments of its own supply chain?",
+          "scoringGuidance": {
+            "1": "No supply chain ESG risk assessment",
+            "2": "Awareness of risks but no systematic assessment",
+            "3": "Risk assessment of critical Tier 1 suppliers",
+            "4": "Systematic risk assessment of Tier 1 and key Tier 2 suppliers; risk prioritisation",
+            "5": "Comprehensive multi-tier risk mapping; dynamic risk monitoring; industry collaboration"
+          }
+        },
+        {
+          "code": "SAF-SCM-3",
+          "question": "Does the supplier audit or assess its sub-suppliers for ESG compliance?",
+          "scoringGuidance": {
+            "1": "No sub-supplier assessments",
+            "2": "Self-assessment questionnaires for some suppliers",
+            "3": "Questionnaire-based assessment of key suppliers; some on-site audits",
+            "4": "Regular audits of critical suppliers; third-party audits for high-risk suppliers",
+            "5": "Comprehensive audit programme; unannounced audits; beyond-audit approaches (worker voice)"
+          }
+        },
+        {
+          "code": "SAF-SCM-4",
+          "question": "Does the supplier have supply chain traceability systems for critical raw materials or components?",
+          "scoringGuidance": {
+            "1": "No supply chain traceability",
+            "2": "Tier 1 supplier information only",
+            "3": "Traceability to Tier 2 for critical materials",
+            "4": "Traceability to raw material origin for key risk materials; chain of custody documentation",
+            "5": "Full supply chain traceability using technology (blockchain, digital passports); third-party verified"
+          }
+        },
+        {
+          "code": "SAF-SCM-5",
+          "question": "Does the supplier have responsible sourcing policies for conflict minerals (3TG) and other high-risk materials?",
+          "scoringGuidance": {
+            "1": "No responsible sourcing policy",
+            "2": "Awareness but no formal policy",
+            "3": "Conflict minerals policy exists; CMRT collected from key suppliers",
+            "4": "Comprehensive responsible sourcing policy; smelter-level traceability; conformant sources prioritised",
+            "5": "Full alignment with OECD Due Diligence Guidance; RMI participation; public smelter list disclosure"
+          }
+        },
+        {
+          "code": "SAF-SCM-6",
+          "question": "Does the supplier have a process for managing non-conformances and corrective actions with its sub-suppliers?",
+          "scoringGuidance": {
+            "1": "No corrective action process",
+            "2": "Ad-hoc response to issues",
+            "3": "Formal corrective action process; timelines for remediation",
+            "4": "Systematic non-conformance management; root cause analysis; follow-up verification",
+            "5": "Comprehensive CAP system with escalation protocol; capacity building support; disengagement as last resort"
+          }
+        }
+      ]
+    }
+  ],
+  "riskScoringMethodology": {
+    "description": "Composite risk score combining country risk, sector risk, and company-level risk",
+    "formula": "Overall Risk = (Country Risk × 0.30) + (Sector Risk × 0.30) + (Company Risk × 0.40)",
+    "components": {
+      "countryRisk": {
+        "weight": 0.30,
+        "description": "Risk associated with country of operations based on governance, rule of law, labour protections",
+        "dataSources": ["World Bank Worldwide Governance Indicators", "Transparency International CPI", "ILO Global Estimates", "Global Slavery Index", "ITUC Global Rights Index"],
+        "scale": "1 (low risk) to 5 (very high risk)"
+      },
+      "sectorRisk": {
+        "weight": 0.30,
+        "description": "Risk associated with the industry sector based on known ESG risks",
+        "dataSources": ["SASB Materiality Map", "ILO sector studies", "OECD sector guidance", "NGO sector reports"],
+        "scale": "1 (low risk) to 5 (very high risk)"
+      },
+      "companyRisk": {
+        "weight": 0.40,
+        "description": "Company-specific risk derived from the questionnaire assessment score (inverted: lower assessment = higher risk)",
+        "derivation": "companyRisk = 6 - assessmentScore (e.g., assessment score of 4 = company risk of 2)",
+        "scale": "1 (low risk) to 5 (very high risk)"
+      }
+    },
+    "overallRiskTiers": [
+      { "scoreRange": "1.0-2.0", "tier": "low", "label": "Low Risk" },
+      { "scoreRange": "2.1-3.0", "tier": "medium", "label": "Medium Risk" },
+      { "scoreRange": "3.1-4.0", "tier": "high", "label": "High Risk" },
+      { "scoreRange": "4.1-5.0", "tier": "critical", "label": "Critical Risk" }
+    ]
+  },
+  "tierClassification": {
+    "description": "Supplier tier classification determines the level of due diligence assessment required",
+    "tiers": [
+      {
+        "tier": 1,
+        "name": "Direct / Critical Suppliers",
+        "criteria": [
+          "Top suppliers by annual spend (e.g., top 80% of total procurement spend)",
+          "Sole-source or limited-source suppliers",
+          "Suppliers of critical components or raw materials",
+          "Suppliers in high-risk countries or sectors"
+        ],
+        "assessmentLevel": "full",
+        "assessmentDescription": "Full ESG assessment: complete questionnaire, on-site audit, documentation review, worker interviews",
+        "frequency": "Annual assessment; continuous monitoring for highest-risk suppliers",
+        "escalation": "Non-conformances trigger corrective action plan with defined timelines"
+      },
+      {
+        "tier": 2,
+        "name": "Significant Suppliers",
+        "criteria": [
+          "Moderate spend suppliers (e.g., next 15% of procurement spend)",
+          "Suppliers of important but not critical materials or services",
+          "Suppliers in medium-risk countries or sectors"
+        ],
+        "assessmentLevel": "questionnaire",
+        "assessmentDescription": "Questionnaire-based assessment with desktop review; targeted on-site audits for elevated-risk suppliers",
+        "frequency": "Assessment every 2 years; more frequently if risk profile changes",
+        "escalation": "Significant non-conformances trigger upgrade to Tier 1 assessment"
+      },
+      {
+        "tier": 3,
+        "name": "Low-Spend / Low-Risk Suppliers",
+        "criteria": [
+          "Low annual spend (e.g., remaining 5% of procurement spend)",
+          "Suppliers of non-critical goods or services",
+          "Suppliers in low-risk countries and sectors"
+        ],
+        "assessmentLevel": "screening",
+        "assessmentDescription": "Screening-only: sanctions/watchlist check, basic compliance verification, self-declaration",
+        "frequency": "Every 3 years or upon trigger event",
+        "escalation": "Adverse media or compliance flags trigger upgrade to Tier 2"
+      }
+    ]
+  },
+  "correctiveActionPlanTemplate": {
+    "description": "Template for documenting and tracking corrective actions from supplier assessments",
+    "fields": [
+      {
+        "field": "capId",
+        "type": "string",
+        "description": "Unique identifier for the corrective action"
+      },
+      {
+        "field": "finding",
+        "type": "string",
+        "description": "Description of the non-conformance or finding identified during assessment"
+      },
+      {
+        "field": "category",
+        "type": "enum",
+        "values": ["environmental", "labour", "health_safety", "ethics", "supply_chain"],
+        "description": "ESG category of the finding"
+      },
+      {
+        "field": "severity",
+        "type": "enum",
+        "values": ["critical", "major", "minor", "observation"],
+        "descriptions": {
+          "critical": "Immediate threat to life, forced/child labour, severe environmental damage — requires immediate action",
+          "major": "Systematic failure of management systems, significant legal non-compliance — requires action within 30 days",
+          "minor": "Isolated non-conformance, limited impact — requires action within 90 days",
+          "observation": "Opportunity for improvement, not a non-conformance — for consideration"
+        }
+      },
+      {
+        "field": "rootCause",
+        "type": "string",
+        "description": "Root cause analysis of the finding"
+      },
+      {
+        "field": "correctiveAction",
+        "type": "string",
+        "description": "Specific corrective action to be taken"
+      },
+      {
+        "field": "timeline",
+        "type": "object",
+        "properties": {
+          "targetDate": "Date by which corrective action must be completed",
+          "milestones": "Intermediate milestones if applicable"
+        }
+      },
+      {
+        "field": "responsibleParty",
+        "type": "object",
+        "properties": {
+          "supplierContact": "Name and role of person responsible at the supplier",
+          "buyerContact": "Name and role of person responsible at the buyer"
+        }
+      },
+      {
+        "field": "evidenceOfClosure",
+        "type": "object",
+        "properties": {
+          "requiredEvidence": "Description of evidence needed to close the finding (e.g., updated policy document, audit report, photographic evidence, worker interviews)",
+          "verificationMethod": "How closure will be verified (e.g., desktop review, on-site verification, third-party audit)",
+          "closureDate": "Date the corrective action was verified as closed",
+          "closedBy": "Person who verified closure"
+        }
+      },
+      {
+        "field": "status",
+        "type": "enum",
+        "values": ["open", "in_progress", "pending_verification", "closed", "overdue"],
+        "description": "Current status of the corrective action"
+      }
+    ]
+  }
+}

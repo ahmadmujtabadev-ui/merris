@@ -1,0 +1,330 @@
+{
+  "id": "fw-csddd-2024",
+  "code": "csddd",
+  "name": "EU Corporate Sustainability Due Diligence Directive",
+  "version": "2024",
+  "legislativeReference": "Directive (EU) 2024/1760",
+  "effectiveDate": "2024-07-25",
+  "issuingBody": "European Parliament and Council of the European Union",
+  "region": "EU",
+  "type": "mandatory",
+  "verified": true,
+  "scope": {
+    "description": "Phased application based on company size and turnover",
+    "phases": [
+      {
+        "phase": 1,
+        "applicationDate": "2027-07-26",
+        "criteria": {
+          "employees": 5000,
+          "turnover": "€1,500M+",
+          "turnoverNet": 1500000000,
+          "currency": "EUR"
+        },
+        "notes": "Companies with 5000+ employees AND €1,500M+ net worldwide turnover"
+      },
+      {
+        "phase": 2,
+        "applicationDate": "2028-07-26",
+        "criteria": {
+          "employees": 3000,
+          "turnover": "€900M+",
+          "turnoverNet": 900000000,
+          "currency": "EUR"
+        },
+        "notes": "Companies with 3000+ employees AND €900M+ net worldwide turnover"
+      },
+      {
+        "phase": 3,
+        "applicationDate": "2029-07-26",
+        "criteria": {
+          "employees": 1000,
+          "turnover": "€450M+",
+          "turnoverNet": 450000000,
+          "currency": "EUR"
+        },
+        "notes": "Companies with 1000+ employees AND €450M+ net worldwide turnover"
+      }
+    ],
+    "nonEUCompanies": {
+      "description": "Non-EU companies generating turnover in the EU above applicable thresholds",
+      "phases": [
+        { "phase": 1, "applicationDate": "2027-07-26", "turnoverInEU": "€1,500M+" },
+        { "phase": 2, "applicationDate": "2028-07-26", "turnoverInEU": "€900M+" },
+        { "phase": 3, "applicationDate": "2029-07-26", "turnoverInEU": "€450M+" }
+      ]
+    },
+    "excludedSectors": [],
+    "financialSector": {
+      "note": "Financial sector initially excluded from value chain due diligence obligations; review clause by 2030"
+    }
+  },
+  "valueChainScope": {
+    "description": "Chain of activities covering own operations, subsidiaries, and business partners",
+    "tiers": [
+      {
+        "tier": "own_operations",
+        "description": "Company's own operations"
+      },
+      {
+        "tier": "subsidiaries",
+        "description": "Subsidiaries over which the company exercises control"
+      },
+      {
+        "tier": "business_partners",
+        "description": "Direct and indirect business partners in the chain of activities",
+        "scope": "Upstream (design, extraction, sourcing, manufacture, transport, storage, supply) and downstream (distribution, transport, storage) — downstream limited to disposal for own products"
+      }
+    ]
+  },
+  "dueDiligenceObligations": {
+    "description": "Six-step due diligence framework per Articles 5-16",
+    "steps": [
+      {
+        "step": 1,
+        "article": "Article 7",
+        "code": "CSDDD-Art7",
+        "name": "Integrating due diligence into policies and management systems",
+        "description": "Adopt and implement a due diligence policy containing a description of the approach, a code of conduct for employees and subsidiaries, and a description of verification processes.",
+        "requirements": [
+          "Due diligence policy adopted at company level",
+          "Code of conduct describing rules and principles for employees and subsidiaries",
+          "Description of processes to implement due diligence including verification measures",
+          "Policy updated annually and whenever significant change occurs"
+        ]
+      },
+      {
+        "step": 2,
+        "article": "Article 8",
+        "code": "CSDDD-Art8",
+        "name": "Identifying and assessing actual and potential adverse impacts",
+        "description": "Take appropriate measures to identify and assess actual and potential adverse human rights and environmental impacts arising from own operations, subsidiaries, and business partners.",
+        "requirements": [
+          "Map own operations, subsidiaries, and business partner activities",
+          "Identify and assess actual and potential adverse impacts",
+          "Use appropriate resources including independent reports, risk databases",
+          "Consult affected stakeholders and their representatives",
+          "Prioritise based on severity and likelihood (Article 9)"
+        ]
+      },
+      {
+        "step": 3,
+        "article": "Articles 10-11",
+        "code": "CSDDD-Art10",
+        "name": "Preventing and mitigating potential adverse impacts",
+        "description": "Take appropriate measures to prevent or adequately mitigate potential adverse impacts that have been or should have been identified.",
+        "requirements": [
+          "Develop and implement a prevention action plan with timelines",
+          "Seek contractual assurances from direct business partners",
+          "Make necessary investments (e.g., management or production processes)",
+          "Provide targeted and proportionate support to SME business partners",
+          "Collaborate with other entities including industry initiatives",
+          "Suspend or terminate business relationship as last resort if prevention fails"
+        ]
+      },
+      {
+        "step": 4,
+        "article": "Article 12",
+        "code": "CSDDD-Art12",
+        "name": "Bringing actual adverse impacts to an end",
+        "description": "Take appropriate measures to bring actual adverse impacts to an end and to minimise the extent of such impacts.",
+        "requirements": [
+          "Neutralise or minimise the extent of adverse impacts",
+          "Develop and implement a corrective action plan with timelines",
+          "Seek contractual assurances from direct business partners",
+          "Provide targeted and proportionate support to SME business partners",
+          "Provide remediation where the company caused or jointly caused the impact",
+          "Suspend or terminate business relationship as last resort"
+        ]
+      },
+      {
+        "step": 5,
+        "article": "Article 14",
+        "code": "CSDDD-Art14",
+        "name": "Establishing and maintaining a complaints procedure",
+        "description": "Establish a procedure enabling persons and organisations to submit complaints regarding actual or potential adverse impacts.",
+        "requirements": [
+          "Accessible to affected persons, trade unions, civil society organisations",
+          "Fair, publicly available, and transparent procedure",
+          "Reasonable timeframes for response",
+          "Right to request follow-up and meet with company representatives",
+          "Complainants protected from retaliation"
+        ]
+      },
+      {
+        "step": 6,
+        "article": "Article 15",
+        "code": "CSDDD-Art15",
+        "name": "Monitoring the effectiveness of due diligence",
+        "description": "Carry out periodic assessments of own operations, subsidiaries, and business partners to monitor the effectiveness of the identification, prevention, mitigation, bringing to an end, and minimisation of adverse impacts.",
+        "requirements": [
+          "Periodic assessments at least every 12 months",
+          "Ad-hoc assessments when there are reasonable grounds to believe new risks have arisen",
+          "Qualitative and quantitative indicators",
+          "Verification by independent third-party where appropriate",
+          "Update due diligence policy and measures based on assessment results"
+        ]
+      }
+    ]
+  },
+  "adverseImpactCategories": {
+    "humanRights": {
+      "description": "Adverse impacts on human rights as listed in Part I Section 1 of the Annex",
+      "internationalInstruments": [
+        {
+          "code": "ICCPR",
+          "name": "International Covenant on Civil and Political Rights",
+          "keyRights": ["right to life", "prohibition of torture", "freedom from slavery", "freedom of association", "privacy", "non-discrimination"]
+        },
+        {
+          "code": "ICESCR",
+          "name": "International Covenant on Economic, Social and Cultural Rights",
+          "keyRights": ["right to work", "just and favourable working conditions", "fair wages", "social security", "adequate standard of living", "health"]
+        },
+        {
+          "code": "ILO-C29",
+          "name": "ILO Forced Labour Convention (No. 29)",
+          "keyRights": ["prohibition of forced or compulsory labour"]
+        },
+        {
+          "code": "ILO-C87",
+          "name": "ILO Freedom of Association and Protection of the Right to Organise Convention (No. 87)",
+          "keyRights": ["freedom of association", "right to organise"]
+        },
+        {
+          "code": "ILO-C98",
+          "name": "ILO Right to Organise and Collective Bargaining Convention (No. 98)",
+          "keyRights": ["collective bargaining"]
+        },
+        {
+          "code": "ILO-C100",
+          "name": "ILO Equal Remuneration Convention (No. 100)",
+          "keyRights": ["equal remuneration for work of equal value"]
+        },
+        {
+          "code": "ILO-C105",
+          "name": "ILO Abolition of Forced Labour Convention (No. 105)",
+          "keyRights": ["abolition of forced labour"]
+        },
+        {
+          "code": "ILO-C111",
+          "name": "ILO Discrimination (Employment and Occupation) Convention (No. 111)",
+          "keyRights": ["non-discrimination in employment"]
+        },
+        {
+          "code": "ILO-C138",
+          "name": "ILO Minimum Age Convention (No. 138)",
+          "keyRights": ["minimum age for employment"]
+        },
+        {
+          "code": "ILO-C182",
+          "name": "ILO Worst Forms of Child Labour Convention (No. 182)",
+          "keyRights": ["prohibition of worst forms of child labour"]
+        },
+        {
+          "code": "CRC",
+          "name": "Convention on the Rights of the Child",
+          "keyRights": ["protection from economic exploitation", "protection from harmful work"]
+        }
+      ]
+    },
+    "environmental": {
+      "description": "Adverse environmental impacts as listed in Part I Section 2 and Part II of the Annex",
+      "categories": [
+        {
+          "code": "ENV-BIODIVERSITY",
+          "name": "Biodiversity and ecosystems",
+          "instruments": ["Convention on Biological Diversity", "CITES", "Ramsar Convention"],
+          "examples": ["habitat destruction", "species loss", "ecosystem degradation"]
+        },
+        {
+          "code": "ENV-POLLUTION",
+          "name": "Pollution",
+          "instruments": ["Stockholm Convention (POPs)", "Minamata Convention (Mercury)", "Basel Convention (Hazardous waste)"],
+          "examples": ["release of persistent organic pollutants", "mercury contamination", "transboundary movement of hazardous waste"]
+        },
+        {
+          "code": "ENV-WASTE",
+          "name": "Waste management",
+          "instruments": ["Basel Convention"],
+          "examples": ["illegal dumping", "improper hazardous waste handling"]
+        },
+        {
+          "code": "ENV-WATER",
+          "name": "Water resources",
+          "instruments": [],
+          "examples": ["water pollution", "excessive water consumption", "depletion of water sources"]
+        },
+        {
+          "code": "ENV-GHG",
+          "name": "Greenhouse gas emissions",
+          "instruments": ["Paris Agreement", "UNFCCC"],
+          "examples": ["excessive GHG emissions", "failure to adopt transition plans"]
+        },
+        {
+          "code": "ENV-DEFORESTATION",
+          "name": "Deforestation",
+          "instruments": ["EU Deforestation Regulation (EUDR)"],
+          "examples": ["illegal deforestation", "land conversion for commodity production"]
+        }
+      ]
+    }
+  },
+  "civilLiability": {
+    "article": "Article 29",
+    "code": "CSDDD-Art29",
+    "description": "Member States shall ensure that companies are liable for damages if they intentionally or negligently fail to comply with due diligence obligations and an adverse impact that should have been identified, prevented, mitigated, brought to an end, or its extent minimised through appropriate measures results in damage to a natural or legal person.",
+    "provisions": [
+      "Companies liable for damage caused by failure to comply with Articles 10-12",
+      "Full compensation for damages including lost profits",
+      "Five-year limitation period",
+      "Claimants may request injunctive measures",
+      "Proportionate disclosure of evidence",
+      "Representative actions available under Directive (EU) 2020/1828"
+    ]
+  },
+  "enforcement": {
+    "supervisoryAuthority": "National supervisory authority designated by each Member State",
+    "sanctions": {
+      "fines": {
+        "maximumTurnoverBased": "5% of net worldwide turnover",
+        "description": "Pecuniary sanctions based on company turnover"
+      },
+      "other": [
+        "Compliance order",
+        "Public statement identifying company and nature of infringement",
+        "Interim measures"
+      ]
+    },
+    "namingAndShaming": true
+  },
+  "transitionPlan": {
+    "article": "Article 22",
+    "code": "CSDDD-Art22",
+    "description": "Companies shall adopt and implement a transition plan for climate change mitigation ensuring compatibility with the Paris Agreement 1.5°C target.",
+    "requirements": [
+      "Time-bound targets for 2030 and in 5-year steps up to 2050",
+      "Description of decarbonisation levers and key actions",
+      "Explanation of investments and funding supporting the plan",
+      "Description of role of governance bodies",
+      "Plan updated annually"
+    ]
+  },
+  "reportingTimeline": [
+    {
+      "date": "2027-07-26",
+      "milestone": "Phase 1 companies begin compliance",
+      "scope": "5000+ employees AND €1,500M+ turnover"
+    },
+    {
+      "date": "2028-07-26",
+      "milestone": "Phase 2 companies begin compliance",
+      "scope": "3000+ employees AND €900M+ turnover"
+    },
+    {
+      "date": "2029-07-26",
+      "milestone": "Phase 3 companies begin compliance",
+      "scope": "1000+ employees AND €450M+ turnover"
+    }
+  ]
+}

@@ -1,0 +1,374 @@
+{
+  "id": "fw-forced-labour-regulations",
+  "code": "forced-labour",
+  "name": "Global Forced Labour and Modern Slavery Regulations",
+  "version": "2024",
+  "type": "mandatory",
+  "verified": true,
+  "description": "Compilation of key forced labour, modern slavery, and transparency-in-supply-chains regulations across major jurisdictions",
+  "jurisdictions": [
+    {
+      "id": "uflpa",
+      "code": "UFLPA",
+      "name": "Uyghur Forced Labor Prevention Act",
+      "jurisdiction": "US",
+      "legislativeReference": "Public Law 117-78 (signed December 23, 2021)",
+      "effectiveDate": "2022-06-21",
+      "issuingBody": "United States Congress",
+      "enforcementAuthority": "U.S. Customs and Border Protection (CBP), Forced Labor Enforcement Task Force (FLETF)",
+      "verified": true,
+      "scope": {
+        "description": "Applies to all goods imported into the United States that are mined, produced, or manufactured wholly or in part in the Xinjiang Uyghur Autonomous Region (XUAR) of China, or by entities on the UFLPA Entity List",
+        "rebuttablePresumption": "All goods mined, produced, or manufactured wholly or in part in XUAR are presumed to be made with forced labor under 19 U.S.C. § 1307 and are prohibited from importation unless the importer can demonstrate by clear and convincing evidence that the goods were not produced with forced labor.",
+        "coveredEntities": [
+          "Any importer of goods into the United States",
+          "Goods from XUAR regardless of sector",
+          "Goods produced by entities on the UFLPA Entity List anywhere in the world",
+          "Goods containing inputs from XUAR incorporated at any point in the supply chain"
+        ]
+      },
+      "entityList": {
+        "description": "FLETF Entity List per Section 2(d)(2)(B)",
+        "maintainedBy": "Forced Labor Enforcement Task Force",
+        "criteria": [
+          "Entities mining, producing, or manufacturing goods in XUAR",
+          "Entities working with the government of XUAR for purposes of labour transfer programmes",
+          "Entities affiliated with the Xinjiang Production and Construction Corps"
+        ],
+        "updateFrequency": "Updated periodically by FLETF"
+      },
+      "complianceStrategy": {
+        "description": "CBP operational guidance for importers (June 2022, updated)",
+        "elements": [
+          {
+            "code": "UFLPA-CS-1",
+            "name": "Supply chain mapping",
+            "description": "Map the full supply chain from raw materials to finished goods, including sub-suppliers in or connected to XUAR"
+          },
+          {
+            "code": "UFLPA-CS-2",
+            "name": "Supply chain due diligence",
+            "description": "Conduct due diligence on suppliers including on-site audits, review of labor conditions, payment records, and worker interviews"
+          },
+          {
+            "code": "UFLPA-CS-3",
+            "name": "Supply chain management measures",
+            "description": "Implement codes of conduct, training, monitoring, and independent verification"
+          },
+          {
+            "code": "UFLPA-CS-4",
+            "name": "Evidence of no forced labour",
+            "description": "Maintain documentation demonstrating by clear and convincing evidence that goods are not produced with forced labor"
+          }
+        ],
+        "evidenceRequirements": [
+          "Supply chain map identifying all entities involved in production",
+          "Due diligence documentation for each entity",
+          "Audit reports from credible independent auditors",
+          "Evidence of worker recruitment practices, wages, working conditions",
+          "Flow of goods documentation from raw materials to finished product"
+        ]
+      },
+      "cbpEnforcement": {
+        "description": "CBP enforcement under Section 307 of the Tariff Act of 1930 (19 U.S.C. § 1307)",
+        "mechanisms": [
+          "Withhold Release Orders (WROs): CBP detains shipments at the border pending investigation",
+          "Findings: CBP issues a finding that goods are produced with forced labor",
+          "Exclusion: Goods are excluded from entry into the United States",
+          "Seizure and forfeiture for repeated violations"
+        ],
+        "exceptionProcess": {
+          "description": "Importers may request an exception to the presumption",
+          "standard": "Clear and convincing evidence",
+          "reviewTimeline": "CBP responds within 30 days of receiving a complete submission"
+        }
+      }
+    },
+    {
+      "id": "eu-forced-labour-regulation",
+      "code": "EU-FLR",
+      "name": "EU Forced Labour Regulation",
+      "jurisdiction": "EU",
+      "legislativeReference": "Regulation (EU) 2024/3015",
+      "effectiveDate": "2027-12-14",
+      "issuingBody": "European Parliament and Council",
+      "verified": true,
+      "scope": {
+        "description": "Prohibition of placing or making available on the EU market, or exporting from the EU, products made with forced labour",
+        "applicability": "All products on the EU market regardless of origin, including EU-produced goods",
+        "forcedLabourDefinition": "As defined by Article 2 of ILO Convention No. 29"
+      },
+      "dueDiligenceRequirements": [
+        "Competent authorities conduct risk-based investigations",
+        "Authorities may request information from economic operators",
+        "Decision to prohibit product if forced labour confirmed",
+        "Products already on market must be withdrawn and disposed of"
+      ],
+      "competentAuthorities": {
+        "national": "Each Member State designates one or more competent authorities",
+        "euLevel": "Commission coordinates, maintains database of forced labour risks, issues guidelines",
+        "customs": "Customs authorities enforce at EU borders"
+      },
+      "enforcement": [
+        "Prohibition of placing on the market or export",
+        "Withdrawal from the market",
+        "Donation or disposal of products",
+        "Customs authorities block import/export"
+      ]
+    },
+    {
+      "id": "uk-modern-slavery-act",
+      "code": "UK-MSA",
+      "name": "UK Modern Slavery Act 2015",
+      "jurisdiction": "UK",
+      "legislativeReference": "Modern Slavery Act 2015 c.30",
+      "effectiveDate": "2015-10-29",
+      "issuingBody": "UK Parliament",
+      "verified": true,
+      "section54": {
+        "name": "Transparency in Supply Chains",
+        "description": "Section 54 requires commercial organisations above the turnover threshold to publish an annual slavery and human trafficking statement",
+        "threshold": {
+          "turnover": "£36,000,000",
+          "turnoverNumeric": 36000000,
+          "currency": "GBP",
+          "note": "Total annual turnover of the organisation and its subsidiaries"
+        },
+        "reportingRequirements": [
+          "Organisation's structure, business, and supply chains",
+          "Policies in relation to slavery and human trafficking",
+          "Due diligence processes in relation to slavery and human trafficking in business and supply chains",
+          "Parts of business and supply chains where there is a risk of slavery and human trafficking, and steps taken to assess and manage that risk",
+          "Effectiveness in ensuring slavery and human trafficking is not taking place, measured against performance indicators",
+          "Training about slavery and human trafficking available to staff"
+        ],
+        "publicationRequirements": {
+          "approval": "Approved by the board of directors (or equivalent) and signed by a director (or equivalent)",
+          "publication": "Published on the organisation's website with a prominent link on the homepage",
+          "timeline": "Within 6 months of the end of each financial year",
+          "registry": "Must be submitted to the government Modern Slavery Statement Registry"
+        }
+      },
+      "enforcement": {
+        "currentEnforcement": "Secretary of State may seek injunction requiring compliance (Section 54(11))",
+        "note": "No financial penalties for non-compliance with Section 54 under current legislation, though government has consulted on strengthening enforcement"
+      }
+    },
+    {
+      "id": "au-modern-slavery-act",
+      "code": "AU-MSA",
+      "name": "Australian Modern Slavery Act 2018",
+      "jurisdiction": "AU",
+      "legislativeReference": "Modern Slavery Act 2018 (Cth) No. 153, 2018",
+      "effectiveDate": "2019-01-01",
+      "issuingBody": "Australian Parliament",
+      "enforcementAuthority": "Australian Border Force (ABF)",
+      "verified": true,
+      "scope": {
+        "threshold": {
+          "revenue": "AUD 100,000,000",
+          "revenueNumeric": 100000000,
+          "currency": "AUD",
+          "note": "Annual consolidated revenue of AUD 100 million or more"
+        },
+        "applicability": "Australian entities and entities carrying on business in Australia",
+        "voluntaryReporting": "Entities below the threshold may opt in to report voluntarily"
+      },
+      "mandatoryCriteria": {
+        "description": "Modern slavery statements must address the following mandatory criteria (Section 16)",
+        "criteria": [
+          {
+            "code": "AU-MSA-MC1",
+            "name": "Identify the reporting entity",
+            "description": "Identify the reporting entity, including structure, operations, and supply chains"
+          },
+          {
+            "code": "AU-MSA-MC2",
+            "name": "Describe structure, operations, and supply chains",
+            "description": "Describe the entity's structure, operations, and supply chains"
+          },
+          {
+            "code": "AU-MSA-MC3",
+            "name": "Describe risks of modern slavery",
+            "description": "Describe the risks of modern slavery practices in the operations and supply chains of the reporting entity and any entities it owns or controls"
+          },
+          {
+            "code": "AU-MSA-MC4",
+            "name": "Describe actions taken",
+            "description": "Describe actions taken by the reporting entity and any entities it owns or controls to assess and address those risks, including due diligence and remediation processes"
+          },
+          {
+            "code": "AU-MSA-MC5",
+            "name": "Describe effectiveness assessment",
+            "description": "Describe how the reporting entity assesses the effectiveness of such actions"
+          },
+          {
+            "code": "AU-MSA-MC6",
+            "name": "Describe consultation process",
+            "description": "Describe the process of consultation with owned or controlled entities"
+          },
+          {
+            "code": "AU-MSA-MC7",
+            "name": "Other relevant information",
+            "description": "Include any other relevant information"
+          }
+        ]
+      },
+      "reporting": {
+        "frequency": "Annual, within 6 months after the end of the reporting period",
+        "approval": "Approved by the principal governing body (e.g., board of directors)",
+        "publication": "Published on the Australian Modern Slavery Register maintained by the Australian Border Force",
+        "jointStatements": "Entities may submit joint statements covering multiple entities within a group"
+      },
+      "enforcement": {
+        "current": "No civil or criminal penalties under the original Act",
+        "amendment2024": {
+          "description": "Modern Slavery Amendment (No. 1) Bill 2024 introduced penalties",
+          "penalties": "Civil penalties of up to AUD 50 million for failure to comply with reporting obligations",
+          "verified": false,
+          "note": "Amendment bill status should be verified for current parliamentary progress"
+        }
+      }
+    }
+  ],
+  "riskIndicators": {
+    "countryRisk": {
+      "description": "Country-level forced labour risk based on ILO Global Estimates of Modern Slavery (2022)",
+      "dataSource": "ILO, Walk Free Foundation, Global Slavery Index",
+      "keyFactors": [
+        "National prevalence of forced labour per 1,000 population",
+        "Government response (legislation, enforcement, coordination, support services)",
+        "Rule of law and governance indicators",
+        "Labour inspection capacity and coverage",
+        "Migration policies and protections for migrant workers"
+      ],
+      "highRiskRegions": [
+        "Central and South-East Asia",
+        "Sub-Saharan Africa",
+        "Arab States (migrant worker exploitation)",
+        "Central Asia"
+      ],
+      "iloEstimate2022": {
+        "totalForcedLabour": 27900000,
+        "forcedLabourExploitation": 17300000,
+        "forcedSexualExploitation": 6300000,
+        "stateImposedForcedLabour": 3900000,
+        "note": "ILO Global Estimates of Modern Slavery 2022"
+      }
+    },
+    "sectorRisk": {
+      "description": "Sector-level forced labour risk indicators",
+      "highRiskSectors": [
+        {
+          "sector": "Agriculture and fishing",
+          "risks": ["Seasonal/migrant labour exploitation", "debt bondage", "child labour in cocoa, cotton, tobacco, palm oil"],
+          "riskLevel": "very_high"
+        },
+        {
+          "sector": "Mining and quarrying",
+          "risks": ["Artisanal mining exploitation", "conflict mineral sourcing", "child labour in cobalt, mica"],
+          "riskLevel": "very_high"
+        },
+        {
+          "sector": "Garment and textile manufacturing",
+          "risks": ["Excessive overtime", "below-minimum wages", "subcontracting opacity", "migrant worker exploitation"],
+          "riskLevel": "high"
+        },
+        {
+          "sector": "Electronics manufacturing",
+          "risks": ["Excessive overtime", "migrant worker exploitation", "dormitory labour systems", "student labour"],
+          "riskLevel": "high"
+        },
+        {
+          "sector": "Construction",
+          "risks": ["Migrant worker exploitation", "document confiscation", "recruitment fees", "unsafe conditions"],
+          "riskLevel": "high"
+        },
+        {
+          "sector": "Domestic work",
+          "risks": ["Isolation", "undocumented workers", "live-in arrangements enabling exploitation"],
+          "riskLevel": "high"
+        },
+        {
+          "sector": "Food processing and packaging",
+          "risks": ["Temporary agency labour", "migrant workers", "piece-rate payment systems"],
+          "riskLevel": "medium"
+        }
+      ]
+    },
+    "supplyChainTierRisk": {
+      "description": "Risk increases at deeper supply chain tiers due to reduced visibility",
+      "tiers": [
+        { "tier": 1, "label": "Direct suppliers", "visibility": "high", "riskLevel": "lower" },
+        { "tier": 2, "label": "Sub-suppliers / component manufacturers", "visibility": "medium", "riskLevel": "medium" },
+        { "tier": 3, "label": "Raw material producers / extractors", "visibility": "low", "riskLevel": "higher" },
+        { "tier": 4, "label": "Informal economy / smallholders", "visibility": "very_low", "riskLevel": "highest" }
+      ]
+    }
+  },
+  "redFlags": {
+    "description": "Key indicators of forced labour based on ILO Indicators of Forced Labour (2012)",
+    "indicators": [
+      {
+        "code": "RF-1",
+        "name": "Excessive overtime",
+        "description": "Workers regularly working hours exceeding legal limits or industry norms without adequate compensation or voluntary consent",
+        "iloIndicator": true
+      },
+      {
+        "code": "RF-2",
+        "name": "Debt bondage",
+        "description": "Workers in debt to employer or labour recruiter, with wages deducted to repay debt, trapping workers in employment",
+        "iloIndicator": true
+      },
+      {
+        "code": "RF-3",
+        "name": "Document retention",
+        "description": "Employer or recruiter confiscates or withholds workers' identity documents (passports, work permits, IDs)",
+        "iloIndicator": true
+      },
+      {
+        "code": "RF-4",
+        "name": "Restriction of movement",
+        "description": "Workers unable to freely leave the workplace or dormitory, physical confinement, surveillance",
+        "iloIndicator": true
+      },
+      {
+        "code": "RF-5",
+        "name": "Recruitment fees",
+        "description": "Workers charged recruitment fees or related costs by labour recruiters or employers",
+        "iloIndicator": true
+      },
+      {
+        "code": "RF-6",
+        "name": "Withholding of wages",
+        "description": "Wages systematically withheld, delayed, or paid below agreed or legal minimum amounts",
+        "iloIndicator": true
+      },
+      {
+        "code": "RF-7",
+        "name": "Deceptive recruitment",
+        "description": "Workers recruited with false promises about nature of work, conditions, wages, or location",
+        "iloIndicator": true
+      },
+      {
+        "code": "RF-8",
+        "name": "Threats and intimidation",
+        "description": "Workers subjected to threats of violence, denunciation to authorities (especially for undocumented workers), or other penalties for leaving employment",
+        "iloIndicator": true
+      },
+      {
+        "code": "RF-9",
+        "name": "Isolation",
+        "description": "Workers kept in geographic or social isolation, unable to contact family, organizations, or authorities",
+        "iloIndicator": true
+      },
+      {
+        "code": "RF-10",
+        "name": "Abusive working and living conditions",
+        "description": "Degrading living conditions, lack of access to food, water, sanitation, or medical care",
+        "iloIndicator": true
+      }
+    ]
+  }
+}
