@@ -104,9 +104,26 @@ export const useChatStore = create<ChatState>((set, get) => ({
           ? (process.env['NEXT_PUBLIC_API_URL'] ?? 'http://localhost:3001/api/v1')
           : 'http://localhost:3001/api/v1';
 
+      // Load auth token from localStorage if needed
+      let authToken: string | null = null;
+      if (typeof window !== 'undefined') {
+        try {
+          const stored = localStorage.getItem('merris_auth');
+          if (stored) {
+            const parsed = JSON.parse(stored) as { token?: string };
+            if (parsed.token) authToken = parsed.token;
+          }
+        } catch { /* ignore */ }
+      }
+
+      const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+      if (authToken) {
+        headers['Authorization'] = `Bearer ${authToken}`;
+      }
+
       const response = await fetch(`${API_BASE}/agent/chat`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers,
         body: JSON.stringify({
           engagementId: engagementId ?? 'default',
           message: content,

@@ -59,27 +59,53 @@ interface AuthState {
   toggleSidebar: () => void;
 }
 
-export const useAuthStore = create<AuthState>((set) => ({
-  user: null,
-  token: null,
-  org: null,
-  locale: 'en',
-  sidebarCollapsed: false,
+function loadAuthFromStorage(): { user: AuthUser | null; token: string | null; org: AuthOrganization | null } {
+  if (typeof window === 'undefined') return { user: null, token: null, org: null };
+  try {
+    const stored = localStorage.getItem('merris_auth');
+    if (stored) {
+      const parsed = JSON.parse(stored) as { user: AuthUser; token: string; org: AuthOrganization };
+      if (parsed.token) {
+        api.setToken(parsed.token);
+        return parsed;
+      }
+    }
+  } catch {
+    // ignore parse errors
+  }
+  return { user: null, token: null, org: null };
+}
 
-  setAuth: (user, token, org) => {
-    api.setToken(token);
-    set({ user, token, org });
-  },
+export const useAuthStore = create<AuthState>((set) => {
+  const initial = loadAuthFromStorage();
+  return {
+    user: initial.user,
+    token: initial.token,
+    org: initial.org,
+    locale: 'en',
+    sidebarCollapsed: false,
 
-  logout: () => {
-    api.setToken(null);
-    set({ user: null, token: null, org: null });
-  },
+    setAuth: (user, token, org) => {
+      api.setToken(token);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('merris_auth', JSON.stringify({ user, token, org }));
+      }
+      set({ user, token, org });
+    },
 
-  setLocale: (locale) => set({ locale }),
+    logout: () => {
+      api.setToken(null);
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('merris_auth');
+      }
+      set({ user: null, token: null, org: null });
+    },
 
-  toggleSidebar: () => set((s) => ({ sidebarCollapsed: !s.sidebarCollapsed })),
-}));
+    setLocale: (locale) => set({ locale }),
+
+    toggleSidebar: () => set((s) => ({ sidebarCollapsed: !s.sidebarCollapsed })),
+  };
+});
 
 // ---- Engagement context slice ----
 

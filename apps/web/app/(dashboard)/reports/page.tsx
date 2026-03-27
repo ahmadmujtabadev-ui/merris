@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 import {
   Dialog,
   DialogContent,
@@ -17,6 +18,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useAuthStore, useEngagementStore } from '@/lib/store';
+import { api } from '@/lib/api';
 import { t } from '@/lib/i18n';
 
 // ============================================================
@@ -33,53 +35,6 @@ interface ReportListItem {
   updatedAt: string;
   sectionCount: number;
 }
-
-// ============================================================
-// Demo Data
-// ============================================================
-
-const DEMO_REPORTS: ReportListItem[] = [
-  {
-    id: 'rpt-1',
-    title: 'FY2025 GRI Sustainability Report',
-    type: 'sustainability_report',
-    status: 'draft',
-    language: 'en',
-    frameworks: ['GRI 2021'],
-    updatedAt: '2026-03-25T10:30:00Z',
-    sectionCount: 8,
-  },
-  {
-    id: 'rpt-2',
-    title: 'CMA ESG Annual Disclosure',
-    type: 'esg_report',
-    status: 'in_review',
-    language: 'bilingual',
-    frameworks: ['CMA ESG', 'GRI 2021'],
-    updatedAt: '2026-03-24T14:15:00Z',
-    sectionCount: 12,
-  },
-  {
-    id: 'rpt-3',
-    title: 'TCFD Climate Risk Assessment',
-    type: 'tcfd_report',
-    status: 'partner_approved',
-    language: 'en',
-    frameworks: ['TCFD'],
-    updatedAt: '2026-03-20T09:00:00Z',
-    sectionCount: 6,
-  },
-  {
-    id: 'rpt-4',
-    title: 'CDP Climate Change Response 2025',
-    type: 'cdp_response',
-    status: 'final',
-    language: 'en',
-    frameworks: ['CDP'],
-    updatedAt: '2026-03-15T16:45:00Z',
-    sectionCount: 15,
-  },
-];
 
 // ============================================================
 // Status Badge Styling
@@ -142,7 +97,6 @@ function CreateReportDialog() {
   const { engagements } = useEngagementStore();
 
   const handleCreate = () => {
-    // In production, this would call the API
     setOpen(false);
     setTitle('');
   };
@@ -178,7 +132,7 @@ function CreateReportDialog() {
                 </option>
               ))}
               {engagements.length === 0 && (
-                <option value="demo">Demo Engagement</option>
+                <option value="" disabled>No engagements available</option>
               )}
             </select>
           </div>
@@ -246,6 +200,68 @@ function CreateReportDialog() {
 
 export default function ReportsPage() {
   const { locale } = useAuthStore();
+  const { engagements } = useEngagementStore();
+  const [reports, setReports] = React.useState<ReportListItem[]>([]);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState<string | null>(null);
+
+  React.useEffect(() => {
+    let cancelled = false;
+
+    async function fetchReports() {
+      // Ensure token is loaded
+      if (!api.getToken() && typeof window !== 'undefined') {
+        try {
+          const stored = localStorage.getItem('merris_auth');
+          if (stored) {
+            const parsed = JSON.parse(stored) as { token?: string };
+            if (parsed.token) api.setToken(parsed.token);
+          }
+        } catch { /* ignore */ }
+      }
+
+      try {
+        // Try fetching reports for each engagement, or a global endpoint
+        let allReports: ReportListItem[] = [];
+
+        if (engagements.length > 0) {
+          // Fetch reports per engagement
+          const results = await Promise.allSettled(
+            engagements.map((eng) =>
+              api.get<ReportListItem[]>(`/engagements/${eng.id}/reports`)
+            )
+          );
+          for (const result of results) {
+            if (result.status === 'fulfilled' && Array.isArray(result.value)) {
+              allReports = [...allReports, ...result.value];
+            }
+          }
+        } else {
+          // Try global reports endpoint
+          try {
+            const data = await api.get<ReportListItem[]>('/reports');
+            allReports = data;
+          } catch {
+            // endpoint may not exist
+          }
+        }
+
+        if (!cancelled) {
+          setReports(allReports);
+          setError(null);
+        }
+      } catch (err) {
+        if (!cancelled) {
+          setError(err instanceof Error ? err.message : 'Failed to load reports');
+        }
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    }
+
+    void fetchReports();
+    return () => { cancelled = true; };
+  }, [engagements]);
 
   return (
     <div className="space-y-6">
@@ -261,78 +277,102 @@ export default function ReportsPage() {
       </div>
 
       {/* Report List */}
-      <div className="space-y-3">
-        {DEMO_REPORTS.map((report) => {
-          const statusConfig = STATUS_CONFIG[report.status] ?? STATUS_CONFIG['draft']!;
-          return (
-            <Card key={report.id} className="transition-colors hover:border-zinc-700">
-              <CardHeader className="pb-3">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex items-start gap-3">
-                    <div className="mt-0.5 rounded-md bg-zinc-800 p-2">
-                      <FileTextIcon className="h-4 w-4 text-emerald-400" />
-                    </div>
-                    <div>
-                      <CardTitle className="text-base">
-                        <Link
-                          href={`/reports/${report.id}`}
-                          className="text-zinc-100 hover:text-emerald-400 transition-colors"
-                        >
-                          {report.title}
-                        </Link>
-                      </CardTitle>
-                      <CardDescription className="mt-1">
-                        {REPORT_TYPE_LABELS[report.type] ?? report.type}{' '}
-                        {'\u00B7'}{' '}
-                        {report.language === 'bilingual'
-                          ? 'EN/AR'
-                          : report.language.toUpperCase()}{' '}
-                        {'\u00B7'}{' '}
-                        {report.sectionCount} sections
-                      </CardDescription>
-                    </div>
-                  </div>
-                  <Badge variant={statusConfig.variant}>
-                    {statusConfig.label}
-                  </Badge>
-                </div>
+      {loading ? (
+        <div className="space-y-3">
+          {[1, 2, 3].map((i) => (
+            <Card key={i}>
+              <CardHeader>
+                <Skeleton className="h-5 w-2/3" />
               </CardHeader>
-              <CardContent>
-                <div className="flex items-center justify-between">
-                  <div className="flex flex-wrap gap-1.5">
-                    {report.frameworks.map((fw) => (
-                      <Badge key={fw} variant="outline" className="text-[10px]">
-                        {fw}
-                      </Badge>
-                    ))}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs text-zinc-500">
-                      Updated{' '}
-                      {new Date(report.updatedAt).toLocaleDateString('en-US', {
-                        month: 'short',
-                        day: 'numeric',
-                      })}
-                    </span>
-                    <div className="flex gap-1">
-                      <button
-                        type="button"
-                        className="rounded p-1.5 text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-zinc-200"
-                        title="Export as DOCX"
-                      >
-                        <DownloadIcon className="h-3.5 w-3.5" />
-                      </button>
-                    </div>
-                    <Button variant="outline" size="sm" asChild>
-                      <Link href={`/reports/${report.id}`}>Open</Link>
-                    </Button>
-                  </div>
-                </div>
+              <CardContent className="space-y-2">
+                <Skeleton className="h-4 w-1/2" />
+                <Skeleton className="h-4 w-1/3" />
               </CardContent>
             </Card>
-          );
-        })}
-      </div>
+          ))}
+        </div>
+      ) : reports.length === 0 ? (
+        <Card>
+          <CardContent className="flex flex-col items-center justify-center py-12">
+            <p className="text-sm text-zinc-400">
+              {error ? 'No reports available yet.' : 'No reports created yet. Generate your first ESG report.'}
+            </p>
+          </CardContent>
+        </Card>
+      ) : (
+        <div className="space-y-3">
+          {reports.map((report) => {
+            const statusConfig = STATUS_CONFIG[report.status] ?? STATUS_CONFIG['draft']!;
+            return (
+              <Card key={report.id} className="transition-colors hover:border-zinc-700">
+                <CardHeader className="pb-3">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex items-start gap-3">
+                      <div className="mt-0.5 rounded-md bg-zinc-800 p-2">
+                        <FileTextIcon className="h-4 w-4 text-emerald-400" />
+                      </div>
+                      <div>
+                        <CardTitle className="text-base">
+                          <Link
+                            href={`/reports/${report.id}`}
+                            className="text-zinc-100 hover:text-emerald-400 transition-colors"
+                          >
+                            {report.title}
+                          </Link>
+                        </CardTitle>
+                        <CardDescription className="mt-1">
+                          {REPORT_TYPE_LABELS[report.type] ?? report.type}{' '}
+                          {'\u00B7'}{' '}
+                          {report.language === 'bilingual'
+                            ? 'EN/AR'
+                            : report.language.toUpperCase()}{' '}
+                          {'\u00B7'}{' '}
+                          {report.sectionCount} sections
+                        </CardDescription>
+                      </div>
+                    </div>
+                    <Badge variant={statusConfig.variant}>
+                      {statusConfig.label}
+                    </Badge>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex items-center justify-between">
+                    <div className="flex flex-wrap gap-1.5">
+                      {report.frameworks.map((fw) => (
+                        <Badge key={fw} variant="outline" className="text-[10px]">
+                          {fw}
+                        </Badge>
+                      ))}
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs text-zinc-500">
+                        Updated{' '}
+                        {new Date(report.updatedAt).toLocaleDateString('en-US', {
+                          month: 'short',
+                          day: 'numeric',
+                        })}
+                      </span>
+                      <div className="flex gap-1">
+                        <button
+                          type="button"
+                          className="rounded p-1.5 text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-zinc-200"
+                          title="Export as DOCX"
+                        >
+                          <DownloadIcon className="h-3.5 w-3.5" />
+                        </button>
+                      </div>
+                      <Button variant="outline" size="sm" asChild>
+                        <Link href={`/reports/${report.id}`}>Open</Link>
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }

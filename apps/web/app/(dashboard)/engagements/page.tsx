@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -19,6 +19,7 @@ import {
 } from '@/components/ui/dialog';
 import { CompletionDonut } from '@/components/completion-donut';
 import { useAuthStore, useEngagementStore, type EngagementSummary, type EngagementStatus } from '@/lib/store';
+import { api } from '@/lib/api';
 import { t } from '@/lib/i18n';
 
 const STATUS_VARIANTS: Record<EngagementStatus, { label: string; variant: 'default' | 'secondary' | 'warning' | 'info' | 'destructive' }> = {
@@ -30,44 +31,48 @@ const STATUS_VARIANTS: Record<EngagementStatus, { label: string; variant: 'defau
   completed: { label: 'Completed', variant: 'default' },
 };
 
-// Demo data for rendering
-const DEMO_ENGAGEMENTS: EngagementSummary[] = [
-  {
-    id: 'eng-001',
-    name: 'FY2025 Sustainability Report',
-    clientOrgId: 'client-001',
-    frameworks: ['GRI', 'SASB', 'TCFD'],
-    deadline: '2026-06-30',
-    status: 'data_collection',
-    completeness: 42,
-  },
-  {
-    id: 'eng-002',
-    name: 'CDP Climate Response',
-    clientOrgId: 'client-002',
-    frameworks: ['CDP', 'TCFD'],
-    deadline: '2026-07-31',
-    status: 'setup',
-    completeness: 12,
-  },
-  {
-    id: 'eng-003',
-    name: 'CMA ESG Disclosure',
-    frameworks: ['CMA-ESG'],
-    deadline: '2026-03-31',
-    status: 'review',
-    completeness: 87,
-  },
-];
-
 export default function EngagementsPage() {
   const { locale } = useAuthStore();
-  const { engagements } = useEngagementStore();
+  const { engagements, setEngagements } = useEngagementStore();
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [loading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  // Use demo data if store is empty (no API connected yet)
-  const displayEngagements = engagements.length > 0 ? engagements : DEMO_ENGAGEMENTS;
+  useEffect(() => {
+    let cancelled = false;
+
+    async function fetchEngagements() {
+      try {
+        // Ensure token is loaded from localStorage
+        if (!api.getToken()) {
+          const stored = typeof window !== 'undefined' ? localStorage.getItem('merris_auth') : null;
+          if (stored) {
+            try {
+              const parsed = JSON.parse(stored) as { token?: string };
+              if (parsed.token) api.setToken(parsed.token);
+            } catch { /* ignore */ }
+          }
+        }
+
+        const data = await api.get<EngagementSummary[]>('/engagements');
+        if (!cancelled) {
+          setEngagements(data);
+          setError(null);
+        }
+      } catch (err) {
+        if (!cancelled) {
+          // API may not exist yet -- show empty state
+          setError(err instanceof Error ? err.message : 'Failed to load engagements');
+          setEngagements([]);
+        }
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    }
+
+    void fetchEngagements();
+    return () => { cancelled = true; };
+  }, [setEngagements]);
 
   return (
     <div className="space-y-6">
@@ -134,15 +139,27 @@ export default function EngagementsPage() {
             </Card>
           ))}
         </div>
-      ) : displayEngagements.length === 0 ? (
+      ) : error && engagements.length === 0 ? (
+        <Card>
+          <CardContent className="flex flex-col items-center justify-center py-12">
+            <p className="text-zinc-400">No engagements yet. Create your first engagement to get started.</p>
+            <Button className="mt-4" onClick={() => setDialogOpen(true)}>
+              {t(locale, 'engagements.createNew')}
+            </Button>
+          </CardContent>
+        </Card>
+      ) : engagements.length === 0 ? (
         <Card>
           <CardContent className="flex flex-col items-center justify-center py-12">
             <p className="text-zinc-400">{t(locale, 'engagements.noEngagements')}</p>
+            <Button className="mt-4" onClick={() => setDialogOpen(true)}>
+              {t(locale, 'engagements.createNew')}
+            </Button>
           </CardContent>
         </Card>
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {displayEngagements.map((eng) => {
+          {engagements.map((eng) => {
             const statusInfo = STATUS_VARIANTS[eng.status];
             return (
               <Link key={eng.id} href={`/engagements/${eng.id}`}>
