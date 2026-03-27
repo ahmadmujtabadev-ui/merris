@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import { logger } from './lib/logger.js';
 import { registerAuthRoutes } from './modules/auth/auth.routes.js';
 import { registerOrganizationRoutes } from './modules/organization/organization.routes.js';
+import { registerIngestionRoutes } from './modules/ingestion/ingestion.routes.js';
 
 dotenv.config();
 
@@ -39,6 +40,9 @@ async function start() {
 
   // Register organization routes
   await registerOrganizationRoutes(app);
+
+  // Register ingestion routes
+  await registerIngestionRoutes(app);
 
   const port = parseInt(process.env['PORT'] || '3001', 10);
 
