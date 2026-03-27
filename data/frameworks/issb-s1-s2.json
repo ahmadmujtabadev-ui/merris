@@ -1,0 +1,295 @@
+{
+  "id": "fw-issb-2024",
+  "code": "issb",
+  "name": "IFRS Sustainability Disclosure Standards S1 & S2",
+  "version": "2024",
+  "effectiveDate": "2024-01-01",
+  "issuingBody": "International Sustainability Standards Board (ISSB)",
+  "region": "global",
+  "type": "mandatory",
+  "structure": {
+    "topics": [
+      {
+        "code": "IFRS S1",
+        "name": "General Requirements for Disclosure of Sustainability-related Financial Information",
+        "disclosures": [
+          {
+            "id": "issb-s1-1",
+            "frameworkId": "fw-issb-2024",
+            "code": "IFRS S1-20",
+            "name": "Reporting entity",
+            "description": "Sustainability-related financial disclosures shall be for the same reporting entity as the related financial statements.",
+            "topic": "general",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "The reporting entity for sustainability-related financial disclosures shall be the same as for the related financial statements (paras 20-24).",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-2", "mappingType": "equivalent" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-BP-1", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "issb-s1-2",
+            "frameworkId": "fw-issb-2024",
+            "code": "IFRS S1-26",
+            "name": "Governance — Sustainability risks and opportunities oversight",
+            "description": "Disclose information about the governance body or individual responsible for oversight of sustainability-related risks and opportunities.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Disclose the governance body(s) or individual(s) responsible for oversight of sustainability-related risks and opportunities, how that body's responsibilities are reflected in terms of reference, and the body's skills and competencies (paras 26-27).",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-9", "mappingType": "partial" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-GOV-1", "mappingType": "equivalent" },
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-GOV-A", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "issb-s1-3",
+            "frameworkId": "fw-issb-2024",
+            "code": "IFRS S1-27",
+            "name": "Strategy — Business model and value chain",
+            "description": "Disclose information to enable users to understand the sustainability-related risks and opportunities that could affect the entity's business model and value chain.",
+            "topic": "strategy",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Disclose a description of sustainability-related risks and opportunities that could reasonably be expected to affect the entity's prospects, how they affect the business model and value chain, effects on strategy, and financial effects (paras 27-35).",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-6", "mappingType": "partial" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-SBM-1", "mappingType": "equivalent" },
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-STRAT-A", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "issb-s1-4",
+            "frameworkId": "fw-issb-2024",
+            "code": "IFRS S1-30",
+            "name": "Strategy — Sustainability-related risks and opportunities",
+            "description": "Disclose the sustainability-related risks and opportunities that could reasonably be expected to affect the entity's prospects.",
+            "topic": "strategy",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe sustainability-related risks and opportunities, their current and anticipated effects on the entity's financial position, financial performance, and cash flows (paras 30-35).",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 3-1", "mappingType": "partial", "notes": "ISSB focuses on financial materiality" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-IRO-1", "mappingType": "partial" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-SBM-3", "mappingType": "partial" },
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-STRAT-B", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "issb-s1-5",
+            "frameworkId": "fw-issb-2024",
+            "code": "IFRS S1-36",
+            "name": "Risk management — Processes to identify, assess and manage sustainability-related risks and opportunities",
+            "description": "Disclose information about processes used to identify, assess, prioritise and monitor sustainability-related risks and opportunities.",
+            "topic": "risk-management",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Disclose the processes used to identify, assess, prioritise and monitor sustainability-related risks and opportunities, and the extent to which these are integrated into the entity's overall risk management process (paras 36-39).",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-RISK-A", "mappingType": "equivalent" },
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-RISK-B", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "issb-s1-6",
+            "frameworkId": "fw-issb-2024",
+            "code": "IFRS S1-40",
+            "name": "Metrics and targets",
+            "description": "Disclose metrics and targets used to measure, monitor and manage sustainability-related risks and opportunities.",
+            "topic": "metrics-targets",
+            "dataType": "quantitative",
+            "requiredMetrics": [],
+            "guidanceText": "Disclose information about metrics used by the entity to measure and monitor sustainability-related risks and opportunities, targets set and progress towards those targets (paras 40-42).",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-MET-A", "mappingType": "equivalent" },
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-MET-B", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "issb-s1-7",
+            "frameworkId": "fw-issb-2024",
+            "code": "IFRS S1-42",
+            "name": "Reporting entity identification",
+            "description": "Disclose the identity of the reporting entity.",
+            "topic": "general",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "The entity shall identify itself clearly in its sustainability-related financial disclosures (para 42).",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-1", "mappingType": "partial" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "IFRS S2",
+        "name": "Climate-related Disclosures",
+        "disclosures": [
+          {
+            "id": "issb-s2-1",
+            "frameworkId": "fw-issb-2024",
+            "code": "IFRS S2-6a",
+            "name": "Governance — Climate-related risks and opportunities oversight",
+            "description": "Disclose information about the governance body responsible for oversight of climate-related risks and opportunities.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Disclose the governance body(s) or individual(s) responsible for oversight of climate-related risks and opportunities (para 6(a)).",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-GOV-1", "mappingType": "equivalent" },
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-GOV-A", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "issb-s2-2",
+            "frameworkId": "fw-issb-2024",
+            "code": "IFRS S2-10",
+            "name": "Strategy — Climate-related risks and opportunities",
+            "description": "Disclose information about climate-related risks and opportunities that could reasonably be expected to affect the entity's prospects.",
+            "topic": "strategy",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe climate-related risks and opportunities and their current and anticipated effects on the entity's business model, strategy, financial position, and cash flows (paras 10-22).",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 201-2", "mappingType": "equivalent" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-9", "mappingType": "equivalent" },
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-STRAT-A", "mappingType": "equivalent" },
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-STRAT-B", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "issb-s2-3",
+            "frameworkId": "fw-issb-2024",
+            "code": "IFRS S2-13",
+            "name": "Strategy — Climate resilience",
+            "description": "Disclose information to enable users to understand the resilience of the entity's strategy and business model to climate-related changes, developments and uncertainties.",
+            "topic": "strategy",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Disclose information about the entity's assessment of climate resilience using climate-related scenario analysis (paras 13-22).",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-STRAT-C", "mappingType": "equivalent" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-C3.2a", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "issb-s2-4",
+            "frameworkId": "fw-issb-2024",
+            "code": "IFRS S2-14",
+            "name": "Strategy — Transition plans",
+            "description": "If the entity has a transition plan, disclose information about it including targets, actions, and progress.",
+            "topic": "strategy",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Disclose information about the entity's climate-related transition plan, including key assumptions and dependencies, decarbonisation targets, and planned changes to the business model (para 14).",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-1", "mappingType": "equivalent" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-C3.1", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "issb-s2-5",
+            "frameworkId": "fw-issb-2024",
+            "code": "IFRS S2-25",
+            "name": "Risk management — Climate-related risk identification and assessment",
+            "description": "Disclose the processes used to identify, assess and manage climate-related risks.",
+            "topic": "risk-management",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Disclose the processes the entity uses to identify, assess, prioritise, and monitor climate-related risks, and how these are integrated into the entity's overall risk management process (paras 25-27).",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-RISK-A", "mappingType": "equivalent" },
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-RISK-B", "mappingType": "equivalent" },
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-RISK-C", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "issb-s2-6",
+            "frameworkId": "fw-issb-2024",
+            "code": "IFRS S2-29a",
+            "name": "Metrics — Greenhouse gas emissions",
+            "description": "Disclose absolute gross greenhouse gas emissions — Scope 1, Scope 2, and Scope 3 — generated during the reporting period.",
+            "topic": "climate-metrics",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Scope 1 GHG emissions", "unit": "tCO2e", "calculationMethod": "GHG Protocol Corporate Standard", "description": "Absolute gross Scope 1 GHG emissions" },
+              { "name": "Scope 2 GHG emissions (location-based)", "unit": "tCO2e", "calculationMethod": "GHG Protocol Scope 2 Guidance", "description": "Absolute gross location-based Scope 2 GHG emissions" },
+              { "name": "Scope 2 GHG emissions (market-based)", "unit": "tCO2e", "calculationMethod": "GHG Protocol Scope 2 Guidance", "description": "Absolute gross market-based Scope 2 GHG emissions" },
+              { "name": "Scope 3 GHG emissions", "unit": "tCO2e", "calculationMethod": "GHG Protocol Scope 3 Standard", "description": "Absolute gross Scope 3 GHG emissions" }
+            ],
+            "guidanceText": "Disclose Scope 1, 2 (location- and market-based), and Scope 3 GHG emissions in metric tons of CO2 equivalent using GHG Protocol methodologies (para 29(a)).",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 305-1", "mappingType": "equivalent" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 305-2", "mappingType": "equivalent" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 305-3", "mappingType": "equivalent" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-6", "mappingType": "equivalent" },
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-MET-A", "mappingType": "equivalent" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-C6.1", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E1", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "issb-s2-7",
+            "frameworkId": "fw-issb-2024",
+            "code": "IFRS S2-29b",
+            "name": "Metrics — GHG emissions intensity and energy",
+            "description": "Disclose the emission intensity per unit of physical or economic output for Scope 1 and Scope 2 GHG emissions.",
+            "topic": "climate-metrics",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "GHG intensity (Scope 1+2) per revenue", "unit": "tCO2e/M currency", "description": "GHG emission intensity per revenue" },
+              { "name": "Total energy consumption", "unit": "MWh", "description": "Total energy consumption within the entity" },
+              { "name": "Percentage from renewable sources", "unit": "%", "description": "Proportion of energy from renewable sources" }
+            ],
+            "guidanceText": "Disclose emission intensity for Scope 1 + Scope 2 expressed per unit of physical or economic output. Disclose amount and percentage of energy consumption from renewable sources (para 29(b)-(d)).",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 302-1", "mappingType": "equivalent" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 305-4", "mappingType": "equivalent" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-5", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E2", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E3", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "issb-s2-8",
+            "frameworkId": "fw-issb-2024",
+            "code": "IFRS S2-33",
+            "name": "Targets — Climate-related targets",
+            "description": "Disclose the climate-related targets the entity has set, and progress against each target.",
+            "topic": "targets",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "GHG reduction target", "unit": "%", "description": "Target percentage reduction in GHG emissions" },
+              { "name": "Target year", "unit": "year", "description": "Year by which target is to be achieved" },
+              { "name": "Base year", "unit": "year", "description": "Base year for target calculation" },
+              { "name": "Progress against target", "unit": "%", "description": "Percentage progress towards target achievement" }
+            ],
+            "guidanceText": "For each climate-related target, disclose the metric used, objective of target, whether the target is absolute or intensity, the target base year, target period, milestones and interim targets, and performance against the target (paras 33-37).",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-4", "mappingType": "equivalent" },
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-MET-B", "mappingType": "equivalent" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-C4.1", "mappingType": "equivalent" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

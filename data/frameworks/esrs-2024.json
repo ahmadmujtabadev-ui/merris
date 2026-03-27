@@ -1,0 +1,1181 @@
+{
+  "id": "fw-esrs-2024",
+  "code": "esrs",
+  "name": "European Sustainability Reporting Standards",
+  "version": "2024",
+  "effectiveDate": "2024-01-01",
+  "issuingBody": "European Financial Reporting Advisory Group (EFRAG)",
+  "region": "EU",
+  "type": "mandatory",
+  "structure": {
+    "topics": [
+      {
+        "code": "ESRS 1",
+        "name": "General Requirements",
+        "disclosures": [
+          {
+            "id": "esrs-1-1",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS 1",
+            "name": "General Requirements",
+            "description": "Sets out the general architecture and principles for preparing sustainability statements under CSRD. Covers double materiality, due diligence, value chain, time horizons, and preparation/presentation of sustainability information.",
+            "topic": "general-requirements",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "ESRS 1 prescribes the mandatory principles to comply with when preparing sustainability statements. It covers reporting areas including governance, strategy, impact/risk/opportunity management, and metrics/targets.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 1", "mappingType": "equivalent", "notes": "Both are foundational standards" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "ESRS 2",
+        "name": "General Disclosures",
+        "disclosures": [
+          {
+            "id": "esrs-2-bp1",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS 2-BP-1",
+            "name": "General basis for preparation of the sustainability statement",
+            "description": "Disclose the general basis for preparation of the sustainability statement, including scope of consolidation, value chain estimation, and changes from previous periods.",
+            "topic": "general",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Disclose basis for preparation including reporting entity scope, whether it differs from financial statements, and any value chain estimation approaches used.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-1", "mappingType": "equivalent" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-2", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "esrs-2-bp2",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS 2-BP-2",
+            "name": "Disclosures in relation to specific circumstances",
+            "description": "Address specific circumstances such as time horizon estimation, reporting errors, and assurance approaches.",
+            "topic": "general",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Cover estimation and outcome uncertainty, classification changes, reporting errors, and information about assurance of the sustainability statement.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-3", "mappingType": "partial" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-5", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "esrs-2-gov1",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS 2-GOV-1",
+            "name": "The role of the administrative, management and supervisory bodies",
+            "description": "Disclose the composition and diversity of governance bodies, their roles in sustainability matters, and access to expertise.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [
+              { "name": "Governance body members with sustainability expertise", "unit": "%", "description": "Percentage of governance body members with ESG competence" }
+            ],
+            "guidanceText": "Disclose the composition of the administrative, management and supervisory bodies, their roles and responsibilities regarding sustainability matters, and their access to expertise and skills.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-9", "mappingType": "equivalent" },
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-GOV-A", "mappingType": "equivalent" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-6a", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "esrs-2-gov2",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS 2-GOV-2",
+            "name": "Information provided to and sustainability matters addressed by the undertaking's administrative, management and supervisory bodies",
+            "description": "Disclose how governance bodies are informed about sustainability matters and how they address them.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Disclose how the administrative, management and supervisory bodies are informed about sustainability matters and how these matters were addressed during the reporting period.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-12", "mappingType": "equivalent" },
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-GOV-B", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "esrs-2-gov3",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS 2-GOV-3",
+            "name": "Integration of sustainability-related performance in incentive schemes",
+            "description": "Disclose how sustainability-related performance is integrated into incentive schemes for governance bodies and senior management.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe whether and how sustainability-related performance metrics are considered as performance benchmarks or included in remuneration policies.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-19", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "esrs-2-gov4",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS 2-GOV-4",
+            "name": "Statement on due diligence",
+            "description": "Disclose a mapping of the information provided in its sustainability statement about the due diligence process.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Provide a mapping of the information about the due diligence process as described in the sustainability statement.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-23", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "esrs-2-gov5",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS 2-GOV-5",
+            "name": "Risk management and internal controls over sustainability reporting",
+            "description": "Disclose the main features of the undertaking's risk management and internal control system in relation to the sustainability reporting process.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Disclose the main features of the risk management and internal control system in relation to the sustainability reporting process.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-RISK-A", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "esrs-2-sbm1",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS 2-SBM-1",
+            "name": "Strategy, business model and value chain",
+            "description": "Provide an understanding of the undertaking's strategy, business model and value chain, including key products/services, markets, and stakeholder relationships.",
+            "topic": "strategy",
+            "dataType": "narrative",
+            "requiredMetrics": [
+              { "name": "Revenue by significant ESRS sector", "unit": "currency", "description": "Net revenue breakdown by significant ESRS sector" },
+              { "name": "Employees by country", "unit": "headcount", "description": "Number of employees by country" }
+            ],
+            "guidanceText": "Disclose description of significant groups of products/services, significant markets/customer groups, and a description of the key features of the undertaking's upstream and downstream value chain.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-6", "mappingType": "equivalent" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-22", "mappingType": "partial" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S1-27", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "esrs-2-sbm2",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS 2-SBM-2",
+            "name": "Interests and views of stakeholders",
+            "description": "Disclose how stakeholders' interests and views are taken into account by the undertaking's strategy and business model.",
+            "topic": "strategy",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Disclose how the undertaking's strategy and business model take account of the interests and views of its stakeholders.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-29", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "esrs-2-sbm3",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS 2-SBM-3",
+            "name": "Material impacts, risks and opportunities and their interaction with strategy and business model",
+            "description": "Disclose the material impacts, risks and opportunities and how they interact with the undertaking's strategy and business model.",
+            "topic": "strategy",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the material impacts, risks and opportunities and how they interact with the strategy and business model, including current and anticipated financial effects.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 3-3", "mappingType": "partial" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S1-30", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "esrs-2-iro1",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS 2-IRO-1",
+            "name": "Description of the processes to identify and assess material impacts, risks and opportunities",
+            "description": "Describe the process used to identify and assess material sustainability-related impacts, risks and opportunities (double materiality assessment).",
+            "topic": "materiality",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the methodologies and assumptions applied in the process to identify material impacts, risks and opportunities. Cover both impact materiality and financial materiality.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 3-1", "mappingType": "equivalent" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S1-30", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "esrs-2-iro2",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS 2-IRO-2",
+            "name": "Disclosure requirements in ESRS covered by the undertaking's sustainability statement",
+            "description": "Provide a list of the disclosure requirements in ESRS that are being reported on, those omitted with justification, and phase-in provisions applied.",
+            "topic": "materiality",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Provide a list of ESRS disclosure requirements covered, disclosure requirements not material with brief explanation, and any phase-in provisions applied.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 3-2", "mappingType": "equivalent" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "ESRS E1",
+        "name": "Climate Change",
+        "disclosures": [
+          {
+            "id": "esrs-e1-1",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E1-1",
+            "name": "Transition plan for climate change mitigation",
+            "description": "Disclose the transition plan for climate change mitigation, including GHG reduction targets aligned with Paris Agreement.",
+            "topic": "climate",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Disclose the transition plan for climate change mitigation. The plan shall explain how GHG emission reduction targets are compatible with limiting global warming to 1.5C.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-14", "mappingType": "equivalent" },
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-STRAT-B", "mappingType": "equivalent" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-C3.1", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "esrs-e1-2",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E1-2",
+            "name": "Policies related to climate change mitigation and adaptation",
+            "description": "Describe policies adopted to manage material impacts, risks and opportunities related to climate change mitigation and adaptation.",
+            "topic": "climate",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe policies adopted to manage material climate change impacts, risks and opportunities, including engagement with value chain.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-RISK-B", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "esrs-e1-3",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E1-3",
+            "name": "Actions and resources in relation to climate change policies",
+            "description": "Describe key actions taken and planned to prevent, mitigate or remediate actual impacts, and manage risks and opportunities related to climate change.",
+            "topic": "climate",
+            "dataType": "narrative",
+            "requiredMetrics": [
+              { "name": "CapEx for climate actions", "unit": "currency", "description": "Capital expenditure for climate change mitigation and adaptation actions" }
+            ],
+            "guidanceText": "Disclose key actions and resources related to climate change policies, including decarbonization levers and expected GHG emission reductions.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-C4.3b", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "esrs-e1-4",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E1-4",
+            "name": "Targets related to climate change mitigation and adaptation",
+            "description": "Disclose the climate-related targets adopted, including GHG emission reduction targets.",
+            "topic": "climate",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "GHG reduction target (absolute)", "unit": "%", "description": "Absolute GHG emission reduction target" },
+              { "name": "GHG reduction target year", "unit": "year", "description": "Target year for GHG reduction" },
+              { "name": "Base year for target", "unit": "year", "description": "Base year used for GHG reduction target" }
+            ],
+            "guidanceText": "Disclose climate-related targets, including whether they are absolute or intensity-based, the base year and target year, and progress to date.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-33", "mappingType": "equivalent" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-C4.1", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "esrs-e1-5",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E1-5",
+            "name": "Energy consumption and mix",
+            "description": "Disclose energy consumption and energy mix, including the share from renewable and non-renewable sources.",
+            "topic": "climate",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Total energy consumption", "unit": "MWh", "description": "Total energy consumption from fossil and non-fossil sources" },
+              { "name": "Energy from fossil sources", "unit": "MWh", "description": "Energy consumption from fossil sources" },
+              { "name": "Energy from nuclear sources", "unit": "MWh", "description": "Energy consumption from nuclear sources" },
+              { "name": "Energy from renewable sources", "unit": "MWh", "description": "Energy consumption from renewable sources" },
+              { "name": "Share of renewable energy", "unit": "%", "description": "Percentage of energy from renewable sources" },
+              { "name": "Energy intensity per net revenue", "unit": "MWh/M EUR", "description": "Total energy consumption per million EUR net revenue" }
+            ],
+            "guidanceText": "Disclose total energy consumption in MWh, broken down by fossil, nuclear, and renewable sources. Include energy intensity per net revenue.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 302-1", "mappingType": "equivalent" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 302-3", "mappingType": "partial" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-29b", "mappingType": "equivalent" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-C8.2a", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "esrs-e1-6",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E1-6",
+            "name": "Gross Scopes 1, 2, 3 and total GHG emissions",
+            "description": "Disclose gross Scope 1, Scope 2, and Scope 3 GHG emissions and total GHG emissions.",
+            "topic": "climate",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Gross Scope 1 GHG emissions", "unit": "tCO2e", "calculationMethod": "GHG Protocol Corporate Standard", "description": "Gross Scope 1 GHG emissions" },
+              { "name": "Gross Scope 2 GHG emissions (location-based)", "unit": "tCO2e", "calculationMethod": "GHG Protocol Scope 2 Guidance - location-based", "description": "Gross location-based Scope 2 GHG emissions" },
+              { "name": "Gross Scope 2 GHG emissions (market-based)", "unit": "tCO2e", "calculationMethod": "GHG Protocol Scope 2 Guidance - market-based", "description": "Gross market-based Scope 2 GHG emissions" },
+              { "name": "Gross Scope 3 GHG emissions", "unit": "tCO2e", "calculationMethod": "GHG Protocol Scope 3 Standard", "description": "Gross Scope 3 GHG emissions by category" },
+              { "name": "Total GHG emissions", "unit": "tCO2e", "description": "Sum of Scope 1 + Scope 2 + Scope 3" }
+            ],
+            "guidanceText": "Disclose in metric tons of CO2eq: gross Scope 1 GHG emissions, gross Scope 2 GHG emissions (location-based and market-based), gross Scope 3 GHG emissions, and total GHG emissions.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 305-1", "mappingType": "equivalent" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 305-2", "mappingType": "equivalent" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 305-3", "mappingType": "equivalent" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-29a", "mappingType": "equivalent" },
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-MET-A", "mappingType": "equivalent" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-C6.1", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E1", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "esrs-e1-7",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E1-7",
+            "name": "GHG removals and GHG mitigation projects financed through carbon credits",
+            "description": "Disclose GHG removals from own operations and GHG mitigation achieved through carbon credits.",
+            "topic": "climate",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "GHG removals", "unit": "tCO2e", "description": "GHG removals in metric tons CO2e" },
+              { "name": "Carbon credits purchased", "unit": "tCO2e", "description": "Amount of GHG emission reductions from carbon credits" }
+            ],
+            "guidanceText": "Disclose GHG removals and storage from own operations and the amount of GHG emission reductions or removals from climate change mitigation projects financed through carbon credits.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 305-5", "mappingType": "partial" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-C11.2a", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "esrs-e1-8",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E1-8",
+            "name": "Internal carbon pricing",
+            "description": "Disclose whether and how the undertaking applies internal carbon pricing schemes.",
+            "topic": "climate",
+            "dataType": "narrative",
+            "requiredMetrics": [
+              { "name": "Internal carbon price", "unit": "EUR/tCO2e", "description": "Internal carbon price used" }
+            ],
+            "guidanceText": "Describe whether the undertaking applies internal carbon pricing schemes, and if so, how they support decision-making and incentivise the implementation of climate-related policies.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-C11.3a", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "esrs-e1-9",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E1-9",
+            "name": "Anticipated financial effects from material physical and transition risks and potential climate-related opportunities",
+            "description": "Disclose the anticipated financial effects of material physical and transition risks and climate-related opportunities.",
+            "topic": "climate",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Assets at physical risk", "unit": "currency", "description": "Monetary amount of assets at material physical risk" },
+              { "name": "Assets at transition risk", "unit": "currency", "description": "Monetary amount of assets at material transition risk" },
+              { "name": "Revenue at risk", "unit": "%", "description": "Percentage of net revenue at risk from climate change" }
+            ],
+            "guidanceText": "Disclose the anticipated financial effects of material physical risks, material transition risks, and potential climate-related opportunities.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 201-2", "mappingType": "equivalent" },
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-STRAT-C", "mappingType": "equivalent" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-10", "mappingType": "equivalent" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "ESRS E2",
+        "name": "Pollution",
+        "disclosures": [
+          {
+            "id": "esrs-e2-1",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E2-1",
+            "name": "Policies related to pollution",
+            "description": "Describe policies adopted to manage material impacts, risks and opportunities related to pollution.",
+            "topic": "pollution",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe policies adopted to manage material pollution impacts, risks and opportunities, including prevention of air, water and soil pollution.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "esrs-e2-2",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E2-2",
+            "name": "Actions and resources related to pollution",
+            "description": "Describe key actions taken and planned to prevent, mitigate or remediate pollution impacts.",
+            "topic": "pollution",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Disclose key actions and resources related to pollution prevention, mitigation and remediation.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "esrs-e2-3",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E2-3",
+            "name": "Targets related to pollution",
+            "description": "Disclose the pollution-related targets adopted.",
+            "topic": "pollution",
+            "dataType": "quantitative",
+            "requiredMetrics": [],
+            "guidanceText": "Disclose pollution-related targets, including reduction targets for air, water, and soil pollutants.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "esrs-e2-4",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E2-4",
+            "name": "Pollution of air, water and soil",
+            "description": "Disclose pollutant emissions to air, water and soil.",
+            "topic": "pollution",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "NOx emissions", "unit": "tonnes", "description": "Nitrogen oxide emissions" },
+              { "name": "SOx emissions", "unit": "tonnes", "description": "Sulfur oxide emissions" },
+              { "name": "PM emissions", "unit": "tonnes", "description": "Particulate matter emissions" },
+              { "name": "Pollutants to water", "unit": "tonnes", "description": "Pollutants emitted to water" }
+            ],
+            "guidanceText": "Disclose amounts of each pollutant listed in Annex II of the E-PRTR Regulation emitted to air, water and soil.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 305-7", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "esrs-e2-5",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E2-5",
+            "name": "Substances of concern and substances of very high concern",
+            "description": "Disclose information on the production, use and/or distribution and commercialisation of substances of concern and substances of very high concern.",
+            "topic": "pollution",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Substances of concern produced/used", "unit": "tonnes", "description": "Total amount of substances of concern" },
+              { "name": "Substances of very high concern", "unit": "tonnes", "description": "Total SVHC generated or used" }
+            ],
+            "guidanceText": "Disclose information on the total amounts of substances of concern generated or used, and substances of very high concern.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "esrs-e2-6",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E2-6",
+            "name": "Anticipated financial effects from material pollution-related risks and opportunities",
+            "description": "Disclose the anticipated financial effects of pollution-related risks and opportunities.",
+            "topic": "pollution",
+            "dataType": "quantitative",
+            "requiredMetrics": [],
+            "guidanceText": "Disclose the anticipated financial effects of material pollution-related risks and potential opportunities.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          }
+        ]
+      },
+      {
+        "code": "ESRS E3",
+        "name": "Water and Marine Resources",
+        "disclosures": [
+          {
+            "id": "esrs-e3-1",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E3-1",
+            "name": "Policies related to water and marine resources",
+            "description": "Describe policies adopted to manage water and marine resource impacts.",
+            "topic": "water",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe policies adopted to manage material water and marine resource impacts, risks and opportunities.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 303-1", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "esrs-e3-2",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E3-2",
+            "name": "Actions and resources related to water and marine resources",
+            "description": "Describe key actions and resources related to water and marine resource management.",
+            "topic": "water",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Disclose key actions and resources for managing water and marine resource impacts.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 303-2", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "esrs-e3-3",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E3-3",
+            "name": "Targets related to water and marine resources",
+            "description": "Disclose the water and marine resource-related targets adopted.",
+            "topic": "water",
+            "dataType": "quantitative",
+            "requiredMetrics": [],
+            "guidanceText": "Disclose water and marine resource-related targets, including water consumption reduction targets.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "esrs-e3-4",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E3-4",
+            "name": "Water consumption",
+            "description": "Disclose water consumption performance in terms of total water consumption, water consumption in areas at water risk, and water recycled/reused.",
+            "topic": "water",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Total water consumption", "unit": "m3", "description": "Total water consumption" },
+              { "name": "Water consumption in water-risk areas", "unit": "m3", "description": "Water consumption in areas at material water risk" },
+              { "name": "Water recycled and reused", "unit": "m3", "description": "Total water recycled and reused" },
+              { "name": "Water intensity per net revenue", "unit": "m3/M EUR", "description": "Water consumption per million EUR net revenue" }
+            ],
+            "guidanceText": "Disclose total water consumption, water consumption in areas at water risk, and water recycled and reused.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 303-3", "mappingType": "equivalent" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 303-5", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E4", "mappingType": "equivalent" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-W1.2b", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "esrs-e3-5",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E3-5",
+            "name": "Anticipated financial effects from material water and marine resources-related risks and opportunities",
+            "description": "Disclose the anticipated financial effects of water and marine resource risks and opportunities.",
+            "topic": "water",
+            "dataType": "quantitative",
+            "requiredMetrics": [],
+            "guidanceText": "Disclose the anticipated financial effects of material water and marine resources-related risks and potential opportunities.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          }
+        ]
+      },
+      {
+        "code": "ESRS E4",
+        "name": "Biodiversity and Ecosystems",
+        "disclosures": [
+          {
+            "id": "esrs-e4-1",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E4-1",
+            "name": "Transition plan and consideration of biodiversity in strategy and business model",
+            "description": "Disclose how biodiversity and ecosystems are embedded in the undertaking's strategy.",
+            "topic": "biodiversity",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe how biodiversity and ecosystem-related considerations are integrated into the strategy and business model.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "esrs-e4-2",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E4-2",
+            "name": "Policies related to biodiversity and ecosystems",
+            "description": "Describe policies adopted to manage biodiversity and ecosystem impacts.",
+            "topic": "biodiversity",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe policies for managing material biodiversity and ecosystem impacts, risks and opportunities.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "esrs-e4-3",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E4-3",
+            "name": "Actions and resources related to biodiversity and ecosystems",
+            "description": "Describe key actions and resources for managing biodiversity impacts.",
+            "topic": "biodiversity",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Disclose key actions and resources for managing biodiversity and ecosystem impacts.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "esrs-e4-4",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E4-4",
+            "name": "Targets related to biodiversity and ecosystems",
+            "description": "Disclose the biodiversity-related targets adopted.",
+            "topic": "biodiversity",
+            "dataType": "quantitative",
+            "requiredMetrics": [],
+            "guidanceText": "Disclose biodiversity-related targets including measurable outcomes, base year, target year.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "esrs-e4-5",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E4-5",
+            "name": "Impact metrics related to biodiversity and ecosystems change",
+            "description": "Disclose metrics on the undertaking's material impacts on biodiversity and ecosystems.",
+            "topic": "biodiversity",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Sites in or near biodiversity-sensitive areas", "unit": "count", "description": "Number of sites owned/controlled in or near biodiversity-sensitive areas" },
+              { "name": "Area of sites in biodiversity-sensitive areas", "unit": "ha", "description": "Total area of sites in or near biodiversity-sensitive areas" }
+            ],
+            "guidanceText": "Disclose number of sites owned or controlled in or near biodiversity-sensitive areas and the area of those sites, plus land-use and land-use change metrics.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 304-1", "mappingType": "partial" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 304-2", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "esrs-e4-6",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E4-6",
+            "name": "Anticipated financial effects from material biodiversity and ecosystem-related risks and opportunities",
+            "description": "Disclose the anticipated financial effects of biodiversity-related risks and opportunities.",
+            "topic": "biodiversity",
+            "dataType": "quantitative",
+            "requiredMetrics": [],
+            "guidanceText": "Disclose the anticipated financial effects of material biodiversity and ecosystem-related risks and potential opportunities.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          }
+        ]
+      },
+      {
+        "code": "ESRS E5",
+        "name": "Resource Use and Circular Economy",
+        "disclosures": [
+          {
+            "id": "esrs-e5-1",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E5-1",
+            "name": "Policies related to resource use and circular economy",
+            "description": "Describe policies adopted to manage resource use and circular economy impacts.",
+            "topic": "circular-economy",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe policies for managing material resource use and circular economy impacts, risks and opportunities.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "esrs-e5-2",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E5-2",
+            "name": "Actions and resources related to resource use and circular economy",
+            "description": "Describe key actions and resources for managing resource use and circularity.",
+            "topic": "circular-economy",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Disclose key actions and resources for managing resource use and circular economy impacts.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "esrs-e5-3",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E5-3",
+            "name": "Targets related to resource use and circular economy",
+            "description": "Disclose resource use and circular economy-related targets.",
+            "topic": "circular-economy",
+            "dataType": "quantitative",
+            "requiredMetrics": [],
+            "guidanceText": "Disclose resource use and circular economy-related targets.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "esrs-e5-4",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E5-4",
+            "name": "Resource inflows",
+            "description": "Disclose information on material resource inflows including overall material use and the share of biological/renewable materials and secondary materials.",
+            "topic": "circular-economy",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Overall material use", "unit": "tonnes", "description": "Total weight of materials used" },
+              { "name": "Share of renewable materials", "unit": "%", "description": "Percentage of renewable materials in total material use" },
+              { "name": "Share of secondary (recycled) materials", "unit": "%", "description": "Percentage of recycled materials in total material use" }
+            ],
+            "guidanceText": "Disclose overall material use in tonnes or kilograms, the share from biological and renewable sources, and the share of secondary materials (recycled).",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 301-1", "mappingType": "partial" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 301-2", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "esrs-e5-5",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E5-5",
+            "name": "Resource outflows",
+            "description": "Disclose information on material resource outflows, including products/materials designed for circularity and waste generated.",
+            "topic": "circular-economy",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Total waste generated", "unit": "tonnes", "description": "Total weight of waste generated" },
+              { "name": "Hazardous waste", "unit": "tonnes", "description": "Total hazardous waste generated" },
+              { "name": "Non-hazardous waste", "unit": "tonnes", "description": "Total non-hazardous waste generated" },
+              { "name": "Waste diverted from disposal (recycled)", "unit": "tonnes", "description": "Waste diverted from disposal" },
+              { "name": "Waste directed to disposal", "unit": "tonnes", "description": "Waste sent to disposal" }
+            ],
+            "guidanceText": "Disclose the total amount and breakdown of waste generated (hazardous and non-hazardous), waste diverted from disposal, and waste directed to disposal.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 306-3", "mappingType": "equivalent" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 306-4", "mappingType": "partial" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 306-5", "mappingType": "partial" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E5", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "esrs-e5-6",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS E5-6",
+            "name": "Anticipated financial effects from material resource use and circular economy-related risks and opportunities",
+            "description": "Disclose the anticipated financial effects of resource use and circular economy risks and opportunities.",
+            "topic": "circular-economy",
+            "dataType": "quantitative",
+            "requiredMetrics": [],
+            "guidanceText": "Disclose the anticipated financial effects of material resource use and circular economy-related risks and potential opportunities.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          }
+        ]
+      },
+      {
+        "code": "ESRS S1",
+        "name": "Own Workforce",
+        "disclosures": [
+          {
+            "id": "esrs-s1-1",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS S1-1",
+            "name": "Policies related to own workforce",
+            "description": "Describe policies for managing material impacts on the undertaking's own workforce.",
+            "topic": "workforce",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the policies adopted to manage material impacts on its own workforce, including human rights policies.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "esrs-s1-6",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS S1-6",
+            "name": "Characteristics of the undertaking's employees",
+            "description": "Disclose the total number of employees by head count, and breakdowns by gender, country, and contract type.",
+            "topic": "workforce",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Total employees", "unit": "headcount", "description": "Total number of employees by head count" },
+              { "name": "Female employees", "unit": "headcount", "description": "Number of female employees" },
+              { "name": "Male employees", "unit": "headcount", "description": "Number of male employees" },
+              { "name": "Permanent contract employees", "unit": "headcount", "description": "Employees with permanent contracts" },
+              { "name": "Temporary contract employees", "unit": "headcount", "description": "Employees with temporary contracts" },
+              { "name": "Full-time employees", "unit": "headcount", "description": "Number of full-time employees" },
+              { "name": "Part-time employees", "unit": "headcount", "description": "Number of part-time employees" }
+            ],
+            "guidanceText": "Disclose the total number of employees by head count, and breakdowns by gender, country, and contract type (permanent, temporary, non-guaranteed hours), and full-time/part-time.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-7", "mappingType": "equivalent" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 401-1", "mappingType": "partial" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-S5", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "esrs-s1-7",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS S1-7",
+            "name": "Characteristics of non-employee workers in the undertaking's own workforce",
+            "description": "Describe non-employee workers including self-employed and workers from third-party undertakings.",
+            "topic": "workforce",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Non-employee workers", "unit": "headcount", "description": "Total non-employee workers in own workforce" }
+            ],
+            "guidanceText": "Disclose the total number of non-employee workers in the own workforce and a description of the types of work performed.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-8", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "esrs-s1-8",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS S1-8",
+            "name": "Collective bargaining coverage and social dialogue",
+            "description": "Disclose the extent to which working conditions are determined through collective bargaining agreements and social dialogue.",
+            "topic": "workforce",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Collective bargaining coverage", "unit": "%", "description": "Percentage of employees covered by collective bargaining agreements" }
+            ],
+            "guidanceText": "Disclose the percentage of total employees covered by collective bargaining agreements and the extent of social dialogue coverage.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-30", "mappingType": "equivalent" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 407-1", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "esrs-s1-9",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS S1-9",
+            "name": "Diversity metrics",
+            "description": "Disclose the gender distribution at top management and the age distribution amongst the employees.",
+            "topic": "workforce",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Female representation in top management", "unit": "%", "description": "Percentage of female members in top management" },
+              { "name": "Employees under 30", "unit": "%", "description": "Percentage of employees under 30" },
+              { "name": "Employees 30-50", "unit": "%", "description": "Percentage of employees aged 30-50" },
+              { "name": "Employees over 50", "unit": "%", "description": "Percentage of employees over 50" }
+            ],
+            "guidanceText": "Disclose the gender distribution at top management and age distribution among employees. Report the percentage of persons with disabilities among employees if reported to investors.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 405-1", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-S4", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-G1", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "esrs-s1-13",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS S1-13",
+            "name": "Training and skills development metrics",
+            "description": "Disclose the extent to which training and skills development is provided to the workforce.",
+            "topic": "workforce",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Average training hours per employee", "unit": "hours/employee", "description": "Average training hours per employee" },
+              { "name": "Training expenditure per employee", "unit": "currency", "description": "Training and development expenditure per employee" }
+            ],
+            "guidanceText": "Disclose the percentage of employees that participated in regular performance and career development reviews, and average number of training hours per employee by gender.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 404-1", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-S3", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "esrs-s1-14",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS S1-14",
+            "name": "Health and safety metrics",
+            "description": "Disclose information on the health and safety record of the undertaking's own workforce.",
+            "topic": "workforce",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Fatalities (work-related)", "unit": "count", "description": "Number of fatalities from work-related injuries and ill health" },
+              { "name": "Recordable work-related accidents", "unit": "count", "description": "Number of recordable work-related accidents" },
+              { "name": "Days lost to work-related injuries", "unit": "days", "description": "Number of days lost to work-related injuries, accidents and ill health" },
+              { "name": "LTIFR", "unit": "per 1M hours", "description": "Lost-time injury frequency rate" }
+            ],
+            "guidanceText": "Disclose the number of fatalities, number and rate of recordable work-related accidents, and number of cases of recordable work-related ill health.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 403-9", "mappingType": "equivalent" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 403-10", "mappingType": "partial" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 403-1", "mappingType": "partial" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-S1", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "esrs-s1-15",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS S1-15",
+            "name": "Work-life balance metrics",
+            "description": "Disclose the extent to which employees are entitled to and make use of family-related leave.",
+            "topic": "workforce",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Employees entitled to family-related leave", "unit": "%", "description": "Percentage entitled to family-related leave" }
+            ],
+            "guidanceText": "Disclose percentage of employees entitled to family-related leave and the take-up of family-related leave by gender.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 401-3", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "esrs-s1-16",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS S1-16",
+            "name": "Remuneration metrics (pay gap and total remuneration)",
+            "description": "Disclose the gender pay gap and the ratio between the highest paid individual and median employee remuneration.",
+            "topic": "workforce",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Gender pay gap", "unit": "%", "description": "Unadjusted gender pay gap" },
+              { "name": "CEO-to-employee pay ratio", "unit": "ratio", "description": "Ratio of annual compensation of highest-paid to median employee" }
+            ],
+            "guidanceText": "Disclose the unadjusted gender pay gap and the ratio of the annual total compensation for the highest paid individual to the median annual total compensation for all employees.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 405-2", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-S9", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "esrs-s1-17",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS S1-17",
+            "name": "Incidents, complaints and severe human rights impacts",
+            "description": "Disclose the number of work-related incidents, complaints filed, and severe human rights impacts related to own workforce.",
+            "topic": "workforce",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Discrimination incidents", "unit": "count", "description": "Number of discrimination incidents reported" },
+              { "name": "Complaints filed through channels", "unit": "count", "description": "Number of complaints filed through internal channels" }
+            ],
+            "guidanceText": "Disclose the total number of incidents of discrimination, the total number of complaints filed, and any severe human rights impacts and incidents.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 406-1", "mappingType": "partial" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "ESRS S2",
+        "name": "Workers in the Value Chain",
+        "disclosures": [
+          {
+            "id": "esrs-s2-1",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS S2-1",
+            "name": "Policies related to value chain workers",
+            "description": "Describe policies for managing material impacts on workers in the value chain.",
+            "topic": "value-chain-workers",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the policies adopted to manage material impacts on value chain workers.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 414-1", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "esrs-s2-4",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS S2-4",
+            "name": "Taking action on material impacts on value chain workers",
+            "description": "Describe actions taken to address material impacts on value chain workers.",
+            "topic": "value-chain-workers",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe actions taken or planned to prevent, mitigate, or remediate material negative impacts on value chain workers.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 408-1", "mappingType": "partial" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 409-1", "mappingType": "partial" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "ESRS S3",
+        "name": "Affected Communities",
+        "disclosures": [
+          {
+            "id": "esrs-s3-1",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS S3-1",
+            "name": "Policies related to affected communities",
+            "description": "Describe policies for managing material impacts on affected communities.",
+            "topic": "communities",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the policies adopted to manage material impacts on affected communities.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "esrs-s3-4",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS S3-4",
+            "name": "Taking action on material impacts on affected communities",
+            "description": "Describe actions taken to address material impacts on affected communities.",
+            "topic": "communities",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe actions taken or planned to prevent, mitigate, or remediate material negative impacts on affected communities.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 413-1", "mappingType": "partial" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "ESRS S4",
+        "name": "Consumers and End-users",
+        "disclosures": [
+          {
+            "id": "esrs-s4-1",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS S4-1",
+            "name": "Policies related to consumers and end-users",
+            "description": "Describe policies for managing material impacts on consumers and end-users.",
+            "topic": "consumers",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the policies adopted to manage material impacts related to consumers and end-users.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          }
+        ]
+      },
+      {
+        "code": "ESRS G1",
+        "name": "Business Conduct",
+        "disclosures": [
+          {
+            "id": "esrs-g1-1",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS G1-1",
+            "name": "Business conduct policies and corporate culture",
+            "description": "Describe the undertaking's policies and corporate culture related to business conduct, including anti-corruption and bribery, protection of whistleblowers, and animal welfare.",
+            "topic": "business-conduct",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe how the undertaking establishes its corporate culture, including policies on business ethics, anti-corruption and anti-bribery, and protection of whistleblowers.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 205-2", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "esrs-g1-2",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS G1-2",
+            "name": "Management of relationships with suppliers",
+            "description": "Provide information about the management of the undertaking's relationships with its suppliers and its impact on its supply chain.",
+            "topic": "business-conduct",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe how the undertaking manages its relationships with suppliers, payment practices, and integration of social and environmental criteria in supplier selection.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "esrs-g1-3",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS G1-3",
+            "name": "Prevention and detection of corruption and bribery",
+            "description": "Provide information about the undertaking's system to prevent and detect corruption and bribery, and training provided.",
+            "topic": "business-conduct",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Anti-corruption training coverage", "unit": "%", "description": "Percentage of functions-at-risk covered by anti-corruption training" },
+              { "name": "Confirmed corruption/bribery cases", "unit": "count", "description": "Number of confirmed cases of corruption or bribery" }
+            ],
+            "guidanceText": "Disclose the scope of anti-corruption and anti-bribery training, number of convictions, and fines for corruption or bribery.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 205-1", "mappingType": "partial" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 205-2", "mappingType": "partial" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-G5", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "esrs-g1-4",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS G1-4",
+            "name": "Confirmed incidents of corruption or bribery",
+            "description": "Provide information about confirmed incidents of corruption or bribery and actions taken.",
+            "topic": "business-conduct",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Confirmed corruption incidents", "unit": "count", "description": "Number of confirmed incidents of corruption or bribery" },
+              { "name": "Fines for corruption/bribery", "unit": "currency", "description": "Total fines for corruption or bribery violations" }
+            ],
+            "guidanceText": "Disclose the number of convictions and fines for violations of anti-corruption and anti-bribery laws, and confirmed incidents of corruption or bribery within the undertaking.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 205-3", "mappingType": "equivalent" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-27", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "esrs-g1-5",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS G1-5",
+            "name": "Political influence and lobbying activities",
+            "description": "Provide information about political contributions and lobbying activities.",
+            "topic": "business-conduct",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Political contributions", "unit": "currency", "description": "Total financial and in-kind political contributions" }
+            ],
+            "guidanceText": "Disclose representation on the financial and non-financial interests and contributions to lobbying or political activities.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "esrs-g1-6",
+            "frameworkId": "fw-esrs-2024",
+            "code": "ESRS G1-6",
+            "name": "Payment practices",
+            "description": "Provide information about the undertaking's payment practices related to its suppliers.",
+            "topic": "business-conduct",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Average payment time to suppliers", "unit": "days", "description": "Average time to pay invoices from the invoice date" },
+              { "name": "Late payments", "unit": "%", "description": "Percentage of payments made after agreed payment terms" }
+            ],
+            "guidanceText": "Disclose the average time the undertaking takes to pay an invoice from the date when the contractual or statutory term of payment starts to be calculated.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,1936 @@
+{
+  "id": "fw-gri-2021",
+  "code": "gri",
+  "name": "GRI Standards 2021",
+  "version": "2021",
+  "effectiveDate": "2023-01-01",
+  "issuingBody": "Global Reporting Initiative",
+  "region": "global",
+  "type": "voluntary",
+  "structure": {
+    "topics": [
+      {
+        "code": "GRI 1",
+        "name": "Foundation 2021",
+        "disclosures": [
+          {
+            "id": "gri-1-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 1",
+            "name": "Foundation 2021",
+            "description": "Sets out the purpose and system of the GRI Standards, key concepts, and requirements for reporting in accordance with the GRI Standards.",
+            "topic": "foundation",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Organizations must apply GRI 1 when using the GRI Standards. GRI 1 describes the reporting principles and requirements for reporting in accordance.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          }
+        ]
+      },
+      {
+        "code": "GRI 2",
+        "name": "General Disclosures 2021",
+        "disclosures": [
+          {
+            "id": "gri-2-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-1",
+            "name": "Organizational details",
+            "description": "Report legal name, nature of ownership and legal form, location of headquarters, and countries of operation.",
+            "topic": "general",
+            "dataType": "narrative",
+            "requiredMetrics": [
+              { "name": "Legal name", "unit": "text", "description": "Legal name of the organization" },
+              { "name": "Nature of ownership", "unit": "text", "description": "Nature of ownership and legal form" },
+              { "name": "Location of headquarters", "unit": "text", "description": "Location of the organization's headquarters" },
+              { "name": "Countries of operation", "unit": "list", "description": "Countries where the organization operates" }
+            ],
+            "guidanceText": "Report the legal name of the organization, its nature of ownership and legal form, the location of its headquarters, and the countries in which it operates.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-BP-1", "mappingType": "equivalent", "notes": "ESRS 2 BP-1 covers basis for preparation including organizational details" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S1-42", "mappingType": "partial", "notes": "IFRS S1 para 42 requires entity identification" }
+            ]
+          },
+          {
+            "id": "gri-2-2",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-2",
+            "name": "Entities included in the organization's sustainability reporting",
+            "description": "List all entities included in sustainability reporting and explain differences from financial reporting entity.",
+            "topic": "general",
+            "dataType": "narrative",
+            "requiredMetrics": [
+              { "name": "Entities included", "unit": "list", "description": "List of entities included in sustainability reporting" }
+            ],
+            "guidanceText": "List all its entities included in its sustainability reporting. Explain differences between the list of entities and financial reporting.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-BP-1", "mappingType": "equivalent" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S1-20", "mappingType": "equivalent", "notes": "IFRS S1 paras 20-24 address reporting entity" }
+            ]
+          },
+          {
+            "id": "gri-2-3",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-3",
+            "name": "Reporting period, frequency and contact point",
+            "description": "Specify the reporting period for and frequency of sustainability reporting, the reporting period for financial reporting, and the contact point.",
+            "topic": "general",
+            "dataType": "narrative",
+            "requiredMetrics": [
+              { "name": "Reporting period", "unit": "text", "description": "Start and end date of reporting period" },
+              { "name": "Reporting frequency", "unit": "text", "description": "Annual, biannual, or other frequency" }
+            ],
+            "guidanceText": "Specify the reporting period for and the frequency of its sustainability reporting, the reporting period for its financial reporting, and the contact point for questions about the report.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-BP-2", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "gri-2-4",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-4",
+            "name": "Restatements of information",
+            "description": "Report restatements of information given in previous reporting periods and explain reasons and effects.",
+            "topic": "general",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Report restatements of information made from previous reporting periods, and explain the reasons for the restatements and their effect.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-2-5",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-5",
+            "name": "External assurance",
+            "description": "Describe the organization's policy and practice for seeking external assurance.",
+            "topic": "general",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe its policy and practice for seeking external assurance, including whether and how the highest governance body and senior executives are involved.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-BP-2", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-2-6",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-6",
+            "name": "Activities, value chain and other business relationships",
+            "description": "Report activities, products, services, markets, supply chain, and entities in the value chain.",
+            "topic": "general",
+            "dataType": "narrative",
+            "requiredMetrics": [
+              { "name": "Sector", "unit": "text", "description": "Sector(s) in which the organization is active" },
+              { "name": "Value chain description", "unit": "text", "description": "Description of the value chain" }
+            ],
+            "guidanceText": "Report the sectors in which it is active, describe its value chain including activities, products, services, and markets served.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-SBM-1", "mappingType": "equivalent" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S1-27", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-2-7",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-7",
+            "name": "Employees",
+            "description": "Report total number of employees by gender and region, and permanent/temporary/full-time/part-time breakdown.",
+            "topic": "general",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Total employees", "unit": "headcount", "description": "Total number of employees" },
+              { "name": "Employees by gender - male", "unit": "headcount", "description": "Number of male employees" },
+              { "name": "Employees by gender - female", "unit": "headcount", "description": "Number of female employees" },
+              { "name": "Permanent employees", "unit": "headcount", "description": "Number of permanent employees" },
+              { "name": "Temporary employees", "unit": "headcount", "description": "Number of temporary employees" },
+              { "name": "Full-time employees", "unit": "headcount", "description": "Number of full-time employees" },
+              { "name": "Part-time employees", "unit": "headcount", "description": "Number of part-time employees" }
+            ],
+            "guidanceText": "Report the total number of employees, and a breakdown of this total by gender and by region. Report total number of permanent, temporary, full-time, and part-time employees by gender.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS S1-6", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-S5", "mappingType": "equivalent", "notes": "Saudi Exchange KPI S5: Total Employees" }
+            ]
+          },
+          {
+            "id": "gri-2-8",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-8",
+            "name": "Workers who are not employees",
+            "description": "Report total number of workers who are not employees and describe the type of work they perform.",
+            "topic": "general",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Workers who are not employees", "unit": "headcount", "description": "Total number of non-employee workers" }
+            ],
+            "guidanceText": "Report the total number of workers who are not employees and whose work is controlled by the organization, and describe the type of work they perform.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS S1-7", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "gri-2-9",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-9",
+            "name": "Governance structure and composition",
+            "description": "Describe governance structure including committees, their responsibilities, and composition by gender, independence, competencies.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [
+              { "name": "Board members", "unit": "headcount", "description": "Total number of board/governing body members" },
+              { "name": "Independent board members", "unit": "headcount", "description": "Number of independent members" },
+              { "name": "Female board members", "unit": "headcount", "description": "Number of female board members" }
+            ],
+            "guidanceText": "Describe its governance structure, including committees of the highest governance body that are responsible for decision-making on economic, environmental, and social topics.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-GOV-1", "mappingType": "equivalent" },
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-GOV-A", "mappingType": "partial" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-G1", "mappingType": "partial", "notes": "Saudi Exchange KPI G1: Board Diversity" }
+            ]
+          },
+          {
+            "id": "gri-2-10",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-10",
+            "name": "Nomination and selection of the highest governance body",
+            "description": "Describe the nomination and selection processes for the highest governance body and its committees.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the nomination and selection processes for the highest governance body and its committees.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-GOV-1", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-2-11",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-11",
+            "name": "Chair of the highest governance body",
+            "description": "Report whether the chair of the highest governance body is also a senior executive.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Report whether the chair of the highest governance body is also a senior executive in the organization.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-2-12",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-12",
+            "name": "Role of the highest governance body in overseeing the management of impacts",
+            "description": "Describe the role of the highest governance body in overseeing the organization's due diligence and other processes to identify and manage impacts.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the role of the highest governance body and senior executives in developing, approving, and updating the organization's purpose, value or mission statements, strategies, policies, and goals related to sustainable development.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-GOV-2", "mappingType": "equivalent" },
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-GOV-A", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-2-13",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-13",
+            "name": "Delegation of responsibility for managing impacts",
+            "description": "Describe how the highest governance body delegates responsibility for managing impacts and reports on sustainability to the board.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe how the highest governance body delegates responsibility for managing the organization's impacts on the economy, environment, and people.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-GOV-B", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-2-14",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-14",
+            "name": "Role of the highest governance body in sustainability reporting",
+            "description": "Report whether the highest governance body is responsible for reviewing and approving the reported information.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Report whether the highest governance body is responsible for reviewing and approving the reported information, including the organization's material topics, and if so, describe the process for reviewing and approving the information.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-2-15",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-15",
+            "name": "Conflicts of interest",
+            "description": "Describe processes for the highest governance body to ensure conflicts of interest are prevented and mitigated.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the processes for the highest governance body to ensure that conflicts of interest are prevented and mitigated.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-G5", "mappingType": "partial", "notes": "Saudi Exchange KPI G5: Ethics & Anti-Corruption" }
+            ]
+          },
+          {
+            "id": "gri-2-16",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-16",
+            "name": "Communication of critical concerns",
+            "description": "Describe how critical concerns are communicated to the highest governance body.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [
+              { "name": "Critical concerns communicated", "unit": "count", "description": "Number of critical concerns communicated to the board" }
+            ],
+            "guidanceText": "Describe whether and how critical concerns are communicated to the highest governance body.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-2-17",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-17",
+            "name": "Collective knowledge of the highest governance body",
+            "description": "Report measures taken to advance the collective knowledge, skills, and experience of the highest governance body on sustainable development.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Report measures taken to advance the collective knowledge, skills, and experience of the highest governance body on sustainable development.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-2-18",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-18",
+            "name": "Evaluation of the performance of the highest governance body",
+            "description": "Describe processes for evaluating the performance of the highest governance body in overseeing management of impacts.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the processes for evaluating the performance of the highest governance body in overseeing the management of the organization's impacts.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-2-19",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-19",
+            "name": "Remuneration policies",
+            "description": "Describe remuneration policies for members of the highest governance body and senior executives.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the remuneration policies for members of the highest governance body and senior executives.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-GOV-3", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-2-20",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-20",
+            "name": "Process to determine remuneration",
+            "description": "Describe the process for designing remuneration policies and for determining remuneration.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the process for designing its remuneration policies and for determining remuneration.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-2-21",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-21",
+            "name": "Annual total compensation ratio",
+            "description": "Report the ratio of the annual total compensation for the highest-paid individual to the median annual total compensation for all employees.",
+            "topic": "governance",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "CEO-to-median compensation ratio", "unit": "ratio", "description": "Ratio of highest-paid individual's compensation to median employee compensation" }
+            ],
+            "guidanceText": "Report the ratio of the annual total compensation for the organization's highest-paid individual to the median annual total compensation for all employees.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-G3", "mappingType": "partial", "notes": "Saudi Exchange KPI G3: CEO Pay Ratio" }
+            ]
+          },
+          {
+            "id": "gri-2-22",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-22",
+            "name": "Statement on sustainable development strategy",
+            "description": "Report a statement from the highest governance body or most senior executive about the relevance of sustainable development and the strategy for contributing to it.",
+            "topic": "strategy",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Report a statement from the highest governance body or most senior executive of the organization about the relevance of sustainable development to the organization and its strategy for contributing to sustainable development.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-SBM-1", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-2-23",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-23",
+            "name": "Policy commitments",
+            "description": "Describe policy commitments for responsible business conduct including human rights.",
+            "topic": "strategy",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe its policy commitments for responsible business conduct, including the authoritative instruments that the commitments reference.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-GOV-4", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-2-24",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-24",
+            "name": "Embedding policy commitments",
+            "description": "Describe how it embeds each of its policy commitments for responsible business conduct throughout its activities and business relationships.",
+            "topic": "strategy",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe how it embeds each of its policy commitments for responsible business conduct throughout its activities and business relationships.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-2-25",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-25",
+            "name": "Processes to remediate negative impacts",
+            "description": "Describe commitments and approach to remediate negative impacts caused or contributed to.",
+            "topic": "strategy",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe its commitments to provide for or cooperate in the remediation of negative impacts that the organization identifies it has caused or contributed to.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-2-26",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-26",
+            "name": "Mechanisms for seeking advice and raising concerns",
+            "description": "Describe mechanisms for individuals to seek advice on implementing policies and raise concerns about business conduct.",
+            "topic": "strategy",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the mechanisms for individuals to seek advice on implementing the organization's policies and practices for responsible business conduct, and to raise concerns about the organization's business conduct.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-G5", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-2-27",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-27",
+            "name": "Compliance with laws and regulations",
+            "description": "Report instances of non-compliance with laws and regulations and fines paid.",
+            "topic": "governance",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Instances of non-compliance", "unit": "count", "description": "Total instances of non-compliance with laws and regulations" },
+              { "name": "Fines paid", "unit": "currency", "description": "Total monetary value of significant fines" }
+            ],
+            "guidanceText": "Report the total number of significant instances of non-compliance with laws and regulations during the reporting period, and the total number and monetary value of fines.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS G1-4", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-2-28",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-28",
+            "name": "Membership associations",
+            "description": "Report industry associations, other membership associations, and national or international advocacy organizations in which it participates.",
+            "topic": "general",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Report industry associations, other membership associations, and national or international advocacy organizations in which it participates in a significant role.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-2-29",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-29",
+            "name": "Approach to stakeholder engagement",
+            "description": "Describe approach to engaging with stakeholders including categories and purpose.",
+            "topic": "stakeholders",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe its approach to engaging with stakeholders, including the categories of stakeholders it engages with, and how it identifies them.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-SBM-2", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-2-30",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 2-30",
+            "name": "Collective bargaining agreements",
+            "description": "Report percentage of total employees covered by collective bargaining agreements.",
+            "topic": "general",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Employees covered by collective bargaining", "unit": "%", "description": "Percentage of total employees covered by collective bargaining agreements" }
+            ],
+            "guidanceText": "Report the percentage of total employees covered by collective bargaining agreements.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS S1-8", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-S8", "mappingType": "partial", "notes": "Saudi Exchange KPI S8: Collective Bargaining" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "GRI 3",
+        "name": "Material Topics 2021",
+        "disclosures": [
+          {
+            "id": "gri-3-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 3-1",
+            "name": "Process to determine material topics",
+            "description": "Describe the process to determine material topics including stakeholder engagement and impacts identification.",
+            "topic": "materiality",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the process it has followed to determine its material topics, including how it has identified actual and potential impacts on the economy, environment, and people.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-IRO-1", "mappingType": "equivalent", "notes": "ESRS double materiality assessment" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S1-30", "mappingType": "partial", "notes": "ISSB focuses on financial materiality only" }
+            ]
+          },
+          {
+            "id": "gri-3-2",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 3-2",
+            "name": "List of material topics",
+            "description": "List the organization's material topics and report changes compared with previous reporting period.",
+            "topic": "materiality",
+            "dataType": "narrative",
+            "requiredMetrics": [
+              { "name": "Material topics", "unit": "list", "description": "List of identified material topics" }
+            ],
+            "guidanceText": "List its material topics. Report changes to the list of material topics compared with the previous reporting period.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-IRO-2", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "gri-3-3",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 3-3",
+            "name": "Management of material topics",
+            "description": "For each material topic, describe actual and potential impacts, policies and commitments, actions taken, and effectiveness tracking.",
+            "topic": "materiality",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "For each material topic reported under Disclosure 3-2, the organization shall describe actual and potential, negative and positive impacts on the economy, environment, and people.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-SBM-3", "mappingType": "partial" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "GRI 200",
+        "name": "Economic Topics",
+        "disclosures": [
+          {
+            "id": "gri-201-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 201-1",
+            "name": "Direct economic value generated and distributed",
+            "description": "Report direct economic value generated and distributed including revenues, operating costs, employee wages, payments to providers of capital, payments to government, and community investments.",
+            "topic": "economic-performance",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Revenue", "unit": "currency", "description": "Direct economic value generated - revenues" },
+              { "name": "Operating costs", "unit": "currency", "description": "Economic value distributed - operating costs" },
+              { "name": "Employee wages and benefits", "unit": "currency", "description": "Economic value distributed - wages and benefits" },
+              { "name": "Payments to providers of capital", "unit": "currency", "description": "Economic value distributed - dividends and interest" },
+              { "name": "Payments to government", "unit": "currency", "description": "Economic value distributed - taxes" },
+              { "name": "Community investments", "unit": "currency", "description": "Economic value distributed - community investments" }
+            ],
+            "guidanceText": "Report the direct economic value generated and distributed (EVG&D) on an accruals basis.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-G4", "mappingType": "partial", "notes": "Saudi Exchange KPI G4: Tax Transparency" }
+            ]
+          },
+          {
+            "id": "gri-201-2",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 201-2",
+            "name": "Financial implications and other risks and opportunities due to climate change",
+            "description": "Report risks and opportunities posed by climate change that have the potential to generate substantive changes in operations, revenue, or expenditure.",
+            "topic": "economic-performance",
+            "dataType": "narrative",
+            "requiredMetrics": [
+              { "name": "Financial implications of climate risks", "unit": "currency", "description": "Estimated financial impact of climate risks" }
+            ],
+            "guidanceText": "Report risks and opportunities posed by climate change that have the potential to generate substantive changes in operations, revenue, or expenditure.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-STRAT-A", "mappingType": "equivalent" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-9", "mappingType": "equivalent" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-10", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "gri-201-3",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 201-3",
+            "name": "Defined benefit plan obligations and other retirement plans",
+            "description": "Report coverage of defined benefit plan obligations and retirement plans.",
+            "topic": "economic-performance",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Pension plan coverage", "unit": "%", "description": "Percentage of employees covered by retirement plans" }
+            ],
+            "guidanceText": "Report whether the plan's liabilities are met by the organization's general resources or through a separate fund.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-201-4",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 201-4",
+            "name": "Financial assistance received from government",
+            "description": "Report total monetary value of financial assistance received by the organization from any government.",
+            "topic": "economic-performance",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Government financial assistance", "unit": "currency", "description": "Total monetary value of financial assistance from government" }
+            ],
+            "guidanceText": "Report the total monetary value of financial assistance received by the organization from any government during the reporting period.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-202-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 202-1",
+            "name": "Ratios of standard entry level wage by gender compared to local minimum wage",
+            "description": "Report ratio of standard entry level wage to local minimum wage at significant locations of operation.",
+            "topic": "market-presence",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Entry level wage to minimum wage ratio", "unit": "ratio", "description": "Ratio of entry level wage to local minimum wage" }
+            ],
+            "guidanceText": "When a significant proportion of employees are compensated based on wages subject to minimum wage rules, report the relevant ratio of the entry level wage by gender at significant locations of operation to the minimum wage.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-202-2",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 202-2",
+            "name": "Proportion of senior management hired from the local community",
+            "description": "Report percentage of senior management at significant locations of operation that are hired from the local community.",
+            "topic": "market-presence",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Senior management from local community", "unit": "%", "description": "Percentage of senior management hired locally" }
+            ],
+            "guidanceText": "Report the percentage of senior management at significant locations of operation that are hired from the local community.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-S6", "mappingType": "partial", "notes": "Saudi Exchange KPI S6: Nationalization/Saudization" }
+            ]
+          },
+          {
+            "id": "gri-203-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 203-1",
+            "name": "Infrastructure investments and services supported",
+            "description": "Report extent of development of significant infrastructure investments and services supported.",
+            "topic": "indirect-economic-impacts",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Report the extent of development of significant infrastructure investments and services supported. Report the current or expected impacts on communities and local economies.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-203-2",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 203-2",
+            "name": "Significant indirect economic impacts",
+            "description": "Report significant indirect economic impacts identified, including positive and negative impacts.",
+            "topic": "indirect-economic-impacts",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Report examples of significant identified indirect economic impacts of the organization, including positive and negative impacts.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-204-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 204-1",
+            "name": "Proportion of spending on local suppliers",
+            "description": "Report percentage of procurement budget spent on local suppliers at significant locations of operation.",
+            "topic": "procurement-practices",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Local procurement spending", "unit": "%", "description": "Percentage of procurement budget used for local suppliers" }
+            ],
+            "guidanceText": "Report the percentage of the procurement budget used for significant locations of operation that is spent on suppliers local to that operation.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-S10", "mappingType": "partial", "notes": "Saudi Exchange KPI S10: Local Procurement" }
+            ]
+          },
+          {
+            "id": "gri-205-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 205-1",
+            "name": "Operations assessed for risks related to corruption",
+            "description": "Report total number and percentage of operations assessed for risks related to corruption and significant risks identified.",
+            "topic": "anti-corruption",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Operations assessed for corruption risk", "unit": "%", "description": "Percentage of operations assessed for corruption risks" }
+            ],
+            "guidanceText": "Report the total number and percentage of operations assessed for risks related to corruption.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS G1-3", "mappingType": "partial" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-G5", "mappingType": "equivalent", "notes": "Saudi Exchange KPI G5: Ethics & Anti-Corruption" }
+            ]
+          },
+          {
+            "id": "gri-205-2",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 205-2",
+            "name": "Communication and training about anti-corruption policies and procedures",
+            "description": "Report total number and percentage of governance body members and employees that anti-corruption policies and procedures have been communicated to.",
+            "topic": "anti-corruption",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Anti-corruption training coverage", "unit": "%", "description": "Percentage of employees trained on anti-corruption" }
+            ],
+            "guidanceText": "Report the total number and percentage of governance body members that the organization's anti-corruption policies and procedures have been communicated to, broken down by region.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS G1-3", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-205-3",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 205-3",
+            "name": "Confirmed incidents of corruption and actions taken",
+            "description": "Report total number and nature of confirmed incidents of corruption.",
+            "topic": "anti-corruption",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Confirmed corruption incidents", "unit": "count", "description": "Total number of confirmed incidents of corruption" }
+            ],
+            "guidanceText": "Report the total number and nature of confirmed incidents of corruption. Report the total number of confirmed incidents in which employees were dismissed or disciplined for corruption.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS G1-4", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-206-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 206-1",
+            "name": "Legal actions for anti-competitive behavior, anti-trust, and monopoly practices",
+            "description": "Report number of legal actions pending or completed regarding anti-competitive behavior.",
+            "topic": "anti-competitive-behavior",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Anti-competitive legal actions", "unit": "count", "description": "Number of legal actions for anti-competitive behavior" }
+            ],
+            "guidanceText": "Report the number of legal actions pending or completed during the reporting period regarding anti-competitive behavior and violations of anti-trust and monopoly legislation.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-207-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 207-1",
+            "name": "Approach to tax",
+            "description": "Describe the approach to tax including governance, compliance strategy, and linking to business and sustainability strategies.",
+            "topic": "tax",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the approach to tax, including whether the organization has a tax strategy, the governance body or executive oversight, approach to regulatory compliance, and how approach to tax is linked to business and sustainable development strategies.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-G4", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-207-2",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 207-2",
+            "name": "Tax governance, control, and risk management",
+            "description": "Describe tax governance and control framework and mechanisms for reporting concerns about tax.",
+            "topic": "tax",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the tax governance and control framework.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-207-3",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 207-3",
+            "name": "Stakeholder engagement and management of concerns related to tax",
+            "description": "Describe the approach to stakeholder engagement and management of stakeholder concerns related to tax.",
+            "topic": "tax",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the approach to stakeholder engagement and management of stakeholder concerns related to tax.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-207-4",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 207-4",
+            "name": "Country-by-country reporting",
+            "description": "Report tax jurisdiction-level data on revenues, profit before tax, income tax paid, and stated capital.",
+            "topic": "tax",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Revenue by tax jurisdiction", "unit": "currency", "description": "Revenue per tax jurisdiction" },
+              { "name": "Profit/loss before tax", "unit": "currency", "description": "Profit before tax per jurisdiction" },
+              { "name": "Income tax paid", "unit": "currency", "description": "Corporate income tax paid per jurisdiction" }
+            ],
+            "guidanceText": "For each tax jurisdiction report names of resident entities, primary activities, number of employees, revenues, profit/loss before tax, tangible assets other than cash.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-G4", "mappingType": "partial" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "GRI 300",
+        "name": "Environmental Topics",
+        "disclosures": [
+          {
+            "id": "gri-301-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 301-1",
+            "name": "Materials used by weight or volume",
+            "description": "Report the total weight or volume of materials used to produce and package primary products and services.",
+            "topic": "materials",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Non-renewable materials used", "unit": "tonnes", "description": "Total weight of non-renewable materials used" },
+              { "name": "Renewable materials used", "unit": "tonnes", "description": "Total weight of renewable materials used" }
+            ],
+            "guidanceText": "Report the total weight or volume of materials that are used to produce and package the organization's primary products and services during the reporting period.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E5-4", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-301-2",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 301-2",
+            "name": "Recycled input materials used",
+            "description": "Report the percentage of recycled input materials used to manufacture the organization's primary products and services.",
+            "topic": "materials",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Recycled input materials", "unit": "%", "description": "Percentage of recycled input materials" }
+            ],
+            "guidanceText": "Report the percentage of recycled input materials used to manufacture the organization's primary products and services.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E5-4", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-301-3",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 301-3",
+            "name": "Reclaimed products and their packaging materials",
+            "description": "Report the percentage of reclaimed products and their packaging materials for each product category.",
+            "topic": "materials",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Reclaimed products", "unit": "%", "description": "Percentage of reclaimed products and packaging" }
+            ],
+            "guidanceText": "Report the percentage of reclaimed products and their packaging materials for each product category.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-302-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 302-1",
+            "name": "Energy consumption within the organization",
+            "description": "Report total energy consumption from renewable and non-renewable sources within the organization in joules or multiples.",
+            "topic": "energy",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Total fuel consumption from non-renewable sources", "unit": "GJ", "description": "Fuel consumption from non-renewable sources in GJ" },
+              { "name": "Total fuel consumption from renewable sources", "unit": "GJ", "description": "Fuel consumption from renewable sources in GJ" },
+              { "name": "Electricity consumption", "unit": "kWh", "description": "Total electricity consumed" },
+              { "name": "Heating consumption", "unit": "GJ", "description": "Total heating energy consumed" },
+              { "name": "Cooling consumption", "unit": "GJ", "description": "Total cooling energy consumed" },
+              { "name": "Steam consumption", "unit": "GJ", "description": "Total steam energy consumed" },
+              { "name": "Total energy consumption", "unit": "GJ", "description": "Total energy consumption within the organization" }
+            ],
+            "guidanceText": "Report total fuel consumption within the organization from non-renewable sources in joules or multiples, including fuel types used. Report total fuel consumption within the organization from renewable sources.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-5", "mappingType": "equivalent" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-29b", "mappingType": "equivalent" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-C8.2a", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E1", "mappingType": "equivalent", "notes": "Saudi Exchange KPI E1: GHG Emissions" }
+            ]
+          },
+          {
+            "id": "gri-302-2",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 302-2",
+            "name": "Energy consumption outside of the organization",
+            "description": "Report energy consumption outside of the organization in joules or multiples.",
+            "topic": "energy",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Energy consumption outside organization", "unit": "GJ", "description": "Total energy consumption outside the organization" }
+            ],
+            "guidanceText": "Report energy consumption outside of the organization, in joules or multiples.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-302-3",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 302-3",
+            "name": "Energy intensity",
+            "description": "Report energy intensity ratio for the organization.",
+            "topic": "energy",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Energy intensity ratio", "unit": "GJ/unit", "description": "Energy intensity per unit of activity or output" }
+            ],
+            "guidanceText": "Report the energy intensity ratio for the organization. Report the organization-specific metric chosen to calculate the ratio.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-5", "mappingType": "partial" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E3", "mappingType": "equivalent", "notes": "Saudi Exchange KPI E3: Energy Usage" }
+            ]
+          },
+          {
+            "id": "gri-302-4",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 302-4",
+            "name": "Reduction of energy consumption",
+            "description": "Report amount of reductions in energy consumption achieved as a direct result of conservation and efficiency initiatives.",
+            "topic": "energy",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Energy reduction", "unit": "GJ", "description": "Amount of energy reduction achieved" }
+            ],
+            "guidanceText": "Report the amount of reductions in energy consumption achieved as a direct result of conservation and efficiency initiatives, in joules or multiples.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-302-5",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 302-5",
+            "name": "Reductions in energy requirements of products and services",
+            "description": "Report reductions in energy requirements of products and services sold during the reporting period.",
+            "topic": "energy",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Product energy reduction", "unit": "%", "description": "Percentage reduction in energy requirements of products and services" }
+            ],
+            "guidanceText": "Report the reductions in energy requirements of sold products and services achieved during the reporting period.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-303-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 303-1",
+            "name": "Interactions with water as a shared resource",
+            "description": "Describe how the organization interacts with water, including how and where water is withdrawn, consumed, and discharged, and the water-related impacts caused or contributed to.",
+            "topic": "water",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe how the organization interacts with water, including how and where water is withdrawn, consumed, and discharged.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E3-1", "mappingType": "partial" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-W1.2", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-303-2",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 303-2",
+            "name": "Management of water discharge-related impacts",
+            "description": "Describe approach to managing water discharge-related impacts and minimum standards set for quality of effluent discharged.",
+            "topic": "water",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Report a description of any minimum standards set for the quality of effluent discharge, and how these minimum standards were determined.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E3-2", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-303-3",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 303-3",
+            "name": "Water withdrawal",
+            "description": "Report total water withdrawal from all areas and from areas with water stress, by source.",
+            "topic": "water",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Total water withdrawal", "unit": "ML", "description": "Total water withdrawal in megaliters" },
+              { "name": "Water withdrawal from water-stressed areas", "unit": "ML", "description": "Water withdrawal from water-stressed areas" }
+            ],
+            "guidanceText": "Report the total water withdrawal from all areas in megaliters, and a breakdown of this total by source.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E3-4", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E4", "mappingType": "equivalent", "notes": "Saudi Exchange KPI E4: Water Usage" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-W1.2b", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "gri-303-4",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 303-4",
+            "name": "Water discharge",
+            "description": "Report total water discharge to all areas and to areas with water stress, by destination and treatment level.",
+            "topic": "water",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Total water discharge", "unit": "ML", "description": "Total water discharge in megaliters" }
+            ],
+            "guidanceText": "Report the total water discharge to all areas in megaliters, and a breakdown of this total by destination and treatment level.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E3-4", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-303-5",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 303-5",
+            "name": "Water consumption",
+            "description": "Report total water consumption from all areas and from areas with water stress.",
+            "topic": "water",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Total water consumption", "unit": "ML", "description": "Total water consumption in megaliters" },
+              { "name": "Water consumption in water-stressed areas", "unit": "ML", "description": "Water consumption from water-stressed areas" }
+            ],
+            "guidanceText": "Report total water consumption from all areas in megaliters. Report total water consumption from all areas with water stress in megaliters.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E3-4", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E4", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "gri-304-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 304-1",
+            "name": "Operational sites owned, leased, managed in, or adjacent to, protected areas and areas of high biodiversity value outside protected areas",
+            "description": "Report information on operational sites owned, leased, managed in, or adjacent to protected areas and areas of high biodiversity value.",
+            "topic": "biodiversity",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "For each operational site owned, leased, managed in, or adjacent to, protected areas and areas of high biodiversity value outside protected areas, report the geographic location, subsurface and underground land, position in relation to the protected area.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E4-5", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-304-2",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 304-2",
+            "name": "Significant impacts of activities, products and services on biodiversity",
+            "description": "Report the nature of significant direct and indirect impacts on biodiversity.",
+            "topic": "biodiversity",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Report the nature of significant direct and indirect impacts on biodiversity with reference to species affected, extent of areas impacted, duration of impacts, and reversibility.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E4-5", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-304-3",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 304-3",
+            "name": "Habitats protected or restored",
+            "description": "Report size and location of all habitat areas protected or restored and whether restoration success was approved by independent external professionals.",
+            "topic": "biodiversity",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Habitat areas protected or restored", "unit": "km2", "description": "Size of habitat areas protected or restored" }
+            ],
+            "guidanceText": "Report the size and location of all habitat areas protected or restored, and whether the success of the restoration measure was or is approved by independent external professionals.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-304-4",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 304-4",
+            "name": "IUCN Red List species and national conservation list species with habitats in areas affected by operations",
+            "description": "Report total number of IUCN Red List species and national conservation list species with habitats in areas affected by the organization's operations.",
+            "topic": "biodiversity",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "IUCN Red List species affected", "unit": "count", "description": "Number of IUCN Red List species with habitats in affected areas" }
+            ],
+            "guidanceText": "Report the total number of IUCN Red List species and national conservation list species with habitats in areas affected by the operations of the organization.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-305-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 305-1",
+            "name": "Direct (Scope 1) GHG emissions",
+            "description": "Report gross direct (Scope 1) GHG emissions in metric tons of CO2 equivalent, gases included, biogenic CO2 emissions, base year, source of emission factors, and consolidation approach.",
+            "topic": "emissions",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Scope 1 GHG emissions", "unit": "tCO2e", "calculationMethod": "GHG Protocol Corporate Standard", "description": "Gross direct (Scope 1) GHG emissions" },
+              { "name": "Biogenic CO2 emissions", "unit": "tCO2e", "description": "Biogenic CO2 emissions in metric tons" }
+            ],
+            "guidanceText": "Report gross direct (Scope 1) GHG emissions in metric tons of CO2 equivalent. Report gases included in the calculation (CO2, CH4, N2O, HFCs, PFCs, SF6, NF3). Report biogenic CO2 emissions separately.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-6", "mappingType": "equivalent", "notes": "ESRS E1-6 requires Scope 1 GHG emissions" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-29a", "mappingType": "equivalent", "notes": "IFRS S2 para 29(a) requires absolute Scope 1 GHG emissions" },
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-MET-A", "mappingType": "equivalent" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-C6.1", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E1", "mappingType": "equivalent", "notes": "Saudi Exchange KPI E1: GHG Emissions (Scope 1)" },
+              { "frameworkCode": "adx", "disclosureCode": "ADX-E1", "mappingType": "equivalent", "notes": "ADX ESG metric E1: GHG Emissions" }
+            ]
+          },
+          {
+            "id": "gri-305-2",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 305-2",
+            "name": "Energy indirect (Scope 2) GHG emissions",
+            "description": "Report gross location-based and market-based energy indirect (Scope 2) GHG emissions in metric tons of CO2 equivalent.",
+            "topic": "emissions",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Scope 2 GHG emissions (location-based)", "unit": "tCO2e", "calculationMethod": "GHG Protocol Scope 2 Guidance", "description": "Gross location-based Scope 2 GHG emissions" },
+              { "name": "Scope 2 GHG emissions (market-based)", "unit": "tCO2e", "calculationMethod": "GHG Protocol Scope 2 Guidance", "description": "Gross market-based Scope 2 GHG emissions" }
+            ],
+            "guidanceText": "Report gross location-based energy indirect (Scope 2) GHG emissions in metric tons of CO2 equivalent. If applicable, report gross market-based energy indirect (Scope 2) GHG emissions.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-6", "mappingType": "equivalent" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-29a", "mappingType": "equivalent" },
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-MET-A", "mappingType": "equivalent" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-C6.3", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E1", "mappingType": "equivalent", "notes": "Saudi Exchange KPI E1: GHG Emissions (Scope 2)" },
+              { "frameworkCode": "adx", "disclosureCode": "ADX-E1", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "gri-305-3",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 305-3",
+            "name": "Other indirect (Scope 3) GHG emissions",
+            "description": "Report gross other indirect (Scope 3) GHG emissions in metric tons of CO2 equivalent.",
+            "topic": "emissions",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Scope 3 GHG emissions", "unit": "tCO2e", "calculationMethod": "GHG Protocol Corporate Value Chain (Scope 3) Standard", "description": "Gross other indirect (Scope 3) GHG emissions by category" }
+            ],
+            "guidanceText": "Report gross other indirect (Scope 3) GHG emissions in metric tons of CO2 equivalent. Report the categories included.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-6", "mappingType": "equivalent" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-29a", "mappingType": "equivalent" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-C6.5", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "gri-305-4",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 305-4",
+            "name": "GHG emissions intensity",
+            "description": "Report the GHG emissions intensity ratio for the organization.",
+            "topic": "emissions",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "GHG emissions intensity", "unit": "tCO2e/unit", "description": "GHG emissions intensity per organization-specific denominator" }
+            ],
+            "guidanceText": "Report the GHG emissions intensity ratio for the organization. Report the organization-specific metric chosen to calculate the ratio.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-6", "mappingType": "partial" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-29b", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E2", "mappingType": "equivalent", "notes": "Saudi Exchange KPI E2: Emissions Intensity" }
+            ]
+          },
+          {
+            "id": "gri-305-5",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 305-5",
+            "name": "Reduction of GHG emissions",
+            "description": "Report GHG emissions reductions achieved as a direct result of initiatives to reduce emissions.",
+            "topic": "emissions",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "GHG emissions reductions", "unit": "tCO2e", "description": "Total GHG emissions reductions achieved" }
+            ],
+            "guidanceText": "Report GHG emissions reduced as a direct result of reduction initiatives, in metric tons of CO2 equivalent.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-7", "mappingType": "partial" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-C4.3b", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "gri-305-6",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 305-6",
+            "name": "Emissions of ozone-depleting substances (ODS)",
+            "description": "Report production, imports, and exports of ODS in metric tons of CFC-11 equivalent.",
+            "topic": "emissions",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "ODS emissions", "unit": "tonnes CFC-11e", "description": "Ozone-depleting substances in CFC-11 equivalent" }
+            ],
+            "guidanceText": "Report production, imports, and exports of ODS in metric tons of CFC-11 (trichlorofluoromethane) equivalent.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-305-7",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 305-7",
+            "name": "Nitrogen oxides (NOx), sulfur oxides (SOx), and other significant air emissions",
+            "description": "Report significant air emissions, including NOx, SOx, persistent organic pollutants, volatile organic compounds, hazardous air pollutants, and particulate matter.",
+            "topic": "emissions",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "NOx emissions", "unit": "tonnes", "description": "Nitrogen oxides emissions" },
+              { "name": "SOx emissions", "unit": "tonnes", "description": "Sulfur oxides emissions" },
+              { "name": "VOC emissions", "unit": "tonnes", "description": "Volatile organic compounds emissions" },
+              { "name": "Particulate matter emissions", "unit": "tonnes", "description": "Particulate matter (PM) emissions" }
+            ],
+            "guidanceText": "Report significant air emissions, in kilograms or multiples, for NOx, SOx, persistent organic pollutants (POP), volatile organic compounds (VOC), hazardous air pollutants (HAP), particulate matter (PM).",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E2-4", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "gri-306-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 306-1",
+            "name": "Waste generation and significant waste-related impacts",
+            "description": "Describe the inputs, activities, and outputs that lead to the organization's significant waste-related impacts.",
+            "topic": "waste",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Report a description of the inputs, activities, and outputs that lead or could lead to the organization's significant waste-related impacts.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E5-5", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-306-2",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 306-2",
+            "name": "Management of significant waste-related impacts",
+            "description": "Describe actions taken to prevent waste generation and manage significant impacts from waste generated.",
+            "topic": "waste",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Report a description of the actions, including circularity measures, taken to prevent waste generation in the organization's own activities and upstream and downstream in its value chain.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-306-3",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 306-3",
+            "name": "Waste generated",
+            "description": "Report total weight of waste generated and a breakdown by composition.",
+            "topic": "waste",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Total waste generated", "unit": "tonnes", "description": "Total weight of waste generated" }
+            ],
+            "guidanceText": "Report the total weight of waste generated in metric tons, and a breakdown of this total by composition of the waste.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E5-5", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E5", "mappingType": "equivalent", "notes": "Saudi Exchange KPI E5: Waste Generated" }
+            ]
+          },
+          {
+            "id": "gri-306-4",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 306-4",
+            "name": "Waste diverted from disposal",
+            "description": "Report total weight of waste diverted from disposal and a breakdown by composition, recovery operation, and on-site/off-site.",
+            "topic": "waste",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Waste diverted from disposal", "unit": "tonnes", "description": "Total weight of waste diverted from disposal" },
+              { "name": "Hazardous waste diverted", "unit": "tonnes", "description": "Hazardous waste diverted from disposal" },
+              { "name": "Non-hazardous waste diverted", "unit": "tonnes", "description": "Non-hazardous waste diverted from disposal" }
+            ],
+            "guidanceText": "Report the total weight of waste diverted from disposal in metric tons, and a breakdown of this total by composition of the waste.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E5-5", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-306-5",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 306-5",
+            "name": "Waste directed to disposal",
+            "description": "Report total weight of waste directed to disposal and a breakdown by composition, disposal operation, and on-site/off-site.",
+            "topic": "waste",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Waste directed to disposal", "unit": "tonnes", "description": "Total weight of waste directed to disposal" },
+              { "name": "Hazardous waste to disposal", "unit": "tonnes", "description": "Hazardous waste directed to disposal" },
+              { "name": "Non-hazardous waste to disposal", "unit": "tonnes", "description": "Non-hazardous waste directed to disposal" }
+            ],
+            "guidanceText": "Report the total weight of waste directed to disposal in metric tons, and a breakdown of this total by composition of the waste.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E5-5", "mappingType": "partial" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "GRI 400",
+        "name": "Social Topics",
+        "disclosures": [
+          {
+            "id": "gri-401-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 401-1",
+            "name": "New employee hires and employee turnover",
+            "description": "Report total number and rate of new employee hires and employee turnover by age group, gender, and region.",
+            "topic": "employment",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "New employee hires", "unit": "headcount", "description": "Total number of new employee hires" },
+              { "name": "New hire rate", "unit": "%", "description": "Rate of new employee hires" },
+              { "name": "Employee turnover", "unit": "headcount", "description": "Total number of employee turnover" },
+              { "name": "Turnover rate", "unit": "%", "description": "Rate of employee turnover" }
+            ],
+            "guidanceText": "Report the total number and rate of new employee hires during the reporting period, by age group, gender, and region. Report the total number and rate of employee turnover during the reporting period, by age group, gender, and region.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS S1-6", "mappingType": "partial" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-S7", "mappingType": "equivalent", "notes": "Saudi Exchange KPI S7: Employee Turnover" }
+            ]
+          },
+          {
+            "id": "gri-401-2",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 401-2",
+            "name": "Benefits provided to full-time employees that are not provided to temporary or part-time employees",
+            "description": "Report benefits provided to full-time employees that are not provided to temporary or part-time employees.",
+            "topic": "employment",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Report the benefits which are standard for full-time employees of the organization but are not provided to temporary or part-time employees.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-401-3",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 401-3",
+            "name": "Parental leave",
+            "description": "Report total number of employees entitled to parental leave, by gender; number who took parental leave; number who returned to work; retention rates.",
+            "topic": "employment",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Employees entitled to parental leave", "unit": "headcount", "description": "Number of employees entitled to parental leave" },
+              { "name": "Employees who took parental leave", "unit": "headcount", "description": "Number who took parental leave" },
+              { "name": "Return to work rate after parental leave", "unit": "%", "description": "Return to work rate" }
+            ],
+            "guidanceText": "Report the total number of employees that were entitled to parental leave, by gender. Report the total number of employees that took parental leave, by gender.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS S1-15", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-402-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 402-1",
+            "name": "Minimum notice periods regarding operational changes",
+            "description": "Report the minimum number of weeks' notice typically provided to employees and their representatives prior to implementing significant operational changes.",
+            "topic": "labor-management-relations",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Minimum notice period", "unit": "weeks", "description": "Minimum notice period for operational changes" }
+            ],
+            "guidanceText": "Report the minimum number of weeks' notice typically provided to employees and their representatives prior to the implementation of significant operational changes.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-403-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 403-1",
+            "name": "Occupational health and safety management system",
+            "description": "Report whether an occupational health and safety management system has been implemented.",
+            "topic": "occupational-health-safety",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "State whether an occupational health and safety management system has been implemented, including whether it has been implemented because of legal requirements or recognized risk-management standards/guidelines.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS S1-14", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-403-2",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 403-2",
+            "name": "Hazard identification, risk assessment, and incident investigation",
+            "description": "Describe the processes used to identify work-related hazards, assess risks, and investigate incidents.",
+            "topic": "occupational-health-safety",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the processes used to identify work-related hazards and assess risks on a routine and non-routine basis, and to apply the hierarchy of controls.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-403-3",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 403-3",
+            "name": "Occupational health services",
+            "description": "Describe the occupational health services' functions that contribute to the identification and elimination of hazards.",
+            "topic": "occupational-health-safety",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the occupational health services' functions that contribute to the identification and elimination of hazards and minimization of risks.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-403-4",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 403-4",
+            "name": "Worker participation, consultation, and communication on occupational health and safety",
+            "description": "Describe the processes for worker participation and consultation in the development, implementation, and evaluation of the OHS management system.",
+            "topic": "occupational-health-safety",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the processes for worker participation and consultation in the development, implementation, and evaluation of the occupational health and safety management system.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-403-5",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 403-5",
+            "name": "Worker training on occupational health and safety",
+            "description": "Describe the occupational health and safety training provided to workers.",
+            "topic": "occupational-health-safety",
+            "dataType": "narrative",
+            "requiredMetrics": [
+              { "name": "OHS training hours", "unit": "hours", "description": "Total occupational health and safety training hours" }
+            ],
+            "guidanceText": "Describe any occupational health and safety training provided to workers, including generic training as well as training on specific work-related hazards.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-403-6",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 403-6",
+            "name": "Promotion of worker health",
+            "description": "Describe approach to facilitating workers' access to non-occupational medical and healthcare services.",
+            "topic": "occupational-health-safety",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Report an explanation of how the organization facilitates workers' access to non-occupational medical and healthcare services, and the scope of access provided.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-403-7",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 403-7",
+            "name": "Prevention and mitigation of occupational health and safety impacts directly linked by business relationships",
+            "description": "Describe the organization's approach to preventing or mitigating significant negative OHS impacts directly linked to its operations through business relationships.",
+            "topic": "occupational-health-safety",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the organization's approach to preventing or mitigating significant negative occupational health and safety impacts that are directly linked to its operations, products, or services by its business relationships.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-403-8",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 403-8",
+            "name": "Workers covered by an occupational health and safety management system",
+            "description": "Report number and percentage of employees and non-employee workers covered by an OHS management system that has been internally audited or certified.",
+            "topic": "occupational-health-safety",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Workers covered by OHS system", "unit": "%", "description": "Percentage of workers covered by OHS management system" }
+            ],
+            "guidanceText": "Report the number and percentage of all employees and workers who are not employees but whose work and/or workplace is controlled by the organization, who are covered by such a system.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-403-9",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 403-9",
+            "name": "Work-related injuries",
+            "description": "Report the number and rate of fatalities, high-consequence work-related injuries, and recordable work-related injuries for all employees and non-employee workers.",
+            "topic": "occupational-health-safety",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Fatalities from work-related injuries", "unit": "count", "description": "Number of fatalities as a result of work-related injury" },
+              { "name": "High-consequence work-related injuries", "unit": "count", "description": "Number of high-consequence work-related injuries (excluding fatalities)" },
+              { "name": "Recordable work-related injuries", "unit": "count", "description": "Number of recordable work-related injuries" },
+              { "name": "Hours worked", "unit": "hours", "description": "Number of hours worked" },
+              { "name": "Lost Time Injury Frequency Rate (LTIFR)", "unit": "per 1M hours", "calculationMethod": "(Lost time injuries / Hours worked) x 1,000,000", "description": "Rate of lost-time injuries per million hours worked" },
+              { "name": "Total Recordable Incident Rate (TRIR)", "unit": "per 200,000 hours", "calculationMethod": "(Recordable incidents / Hours worked) x 200,000", "description": "Rate of total recordable incidents per 200,000 hours worked" }
+            ],
+            "guidanceText": "For all employees, report the number and rate of fatalities as a result of work-related injury; high-consequence work-related injuries (excluding fatalities); recordable work-related injuries; main types of work-related injury; number of hours worked.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS S1-14", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-S1", "mappingType": "equivalent", "notes": "Saudi Exchange KPI S1: Employee Health & Safety" },
+              { "frameworkCode": "adx", "disclosureCode": "ADX-S5", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "gri-403-10",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 403-10",
+            "name": "Work-related ill health",
+            "description": "Report the number and types of cases of work-related ill health for all employees and non-employee workers.",
+            "topic": "occupational-health-safety",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Fatalities from work-related ill health", "unit": "count", "description": "Number of fatalities from work-related ill health" },
+              { "name": "Cases of recordable work-related ill health", "unit": "count", "description": "Number of cases of recordable work-related ill health" }
+            ],
+            "guidanceText": "For all employees, report the number of fatalities as a result of work-related ill health; the number of cases of recordable work-related ill health; the main types of work-related ill health.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS S1-14", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-404-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 404-1",
+            "name": "Average hours of training per year per employee",
+            "description": "Report the average hours of training that employees have undertaken during the reporting period, by gender and employee category.",
+            "topic": "training-education",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Average training hours per employee", "unit": "hours/employee", "description": "Average hours of training per employee per year" },
+              { "name": "Average training hours - male", "unit": "hours/employee", "description": "Average training hours for male employees" },
+              { "name": "Average training hours - female", "unit": "hours/employee", "description": "Average training hours for female employees" }
+            ],
+            "guidanceText": "Report the average hours of training that the organization's employees have undertaken during the reporting period, by gender, and by employee category.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS S1-13", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-S3", "mappingType": "equivalent", "notes": "Saudi Exchange KPI S3: Employee Training" }
+            ]
+          },
+          {
+            "id": "gri-404-2",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 404-2",
+            "name": "Programs for upgrading employee skills and transition assistance programs",
+            "description": "Report the type and scope of programs implemented and assistance provided to upgrade employee skills and transition assistance.",
+            "topic": "training-education",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Report the type and scope of programs implemented and assistance provided to upgrade employee skills.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-404-3",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 404-3",
+            "name": "Percentage of employees receiving regular performance and career development reviews",
+            "description": "Report the percentage of total employees by gender and employee category who received a regular performance and career development review.",
+            "topic": "training-education",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Employees receiving performance reviews", "unit": "%", "description": "Percentage of employees receiving regular performance reviews" }
+            ],
+            "guidanceText": "Report the percentage of total employees by gender and by employee category who received a regular performance and career development review during the reporting period.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-405-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 405-1",
+            "name": "Diversity of governance bodies and employees",
+            "description": "Report percentage of individuals within governance bodies and employee categories by gender, age group, and other indicators of diversity.",
+            "topic": "diversity-equal-opportunity",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Board diversity - female", "unit": "%", "description": "Percentage of female members on governance body" },
+              { "name": "Employee diversity by gender", "unit": "%", "description": "Percentage of female employees" },
+              { "name": "Employee diversity by age - under 30", "unit": "%", "description": "Percentage of employees under 30" },
+              { "name": "Employee diversity by age - 30-50", "unit": "%", "description": "Percentage of employees aged 30-50" },
+              { "name": "Employee diversity by age - over 50", "unit": "%", "description": "Percentage of employees over 50" }
+            ],
+            "guidanceText": "Report the percentage of individuals within the organization's governance bodies in each of the following diversity categories: gender, age group, other indicators of diversity where relevant.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS S1-9", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-G1", "mappingType": "equivalent", "notes": "Saudi Exchange KPI G1: Board Diversity" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-S4", "mappingType": "equivalent", "notes": "Saudi Exchange KPI S4: Gender Diversity" },
+              { "frameworkCode": "adx", "disclosureCode": "ADX-S3", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "gri-405-2",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 405-2",
+            "name": "Ratio of basic salary and remuneration of women to men",
+            "description": "Report the ratio of basic salary and remuneration of women to men for each employee category, by significant locations of operation.",
+            "topic": "diversity-equal-opportunity",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Gender pay ratio", "unit": "ratio", "description": "Ratio of female to male basic salary by employee category" }
+            ],
+            "guidanceText": "Report the ratio of the basic salary and remuneration of women to men for each employee category, by significant locations of operation.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS S1-16", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-S9", "mappingType": "equivalent", "notes": "Saudi Exchange KPI S9: Gender Pay Gap" }
+            ]
+          },
+          {
+            "id": "gri-406-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 406-1",
+            "name": "Incidents of discrimination and corrective actions taken",
+            "description": "Report the total number of incidents of discrimination during the reporting period and corrective actions taken.",
+            "topic": "non-discrimination",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Discrimination incidents", "unit": "count", "description": "Number of incidents of discrimination" }
+            ],
+            "guidanceText": "Report the total number of incidents of discrimination during the reporting period. Report the status of the incidents and actions taken.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS S1-17", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-407-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 407-1",
+            "name": "Operations and suppliers in which the right to freedom of association and collective bargaining may be at risk",
+            "description": "Report operations and suppliers where the right to exercise freedom of association and collective bargaining may be violated or at significant risk.",
+            "topic": "freedom-of-association",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Report operations and suppliers in which workers' rights to exercise freedom of association or collective bargaining may be violated or at significant risk.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS S1-8", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-408-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 408-1",
+            "name": "Operations and suppliers at significant risk for incidents of child labor",
+            "description": "Report operations and suppliers considered to have significant risk for incidents of child labor.",
+            "topic": "child-labor",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Report operations and suppliers considered to have significant risk for incidents of child labor, in terms of type of operation and supplier, and countries or areas with operations and suppliers considered at risk.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS S2-4", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-409-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 409-1",
+            "name": "Operations and suppliers at significant risk for incidents of forced or compulsory labor",
+            "description": "Report operations and suppliers considered to have significant risk for incidents of forced or compulsory labor.",
+            "topic": "forced-labor",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Report operations and suppliers considered to have significant risk for incidents of forced or compulsory labor.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS S2-4", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-410-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 410-1",
+            "name": "Security personnel trained in human rights policies or procedures",
+            "description": "Report the percentage of security personnel who have received formal training in the organization's human rights policies.",
+            "topic": "security-practices",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Security personnel trained in human rights", "unit": "%", "description": "Percentage of security personnel trained" }
+            ],
+            "guidanceText": "Report the percentage of security personnel who have received formal training in the organization's human rights policies or specific procedures and their application to security.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-411-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 411-1",
+            "name": "Incidents of violations involving rights of indigenous peoples",
+            "description": "Report the total number of identified incidents of violations involving the rights of indigenous peoples during the reporting period.",
+            "topic": "indigenous-rights",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Indigenous rights violations", "unit": "count", "description": "Number of incidents involving rights of indigenous peoples" }
+            ],
+            "guidanceText": "Report the total number of identified incidents of violations involving the rights of indigenous peoples during the reporting period.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-413-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 413-1",
+            "name": "Operations with local community engagement, impact assessments, and development programs",
+            "description": "Report the percentage of operations with implemented local community engagement, impact assessments, and/or development programs.",
+            "topic": "local-communities",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Operations with community engagement", "unit": "%", "description": "Percentage of operations with local community engagement programs" }
+            ],
+            "guidanceText": "Report the percentage of operations with implemented local community engagement, impact assessments, and/or development programs.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS S3-4", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-413-2",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 413-2",
+            "name": "Operations with significant actual and potential negative impacts on local communities",
+            "description": "Report operations with significant actual and potential negative impacts on local communities.",
+            "topic": "local-communities",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Report operations with significant actual and potential negative impacts on local communities, including the location of the operations and the significant actual and potential negative impacts.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-414-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 414-1",
+            "name": "New suppliers that were screened using social criteria",
+            "description": "Report the percentage of new suppliers that were screened using social criteria.",
+            "topic": "supplier-social-assessment",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "New suppliers screened on social criteria", "unit": "%", "description": "Percentage of new suppliers screened using social criteria" }
+            ],
+            "guidanceText": "Report the percentage of new suppliers that were screened using social criteria.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS S2-1", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "gri-414-2",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 414-2",
+            "name": "Negative social impacts in the supply chain and actions taken",
+            "description": "Report the number of suppliers assessed for social impacts, number identified as having significant actual and potential negative social impacts, and actions taken.",
+            "topic": "supplier-social-assessment",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Suppliers assessed for social impacts", "unit": "count", "description": "Number of suppliers assessed for social impacts" },
+              { "name": "Suppliers with negative social impacts", "unit": "count", "description": "Number of suppliers with significant negative social impacts" }
+            ],
+            "guidanceText": "Report the number of suppliers assessed for social impacts. Report the number of suppliers identified as having significant actual and potential negative social impacts.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-415-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 415-1",
+            "name": "Political contributions",
+            "description": "Report the total monetary value of financial and in-kind political contributions made directly and indirectly by the organization by country and recipient/beneficiary.",
+            "topic": "public-policy",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Political contributions", "unit": "currency", "description": "Total monetary value of political contributions" }
+            ],
+            "guidanceText": "Report the total monetary value of financial and in-kind political contributions made directly and indirectly by the organization by country and recipient/beneficiary.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-416-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 416-1",
+            "name": "Assessment of the health and safety impacts of product and service categories",
+            "description": "Report the percentage of significant product and service categories for which health and safety impacts are assessed for improvement.",
+            "topic": "customer-health-safety",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Products assessed for health/safety impacts", "unit": "%", "description": "Percentage of products assessed for health and safety impacts" }
+            ],
+            "guidanceText": "Report the percentage of significant product and service categories for which health and safety impacts are assessed for improvement.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-416-2",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 416-2",
+            "name": "Incidents of non-compliance concerning the health and safety impacts of products and services",
+            "description": "Report the total number of incidents of non-compliance with regulations and/or voluntary codes concerning the health and safety impacts of products and services.",
+            "topic": "customer-health-safety",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Health/safety non-compliance incidents", "unit": "count", "description": "Number of non-compliance incidents for product health and safety" }
+            ],
+            "guidanceText": "Report the total number of incidents of non-compliance with regulations and/or voluntary codes concerning the health and safety impacts of products and services.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-417-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 417-1",
+            "name": "Requirements for product and service information and labeling",
+            "description": "Report whether product and service information and labeling procedures require specific information types.",
+            "topic": "marketing-labeling",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Report whether each of the following types of information is required by the organization's procedures for product and service information and labeling.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-417-2",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 417-2",
+            "name": "Incidents of non-compliance concerning product and service information and labeling",
+            "description": "Report the total number of incidents of non-compliance with regulations and/or voluntary codes concerning product and service information and labeling.",
+            "topic": "marketing-labeling",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Labeling non-compliance incidents", "unit": "count", "description": "Number of non-compliance incidents for product labeling" }
+            ],
+            "guidanceText": "Report the total number of incidents of non-compliance with regulations and/or voluntary codes concerning product and service information and labeling.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-417-3",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 417-3",
+            "name": "Incidents of non-compliance concerning marketing communications",
+            "description": "Report the total number of incidents of non-compliance with regulations and/or voluntary codes concerning marketing communications.",
+            "topic": "marketing-labeling",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Marketing non-compliance incidents", "unit": "count", "description": "Number of non-compliance incidents for marketing communications" }
+            ],
+            "guidanceText": "Report the total number of incidents of non-compliance with regulations and/or voluntary codes concerning marketing communications, including advertising, promotion, and sponsorship.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "gri-418-1",
+            "frameworkId": "fw-gri-2021",
+            "code": "GRI 418-1",
+            "name": "Substantiated complaints concerning breaches of customer privacy and losses of customer data",
+            "description": "Report the total number of substantiated complaints regarding breaches of customer privacy and losses of customer data.",
+            "topic": "customer-privacy",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Privacy complaints", "unit": "count", "description": "Number of substantiated complaints about privacy breaches" },
+              { "name": "Customer data leaks/thefts/losses", "unit": "count", "description": "Number of identified leaks, thefts, or losses of customer data" }
+            ],
+            "guidanceText": "Report the total number of substantiated complaints received concerning breaches of customer privacy. Report the total number of identified leaks, thefts, or losses of customer data.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-S2", "mappingType": "partial", "notes": "Saudi Exchange KPI S2: Data Privacy" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

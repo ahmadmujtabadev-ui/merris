@@ -1,0 +1,237 @@
+{
+  "id": "fw-sasb-og-2023",
+  "code": "sasb-og",
+  "name": "SASB Oil & Gas — Exploration & Production",
+  "version": "2023",
+  "effectiveDate": "2023-06-01",
+  "issuingBody": "IFRS Foundation (formerly SASB)",
+  "region": "global",
+  "type": "voluntary",
+  "structure": {
+    "topics": [
+      {
+        "code": "SASB-OG-GHG",
+        "name": "Greenhouse Gas Emissions",
+        "disclosures": [
+          {
+            "id": "sasb-og-110a1",
+            "frameworkId": "fw-sasb-og-2023",
+            "code": "EM-EP-110a.1",
+            "name": "Gross global Scope 1 emissions, percentage methane, percentage covered under emissions-limiting regulations",
+            "description": "Report gross global Scope 1 GHG emissions in metric tons CO2e, the percentage of Scope 1 that is methane, and the percentage of emissions covered by emissions-limiting regulations.",
+            "topic": "emissions",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Gross Scope 1 GHG emissions", "unit": "tCO2e", "calculationMethod": "GHG Protocol / API Compendium", "description": "Total Scope 1 GHG emissions" },
+              { "name": "Percentage methane", "unit": "%", "description": "Percentage of Scope 1 emissions that is methane" },
+              { "name": "Percentage under emissions-limiting regulations", "unit": "%", "description": "Percentage covered by emissions caps or carbon pricing" }
+            ],
+            "guidanceText": "Report gross global Scope 1 GHG emissions, the percentage that is methane, and the percentage covered under emissions-limiting regulations or programs designed to reduce emissions.",
+            "sectorSpecific": true,
+            "sectors": ["oil-gas-exploration-production"],
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 305-1", "mappingType": "equivalent" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-6", "mappingType": "partial" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-C6.1", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "sasb-og-110a2",
+            "frameworkId": "fw-sasb-og-2023",
+            "code": "EM-EP-110a.2",
+            "name": "Amount of gross global Scope 1 emissions from: flared hydrocarbons, other combustion, process emissions, other vented emissions, and fugitive emissions",
+            "description": "Break down Scope 1 emissions by source: flaring, combustion, process, venting, and fugitive.",
+            "topic": "emissions",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Flared hydrocarbons emissions", "unit": "tCO2e", "description": "GHG emissions from flared hydrocarbons" },
+              { "name": "Other combustion emissions", "unit": "tCO2e", "description": "GHG emissions from other combustion sources" },
+              { "name": "Process emissions", "unit": "tCO2e", "description": "GHG emissions from process operations" },
+              { "name": "Vented emissions", "unit": "tCO2e", "description": "GHG emissions from venting" },
+              { "name": "Fugitive emissions", "unit": "tCO2e", "description": "GHG emissions from fugitive sources" }
+            ],
+            "guidanceText": "Break down gross global Scope 1 GHG emissions by source category. This is highly relevant for GCC oil and gas producers.",
+            "sectorSpecific": true,
+            "sectors": ["oil-gas-exploration-production"],
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 305-1", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "sasb-og-110a3",
+            "frameworkId": "fw-sasb-og-2023",
+            "code": "EM-EP-110a.3",
+            "name": "Discussion of long-term and short-term strategy or plan to manage Scope 1 emissions, emissions reduction targets, and analysis of performance against those targets",
+            "description": "Discuss the strategy to manage GHG emissions and progress against reduction targets.",
+            "topic": "emissions",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Discuss long-term and short-term strategy to manage Scope 1 emissions, including emissions reduction targets and analysis of performance against those targets.",
+            "sectorSpecific": true,
+            "sectors": ["oil-gas-exploration-production"],
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-STRAT-B", "mappingType": "partial" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-C4.1", "mappingType": "partial" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "SASB-OG-WATER",
+        "name": "Water Management",
+        "disclosures": [
+          {
+            "id": "sasb-og-140a1",
+            "frameworkId": "fw-sasb-og-2023",
+            "code": "EM-EP-140a.1",
+            "name": "Total fresh water withdrawn/consumed, percentage in regions with High or Extremely High Baseline Water Stress",
+            "description": "Report total fresh water withdrawn and consumed, and the percentage in water-stressed regions.",
+            "topic": "water",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Fresh water withdrawn", "unit": "thousand m3", "description": "Total fresh water withdrawn" },
+              { "name": "Fresh water consumed", "unit": "thousand m3", "description": "Total fresh water consumed" },
+              { "name": "Percentage in high water stress", "unit": "%", "description": "Percentage in High or Extremely High Water Stress regions" }
+            ],
+            "guidanceText": "Report total fresh water withdrawn and consumed. Report the percentage of each in regions with High or Extremely High Baseline Water Stress per WRI Aqueduct tool. All GCC operations are in extremely high water stress areas.",
+            "sectorSpecific": true,
+            "sectors": ["oil-gas-exploration-production"],
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 303-3", "mappingType": "equivalent" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 303-5", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E4", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "sasb-og-140a2",
+            "frameworkId": "fw-sasb-og-2023",
+            "code": "EM-EP-140a.2",
+            "name": "Volume of produced water and flowback generated; percentage discharged, injected, recycled",
+            "description": "Report volume of produced water and flowback, and disposal/recycling methods.",
+            "topic": "water",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Produced water volume", "unit": "thousand m3", "description": "Total produced water and flowback" },
+              { "name": "Percentage discharged", "unit": "%", "description": "Percentage discharged" },
+              { "name": "Percentage injected", "unit": "%", "description": "Percentage injected for disposal or enhanced recovery" },
+              { "name": "Percentage recycled", "unit": "%", "description": "Percentage recycled or reused" }
+            ],
+            "guidanceText": "Report volumes of produced water generated and the percentage handled through each disposal/recycling method.",
+            "sectorSpecific": true,
+            "sectors": ["oil-gas-exploration-production"],
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 303-4", "mappingType": "partial" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "SASB-OG-SAFETY",
+        "name": "Workforce Health & Safety",
+        "disclosures": [
+          {
+            "id": "sasb-og-320a1",
+            "frameworkId": "fw-sasb-og-2023",
+            "code": "EM-EP-320a.1",
+            "name": "Total recordable incident rate (TRIR), fatality rate, near miss frequency rate",
+            "description": "Report TRIR, fatality rate, and NMFR for full-time and contract employees.",
+            "topic": "health-safety",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "TRIR (full-time employees)", "unit": "per 200,000 hours", "calculationMethod": "(Recordable incidents / hours worked) x 200,000", "description": "Total Recordable Incident Rate for full-time employees" },
+              { "name": "TRIR (contract employees)", "unit": "per 200,000 hours", "description": "TRIR for contract employees" },
+              { "name": "Fatality rate", "unit": "per 200,000 hours", "description": "Fatality rate" },
+              { "name": "Near miss frequency rate", "unit": "per 200,000 hours", "description": "Near miss frequency rate" }
+            ],
+            "guidanceText": "Report TRIR, fatality rate, and near miss frequency rate for both full-time employees and contract employees.",
+            "sectorSpecific": true,
+            "sectors": ["oil-gas-exploration-production"],
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 403-9", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-S1", "mappingType": "equivalent" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "SASB-OG-RESERVES",
+        "name": "Reserves Valuation & Capital Expenditures",
+        "disclosures": [
+          {
+            "id": "sasb-og-420a1",
+            "frameworkId": "fw-sasb-og-2023",
+            "code": "EM-EP-420a.1",
+            "name": "Sensitivity of hydrocarbon reserve levels to future price projection scenarios",
+            "description": "Report the sensitivity of proved and probable reserves to carbon pricing or demand scenarios.",
+            "topic": "reserves",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Estimated reserves under IEA scenarios", "unit": "MMboe", "description": "Reserve estimates under different IEA scenarios" }
+            ],
+            "guidanceText": "Discuss the sensitivity of hydrocarbon reserve levels to future price projection scenarios that account for a price on carbon emissions.",
+            "sectorSpecific": true,
+            "sectors": ["oil-gas-exploration-production"],
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-STRAT-C", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "sasb-og-420a2",
+            "frameworkId": "fw-sasb-og-2023",
+            "code": "EM-EP-420a.2",
+            "name": "Estimated carbon dioxide emissions embedded in proved hydrocarbon reserves",
+            "description": "Report the estimated CO2 emissions embedded in proved reserves.",
+            "topic": "reserves",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Embedded CO2 in proved reserves", "unit": "MtCO2", "description": "CO2 emissions embedded in proved hydrocarbon reserves" }
+            ],
+            "guidanceText": "Report the estimated CO2 emissions embedded in proved hydrocarbon reserves. Relevant for stranded asset risk assessment.",
+            "sectorSpecific": true,
+            "sectors": ["oil-gas-exploration-production"],
+            "crossReferences": []
+          }
+        ]
+      },
+      {
+        "code": "SASB-OG-SPILLS",
+        "name": "Ecological Impacts",
+        "disclosures": [
+          {
+            "id": "sasb-og-160a1",
+            "frameworkId": "fw-sasb-og-2023",
+            "code": "EM-EP-160a.1",
+            "name": "Description of environmental management policies and practices for active sites",
+            "description": "Describe environmental management policies and practices including biodiversity considerations.",
+            "topic": "biodiversity",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe environmental management policies and practices for active sites, including consideration of biodiversity and protected areas.",
+            "sectorSpecific": true,
+            "sectors": ["oil-gas-exploration-production"],
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 304-1", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "sasb-og-160a2",
+            "frameworkId": "fw-sasb-og-2023",
+            "code": "EM-EP-160a.2",
+            "name": "Number and aggregate volume of hydrocarbon spills, volume in Arctic, volume impacting shorelines",
+            "description": "Report the number and volume of hydrocarbon spills.",
+            "topic": "spills",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Number of hydrocarbon spills", "unit": "count", "description": "Total number of hydrocarbon spills" },
+              { "name": "Volume of spills", "unit": "barrels", "description": "Aggregate volume of spills" }
+            ],
+            "guidanceText": "Report the number and aggregate volume of hydrocarbon spills, the volume recovered, and the volume in environmentally sensitive areas.",
+            "sectorSpecific": true,
+            "sectors": ["oil-gas-exploration-production"],
+            "crossReferences": []
+          }
+        ]
+      }
+    ]
+  }
+}

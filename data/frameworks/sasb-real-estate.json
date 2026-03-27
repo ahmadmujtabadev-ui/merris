@@ -1,0 +1,236 @@
+{
+  "id": "fw-sasb-re-2023",
+  "code": "sasb-re",
+  "name": "SASB Real Estate",
+  "version": "2023",
+  "effectiveDate": "2023-06-01",
+  "issuingBody": "IFRS Foundation (formerly SASB)",
+  "region": "global",
+  "type": "voluntary",
+  "structure": {
+    "topics": [
+      {
+        "code": "SASB-RE-ENERGY",
+        "name": "Energy Management",
+        "disclosures": [
+          {
+            "id": "sasb-re-130a1",
+            "frameworkId": "fw-sasb-re-2023",
+            "code": "IF-RE-130a.1",
+            "name": "Energy consumption data coverage as a percentage of total floor area, by property subsector",
+            "description": "Report the percentage of floor area where energy consumption data is available.",
+            "topic": "energy",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Energy data coverage", "unit": "%", "description": "Percentage of total floor area with energy consumption data" }
+            ],
+            "guidanceText": "Report energy consumption data coverage as a percentage of total floor area, by property subsector (office, retail, hospitality, industrial, etc.).",
+            "sectorSpecific": true,
+            "sectors": ["real-estate"],
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 302-1", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "sasb-re-130a2",
+            "frameworkId": "fw-sasb-re-2023",
+            "code": "IF-RE-130a.2",
+            "name": "Total energy consumed by portfolio area with data coverage, percentage grid electricity, percentage renewable",
+            "description": "Report total energy consumed across portfolio and the mix of sources.",
+            "topic": "energy",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Total energy consumed", "unit": "GJ", "description": "Total energy consumed across portfolio" },
+              { "name": "Percentage grid electricity", "unit": "%", "description": "Share from grid electricity" },
+              { "name": "Percentage renewable", "unit": "%", "description": "Share from renewable sources" },
+              { "name": "Energy intensity", "unit": "kWh/m2", "description": "Energy intensity per square meter" }
+            ],
+            "guidanceText": "Report total energy consumed by portfolio area with data coverage, the percentage from grid electricity, and the percentage from renewable sources. Extremely relevant for GCC mega-projects where cooling is the dominant energy use.",
+            "sectorSpecific": true,
+            "sectors": ["real-estate"],
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 302-1", "mappingType": "equivalent" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 302-3", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E3", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "sasb-re-130a3",
+            "frameworkId": "fw-sasb-re-2023",
+            "code": "IF-RE-130a.3",
+            "name": "Like-for-like percentage change in energy consumption for the portfolio area with data coverage",
+            "description": "Report year-over-year change in energy consumption on a like-for-like basis.",
+            "topic": "energy",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Like-for-like energy change", "unit": "%", "description": "Year-over-year change in energy consumption" }
+            ],
+            "guidanceText": "Report the like-for-like percentage change in energy consumption for the portfolio area with data coverage.",
+            "sectorSpecific": true,
+            "sectors": ["real-estate"],
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 302-4", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "sasb-re-130a4",
+            "frameworkId": "fw-sasb-re-2023",
+            "code": "IF-RE-130a.4",
+            "name": "Percentage of eligible portfolio that has obtained an energy rating or certification",
+            "description": "Report percentage of portfolio with green building certifications.",
+            "topic": "energy",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Portfolio with energy certification", "unit": "%", "description": "Percentage with LEED, BREEAM, Estidama, or equivalent" }
+            ],
+            "guidanceText": "Report percentage of portfolio with LEED, BREEAM, Estidama Pearl Rating (UAE), or equivalent green building certification. Critical for GCC mega-projects like NEOM, The Line, Lusail.",
+            "sectorSpecific": true,
+            "sectors": ["real-estate"],
+            "crossReferences": []
+          }
+        ]
+      },
+      {
+        "code": "SASB-RE-WATER",
+        "name": "Water Management",
+        "disclosures": [
+          {
+            "id": "sasb-re-140a1",
+            "frameworkId": "fw-sasb-re-2023",
+            "code": "IF-RE-140a.1",
+            "name": "Water withdrawal data coverage as a percentage of total floor area",
+            "description": "Report percentage of floor area where water data is available.",
+            "topic": "water",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Water data coverage", "unit": "%", "description": "Percentage of total floor area with water data" }
+            ],
+            "guidanceText": "Report water withdrawal data coverage as a percentage of total floor area and by property subsector.",
+            "sectorSpecific": true,
+            "sectors": ["real-estate"],
+            "crossReferences": []
+          },
+          {
+            "id": "sasb-re-140a2",
+            "frameworkId": "fw-sasb-re-2023",
+            "code": "IF-RE-140a.2",
+            "name": "Total water withdrawn by portfolio area with data coverage, percentage in regions with High or Extremely High Baseline Water Stress",
+            "description": "Report total water withdrawn and the percentage from water-stressed regions.",
+            "topic": "water",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Total water withdrawn", "unit": "thousand m3", "description": "Total water withdrawn across portfolio" },
+              { "name": "Percentage in high water stress", "unit": "%", "description": "Percentage from high water stress regions" },
+              { "name": "Water intensity", "unit": "m3/m2", "description": "Water intensity per square meter" }
+            ],
+            "guidanceText": "Report total water withdrawn and the percentage in regions with High or Extremely High Baseline Water Stress. All GCC real estate projects are in extremely high water stress areas.",
+            "sectorSpecific": true,
+            "sectors": ["real-estate"],
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 303-3", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E4", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "sasb-re-140a3",
+            "frameworkId": "fw-sasb-re-2023",
+            "code": "IF-RE-140a.3",
+            "name": "Like-for-like percentage change in water withdrawn",
+            "description": "Report year-over-year change in water consumption.",
+            "topic": "water",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Like-for-like water change", "unit": "%", "description": "Year-over-year change in water withdrawn" }
+            ],
+            "guidanceText": "Report the like-for-like percentage change in water withdrawn for the portfolio area with data coverage.",
+            "sectorSpecific": true,
+            "sectors": ["real-estate"],
+            "crossReferences": []
+          }
+        ]
+      },
+      {
+        "code": "SASB-RE-CLIMATE",
+        "name": "Climate Change Adaptation",
+        "disclosures": [
+          {
+            "id": "sasb-re-450a1",
+            "frameworkId": "fw-sasb-re-2023",
+            "code": "IF-RE-450a.1",
+            "name": "Area of properties located in 100-year flood zones",
+            "description": "Report the area of real estate assets located in 100-year flood zones.",
+            "topic": "climate-adaptation",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Properties in flood zones", "unit": "m2", "description": "Total area in 100-year flood zones" }
+            ],
+            "guidanceText": "Report the area of properties (in sq ft or sq meters) in FEMA Special Flood Hazard Areas or equivalent. For GCC, consider sea-level rise risk for coastal developments.",
+            "sectorSpecific": true,
+            "sectors": ["real-estate"],
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-STRAT-A", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "sasb-re-450a2",
+            "frameworkId": "fw-sasb-re-2023",
+            "code": "IF-RE-450a.2",
+            "name": "Description of climate change risk exposure analysis and strategies for mitigating risks",
+            "description": "Describe climate risk exposure and mitigation strategies for the portfolio.",
+            "topic": "climate-adaptation",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the climate change risk exposure analysis, including extreme heat exposure (critical for GCC), sea-level rise, and strategies for building resilience into the real estate portfolio.",
+            "sectorSpecific": true,
+            "sectors": ["real-estate"],
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-STRAT-B", "mappingType": "equivalent" },
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-STRAT-C", "mappingType": "partial" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E8", "mappingType": "equivalent" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "SASB-RE-MGMT",
+        "name": "Management of Tenant Sustainability Impacts",
+        "disclosures": [
+          {
+            "id": "sasb-re-410a1",
+            "frameworkId": "fw-sasb-re-2023",
+            "code": "IF-RE-410a.1",
+            "name": "Percentage of new leases that contain a cost recovery clause for resource efficiency improvements; associated leased floor area",
+            "description": "Report green lease adoption rate.",
+            "topic": "tenant-sustainability",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Green lease percentage", "unit": "%", "description": "Percentage of new leases with green clauses" },
+              { "name": "Green lease floor area", "unit": "m2", "description": "Floor area covered by green leases" }
+            ],
+            "guidanceText": "Report the percentage of new leases containing clauses for environmental performance improvement and associated floor area.",
+            "sectorSpecific": true,
+            "sectors": ["real-estate"],
+            "crossReferences": []
+          },
+          {
+            "id": "sasb-re-410a2",
+            "frameworkId": "fw-sasb-re-2023",
+            "code": "IF-RE-410a.2",
+            "name": "Percentage of tenants that are separately metered or submetered for grid electricity consumption and water withdrawals",
+            "description": "Report sub-metering coverage for tenant spaces.",
+            "topic": "tenant-sustainability",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Electricity sub-metered tenants", "unit": "%", "description": "Percentage of tenants with electricity sub-meters" },
+              { "name": "Water sub-metered tenants", "unit": "%", "description": "Percentage of tenants with water sub-meters" }
+            ],
+            "guidanceText": "Report the percentage of tenants that are separately metered or sub-metered for electricity and water.",
+            "sectorSpecific": true,
+            "sectors": ["real-estate"],
+            "crossReferences": []
+          }
+        ]
+      }
+    ]
+  }
+}

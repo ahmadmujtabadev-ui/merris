@@ -1,0 +1,495 @@
+{
+  "id": "fw-adx-2023",
+  "code": "adx",
+  "name": "Abu Dhabi Securities Exchange ESG Reporting Guide",
+  "version": "2023",
+  "effectiveDate": "2023-01-01",
+  "issuingBody": "Abu Dhabi Securities Exchange (ADX)",
+  "region": "UAE",
+  "type": "mandatory",
+  "structure": {
+    "topics": [
+      {
+        "code": "ADX-ENV",
+        "name": "Environmental",
+        "disclosures": [
+          {
+            "id": "adx-e1",
+            "frameworkId": "fw-adx-2023",
+            "code": "ADX-E1",
+            "name": "GHG Emissions",
+            "description": "Total Scope 1 and Scope 2 GHG emissions in metric tons of CO2 equivalent.",
+            "topic": "emissions",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Scope 1 GHG emissions", "unit": "tCO2e", "calculationMethod": "GHG Protocol", "description": "Direct GHG emissions" },
+              { "name": "Scope 2 GHG emissions", "unit": "tCO2e", "calculationMethod": "GHG Protocol", "description": "Energy indirect GHG emissions" }
+            ],
+            "guidanceText": "Report Scope 1 and Scope 2 GHG emissions using GHG Protocol methodology.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 305-1", "mappingType": "equivalent" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 305-2", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E1", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "adx-e2",
+            "frameworkId": "fw-adx-2023",
+            "code": "ADX-E2",
+            "name": "Emissions Intensity",
+            "description": "GHG emissions per unit of output or revenue.",
+            "topic": "emissions",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "GHG emissions intensity", "unit": "tCO2e/AED M revenue", "description": "GHG emissions intensity per revenue" }
+            ],
+            "guidanceText": "Report GHG emissions intensity per unit of revenue (AED) or production.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 305-4", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E2", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "adx-e3",
+            "frameworkId": "fw-adx-2023",
+            "code": "ADX-E3",
+            "name": "Energy Usage",
+            "description": "Total energy consumed in GJ or MWh with breakdown by source.",
+            "topic": "energy",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Total energy consumption", "unit": "GJ", "description": "Total energy consumed" },
+              { "name": "Renewable energy percentage", "unit": "%", "description": "Share of energy from renewable sources" }
+            ],
+            "guidanceText": "Report total energy consumption and the percentage from renewable sources.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 302-1", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E3", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "adx-e4",
+            "frameworkId": "fw-adx-2023",
+            "code": "ADX-E4",
+            "name": "Energy Intensity",
+            "description": "Energy intensity ratio per unit of output or revenue.",
+            "topic": "energy",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Energy intensity", "unit": "GJ/AED M revenue", "description": "Energy intensity per revenue" }
+            ],
+            "guidanceText": "Report energy intensity ratio per unit of output or revenue.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 302-3", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "adx-e5",
+            "frameworkId": "fw-adx-2023",
+            "code": "ADX-E5",
+            "name": "Water Usage",
+            "description": "Total water consumption in m3 or ML.",
+            "topic": "water",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Total water consumption", "unit": "m3", "description": "Total water consumed" }
+            ],
+            "guidanceText": "Report total water consumption. UAE is extremely water-stressed; this is a critical metric.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 303-5", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E4", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "adx-e6",
+            "frameworkId": "fw-adx-2023",
+            "code": "ADX-E6",
+            "name": "Environmental Operations",
+            "description": "Operations with environmental management systems (ISO 14001 or equivalent).",
+            "topic": "environmental-management",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "ISO 14001 certified operations", "unit": "%", "description": "Percentage of operations with ISO 14001 certification" }
+            ],
+            "guidanceText": "Report the percentage of operations covered by environmental management systems.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E7", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "adx-e7",
+            "frameworkId": "fw-adx-2023",
+            "code": "ADX-E7",
+            "name": "Environmental Oversight",
+            "description": "Whether there is board-level or senior management oversight of environmental issues.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [
+              { "name": "Environmental oversight exists", "unit": "boolean", "description": "Board or senior management oversight of environmental issues" }
+            ],
+            "guidanceText": "Describe board or management-level oversight of environmental issues and climate strategy.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-GOV-A", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "adx-e8",
+            "frameworkId": "fw-adx-2023",
+            "code": "ADX-E8",
+            "name": "Environmental Fines",
+            "description": "Environmental fines and penalties paid.",
+            "topic": "compliance",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Environmental fines", "unit": "AED", "description": "Total monetary value of environmental fines" }
+            ],
+            "guidanceText": "Report total environmental fines and penalties during the period.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E6", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "adx-e9",
+            "frameworkId": "fw-adx-2023",
+            "code": "ADX-E9",
+            "name": "Climate Risk Mitigation",
+            "description": "Whether the organization has publicly disclosed climate-related risks in line with TCFD.",
+            "topic": "climate",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe whether the company has conducted a climate risk assessment and disclosed results. Reference TCFD recommendations.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-STRAT-A", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E8", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "adx-e10",
+            "frameworkId": "fw-adx-2023",
+            "code": "ADX-E10",
+            "name": "Waste Generated",
+            "description": "Total waste generated by type and disposal method.",
+            "topic": "waste",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Total waste", "unit": "tonnes", "description": "Total waste generated" },
+              { "name": "Waste recycled", "unit": "%", "description": "Percentage of waste recycled" }
+            ],
+            "guidanceText": "Report total waste generated and the percentage diverted from disposal (recycled).",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 306-3", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E5", "mappingType": "equivalent" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "ADX-SOC",
+        "name": "Social",
+        "disclosures": [
+          {
+            "id": "adx-s1",
+            "frameworkId": "fw-adx-2023",
+            "code": "ADX-S1",
+            "name": "CEO Pay Ratio",
+            "description": "Ratio of CEO compensation to median employee compensation.",
+            "topic": "compensation",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "CEO pay ratio", "unit": "ratio", "description": "CEO to median employee pay ratio" }
+            ],
+            "guidanceText": "Report the ratio of CEO total compensation to median employee total compensation.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-21", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-G3", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "adx-s2",
+            "frameworkId": "fw-adx-2023",
+            "code": "ADX-S2",
+            "name": "Gender Pay Ratio",
+            "description": "Ratio of female to male basic salary and remuneration.",
+            "topic": "compensation",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Gender pay ratio", "unit": "ratio", "description": "Female to male salary ratio" }
+            ],
+            "guidanceText": "Report the ratio of female to male basic salary by employee category.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 405-2", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-S9", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "adx-s3",
+            "frameworkId": "fw-adx-2023",
+            "code": "ADX-S3",
+            "name": "Gender Diversity",
+            "description": "Gender distribution across the workforce and governance bodies.",
+            "topic": "diversity",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Female employees", "unit": "%", "description": "Percentage of female employees" },
+              { "name": "Female board members", "unit": "%", "description": "Percentage of female board members" }
+            ],
+            "guidanceText": "Report gender diversity across the workforce and on the board of directors.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 405-1", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-S4", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "adx-s4",
+            "frameworkId": "fw-adx-2023",
+            "code": "ADX-S4",
+            "name": "Employee Turnover",
+            "description": "Total and voluntary employee turnover rates.",
+            "topic": "employment",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Total turnover rate", "unit": "%", "description": "Total employee turnover rate" },
+              { "name": "Voluntary turnover rate", "unit": "%", "description": "Voluntary turnover rate" }
+            ],
+            "guidanceText": "Report total employee turnover and voluntary turnover by gender.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 401-1", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-S7", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "adx-s5",
+            "frameworkId": "fw-adx-2023",
+            "code": "ADX-S5",
+            "name": "Employee Health & Safety",
+            "description": "Work-related injury and fatality rates.",
+            "topic": "health-safety",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Fatalities", "unit": "count", "description": "Work-related fatalities" },
+              { "name": "LTIFR", "unit": "per 1M hours", "description": "Lost-time injury frequency rate" },
+              { "name": "TRIR", "unit": "per 200,000 hours", "description": "Total recordable incident rate" }
+            ],
+            "guidanceText": "Report work-related fatalities, injuries, and safety rates (LTIFR, TRIR).",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 403-9", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-S1", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "adx-s6",
+            "frameworkId": "fw-adx-2023",
+            "code": "ADX-S6",
+            "name": "Emiratization",
+            "description": "Percentage of UAE nationals in workforce (Emiratization rate).",
+            "topic": "nationalization",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Emiratization rate", "unit": "%", "description": "Percentage of UAE nationals in workforce" }
+            ],
+            "guidanceText": "Report the percentage of UAE nationals (Emiratization) in the total workforce. Specific to UAE national workforce goals.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-S6", "mappingType": "related", "notes": "Analogous to Saudization but for UAE" }
+            ]
+          },
+          {
+            "id": "adx-s7",
+            "frameworkId": "fw-adx-2023",
+            "code": "ADX-S7",
+            "name": "Training Hours",
+            "description": "Average training hours per employee per year.",
+            "topic": "training",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Average training hours", "unit": "hours/employee", "description": "Average training hours per employee" }
+            ],
+            "guidanceText": "Report average training hours per employee by gender and category.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 404-1", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-S3", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "adx-s8",
+            "frameworkId": "fw-adx-2023",
+            "code": "ADX-S8",
+            "name": "Human Rights",
+            "description": "Human rights due diligence and incidents.",
+            "topic": "human-rights",
+            "dataType": "narrative",
+            "requiredMetrics": [
+              { "name": "Human rights incidents", "unit": "count", "description": "Number of human rights incidents" }
+            ],
+            "guidanceText": "Describe human rights policies and report any incidents during the period.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-S12", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "adx-s9",
+            "frameworkId": "fw-adx-2023",
+            "code": "ADX-S9",
+            "name": "Community Investment",
+            "description": "Total community investment and CSR expenditure.",
+            "topic": "community",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Community investment", "unit": "AED", "description": "Total community and CSR investment" }
+            ],
+            "guidanceText": "Report total community investment in AED.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-S11", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "adx-s10",
+            "frameworkId": "fw-adx-2023",
+            "code": "ADX-S10",
+            "name": "Data Privacy",
+            "description": "Data privacy breaches and complaints.",
+            "topic": "data-privacy",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Data breaches", "unit": "count", "description": "Number of data breaches" }
+            ],
+            "guidanceText": "Report number of data breaches and substantiated privacy complaints.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 418-1", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-S2", "mappingType": "equivalent" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "ADX-GOV",
+        "name": "Governance",
+        "disclosures": [
+          {
+            "id": "adx-g1",
+            "frameworkId": "fw-adx-2023",
+            "code": "ADX-G1",
+            "name": "Board Diversity",
+            "description": "Board composition and diversity.",
+            "topic": "governance",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Board size", "unit": "headcount", "description": "Total board members" },
+              { "name": "Independent members", "unit": "%", "description": "Percentage of independent board members" },
+              { "name": "Female members", "unit": "%", "description": "Percentage of female board members" }
+            ],
+            "guidanceText": "Report board composition including independence and gender diversity.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 405-1", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-G1", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "adx-g2",
+            "frameworkId": "fw-adx-2023",
+            "code": "ADX-G2",
+            "name": "Board Independence",
+            "description": "Board independence metrics.",
+            "topic": "governance",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Independent directors", "unit": "%", "description": "Percentage of independent directors" },
+              { "name": "Independent chair", "unit": "boolean", "description": "Whether the board chair is independent" }
+            ],
+            "guidanceText": "Report percentage of independent board members and whether the chair is independent.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "adx-g3",
+            "frameworkId": "fw-adx-2023",
+            "code": "ADX-G3",
+            "name": "Incentivized Pay",
+            "description": "Whether executive compensation is linked to ESG performance.",
+            "topic": "remuneration",
+            "dataType": "narrative",
+            "requiredMetrics": [
+              { "name": "ESG-linked compensation", "unit": "boolean", "description": "Whether executive pay is linked to ESG metrics" }
+            ],
+            "guidanceText": "Describe whether and how executive compensation is linked to ESG performance metrics.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-GOV-3", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "adx-g4",
+            "frameworkId": "fw-adx-2023",
+            "code": "ADX-G4",
+            "name": "Ethics & Anti-Corruption",
+            "description": "Anti-corruption policies and confirmed incidents.",
+            "topic": "ethics",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Anti-corruption policy", "unit": "boolean", "description": "Formal anti-corruption policy exists" },
+              { "name": "Corruption incidents", "unit": "count", "description": "Confirmed corruption incidents" }
+            ],
+            "guidanceText": "Report anti-corruption policies and confirmed incidents.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 205-3", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-G5", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "adx-g5",
+            "frameworkId": "fw-adx-2023",
+            "code": "ADX-G5",
+            "name": "External Assurance",
+            "description": "Whether ESG data has been externally assured.",
+            "topic": "assurance",
+            "dataType": "narrative",
+            "requiredMetrics": [
+              { "name": "External assurance obtained", "unit": "boolean", "description": "Whether external assurance was obtained" }
+            ],
+            "guidanceText": "Report whether external assurance has been obtained for ESG/sustainability data.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-5", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "adx-g6",
+            "frameworkId": "fw-adx-2023",
+            "code": "ADX-G6",
+            "name": "Sustainability Reporting",
+            "description": "ESG reporting practices and frameworks used.",
+            "topic": "reporting",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe ESG reporting practices, frameworks applied, and publication details.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-G6", "mappingType": "equivalent" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

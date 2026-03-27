@@ -1,0 +1,462 @@
+{
+  "id": "fw-cdp-2025",
+  "code": "cdp",
+  "name": "CDP Climate Change Questionnaire 2025",
+  "version": "2025",
+  "effectiveDate": "2025-01-01",
+  "issuingBody": "CDP (formerly Carbon Disclosure Project)",
+  "region": "global",
+  "type": "rating",
+  "structure": {
+    "topics": [
+      {
+        "code": "CDP-C0",
+        "name": "C0: Introduction",
+        "disclosures": [
+          {
+            "id": "cdp-c0-1",
+            "frameworkId": "fw-cdp-2025",
+            "code": "CDP-C0.1",
+            "name": "Reporting organization profile",
+            "description": "Provide company identification including name, ticker, ISIN, and primary activities.",
+            "topic": "general",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Provide a general description and data about your organization, reporting year, and ISIC activity codes.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-1", "mappingType": "equivalent" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "CDP-C1",
+        "name": "C1: Governance",
+        "disclosures": [
+          {
+            "id": "cdp-c1-1b",
+            "frameworkId": "fw-cdp-2025",
+            "code": "CDP-C1.1b",
+            "name": "Board-level oversight of climate-related issues",
+            "description": "Provide details on the board's oversight of climate-related issues.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Identify the position(s) or committee(s) on the board with responsibility for climate-related issues.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-GOV-A", "mappingType": "equivalent" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-GOV-1", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "cdp-c1-2a",
+            "frameworkId": "fw-cdp-2025",
+            "code": "CDP-C1.2a",
+            "name": "Management-level responsibility for climate-related issues",
+            "description": "Describe management-level positions or committees with responsibility for climate-related issues.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the management-level position(s) or committee(s) with responsibility for climate-related issues and their reporting lines.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-GOV-B", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "cdp-c1-3a",
+            "frameworkId": "fw-cdp-2025",
+            "code": "CDP-C1.3a",
+            "name": "Incentives for management of climate-related issues",
+            "description": "Provide details of the incentives for management of climate-related issues.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe whether climate-related performance is linked to compensation/incentive schemes.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-GOV-3", "mappingType": "equivalent" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "CDP-C2",
+        "name": "C2: Risks and Opportunities",
+        "disclosures": [
+          {
+            "id": "cdp-c2-2",
+            "frameworkId": "fw-cdp-2025",
+            "code": "CDP-C2.2",
+            "name": "Climate-related risk identification process",
+            "description": "Describe the process for identifying, assessing and responding to climate-related risks and opportunities.",
+            "topic": "risk-management",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the process used to determine which risks and opportunities could have a substantive financial or strategic impact.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-RISK-A", "mappingType": "equivalent" },
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-RISK-C", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "cdp-c2-3a",
+            "frameworkId": "fw-cdp-2025",
+            "code": "CDP-C2.3a",
+            "name": "Climate-related risks with substantive financial or strategic impact",
+            "description": "Provide details of risks identified with the potential to have a substantive financial or strategic impact.",
+            "topic": "risk-management",
+            "dataType": "narrative",
+            "requiredMetrics": [
+              { "name": "Financial impact of identified risks", "unit": "currency", "description": "Estimated financial impact of climate risks" }
+            ],
+            "guidanceText": "For each risk, provide the risk type, primary climate-related risk driver, geographic area, time horizon, likelihood, magnitude of impact, and financial impact figure.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-STRAT-A", "mappingType": "equivalent" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "CDP-C3",
+        "name": "C3: Business Strategy",
+        "disclosures": [
+          {
+            "id": "cdp-c3-1",
+            "frameworkId": "fw-cdp-2025",
+            "code": "CDP-C3.1",
+            "name": "Transition plan",
+            "description": "Describe whether the organization has a climate transition plan that aligns with a 1.5C world.",
+            "topic": "strategy",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe whether and how the organization has a transition plan to align operations and business model with a 1.5C world.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-1", "mappingType": "partial" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-14", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "cdp-c3-2a",
+            "frameworkId": "fw-cdp-2025",
+            "code": "CDP-C3.2a",
+            "name": "Scenario analysis",
+            "description": "Provide details of the climate-related scenario analysis conducted.",
+            "topic": "strategy",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the climate-related scenarios used, time horizon, geographic coverage, and results including business impacts.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-STRAT-C", "mappingType": "equivalent" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-13", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "cdp-c3-3",
+            "frameworkId": "fw-cdp-2025",
+            "code": "CDP-C3.3",
+            "name": "Financial planning influence",
+            "description": "Describe where in the organization's financial planning climate-related issues are integrated.",
+            "topic": "strategy",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe where and how climate-related issues are integrated into the organization's financial planning.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-STRAT-B", "mappingType": "partial" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "CDP-C4",
+        "name": "C4: Targets and Performance",
+        "disclosures": [
+          {
+            "id": "cdp-c4-1",
+            "frameworkId": "fw-cdp-2025",
+            "code": "CDP-C4.1",
+            "name": "Emission reduction targets",
+            "description": "Provide details of emission reduction targets currently in force.",
+            "topic": "targets",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Target reduction", "unit": "%", "description": "Percentage reduction targeted" },
+              { "name": "Target year", "unit": "year", "description": "Target completion year" },
+              { "name": "Base year emissions", "unit": "tCO2e", "description": "Base year GHG emissions" },
+              { "name": "Progress to target", "unit": "%", "description": "Percentage progress achieved" }
+            ],
+            "guidanceText": "For each active target, provide scope, target type (absolute/intensity), base year, start year, target year, base year emissions, and progress to date.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-4", "mappingType": "equivalent" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-33", "mappingType": "equivalent" },
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-MET-B", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "cdp-c4-3b",
+            "frameworkId": "fw-cdp-2025",
+            "code": "CDP-C4.3b",
+            "name": "Emission reduction initiatives",
+            "description": "Provide details of emission reduction initiatives active during the reporting year.",
+            "topic": "targets",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Annual CO2e savings", "unit": "tCO2e", "description": "Annual metric tons CO2e savings from initiatives" },
+              { "name": "Annual cost savings", "unit": "currency", "description": "Annual monetary savings from initiatives" }
+            ],
+            "guidanceText": "For each initiative, provide the activity type, description, annual CO2e savings, annual monetary savings, investment required, and payback period.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 305-5", "mappingType": "equivalent" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-3", "mappingType": "partial" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "CDP-C5",
+        "name": "C5: Emissions Methodology",
+        "disclosures": [
+          {
+            "id": "cdp-c5-1",
+            "frameworkId": "fw-cdp-2025",
+            "code": "CDP-C5.1",
+            "name": "Emissions calculation methodology",
+            "description": "Provide the base year and base year emissions, and describe the methodology used.",
+            "topic": "methodology",
+            "dataType": "narrative",
+            "requiredMetrics": [
+              { "name": "Base year", "unit": "year", "description": "Base year for emissions tracking" },
+              { "name": "Base year Scope 1 emissions", "unit": "tCO2e", "description": "Scope 1 emissions in base year" },
+              { "name": "Base year Scope 2 emissions", "unit": "tCO2e", "description": "Scope 2 emissions in base year" }
+            ],
+            "guidanceText": "Report the base year, base year emissions, and the methodology used including GHG Protocol standards applied and emission factors used.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          }
+        ]
+      },
+      {
+        "code": "CDP-C6",
+        "name": "C6: Emissions Data",
+        "disclosures": [
+          {
+            "id": "cdp-c6-1",
+            "frameworkId": "fw-cdp-2025",
+            "code": "CDP-C6.1",
+            "name": "Scope 1 emissions data",
+            "description": "Total gross global Scope 1 emissions in metric tons CO2e.",
+            "topic": "emissions",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Gross global Scope 1 emissions", "unit": "tCO2e", "calculationMethod": "GHG Protocol Corporate Standard", "description": "Total global Scope 1 GHG emissions" }
+            ],
+            "guidanceText": "Report total gross global Scope 1 emissions in metric tons CO2e for the reporting year.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 305-1", "mappingType": "equivalent" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-6", "mappingType": "equivalent" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-29a", "mappingType": "equivalent" },
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-MET-A", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E1", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "cdp-c6-3",
+            "frameworkId": "fw-cdp-2025",
+            "code": "CDP-C6.3",
+            "name": "Scope 2 emissions data",
+            "description": "Total gross global Scope 2 emissions (location-based and market-based) in metric tons CO2e.",
+            "topic": "emissions",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Scope 2 location-based", "unit": "tCO2e", "calculationMethod": "GHG Protocol Scope 2", "description": "Location-based Scope 2 emissions" },
+              { "name": "Scope 2 market-based", "unit": "tCO2e", "calculationMethod": "GHG Protocol Scope 2", "description": "Market-based Scope 2 emissions" }
+            ],
+            "guidanceText": "Report gross global Scope 2 emissions in metric tons CO2e, both location-based and market-based where applicable.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 305-2", "mappingType": "equivalent" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-6", "mappingType": "equivalent" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-29a", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "cdp-c6-5",
+            "frameworkId": "fw-cdp-2025",
+            "code": "CDP-C6.5",
+            "name": "Scope 3 emissions data",
+            "description": "Total gross global Scope 3 emissions by category in metric tons CO2e.",
+            "topic": "emissions",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Total Scope 3 emissions", "unit": "tCO2e", "calculationMethod": "GHG Protocol Scope 3", "description": "Total Scope 3 GHG emissions" }
+            ],
+            "guidanceText": "Report Scope 3 emissions for each relevant category. Identify the categories evaluated and the methodology used.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 305-3", "mappingType": "equivalent" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-6", "mappingType": "equivalent" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "CDP-C7",
+        "name": "C7: Emissions Breakdowns",
+        "disclosures": [
+          {
+            "id": "cdp-c7-1a",
+            "frameworkId": "fw-cdp-2025",
+            "code": "CDP-C7.1a",
+            "name": "Emissions by country/region",
+            "description": "Break down gross Scope 1 and Scope 2 emissions by country/area/region.",
+            "topic": "emissions",
+            "dataType": "quantitative",
+            "requiredMetrics": [],
+            "guidanceText": "Break down Scope 1 and Scope 2 emissions by country/region where the organization operates.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          }
+        ]
+      },
+      {
+        "code": "CDP-C8",
+        "name": "C8: Energy",
+        "disclosures": [
+          {
+            "id": "cdp-c8-2a",
+            "frameworkId": "fw-cdp-2025",
+            "code": "CDP-C8.2a",
+            "name": "Energy consumption and mix",
+            "description": "Report total energy consumption and breakdown by fuel type and activity.",
+            "topic": "energy",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Total energy consumed", "unit": "MWh", "description": "Total energy consumption" },
+              { "name": "Energy from renewables", "unit": "MWh", "description": "Energy from renewable sources" },
+              { "name": "Energy from non-renewables", "unit": "MWh", "description": "Energy from non-renewable sources" }
+            ],
+            "guidanceText": "Report the total fuel, electricity, heating, cooling, and steam consumption, broken down by renewable and non-renewable sources.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 302-1", "mappingType": "equivalent" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-5", "mappingType": "equivalent" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "CDP-C9",
+        "name": "C9: Additional Metrics",
+        "disclosures": [
+          {
+            "id": "cdp-c9-1",
+            "frameworkId": "fw-cdp-2025",
+            "code": "CDP-C9.1",
+            "name": "Emissions performance",
+            "description": "Year-over-year change in total Scope 1 and 2 emissions.",
+            "topic": "emissions",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "YoY change Scope 1+2", "unit": "%", "description": "Year-over-year percentage change in total Scope 1+2 emissions" }
+            ],
+            "guidanceText": "Report the year-over-year change in emissions and the reason for any significant changes.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          }
+        ]
+      },
+      {
+        "code": "CDP-C11",
+        "name": "C11: Carbon Pricing",
+        "disclosures": [
+          {
+            "id": "cdp-c11-2a",
+            "frameworkId": "fw-cdp-2025",
+            "code": "CDP-C11.2a",
+            "name": "Carbon credits",
+            "description": "Details of any project-based carbon credits cancelled during the reporting year.",
+            "topic": "carbon-pricing",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Carbon credits cancelled", "unit": "tCO2e", "description": "Volume of carbon credits retired" }
+            ],
+            "guidanceText": "Report details of any carbon credits cancelled/retired including project type, standard, and vintage.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-7", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "cdp-c11-3a",
+            "frameworkId": "fw-cdp-2025",
+            "code": "CDP-C11.3a",
+            "name": "Internal carbon pricing",
+            "description": "Details of the internal carbon price used by the organization.",
+            "topic": "carbon-pricing",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Internal carbon price", "unit": "currency/tCO2e", "description": "Internal carbon price used" }
+            ],
+            "guidanceText": "Report the internal carbon price and how it is used in decision-making.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-8", "mappingType": "equivalent" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "CDP-C12",
+        "name": "C12: Engagement",
+        "disclosures": [
+          {
+            "id": "cdp-c12-1a",
+            "frameworkId": "fw-cdp-2025",
+            "code": "CDP-C12.1a",
+            "name": "Value chain engagement",
+            "description": "Details of climate-related engagement strategy with suppliers and customers.",
+            "topic": "engagement",
+            "dataType": "narrative",
+            "requiredMetrics": [
+              { "name": "Suppliers engaged on climate", "unit": "%", "description": "Percentage of suppliers engaged on climate issues" }
+            ],
+            "guidanceText": "Describe climate-related engagement activities with suppliers, customers, and other value chain partners.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          }
+        ]
+      },
+      {
+        "code": "CDP-C14",
+        "name": "C14: Signoff",
+        "disclosures": [
+          {
+            "id": "cdp-c14-1",
+            "frameworkId": "fw-cdp-2025",
+            "code": "CDP-C14.1",
+            "name": "Verification/assurance",
+            "description": "Whether the organization has had any of the reported emissions data externally verified/assured.",
+            "topic": "assurance",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Report the scope of emissions data that has been third-party verified and the assurance level (limited/reasonable).",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-5", "mappingType": "partial" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

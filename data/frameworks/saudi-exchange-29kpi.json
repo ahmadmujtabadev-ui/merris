@@ -1,0 +1,592 @@
+{
+  "id": "fw-saudi-exchange-2024",
+  "code": "saudi-exchange",
+  "name": "Saudi Exchange ESG Disclosure Guidelines — 29 KPIs",
+  "version": "2024",
+  "effectiveDate": "2024-01-01",
+  "issuingBody": "Saudi Exchange (Tadawul)",
+  "region": "Saudi Arabia",
+  "type": "mandatory",
+  "structure": {
+    "topics": [
+      {
+        "code": "SE-ENV",
+        "name": "Environmental",
+        "disclosures": [
+          {
+            "id": "se-e1",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-E1",
+            "name": "GHG Emissions",
+            "description": "Total GHG emissions (Scope 1 and Scope 2) in metric tons of CO2 equivalent. Scope 1 covers direct emissions from owned or controlled sources. Scope 2 covers indirect emissions from purchased electricity, steam, heating and cooling.",
+            "topic": "emissions",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Scope 1 GHG emissions", "unit": "tCO2e", "calculationMethod": "GHG Protocol Corporate Standard", "description": "Direct (Scope 1) GHG emissions from owned or controlled sources" },
+              { "name": "Scope 2 GHG emissions", "unit": "tCO2e", "calculationMethod": "GHG Protocol Scope 2 Guidance", "description": "Indirect (Scope 2) GHG emissions from purchased electricity, steam, heating and cooling" },
+              { "name": "Total GHG emissions (Scope 1+2)", "unit": "tCO2e", "description": "Sum of Scope 1 and Scope 2 emissions" }
+            ],
+            "guidanceText": "Report total Scope 1 and Scope 2 GHG emissions in metric tons of CO2 equivalent using the GHG Protocol methodology. Include all six Kyoto Protocol gases where applicable.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 305-1", "mappingType": "equivalent", "notes": "GRI 305-1 Direct (Scope 1) GHG emissions" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 305-2", "mappingType": "equivalent", "notes": "GRI 305-2 Energy indirect (Scope 2) GHG emissions" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-6", "mappingType": "equivalent" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-29a", "mappingType": "equivalent" },
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-MET-A", "mappingType": "equivalent" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-C6.1", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "se-e2",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-E2",
+            "name": "Emissions Intensity",
+            "description": "GHG emissions per unit of output, revenue, or other organization-specific metric. Calculated as total Scope 1+2 emissions divided by the chosen denominator.",
+            "topic": "emissions",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "GHG emissions intensity", "unit": "tCO2e/unit", "calculationMethod": "Total Scope 1+2 / denominator (e.g., revenue, production, employees)", "description": "GHG emissions intensity ratio" }
+            ],
+            "guidanceText": "Report GHG emission intensity ratio per unit of economic or physical output. Specify the denominator used (revenue in SAR, tonnes of production, employees, etc.).",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 305-4", "mappingType": "equivalent" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-29b", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "se-e3",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-E3",
+            "name": "Energy Usage",
+            "description": "Total energy consumed within the organization, broken down by renewable and non-renewable sources, in gigajoules (GJ) or megawatt-hours (MWh).",
+            "topic": "energy",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Total energy consumption", "unit": "GJ", "description": "Total energy consumed within the organization" },
+              { "name": "Renewable energy consumption", "unit": "GJ", "description": "Energy consumption from renewable sources" },
+              { "name": "Non-renewable energy consumption", "unit": "GJ", "description": "Energy consumption from non-renewable sources" },
+              { "name": "Energy intensity", "unit": "GJ/unit", "calculationMethod": "Total energy / denominator", "description": "Energy intensity ratio" }
+            ],
+            "guidanceText": "Report total energy consumption in GJ or MWh, broken down by fuel type and source. Include energy intensity per unit of output or revenue.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 302-1", "mappingType": "equivalent" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 302-3", "mappingType": "equivalent" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-5", "mappingType": "equivalent" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-29b", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "se-e4",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-E4",
+            "name": "Water Usage",
+            "description": "Total water withdrawn and consumed in megaliters (ML) or cubic meters (m3), including water from stressed areas.",
+            "topic": "water",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Total water withdrawal", "unit": "m3", "description": "Total water withdrawn from all sources" },
+              { "name": "Total water consumption", "unit": "m3", "description": "Total water consumed (withdrawn minus discharged)" },
+              { "name": "Water recycled/reused", "unit": "m3", "description": "Volume of water recycled or reused" },
+              { "name": "Water intensity", "unit": "m3/unit", "calculationMethod": "Total water consumption / denominator", "description": "Water intensity per unit of output or revenue" }
+            ],
+            "guidanceText": "Report total water withdrawal by source, total water consumption, and water recycled/reused. Given GCC water scarcity, this is a critical metric.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 303-3", "mappingType": "equivalent" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 303-5", "mappingType": "equivalent" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E3-4", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "se-e5",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-E5",
+            "name": "Waste Generated",
+            "description": "Total waste generated in metric tons, broken down by hazardous and non-hazardous waste, and by disposal method.",
+            "topic": "waste",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Total waste generated", "unit": "tonnes", "description": "Total weight of waste generated" },
+              { "name": "Hazardous waste", "unit": "tonnes", "description": "Total hazardous waste generated" },
+              { "name": "Non-hazardous waste", "unit": "tonnes", "description": "Total non-hazardous waste generated" },
+              { "name": "Waste diverted from disposal", "unit": "tonnes", "description": "Total waste recycled or recovered" },
+              { "name": "Waste to landfill", "unit": "tonnes", "description": "Total waste sent to landfill" }
+            ],
+            "guidanceText": "Report total waste generated broken down by type (hazardous/non-hazardous) and disposal method (recycled, composted, incinerated, landfill).",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 306-3", "mappingType": "equivalent" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E5-5", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "se-e6",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-E6",
+            "name": "Environmental Fines",
+            "description": "Total number and monetary value of environmental fines and penalties during the reporting period.",
+            "topic": "compliance",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Number of environmental fines", "unit": "count", "description": "Total number of environmental fines received" },
+              { "name": "Total value of environmental fines", "unit": "SAR", "description": "Total monetary value of environmental fines" }
+            ],
+            "guidanceText": "Report the number and total value of significant environmental fines and non-monetary sanctions during the reporting period.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-27", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "se-e7",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-E7",
+            "name": "Environmental Operations",
+            "description": "Percentage of operations/activities assessed for environmental risks and impacts, including environmental management systems in place.",
+            "topic": "environmental-management",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Operations with environmental assessment", "unit": "%", "description": "Percentage of operations assessed for environmental risks" },
+              { "name": "Operations with ISO 14001 certification", "unit": "%", "description": "Percentage of operations with ISO 14001 or equivalent" }
+            ],
+            "guidanceText": "Report the percentage of operations that have been assessed for environmental risks and the percentage with certified environmental management systems.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "se-e8",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-E8",
+            "name": "Climate Risk Mitigation",
+            "description": "Description of climate-related risks and opportunities, and strategies for climate risk mitigation including adaptation measures.",
+            "topic": "climate",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe climate-related physical and transition risks, opportunities identified, and strategies for mitigation and adaptation. Reference TCFD framework where applicable.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-STRAT-A", "mappingType": "equivalent" },
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-STRAT-B", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "se-e9",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-E9",
+            "name": "Environmental Expenditures",
+            "description": "Total amount spent on environmental protection activities and investments during the reporting period.",
+            "topic": "environmental-management",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Environmental protection expenditure", "unit": "SAR", "description": "Total expenditure on environmental protection" },
+              { "name": "Environmental investment", "unit": "SAR", "description": "Capital investment in environmental improvements" }
+            ],
+            "guidanceText": "Report total expenditures on environmental protection, pollution prevention, environmental management, and environmental investments.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          }
+        ]
+      },
+      {
+        "code": "SE-SOC",
+        "name": "Social",
+        "disclosures": [
+          {
+            "id": "se-s1",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-S1",
+            "name": "Employee Health & Safety",
+            "description": "Occupational health and safety metrics including fatalities, lost-time injury frequency rate (LTIFR), total recordable incident rate (TRIR), and hours worked.",
+            "topic": "health-safety",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Work-related fatalities", "unit": "count", "description": "Number of work-related fatalities" },
+              { "name": "Lost-time injuries", "unit": "count", "description": "Number of lost-time injuries" },
+              { "name": "Total recordable incidents", "unit": "count", "description": "Total number of recordable work-related incidents" },
+              { "name": "Hours worked", "unit": "hours", "description": "Total hours worked by all employees" },
+              { "name": "LTIFR", "unit": "per 1M hours", "calculationMethod": "(Lost-time injuries / Hours worked) x 1,000,000", "description": "Lost Time Injury Frequency Rate" },
+              { "name": "TRIR", "unit": "per 200,000 hours", "calculationMethod": "(Total recordable incidents / Hours worked) x 200,000", "description": "Total Recordable Incident Rate" }
+            ],
+            "guidanceText": "Report number of work-related fatalities, lost-time injuries, and total recordable incidents. Calculate and report LTIFR and TRIR. Disclose total hours worked.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 403-9", "mappingType": "equivalent" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS S1-14", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "se-s2",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-S2",
+            "name": "Data Privacy",
+            "description": "Number of data breaches and complaints received concerning breaches of customer privacy and losses of customer data.",
+            "topic": "data-privacy",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Data breaches", "unit": "count", "description": "Total number of identified data breaches" },
+              { "name": "Privacy complaints", "unit": "count", "description": "Number of substantiated complaints about privacy breaches" },
+              { "name": "Customer data loss incidents", "unit": "count", "description": "Number of identified losses of customer data" }
+            ],
+            "guidanceText": "Report the total number of data breaches, substantiated complaints regarding breaches of customer privacy, and identified losses of customer data during the reporting period.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 418-1", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "se-s3",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-S3",
+            "name": "Employee Training",
+            "description": "Average hours of training per year per employee, broken down by gender and employee category.",
+            "topic": "training",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Average training hours per employee", "unit": "hours/employee", "description": "Average hours of training per employee" },
+              { "name": "Average training hours - male", "unit": "hours/employee", "description": "Average training hours for male employees" },
+              { "name": "Average training hours - female", "unit": "hours/employee", "description": "Average training hours for female employees" },
+              { "name": "Training expenditure per employee", "unit": "SAR/employee", "description": "Average training investment per employee" }
+            ],
+            "guidanceText": "Report average training hours per employee per year, broken down by gender and employee category. Report total training expenditure.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 404-1", "mappingType": "equivalent" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS S1-13", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "se-s4",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-S4",
+            "name": "Gender Diversity",
+            "description": "Percentage of female employees in the total workforce and in management positions.",
+            "topic": "diversity",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Female employees", "unit": "%", "description": "Percentage of female employees in total workforce" },
+              { "name": "Female in management", "unit": "%", "description": "Percentage of females in management positions" },
+              { "name": "Female in senior management", "unit": "%", "description": "Percentage of females in senior management" }
+            ],
+            "guidanceText": "Report the percentage of female employees in total workforce, management positions, and senior management. This aligns with Saudi Vision 2030 female workforce participation targets.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 405-1", "mappingType": "equivalent" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS S1-9", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "se-s5",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-S5",
+            "name": "Total Employees",
+            "description": "Total number of employees (headcount) broken down by gender, employment type, and contract type.",
+            "topic": "employment",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Total employees", "unit": "headcount", "description": "Total number of employees" },
+              { "name": "Male employees", "unit": "headcount", "description": "Number of male employees" },
+              { "name": "Female employees", "unit": "headcount", "description": "Number of female employees" },
+              { "name": "Full-time employees", "unit": "headcount", "description": "Number of full-time employees" },
+              { "name": "Part-time employees", "unit": "headcount", "description": "Number of part-time employees" }
+            ],
+            "guidanceText": "Report total headcount at the end of the reporting period, broken down by gender, employment type (full-time/part-time), and contract type (permanent/temporary).",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-7", "mappingType": "equivalent" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS S1-6", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "se-s6",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-S6",
+            "name": "Nationalization/Saudization",
+            "description": "Percentage of Saudi nationals in total workforce and in management positions, aligned with Nitaqat program requirements.",
+            "topic": "nationalization",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Saudi nationals in workforce", "unit": "%", "description": "Percentage of Saudi nationals in total workforce" },
+              { "name": "Saudi nationals in management", "unit": "%", "description": "Percentage of Saudi nationals in management positions" },
+              { "name": "Nitaqat band", "unit": "text", "description": "Current Nitaqat band classification" }
+            ],
+            "guidanceText": "Report the percentage of Saudi nationals (Saudization rate) in total workforce and management. Disclose current Nitaqat classification band. This is specific to Saudi Vision 2030 workforce nationalization goals.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 202-2", "mappingType": "partial", "notes": "GRI covers local hiring, Saudi Exchange specifies Saudization" }
+            ]
+          },
+          {
+            "id": "se-s7",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-S7",
+            "name": "Employee Turnover",
+            "description": "Total employee turnover rate and voluntary turnover rate, broken down by gender and age group.",
+            "topic": "employment",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Total turnover rate", "unit": "%", "calculationMethod": "(Total departures / Average headcount) x 100", "description": "Total employee turnover rate" },
+              { "name": "Voluntary turnover rate", "unit": "%", "description": "Voluntary employee turnover rate" },
+              { "name": "New hires", "unit": "headcount", "description": "Total number of new employee hires" }
+            ],
+            "guidanceText": "Report total employee turnover rate and voluntary turnover rate. Break down by gender and age group. Report number of new hires.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 401-1", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "se-s8",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-S8",
+            "name": "Collective Bargaining",
+            "description": "Percentage of employees covered by collective bargaining agreements. Note: In Saudi Arabia, traditional collective bargaining may not apply; report on worker representation mechanisms.",
+            "topic": "labor-relations",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Collective bargaining coverage", "unit": "%", "description": "Percentage of employees covered by collective bargaining or equivalent worker committees" }
+            ],
+            "guidanceText": "Report the percentage of employees covered by collective bargaining agreements or, where not applicable, describe alternative worker representation mechanisms in place.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-30", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "se-s9",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-S9",
+            "name": "Gender Pay Gap",
+            "description": "Ratio of basic salary and remuneration of women to men, by employee category.",
+            "topic": "compensation",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Gender pay ratio", "unit": "ratio", "description": "Ratio of female to male basic salary by employee category" },
+              { "name": "Gender pay gap", "unit": "%", "calculationMethod": "((Male median - Female median) / Male median) x 100", "description": "Percentage difference in median pay between male and female employees" }
+            ],
+            "guidanceText": "Report the ratio of the basic salary and remuneration of women to men for each employee category. Calculate and report the gender pay gap as a percentage.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 405-2", "mappingType": "equivalent" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS S1-16", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "se-s10",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-S10",
+            "name": "Local Procurement",
+            "description": "Percentage of procurement budget spent on local (Saudi-based) suppliers.",
+            "topic": "procurement",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Local procurement percentage", "unit": "%", "description": "Percentage of procurement budget spent on local suppliers" },
+              { "name": "Local procurement value", "unit": "SAR", "description": "Total value of procurement from local suppliers" }
+            ],
+            "guidanceText": "Report the percentage of procurement budget spent with local suppliers. Define 'local' as suppliers based in Saudi Arabia. Aligns with Saudi Vision 2030 local content goals.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 204-1", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "se-s11",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-S11",
+            "name": "Community Investment",
+            "description": "Total value of community investments, including donations, sponsorships, and CSR expenditure.",
+            "topic": "community",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Community investment", "unit": "SAR", "description": "Total value of community investments and CSR expenditure" },
+              { "name": "Community investment as % of net profit", "unit": "%", "description": "Community investment as percentage of net profit" }
+            ],
+            "guidanceText": "Report total monetary value of community investments including donations, in-kind giving, sponsorships, and CSR program expenditures. Report as percentage of net profit.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 201-1", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "se-s12",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-S12",
+            "name": "Human Rights",
+            "description": "Description of human rights due diligence processes and any human rights-related incidents or grievances.",
+            "topic": "human-rights",
+            "dataType": "narrative",
+            "requiredMetrics": [
+              { "name": "Human rights assessments conducted", "unit": "count", "description": "Number of human rights due diligence assessments" },
+              { "name": "Human rights grievances filed", "unit": "count", "description": "Number of human rights-related grievances filed" }
+            ],
+            "guidanceText": "Describe human rights due diligence processes in place. Report number of human rights assessments conducted and any grievances filed and resolved.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 408-1", "mappingType": "partial" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 409-1", "mappingType": "partial" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "SE-GOV",
+        "name": "Governance",
+        "disclosures": [
+          {
+            "id": "se-g1",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-G1",
+            "name": "Board Diversity",
+            "description": "Composition and diversity of the board of directors, including gender, age, independence, and expertise.",
+            "topic": "governance",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Total board members", "unit": "headcount", "description": "Total number of board members" },
+              { "name": "Female board members", "unit": "%", "description": "Percentage of female board members" },
+              { "name": "Independent board members", "unit": "%", "description": "Percentage of independent board members" },
+              { "name": "Board members with ESG expertise", "unit": "%", "description": "Percentage of board members with ESG knowledge/experience" }
+            ],
+            "guidanceText": "Report total board composition with breakdowns by gender, independence, and ESG expertise. Include age distribution of board members.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-9", "mappingType": "partial" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 405-1", "mappingType": "equivalent" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS S1-9", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "se-g2",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-G2",
+            "name": "Board ESG Oversight",
+            "description": "Description of the board's role in overseeing ESG risks and opportunities, including dedicated committees.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [
+              { "name": "ESG committee exists", "unit": "boolean", "description": "Whether a dedicated ESG/sustainability committee exists at board level" }
+            ],
+            "guidanceText": "Describe the board-level oversight of ESG matters, including whether a dedicated ESG committee exists, frequency of ESG reviews, and board ESG training.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "tcfd", "disclosureCode": "TCFD-GOV-A", "mappingType": "partial" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-GOV-1", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "se-g3",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-G3",
+            "name": "CEO Pay Ratio",
+            "description": "Ratio of CEO total compensation to median employee compensation.",
+            "topic": "remuneration",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "CEO total compensation", "unit": "SAR", "description": "Total annual compensation of the CEO" },
+              { "name": "Median employee compensation", "unit": "SAR", "description": "Median annual total compensation of all employees" },
+              { "name": "CEO pay ratio", "unit": "ratio", "calculationMethod": "CEO total compensation / Median employee compensation", "description": "Ratio of CEO to median employee pay" }
+            ],
+            "guidanceText": "Report the ratio of the CEO's annual total compensation to the median annual total compensation of all employees.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-21", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "se-g4",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-G4",
+            "name": "Tax Transparency",
+            "description": "Total tax paid by jurisdiction, effective tax rate, and approach to tax governance.",
+            "topic": "tax",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Total tax paid", "unit": "SAR", "description": "Total corporate tax paid" },
+              { "name": "Effective tax rate", "unit": "%", "description": "Effective corporate tax rate" },
+              { "name": "Zakat paid", "unit": "SAR", "description": "Total Zakat paid (Saudi-specific)" }
+            ],
+            "guidanceText": "Report total taxes paid including corporate income tax and Zakat (for Saudi entities). Disclose effective tax rate and approach to tax governance.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 207-1", "mappingType": "partial" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 207-4", "mappingType": "partial" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 201-1", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "se-g5",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-G5",
+            "name": "Ethics & Anti-Corruption",
+            "description": "Description of anti-corruption policies, training provided, and confirmed incidents of corruption.",
+            "topic": "ethics",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Anti-corruption policy exists", "unit": "boolean", "description": "Whether a formal anti-corruption policy exists" },
+              { "name": "Employees trained on anti-corruption", "unit": "%", "description": "Percentage of employees who received anti-corruption training" },
+              { "name": "Confirmed corruption incidents", "unit": "count", "description": "Number of confirmed incidents of corruption" },
+              { "name": "Whistleblower reports received", "unit": "count", "description": "Number of whistleblower reports received" }
+            ],
+            "guidanceText": "Report on anti-corruption policies, percentage of employees trained, confirmed incidents of corruption, and whistleblower mechanism utilization.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 205-1", "mappingType": "equivalent" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-15", "mappingType": "partial" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-26", "mappingType": "partial" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS G1-3", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "se-g6",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-G6",
+            "name": "ESG Reporting",
+            "description": "Whether the organization publishes a standalone ESG/sustainability report, frameworks used, and assurance status.",
+            "topic": "reporting",
+            "dataType": "narrative",
+            "requiredMetrics": [
+              { "name": "Standalone ESG report published", "unit": "boolean", "description": "Whether a standalone ESG report is published" },
+              { "name": "Frameworks applied", "unit": "list", "description": "List of ESG frameworks used in reporting" },
+              { "name": "External assurance obtained", "unit": "boolean", "description": "Whether external assurance was obtained on ESG data" }
+            ],
+            "guidanceText": "Report whether a standalone ESG/sustainability report is published, which frameworks are applied (GRI, ISSB, etc.), and whether external assurance has been obtained.",
+            "sectorSpecific": false,
+            "crossReferences": []
+          },
+          {
+            "id": "se-g7",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-G7",
+            "name": "Sustainability Governance Structure",
+            "description": "Description of the organizational governance structure for managing sustainability, including roles and responsibilities.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the governance structure for sustainability management, including dedicated roles, reporting lines, and integration with overall corporate governance.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-12", "mappingType": "partial" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-13", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "se-g8",
+            "frameworkId": "fw-saudi-exchange-2024",
+            "code": "SE-G8",
+            "name": "Stakeholder Engagement",
+            "description": "Description of stakeholder engagement approach, key stakeholder groups, and how their input informs ESG strategy.",
+            "topic": "stakeholders",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the approach to stakeholder engagement, identify key stakeholder groups, and explain how stakeholder input informs the ESG strategy and materiality assessment.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-29", "mappingType": "equivalent" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

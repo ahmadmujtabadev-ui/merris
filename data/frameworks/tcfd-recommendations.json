@@ -1,0 +1,222 @@
+{
+  "id": "fw-tcfd-2017",
+  "code": "tcfd",
+  "name": "Task Force on Climate-related Financial Disclosures Recommendations",
+  "version": "2017",
+  "effectiveDate": "2017-06-29",
+  "issuingBody": "Financial Stability Board (FSB) Task Force on Climate-related Financial Disclosures",
+  "region": "global",
+  "type": "voluntary",
+  "structure": {
+    "topics": [
+      {
+        "code": "TCFD-GOV",
+        "name": "Governance",
+        "disclosures": [
+          {
+            "id": "tcfd-gov-a",
+            "frameworkId": "fw-tcfd-2017",
+            "code": "TCFD-GOV-A",
+            "name": "Board oversight of climate-related risks and opportunities",
+            "description": "Describe the board's oversight of climate-related risks and opportunities.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the board's oversight of climate-related risks and opportunities, including processes by which the board is informed, frequency of consideration, and how the board monitors and oversees progress.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-9", "mappingType": "partial" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-12", "mappingType": "partial" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-GOV-1", "mappingType": "equivalent" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-GOV-2", "mappingType": "equivalent" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-6a", "mappingType": "equivalent" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-C1.1b", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "tcfd-gov-b",
+            "frameworkId": "fw-tcfd-2017",
+            "code": "TCFD-GOV-B",
+            "name": "Management's role in assessing and managing climate-related risks and opportunities",
+            "description": "Describe management's role in assessing and managing climate-related risks and opportunities.",
+            "topic": "governance",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe management's role in assessing and managing climate-related risks and opportunities, including organizational structure, processes for informing management, and how management monitors climate-related issues.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 2-13", "mappingType": "partial" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-C1.2a", "mappingType": "equivalent" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "TCFD-STRAT",
+        "name": "Strategy",
+        "disclosures": [
+          {
+            "id": "tcfd-strat-a",
+            "frameworkId": "fw-tcfd-2017",
+            "code": "TCFD-STRAT-A",
+            "name": "Climate-related risks and opportunities identified",
+            "description": "Describe the climate-related risks and opportunities the organization has identified over the short, medium, and long term.",
+            "topic": "strategy",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the climate-related risks and opportunities identified over the short, medium, and long term, including physical risks (acute and chronic) and transition risks (policy, legal, technology, market, reputation).",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 201-2", "mappingType": "equivalent" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-9", "mappingType": "partial" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-10", "mappingType": "equivalent" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-C2.3a", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "tcfd-strat-b",
+            "frameworkId": "fw-tcfd-2017",
+            "code": "TCFD-STRAT-B",
+            "name": "Impact on organization's businesses, strategy, and financial planning",
+            "description": "Describe the impact of climate-related risks and opportunities on the organization's businesses, strategy, and financial planning.",
+            "topic": "strategy",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe how climate-related risks and opportunities have influenced the organization's businesses, strategy, and financial planning, including impacts on products/services, supply chain, adaptation/mitigation activities, R&D expenditures, and operations.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-1", "mappingType": "equivalent" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-10", "mappingType": "equivalent" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-C3.3", "mappingType": "partial" }
+            ]
+          },
+          {
+            "id": "tcfd-strat-c",
+            "frameworkId": "fw-tcfd-2017",
+            "code": "TCFD-STRAT-C",
+            "name": "Resilience of strategy under different climate-related scenarios",
+            "description": "Describe the resilience of the organization's strategy, taking into consideration different climate-related scenarios, including a 2°C or lower scenario.",
+            "topic": "strategy",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the resilience of the organization's strategy using climate-related scenario analysis covering a 2°C or lower scenario. Include where the organization believes its strategies may be affected by climate-related risks and opportunities.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-9", "mappingType": "equivalent" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-13", "mappingType": "equivalent" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-C3.2a", "mappingType": "equivalent" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "TCFD-RISK",
+        "name": "Risk Management",
+        "disclosures": [
+          {
+            "id": "tcfd-risk-a",
+            "frameworkId": "fw-tcfd-2017",
+            "code": "TCFD-RISK-A",
+            "name": "Processes for identifying and assessing climate-related risks",
+            "description": "Describe the organization's processes for identifying and assessing climate-related risks.",
+            "topic": "risk-management",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the processes for identifying and assessing climate-related risks, including how the organization determines the relative significance of climate-related risks in relation to other risks.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS 2-GOV-5", "mappingType": "partial" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S1-36", "mappingType": "equivalent" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-25", "mappingType": "equivalent" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-C2.2", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "tcfd-risk-b",
+            "frameworkId": "fw-tcfd-2017",
+            "code": "TCFD-RISK-B",
+            "name": "Processes for managing climate-related risks",
+            "description": "Describe the organization's processes for managing climate-related risks.",
+            "topic": "risk-management",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe the processes for managing climate-related risks, including how the organization makes decisions to mitigate, transfer, accept, or control those risks.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-2", "mappingType": "partial" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-25", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "tcfd-risk-c",
+            "frameworkId": "fw-tcfd-2017",
+            "code": "TCFD-RISK-C",
+            "name": "Integration into overall risk management",
+            "description": "Describe how processes for identifying, assessing, and managing climate-related risks are integrated into the organization's overall risk management.",
+            "topic": "risk-management",
+            "dataType": "narrative",
+            "requiredMetrics": [],
+            "guidanceText": "Describe how the processes for identifying, assessing, and managing climate-related risks are integrated into the organization's overall risk management framework.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-25", "mappingType": "equivalent" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-C2.2", "mappingType": "partial" }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "TCFD-MET",
+        "name": "Metrics and Targets",
+        "disclosures": [
+          {
+            "id": "tcfd-met-a",
+            "frameworkId": "fw-tcfd-2017",
+            "code": "TCFD-MET-A",
+            "name": "Metrics used to assess climate-related risks and opportunities",
+            "description": "Disclose the metrics used by the organization to assess climate-related risks and opportunities in line with its strategy and risk management process.",
+            "topic": "metrics",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "Scope 1 GHG emissions", "unit": "tCO2e", "calculationMethod": "GHG Protocol", "description": "Direct GHG emissions" },
+              { "name": "Scope 2 GHG emissions", "unit": "tCO2e", "calculationMethod": "GHG Protocol", "description": "Energy indirect GHG emissions" },
+              { "name": "Scope 3 GHG emissions", "unit": "tCO2e", "calculationMethod": "GHG Protocol", "description": "Other indirect GHG emissions (if appropriate)" }
+            ],
+            "guidanceText": "Disclose Scope 1, Scope 2, and if appropriate, Scope 3 GHG emissions and the related risks. Disclose key climate-related metrics such as water usage, energy usage, and land use.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "gri", "disclosureCode": "GRI 305-1", "mappingType": "equivalent" },
+              { "frameworkCode": "gri", "disclosureCode": "GRI 305-2", "mappingType": "equivalent" },
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-6", "mappingType": "equivalent" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-29a", "mappingType": "equivalent" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S1-40", "mappingType": "equivalent" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-C6.1", "mappingType": "equivalent" },
+              { "frameworkCode": "saudi-exchange", "disclosureCode": "SE-E1", "mappingType": "equivalent" }
+            ]
+          },
+          {
+            "id": "tcfd-met-b",
+            "frameworkId": "fw-tcfd-2017",
+            "code": "TCFD-MET-B",
+            "name": "Targets used to manage climate-related risks and opportunities",
+            "description": "Describe the targets used by the organization to manage climate-related risks and opportunities and performance against targets.",
+            "topic": "targets",
+            "dataType": "quantitative",
+            "requiredMetrics": [
+              { "name": "GHG reduction target", "unit": "%", "description": "Target percentage reduction" },
+              { "name": "Target timeline", "unit": "year", "description": "Target completion year" }
+            ],
+            "guidanceText": "Describe targets used to manage climate-related risks and opportunities and performance against those targets. Include key targets such as GHG emissions targets, water usage, energy usage.",
+            "sectorSpecific": false,
+            "crossReferences": [
+              { "frameworkCode": "esrs", "disclosureCode": "ESRS E1-4", "mappingType": "equivalent" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S2-33", "mappingType": "equivalent" },
+              { "frameworkCode": "issb", "disclosureCode": "IFRS S1-40", "mappingType": "equivalent" },
+              { "frameworkCode": "cdp", "disclosureCode": "CDP-C4.1", "mappingType": "equivalent" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
