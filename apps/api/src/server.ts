@@ -9,6 +9,7 @@ import { registerIngestionRoutes } from './modules/ingestion/ingestion.routes.js
 import { registerFrameworkRoutes } from './modules/framework/framework.routes.js';
 import { registerDataCollectionRoutes } from './modules/data-collection/data-collection.routes.js';
 import { registerCalculationRoutes } from './modules/calculation/calculation.routes.js';
+import { registerAgentRoutes } from './modules/agent/agent.routes.js';
 
 dotenv.config();
 
@@ -55,6 +56,9 @@ async function start() {
 
   // Register calculation engine routes
   await registerCalculationRoutes(app);
+
+  // Register AI agent routes
+  await registerAgentRoutes(app);
 
   const port = parseInt(process.env['PORT'] || '3001', 10);
 
