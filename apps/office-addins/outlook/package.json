@@ -1,15 +1,22 @@
 {
   "name": "@merris/outlook-addin",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "echo 'outlook-addin build placeholder'",
-    "dev": "echo 'outlook-addin dev placeholder'"
+    "build": "webpack --mode production",
+    "dev": "webpack serve --mode development",
+    "start": "webpack serve --mode development"
   },
-  "dependencies": {
-    "@merris/shared": "workspace:*"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "typescript": "^5.4.0"
+    "@types/office-js": "^1.0.377",
+    "css-loader": "^6.10.0",
+    "html-webpack-plugin": "^5.6.0",
+    "style-loader": "^3.3.4",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.4.0",
+    "webpack": "^5.90.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.0"
   }
 }

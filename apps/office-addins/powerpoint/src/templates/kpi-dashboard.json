@@ -1,0 +1,15 @@
+{
+  "id": "kpi-dashboard",
+  "name": "KPI Dashboard",
+  "description": "4-6 key ESG metrics with RAG (Red/Amber/Green) status indicators and trend sparklines.",
+  "layout": "grid-6",
+  "placeholders": [
+    { "id": "title", "type": "title", "position": { "x": 50, "y": 20, "width": 860, "height": 50 }, "dataBinding": "engagement.name" },
+    { "id": "kpi1", "type": "chart", "position": { "x": 50, "y": 90, "width": 270, "height": 180 }, "dataBinding": "metrics.scope1_emissions" },
+    { "id": "kpi2", "type": "chart", "position": { "x": 340, "y": 90, "width": 270, "height": 180 }, "dataBinding": "metrics.scope2_emissions" },
+    { "id": "kpi3", "type": "chart", "position": { "x": 630, "y": 90, "width": 270, "height": 180 }, "dataBinding": "metrics.energy_consumption" },
+    { "id": "kpi4", "type": "chart", "position": { "x": 50, "y": 290, "width": 270, "height": 180 }, "dataBinding": "metrics.water_usage" },
+    { "id": "kpi5", "type": "chart", "position": { "x": 340, "y": 290, "width": 270, "height": 180 }, "dataBinding": "metrics.waste_generated" },
+    { "id": "kpi6", "type": "chart", "position": { "x": 630, "y": 290, "width": 270, "height": 180 }, "dataBinding": "metrics.safety_incidents" }
+  ]
+}

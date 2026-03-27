@@ -1,0 +1,11 @@
+{
+  "id": "roadmap-timeline",
+  "name": "ESG Roadmap Timeline",
+  "description": "Timeline visualization of ESG milestones, initiatives, and target dates.",
+  "layout": "timeline",
+  "placeholders": [
+    { "id": "title", "type": "title", "position": { "x": 50, "y": 20, "width": 860, "height": 50 }, "dataBinding": "engagement.name" },
+    { "id": "timeline", "type": "chart", "position": { "x": 50, "y": 90, "width": 860, "height": 300 }, "dataBinding": "roadmap.milestones" },
+    { "id": "phases", "type": "text", "position": { "x": 50, "y": 400, "width": 860, "height": 80 }, "dataBinding": "roadmap.phases" }
+  ]
+}

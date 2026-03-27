@@ -1,0 +1,12 @@
+{
+  "id": "yoy-comparison",
+  "name": "Year-over-Year Comparison",
+  "description": "Trend lines showing multi-year ESG performance against targets.",
+  "layout": "dual-chart",
+  "placeholders": [
+    { "id": "title", "type": "title", "position": { "x": 50, "y": 20, "width": 860, "height": 50 }, "dataBinding": "engagement.name" },
+    { "id": "trend-chart", "type": "chart", "position": { "x": 50, "y": 90, "width": 560, "height": 360 }, "dataBinding": "trends.primary" },
+    { "id": "target-table", "type": "table", "position": { "x": 630, "y": 90, "width": 280, "height": 360 }, "dataBinding": "trends.targets" },
+    { "id": "footnote", "type": "text", "position": { "x": 50, "y": 460, "width": 860, "height": 30 }, "dataBinding": "trends.baseline_note" }
+  ]
+}

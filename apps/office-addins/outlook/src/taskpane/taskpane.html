@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Merris ESG - Outlook</title>
+  <link rel="stylesheet" href="../../../shared/styles.css" />
+  <script src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+</head>
+<body>
+  <div class="merris-taskpane" id="app">
+    <div class="merris-header">
+      <h1>Merris ESG Agent</h1>
+    </div>
+
+    <!-- Compose mode: Generate Data Request -->
+    <div id="compose-panel" class="merris-section" style="display:none;">
+      <h2>Generate Data Request</h2>
+      <label for="engagement-select">Engagement</label>
+      <select id="engagement-select" class="merris-select">
+        <option value="">Select engagement...</option>
+      </select>
+
+      <div id="gap-summary" style="display:none; margin-top:12px;">
+        <div class="merris-card">
+          <div class="merris-card-header" id="gap-count">0 gaps found</div>
+          <div id="gap-groups"></div>
+        </div>
+      </div>
+
+      <div style="margin-top:12px;">
+        <label for="deadline-input">Deadline</label>
+        <input type="date" id="deadline-input" class="merris-input" />
+      </div>
+
+      <div style="margin-top:12px;">
+        <label for="sharepoint-link">SharePoint Upload Link</label>
+        <input type="url" id="sharepoint-link" class="merris-input" placeholder="https://company.sharepoint.com/..." />
+      </div>
+
+      <button id="generate-btn" class="merris-btn merris-btn-primary" style="margin-top:12px; width:100%;" disabled>
+        Generate Data Request Email
+      </button>
+      <div id="compose-status"></div>
+    </div>
+
+    <!-- Read mode: Smart Reply -->
+    <div id="read-panel" class="merris-section" style="display:none;">
+      <h2>Smart Reply</h2>
+      <div id="attachment-info" class="merris-card" style="display:none;">
+        <div class="merris-card-header">Attachments Detected</div>
+        <ul id="attachment-list" class="merris-list"></ul>
+        <div style="margin-top:8px;">
+          <label for="ingest-engagement">Process for engagement:</label>
+          <select id="ingest-engagement" class="merris-select" style="margin-top:4px;">
+            <option value="">Select engagement...</option>
+          </select>
+        </div>
+        <button id="ingest-btn" class="merris-btn merris-btn-primary" style="margin-top:8px; width:100%;">
+          Process Attachments
+        </button>
+        <div id="ingest-status"></div>
+      </div>
+      <div id="no-attachments" class="merris-card" style="display:none;">
+        <p>No attachments detected in this email.</p>
+      </div>
+    </div>
+
+    <!-- Agent panel injected here -->
+    <div id="agent-container"></div>
+  </div>
+  <script src="taskpane.js"></script>
+</body>
+</html>

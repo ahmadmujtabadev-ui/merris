@@ -1,18 +1,152 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
            xsi:type="TaskPaneApp">
   <Id>merris-powerpoint-addin-00000000-0000-0000-0000-000000000003</Id>
-  <Version>0.1.0</Version>
+  <Version>1.0.0</Version>
   <ProviderName>Merris</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Merris ESG Agent" />
-  <Description DefaultValue="AI-powered ESG presentation assistant for PowerPoint" />
+  <DisplayName DefaultValue="Merris ESG" />
+  <Description DefaultValue="AI-powered ESG presentation assistant for PowerPoint. Insert charts, generate slides, and apply branding from the Merris platform." />
+  <IconUrl DefaultValue="https://localhost:3005/assets/icon-64.png" />
+  <HighResolutionIconUrl DefaultValue="https://localhost:3005/assets/icon-128.png" />
+  <SupportUrl DefaultValue="https://merris.app/support" />
+
   <Hosts>
     <Host Name="Presentation" />
   </Hosts>
+
+  <Requirements>
+    <Sets>
+      <Set Name="PresentationApi" MinVersion="1.1" />
+    </Sets>
+  </Requirements>
+
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://localhost:3000/office/powerpoint" />
+    <SourceLocation DefaultValue="https://localhost:3005/taskpane.html" />
   </DefaultSettings>
+
   <Permissions>ReadWriteDocument</Permissions>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Presentation">
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="getStartedTitle" />
+            <Description resid="getStartedDesc" />
+            <LearnMoreUrl resid="learnMoreUrl" />
+          </GetStarted>
+
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <CustomTab id="merrisTab">
+              <Group id="merrisChartGroup">
+                <Label resid="chartGroupLabel" />
+                <Icon>
+                  <bt:Image size="16" resid="icon16" />
+                  <bt:Image size="32" resid="icon32" />
+                  <bt:Image size="80" resid="icon80" />
+                </Icon>
+
+                <Control xsi:type="Button" id="insertChartBtn">
+                  <Label resid="insertChartLabel" />
+                  <Supertip>
+                    <Title resid="insertChartLabel" />
+                    <Description resid="insertChartDesc" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="icon16" />
+                    <bt:Image size="32" resid="icon32" />
+                    <bt:Image size="80" resid="icon80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="taskpaneUrl" />
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="generateSlideBtn">
+                  <Label resid="generateSlideLabel" />
+                  <Supertip>
+                    <Title resid="generateSlideLabel" />
+                    <Description resid="generateSlideDesc" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="icon16" />
+                    <bt:Image size="32" resid="icon32" />
+                    <bt:Image size="80" resid="icon80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="taskpaneUrl" />
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="applyBrandingBtn">
+                  <Label resid="applyBrandingLabel" />
+                  <Supertip>
+                    <Title resid="applyBrandingLabel" />
+                    <Description resid="applyBrandingDesc" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="icon16" />
+                    <bt:Image size="32" resid="icon32" />
+                    <bt:Image size="80" resid="icon80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="taskpaneUrl" />
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="esgAgentBtn">
+                  <Label resid="esgAgentLabel" />
+                  <Supertip>
+                    <Title resid="esgAgentLabel" />
+                    <Description resid="esgAgentDesc" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="icon16" />
+                    <bt:Image size="32" resid="icon32" />
+                    <bt:Image size="80" resid="icon80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="taskpaneUrl" />
+                  </Action>
+                </Control>
+              </Group>
+              <Label resid="tabLabel" />
+            </CustomTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+
+    <Resources>
+      <bt:Images>
+        <bt:Image id="icon16" DefaultValue="https://localhost:3005/assets/icon-16.png" />
+        <bt:Image id="icon32" DefaultValue="https://localhost:3005/assets/icon-32.png" />
+        <bt:Image id="icon80" DefaultValue="https://localhost:3005/assets/icon-80.png" />
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="taskpaneUrl" DefaultValue="https://localhost:3005/taskpane.html" />
+        <bt:Url id="learnMoreUrl" DefaultValue="https://merris.app/docs/powerpoint" />
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="tabLabel" DefaultValue="Merris" />
+        <bt:String id="chartGroupLabel" DefaultValue="ESG Tools" />
+        <bt:String id="insertChartLabel" DefaultValue="Insert Chart" />
+        <bt:String id="generateSlideLabel" DefaultValue="Generate Slide" />
+        <bt:String id="applyBrandingLabel" DefaultValue="Apply Branding" />
+        <bt:String id="esgAgentLabel" DefaultValue="ESG Agent" />
+        <bt:String id="getStartedTitle" DefaultValue="Merris ESG for PowerPoint" />
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="insertChartDesc" DefaultValue="Select an ESG metric and chart type to insert a data visualization on the current slide." />
+        <bt:String id="generateSlideDesc" DefaultValue="Generate a slide from a template populated with engagement data." />
+        <bt:String id="applyBrandingDesc" DefaultValue="Apply a brand profile (colors, fonts, logo) to all slides in the presentation." />
+        <bt:String id="esgAgentDesc" DefaultValue="Chat with the Merris ESG Agent for assistance with your presentation." />
+        <bt:String id="getStartedDesc" DefaultValue="Use the Merris tab to insert ESG charts, generate slides from templates, and apply branding." />
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
 </OfficeApp>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Merris ESG - PowerPoint</title>
+  <link rel="stylesheet" href="../../../shared/styles.css" />
+  <script src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+</head>
+<body>
+  <div class="merris-taskpane" id="app">
+    <div class="merris-header">
+      <h1>Merris ESG</h1>
+    </div>
+
+    <!-- Tab navigation -->
+    <div class="merris-section">
+      <div class="merris-grid" style="grid-template-columns: repeat(4, 1fr);">
+        <button class="merris-btn merris-btn-primary tab-btn active" data-tab="chart">Chart</button>
+        <button class="merris-btn merris-btn-secondary tab-btn" data-tab="slide">Slide</button>
+        <button class="merris-btn merris-btn-secondary tab-btn" data-tab="brand">Brand</button>
+        <button class="merris-btn merris-btn-secondary tab-btn" data-tab="agent">Agent</button>
+      </div>
+    </div>
+
+    <!-- Insert Chart Panel -->
+    <div id="chart-panel" class="merris-section tab-content">
+      <h2>Insert ESG Chart</h2>
+      <label for="engagement-select">Engagement</label>
+      <select id="engagement-select" class="merris-select">
+        <option value="">Select engagement...</option>
+      </select>
+
+      <label for="metric-select" style="margin-top:8px; display:block;">Metric</label>
+      <select id="metric-select" class="merris-select" disabled>
+        <option value="">Select metric...</option>
+      </select>
+
+      <label for="chart-type" style="margin-top:8px; display:block;">Chart Type</label>
+      <select id="chart-type" class="merris-select">
+        <option value="bar">Bar Chart</option>
+        <option value="line">Line Chart</option>
+        <option value="waterfall">Waterfall Chart</option>
+        <option value="radar">Radar Chart</option>
+        <option value="pie">Pie Chart</option>
+        <option value="bubble">Bubble Chart</option>
+      </select>
+
+      <div id="chart-preview" style="margin-top:12px; min-height:200px; border:1px solid #e0e0e0; border-radius:6px; display:flex; align-items:center; justify-content:center; color:#757575;">
+        Select a metric to preview
+      </div>
+
+      <button id="insert-chart-btn" class="merris-btn merris-btn-primary" style="margin-top:12px; width:100%;" disabled>
+        Insert on Slide
+      </button>
+      <div id="chart-status"></div>
+    </div>
+
+    <!-- Generate Slide Panel -->
+    <div id="slide-panel" class="merris-section tab-content" style="display:none;">
+      <h2>Generate Slide</h2>
+      <label for="template-select">Template</label>
+      <select id="template-select" class="merris-select">
+        <option value="">Select template...</option>
+        <option value="kpi-dashboard">KPI Dashboard</option>
+        <option value="ghg-waterfall">GHG Waterfall</option>
+        <option value="yoy-comparison">Year-over-Year Comparison</option>
+        <option value="materiality-matrix">Materiality Matrix</option>
+        <option value="compliance-status">Compliance Status</option>
+        <option value="roadmap-timeline">ESG Roadmap Timeline</option>
+      </select>
+
+      <div id="template-preview" class="merris-card" style="margin-top:12px; display:none;">
+        <div class="merris-card-header" id="template-name"></div>
+        <p id="template-desc" style="color:#757575; font-size:13px;"></p>
+      </div>
+
+      <label for="slide-engagement" style="margin-top:8px; display:block;">Engagement</label>
+      <select id="slide-engagement" class="merris-select">
+        <option value="">Select engagement...</option>
+      </select>
+
+      <button id="generate-slide-btn" class="merris-btn merris-btn-primary" style="margin-top:12px; width:100%;" disabled>
+        Generate Slide
+      </button>
+      <div id="slide-status"></div>
+    </div>
+
+    <!-- Apply Branding Panel -->
+    <div id="brand-panel" class="merris-section tab-content" style="display:none;">
+      <h2>Apply Branding</h2>
+      <label for="brand-select">Brand Profile</label>
+      <select id="brand-select" class="merris-select">
+        <option value="">Select brand...</option>
+      </select>
+
+      <div id="brand-preview" class="merris-card" style="margin-top:12px; display:none;">
+        <div class="merris-card-header" id="brand-name"></div>
+        <div id="brand-colors" style="display:flex; gap:4px; margin-top:8px;"></div>
+        <p id="brand-font" style="color:#757575; font-size:13px; margin-top:4px;"></p>
+      </div>
+
+      <button id="apply-brand-btn" class="merris-btn merris-btn-primary" style="margin-top:12px; width:100%;" disabled>
+        Apply to All Slides
+      </button>
+      <div id="brand-status"></div>
+    </div>
+
+    <!-- Agent Panel -->
+    <div id="agent-panel" class="merris-section tab-content" style="display:none;">
+      <div id="agent-container"></div>
+    </div>
+  </div>
+  <script src="taskpane.js"></script>
+</body>
+</html>
