@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Merris ESG Agent — Excel</title>
+  <script src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+  <link rel="stylesheet" href="taskpane.css" />
+</head>
+<body>
+  <div class="merris-taskpane">
+    <!-- Header -->
+    <div class="merris-header">
+      <span class="logo">&#127807; Merris</span>
+      <span class="subtitle">ESG Agent for Excel</span>
+    </div>
+
+    <!-- Tabs -->
+    <div class="merris-tabs">
+      <button class="merris-tab active" data-tab="agent">Agent</button>
+      <button class="merris-tab" data-tab="summary">Data Summary</button>
+      <button class="merris-tab" data-tab="actions">Actions</button>
+    </div>
+
+    <!-- Content -->
+    <div class="merris-content">
+      <!-- Agent Chat Panel -->
+      <div id="panel-agent" class="merris-panel active"></div>
+
+      <!-- Data Completeness Summary -->
+      <div id="panel-summary" class="merris-panel">
+        <div class="merris-section-title">Data Completeness</div>
+        <div id="completeness-stats">
+          <div class="merris-loading">
+            <div class="merris-spinner"></div>
+            Loading summary...
+          </div>
+        </div>
+      </div>
+
+      <!-- Suggested Actions -->
+      <div id="panel-actions" class="merris-panel">
+        <div class="merris-section-title">Suggested Actions</div>
+        <div id="suggested-actions">
+          <div class="merris-card">
+            <div class="merris-card-title">Auto-Fill Missing Data</div>
+            <div class="merris-card-body">
+              Select a range of metric labels and click Auto-Fill to populate values from the Merris platform.
+            </div>
+            <div style="margin-top: 8px;">
+              <button class="merris-btn primary" id="btn-autofill">Auto-Fill Selection</button>
+            </div>
+          </div>
+          <div class="merris-card">
+            <div class="merris-card-title">Validate Sheet</div>
+            <div class="merris-card-body">
+              Run validation rules against all data in the current sheet to check for errors, inconsistencies, and missing fields.
+            </div>
+            <div style="margin-top: 8px;">
+              <button class="merris-btn primary" id="btn-validate">Validate Data</button>
+            </div>
+          </div>
+          <div class="merris-card">
+            <div class="merris-card-title">Export to Merris</div>
+            <div class="merris-card-body">
+              Push the data in this worksheet back to the Merris platform for use in reports and disclosures.
+            </div>
+            <div style="margin-top: 8px;">
+              <button class="merris-btn">Export</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="taskpane.js"></script>
+</body>
+</html>

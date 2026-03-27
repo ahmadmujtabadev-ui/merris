@@ -1,0 +1,230 @@
+/* Merris Office Add-in Shared Styles */
+
+:root {
+  --merris-primary: #1a7a4c;
+  --merris-primary-dark: #145f3b;
+  --merris-primary-light: #e8f5ee;
+  --merris-accent: #2196f3;
+  --merris-error: #d32f2f;
+  --merris-warning: #f9a825;
+  --merris-success: #388e3c;
+  --merris-text: #212121;
+  --merris-text-secondary: #757575;
+  --merris-border: #e0e0e0;
+  --merris-bg: #ffffff;
+  --merris-bg-secondary: #f5f5f5;
+  --merris-radius: 6px;
+  --merris-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  color: var(--merris-text);
+  background: var(--merris-bg);
+  line-height: 1.5;
+}
+
+.merris-taskpane {
+  padding: 16px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.merris-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--merris-primary);
+  margin-bottom: 16px;
+}
+
+.merris-header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--merris-primary-dark);
+}
+
+.merris-section {
+  margin-bottom: 20px;
+}
+
+.merris-section h2 {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--merris-text-secondary);
+  margin-bottom: 8px;
+}
+
+.merris-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: var(--merris-radius);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, box-shadow 0.15s;
+}
+
+.merris-btn-primary {
+  background: var(--merris-primary);
+  color: #fff;
+}
+
+.merris-btn-primary:hover {
+  background: var(--merris-primary-dark);
+  box-shadow: var(--merris-shadow);
+}
+
+.merris-btn-secondary {
+  background: var(--merris-bg-secondary);
+  color: var(--merris-text);
+  border: 1px solid var(--merris-border);
+}
+
+.merris-btn-secondary:hover {
+  background: var(--merris-border);
+}
+
+.merris-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.merris-select,
+.merris-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--merris-border);
+  border-radius: var(--merris-radius);
+  font-size: 14px;
+  font-family: inherit;
+  background: var(--merris-bg);
+  color: var(--merris-text);
+}
+
+.merris-select:focus,
+.merris-input:focus {
+  outline: none;
+  border-color: var(--merris-primary);
+  box-shadow: 0 0 0 2px var(--merris-primary-light);
+}
+
+.merris-card {
+  background: var(--merris-bg);
+  border: 1px solid var(--merris-border);
+  border-radius: var(--merris-radius);
+  padding: 12px;
+  margin-bottom: 8px;
+  box-shadow: var(--merris-shadow);
+}
+
+.merris-card-header {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.merris-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.merris-badge-success { background: #e8f5e9; color: var(--merris-success); }
+.merris-badge-warning { background: #fff8e1; color: #f57f17; }
+.merris-badge-error { background: #fbe9e7; color: var(--merris-error); }
+
+.merris-progress {
+  width: 100%;
+  height: 8px;
+  background: var(--merris-bg-secondary);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.merris-progress-bar {
+  height: 100%;
+  background: var(--merris-primary);
+  border-radius: 4px;
+  transition: width 0.3s;
+}
+
+.merris-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--merris-border);
+  border-top-color: var(--merris-primary);
+  border-radius: 50%;
+  animation: merris-spin 0.6s linear infinite;
+}
+
+@keyframes merris-spin {
+  to { transform: rotate(360deg); }
+}
+
+.merris-loading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--merris-text-secondary);
+  padding: 16px 0;
+}
+
+.merris-error-msg {
+  color: var(--merris-error);
+  font-size: 13px;
+  padding: 8px;
+  background: #fbe9e7;
+  border-radius: var(--merris-radius);
+  margin: 8px 0;
+}
+
+.merris-list { list-style: none; }
+.merris-list li { padding: 8px 0; border-bottom: 1px solid var(--merris-border); }
+.merris-list li:last-child { border-bottom: none; }
+
+.merris-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.merris-agent-panel {
+  border-top: 1px solid var(--merris-border);
+  margin-top: 16px;
+  padding-top: 12px;
+}
+
+.merris-agent-messages {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 12px;
+}
+
+.merris-agent-msg {
+  padding: 8px 12px;
+  border-radius: var(--merris-radius);
+  margin-bottom: 6px;
+  font-size: 13px;
+}
+
+.merris-agent-msg-user { background: var(--merris-primary-light); text-align: right; }
+.merris-agent-msg-bot { background: var(--merris-bg-secondary); }
+
+.merris-agent-input { display: flex; gap: 8px; }
+.merris-agent-input input { flex: 1; }

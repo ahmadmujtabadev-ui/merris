@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Merris ESG Agent -- Word</title>
+  <script src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+  <link rel="stylesheet" href="taskpane.css" />
+</head>
+<body>
+  <div class="merris-taskpane">
+    <!-- Header -->
+    <div class="merris-header">
+      <h1>&#127807; Merris</h1>
+      <span style="font-size:12px; color:var(--merris-text-secondary);">ESG Report Assistant</span>
+    </div>
+
+    <!-- Current Section Detector -->
+    <div class="merris-section" id="section-detector">
+      <h2>Current Section</h2>
+      <div id="current-section" class="merris-card">
+        <div class="merris-card-header" id="section-heading">Detecting...</div>
+        <p id="section-framework" style="font-size:13px; color:var(--merris-text-secondary);"></p>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div style="display:flex; gap:4px; margin-bottom:12px; flex-wrap:wrap;">
+      <button class="merris-btn merris-btn-primary merris-tab-btn active" data-tab="agent">Agent</button>
+      <button class="merris-btn merris-btn-secondary merris-tab-btn" data-tab="compliance">Compliance</button>
+      <button class="merris-btn merris-btn-secondary merris-tab-btn" data-tab="suggested">Suggested</button>
+      <button class="merris-btn merris-btn-secondary merris-tab-btn" data-tab="citations">Citations</button>
+    </div>
+
+    <!-- Agent Panel -->
+    <div id="panel-agent" class="merris-panel active"></div>
+
+    <!-- Compliance Notes -->
+    <div id="panel-compliance" class="merris-panel" style="display:none;">
+      <div class="merris-section">
+        <h2>Compliance Requirements</h2>
+        <div id="compliance-notes">
+          <div class="merris-loading">
+            <span class="merris-spinner"></span> Loading requirements...
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Suggested Content -->
+    <div id="panel-suggested" class="merris-panel" style="display:none;">
+      <div class="merris-section">
+        <h2>Suggested Content</h2>
+        <div id="suggested-content">
+          <div class="merris-card">
+            <div class="merris-card-header">Navigate to a disclosure heading</div>
+            <p style="font-size:13px; color:var(--merris-text-secondary);">
+              Place your cursor under a GRI or ESRS heading to see content suggestions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Citation Trail -->
+    <div id="panel-citations" class="merris-panel" style="display:none;">
+      <div class="merris-section">
+        <h2>Citation Trail</h2>
+        <div id="citation-trail">
+          <div class="merris-card">
+            <p style="font-size:13px; color:var(--merris-text-secondary);">
+              Select a data point in the document to view its source trail.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="taskpane.js"></script>
+</body>
+</html>

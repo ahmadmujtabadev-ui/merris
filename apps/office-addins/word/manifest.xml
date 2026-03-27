@@ -1,18 +1,169 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
            xsi:type="TaskPaneApp">
+
   <Id>merris-word-addin-00000000-0000-0000-0000-000000000001</Id>
-  <Version>0.1.0</Version>
+  <Version>1.0.0</Version>
   <ProviderName>Merris</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Merris ESG Agent" />
-  <Description DefaultValue="AI-powered ESG reporting assistant for Word" />
+  <Description DefaultValue="AI-powered ESG report drafting for Word" />
+  <IconUrl DefaultValue="https://merris.app/assets/icon-32.png" />
+  <HighResolutionIconUrl DefaultValue="https://merris.app/assets/icon-64.png" />
+  <SupportUrl DefaultValue="https://merris.app/support" />
+
   <Hosts>
     <Host Name="Document" />
   </Hosts>
+
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://localhost:3000/office/word" />
+    <SourceLocation DefaultValue="https://localhost:3003/word/taskpane.html" />
   </DefaultSettings>
+
   <Permissions>ReadWriteDocument</Permissions>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Document">
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="GetStarted.Title" />
+            <Description resid="GetStarted.Description" />
+            <LearnMoreUrl resid="GetStarted.LearnMoreUrl" />
+          </GetStarted>
+
+          <FunctionFile resid="Commands.Url" />
+
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <CustomTab id="MerrisTab">
+              <Group id="MerrisGroup">
+                <Label resid="MerrisGroup.Label" />
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16x16" />
+                  <bt:Image size="32" resid="Icon.32x32" />
+                  <bt:Image size="80" resid="Icon.80x80" />
+                </Icon>
+
+                <Control xsi:type="Button" id="DraftSectionButton">
+                  <Label resid="DraftSection.Label" />
+                  <Supertip>
+                    <Title resid="DraftSection.Label" />
+                    <Description resid="DraftSection.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16" />
+                    <bt:Image size="32" resid="Icon.32x32" />
+                    <bt:Image size="80" resid="Icon.80x80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>draftSection</FunctionName>
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="InsertTableButton">
+                  <Label resid="InsertTable.Label" />
+                  <Supertip>
+                    <Title resid="InsertTable.Label" />
+                    <Description resid="InsertTable.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16" />
+                    <bt:Image size="32" resid="Icon.32x32" />
+                    <bt:Image size="80" resid="Icon.80x80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>insertDataTable</FunctionName>
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="ConsistencyCheckButton">
+                  <Label resid="ConsistencyCheck.Label" />
+                  <Supertip>
+                    <Title resid="ConsistencyCheck.Label" />
+                    <Description resid="ConsistencyCheck.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16" />
+                    <bt:Image size="32" resid="Icon.32x32" />
+                    <bt:Image size="80" resid="Icon.80x80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>consistencyCheck</FunctionName>
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="EvidenceTrailButton">
+                  <Label resid="EvidenceTrail.Label" />
+                  <Supertip>
+                    <Title resid="EvidenceTrail.Label" />
+                    <Description resid="EvidenceTrail.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16" />
+                    <bt:Image size="32" resid="Icon.32x32" />
+                    <bt:Image size="80" resid="Icon.80x80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>evidenceTrail</FunctionName>
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="AgentButton">
+                  <Label resid="Agent.Label" />
+                  <Supertip>
+                    <Title resid="Agent.Label" />
+                    <Description resid="Agent.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16" />
+                    <bt:Image size="32" resid="Icon.32x32" />
+                    <bt:Image size="80" resid="Icon.80x80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>MerrisTaskpane</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url" />
+                  </Action>
+                </Control>
+              </Group>
+              <Label resid="MerrisTab.Label" />
+            </CustomTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.16x16" DefaultValue="https://merris.app/assets/icon-16.png" />
+        <bt:Image id="Icon.32x32" DefaultValue="https://merris.app/assets/icon-32.png" />
+        <bt:Image id="Icon.80x80" DefaultValue="https://merris.app/assets/icon-80.png" />
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="Commands.Url" DefaultValue="https://localhost:3003/word/commands.html" />
+        <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3003/word/taskpane.html" />
+        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://merris.app/docs/word-addin" />
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="MerrisTab.Label" DefaultValue="&#127807; Merris" />
+        <bt:String id="MerrisGroup.Label" DefaultValue="ESG Report Tools" />
+        <bt:String id="DraftSection.Label" DefaultValue="Draft Section" />
+        <bt:String id="InsertTable.Label" DefaultValue="Insert Table" />
+        <bt:String id="ConsistencyCheck.Label" DefaultValue="Consistency Check" />
+        <bt:String id="EvidenceTrail.Label" DefaultValue="Evidence Trail" />
+        <bt:String id="Agent.Label" DefaultValue="ESG Agent" />
+        <bt:String id="GetStarted.Title" DefaultValue="Merris ESG Agent" />
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="DraftSection.Tooltip" DefaultValue="Draft the current disclosure section using AI based on your ESG data" />
+        <bt:String id="InsertTable.Tooltip" DefaultValue="Insert a formatted ESG data table for the current section" />
+        <bt:String id="ConsistencyCheck.Tooltip" DefaultValue="Scan the document for numeric inconsistencies and compliance gaps" />
+        <bt:String id="EvidenceTrail.Tooltip" DefaultValue="Show source documents and page references for the selected data point" />
+        <bt:String id="Agent.Tooltip" DefaultValue="Open the Merris ESG Agent chat panel" />
+        <bt:String id="GetStarted.Description" DefaultValue="AI-powered ESG report drafting. Use the Merris tab to draft sections, insert tables, check consistency, and chat with the ESG Agent." />
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
 </OfficeApp>

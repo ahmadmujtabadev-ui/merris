@@ -1,18 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
            xsi:type="TaskPaneApp">
+
   <Id>merris-excel-addin-00000000-0000-0000-0000-000000000002</Id>
-  <Version>0.1.0</Version>
+  <Version>1.0.0</Version>
   <ProviderName>Merris</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Merris ESG Agent" />
-  <Description DefaultValue="AI-powered ESG data collection assistant for Excel" />
+  <Description DefaultValue="AI-powered ESG data management for Excel" />
+  <IconUrl DefaultValue="https://merris.app/assets/icon-32.png" />
+  <HighResolutionIconUrl DefaultValue="https://merris.app/assets/icon-64.png" />
+  <SupportUrl DefaultValue="https://merris.app/support" />
+
   <Hosts>
     <Host Name="Workbook" />
   </Hosts>
+
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://localhost:3000/office/excel" />
+    <SourceLocation DefaultValue="https://localhost:3002/excel/taskpane.html" />
   </DefaultSettings>
+
   <Permissions>ReadWriteDocument</Permissions>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Workbook">
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="GetStarted.Title" />
+            <Description resid="GetStarted.Description" />
+            <LearnMoreUrl resid="GetStarted.LearnMoreUrl" />
+          </GetStarted>
+
+          <FunctionFile resid="Commands.Url" />
+
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <CustomTab id="MerrisTab">
+              <Group id="MerrisGroup">
+                <Label resid="MerrisGroup.Label" />
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16x16" />
+                  <bt:Image size="32" resid="Icon.32x32" />
+                  <bt:Image size="80" resid="Icon.80x80" />
+                </Icon>
+
+                <Control xsi:type="Button" id="AutoFillButton">
+                  <Label resid="AutoFill.Label" />
+                  <Supertip>
+                    <Title resid="AutoFill.Label" />
+                    <Description resid="AutoFill.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16" />
+                    <bt:Image size="32" resid="Icon.32x32" />
+                    <bt:Image size="80" resid="Icon.80x80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>autoFill</FunctionName>
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="ValidateButton">
+                  <Label resid="Validate.Label" />
+                  <Supertip>
+                    <Title resid="Validate.Label" />
+                    <Description resid="Validate.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16" />
+                    <bt:Image size="32" resid="Icon.32x32" />
+                    <bt:Image size="80" resid="Icon.80x80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>validateData</FunctionName>
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="AgentButton">
+                  <Label resid="Agent.Label" />
+                  <Supertip>
+                    <Title resid="Agent.Label" />
+                    <Description resid="Agent.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16" />
+                    <bt:Image size="32" resid="Icon.32x32" />
+                    <bt:Image size="80" resid="Icon.80x80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>MerrisTaskpane</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url" />
+                  </Action>
+                </Control>
+              </Group>
+              <Label resid="MerrisTab.Label" />
+            </CustomTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.16x16" DefaultValue="https://merris.app/assets/icon-16.png" />
+        <bt:Image id="Icon.32x32" DefaultValue="https://merris.app/assets/icon-32.png" />
+        <bt:Image id="Icon.80x80" DefaultValue="https://merris.app/assets/icon-80.png" />
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="Commands.Url" DefaultValue="https://localhost:3002/excel/commands.html" />
+        <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3002/excel/taskpane.html" />
+        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://merris.app/docs/excel-addin" />
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="MerrisTab.Label" DefaultValue="&#127807; Merris" />
+        <bt:String id="MerrisGroup.Label" DefaultValue="ESG Tools" />
+        <bt:String id="AutoFill.Label" DefaultValue="Auto-Fill" />
+        <bt:String id="Validate.Label" DefaultValue="Validate Data" />
+        <bt:String id="Agent.Label" DefaultValue="ESG Agent" />
+        <bt:String id="GetStarted.Title" DefaultValue="Merris ESG Agent" />
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="AutoFill.Tooltip" DefaultValue="Auto-fill selected cells with ESG data from the Merris platform" />
+        <bt:String id="Validate.Tooltip" DefaultValue="Validate ESG data in the current sheet against calculation rules" />
+        <bt:String id="Agent.Tooltip" DefaultValue="Open the Merris ESG Agent chat panel" />
+        <bt:String id="GetStarted.Description" DefaultValue="AI-powered ESG data management. Use the Merris tab to auto-fill data, validate entries, and chat with the ESG Agent." />
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
 </OfficeApp>
