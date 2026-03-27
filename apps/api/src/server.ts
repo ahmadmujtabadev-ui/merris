@@ -3,6 +3,7 @@ import cors from '@fastify/cors';
 import websocket from '@fastify/websocket';
 import dotenv from 'dotenv';
 import { logger } from './lib/logger.js';
+import { registerAuthRoutes } from './modules/auth/auth.routes.js';
 
 dotenv.config();
 
@@ -31,6 +32,9 @@ async function start() {
       features: FEATURES,
     };
   });
+
+  // Register auth routes
+  await registerAuthRoutes(app);
 
   const port = parseInt(process.env['PORT'] || '3001', 10);
 
