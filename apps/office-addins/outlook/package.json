@@ -1,0 +1,15 @@
+{
+  "name": "@merris/outlook-addin",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "echo 'outlook-addin build placeholder'",
+    "dev": "echo 'outlook-addin dev placeholder'"
+  },
+  "dependencies": {
+    "@merris/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}
