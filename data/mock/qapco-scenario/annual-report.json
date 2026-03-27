@@ -1,0 +1,231 @@
+{
+  "metadata": {
+    "company": "Qatar Petrochemical Company (QAPCO)",
+    "reportingPeriod": { "start": "2024-01-01", "end": "2024-12-31" },
+    "industry": "Petrochemicals",
+    "gicsCode": "15101020",
+    "country": "Qatar",
+    "exchange": "QSE",
+    "reportType": "Annual Report / Sustainability Report (mock data for E2E testing)",
+    "extractionDate": "2025-03-01",
+    "extractionMethod": "llm_extract",
+    "confidence": "high"
+  },
+  "financials": {
+    "revenue": { "value": 5230000000, "unit": "QAR", "confidence": "high" },
+    "netProfit": { "value": 1420000000, "unit": "QAR", "confidence": "high" },
+    "totalAssets": { "value": 12800000000, "unit": "QAR", "confidence": "high" },
+    "operatingCosts": { "value": 3180000000, "unit": "QAR", "confidence": "high" },
+    "employeeWagesAndBenefits": { "value": 612000000, "unit": "QAR", "confidence": "high" },
+    "paymentsToGovernment": { "value": 287000000, "unit": "QAR", "confidence": "high" },
+    "communityInvestments": { "value": 18500000, "unit": "QAR", "confidence": "high" }
+  },
+  "environmental": {
+    "ghgEmissions": {
+      "scope1": {
+        "value": 487320,
+        "unit": "tCO2e",
+        "methodology": "GHG Protocol Corporate Standard",
+        "gases": ["CO2", "CH4", "N2O"],
+        "sources": {
+          "stationaryCombustion": 142500,
+          "processEmissions": 298400,
+          "fugitiveEmissions": 38920,
+          "flaring": 7500
+        },
+        "confidence": "high",
+        "verified": true,
+        "verifier": "Bureau Veritas"
+      },
+      "scope2": {
+        "locationBased": {
+          "value": 43180,
+          "unit": "tCO2e",
+          "gridFactor": 0.493,
+          "gridFactorUnit": "kgCO2e/kWh",
+          "gridFactorSource": "IEA 2023 Qatar (KAHRAMAA)",
+          "electricityConsumed": 87588,
+          "electricityUnit": "MWh"
+        },
+        "marketBased": {
+          "value": 43180,
+          "unit": "tCO2e",
+          "notes": "No renewable energy certificates purchased; market-based equals location-based"
+        },
+        "confidence": "high"
+      },
+      "scope3": {
+        "total": 1250000,
+        "unit": "tCO2e",
+        "categories": {
+          "cat1_purchasedGoods": 180000,
+          "cat3_fuelEnergy": 52000,
+          "cat4_upstreamTransport": 41000,
+          "cat9_downstreamTransport": 78000,
+          "cat10_processingOfSoldProducts": 420000,
+          "cat12_endOfLifeTreatment": 479000
+        },
+        "confidence": "medium",
+        "notes": "Scope 3 estimated using spend-based and activity-based methods"
+      },
+      "totalScope1And2": 530500,
+      "emissionsIntensity": {
+        "perRevenue": { "value": 101.4, "unit": "tCO2e/M QAR" },
+        "perTonneProduct": { "value": 0.531, "unit": "tCO2e/tonne ethylene" }
+      }
+    },
+    "energy": {
+      "totalConsumption": { "value": 18540000, "unit": "GJ", "confidence": "high" },
+      "nonRenewable": {
+        "naturalGas": { "value": 17890000, "unit": "GJ" },
+        "diesel": { "value": 120000, "unit": "GJ" }
+      },
+      "electricityPurchased": { "value": 87588, "unit": "MWh", "equivalentGJ": 315317 },
+      "steamPurchased": { "value": 214683, "unit": "GJ" },
+      "renewable": { "value": 0, "unit": "GJ", "notes": "No onsite renewable energy" },
+      "energyIntensity": { "value": 18.5, "unit": "GJ/tonne ethylene" }
+    },
+    "water": {
+      "totalWithdrawal": { "value": 2840000, "unit": "m3", "confidence": "high" },
+      "sources": {
+        "desalinatedWater": 2250000,
+        "municipalWater": 340000,
+        "recycledWater": 250000
+      },
+      "totalConsumption": { "value": 2180000, "unit": "m3" },
+      "totalDischarge": { "value": 660000, "unit": "m3" },
+      "waterRecycled": { "value": 250000, "unit": "m3" },
+      "waterStressArea": true,
+      "waterIntensity": { "value": 2.84, "unit": "m3/tonne ethylene" }
+    },
+    "waste": {
+      "totalGenerated": { "value": 12450, "unit": "tonnes", "confidence": "high" },
+      "hazardous": { "value": 3820, "unit": "tonnes" },
+      "nonHazardous": { "value": 8630, "unit": "tonnes" },
+      "divertedFromDisposal": {
+        "total": 4960,
+        "recycled": 3750,
+        "recovered": 1210
+      },
+      "directedToDisposal": {
+        "total": 7490,
+        "landfill": 5280,
+        "incineration": 2210
+      },
+      "recyclingRate": 39.8
+    },
+    "environmentalFines": {
+      "count": 0,
+      "totalValue": { "value": 0, "unit": "QAR" }
+    }
+  },
+  "social": {
+    "totalEmployees": 1847,
+    "employeesByGender": {
+      "male": 1624,
+      "female": 223
+    },
+    "employeesByType": {
+      "permanent": 1712,
+      "temporary": 135,
+      "fullTime": 1820,
+      "partTime": 27
+    },
+    "employeesByNationality": {
+      "qatariNationals": 425,
+      "qatariPercentage": 23.0,
+      "otherGCC": 89,
+      "otherNationalities": 1333
+    },
+    "contractorWorkers": 2150,
+    "diversity": {
+      "femalePercentage": 12.1,
+      "femaleInManagement": 8.3,
+      "femaleOnBoard": 11.1,
+      "boardMembers": 9,
+      "independentBoardMembers": 4
+    },
+    "turnover": {
+      "totalRate": 8.2,
+      "voluntaryRate": 5.1,
+      "newHires": 312
+    },
+    "training": {
+      "averageHoursPerEmployee": 32.4,
+      "averageHoursMale": 34.2,
+      "averageHoursFemale": 19.8,
+      "trainingExpenditure": { "value": 8400000, "unit": "QAR" },
+      "trainingPerEmployee": { "value": 4548, "unit": "QAR" }
+    },
+    "healthAndSafety": {
+      "fatalities": 0,
+      "lostTimeInjuries": 2,
+      "totalRecordableIncidents": 5,
+      "nearMisses": 47,
+      "hoursWorked": 4762000,
+      "ltifr": 0.42,
+      "trir": 1.05,
+      "ltifrCalculation": "(2 / 4,762,000) x 1,000,000 = 0.42",
+      "trirCalculation": "(5 / 4,762,000) x 200,000 = 0.21 (per 200k) or 1.05 (per 1M)",
+      "daysLost": 68,
+      "ohsManagementSystem": "ISO 45001:2018 certified",
+      "contractorSafety": {
+        "contractorFatalities": 0,
+        "contractorLTI": 3,
+        "contractorHoursWorked": 5830000
+      }
+    },
+    "compensation": {
+      "ceoTotalCompensation": { "value": 4800000, "unit": "QAR" },
+      "medianEmployeeCompensation": { "value": 168000, "unit": "QAR" },
+      "ceoPayRatio": 28.6,
+      "genderPayGap": 4.2,
+      "genderPayGapUnit": "%"
+    },
+    "communityInvestment": {
+      "totalValue": { "value": 18500000, "unit": "QAR" },
+      "asPercentOfNetProfit": 1.3
+    },
+    "humanRights": {
+      "assessmentsConducted": 2,
+      "grievancesFiled": 0,
+      "childLaborIncidents": 0,
+      "forcedLaborIncidents": 0
+    },
+    "dataPrivacy": {
+      "breaches": 0,
+      "complaints": 0
+    }
+  },
+  "governance": {
+    "boardDiversity": {
+      "totalMembers": 9,
+      "femaleMemberPercent": 11.1,
+      "independentMemberPercent": 44.4,
+      "esgExpertisePercent": 33.3
+    },
+    "esgOversight": {
+      "esgCommitteeExists": true,
+      "esgCommitteeName": "Sustainability & HSE Committee",
+      "esgBoardReviewFrequency": "quarterly"
+    },
+    "ethics": {
+      "antiCorruptionPolicyExists": true,
+      "employeesTrainedOnAntiCorruption": 92.0,
+      "confirmedCorruptionIncidents": 0,
+      "whistleblowerReports": 3,
+      "whistleblowerReportsResolved": 3
+    },
+    "tax": {
+      "totalTaxPaid": { "value": 0, "unit": "QAR", "notes": "Qatar has no corporate income tax" },
+      "effectiveTaxRate": 0
+    },
+    "esgReporting": {
+      "standaloneReportPublished": true,
+      "frameworksApplied": ["GRI", "QSE Guidance", "TCFD"],
+      "externalAssurance": true,
+      "assuranceProvider": "Bureau Veritas",
+      "assuranceLevel": "limited"
+    }
+  }
+}

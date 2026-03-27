@@ -1,0 +1,188 @@
+{
+  "metadata": {
+    "company": "Qatar Petrochemical Company (QAPCO)",
+    "documentType": "hse-incidents",
+    "extractionMethod": "table_parse",
+    "reportingPeriod": { "start": "2024-01-01", "end": "2024-12-31" },
+    "notes": "Mock HSE data for E2E testing. Key values: LTIFR = 0.42, TRIR = 1.05"
+  },
+  "summary": {
+    "fatalities": 0,
+    "lostTimeInjuries": 2,
+    "restrictedWorkInjuries": 1,
+    "medicalTreatmentInjuries": 2,
+    "totalRecordableIncidents": 5,
+    "firstAidCases": 18,
+    "nearMisses": 47,
+    "environmentalIncidents": 1,
+    "propertyDamageIncidents": 3,
+    "fireIncidents": 0,
+    "processSafetyEvents": {
+      "tier1": 0,
+      "tier2": 1
+    }
+  },
+  "hoursWorked": {
+    "employees": {
+      "total": 4762000,
+      "notes": "1,847 employees x average 2,578 hours/year"
+    },
+    "contractors": {
+      "total": 5830000,
+      "notes": "2,150 contractors x average 2,712 hours/year"
+    },
+    "combined": 10592000
+  },
+  "safetyRates": {
+    "employees": {
+      "ltifr": {
+        "value": 0.42,
+        "unit": "per 1,000,000 hours worked",
+        "calculation": "(2 lost-time injuries / 4,762,000 hours) x 1,000,000 = 0.42"
+      },
+      "trir": {
+        "value": 1.05,
+        "unit": "per 1,000,000 hours worked",
+        "calculation": "(5 recordable incidents / 4,762,000 hours) x 1,000,000 = 1.05"
+      },
+      "osha_trir": {
+        "value": 0.21,
+        "unit": "per 200,000 hours worked",
+        "calculation": "(5 recordable incidents / 4,762,000 hours) x 200,000 = 0.21"
+      },
+      "fatalityRate": {
+        "value": 0,
+        "unit": "per 1,000,000 hours worked"
+      },
+      "nearMissFrequencyRate": {
+        "value": 9.87,
+        "unit": "per 1,000,000 hours worked",
+        "calculation": "(47 near misses / 4,762,000 hours) x 1,000,000 = 9.87"
+      }
+    },
+    "contractors": {
+      "ltifr": {
+        "value": 0.51,
+        "unit": "per 1,000,000 hours worked",
+        "calculation": "(3 contractor LTIs / 5,830,000 hours) x 1,000,000 = 0.51"
+      }
+    },
+    "combined": {
+      "ltifr": {
+        "value": 0.47,
+        "unit": "per 1,000,000 hours worked",
+        "calculation": "(5 total LTIs / 10,592,000 hours) x 1,000,000 = 0.47"
+      }
+    }
+  },
+  "daysLost": {
+    "employees": 68,
+    "contractors": 42,
+    "total": 110
+  },
+  "incidents": [
+    {
+      "id": "INC-2024-001",
+      "date": "2024-03-15",
+      "type": "lost-time-injury",
+      "severity": "moderate",
+      "workerType": "employee",
+      "department": "Maintenance",
+      "description": "Hand laceration during routine pipe fitting replacement",
+      "rootCause": "Inadequate PPE use (cut-resistant gloves not worn)",
+      "daysLost": 28,
+      "correctiveActions": ["PPE refresher training for maintenance crews", "Updated JSA for pipe fitting tasks"]
+    },
+    {
+      "id": "INC-2024-002",
+      "date": "2024-07-22",
+      "type": "lost-time-injury",
+      "severity": "moderate",
+      "workerType": "employee",
+      "department": "Operations",
+      "description": "Ankle sprain from fall on wet surface near cooling tower",
+      "rootCause": "Wet walkway without adequate drainage and anti-slip surface",
+      "daysLost": 40,
+      "correctiveActions": ["Anti-slip coating applied to walkways", "Enhanced drainage system installed", "Slip hazard awareness campaign"]
+    },
+    {
+      "id": "INC-2024-003",
+      "date": "2024-05-10",
+      "type": "medical-treatment-injury",
+      "severity": "minor",
+      "workerType": "employee",
+      "department": "Quality Lab",
+      "description": "Chemical splash to forearm during sample analysis",
+      "rootCause": "Splash guard not properly positioned",
+      "daysLost": 0,
+      "correctiveActions": ["Splash guard inspection added to pre-shift checklist"]
+    },
+    {
+      "id": "INC-2024-004",
+      "date": "2024-09-03",
+      "type": "restricted-work-injury",
+      "severity": "minor",
+      "workerType": "employee",
+      "department": "Production",
+      "description": "Lower back strain from manual handling of valve assembly",
+      "rootCause": "Manual lifting of heavy component without mechanical aid",
+      "daysLost": 0,
+      "restrictedDays": 14,
+      "correctiveActions": ["Mechanical lifting aids procured", "Manual handling training refresher"]
+    },
+    {
+      "id": "INC-2024-005",
+      "date": "2024-11-18",
+      "type": "medical-treatment-injury",
+      "severity": "minor",
+      "workerType": "employee",
+      "department": "Supply Chain",
+      "description": "Forklift operator struck by falling pallet load",
+      "rootCause": "Improper stacking of pallets in warehouse",
+      "daysLost": 0,
+      "correctiveActions": ["Warehouse stacking procedure updated", "Forklift operator refresher training"]
+    }
+  ],
+  "ohsManagement": {
+    "certification": "ISO 45001:2018",
+    "certificationBody": "Bureau Veritas",
+    "lastAuditDate": "2024-06-15",
+    "coveragePercent": 100,
+    "safetyTrainingHours": {
+      "total": 28400,
+      "perEmployee": 15.4
+    },
+    "safetyObservations": {
+      "total": 3280,
+      "safeActs": 2890,
+      "unsafeActs": 390,
+      "safeActPercentage": 88.1
+    }
+  },
+  "environmentalIncidents": [
+    {
+      "id": "ENV-2024-001",
+      "date": "2024-08-12",
+      "type": "minor-spill",
+      "description": "Minor ethylene glycol spill (approximately 200 litres) at loading bay, contained within bunded area",
+      "volume": { "value": 200, "unit": "litres" },
+      "materialsInvolved": ["ethylene glycol"],
+      "containedOnsite": true,
+      "regulatoryReportable": false,
+      "correctiveActions": ["Bund integrity check schedule increased", "Loading bay procedure updated"]
+    }
+  ],
+  "verification": {
+    "e2eTestValues": {
+      "scope1": 487320,
+      "scope2": 43180,
+      "totalEmployees": 1847,
+      "ltifr": 0.42,
+      "fatalities": 0,
+      "lostTimeInjuries": 2,
+      "totalRecordableIncidents": 5,
+      "hoursWorked": 4762000,
+      "notes": "These are the known test values. Any E2E test should verify the platform calculates and displays these correctly."
+    }
+  }
+}

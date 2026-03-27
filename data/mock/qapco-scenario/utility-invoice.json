@@ -1,0 +1,89 @@
+{
+  "metadata": {
+    "company": "Qatar Petrochemical Company (QAPCO)",
+    "documentType": "utility-invoice",
+    "extractionMethod": "table_parse",
+    "reportingPeriod": { "start": "2024-01-01", "end": "2024-12-31" },
+    "notes": "Mock utility data aggregated from monthly KAHRAMAA invoices"
+  },
+  "electricity": {
+    "provider": "KAHRAMAA (Qatar General Electricity & Water Corporation)",
+    "unit": "kWh",
+    "totalAnnualConsumption": 87588000,
+    "monthly": [
+      { "month": "2024-01", "consumption": 6120000, "cost_QAR": 489600 },
+      { "month": "2024-02", "consumption": 5890000, "cost_QAR": 471200 },
+      { "month": "2024-03", "consumption": 6340000, "cost_QAR": 507200 },
+      { "month": "2024-04", "consumption": 7120000, "cost_QAR": 569600 },
+      { "month": "2024-05", "consumption": 8450000, "cost_QAR": 676000 },
+      { "month": "2024-06", "consumption": 9280000, "cost_QAR": 742400 },
+      { "month": "2024-07", "consumption": 9650000, "cost_QAR": 772000 },
+      { "month": "2024-08", "consumption": 9480000, "cost_QAR": 758400 },
+      { "month": "2024-09", "consumption": 8710000, "cost_QAR": 696800 },
+      { "month": "2024-10", "consumption": 7380000, "cost_QAR": 590400 },
+      { "month": "2024-11", "consumption": 5920000, "cost_QAR": 473600 },
+      { "month": "2024-12", "consumption": 3248000, "cost_QAR": 259840 }
+    ],
+    "tariff": {
+      "rate": 0.08,
+      "unit": "QAR/kWh",
+      "notes": "Industrial tariff rate for petrochemical facilities"
+    },
+    "totalAnnualCost_QAR": 7007040,
+    "gridEmissionFactor": {
+      "value": 0.493,
+      "unit": "kgCO2e/kWh",
+      "source": "IEA 2023 Qatar (KAHRAMAA)",
+      "calculatedScope2": {
+        "value": 43180,
+        "unit": "tCO2e",
+        "calculation": "87,588 MWh x 0.493 kgCO2e/kWh / 1000 = 43,180 tCO2e"
+      }
+    }
+  },
+  "water": {
+    "provider": "KAHRAMAA",
+    "unit": "m3",
+    "totalAnnualConsumption": 2840000,
+    "monthly": [
+      { "month": "2024-01", "consumption": 218000, "cost_QAR": 1117200 },
+      { "month": "2024-02", "consumption": 210000, "cost_QAR": 1076400 },
+      { "month": "2024-03", "consumption": 225000, "cost_QAR": 1153200 },
+      { "month": "2024-04", "consumption": 238000, "cost_QAR": 1219800 },
+      { "month": "2024-05", "consumption": 262000, "cost_QAR": 1342800 },
+      { "month": "2024-06", "consumption": 278000, "cost_QAR": 1424760 },
+      { "month": "2024-07", "consumption": 285000, "cost_QAR": 1460640 },
+      { "month": "2024-08", "consumption": 280000, "cost_QAR": 1435200 },
+      { "month": "2024-09", "consumption": 260000, "cost_QAR": 1332600 },
+      { "month": "2024-10", "consumption": 235000, "cost_QAR": 1204440 },
+      { "month": "2024-11", "consumption": 175000, "cost_QAR": 897000 },
+      { "month": "2024-12", "consumption": 174000, "cost_QAR": 891880 }
+    ],
+    "tariff": {
+      "rate": 5.12,
+      "unit": "QAR/m3",
+      "notes": "Industrial water tariff rate"
+    },
+    "totalAnnualCost_QAR": 14555920
+  },
+  "naturalGas": {
+    "provider": "QatarEnergy",
+    "unit": "GJ",
+    "totalAnnualConsumption": 17890000,
+    "notes": "Natural gas feedstock and fuel. Excludes gas used as feedstock (reported separately).",
+    "monthly": [
+      { "month": "2024-01", "consumption": 1510000 },
+      { "month": "2024-02", "consumption": 1420000 },
+      { "month": "2024-03", "consumption": 1490000 },
+      { "month": "2024-04", "consumption": 1460000 },
+      { "month": "2024-05", "consumption": 1530000 },
+      { "month": "2024-06", "consumption": 1560000 },
+      { "month": "2024-07", "consumption": 1580000 },
+      { "month": "2024-08", "consumption": 1560000 },
+      { "month": "2024-09", "consumption": 1520000 },
+      { "month": "2024-10", "consumption": 1480000 },
+      { "month": "2024-11", "consumption": 1400000 },
+      { "month": "2024-12", "consumption": 1380000 }
+    ]
+  }
+}

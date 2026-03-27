@@ -1,0 +1,96 @@
+{
+  "metadata": {
+    "company": "Qatar Petrochemical Company (QAPCO)",
+    "documentType": "hr-headcount",
+    "extractionMethod": "table_parse",
+    "reportingDate": "2024-12-31",
+    "notes": "Mock HR data for E2E testing. Total employees = 1,847."
+  },
+  "summary": {
+    "totalEmployees": 1847,
+    "totalContractors": 2150
+  },
+  "byGender": {
+    "male": 1624,
+    "female": 223,
+    "femalePercentage": 12.1
+  },
+  "byContractType": {
+    "permanent": 1712,
+    "temporary": 135
+  },
+  "byEmploymentType": {
+    "fullTime": 1820,
+    "partTime": 27
+  },
+  "byDepartment": [
+    { "department": "Production / Operations", "headcount": 680, "male": 652, "female": 28 },
+    { "department": "Maintenance & Engineering", "headcount": 320, "male": 308, "female": 12 },
+    { "department": "HSE (Health, Safety, Environment)", "headcount": 95, "male": 82, "female": 13 },
+    { "department": "Quality Assurance / Lab", "headcount": 85, "male": 58, "female": 27 },
+    { "department": "Supply Chain & Logistics", "headcount": 120, "male": 105, "female": 15 },
+    { "department": "Finance & Accounting", "headcount": 78, "male": 45, "female": 33 },
+    { "department": "Human Resources", "headcount": 52, "male": 28, "female": 24 },
+    { "department": "IT & Digital", "headcount": 68, "male": 54, "female": 14 },
+    { "department": "Corporate Planning & Strategy", "headcount": 42, "male": 30, "female": 12 },
+    { "department": "Legal & Compliance", "headcount": 25, "male": 14, "female": 11 },
+    { "department": "Communications & Sustainability", "headcount": 30, "male": 16, "female": 14 },
+    { "department": "Executive Office", "headcount": 12, "male": 8, "female": 4 },
+    { "department": "Commercial & Marketing", "headcount": 65, "male": 52, "female": 13 },
+    { "department": "Projects", "headcount": 85, "male": 78, "female": 7 },
+    { "department": "R&D / Innovation", "headcount": 45, "male": 38, "female": 7 },
+    { "department": "Administration & Facilities", "headcount": 45, "male": 56, "female": -11, "notes": "INTENTIONAL ERROR for E2E data quality test: gender sum exceeds headcount" }
+  ],
+  "byAgeGroup": {
+    "under30": { "count": 312, "percentage": 16.9 },
+    "age30to50": { "count": 1185, "percentage": 64.2 },
+    "over50": { "count": 350, "percentage": 18.9 }
+  },
+  "byNationality": {
+    "qatari": { "count": 425, "percentage": 23.0 },
+    "otherGCC": { "count": 89, "percentage": 4.8 },
+    "indian": { "count": 385, "percentage": 20.8 },
+    "pakistani": { "count": 210, "percentage": 11.4 },
+    "filipino": { "count": 180, "percentage": 9.7 },
+    "egyptian": { "count": 145, "percentage": 7.8 },
+    "jordanian": { "count": 98, "percentage": 5.3 },
+    "other": { "count": 315, "percentage": 17.1 }
+  },
+  "management": {
+    "seniorManagement": {
+      "total": 24,
+      "male": 22,
+      "female": 2,
+      "qatari": 14,
+      "femalePercentage": 8.3
+    },
+    "middleManagement": {
+      "total": 156,
+      "male": 138,
+      "female": 18,
+      "qatari": 52,
+      "femalePercentage": 11.5
+    }
+  },
+  "newHires": {
+    "total": 312,
+    "male": 267,
+    "female": 45,
+    "byAge": {
+      "under30": 148,
+      "age30to50": 145,
+      "over50": 19
+    }
+  },
+  "turnover": {
+    "total": 152,
+    "totalRate": 8.2,
+    "voluntary": 94,
+    "voluntaryRate": 5.1,
+    "involuntary": 58,
+    "byGender": {
+      "male": 128,
+      "female": 24
+    }
+  }
+}
