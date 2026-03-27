@@ -12,6 +12,9 @@ import { registerCalculationRoutes } from './modules/calculation/calculation.rou
 import { registerAgentRoutes } from './modules/agent/agent.routes.js';
 import { registerSharePointRoutes } from './modules/sharepoint/sharepoint.routes.js';
 import { registerReportRoutes } from './modules/report/report.routes.js';
+import { registerPresentationRoutes } from './modules/presentation/presentation.routes.js';
+import { registerQARoutes } from './modules/qa/qa.routes.js';
+import { registerAssuranceRoutes } from './modules/assurance/assurance.routes.js';
 
 dotenv.config();
 
@@ -67,6 +70,9 @@ async function start() {
 
   // Register report builder routes
   await registerReportRoutes(app);
+
+  // Register presentation generator routes
+  await registerPresentationRoutes(app);
 
   const port = parseInt(process.env['PORT'] || '3001', 10);
 
