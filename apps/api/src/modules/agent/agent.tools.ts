@@ -10,6 +10,8 @@ import {
 import { getCompleteness } from '../data-collection/data-collection.service.js';
 import { sendMessage } from '../../lib/claude.js';
 import { logger } from '../../lib/logger.js';
+import { KnowledgeReportModel } from '../../models/knowledge-report.model.js';
+import { CorporateDisclosureModel } from '../../models/knowledge-base.model.js';
 
 // ============================================================
 // Types
@@ -42,6 +44,9 @@ export function getToolDefinitions(): ToolDefinition[] {
     benchmarkTool,
     generateChartTool,
     createEvidencePackTool,
+    benchmarkMetricTool,
+    retrieveBestDisclosureTool,
+    retrieveSimilarCompaniesTool,
   ];
 }
 
@@ -348,12 +353,46 @@ const draftDisclosureTool: ToolDefinition = {
       confidence: dp.confidence,
     }));
 
+    // Query K1 knowledge base for reference examples
+    let referenceExamples = '';
+    try {
+      const peerNarratives = await KnowledgeReportModel.find({
+        'narratives.frameworkRef': { $regex: new RegExp(disclosureCode.replace(/-/g, '.*'), 'i') },
+      })
+        .sort({ 'quality.narrativeQuality': -1 })
+        .limit(3)
+        .lean();
+
+      if (peerNarratives.length > 0) {
+        const examples = peerNarratives.flatMap((report) =>
+          report.narratives
+            .filter((n) => new RegExp(disclosureCode.replace(/-/g, '.*'), 'i').test(n.frameworkRef))
+            .map((n) => ({
+              company: report.company,
+              score: n.qualityScore,
+              content: n.content.substring(0, 500),
+            }))
+        )
+          .sort((a, b) => b.score - a.score)
+          .slice(0, 3);
+
+        if (examples.length > 0) {
+          referenceExamples = `\n\nREFERENCE EXAMPLES (from high-quality peer disclosures -- use as style/quality guides, do not copy):\n${examples
+            .map((ex, i) => `Example ${i + 1} (${ex.company}, score: ${ex.score}/100):\n${ex.content}`)
+            .join('\n\n')}`;
+        }
+      }
+    } catch {
+      logger.debug('K1 peer narratives not available for draft reference');
+    }
+
     const draftPrompt = `Draft a professional ESG disclosure for ${disclosureCode}.
 
 GUIDANCE: ${guidanceText || 'No specific guidance available.'}
 
 AVAILABLE DATA:
 ${JSON.stringify(dataContext, null, 2)}
+${referenceExamples}
 
 Write a concise, professional disclosure narrative that:
 - References only the provided data
@@ -700,6 +739,206 @@ const createEvidencePackTool: ToolDefinition = {
       evidenceChain,
       totalDataPoints: evidenceChain.length,
       withSourceDocuments: evidenceChain.filter((e) => e.sourceDocument).length,
+    };
+  },
+};
+
+// ============================================================
+// 11. benchmark_metric (K1 Knowledge Base)
+// ============================================================
+
+const benchmarkMetricTool: ToolDefinition = {
+  name: 'benchmark_metric',
+  description:
+    'Benchmark a specific ESG metric across ingested sustainability reports in the K1 knowledge base. Returns peer values, percentiles, and count.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      metricName: { type: 'string', description: 'Metric name to benchmark (e.g. "GHG Emissions Scope 1")' },
+      sector: { type: 'string', description: 'Sector to filter by (e.g. "oil_gas")' },
+      country: { type: 'string', description: 'Country to filter by (optional)' },
+    },
+    required: ['metricName', 'sector'],
+  },
+  handler: async (input) => {
+    const { metricName, sector, country } = input as {
+      metricName: string;
+      sector: string;
+      country?: string;
+    };
+
+    const matchStage: Record<string, unknown> = {
+      'metrics.name': { $regex: metricName, $options: 'i' },
+      sector,
+    };
+    if (country) matchStage.country = country;
+
+    const reports = await KnowledgeReportModel.find(matchStage)
+      .select('company reportYear metrics')
+      .lean();
+
+    const values: Array<{ company: string; year: number; value: number | string; unit: string }> = [];
+    const numericValues: number[] = [];
+
+    for (const report of reports) {
+      for (const metric of report.metrics) {
+        if (metric.name.toLowerCase().includes(metricName.toLowerCase())) {
+          values.push({
+            company: report.company,
+            year: report.reportYear,
+            value: metric.value,
+            unit: metric.unit,
+          });
+          const numVal = typeof metric.value === 'number' ? metric.value : parseFloat(String(metric.value));
+          if (!isNaN(numVal)) numericValues.push(numVal);
+        }
+      }
+    }
+
+    numericValues.sort((a, b) => a - b);
+    const pctl = (arr: number[], p: number) => {
+      if (arr.length === 0) return null;
+      const idx = (p / 100) * (arr.length - 1);
+      const lo = Math.floor(idx);
+      const hi = Math.ceil(idx);
+      if (lo === hi) return arr[lo];
+      return arr[lo]! + (arr[hi]! - arr[lo]!) * (idx - lo);
+    };
+
+    return {
+      metric: metricName,
+      sector,
+      country: country || 'all',
+      count: values.length,
+      values,
+      percentiles: {
+        p25: pctl(numericValues, 25),
+        p50: pctl(numericValues, 50),
+        p75: pctl(numericValues, 75),
+      },
+    };
+  },
+};
+
+// ============================================================
+// 12. retrieve_best_disclosure (K1 Knowledge Base)
+// ============================================================
+
+const retrieveBestDisclosureTool: ToolDefinition = {
+  name: 'retrieve_best_disclosure',
+  description:
+    'Retrieve the highest-quality narrative disclosure examples for a given framework reference from the K1 knowledge base.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      frameworkRef: { type: 'string', description: 'Framework reference (e.g. "GRI 305-1")' },
+      sector: { type: 'string', description: 'Sector to filter by (optional)' },
+      minQuality: { type: 'number', description: 'Minimum quality score 0-100 (default 60)' },
+    },
+    required: ['frameworkRef'],
+  },
+  handler: async (input) => {
+    const { frameworkRef, sector, minQuality } = input as {
+      frameworkRef: string;
+      sector?: string;
+      minQuality?: number;
+    };
+
+    const matchStage: Record<string, unknown> = {
+      'narratives.frameworkRef': { $regex: frameworkRef, $options: 'i' },
+    };
+    if (sector) matchStage.sector = sector;
+
+    const reports = await KnowledgeReportModel.find(matchStage)
+      .select('company reportYear sector country narratives')
+      .lean();
+
+    const results: Array<{
+      company: string;
+      reportYear: number;
+      sector: string;
+      frameworkRef: string;
+      title: string;
+      content: string;
+      qualityScore: number;
+    }> = [];
+
+    const threshold = minQuality ?? 60;
+
+    for (const report of reports) {
+      for (const narrative of report.narratives) {
+        if (
+          narrative.frameworkRef.toLowerCase().includes(frameworkRef.toLowerCase()) &&
+          narrative.qualityScore >= threshold
+        ) {
+          results.push({
+            company: report.company,
+            reportYear: report.reportYear,
+            sector: report.sector,
+            frameworkRef: narrative.frameworkRef,
+            title: narrative.title,
+            content: narrative.content.substring(0, 1000),
+            qualityScore: narrative.qualityScore,
+          });
+        }
+      }
+    }
+
+    results.sort((a, b) => b.qualityScore - a.qualityScore);
+
+    return {
+      frameworkRef,
+      count: results.length,
+      disclosures: results.slice(0, 10),
+    };
+  },
+};
+
+// ============================================================
+// 13. retrieve_similar_companies (K1 Knowledge Base)
+// ============================================================
+
+const retrieveSimilarCompaniesTool: ToolDefinition = {
+  name: 'retrieve_similar_companies',
+  description:
+    'Find companies with similar profiles in the K1 knowledge base for peer comparison, ranked by report quality.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      sector: { type: 'string', description: 'Industry sector' },
+      country: { type: 'string', description: 'Country (optional)' },
+      limit: { type: 'number', description: 'Max results to return (default 10)' },
+    },
+    required: ['sector'],
+  },
+  handler: async (input) => {
+    const { sector, country, limit } = input as {
+      sector: string;
+      country?: string;
+      limit?: number;
+    };
+
+    const query: Record<string, unknown> = { sector };
+    if (country) query.country = country;
+
+    const reports = await KnowledgeReportModel.find(query)
+      .select('company reportYear sector country quality')
+      .sort({ 'quality.overallScore': -1 })
+      .limit(limit ?? 10)
+      .lean();
+
+    return {
+      sector,
+      country: country || 'all',
+      count: reports.length,
+      companies: reports.map((r) => ({
+        company: r.company,
+        reportYear: r.reportYear,
+        sector: r.sector,
+        country: r.country,
+        qualityScore: r.quality.overallScore,
+        frameworks: r.quality.frameworks,
+      })),
     };
   },
 };

@@ -21,6 +21,7 @@ import { registerPresentationRoutes } from './modules/presentation/presentation.
 import { registerQARoutes } from './modules/qa/qa.routes.js';
 import { registerAssuranceRoutes } from './modules/assurance/assurance.routes.js';
 import { registerWorkflowRoutes } from './modules/workflow/workflow.routes.js';
+import { registerKnowledgeBaseRoutes } from './modules/knowledge-base/knowledge-base.routes.js';
 
 const FEATURES = {
   sharepoint: true,
@@ -35,7 +36,7 @@ async function start() {
   await connectDB();
 
   await app.register(cors, {
-    origin: process.env['NEXT_PUBLIC_APP_URL'] || 'http://localhost:3000',
+    origin: true,
     credentials: true,
   });
 
@@ -121,6 +122,9 @@ async function start() {
 
   // Register workflow engine routes
   await registerWorkflowRoutes(app);
+
+  // Register knowledge base ingestion routes
+  await registerKnowledgeBaseRoutes(app);
 
   const port = parseInt(process.env['PORT'] || '3001', 10);
 
