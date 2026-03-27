@@ -1,0 +1,83 @@
+{
+  "common": {
+    "appName": "Merris",
+    "tagline": "AI co-pilot for ESG professionals",
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "confirm": "Confirm",
+    "search": "Search",
+    "filter": "Filter",
+    "export": "Export",
+    "upload": "Upload",
+    "language": "Language",
+    "english": "English",
+    "arabic": "Arabic"
+  },
+  "auth": {
+    "login": "Sign in",
+    "register": "Create account",
+    "email": "Email address",
+    "password": "Password",
+    "name": "Full name",
+    "orgName": "Organization name",
+    "orgType": "Organization type",
+    "forgotPassword": "Forgot password?",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "loginSubtitle": "Sign in to your ESG workspace",
+    "registerSubtitle": "Start your ESG reporting journey"
+  },
+  "nav": {
+    "engagements": "Engagements",
+    "dataCollection": "Data Collection",
+    "reports": "Reports",
+    "presentations": "Presentations",
+    "compliance": "Compliance Dashboard",
+    "settings": "Settings"
+  },
+  "engagements": {
+    "title": "Engagements",
+    "createNew": "New Engagement",
+    "name": "Engagement name",
+    "client": "Client",
+    "status": "Status",
+    "deadline": "Deadline",
+    "frameworks": "Frameworks",
+    "completeness": "Completeness",
+    "noEngagements": "No engagements yet. Create your first one to get started."
+  },
+  "documents": {
+    "title": "Documents",
+    "upload": "Upload documents",
+    "dragDrop": "Drag and drop files here, or click to browse",
+    "accepted": "PDF, XLSX, DOCX, CSV, PPTX",
+    "status": "Status",
+    "size": "Size",
+    "uploaded": "Uploaded"
+  },
+  "dataCollection": {
+    "title": "Data Collection",
+    "metric": "Metric",
+    "framework": "Framework",
+    "value": "Value",
+    "unit": "Unit",
+    "confidence": "Confidence",
+    "status": "Status"
+  },
+  "gapRegister": {
+    "title": "Gap Register",
+    "missingItems": "Missing items",
+    "assignee": "Assignee",
+    "deadline": "Deadline"
+  },
+  "completeness": {
+    "title": "Completeness",
+    "byFramework": "By Framework",
+    "byTopic": "By Topic",
+    "confidenceDistribution": "Confidence Distribution"
+  }
+}

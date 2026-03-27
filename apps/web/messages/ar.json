@@ -1,0 +1,83 @@
+{
+  "common": {
+    "appName": "ميريس",
+    "tagline": "مساعد ذكاء اصطناعي لمحترفي ESG",
+    "loading": "جاري التحميل...",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "create": "إنشاء",
+    "confirm": "تأكيد",
+    "search": "بحث",
+    "filter": "تصفية",
+    "export": "تصدير",
+    "upload": "رفع",
+    "language": "اللغة",
+    "english": "الإنجليزية",
+    "arabic": "العربية"
+  },
+  "auth": {
+    "login": "تسجيل الدخول",
+    "register": "إنشاء حساب",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "name": "الاسم الكامل",
+    "orgName": "اسم المنظمة",
+    "orgType": "نوع المنظمة",
+    "forgotPassword": "نسيت كلمة المرور؟",
+    "noAccount": "ليس لديك حساب؟",
+    "hasAccount": "لديك حساب بالفعل؟",
+    "loginSubtitle": "سجل دخولك إلى مساحة العمل",
+    "registerSubtitle": "ابدأ رحلة إعداد تقارير ESG"
+  },
+  "nav": {
+    "engagements": "المشاريع",
+    "dataCollection": "جمع البيانات",
+    "reports": "التقارير",
+    "presentations": "العروض التقديمية",
+    "compliance": "لوحة الامتثال",
+    "settings": "الإعدادات"
+  },
+  "engagements": {
+    "title": "المشاريع",
+    "createNew": "مشروع جديد",
+    "name": "اسم المشروع",
+    "client": "العميل",
+    "status": "الحالة",
+    "deadline": "الموعد النهائي",
+    "frameworks": "الأطر",
+    "completeness": "الاكتمال",
+    "noEngagements": "لا توجد مشاريع بعد. أنشئ أول مشروع لك للبدء."
+  },
+  "documents": {
+    "title": "المستندات",
+    "upload": "رفع المستندات",
+    "dragDrop": "اسحب الملفات وأفلتها هنا، أو انقر للتصفح",
+    "accepted": "PDF، XLSX، DOCX، CSV، PPTX",
+    "status": "الحالة",
+    "size": "الحجم",
+    "uploaded": "تم الرفع"
+  },
+  "dataCollection": {
+    "title": "جمع البيانات",
+    "metric": "المقياس",
+    "framework": "الإطار",
+    "value": "القيمة",
+    "unit": "الوحدة",
+    "confidence": "الثقة",
+    "status": "الحالة"
+  },
+  "gapRegister": {
+    "title": "سجل الفجوات",
+    "missingItems": "العناصر المفقودة",
+    "assignee": "المسؤول",
+    "deadline": "الموعد النهائي"
+  },
+  "completeness": {
+    "title": "الاكتمال",
+    "byFramework": "حسب الإطار",
+    "byTopic": "حسب الموضوع",
+    "confidenceDistribution": "توزيع الثقة"
+  }
+}
