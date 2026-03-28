@@ -10,6 +10,11 @@ interface AgentMessage {
   content: string;
 }
 
+export interface DocumentContext {
+  documentBody: string;
+  cursorSection: string;
+}
+
 export class AgentPanel {
   private container: HTMLElement;
   private messagesEl: HTMLElement;
@@ -19,14 +24,17 @@ export class AgentPanel {
   private sessionId: string | undefined;
   private context: Record<string, unknown>;
   private onAction?: (action: { type: string; payload: Record<string, unknown> }) => void;
+  private getDocumentContext?: () => Promise<DocumentContext | null>;
 
   constructor(options: {
     parentElement: HTMLElement;
     context?: Record<string, unknown>;
     onAction?: (action: { type: string; payload: Record<string, unknown> }) => void;
+    getDocumentContext?: () => Promise<DocumentContext | null>;
   }) {
     this.context = options.context || {};
     this.onAction = options.onAction;
+    this.getDocumentContext = options.getDocumentContext;
 
     this.container = document.createElement("div");
     this.container.className = "merris-agent-panel";
@@ -55,19 +63,37 @@ export class AgentPanel {
     this.context = { ...this.context, ...ctx };
   }
 
-  private async send(): Promise<void> {
-    const text = this.inputEl.value.trim();
+  async send(overrideText?: string): Promise<void> {
+    const text = overrideText || this.inputEl.value.trim();
     if (!text) return;
 
-    this.inputEl.value = "";
+    if (!overrideText) this.inputEl.value = "";
     this.addMessage({ role: "user", content: text });
     this.setLoading(true);
 
     try {
+      // Read document context if available
+      let documentBody: string | undefined;
+      let cursorSection: string | undefined;
+
+      if (this.getDocumentContext) {
+        try {
+          const docCtx = await this.getDocumentContext();
+          if (docCtx) {
+            documentBody = docCtx.documentBody;
+            cursorSection = docCtx.cursorSection;
+          }
+        } catch {
+          // Non-critical — send without document context
+        }
+      }
+
       const response: AgentChatResponse = await agentChat({
         message: text,
         context: this.context,
         session_id: this.sessionId,
+        documentBody,
+        cursorSection,
       });
 
       this.sessionId = response.session_id;
@@ -76,6 +102,29 @@ export class AgentPanel {
       if (response.actions && this.onAction) {
         for (const action of response.actions) {
           this.onAction(action);
+        }
+      }
+
+      // Auto-detect draft content: if user asked to "draft" and response is substantial,
+      // offer to insert into document
+      const isDraftRequest = /\b(draft|write|generate|create)\b.*\b(section|disclosure|content)\b/i.test(text);
+      if (isDraftRequest && response.reply && response.reply.length > 200 && this.onAction) {
+        // Add an insert button to the message
+        const lastMsg = this.messagesEl.lastElementChild;
+        if (lastMsg) {
+          const insertBtn = document.createElement("button");
+          insertBtn.className = "merris-btn merris-btn-primary";
+          insertBtn.style.cssText = "margin-top:8px;font-size:11px;padding:4px 10px;";
+          insertBtn.textContent = "Insert into document";
+          insertBtn.addEventListener("click", () => {
+            if (this.onAction) {
+              // Uses reliable Word.js pattern: paragraph.clear() + insertText with \r
+              this.onAction({ type: "insert_content", payload: { text: response.reply } });
+            }
+            insertBtn.textContent = "Inserted";
+            insertBtn.disabled = true;
+          });
+          lastMsg.appendChild(insertBtn);
         }
       }
     } catch (err: any) {

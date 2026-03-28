@@ -5,15 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Merris ESG Agent -- Word</title>
   <script src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
-  <link rel="stylesheet" href="taskpane.css" />
+  <!-- styles bundled by webpack -->
 </head>
 <body>
   <div class="merris-taskpane">
     <!-- Header -->
     <div class="merris-header">
-      <h1>&#127807; Merris</h1>
+      <h1>Merris</h1>
       <span style="font-size:12px; color:var(--merris-text-secondary);">ESG Report Assistant</span>
+      <div id="engagement-label" style="font-size:11px; color:var(--merris-accent, #1a7a4c); margin-top:4px; cursor:pointer;" title="Click to change engagement"></div>
     </div>
+
+    <!-- Engagement Selector (shown first) -->
+    <div id="engagement-selector-container"></div>
+
+    <!-- Main Content (hidden until engagement selected) -->
+    <div id="main-content">
+
+    <!-- @Merris command status — shows live progress -->
+    <div id="merris-command-status" style="display:none;"></div>
+
+    <!-- Perception Briefing (auto-populated on document open) -->
+    <div id="perception-briefing" style="display:none;"></div>
 
     <!-- Current Section Detector -->
     <div class="merris-section" id="section-detector">
@@ -21,6 +34,7 @@
       <div id="current-section" class="merris-card">
         <div class="merris-card-header" id="section-heading">Detecting...</div>
         <p id="section-framework" style="font-size:13px; color:var(--merris-text-secondary);"></p>
+        <div id="section-actions" style="display:none; margin-top:8px; display:flex; gap:4px; flex-wrap:wrap;"></div>
       </div>
     </div>
 
@@ -38,10 +52,13 @@
     <!-- Compliance Notes -->
     <div id="panel-compliance" class="merris-panel" style="display:none;">
       <div class="merris-section">
-        <h2>Compliance Requirements</h2>
+        <h2>Compliance Coverage</h2>
+        <div id="compliance-summary" style="margin-bottom:10px;"></div>
         <div id="compliance-notes">
-          <div class="merris-loading">
-            <span class="merris-spinner"></span> Loading requirements...
+          <div class="merris-card">
+            <p style="font-size:13px; color:var(--merris-text-secondary);">
+              Run document analysis to see compliance coverage across frameworks.
+            </p>
           </div>
         </div>
       </div>
@@ -50,12 +67,11 @@
     <!-- Suggested Content -->
     <div id="panel-suggested" class="merris-panel" style="display:none;">
       <div class="merris-section">
-        <h2>Suggested Content</h2>
+        <h2>Issues and Suggestions</h2>
         <div id="suggested-content">
           <div class="merris-card">
-            <div class="merris-card-header">Navigate to a disclosure heading</div>
             <p style="font-size:13px; color:var(--merris-text-secondary);">
-              Place your cursor under a GRI or ESRS heading to see content suggestions.
+              Run a review to see issues and suggested improvements.
             </p>
           </div>
         </div>
@@ -65,18 +81,19 @@
     <!-- Citation Trail -->
     <div id="panel-citations" class="merris-panel" style="display:none;">
       <div class="merris-section">
-        <h2>Citation Trail</h2>
+        <h2>Data Sources</h2>
         <div id="citation-trail">
           <div class="merris-card">
             <p style="font-size:13px; color:var(--merris-text-secondary);">
-              Select a data point in the document to view its source trail.
+              Run document analysis to see data source citations and evidence trails.
             </p>
           </div>
         </div>
       </div>
     </div>
+    </div><!-- /main-content -->
   </div>
 
-  <script src="taskpane.js"></script>
+  <!-- JS injected by webpack -->
 </body>
 </html>
