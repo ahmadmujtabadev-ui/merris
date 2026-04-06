@@ -28,54 +28,61 @@ import { trackResponseMetric, getDailyMetrics } from './metrics.js';
 export async function registerAssistantRoutes(app: FastifyInstance): Promise<void> {
   // ---- Chat ----
   app.post('/api/v1/assistant/chat', { preHandler: [authenticate] }, async (request, reply) => {
-    const {
-      engagementId, message, conversationHistory, documentBody, cursorSection,
-      jurisdiction, sector, ownershipType, documentId, knowledgeSources,
-    } = request.body as any;
+    const body = request.body as any;
     const user = (request as any).user;
-    const result = await chat({
-      engagementId,
+    const accept = (request.headers.accept ?? '').toString();
+    const wantsStream = accept.includes('text/event-stream');
+
+    const chatArgs = {
+      engagementId: body.engagementId,
       userId: user.userId,
-      message,
-      conversationHistory,
-      documentBody,
-      cursorSection,
-      jurisdiction,
-      sector,
-      ownershipType,
-      documentId,
-      knowledgeSources,
-    });
+      message: body.message,
+      conversationHistory: body.conversationHistory,
+      documentBody: body.documentBody,
+      cursorSection: body.cursorSection,
+      jurisdiction: body.jurisdiction,
+      sector: body.sector,
+      ownershipType: body.ownershipType,
+      documentId: body.documentId,
+      knowledgeSources: body.knowledgeSources,
+    };
+
+    if (wantsStream) {
+      const { openSseStream } = await import('./sse.js');
+      const { chatStream } = await import('../../modules/agent/agent.stream.js');
+      const stream = openSseStream(request, reply);
+      await chatStream(chatArgs, stream.emit);
+      stream.close();
+      return reply;
+    }
+
+    // ----- existing JSON path (unchanged) -----
+    const result = await chat(chatArgs);
 
     let finalResponse = result.response;
     let evaluation: any = null;
     let hardBlocked = false;
 
-    // Hard block check (fast, deterministic)
     const hardBlock = checkHardBlocks(finalResponse);
     if (hardBlock) {
       hardBlocked = true;
-      // Regenerate once
-      const retry = await chat({ engagementId, userId: user.userId, message, conversationHistory, documentBody, cursorSection, jurisdiction, sector, ownershipType, documentId, knowledgeSources });
+      const retry = await chat(chatArgs);
       finalResponse = retry.response;
       result.toolCalls = retry.toolCalls;
       result.citations = retry.citations;
     }
 
-    // AI evaluator
-    evaluation = await evaluateResponse(message, finalResponse, { engagementId });
+    evaluation = await evaluateResponse(body.message, finalResponse, { engagementId: body.engagementId });
 
     if (evaluation.decision === 'FIX' && evaluation.fix_instructions) {
       finalResponse = await autoRewrite(finalResponse, evaluation.flags, evaluation.fix_instructions);
       evaluation.rewritten = true;
     } else if (evaluation.decision === 'REJECT') {
-      // Regenerate once
-      const retry = await chat({ engagementId, userId: user.userId, message, conversationHistory, documentBody, cursorSection, jurisdiction, sector, ownershipType, documentId, knowledgeSources });
+      const retry = await chat(chatArgs);
       finalResponse = retry.response;
-      evaluation = await evaluateResponse(message, finalResponse, { engagementId });
+      evaluation = await evaluateResponse(body.message, finalResponse, { engagementId: body.engagementId });
     }
 
-    // Track metrics (non-blocking)
     trackResponseMetric(evaluation.score, evaluation.decision, hardBlocked).catch(() => {});
 
     return reply.send({ ...result, response: finalResponse, evaluation });
