@@ -2,40 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  * {
-    border-color: theme('colors.zinc.800');
-  }
+:root {
+  /* Surfaces */
+  --merris-bg: #f8f9fa;
+  --merris-surface: #ffffff;
+  --merris-surface-low: #f3f4f5;
+  --merris-surface-high: #edeef0;
 
-  body {
-    @apply bg-zinc-950 text-zinc-200 antialiased;
-  }
+  /* Text */
+  --merris-text: #191c1d;
+  --merris-text-secondary: #5f6368;
+  --merris-text-tertiary: #9aa0a6;
+
+  /* Brand */
+  --merris-primary: #006b5f;
+  --merris-primary-light: #2dd4bf;
+  --merris-primary-bg: #e0f5f1;
+
+  /* States */
+  --merris-warning: #d97706;
+  --merris-warning-bg: #fff7ed;
+  --merris-error: #dc2626;
+  --merris-error-bg: #fef2f2;
+  --merris-success: #16a34a;
+  --merris-success-bg: #f0fdf4;
+
+  /* Borders + shadow */
+  --merris-border: rgba(0, 107, 95, 0.08);
+  --merris-border-medium: rgba(0, 107, 95, 0.15);
+  --merris-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03);
+  --merris-shadow-hover: 0 4px 24px rgba(0, 0, 0, 0.06);
+
+  /* Radii */
+  --merris-radius: 12px;
+  --merris-radius-sm: 8px;
 }
 
-@layer utilities {
-  .scrollbar-thin {
-    scrollbar-width: thin;
-    scrollbar-color: theme('colors.zinc.700') transparent;
-  }
+html, body {
+  background: var(--merris-bg);
+  color: var(--merris-text);
 }
 
-/* Animations for dialog/dropdown */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-thumb { background: rgba(0, 107, 95, 0.15); border-radius: 3px; }
 
-@keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
-
-@keyframes zoomIn95 {
-  from { transform: translate(-50%, -50%) scale(0.95); }
-  to { transform: translate(-50%, -50%) scale(1); }
-}
-
-@keyframes zoomOut95 {
-  from { transform: translate(-50%, -50%) scale(1); }
-  to { transform: translate(-50%, -50%) scale(0.95); }
-}
+button { cursor: pointer; }
+input::placeholder, textarea::placeholder { color: var(--merris-text-tertiary); }
