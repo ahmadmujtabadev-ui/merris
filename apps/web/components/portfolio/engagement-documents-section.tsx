@@ -1,8 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import Link from 'next/link';
 import { MerrisCard } from '@/components/merris/card';
+import { MerrisButton } from '@/components/merris/button';
 import { SectionLabel } from '@/components/merris/label';
 import { api, type IngestedDocument } from '@/lib/api';
 
@@ -10,32 +11,75 @@ export function EngagementDocumentsSection({ engagementId }: { engagementId: str
   const [documents, setDocuments] = useState<IngestedDocument[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    let cancelled = false;
+  const reload = useCallback(() => {
     setLoading(true);
     setError(null);
-    api
+    return api
       .listEngagementDocuments(engagementId)
       .then((res) => {
-        if (cancelled) return;
         setDocuments(res.documents ?? []);
       })
       .catch((err) => {
-        if (cancelled) return;
         setError(err instanceof Error ? err.message : 'Failed to load documents');
       })
       .finally(() => {
-        if (!cancelled) setLoading(false);
+        setLoading(false);
       });
-    return () => {
-      cancelled = true;
-    };
   }, [engagementId]);
+
+  useEffect(() => {
+    void reload();
+  }, [reload]);
+
+  const handleFileSelected = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    setUploadError(null);
+    try {
+      await api.uploadEngagementDocument(engagementId, file);
+      // Reset the input so the same file can be re-selected if needed
+      if (fileInputRef.current) fileInputRef.current.value = '';
+      await reload();
+    } catch (err) {
+      setUploadError(err instanceof Error ? err.message : 'Upload failed');
+    } finally {
+      setUploading(false);
+    }
+  };
 
   return (
     <div className="mt-5">
-      <SectionLabel>Documents</SectionLabel>
+      <div className="mb-2.5 flex items-center justify-between">
+        <SectionLabel>Documents</SectionLabel>
+        <div>
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept=".pdf,.docx,.xlsx,.pptx,.txt,.md"
+            onChange={handleFileSelected}
+            className="hidden"
+          />
+          <MerrisButton
+            variant="secondary"
+            onClick={() => fileInputRef.current?.click()}
+            disabled={uploading}
+          >
+            {uploading ? 'Uploading…' : '+ Upload document'}
+          </MerrisButton>
+        </div>
+      </div>
+
+      {uploadError && (
+        <MerrisCard className="mb-2 border-l-[3px] border-merris-error font-body text-[12px] text-merris-error">
+          {uploadError}
+        </MerrisCard>
+      )}
+
       {loading && (
         <MerrisCard className="font-body text-[12px] text-merris-text-tertiary">Loading documents…</MerrisCard>
       )}
@@ -46,7 +90,7 @@ export function EngagementDocumentsSection({ engagementId }: { engagementId: str
       )}
       {!loading && !error && documents.length === 0 && (
         <MerrisCard className="font-body text-[12px] text-merris-text-tertiary">
-          No documents uploaded yet. Use the Word add-in or the upload endpoint to add reports.
+          No documents uploaded yet.
         </MerrisCard>
       )}
       {!loading && !error && documents.length > 0 && (
