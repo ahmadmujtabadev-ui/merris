@@ -1,16 +1,50 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { MerrisCard } from '@/components/merris/card';
 import { Pill } from '@/components/merris/pill';
 import { merrisTokens } from '@/lib/design-tokens';
-import { KNOWLEDGE_COLLECTIONS, TOTAL_ENTRIES } from './knowledge-data';
+import { api } from '@/lib/api';
+import { KNOWLEDGE_COLLECTIONS, type KCollection } from './knowledge-data';
 
 export function KnowledgePage() {
+  const [collections, setCollections] = useState<KCollection[]>(KNOWLEDGE_COLLECTIONS);
+  const [seeded, setSeeded] = useState(false);
+
+  useEffect(() => {
+    api
+      .listKnowledgeBaseCollections()
+      .then((res) => {
+        if (res.collections.length > 0) {
+          // Merge API counts with constants for items list (API doesn't return items)
+          setCollections(
+            res.collections.map((c) => {
+              const local = KNOWLEDGE_COLLECTIONS.find((k) => k.id === c.id);
+              return { id: c.id, name: c.name, count: c.count, items: local?.items ?? [] };
+            }),
+          );
+          setSeeded(res.seeded);
+        }
+      })
+      .catch(() => {
+        // Fall back to constants — already set
+      });
+  }, []);
+
+  const totalEntries = collections.reduce((sum, k) => sum + k.count, 0);
+
   return (
     <div className="p-6">
-      <h1 className="mb-1 font-display text-[24px] font-bold text-merris-text">Knowledge Base</h1>
+      <div className="mb-1 flex items-center gap-2">
+        <h1 className="font-display text-[24px] font-bold text-merris-text">Knowledge Base</h1>
+        {seeded ? (
+          <Pill variant="completed" size="sm">📡 Live</Pill>
+        ) : (
+          <Pill variant="draft" size="sm">📋 Placeholder</Pill>
+        )}
+      </div>
       <p className="mb-4 font-body text-[12px] text-merris-text-secondary">
-        {TOTAL_ENTRIES.toLocaleString()} entries — 7 internal collections
+        {totalEntries.toLocaleString()} entries — {collections.length} internal collections
       </p>
 
       <div
@@ -23,7 +57,7 @@ export function KnowledgePage() {
       </div>
 
       <div className="grid grid-cols-1 gap-3.5 md:grid-cols-2">
-        {KNOWLEDGE_COLLECTIONS.map((k) => (
+        {collections.map((k) => (
           <MerrisCard key={k.id} hover>
             <div className="mb-3 flex items-start justify-between">
               <div className="flex items-center gap-1.5">

@@ -1,11 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { MerrisCard } from '@/components/merris/card';
 import { MerrisButton } from '@/components/merris/button';
 import { Pill } from '@/components/merris/pill';
 import { SectionLabel } from '@/components/merris/label';
 import { useAuthStore } from '@/lib/store';
+import { api } from '@/lib/api';
 
 const PROTOTYPE_PROFILE = {
   name: 'Alex Thorne',
@@ -16,12 +17,45 @@ const PROTOTYPE_PROFILE = {
   timezone: '(GMT+03:00) AST',
 };
 
-const TEAM_MEMBERS = [
-  { name: 'Alex Thorne',  role: 'Admin',         status: 'Active' as const },
-  { name: 'Elena Vance',  role: 'Lead Analyst',  status: 'Active' as const },
-  { name: 'David Chen',   role: 'Data Analyst',  status: 'Active' as const },
-  { name: 'Sana Khan',    role: 'Field Auditor', status: 'Pending' as const },
+interface TeamMember {
+  id?: string;
+  name: string;
+  role: string;
+  status: 'Active' | 'Pending';
+}
+
+const TEAM_MEMBERS: TeamMember[] = [
+  { name: 'Alex Thorne',  role: 'Admin',         status: 'Active' },
+  { name: 'Elena Vance',  role: 'Lead Analyst',  status: 'Active' },
+  { name: 'David Chen',   role: 'Data Analyst',  status: 'Active' },
+  { name: 'Sana Khan',    role: 'Field Auditor', status: 'Pending' },
 ];
+
+interface PreferencesData {
+  primarySector: string;
+  language: string;
+  notifications: string;
+}
+
+const PREFERENCES_FALLBACK: PreferencesData = {
+  primarySector: 'Renewable Energy',
+  language: 'EN / AR',
+  notifications: 'Email + Dashboard',
+};
+
+interface BillingData {
+  plan: string;
+  computeCredits: string;
+  nextRenewal: string;
+  paymentLast4: string;
+}
+
+const BILLING_FALLBACK: BillingData = {
+  plan: 'Merris Enterprise',
+  computeCredits: '12,450 / 50k',
+  nextRenewal: 'Oct 12, 2026',
+  paymentLast4: '4242',
+};
 
 const TABS = ['Profile', 'Team', 'Preferences', 'Billing'] as const;
 type Tab = (typeof TABS)[number];
@@ -54,11 +88,22 @@ function ProfileForm() {
   );
 }
 
-function TeamCard() {
+function StatusPill({ seeded }: { seeded: boolean }) {
+  return seeded ? (
+    <Pill variant="completed" size="sm">📡 Live</Pill>
+  ) : (
+    <Pill variant="draft" size="sm">📋 Placeholder</Pill>
+  );
+}
+
+function TeamCard({ team, seeded }: { team: TeamMember[]; seeded: boolean }) {
   return (
     <MerrisCard className="mb-5">
-      {TEAM_MEMBERS.map((m) => (
-        <div key={m.name} className="flex items-center gap-2.5 border-b border-merris-border py-2.5 last:border-b-0">
+      <div className="mb-2 flex justify-end">
+        <StatusPill seeded={seeded} />
+      </div>
+      {team.map((m) => (
+        <div key={m.id ?? m.name} className="flex items-center gap-2.5 border-b border-merris-border py-2.5 last:border-b-0">
           <div className="h-7 w-7 rounded-full bg-merris-surface-low" />
           <div className="flex-1 font-display text-[12px] font-medium text-merris-text">{m.name}</div>
           <span className="rounded-full bg-merris-surface-low px-2 py-0.5 font-body text-[10px] text-merris-text-secondary">{m.role}</span>
@@ -74,15 +119,19 @@ function TeamCard() {
   );
 }
 
-function PreferencesCard() {
+function PreferencesCard({ preferences, seeded }: { preferences: PreferencesData; seeded: boolean }) {
+  const rows = [
+    { label: 'Primary Sector', value: preferences.primarySector },
+    { label: 'Language',       value: preferences.language },
+    { label: 'Notifications',  value: preferences.notifications },
+  ];
   return (
     <MerrisCard className="bg-merris-surface-low">
-      <SectionLabel>Preferences</SectionLabel>
-      {[
-        { label: 'Primary Sector', value: 'Renewable Energy' },
-        { label: 'Language',       value: 'EN / AR' },
-        { label: 'Notifications',  value: 'Email + Dashboard' },
-      ].map((p) => (
+      <div className="mb-2 flex items-center justify-between">
+        <SectionLabel>Preferences</SectionLabel>
+        <StatusPill seeded={seeded} />
+      </div>
+      {rows.map((p) => (
         <div key={p.label} className="mb-2">
           <div className="font-body text-[9px] uppercase text-merris-text-tertiary">{p.label}</div>
           <div className="font-body text-[12px] text-merris-text">{p.value}</div>
@@ -92,17 +141,21 @@ function PreferencesCard() {
   );
 }
 
-function BillingCard() {
+function BillingCard({ billing, seeded }: { billing: BillingData; seeded: boolean }) {
+  const rows = [
+    { label: 'Compute Credits', value: billing.computeCredits },
+    { label: 'Next Renewal',    value: billing.nextRenewal },
+    { label: 'Payment',         value: `•••• ${billing.paymentLast4}` },
+  ];
   return (
     <MerrisCard className="bg-merris-surface-low">
-      <SectionLabel>Billing</SectionLabel>
+      <div className="mb-2 flex items-center justify-between">
+        <SectionLabel>Billing</SectionLabel>
+        <StatusPill seeded={seeded} />
+      </div>
       <div className="mb-1 font-body text-[12px] text-merris-text-tertiary">Active Plan</div>
-      <div className="mb-2.5 font-display text-[16px] font-bold text-merris-text">Merris Enterprise</div>
-      {[
-        { label: 'Compute Credits', value: '12,450 / 50k' },
-        { label: 'Next Renewal',    value: 'Oct 12, 2026' },
-        { label: 'Payment',         value: '•••• 4242' },
-      ].map((b) => (
+      <div className="mb-2.5 font-display text-[16px] font-bold text-merris-text">{billing.plan}</div>
+      {rows.map((b) => (
         <div key={b.label} className="flex justify-between border-t border-merris-border py-1 font-body text-[11px]">
           <span className="text-merris-text-tertiary">{b.label}</span>
           <span className="font-medium text-merris-text">{b.value}</span>
@@ -114,6 +167,47 @@ function BillingCard() {
 
 export function SettingsPage() {
   const [tab, setTab] = useState<Tab>('Profile');
+
+  const [team, setTeam] = useState<TeamMember[]>(TEAM_MEMBERS);
+  const [teamSeeded, setTeamSeeded] = useState(false);
+
+  const [preferences, setPreferences] = useState<PreferencesData>(PREFERENCES_FALLBACK);
+  const [preferencesSeeded, setPreferencesSeeded] = useState(false);
+
+  const [billing, setBilling] = useState<BillingData>(BILLING_FALLBACK);
+  const [billingSeeded, setBillingSeeded] = useState(false);
+
+  useEffect(() => {
+    api
+      .getTeam()
+      .then((res) => {
+        setTeam(res.members);
+        setTeamSeeded(res.seeded);
+      })
+      .catch(() => {
+        // Fall back to constants — already set
+      });
+
+    api
+      .getPreferences()
+      .then((res) => {
+        setPreferences(res.preferences);
+        setPreferencesSeeded(res.seeded);
+      })
+      .catch(() => {
+        // Fall back to constants — already set
+      });
+
+    api
+      .getBilling()
+      .then((res) => {
+        setBilling(res.billing);
+        setBillingSeeded(res.seeded);
+      })
+      .catch(() => {
+        // Fall back to constants — already set
+      });
+  }, []);
 
   return (
     <div className="grid grid-cols-1 gap-6 p-6 md:grid-cols-[160px_1fr]">
@@ -149,17 +243,17 @@ export function SettingsPage() {
           <>
             <ProfileForm />
             <h2 className="mb-2.5 font-display text-[16px] font-semibold text-merris-text">Team Management</h2>
-            <TeamCard />
+            <TeamCard team={team} seeded={teamSeeded} />
             <div className="grid grid-cols-1 gap-3.5 md:grid-cols-2">
-              <PreferencesCard />
-              <BillingCard />
+              <PreferencesCard preferences={preferences} seeded={preferencesSeeded} />
+              <BillingCard billing={billing} seeded={billingSeeded} />
             </div>
           </>
         )}
 
-        {tab === 'Team' && <TeamCard />}
-        {tab === 'Preferences' && <PreferencesCard />}
-        {tab === 'Billing' && <BillingCard />}
+        {tab === 'Team' && <TeamCard team={team} seeded={teamSeeded} />}
+        {tab === 'Preferences' && <PreferencesCard preferences={preferences} seeded={preferencesSeeded} />}
+        {tab === 'Billing' && <BillingCard billing={billing} seeded={billingSeeded} />}
       </main>
     </div>
   );

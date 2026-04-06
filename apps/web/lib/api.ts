@@ -339,6 +339,75 @@ class ApiClient {
       '/frameworks',
     );
   }
+
+  // ===== Phase G scaffolding (placeholder data with `seeded: false`) =====
+  listKnowledgeBaseCollections() {
+    return this.get<{
+      seeded: boolean;
+      collections: Array<{ id: string; name: string; count: number }>;
+    }>('/knowledge-base/collections');
+  }
+
+  getEngagementFrameworkCompliance(engagementId: string) {
+    return this.get<{
+      seeded: boolean;
+      compliance: Array<{ code: string; percent: number }>;
+      disclosureMatrix: Array<{
+        requirement: string;
+        framework: string;
+        status: 'Complete' | 'Partial' | 'Gap' | 'Not Started' | 'In Progress';
+        coverage: string;
+      }>;
+    }>(`/engagements/${engagementId}/framework-compliance`);
+  }
+
+  getEngagementFindings(engagementId: string) {
+    return this.get<{
+      seeded: boolean;
+      findings: Array<{
+        id: string;
+        severity: 'CRITICAL' | 'IMPORTANT' | 'MINOR';
+        ref: string;
+        title: string;
+        description: string;
+      }>;
+    }>(`/engagements/${engagementId}/findings`);
+  }
+
+  getAssistantHistory() {
+    return this.get<{
+      seeded: boolean;
+      history: Array<{
+        id: string;
+        text: string;
+        engagement: string;
+        confidence?: 'High' | 'Medium' | 'Low';
+        findings?: number;
+        time: string;
+      }>;
+    }>('/assistant/history');
+  }
+
+  getTeam() {
+    return this.get<{
+      seeded: boolean;
+      members: Array<{ id: string; name: string; role: string; status: 'Active' | 'Pending' }>;
+    }>('/team');
+  }
+
+  getPreferences() {
+    return this.get<{
+      seeded: boolean;
+      preferences: { primarySector: string; language: string; notifications: string };
+    }>('/preferences');
+  }
+
+  getBilling() {
+    return this.get<{
+      seeded: boolean;
+      billing: { plan: string; computeCredits: string; nextRenewal: string; paymentLast4: string };
+    }>('/billing');
+  }
 }
 
 export class ApiError extends Error {
