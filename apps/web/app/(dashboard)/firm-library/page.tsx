@@ -1,11 +1,5 @@
-import { PlaceholderPage } from '@/components/merris/placeholder-page';
+import { FirmLibraryPage } from '@/components/pages/firm-library/firm-library-page';
 
-export default function FirmLibraryPage() {
-  return (
-    <PlaceholderPage
-      title="Firm Library"
-      planRef="Plan 5: remaining-pages"
-      description="Document vault for cross-engagement assets: templates, methodologies, prior reports."
-    />
-  );
+export default function Page() {
+  return <FirmLibraryPage />;
 }
