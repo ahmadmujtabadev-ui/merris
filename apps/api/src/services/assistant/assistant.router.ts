@@ -30,7 +30,7 @@ export async function registerAssistantRoutes(app: FastifyInstance): Promise<voi
   app.post('/api/v1/assistant/chat', { preHandler: [authenticate] }, async (request, reply) => {
     const body = request.body as any;
     const user = (request as any).user;
-    const accept = (request.headers.accept ?? '').toString();
+    const accept = (request.headers.accept ?? '').toString().toLowerCase();
     const wantsStream = accept.includes('text/event-stream');
 
     const chatArgs = {
@@ -51,8 +51,11 @@ export async function registerAssistantRoutes(app: FastifyInstance): Promise<voi
       const { openSseStream } = await import('./sse.js');
       const { chatStream } = await import('../../modules/agent/agent.stream.js');
       const stream = openSseStream(request, reply);
-      await chatStream(chatArgs, stream.emit);
-      stream.close();
+      try {
+        await chatStream(chatArgs, stream.emit);
+      } finally {
+        stream.close();
+      }
       return reply;
     }
 

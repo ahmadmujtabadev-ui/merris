@@ -22,7 +22,8 @@ const TEST_ORG_ID = new mongoose.Types.ObjectId().toString();
 const TEST_USER_ID = new mongoose.Types.ObjectId().toString();
 const TEST_ENGAGEMENT_ID = new mongoose.Types.ObjectId().toString();
 
-const JWT_SECRET = 'test-secret-key-for-stream-tests';
+// Match agent.test.ts to avoid env-var collision when vitest runs with --no-isolate
+const JWT_SECRET = 'test-secret-key-for-agent-tests';
 process.env['JWT_SECRET'] = JWT_SECRET;
 
 function token() {
