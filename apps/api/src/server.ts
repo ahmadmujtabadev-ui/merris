@@ -30,6 +30,7 @@ import { registerVerificationRoutes } from './services/verification/verification
 import { registerVaultRoutes } from './services/vault/vault.router.js';
 import { registerWorkflowServiceRoutes } from './services/workflows/workflows.router.js';
 import { registerKBElevationRoutes } from './services/knowledge/elevation.router.js';
+import { registerScaffoldingRoutes } from './services/scaffolding/scaffolding.routes.js';
 
 const FEATURES = {
   sharepoint: true,
@@ -139,6 +140,9 @@ async function start() {
 
   // KB Elevation Engine — gap tracking, coverage, enrichment queue
   await registerKBElevationRoutes(app);
+
+  // Phase G placeholder routes for hardcoded Plan 5 pages
+  await registerScaffoldingRoutes(app);
 
   const port = parseInt(process.env['PORT'] || '3001', 10);
 
