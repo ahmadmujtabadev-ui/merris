@@ -34,6 +34,9 @@ export interface IngestedDocument {
   size: number;
   status: string;
   createdAt: string;
+  // Plain-text content extracted from the source file by ingestion. Optional
+  // because not every document has been processed yet.
+  extractedText?: string;
 }
 
 export interface KnowledgeCollection {
