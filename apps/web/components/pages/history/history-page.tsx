@@ -1,8 +1,10 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { MerrisCard } from '@/components/merris/card';
 import { Pill } from '@/components/merris/pill';
 import { Chip } from '@/components/merris/chip';
+import { api } from '@/lib/api';
 import { HISTORY, type HistoryEntry } from './history-data';
 
 function confidenceVariant(c?: HistoryEntry['confidence']): 'completed' | 'in-progress' | 'draft' {
@@ -12,11 +14,33 @@ function confidenceVariant(c?: HistoryEntry['confidence']): 'completed' | 'in-pr
 }
 
 export function HistoryPage() {
+  const [history, setHistory] = useState<HistoryEntry[]>(HISTORY);
+  const [seeded, setSeeded] = useState(false);
+
+  useEffect(() => {
+    api
+      .getAssistantHistory()
+      .then((res) => {
+        setHistory(res.history);
+        setSeeded(res.seeded);
+      })
+      .catch(() => {
+        // Fall back to constants — already set
+      });
+  }, []);
+
   return (
     <div className="p-6">
-      <h1 className="mb-5 font-display text-[24px] font-bold text-merris-text">History</h1>
+      <div className="mb-5 flex items-center gap-2">
+        <h1 className="font-display text-[24px] font-bold text-merris-text">History</h1>
+        {seeded ? (
+          <Pill variant="completed" size="sm">📡 Live</Pill>
+        ) : (
+          <Pill variant="draft" size="sm">📋 Placeholder</Pill>
+        )}
+      </div>
       <div className="space-y-2.5">
-        {HISTORY.map((h) => (
+        {history.map((h) => (
           <MerrisCard key={h.id} hover style={{ padding: '13px 16px', cursor: 'pointer' }}>
             <div className="flex items-start justify-between">
               <div className="font-display text-[13px] font-semibold text-merris-text">{h.text}</div>
