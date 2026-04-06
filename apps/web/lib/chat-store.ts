@@ -152,7 +152,7 @@ export const useChatStore = create<ChatState>((set, get) => ({
 // ----- Pure event reducer -----
 // Extracted into a function so it can be unit-tested independently when
 // the web app gains test infrastructure.
-function handleEvent(
+export function handleEvent(
   event: StreamEvent,
   set: (partial: Partial<ChatState> | ((s: ChatState) => Partial<ChatState>)) => void,
   _get: () => ChatState,
