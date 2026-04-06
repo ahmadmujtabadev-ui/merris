@@ -225,7 +225,23 @@ function analyzeStructure(body: string, docType: 'word' | 'excel' | 'powerpoint'
 }
 
 function analyzeWordStructure(body: string): StructureResult {
-  const lines = body.split('\n');
+  // Preprocess: Word.js body.text may use \r or \r\n, normalize to \n
+  // Also try to split on common heading patterns if text has no newlines
+  let normalized = body.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+
+  // If the body has very few newlines, it might be a single block — try splitting on heading patterns
+  const lineCount = normalized.split('\n').filter(l => l.trim()).length;
+  if (lineCount < 3 && normalized.length > 200) {
+    // Insert newlines before numbered headings and known heading patterns
+    normalized = normalized
+      .replace(/(\d+\.\d+\s+[A-Z])/g, '\n$1')
+      .replace(/(\d+\.\s+[A-Z])/g, '\n$1')
+      .replace(/(GRI\s+\d{3})/gi, '\n$1')
+      .replace(/(ESRS\s+[A-Z]\d)/gi, '\n$1')
+      .replace(/(\[TO BE )/gi, '\n$1');
+  }
+
+  const lines = normalized.split('\n');
   const sections: SectionAnalysis[] = [];
   let title = '';
   let currentSection: Partial<SectionAnalysis> | null = null;
@@ -234,10 +250,24 @@ function analyzeWordStructure(body: string): StructureResult {
   for (const line of lines) {
     const trimmed = line.trim();
 
-    // Detect headings: Markdown-style (#), numbered (1., 1.1, 2.1), or ALL CAPS short lines
-    const headingMatch = trimmed.match(/^(#{1,6})\s+(.+)/) ||
-      trimmed.match(/^(\d+(?:\.\d+)*)\s+(.+)/) ||
-      (trimmed.length > 3 && trimmed.length < 100 && trimmed === trimmed.toUpperCase() && !/^\d/.test(trimmed)
+    // Detect headings: multiple patterns
+    const headingMatch =
+      // Markdown-style: ## Heading
+      trimmed.match(/^(#{1,6})\s+(.+)/) ||
+      // Numbered with dot: "1. Title", "2.1 Subtitle", "3.1.2 Sub-subtitle"
+      trimmed.match(/^(\d+(?:\.\d+)*)\.\s+(.+)/) ||
+      // Numbered without dot: "1 Title" (only if short enough to be a heading)
+      (trimmed.length < 120 ? trimmed.match(/^(\d+(?:\.\d+)*)\s+([A-Z].{3,})/) : null) ||
+      // GRI-style: "GRI 305-1: Direct GHG Emissions"
+      trimmed.match(/^(GRI\s+\d{3}(?:-\d+)?)[:\s]+(.+)/i) ||
+      // ESRS-style: "ESRS E1-6: Gross Scopes"
+      trimmed.match(/^(ESRS\s+[A-Z]\d(?:-\d+)?)[:\s]+(.+)/i) ||
+      // TCFD pillars
+      (/^(Governance|Strategy|Risk Management|Metrics (?:&|and) Targets)$/i.test(trimmed)
+        ? [null, '1', trimmed] : null) ||
+      // ALL CAPS short lines (not starting with a number, not a data row)
+      (trimmed.length > 3 && trimmed.length < 80 && trimmed === trimmed.toUpperCase()
+        && !/^\d/.test(trimmed) && !/\d{3,}/.test(trimmed)
         ? [null, '1', trimmed] : null);
 
     if (headingMatch) {
@@ -693,7 +723,7 @@ function determineCriticalActions(
 
   // Deadline urgency
   if (deadlineDays !== null && deadlineDays < 7) {
-    actions.push(`⚠️ Deadline in ${deadlineDays} day${deadlineDays !== 1 ? 's' : ''} — prioritise critical items`);
+    actions.push(`URGENT:Deadline in ${deadlineDays} day${deadlineDays !== 1 ? 's' : ''} — prioritise critical items`);
   }
 
   // Doc-type specific
@@ -740,7 +770,7 @@ async function generateBriefing(
   // Data alignment
   if (dataAlignment.mismatches.length > 0) {
     const critical = dataAlignment.mismatches.filter(m => m.severity === 'critical').length;
-    parts.push(`⚠️ ${dataAlignment.mismatches.length} figure mismatch${dataAlignment.mismatches.length !== 1 ? 'es' : ''} found${critical > 0 ? ` (${critical} critical)` : ''} — document values don't match latest data.`);
+    parts.push(`URGENT:${dataAlignment.mismatches.length} figure mismatch${dataAlignment.mismatches.length !== 1 ? 'es' : ''} found${critical > 0 ? ` (${critical} critical)` : ''} — document values don't match latest data.`);
   }
 
   if (dataAlignment.missingFromDocument.length > 0) {
@@ -750,7 +780,7 @@ async function generateBriefing(
   // Compliance
   if (complianceStatus.mandatoryGaps.length > 0) {
     const frameworks = [...new Set(complianceStatus.mandatoryGaps.map(g => g.framework))];
-    parts.push(`🔴 ${complianceStatus.mandatoryGaps.length} mandatory disclosure gap${complianceStatus.mandatoryGaps.length !== 1 ? 's' : ''} across ${frameworks.join(', ')}.`);
+    parts.push(`GAPS:${complianceStatus.mandatoryGaps.length} mandatory disclosure gap${complianceStatus.mandatoryGaps.length !== 1 ? 's' : ''} across ${frameworks.join(', ')}.`);
   }
 
   // Actions

@@ -7,8 +7,10 @@ import {
   uploadDocument,
   getDocumentsByEngagement,
   getDocumentById,
+  processDocument,
   UploadError,
 } from './ingestion.service.js';
+import mongoose from 'mongoose';
 
 // ============================================================
 // Route Registration
@@ -75,6 +77,62 @@ export async function registerIngestionRoutes(app: FastifyInstance): Promise<voi
           },
           queued: result.queued,
         });
+      } catch (err) {
+        return handleError(err, reply);
+      }
+    }
+  );
+
+  // ----------------------------------------------------------
+  // GET /api/v1/engagements — list engagements for org
+  // ----------------------------------------------------------
+  app.get(
+    '/api/v1/engagements',
+    { preHandler: [authenticate] },
+    async (request, reply) => {
+      try {
+        if (!request.user) {
+          return reply.code(401).send({ error: 'Authentication required' });
+        }
+        const db = mongoose.connection.db;
+        if (!db) {
+          return reply.code(500).send({ error: 'Database not connected' });
+        }
+        const engagements = await db
+          .collection('engagements')
+          .find({ orgId: new mongoose.Types.ObjectId(request.user.orgId) })
+          .sort({ createdAt: -1 })
+          .toArray();
+        return reply.code(200).send({
+          engagements: engagements.map((e) => ({
+            id: e._id.toString(),
+            name: e.name,
+            frameworks: e.frameworks,
+            status: e.status,
+            deadline: e.deadline,
+            createdAt: e.createdAt,
+          })),
+        });
+      } catch (err) {
+        return handleError(err, reply);
+      }
+    }
+  );
+
+  // ----------------------------------------------------------
+  // POST /api/v1/documents/:id/process — trigger sync processing
+  // ----------------------------------------------------------
+  app.post<{ Params: { id: string } }>(
+    '/api/v1/documents/:id/process',
+    { preHandler: [authenticate] },
+    async (request, reply) => {
+      try {
+        if (!request.user) {
+          return reply.code(401).send({ error: 'Authentication required' });
+        }
+        await processDocument(request.params.id);
+        const document = await getDocumentById(request.params.id);
+        return reply.code(200).send({ document });
       } catch (err) {
         return handleError(err, reply);
       }

@@ -153,7 +153,7 @@ describe('Agent Routes', () => {
       expect(mockCreate).toHaveBeenCalledTimes(1);
       const callArgs = mockCreate.mock.calls[0]![0];
       expect(callArgs.tools).toBeDefined();
-      expect(callArgs.tools.length).toBe(10);
+      expect(callArgs.tools.length).toBe(41);
       expect(callArgs.system).toContain('Merris ESG Agent');
       expect(callArgs.messages).toHaveLength(1);
       expect(callArgs.messages[0].content).toBe(
@@ -389,15 +389,15 @@ describe('Agent Routes', () => {
 // ============================================================
 
 describe('Agent Tools', () => {
-  it('should define exactly 10 tools', () => {
+  it('should define exactly 41 tools', () => {
     const tools = getToolDefinitions();
-    expect(tools).toHaveLength(10);
+    expect(tools).toHaveLength(41);
   });
 
   it('should have unique tool names', () => {
     const tools = getToolDefinitions();
     const names = tools.map((t) => t.name);
-    expect(new Set(names).size).toBe(10);
+    expect(new Set(names).size).toBe(41);
   });
 
   it('should have valid input_schema for each tool', () => {

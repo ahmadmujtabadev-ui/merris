@@ -37,6 +37,7 @@ export interface SearchResult {
   score: number;
   source: string;
   year: number;
+  ingested: boolean;
   data?: Record<string, unknown>;
 }
 
@@ -222,6 +223,7 @@ export async function semanticSearch(options: SearchOptions): Promise<SearchResu
         score: Math.round(item.score * 1000) / 1000,
         source: doc['source'] || doc['jurisdiction'] || doc['company'] || '',
         year: doc['year'] || doc['reportYear'] || 0,
+        ingested: doc['ingested'] === true,
         data: doc,
       });
     }

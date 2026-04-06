@@ -13,6 +13,10 @@ import { logger } from '../../lib/logger.js';
 import { KnowledgeReportModel } from '../../models/knowledge-report.model.js';
 import { CorporateDisclosureModel, RegulatoryModel, ClimateScienceModel } from '../../models/knowledge-base.model.js';
 import { semanticSearch } from '../knowledge-base/search.service.js';
+import { getEmissionFactorLive } from '../../services/knowledge/apis/climatiq.js';
+import { getWaterStress, getClimateVulnerability, getSBTiStatus, getForcedLabourRisk, getProductLabourRisk, getCountryEmissions, getNDCTarget, getCorruptionIndex, getFacilityEmissions, getDeforestationData, getProtectedAreas, getProtectedAreasNear, getKnowTheChainScore, getKnowTheChainSector, getAbatementOptions, getCarbonPrice, getCarbonPriceScenario, getEnergyInstrument, getRECMarketStatus, getDecarbonisationPathway, getAssuranceRequirement, getVerifierChecklist, getPrecedent, getAnomalyCheck, getPartnerInsight } from '../../services/knowledge/apis/datasets.js';
+import { getThreatenedSpecies } from '../../services/knowledge/apis/iucn.js';
+import { getSpeciesNear, getSpeciesStatus } from '../../services/knowledge/apis/gbif.js';
 
 // ============================================================
 // Types
@@ -51,6 +55,34 @@ export function getToolDefinitions(): ToolDefinition[] {
     searchKnowledgeTool,
     getRegulatoryContextTool,
     getScientificBasisTool,
+    getEmissionFactorLiveTool,
+    getWaterStressTool,
+    getClimateVulnerabilityTool,
+    getSBTiStatusTool,
+    getForcedLabourRiskTool,
+    getProductLabourRiskTool,
+    getThreatenedSpeciesTool,
+    getSpeciesNearTool,
+    getSpeciesStatusTool,
+    getCountryEmissionsTool,
+    getNDCTargetTool,
+    getCorruptionIndexTool,
+    getFacilityEmissionsTool,
+    getDeforestationDataTool,
+    getProtectedAreasTool,
+    getProtectedAreasNearTool,
+    getKnowTheChainScoreTool,
+    getKnowTheChainSectorTool,
+    getAbatementOptionsTool,
+    getCarbonPriceTool,
+    getEnergyInstrumentTool,
+    getRECMarketStatusTool,
+    getDecarbonisationPathwayTool,
+    getAssuranceRequirementTool,
+    getVerifierChecklistTool,
+    getPrecedentTool,
+    getAnomalyCheckTool,
+    getPartnerInsightTool,
   ];
 }
 
@@ -1010,6 +1042,7 @@ const retrieveSimilarCompaniesTool: ToolDefinition = {
         status: string;
         keyMetrics?: Array<{ name: string; value: number | string; unit: string }>;
         overallQualityScore?: number;
+        sourceUrl?: string;
       }> = [];
 
       for (const entry of uniqueCompanies) {
@@ -1020,6 +1053,7 @@ const retrieveSimilarCompaniesTool: ToolDefinition = {
           sector: entry.sector,
           latestReportYear: entry.reportYear,
           status: entry.status,
+          sourceUrl: (entry as any).sourceUrl || undefined,
         };
 
         // For ingested reports, include key metrics summary
@@ -1093,6 +1127,9 @@ const searchKnowledgeTool: ToolDefinition = {
           description: r.description?.substring(0, 300),
           year: r.year,
           collection: r.collection,
+          sourceUrl: (r as any).data?.sourceUrl || (r as any).sourceUrl || undefined,
+          id: r.id,
+          ingested: r.ingested,
         })),
       };
     } catch (err: any) {
@@ -1159,6 +1196,7 @@ const getRegulatoryContextTool: ToolDefinition = {
           year: d.year,
           requirementCount: d.requirements?.length || 0,
           score: 0.5, // Direct match gets moderate score
+          ingested: d.ingested === true,
         }));
 
       return {
@@ -1171,6 +1209,7 @@ const getRegulatoryContextTool: ToolDefinition = {
           source: r.source,
           score: r.score,
           year: r.year,
+          ingested: r.ingested,
         })),
         directMatches,
         totalFound: semanticResults.length + directMatches.length,
@@ -1252,6 +1291,7 @@ const getScientificBasisTool: ToolDefinition = {
           subcategory: d.subcategory,
           year: d.year,
           score: 0.5,
+          ingested: d.ingested === true,
         }));
 
       return {
@@ -1264,6 +1304,7 @@ const getScientificBasisTool: ToolDefinition = {
           source: r.source,
           score: r.score,
           year: r.year,
+          ingested: r.ingested,
         })),
         directMatches,
         totalFound: semanticResults.length + directMatches.length,
@@ -1272,5 +1313,619 @@ const getScientificBasisTool: ToolDefinition = {
       logger.error('get_scientific_basis failed', err);
       return { error: 'Scientific data search failed', details: err.message };
     }
+  },
+};
+
+// ============================================================
+// 17. get_emission_factor_live (Climatiq API)
+// ============================================================
+
+const getEmissionFactorLiveTool: ToolDefinition = {
+  name: 'get_emission_factor_live',
+  description:
+    'Look up real-time emission factors from the Climatiq database (70,000+ factors). Use this when you need a specific emission factor for a country, activity, or fuel type that may not be in the static database.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      activity: {
+        type: 'string',
+        description: 'Activity description (e.g., "electricity", "natural gas combustion", "diesel fuel")',
+      },
+      country: {
+        type: 'string',
+        description: 'Country code or name (e.g., "QA", "Qatar", "US")',
+      },
+      year: {
+        type: 'number',
+        description: 'Year for the emission factor (optional)',
+      },
+      category: {
+        type: 'string',
+        description: 'Category filter (e.g., "Fuel", "Electricity", "Transport")',
+      },
+    },
+    required: ['activity'],
+  },
+  handler: async (input) => {
+    return getEmissionFactorLive(input as any);
+  },
+};
+
+// ============================================================
+// 18. get_water_stress (WRI Aqueduct 4.0)
+// ============================================================
+
+const getWaterStressTool: ToolDefinition = {
+  name: 'get_water_stress',
+  description:
+    'Look up country-level water stress data from WRI Aqueduct 4.0. Returns water stress score (0-5), depletion score, and risk label for a given country.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      country: { type: 'string', description: 'Country name (e.g., "Saudi Arabia", "Qatar")' },
+      countryCode: { type: 'string', description: 'ISO 2-letter country code (e.g., "SA", "QA")' },
+    },
+    required: [],
+  },
+  handler: async (input) => {
+    return getWaterStress(input as { country?: string; countryCode?: string });
+  },
+};
+
+// ============================================================
+// 19. get_climate_vulnerability (ND-GAIN)
+// ============================================================
+
+const getClimateVulnerabilityTool: ToolDefinition = {
+  name: 'get_climate_vulnerability',
+  description:
+    'Look up climate vulnerability and readiness data from the ND-GAIN Country Index. Returns ND-GAIN score, vulnerability score, readiness score, and global ranking for a given country.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      country: { type: 'string', description: 'Country name (e.g., "Saudi Arabia", "Qatar")' },
+      countryCode: { type: 'string', description: 'ISO 2-letter country code (e.g., "SA", "QA")' },
+    },
+    required: [],
+  },
+  handler: async (input) => {
+    return getClimateVulnerability(input as { country?: string; countryCode?: string });
+  },
+};
+
+// ============================================================
+// 20. get_sbti_status (SBTi Companies Taking Action)
+// ============================================================
+
+const getSBTiStatusTool: ToolDefinition = {
+  name: 'get_sbti_status',
+  description:
+    'Look up Science Based Targets initiative (SBTi) commitment status for companies. Search by company name, sector, or country. Returns target status, classification, and net-zero commitment details.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      companyName: { type: 'string', description: 'Company name to search (e.g., "SABIC", "Shell")' },
+      sector: { type: 'string', description: 'Industry sector filter (e.g., "Oil & Gas", "Steel")' },
+      country: { type: 'string', description: 'Country code filter (e.g., "SA", "GB")' },
+    },
+    required: [],
+  },
+  handler: async (input) => {
+    return getSBTiStatus(input as { companyName?: string; sector?: string; country?: string });
+  },
+};
+
+// ============================================================
+// 21. get_forced_labour_risk (Walk Free Global Slavery Index)
+// ============================================================
+
+const getForcedLabourRiskTool: ToolDefinition = {
+  name: 'get_forced_labour_risk',
+  description:
+    'Look up forced labour / modern slavery risk data for a country from the Walk Free Global Slavery Index 2023. Returns prevalence per 1000 people, estimated victims, vulnerability score, government response score, and import risk value.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      country: { type: 'string', description: 'Country name (e.g., "Qatar", "Saudi Arabia")' },
+      countryCode: { type: 'string', description: 'ISO 2-letter country code (e.g., "QA", "SA")' },
+    },
+    required: [],
+  },
+  handler: async (input) => {
+    return getForcedLabourRisk(input as { country?: string; countryCode?: string });
+  },
+};
+
+// ============================================================
+// 22. get_product_labour_risk (US DOL ILAB)
+// ============================================================
+
+const getProductLabourRiskTool: ToolDefinition = {
+  name: 'get_product_labour_risk',
+  description:
+    'Search for goods/products produced with forced or child labour from the US DOL ILAB List of Goods 2024. Filter by product name, country, or sector. Covers steel, electronics, textiles, agriculture, mining, and construction materials.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      product: { type: 'string', description: 'Product or good name (e.g., "Steel", "Cotton", "Bricks")' },
+      country: { type: 'string', description: 'Country of origin (e.g., "China", "India")' },
+      sector: { type: 'string', description: 'Industry sector (e.g., "Manufacturing", "Mining", "Agriculture")' },
+    },
+    required: [],
+  },
+  handler: async (input) => {
+    return getProductLabourRisk(input as { product?: string; country?: string; sector?: string });
+  },
+};
+
+// ============================================================
+// 23. get_threatened_species (IUCN Red List)
+// ============================================================
+
+const getThreatenedSpeciesTool: ToolDefinition = {
+  name: 'get_threatened_species',
+  description:
+    'Look up threatened species count for a country from the IUCN Red List. Returns total threatened species, breakdown by group (mammals, birds, reptiles, amphibians, fish, plants), and IUCN category counts when API token is available.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      country: { type: 'string', description: 'Country name (e.g., "Qatar", "Saudi Arabia")' },
+      countryCode: { type: 'string', description: 'ISO 2-letter country code (e.g., "QA", "SA", "AE")' },
+    },
+    required: [],
+  },
+  handler: async (input) => {
+    return getThreatenedSpecies(input as { country?: string; countryCode?: string });
+  },
+};
+
+// ============================================================
+// 24. get_species_near (GBIF)
+// ============================================================
+
+const getSpeciesNearTool: ToolDefinition = {
+  name: 'get_species_near',
+  description:
+    'Find species observed near a geographic location using GBIF (Global Biodiversity Information Facility). Returns unique species list with occurrence counts within a given radius.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      lat: { type: 'number', description: 'Latitude of the location' },
+      lon: { type: 'number', description: 'Longitude of the location' },
+      radiusKm: { type: 'number', description: 'Search radius in kilometers (default 50)' },
+    },
+    required: ['lat', 'lon'],
+  },
+  handler: async (input) => {
+    return getSpeciesNear(input as { lat: number; lon: number; radiusKm?: number });
+  },
+};
+
+// ============================================================
+// 25. get_species_status (GBIF)
+// ============================================================
+
+const getSpeciesStatusTool: ToolDefinition = {
+  name: 'get_species_status',
+  description:
+    'Get taxonomic details for a species from GBIF. Returns scientific name, kingdom, phylum, class, order, family, and taxonomic status.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      speciesName: { type: 'string', description: 'Species name to look up (e.g., "Dugong dugon", "Oryx leucoryx")' },
+    },
+    required: ['speciesName'],
+  },
+  handler: async (input) => {
+    return getSpeciesStatus(input as { speciesName: string });
+  },
+};
+
+// ============================================================
+// 26. get_deforestation_data (Global Forest Watch)
+// ============================================================
+
+const getDeforestationDataTool: ToolDefinition = {
+  name: 'get_deforestation_data',
+  description:
+    'Get country-level deforestation data from Global Forest Watch (GFW 2023). Returns tree cover loss (ha), primary forest loss (ha), and CO2 from loss (Mt).',
+  input_schema: {
+    type: 'object',
+    properties: {
+      countryCode: { type: 'string', description: 'ISO 3166-1 alpha-2 country code (e.g., "BR", "ID")' },
+      country: { type: 'string', description: 'Country name (e.g., "Brazil", "Indonesia")' },
+      year: { type: 'number', description: 'Data year (e.g., 2023)' },
+    },
+    required: [],
+  },
+  handler: async (input) => {
+    return getDeforestationData(input as { countryCode?: string; country?: string; year?: number });
+  },
+};
+
+// ============================================================
+// 27. get_protected_areas (UNEP Protected Planet)
+// ============================================================
+
+const getProtectedAreasTool: ToolDefinition = {
+  name: 'get_protected_areas',
+  description:
+    'Get protected areas for a country from UNEP Protected Planet. Returns IUCN category, area (km2), coordinates, marine status, and proximity to industrial zones.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      countryCode: { type: 'string', description: 'ISO 3166-1 alpha-2 country code (e.g., "QA", "AE", "SA", "OM")' },
+      country: { type: 'string', description: 'Country name (e.g., "Qatar", "UAE", "Saudi Arabia", "Oman")' },
+    },
+    required: [],
+  },
+  handler: async (input) => {
+    return getProtectedAreas(input as { countryCode?: string; country?: string });
+  },
+};
+
+// ============================================================
+// 28. get_protected_areas_near (UNEP Protected Planet - proximity)
+// ============================================================
+
+const getProtectedAreasNearTool: ToolDefinition = {
+  name: 'get_protected_areas_near',
+  description:
+    'Find protected areas near a geographic coordinate. Returns protected areas within a given radius (default 200km), sorted by distance.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      lat: { type: 'number', description: 'Latitude of the point to search near' },
+      lon: { type: 'number', description: 'Longitude of the point to search near' },
+      radiusKm: { type: 'number', description: 'Search radius in kilometres (default: 200)' },
+    },
+    required: ['lat', 'lon'],
+  },
+  handler: async (input) => {
+    return getProtectedAreasNear(input as { lat: number; lon: number; radiusKm?: number });
+  },
+};
+
+// ============================================================
+// 29. get_knowthechain_score (KnowTheChain)
+// ============================================================
+
+const getKnowTheChainScoreTool: ToolDefinition = {
+  name: 'get_knowthechain_score',
+  description:
+    'Get KnowTheChain forced-labour benchmark scores for a company. Returns overall score and theme scores (commitment, traceability, purchasing, recruitment, worker_voice, monitoring, remedy).',
+  input_schema: {
+    type: 'object',
+    properties: {
+      company: { type: 'string', description: 'Company name (e.g., "Apple", "Nestle", "Adidas")' },
+    },
+    required: ['company'],
+  },
+  handler: async (input) => {
+    return getKnowTheChainScore(input as { company?: string });
+  },
+};
+
+// ============================================================
+// 30. get_knowthechain_sector (KnowTheChain - sector benchmark)
+// ============================================================
+
+const getKnowTheChainSectorTool: ToolDefinition = {
+  name: 'get_knowthechain_sector',
+  description:
+    'Get KnowTheChain benchmark scores for all companies in a sector. Returns companies ranked by overall score. Sectors: ICT, Food & Beverage, Apparel.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      sector: { type: 'string', description: 'Sector name (e.g., "ICT", "Food & Beverage", "Apparel")' },
+    },
+    required: ['sector'],
+  },
+  handler: async (input) => {
+    return getKnowTheChainSector(input as { sector: string });
+  },
+};
+
+// ============================================================
+// 31. get_country_emissions (EDGAR)
+// ============================================================
+
+const getCountryEmissionsTool: ToolDefinition = {
+  name: 'get_country_emissions',
+  description:
+    'Look up national greenhouse gas emissions from the EDGAR database. Returns total GHG (MtCO2e), CO2, and sector breakdown (energy, industrial, waste, agriculture) for a given country and year.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      country: { type: 'string', description: 'Country name (e.g., "Saudi Arabia", "Qatar")' },
+      countryCode: { type: 'string', description: 'ISO 2-letter country code (e.g., "SA", "QA")' },
+      year: { type: 'number', description: 'Emissions year (default 2023)' },
+      sector: { type: 'string', description: 'Filter by sector (e.g., "total")' },
+    },
+    required: [],
+  },
+  handler: async (input) => {
+    return getCountryEmissions(input as { countryCode?: string; country?: string; year?: number; sector?: string });
+  },
+};
+
+// ============================================================
+// 32. get_ndc_target (Climate Watch / UNFCCC)
+// ============================================================
+
+const getNDCTargetTool: ToolDefinition = {
+  name: 'get_ndc_target',
+  description:
+    'Look up a country\'s Paris Agreement Nationally Determined Contribution (NDC) target. Returns NDC version, target type, target value, base year, target year, and sectors covered.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      country: { type: 'string', description: 'Country name (e.g., "Saudi Arabia", "Qatar")' },
+      countryCode: { type: 'string', description: 'ISO 2-letter country code (e.g., "SA", "QA")' },
+    },
+    required: [],
+  },
+  handler: async (input) => {
+    return getNDCTarget(input as { countryCode?: string; country?: string });
+  },
+};
+
+// ============================================================
+// 33. get_corruption_index (Transparency International CPI)
+// ============================================================
+
+const getCorruptionIndexTool: ToolDefinition = {
+  name: 'get_corruption_index',
+  description:
+    'Look up a country\'s Corruption Perceptions Index (CPI) score and global rank from Transparency International. Score is 0-100 where 100 is very clean.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      country: { type: 'string', description: 'Country name (e.g., "Saudi Arabia", "Qatar")' },
+      countryCode: { type: 'string', description: 'ISO 2-letter country code (e.g., "SA", "QA")' },
+    },
+    required: [],
+  },
+  handler: async (input) => {
+    return getCorruptionIndex(input as { countryCode?: string; country?: string });
+  },
+};
+
+// ============================================================
+// 34. get_facility_emissions (Climate TRACE)
+// ============================================================
+
+const getFacilityEmissionsTool: ToolDefinition = {
+  name: 'get_facility_emissions',
+  description:
+    'Look up sector-level industrial emissions from Climate TRACE for GCC countries. Returns emissions (MtCO2e) by sector (electricity, oil & gas, refining, petrochemicals, steel, cement, aluminium).',
+  input_schema: {
+    type: 'object',
+    properties: {
+      country: { type: 'string', description: 'Country name (e.g., "Saudi Arabia", "Qatar")' },
+      countryCode: { type: 'string', description: 'ISO 2-letter country code (e.g., "SA", "QA")' },
+      sector: { type: 'string', description: 'Sector name (e.g., "electricity_generation", "oil_and_gas_production")' },
+      year: { type: 'number', description: 'Emissions year (default 2023)' },
+    },
+    required: [],
+  },
+  handler: async (input) => {
+    return getFacilityEmissions(input as { countryCode?: string; country?: string; sector?: string; year?: number });
+  },
+};
+
+// ============================================================
+// 35. get_assurance_requirement (Assurance Standards KB)
+// ============================================================
+
+const getAssuranceRequirementTool: ToolDefinition = {
+  name: 'get_assurance_requirement',
+  description:
+    'Look up assurance requirements for a given ESG reporting framework. Returns applicable assurance standards, what verifiers check, triggers for qualification, and evidence requirements. Frameworks: CSRD/ESRS, GRI, ISSB, GHG Protocol, CDP, TCFD, EU ETS, CBAM, Saudi Exchange ESG, ADX ESG, QSE ESG.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      framework: { type: 'string', description: 'ESG framework name (e.g., "CSRD/ESRS", "GRI", "ISSB", "GHG Protocol", "CDP", "TCFD")' },
+      jurisdiction: { type: 'string', description: 'Optional jurisdiction filter (e.g., "EU", "GCC")' },
+    },
+    required: ['framework'],
+  },
+  handler: async (input) => {
+    return getAssuranceRequirement(input as { framework: string; jurisdiction?: string });
+  },
+};
+
+// ============================================================
+// 36. get_verifier_checklist (Assurance Standards KB)
+// ============================================================
+
+const getVerifierChecklistTool: ToolDefinition = {
+  name: 'get_verifier_checklist',
+  description:
+    'Get the full verifier checklist for a specific assurance standard. Returns what verifiers check, triggers for qualified opinions, and evidence requirements. Standard codes: ISAE_3000, ISAE_3410, EU_AVR, AA1000AS_v3, ISO_14064_3, CSRD_ASSURANCE, CBAM_VERIFICATION, GCC_ASSURANCE.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      standardCode: { type: 'string', description: 'Assurance standard code (e.g., "ISAE_3000", "ISAE_3410", "CSRD_ASSURANCE")' },
+    },
+    required: ['standardCode'],
+  },
+  handler: async (input) => {
+    return getVerifierChecklist(input as { standardCode: string });
+  },
+};
+
+// ============================================================
+// 37. get_abatement_options (Abatement Technologies KB)
+// ============================================================
+
+const getAbatementOptionsTool: ToolDefinition = {
+  name: 'get_abatement_options',
+  description:
+    'Look up ranked abatement technologies with costs ($/tCO2e), abatement potential (%), TRL, and CAPEX for a given sector. Covers steel, petrochemicals, oil & gas, cement, aluminium. Optionally filter by region (GCC, EU, Global).',
+  input_schema: {
+    type: 'object',
+    properties: {
+      sector: { type: 'string', description: 'Industry sector (e.g., "steel", "cement", "oil_and_gas", "petrochemicals", "aluminium")' },
+      region: { type: 'string', description: 'Region filter (e.g., "GCC", "EU", "Global")' },
+    },
+    required: ['sector'],
+  },
+  handler: async (input) => {
+    return getAbatementOptions(input as { sector: string; region?: string });
+  },
+};
+
+// ============================================================
+// 38. get_carbon_price (Carbon Pricing KB)
+// ============================================================
+
+const getCarbonPriceTool: ToolDefinition = {
+  name: 'get_carbon_price',
+  description:
+    'Look up current and projected carbon pricing (ETS, carbon tax, CBAM) by jurisdiction or scheme type. Also supports IEA NZE/APS and NGFS scenario pricing with year-by-year projections. For scenarios, provide the scenario parameter.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      jurisdiction: { type: 'string', description: 'Jurisdiction (e.g., "European Union", "Saudi Arabia", "China", "Global (IEA NZE)")' },
+      scheme_type: { type: 'string', description: 'Scheme type filter (e.g., "ETS", "carbon_tax", "CBAM", "scenario", "proposed")' },
+      scenario: { type: 'string', description: 'For scenario lookup: scenario name (e.g., "NZE", "APS", "NGFS")' },
+      year: { type: 'number', description: 'For scenario lookup: target year for price projection (e.g., 2030, 2040, 2050)' },
+    },
+    required: [],
+  },
+  handler: async (input) => {
+    const { scenario, year, ...rest } = input as { jurisdiction?: string; scheme_type?: string; scenario?: string; year?: number };
+    if (scenario) {
+      return getCarbonPriceScenario({ scenario, year });
+    }
+    return getCarbonPrice(rest);
+  },
+};
+
+// ============================================================
+// 39. get_energy_instrument (Energy Instruments KB)
+// ============================================================
+
+const getEnergyInstrumentTool: ToolDefinition = {
+  name: 'get_energy_instrument',
+  description:
+    'Look up renewable energy instruments (I-REC, EU GO, US REC, PPA) by type or country. Returns GHG Protocol qualification status, Scope 2 method applicability, and GCC market availability.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      countryCode: { type: 'string', description: 'ISO 2-letter country code (e.g., "SA", "AE", "QA")' },
+      instrumentType: { type: 'string', description: 'Instrument type (e.g., "I-REC", "EU_GO", "US_REC", "PPA_physical", "PPA_virtual", "country_status")' },
+    },
+    required: [],
+  },
+  handler: async (input) => {
+    return getEnergyInstrument(input as { countryCode?: string; instrumentType?: string });
+  },
+};
+
+// ============================================================
+// 40. get_rec_market_status (REC Market Status by country)
+// ============================================================
+
+const getRECMarketStatusTool: ToolDefinition = {
+  name: 'get_rec_market_status',
+  description:
+    'Get the renewable energy certificate market status for a specific country. Returns GHG Protocol qualifying instruments available, country-specific status, and Scope 2 market-based method applicability. Critical for GCC companies needing Scope 2 market-based reporting.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      countryCode: { type: 'string', description: 'ISO 2-letter country code (e.g., "SA", "AE", "QA", "BH", "OM", "KW")' },
+    },
+    required: ['countryCode'],
+  },
+  handler: async (input) => {
+    return getRECMarketStatus(input as { countryCode: string });
+  },
+};
+
+// ============================================================
+// 41. get_decarbonisation_pathway (Sector Pathways KB)
+// ============================================================
+
+const getDecarbonisationPathwayTool: ToolDefinition = {
+  name: 'get_decarbonisation_pathway',
+  description:
+    'Look up sector decarbonisation pathways from IEA NZE, SBTi, and TPI. Returns intensity milestones (2025-2050), key levers, and base year intensity. Covers steel, cement, petrochemicals, oil & gas, power, aluminium.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      sector: { type: 'string', description: 'Industry sector (e.g., "steel", "cement", "petrochemicals", "oil_and_gas", "power", "aluminium")' },
+      source: { type: 'string', description: 'Pathway source filter (e.g., "IEA_NZE", "SBTi", "TPI")' },
+    },
+    required: ['sector'],
+  },
+  handler: async (input) => {
+    return getDecarbonisationPathway(input as { sector: string; source?: string });
+  },
+};
+
+// ============================================================
+// 42. get_precedent (Precedent Case Library)
+// ============================================================
+
+const getPrecedentTool: ToolDefinition = {
+  name: 'get_precedent',
+  description:
+    'Search landmark ESG precedent cases including greenwashing enforcement, litigation outcomes, and regulatory actions. Returns case details, jurisdiction, outcome, and relevance to current advisory context.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      caseType: { type: 'string', description: 'Type of case (e.g., "greenwashing", "enforcement", "litigation", "regulatory_action")' },
+      sector: { type: 'string', description: 'Industry sector filter' },
+      jurisdiction: { type: 'string', description: 'Jurisdiction filter (e.g., "EU", "US", "UK", "AU")' },
+    },
+    required: [],
+  },
+  handler: async (input) => {
+    return getPrecedent(input as { caseType?: string; sector?: string; jurisdiction?: string });
+  },
+};
+
+// ============================================================
+// 43. get_anomaly_check (Sector Benchmark Anomaly Detection)
+// ============================================================
+
+const getAnomalyCheckTool: ToolDefinition = {
+  name: 'get_anomaly_check',
+  description:
+    'Check if a reported metric value is within expected range for a given sector. Returns whether the value is normal, borderline, or anomalous compared to sector benchmarks, with explanation and typical range.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      sector: { type: 'string', description: 'Industry sector (e.g., "steel", "cement", "oil_and_gas")' },
+      metric: { type: 'string', description: 'Metric name (e.g., "scope1_intensity", "water_intensity", "ltifr")' },
+      value: { type: 'number', description: 'The reported metric value to check' },
+    },
+    required: ['sector', 'metric', 'value'],
+  },
+  handler: async (input) => {
+    return getAnomalyCheck(input as { sector: string; metric: string; value: number });
+  },
+};
+
+// ============================================================
+// 44. get_partner_insight (Partner-Level Strategic Intelligence)
+// ============================================================
+
+const getPartnerInsightTool: ToolDefinition = {
+  name: 'get_partner_insight',
+  description:
+    'Retrieve partner-level strategic insight for a specific ESG domain topic. Returns senior advisory perspective on market dynamics, regulatory trajectory, competitive positioning, and strategic recommendations.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      domain: { type: 'string', description: 'ESG domain (e.g., "climate", "governance", "supply_chain", "reporting", "finance")' },
+      topic: { type: 'string', description: 'Specific topic within the domain (e.g., "carbon_border_adjustment", "board_composition", "scope3_strategy")' },
+    },
+    required: ['domain'],
+  },
+  handler: async (input) => {
+    return getPartnerInsight(input as { domain: string; topic?: string });
   },
 };

@@ -1,19 +1,18 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { logger } from './logger.js';
 
-const ANTHROPIC_API_KEY = process.env['ANTHROPIC_API_KEY'];
-
 let client: Anthropic | null = null;
 
 function getClient(): Anthropic | null {
   if (client) return client;
 
-  if (!ANTHROPIC_API_KEY) {
+  const apiKey = process.env['ANTHROPIC_API_KEY'];
+  if (!apiKey) {
     logger.warn('ANTHROPIC_API_KEY not set — Claude client unavailable');
     return null;
   }
 
-  client = new Anthropic({ apiKey: ANTHROPIC_API_KEY });
+  client = new Anthropic({ apiKey });
   return client;
 }
 

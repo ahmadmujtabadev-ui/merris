@@ -17,13 +17,15 @@ import { semanticSearch } from './search.service.js';
 // ============================================================
 
 export async function registerKnowledgeBaseRoutes(app: FastifyInstance): Promise<void> {
-  // Register multipart plugin for PDF upload
-  await app.register(multipart, {
-    limits: {
-      fileSize: 100 * 1024 * 1024, // 100MB max for large sustainability PDFs
-      files: 1,
-    },
-  });
+  // Register multipart plugin for PDF upload (skip if already registered by ingestion routes)
+  if (!app.hasDecorator('multipartErrors')) {
+    await app.register(multipart, {
+      limits: {
+        fileSize: 100 * 1024 * 1024, // 100MB max for large sustainability PDFs
+        files: 1,
+      },
+    });
+  }
 
   // ----------------------------------------------------------
   // POST /api/v1/knowledge-base/ingest-report

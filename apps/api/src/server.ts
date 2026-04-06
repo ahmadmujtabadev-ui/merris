@@ -23,6 +23,14 @@ import { registerAssuranceRoutes } from './modules/assurance/assurance.routes.js
 import { registerWorkflowRoutes } from './modules/workflow/workflow.routes.js';
 import { registerKnowledgeBaseRoutes } from './modules/knowledge-base/knowledge-base.routes.js';
 
+// 6-Product Service Layer
+import { registerAssistantRoutes } from './services/assistant/assistant.router.js';
+import { registerKnowledgeServiceRoutes } from './services/knowledge/knowledge.router.js';
+import { registerVerificationRoutes } from './services/verification/verification.router.js';
+import { registerVaultRoutes } from './services/vault/vault.router.js';
+import { registerWorkflowServiceRoutes } from './services/workflows/workflows.router.js';
+import { registerKBElevationRoutes } from './services/knowledge/elevation.router.js';
+
 const FEATURES = {
   sharepoint: true,
   teamsBot: false,
@@ -75,13 +83,9 @@ async function start() {
     decorateReply: false,
   });
 
-  // Health check
-  app.get('/api/v1/health', async (_request, _reply) => {
-    return {
-      status: 'ok',
-      timestamp: new Date().toISOString(),
-      features: FEATURES,
-    };
+  // Health check — public, no auth required
+  app.get('/api/v1/health', async (_request, reply) => {
+    return reply.send({ status: 'ok', timestamp: new Date().toISOString(), version: '0.1.0' });
   });
 
   // Register auth routes
@@ -125,6 +129,16 @@ async function start() {
 
   // Register knowledge base ingestion routes
   await registerKnowledgeBaseRoutes(app);
+
+  // ---- 6-Product Service Layer ----
+  await registerAssistantRoutes(app);
+  await registerKnowledgeServiceRoutes(app);
+  await registerVerificationRoutes(app);
+  await registerVaultRoutes(app);
+  await registerWorkflowServiceRoutes(app);
+
+  // KB Elevation Engine — gap tracking, coverage, enrichment queue
+  await registerKBElevationRoutes(app);
 
   const port = parseInt(process.env['PORT'] || '3001', 10);
 
