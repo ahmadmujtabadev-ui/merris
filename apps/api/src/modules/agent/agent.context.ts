@@ -4,6 +4,7 @@ import { DataPointModel } from '../ingestion/ingestion.model.js';
 import { UserModel } from '../auth/auth.model.js';
 import { Framework } from '../../models/framework.model.js';
 import { getCompleteness } from '../data-collection/data-collection.service.js';
+import { buildMemoryContext } from './memory.js';
 import { logger } from '../../lib/logger.js';
 import type { DataPointStatus } from '@merris/shared';
 
@@ -55,6 +56,7 @@ export interface AgentContextData {
   currentStage: string;
   recentActivity: RecentActivityEntry[];
   userRole: string;
+  memoryContext?: string;
 }
 
 // ============================================================
@@ -167,13 +169,37 @@ export async function buildAgentContext(
     logger.warn('Could not fetch recent activity for agent context', err);
   }
 
-  // Build engagement summary (simplified — no Engagement model yet)
+  // Build engagement summary
+  let engagementName = `Engagement ${engagementId}`;
+  try {
+    const db = mongoose.connection.db;
+    if (db) {
+      const eng = await db.collection('engagements').findOne({
+        _id: new mongoose.Types.ObjectId(engagementId),
+      });
+      if (eng) engagementName = eng.name || engagementName;
+    }
+  } catch { /* fallback name */ }
+
   const engagement: EngagementSummary = {
-    name: `Engagement ${engagementId}`,
+    name: engagementName,
     scope: 'ESG Reporting',
     deadline: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString(),
     status: currentStage,
   };
+
+  // Build memory context (conversations, decisions, style preferences)
+  let memoryContext = '';
+  try {
+    const user = await UserModel.findById(userId).lean();
+    memoryContext = await buildMemoryContext(
+      engagementId,
+      userId,
+      user?.orgId?.toString(),
+    );
+  } catch {
+    // Memory is non-critical
+  }
 
   return {
     engagement,
@@ -183,5 +209,6 @@ export async function buildAgentContext(
     currentStage,
     recentActivity,
     userRole,
+    memoryContext,
   };
 }

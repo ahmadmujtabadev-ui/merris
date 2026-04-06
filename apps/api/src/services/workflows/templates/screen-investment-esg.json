@@ -1,0 +1,11 @@
+{
+  "id": "screen-investment-esg",
+  "name": "ESG Investment Screening",
+  "description": "Screen investment proposal for ESG risks with peer benchmarking",
+  "steps": [
+    { "id": "extract", "name": "Extract company profile", "tool": "perceive_document", "inputs": { "documentBody": "$document", "documentType": "word" } },
+    { "id": "risk_screen", "name": "Run ESG risk screening", "tool": "search_knowledge", "inputs": { "query": "ESG risk $sector", "domains": ["supply_chain", "regulatory", "environmental_science"] } },
+    { "id": "benchmark", "name": "Benchmark against peers", "tool": "benchmark", "inputs": { "query": "peer comparison $sector ESG metrics" } },
+    { "id": "report", "name": "Produce due diligence summary", "tool": "generate_text", "inputs": { "prompt": "Produce ESG due diligence summary from: $extract, $risk_screen, $benchmark" } }
+  ]
+}

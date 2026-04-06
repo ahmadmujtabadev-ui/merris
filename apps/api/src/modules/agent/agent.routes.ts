@@ -25,6 +25,8 @@ const ChatBodySchema = z.object({
       })
     )
     .optional(),
+  documentBody: z.string().optional(),
+  cursorSection: z.string().optional(),
 });
 
 const PerceiveBodySchema = z.object({
@@ -118,6 +120,8 @@ export async function registerAgentRoutes(app: FastifyInstance): Promise<void> {
           userId: request.user.userId,
           message: parsed.data.message,
           conversationHistory: parsed.data.conversationHistory,
+          documentBody: parsed.data.documentBody,
+          cursorSection: parsed.data.cursorSection,
         });
 
         return reply.code(200).send(result);

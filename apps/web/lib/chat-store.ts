@@ -1,177 +1,183 @@
 import { create } from 'zustand';
+import type { StreamEvent, CitationItem } from '@merris/shared';
+import { THINKING_PHASES } from './intelligence-constants';
+import { api } from './api';
 
-// ============================================================
-// Chat Message Types (local mirrors to avoid runtime Zod)
-// ============================================================
+export type ChatPhase = 'home' | 'thinking' | 'response';
 
-export interface ChatToolCall {
-  name: string;
-  input: Record<string, unknown>;
-  output?: unknown;
+export interface ThinkingStepState {
+  step: (typeof THINKING_PHASES)[number];
+  status: 'pending' | 'active' | 'done' | 'failed';
+  detail?: string;
+  sources?: string[];
 }
 
-export interface ChatMessage {
-  id: string;
-  role: 'user' | 'assistant' | 'system';
-  content: string;
-  timestamp: Date;
-  toolCalls?: ChatToolCall[];
+export interface EvaluationState {
+  score: number;
+  confidence: 'high' | 'medium' | 'low';
+  decision?: 'PASS' | 'FIX' | 'REJECT' | 'BLOCK';
 }
-
-export interface SuggestedAction {
-  label: string;
-  action: string;
-  params?: Record<string, unknown>;
-}
-
-// ============================================================
-// Chat Store
-// ============================================================
 
 interface ChatState {
-  messages: ChatMessage[];
-  isLoading: boolean;
-  isOpen: boolean;
-  engagementId: string | null;
-  suggestedActions: SuggestedAction[];
+  // input/context
+  jurisdiction: string[];          // active codes
+  knowledgeSources: string[];      // active K-codes (e.g., ['K1','K7'])
+  engagementId: string;            // selected engagement; placeholder for now
 
-  setEngagementId: (id: string | null) => void;
-  addMessage: (message: ChatMessage) => void;
-  setMessages: (messages: ChatMessage[]) => void;
-  setLoading: (loading: boolean) => void;
-  toggleOpen: () => void;
-  setOpen: (open: boolean) => void;
-  setSuggestedActions: (actions: SuggestedAction[]) => void;
-  clearMessages: () => void;
-  sendMessage: (content: string) => Promise<void>;
+  // current run
+  phase: ChatPhase;
+  question: string;                // the most recent submitted question
+  thinkingSteps: ThinkingStepState[];
+  tokenText: string;
+  citations: CitationItem[];
+  evaluation: EvaluationState | null;
+  errorMessage: string | null;
+
+  // actions
+  toggleJurisdiction: (j: string) => void;
+  toggleKnowledgeSource: (k: string) => void;
+  setEngagementId: (id: string) => void;
+  startQuery: (question: string) => Promise<void>;
+  reset: () => void;
 }
 
-let messageCounter = 0;
-function generateId(): string {
-  messageCounter += 1;
-  return `msg-${Date.now()}-${messageCounter}`;
-}
+const initialThinkingSteps = (): ThinkingStepState[] =>
+  THINKING_PHASES.map((step) => ({ step, status: 'pending' }));
 
 export const useChatStore = create<ChatState>((set, get) => ({
-  messages: [],
-  isLoading: false,
-  isOpen: false,
-  engagementId: null,
-  suggestedActions: [],
+  jurisdiction: ['Qatar'],
+  knowledgeSources: ['K1', 'K7'],
+  engagementId: '000000000000000000000000', // placeholder ObjectId; real one comes from engagement selector
+
+  phase: 'home',
+  question: '',
+  thinkingSteps: initialThinkingSteps(),
+  tokenText: '',
+  citations: [],
+  evaluation: null,
+  errorMessage: null,
+
+  toggleJurisdiction: (j) =>
+    set((s) => ({
+      jurisdiction: s.jurisdiction.includes(j)
+        ? s.jurisdiction.filter((x) => x !== j)
+        : [...s.jurisdiction, j],
+    })),
+
+  toggleKnowledgeSource: (k) =>
+    set((s) => ({
+      knowledgeSources: s.knowledgeSources.includes(k)
+        ? s.knowledgeSources.filter((x) => x !== k)
+        : [...s.knowledgeSources, k],
+    })),
 
   setEngagementId: (id) => set({ engagementId: id }),
 
-  addMessage: (message) =>
-    set((state) => ({ messages: [...state.messages, message] })),
+  startQuery: async (question) => {
+    set({
+      phase: 'thinking',
+      question,
+      thinkingSteps: initialThinkingSteps(),
+      tokenText: '',
+      citations: [],
+      evaluation: null,
+      errorMessage: null,
+    });
 
-  setMessages: (messages) => set({ messages }),
-
-  setLoading: (loading) => set({ isLoading: loading }),
-
-  toggleOpen: () => set((state) => ({ isOpen: !state.isOpen })),
-
-  setOpen: (open) => set({ isOpen: open }),
-
-  setSuggestedActions: (actions) => set({ suggestedActions: actions }),
-
-  clearMessages: () => set({ messages: [], suggestedActions: [] }),
-
-  sendMessage: async (content: string) => {
-    const { engagementId, messages } = get();
-
-    // Add user message
-    const userMessage: ChatMessage = {
-      id: generateId(),
-      role: 'user',
-      content,
-      timestamp: new Date(),
-    };
-    set((state) => ({
-      messages: [...state.messages, userMessage],
-      isLoading: true,
-      suggestedActions: [],
-    }));
+    const { engagementId, jurisdiction, knowledgeSources } = get();
 
     try {
-      // Build conversation history for the API
-      const conversationHistory = messages.map((m) => ({
-        role: m.role as 'user' | 'assistant',
-        content: m.content,
-      }));
-
-      const API_BASE =
-        typeof window !== 'undefined'
-          ? (process.env['NEXT_PUBLIC_API_URL'] ?? 'http://localhost:3001/api/v1')
-          : 'http://localhost:3001/api/v1';
-
-      // Load auth token from localStorage if needed
-      let authToken: string | null = null;
-      if (typeof window !== 'undefined') {
-        try {
-          const stored = localStorage.getItem('merris_auth');
-          if (stored) {
-            const parsed = JSON.parse(stored) as { token?: string };
-            if (parsed.token) authToken = parsed.token;
-          }
-        } catch { /* ignore */ }
-      }
-
-      const headers: Record<string, string> = { 'Content-Type': 'application/json' };
-      if (authToken) {
-        headers['Authorization'] = `Bearer ${authToken}`;
-      }
-
-      const response = await fetch(`${API_BASE}/agent/chat`, {
-        method: 'POST',
-        headers,
-        body: JSON.stringify({
-          engagementId: engagementId ?? 'default',
-          message: content,
-          conversationHistory,
-        }),
+      await api.chatStream(
+        {
+          engagementId,
+          message: question,
+          jurisdiction: jurisdiction.join(','),
+          knowledgeSources,
+        },
+        (event: StreamEvent) => {
+          handleEvent(event, set, get);
+        },
+      );
+    } catch (err) {
+      set({
+        phase: 'response',
+        errorMessage: err instanceof Error ? err.message : 'Unknown stream error',
       });
-
-      if (!response.ok) {
-        throw new Error('Chat request failed');
-      }
-
-      const data = (await response.json()) as {
-        response: string;
-        toolCalls?: ChatToolCall[];
-        suggestedActions?: SuggestedAction[];
-      };
-
-      const assistantMessage: ChatMessage = {
-        id: generateId(),
-        role: 'assistant',
-        content: data.response,
-        timestamp: new Date(),
-        toolCalls: data.toolCalls,
-      };
-
-      set((state) => ({
-        messages: [...state.messages, assistantMessage],
-        isLoading: false,
-        suggestedActions: data.suggestedActions ?? [
-          { label: 'Draft next section', action: 'draft_next' },
-          { label: 'Run consistency check', action: 'check_consistency' },
-          { label: 'Show data gaps', action: 'show_gaps' },
-        ],
-      }));
-    } catch {
-      // On error, add a fallback assistant message
-      const errorMessage: ChatMessage = {
-        id: generateId(),
-        role: 'assistant',
-        content:
-          'I apologize, but I encountered an issue processing your request. Please try again.',
-        timestamp: new Date(),
-      };
-
-      set((state) => ({
-        messages: [...state.messages, errorMessage],
-        isLoading: false,
-      }));
     }
   },
+
+  reset: () =>
+    set({
+      phase: 'home',
+      question: '',
+      thinkingSteps: initialThinkingSteps(),
+      tokenText: '',
+      citations: [],
+      evaluation: null,
+      errorMessage: null,
+    }),
 }));
+
+// ----- Pure event reducer -----
+// Extracted into a function so it can be unit-tested independently when
+// the web app gains test infrastructure.
+function handleEvent(
+  event: StreamEvent,
+  set: (partial: Partial<ChatState> | ((s: ChatState) => Partial<ChatState>)) => void,
+  _get: () => ChatState,
+) {
+  switch (event.type) {
+    case 'thinking_step': {
+      set((s) => ({
+        thinkingSteps: s.thinkingSteps.map((step) =>
+          step.step === event.step
+            ? {
+                ...step,
+                status: event.status === 'done'
+                  ? (event.detail === 'failed' ? 'failed' : 'done')
+                  : 'active',
+                detail: event.detail ?? step.detail,
+              }
+            : step,
+        ),
+      }));
+      break;
+    }
+    case 'thinking_sources': {
+      set((s) => ({
+        thinkingSteps: s.thinkingSteps.map((step) =>
+          step.step === 'Retrieving intelligence'
+            ? { ...step, sources: event.sources }
+            : step,
+        ),
+      }));
+      break;
+    }
+    case 'token': {
+      set({ tokenText: event.text });
+      break;
+    }
+    case 'sources': {
+      set({ citations: event.citations });
+      break;
+    }
+    case 'evaluation': {
+      set({
+        evaluation: {
+          score: event.score,
+          confidence: event.confidence,
+          decision: event.decision,
+        },
+      });
+      break;
+    }
+    case 'error': {
+      set({ errorMessage: event.message });
+      break;
+    }
+    case 'done': {
+      set({ phase: 'response' });
+      break;
+    }
+  }
+}

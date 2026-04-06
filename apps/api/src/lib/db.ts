@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import { logger } from './logger.js';
 
-const MONGODB_URI = process.env['MONGODB_URI'];
+// MONGODB_URI read inside connectDB() to ensure dotenv has loaded
 
 let isConnected = false;
 
@@ -10,7 +10,8 @@ export async function connectDB(): Promise<typeof mongoose | null> {
     return mongoose;
   }
 
-  if (!MONGODB_URI) {
+  const MONGODB_URI = process.env["MONGODB_URI"];
+    if (!MONGODB_URI) {
     logger.warn('MONGODB_URI not set — database connection skipped');
     return null;
   }
