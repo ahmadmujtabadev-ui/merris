@@ -47,12 +47,29 @@ export interface KnowledgeCollection {
   entryCount?: number;
 }
 
-export interface Workflow {
+export interface WorkflowTemplate {
   id: string;
   name: string;
-  description?: string;
-  category?: string;
-  steps?: Array<{ name: string; description?: string }>;
+  description: string;
+  steps: Array<{
+    id: string;
+    name: string;
+    tool: string;
+    inputs: Record<string, unknown>;
+  }>;
+}
+
+export interface WorkflowExecution {
+  id: string;
+  templateId: string;
+  engagementId: string;
+  status: 'running' | 'completed' | 'failed';
+  currentStep: number;
+  totalSteps: number;
+  results: Record<string, unknown>;
+  error?: string;
+  startedAt: string;
+  completedAt?: string;
 }
 
 export interface ChatRequestPayload {
@@ -278,22 +295,28 @@ class ApiClient {
     );
   }
 
-  // ===== Workflows =====
-  listWorkflows() {
-    return this.get<{ workflows: Workflow[] }>('/workflows');
+  // ===== Workflows (real backend routes) =====
+  listWorkflowTemplates() {
+    return this.get<{ templates: WorkflowTemplate[] }>('/workflows/templates');
   }
 
-  executeWorkflow(workflowId: string, params: Record<string, unknown>) {
-    return this.post<{ executionId: string; status: string }>(
-      `/workflows/${workflowId}/execute`,
-      params,
-    );
+  getWorkflowTemplate(templateId: string) {
+    return this.get<WorkflowTemplate>(`/workflows/templates/${templateId}`);
   }
 
-  getWorkflowStatus(workflowId: string) {
-    return this.get<{ status: string; steps: Array<{ name: string; status: string }> }>(
-      `/workflows/${workflowId}/status`,
-    );
+  runWorkflowTemplate(templateId: string, engagementId: string, inputs?: Record<string, unknown>) {
+    return this.post<WorkflowExecution>(`/workflows/${templateId}/run`, {
+      engagementId,
+      inputs: inputs ?? {},
+    });
+  }
+
+  getWorkflowExecutionStatus(executionId: string) {
+    return this.get<WorkflowExecution>(`/workflows/${executionId}/status`);
+  }
+
+  listWorkflowHistory() {
+    return this.get<{ executions: WorkflowExecution[] }>('/workflows/history');
   }
 
   // ===== Assurance =====
