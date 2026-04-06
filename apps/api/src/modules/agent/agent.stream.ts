@@ -4,6 +4,7 @@ import { logger } from '../../lib/logger.js';
 import { buildAgentContext } from './agent.context.js';
 import { getToolDefinitions, getToolSchemas } from './agent.tools.js';
 import { captureConversation } from './memory.js';
+import { extractCitations, toWireCitations } from './citations.js';
 import { checkHardBlocks, evaluateResponse, autoRewrite } from '../../services/assistant/evaluator.js';
 import type { ChatRequest } from './agent.service.js';
 import type Anthropic from '@anthropic-ai/sdk';
@@ -229,9 +230,8 @@ async function runClaudeToolLoop(
     if (toolUseBlocks.length === 0) {
       const textBlock = response.content.find((b) => b.type === 'text');
       const responseText = textBlock && 'text' in textBlock ? (textBlock as { text: string }).text : '';
-      // Citations are derived in the existing extractCitations() — for now, return [] and rely on tool catalogue.
-      // The full extractCitations import would create a circular dep risk; lift it in Task 7 if needed.
-      return { responseText, toolCalls, citations: [] };
+      const { citations: extracted } = extractCitations(toolCalls);
+      return { responseText, toolCalls, citations: toWireCitations(extracted) };
     }
 
     const toolResults: Anthropic.ToolResultBlockParam[] = [];
@@ -259,5 +259,6 @@ async function runClaudeToolLoop(
     ];
   }
 
-  return { responseText: 'Reached max tool rounds.', toolCalls, citations: [] };
+  const { citations: extracted } = extractCitations(toolCalls);
+  return { responseText: 'Reached max tool rounds.', toolCalls, citations: toWireCitations(extracted) };
 }
