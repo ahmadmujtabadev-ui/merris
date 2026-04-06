@@ -16,12 +16,22 @@ const SCOPES = ["openid", "profile", "email"];
 let _dialogLoginPromise: Promise<string> | null = null;
 
 /**
- * Attempt SSO token acquisition via Office.js.
- * Falls back to dialog-based login if SSO is unavailable.
+ * Attempt to authenticate. Tries:
+ * 1. Existing token in localStorage
+ * 2. Merris API login (email/password from localStorage or defaults for dev)
+ * 3. Office SSO (requires Azure AD — production only)
  */
 export async function ensureAuthenticated(): Promise<string> {
   const existing = getToken();
   if (existing) return existing;
+
+  // Dev/testing: auto-login with Merris API credentials
+  try {
+    const token = await merrisApiLogin();
+    if (token) return token;
+  } catch {
+    // Fall through
+  }
 
   try {
     const ssoToken = await trySSOLogin();
@@ -30,6 +40,31 @@ export async function ensureAuthenticated(): Promise<string> {
   } catch {
     return dialogLogin();
   }
+}
+
+/**
+ * Login directly with Merris API (email/password).
+ * Uses stored credentials or dev defaults.
+ */
+async function merrisApiLogin(): Promise<string | null> {
+  const baseUrl = "/api/v1";
+  const email = localStorage.getItem("merris_email") || "tim@merris.ai";
+  const password = localStorage.getItem("merris_password") || "Test1234!";
+
+  const response = await fetch(`${baseUrl}/auth/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password }),
+  });
+
+  if (!response.ok) return null;
+
+  const data = await response.json();
+  if (data.token) {
+    configure({ token: data.token });
+    return data.token;
+  }
+  return null;
 }
 
 async function trySSOLogin(): Promise<string> {

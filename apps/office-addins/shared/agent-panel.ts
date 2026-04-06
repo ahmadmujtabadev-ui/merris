@@ -137,7 +137,11 @@ export class AgentPanel {
     }
   }
 
-  private addMessage(msg: AgentMessage): void {
+  /** Add a message to the chat panel (public for @Merris EXPLAIN commands) */
+  addMessage(roleOrMsg: string | AgentMessage, content?: string): void {
+    const msg: AgentMessage = typeof roleOrMsg === "string"
+      ? { role: roleOrMsg as "user" | "assistant", content: content || "" }
+      : roleOrMsg;
     this.messages.push(msg);
     const el = document.createElement("div");
     el.className = `merris-agent-msg merris-agent-msg-${msg.role === "user" ? "user" : "bot"}`;

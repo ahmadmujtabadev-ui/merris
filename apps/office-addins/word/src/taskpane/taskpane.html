@@ -3,97 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Merris ESG Agent -- Word</title>
+  <title>Merris ESG Agent — Word</title>
   <script src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
-  <!-- styles bundled by webpack -->
 </head>
 <body>
-  <div class="merris-taskpane">
-    <!-- Header -->
-    <div class="merris-header">
-      <h1>Merris</h1>
-      <span style="font-size:12px; color:var(--merris-text-secondary);">ESG Report Assistant</span>
-      <div id="engagement-label" style="font-size:11px; color:var(--merris-accent, #1a7a4c); margin-top:4px; cursor:pointer;" title="Click to change engagement"></div>
-    </div>
+  <div class="merris-taskpane" id="merris-root">
 
-    <!-- Engagement Selector (shown first) -->
+    <!-- Engagement Selector (shown first, hidden after selection) -->
     <div id="engagement-selector-container"></div>
 
-    <!-- Main Content (hidden until engagement selected) -->
-    <div id="main-content">
+    <!-- Main App (hidden until engagement selected) -->
+    <div id="merris-app" style="display:none; height:100vh; flex-direction:column;">
 
-    <!-- @Merris command status — shows live progress -->
-    <div id="merris-command-status" style="display:none;"></div>
-
-    <!-- Perception Briefing (auto-populated on document open) -->
-    <div id="perception-briefing" style="display:none;"></div>
-
-    <!-- Current Section Detector -->
-    <div class="merris-section" id="section-detector">
-      <h2>Current Section</h2>
-      <div id="current-section" class="merris-card">
-        <div class="merris-card-header" id="section-heading">Detecting...</div>
-        <p id="section-framework" style="font-size:13px; color:var(--merris-text-secondary);"></p>
-        <div id="section-actions" style="display:none; margin-top:8px; display:flex; gap:4px; flex-wrap:wrap;"></div>
+      <!-- Tab Bar -->
+      <div class="merris-tab-bar" id="tab-bar">
+        <button class="merris-tab active" data-tab="insights">Insights</button>
+        <button class="merris-tab" data-tab="actions">Actions</button>
+        <button class="merris-tab" data-tab="chat">Chat</button>
+        <button class="merris-tab" data-tab="history">History</button>
       </div>
-    </div>
 
-    <!-- Tabs -->
-    <div style="display:flex; gap:4px; margin-bottom:12px; flex-wrap:wrap;">
-      <button class="merris-btn merris-btn-primary merris-tab-btn active" data-tab="agent">Agent</button>
-      <button class="merris-btn merris-btn-secondary merris-tab-btn" data-tab="compliance">Compliance</button>
-      <button class="merris-btn merris-btn-secondary merris-tab-btn" data-tab="suggested">Suggested</button>
-      <button class="merris-btn merris-btn-secondary merris-tab-btn" data-tab="citations">Citations</button>
-    </div>
-
-    <!-- Agent Panel -->
-    <div id="panel-agent" class="merris-panel active"></div>
-
-    <!-- Compliance Notes -->
-    <div id="panel-compliance" class="merris-panel" style="display:none;">
-      <div class="merris-section">
-        <h2>Compliance Coverage</h2>
-        <div id="compliance-summary" style="margin-bottom:10px;"></div>
-        <div id="compliance-notes">
-          <div class="merris-card">
-            <p style="font-size:13px; color:var(--merris-text-secondary);">
-              Run document analysis to see compliance coverage across frameworks.
-            </p>
-          </div>
-        </div>
+      <!-- Tab Content -->
+      <div class="merris-tab-content" id="tab-content">
+        <div id="tab-insights" class="merris-tab-panel active"></div>
+        <div id="tab-actions" class="merris-tab-panel" style="display:none;"></div>
+        <div id="tab-chat" class="merris-tab-panel" style="display:none;"></div>
+        <div id="tab-history" class="merris-tab-panel" style="display:none;"></div>
       </div>
-    </div>
 
-    <!-- Suggested Content -->
-    <div id="panel-suggested" class="merris-panel" style="display:none;">
-      <div class="merris-section">
-        <h2>Issues and Suggestions</h2>
-        <div id="suggested-content">
-          <div class="merris-card">
-            <p style="font-size:13px; color:var(--merris-text-secondary);">
-              Run a review to see issues and suggested improvements.
-            </p>
-          </div>
-        </div>
-      </div>
+      <!-- Persistent Footer -->
+      <div class="merris-footer" id="merris-footer"></div>
     </div>
-
-    <!-- Citation Trail -->
-    <div id="panel-citations" class="merris-panel" style="display:none;">
-      <div class="merris-section">
-        <h2>Data Sources</h2>
-        <div id="citation-trail">
-          <div class="merris-card">
-            <p style="font-size:13px; color:var(--merris-text-secondary);">
-              Run document analysis to see data source citations and evidence trails.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div><!-- /main-content -->
   </div>
-
-  <!-- JS injected by webpack -->
 </body>
 </html>
