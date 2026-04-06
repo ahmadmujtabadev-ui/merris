@@ -4,15 +4,16 @@
            xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
            xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0"
            xsi:type="MailApp">
-  <Id>merris-outlook-addin-00000000-0000-0000-0000-000000000004</Id>
+
+  <Id>a1b2c3d4-e5f6-7890-abcd-000000000004</Id>
   <Version>1.0.0</Version>
   <ProviderName>Merris</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Merris ESG Agent" />
-  <Description DefaultValue="AI-powered ESG email assistant for Outlook. Generate data request emails from gap registers and process incoming attachments for ESG engagements." />
-  <IconUrl DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev/addins/assets/icon-64.png" />
-  <HighResolutionIconUrl DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev/addins/assets/icon-128.png" />
-  <SupportUrl DefaultValue="https://merris.app/support" />
+  <Description DefaultValue="AI-powered ESG email assistant for Outlook" />
+  <IconUrl DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev/addins/assets/icon-32.png" />
+  <HighResolutionIconUrl DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev/addins/assets/icon-64.png" />
+  <SupportUrl DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev/addins/assets/icon-32.png" />
 
   <Hosts>
     <Host Name="Mailbox" />
@@ -118,7 +119,7 @@
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="groupLabel" DefaultValue="Merris ESG" />
-        <bt:String id="generateBtnLabel" DefaultValue="Generate Data Request" />
+        <bt:String id="generateBtnLabel" DefaultValue="Data Request" />
         <bt:String id="smartReplyBtnLabel" DefaultValue="Smart Reply" />
       </bt:ShortStrings>
       <bt:LongStrings>

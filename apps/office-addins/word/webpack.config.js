@@ -53,7 +53,16 @@ module.exports = {
     headers: {
       "Access-Control-Allow-Origin": "*",
     },
-    server: "https",
+    proxy: [
+      {
+        context: ["/api"],
+        target: "http://localhost:3001",
+        changeOrigin: true,
+      },
+    ],
+    // ngrok provides HTTPS — serve plain HTTP here
+    server: "http",
+    allowedHosts: "all",
     hot: true,
   },
 };

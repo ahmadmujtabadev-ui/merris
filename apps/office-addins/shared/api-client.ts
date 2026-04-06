@@ -73,6 +73,12 @@ export interface AgentChatRequest {
   message: string;
   context?: Record<string, unknown>;
   session_id?: string;
+  /** Optional Word document body, sent so the agent can reference open content. */
+  documentBody?: string;
+  /** Optional cursor section title, identifies which heading the user is editing. */
+  cursorSection?: string;
+  /** Engagement context the message is scoped to. */
+  engagementId?: string;
 }
 
 export interface AgentChatResponse {
@@ -162,4 +168,95 @@ export function getEvidenceTrail(
   sources: Array<{ document: string; page?: number; excerpt?: string }>;
 }> {
   return api.get(`/agent/evidence/${encodeURIComponent(metric_id)}`);
+}
+
+// ----- Document judgment -----
+
+export interface SectionJudgment {
+  sectionTitle: string;
+  score: number;
+  notes?: string;
+}
+
+export interface DocumentJudgment {
+  overallScore: number;
+  sections: SectionJudgment[];
+  criticalIssues: Array<{
+    location: string;
+    issue: string;
+    recommendation: string;
+  }>;
+  improvements?: Array<{
+    location?: string;
+    issue?: string;
+    recommendation?: string;
+  }>;
+  partnerWouldApprove?: boolean;
+  auditorWouldAccept?: boolean;
+}
+
+export function judgeFullDocument(
+  engagementId: string,
+  documentBody: string,
+  level: "quick" | "thorough" | "partner_review"
+): Promise<DocumentJudgment> {
+  return api.post<DocumentJudgment>("/assistant/judge-document", {
+    engagementId,
+    fullDocumentBody: documentBody,
+    judgmentLevel: level,
+  });
+}
+
+// ----- Verification -----
+
+export interface VerifyDocumentResult {
+  issues: Array<{
+    location: string;
+    severity: "error" | "warning" | "info";
+    message: string;
+  }>;
+  passedChecks: number;
+  totalChecks: number;
+  findings?: Array<{
+    location?: string | { section?: string; [key: string]: unknown };
+    severity?: "error" | "warning" | "info";
+    message?: string;
+    type?: string;
+    description?: string;
+    recommendation?: string;
+    auditRisk?: string;
+  }>;
+  summary?: string | { overallVerdict?: string; [key: string]: unknown };
+}
+
+export function verifyDocument(
+  engagementId: string,
+  documentText: string,
+  metrics: string[]
+): Promise<VerifyDocumentResult> {
+  return api.post<VerifyDocumentResult>("/agent/verify-document", {
+    engagementId,
+    documentText,
+    metrics,
+  });
+}
+
+// ----- Workflow execution -----
+
+export interface RunWorkflowResult {
+  runId: string;
+  status: string;
+  output?: unknown;
+  results?: unknown;
+}
+
+export function runWorkflow(
+  templateId: string,
+  engagementId: string,
+  params: Record<string, unknown>
+): Promise<RunWorkflowResult> {
+  return api.post<RunWorkflowResult>(`/workflows/${encodeURIComponent(templateId)}/run`, {
+    engagementId,
+    params,
+  });
 }
