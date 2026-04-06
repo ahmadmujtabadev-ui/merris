@@ -320,6 +320,12 @@ class ApiClient {
     return this.get<{ executions: WorkflowExecution[] }>('/workflows/history');
   }
 
+  generateBuilderSteps(description: string) {
+    return this.post<{
+      steps: Array<{ id: string; name: string; description: string; tool: string }>;
+    }>('/workflows/builder/generate-steps', { description });
+  }
+
   // ===== Assurance =====
   runAssurancePack(engagementId: string) {
     return this.post<{ packId: string; findings: unknown[] }>(

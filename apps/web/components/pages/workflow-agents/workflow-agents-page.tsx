@@ -9,6 +9,7 @@ import { SectionLabel } from '@/components/merris/label';
 import { api, type WorkflowTemplate } from '@/lib/api';
 import { useEngagementStore } from '@/lib/store';
 import { AGENTS_PREBUILT, AGENTS_CUSTOM, RECENTLY_RUN, AGENT_CATEGORIES, type AgentEntry } from './workflow-agents-data';
+import { BuilderTab } from './builder-tab';
 
 type ViewAgent = AgentEntry & { realTemplateId?: string };
 
@@ -32,6 +33,7 @@ function templatesToViewAgents(templates: WorkflowTemplate[]): ViewAgent[] {
 }
 
 export function WorkflowAgentsPage() {
+  const [tab, setTab] = useState<'library' | 'builder'>('library');
   const [category, setCategory] = useState<(typeof AGENT_CATEGORIES)[number]>('All');
   const [agents, setAgents] = useState<ViewAgent[]>([]);
   const [loading, setLoading] = useState(true);
@@ -185,14 +187,38 @@ export function WorkflowAgentsPage() {
             Run pre-built agents or build your own, tailored to your organisation's needs.
           </p>
         </div>
-        <MerrisButton variant="primary">+ Build Agent</MerrisButton>
+        <MerrisButton variant="primary" onClick={() => setTab('builder')}>+ Build Agent</MerrisButton>
       </div>
 
       <div className="mb-5 inline-flex rounded-merris-sm bg-merris-surface-low p-1">
-        <span className="rounded-[6px] bg-merris-primary px-4 py-1.5 font-display text-[12px] font-semibold text-white">Library</span>
-        <span className="px-4 py-1.5 font-display text-[12px] text-merris-text-secondary">Agent Builder</span>
+        <button
+          type="button"
+          onClick={() => setTab('library')}
+          className={
+            tab === 'library'
+              ? 'rounded-[6px] bg-merris-primary px-4 py-1.5 font-display text-[12px] font-semibold text-white'
+              : 'px-4 py-1.5 font-display text-[12px] text-merris-text-secondary'
+          }
+        >
+          Library
+        </button>
+        <button
+          type="button"
+          onClick={() => setTab('builder')}
+          className={
+            tab === 'builder'
+              ? 'rounded-[6px] bg-merris-primary px-4 py-1.5 font-display text-[12px] font-semibold text-white'
+              : 'px-4 py-1.5 font-display text-[12px] text-merris-text-secondary'
+          }
+        >
+          Agent Builder
+        </button>
       </div>
 
+      {tab === 'builder' && <BuilderTab />}
+
+      {tab === 'library' && (
+        <>
       {hydrationError && (
         <MerrisCard className="mb-4 border-l-[3px] border-merris-warning font-body text-[11px] text-merris-warning">
           ⚠ {hydrationError}. Showing hardcoded prototype agents instead.
@@ -295,6 +321,8 @@ export function WorkflowAgentsPage() {
           </MerrisCard>
         ))}
       </div>
+        </>
+      )}
     </div>
   );
 }
