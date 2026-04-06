@@ -32,7 +32,7 @@ export interface EvaluationEvent {
   type: 'evaluation';
   score: number;
   confidence: 'high' | 'medium' | 'low';
-  decision?: string;
+  decision?: 'PASS' | 'FIX' | 'REJECT' | 'BLOCK';
 }
 
 export interface CitationItem {

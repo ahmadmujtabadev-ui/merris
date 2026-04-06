@@ -32,7 +32,8 @@
     "seed:sector-benchmarks": "tsx src/scripts/seed-sector-benchmarks.ts",
     "seed:regulatory-maturity": "tsx src/scripts/seed-regulatory-maturity.ts",
     "seed:precedent-cases": "tsx src/scripts/seed-precedent-cases.ts",
-    "seed:partner-intel": "tsx src/scripts/seed-partner-intelligence.ts"
+    "seed:partner-intel": "tsx src/scripts/seed-partner-intelligence.ts",
+    "smoke:sse": "tsx src/scripts/sse-smoke-test.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.24.0",
