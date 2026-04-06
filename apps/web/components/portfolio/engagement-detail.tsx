@@ -8,6 +8,7 @@ import { EngagementDetailReadiness } from './engagement-detail-readiness';
 import { EngagementDetailFrameworks } from './engagement-detail-frameworks';
 import { EngagementDetailFindings } from './engagement-detail-findings';
 import { EngagementDetailSidebar } from './engagement-detail-sidebar';
+import { EngagementDocumentsSection } from './engagement-documents-section';
 
 export function EngagementDetail({ engagementId }: { engagementId: string }) {
   const [engagement, setEngagement] = useState<Engagement | null>(null);
@@ -70,6 +71,7 @@ export function EngagementDetail({ engagementId }: { engagementId: string }) {
           <EngagementDetailReadiness score={completeness} />
           <EngagementDetailFrameworks />
           <EngagementDetailFindings />
+          <EngagementDocumentsSection engagementId={engagement.id} />
         </div>
         <div>
           <EngagementDetailSidebar />
