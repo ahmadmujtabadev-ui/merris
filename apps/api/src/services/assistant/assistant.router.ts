@@ -48,6 +48,8 @@ export async function registerAssistantRoutes(app: FastifyInstance): Promise<voi
     };
 
     if (wantsStream) {
+      // Lazy-import SSE machinery so the JSON cold path doesn't pay the load cost
+      // of the chatStream dependency graph (Anthropic SDK + agent tools registry).
       const { openSseStream } = await import('./sse.js');
       const { chatStream } = await import('../../modules/agent/agent.stream.js');
       const stream = openSseStream(request, reply);

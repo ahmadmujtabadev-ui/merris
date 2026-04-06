@@ -8,15 +8,18 @@ import { registerAssistantRoutes } from '../../services/assistant/assistant.rout
 
 vi.mock('../../lib/claude.js', () => {
   const mockCreate = vi.fn();
+  const mockGetClient = vi.fn(() => ({ messages: { create: mockCreate } }));
   return {
-    getClient: vi.fn(() => ({ messages: { create: mockCreate } })),
+    getClient: mockGetClient,
     sendMessage: vi.fn(),
     __mockCreate: mockCreate,
+    __mockGetClient: mockGetClient,
   };
 });
 
 const claudeMock = await import('../../lib/claude.js');
 const mockCreate = (claudeMock as unknown as { __mockCreate: ReturnType<typeof vi.fn> }).__mockCreate;
+const mockGetClient = (claudeMock as unknown as { __mockGetClient: ReturnType<typeof vi.fn> }).__mockGetClient;
 
 const TEST_ORG_ID = new mongoose.Types.ObjectId().toString();
 const TEST_USER_ID = new mongoose.Types.ObjectId().toString();
@@ -183,6 +186,49 @@ describe('chatStream — phase emitter scaffold', () => {
     const sourcesEvent = events.find((e) => e.type === 'thinking_sources');
     expect(sourcesEvent).toBeDefined();
     expect((sourcesEvent as Extract<StreamEvent, { type: 'thinking_sources' }>).sources).toEqual(['K1', 'K7']);
+  });
+
+  it('emits error+done early when getClient returns null', async () => {
+    // Force the next getClient() call to return null (missing ANTHROPIC_API_KEY path)
+    mockGetClient.mockReturnValueOnce(null);
+
+    const { chatStream } = await import('./agent.stream.js');
+    const events: StreamEvent[] = [];
+    await chatStream(
+      { engagementId: TEST_ENGAGEMENT_ID, userId: TEST_USER_ID, message: 'no client?' },
+      (e) => events.push(e),
+    );
+
+    const errorEvent = events.find((e) => e.type === 'error');
+    expect(errorEvent).toBeDefined();
+    expect((errorEvent as Extract<StreamEvent, { type: 'error' }>).message).toMatch(/AI agent unavailable|ANTHROPIC_API_KEY/i);
+    expect(events.at(-1)).toEqual({ type: 'done' });
+  });
+
+  it('emits failed-phase + error + done when the tool loop throws', async () => {
+    // First Claude call: throw a synthetic error
+    mockCreate.mockRejectedValueOnce(new Error('synthetic Claude failure for test'));
+
+    const { chatStream } = await import('./agent.stream.js');
+    const events: StreamEvent[] = [];
+    await chatStream(
+      { engagementId: TEST_ENGAGEMENT_ID, userId: TEST_USER_ID, message: 'this will fail' },
+      (e) => events.push(e),
+    );
+
+    // The Analyzing phase should be marked as done with detail: 'failed'
+    const analyzingFailed = events.find(
+      (e) => e.type === 'thinking_step' && e.step === 'Analyzing' && e.status === 'done' && e.detail === 'failed',
+    );
+    expect(analyzingFailed).toBeDefined();
+
+    // The error event should follow
+    const errorEvent = events.find((e) => e.type === 'error');
+    expect(errorEvent).toBeDefined();
+    expect((errorEvent as Extract<StreamEvent, { type: 'error' }>).message).toContain('synthetic Claude failure');
+
+    // The terminal event must be done
+    expect(events.at(-1)).toEqual({ type: 'done' });
   });
 });
 
