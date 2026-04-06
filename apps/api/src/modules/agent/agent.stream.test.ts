@@ -74,4 +74,55 @@ describe('chatStream — phase emitter scaffold', () => {
 
     expect(events.at(-1)).toEqual({ type: 'done' });
   });
+
+  it('emits token, evaluation, and done in the correct relative order', async () => {
+    mockCreate.mockResolvedValueOnce({
+      content: [{ type: 'text', text: 'Scope 1 emissions for FY24 were 12,400 tCO2e.' }],
+    });
+
+    const { chatStream } = await import('./agent.stream.js');
+
+    const events: StreamEvent[] = [];
+    await chatStream(
+      { engagementId: TEST_ENGAGEMENT_ID, userId: TEST_USER_ID, message: 'Scope 1?' },
+      (e) => events.push(e),
+    );
+
+    const tokenIdx = events.findIndex((e) => e.type === 'token');
+    const evalIdx = events.findIndex((e) => e.type === 'evaluation');
+    const doneIdx = events.findIndex((e) => e.type === 'done');
+    const answeringActiveIdx = events.findIndex(
+      (e) => e.type === 'thinking_step' && e.step === 'Answering' && e.status === 'active',
+    );
+
+    expect(tokenIdx).toBeGreaterThan(answeringActiveIdx);
+    expect(evalIdx).toBeGreaterThan(tokenIdx);
+    expect(doneIdx).toBe(events.length - 1);
+
+    const token = events[tokenIdx] as Extract<StreamEvent, { type: 'token' }>;
+    expect(token.text).toContain('12,400');
+  });
+
+  it('emits thinking_sources during Retrieving intelligence when knowledgeSources provided', async () => {
+    mockCreate.mockResolvedValueOnce({
+      content: [{ type: 'text', text: 'OK.' }],
+    });
+
+    const { chatStream } = await import('./agent.stream.js');
+
+    const events: StreamEvent[] = [];
+    await chatStream(
+      {
+        engagementId: TEST_ENGAGEMENT_ID,
+        userId: TEST_USER_ID,
+        message: 'Anything',
+        knowledgeSources: ['K1', 'K7'],
+      },
+      (e) => events.push(e),
+    );
+
+    const sourcesEvent = events.find((e) => e.type === 'thinking_sources');
+    expect(sourcesEvent).toBeDefined();
+    expect((sourcesEvent as Extract<StreamEvent, { type: 'thinking_sources' }>).sources).toEqual(['K1', 'K7']);
+  });
 });
