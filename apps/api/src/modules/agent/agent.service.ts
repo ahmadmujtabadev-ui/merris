@@ -1,6 +1,3 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import Anthropic from '@anthropic-ai/sdk';
 import { getClient } from '../../lib/claude.js';
 import { logger } from '../../lib/logger.js';
@@ -9,6 +6,7 @@ import { getToolDefinitions, getToolSchemas } from './agent.tools.js';
 import { captureConversation, buildMemoryContext } from './memory.js';
 import { trackDataGaps } from '../../services/knowledge/gap-tracker.js';
 import { extractCitations, determineConfidence, type Citation } from './citations.js';
+import { loadSystemPrompt } from './system-prompt.js';
 import type { ToolCall } from '@merris/shared';
 
 export type { Citation };
@@ -46,24 +44,6 @@ export interface ActionRequest {
   userId: string;
   action: string;
   params: Record<string, unknown>;
-}
-
-// ============================================================
-// System Prompt Loader
-// ============================================================
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-function loadSystemPrompt(): string {
-  const promptPath = path.resolve(__dirname, '../../../../../prompts/router.md');
-  try {
-    return fs.readFileSync(promptPath, 'utf-8');
-  } catch {
-    logger.warn('Could not load prompts/router.md, using fallback system prompt');
-    return `You are the Merris ESG Agent — an expert sustainability advisor.
-NEVER fabricate data. Only use values from confirmed data points.
-Always cite sources when referencing data.`;
-  }
 }
 
 // ============================================================
