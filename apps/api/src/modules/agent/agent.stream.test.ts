@@ -118,6 +118,50 @@ describe('chatStream — phase emitter scaffold', () => {
     expect(token.text).toContain('12,400');
   });
 
+  it('emits sources event when tool calls produce citations', async () => {
+    // Seed kb_water_risk so the get_water_stress handler returns a non-empty result
+    await mongoose.connection.db!.collection('kb_water_risk').insertOne({
+      country: 'Qatar',
+      countryCode: 'QA',
+      waterStressScore: 4.8,
+      label: 'Extremely High',
+      ranking: 1,
+      depletionScore: 4.5,
+      year: 2023,
+    });
+
+    // First call: Claude wants a tool that's in TOOL_CITATION_MAP
+    mockCreate.mockResolvedValueOnce({
+      content: [
+        {
+          type: 'tool_use',
+          id: 'toolu_test_water',
+          name: 'get_water_stress',
+          input: { country: 'Qatar' },
+        },
+      ],
+    });
+    // Second call: Claude returns final text after tool result
+    mockCreate.mockResolvedValueOnce({
+      content: [{ type: 'text', text: 'Qatar water stress is high.' }],
+    });
+
+    const { chatStream } = await import('./agent.stream.js');
+
+    const events: StreamEvent[] = [];
+    await chatStream(
+      { engagementId: TEST_ENGAGEMENT_ID, userId: TEST_USER_ID, message: 'water risk?' },
+      (e) => events.push(e),
+    );
+
+    const sourcesEvent = events.find((e) => e.type === 'sources');
+    expect(sourcesEvent).toBeDefined();
+    const cites = (sourcesEvent as Extract<StreamEvent, { type: 'sources' }>).citations;
+    expect(cites.length).toBeGreaterThanOrEqual(1);
+    expect(cites[0]).toHaveProperty('title');
+    expect(cites[0]).toHaveProperty('source');
+  });
+
   it('emits thinking_sources during Retrieving intelligence when knowledgeSources provided', async () => {
     mockCreate.mockResolvedValueOnce({
       content: [{ type: 'text', text: 'OK.' }],
