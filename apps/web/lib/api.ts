@@ -415,6 +415,71 @@ class ApiClient {
       billing: { plan: string; computeCredits: string; nextRenewal: string; paymentLast4: string };
     }>('/billing');
   }
+
+  // ===== Document annotations (Phase K-lite) =====
+  listDocumentAnnotations(documentId: string) {
+    return this.get<{
+      annotations: Array<{
+        id: string;
+        documentId: string;
+        severity: 'CRITICAL' | 'IMPORTANT' | 'MINOR';
+        ref: string;
+        title: string;
+        description: string;
+        suggestedFix?: string;
+        status: 'pending' | 'applied' | 'dismissed';
+        createdAt: string;
+        updatedAt: string;
+      }>;
+    }>(`/documents/${documentId}/annotations`);
+  }
+
+  updateDocumentAnnotation(
+    documentId: string,
+    annotationId: string,
+    status: 'pending' | 'applied' | 'dismissed',
+  ) {
+    return this.patch<{
+      annotation: {
+        id: string;
+        documentId: string;
+        severity: 'CRITICAL' | 'IMPORTANT' | 'MINOR';
+        ref: string;
+        title: string;
+        description: string;
+        suggestedFix?: string;
+        status: 'pending' | 'applied' | 'dismissed';
+        createdAt: string;
+        updatedAt: string;
+      };
+    }>(`/documents/${documentId}/annotations/${annotationId}`, { status });
+  }
+
+  createDocumentAnnotation(
+    documentId: string,
+    payload: {
+      severity: 'CRITICAL' | 'IMPORTANT' | 'MINOR';
+      ref: string;
+      title: string;
+      description: string;
+      suggestedFix?: string;
+    },
+  ) {
+    return this.post<{
+      annotation: {
+        id: string;
+        documentId: string;
+        severity: 'CRITICAL' | 'IMPORTANT' | 'MINOR';
+        ref: string;
+        title: string;
+        description: string;
+        suggestedFix?: string;
+        status: 'pending' | 'applied' | 'dismissed';
+        createdAt: string;
+        updatedAt: string;
+      };
+    }>(`/documents/${documentId}/annotations`, payload);
+  }
 }
 
 export class ApiError extends Error {
