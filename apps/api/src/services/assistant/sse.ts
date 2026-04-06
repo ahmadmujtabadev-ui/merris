@@ -16,20 +16,35 @@ export function openSseStream(request: FastifyRequest, reply: FastifyReply) {
     'X-Accel-Buffering': 'no', // disable proxy buffering (nginx)
   });
 
+  // Prime the connection so proxies (Cloudflare, AWS ALB) see traffic before the
+  // first real event. SSE comment lines start with `:` and are ignored by clients.
+  reply.raw.write(':\n\n');
+
   let closed = false;
   request.raw.on('close', () => {
     closed = true;
   });
 
+  // Backpressure intentionally ignored: chat streams emit O(10s) of small frames.
+  // If event volume grows, switch to drain-aware writes.
   function emit(event: StreamEvent): void {
     if (closed) return;
-    reply.raw.write(`data: ${JSON.stringify(event)}\n\n`);
+    try {
+      reply.raw.write(`data: ${JSON.stringify(event)}\n\n`);
+    } catch {
+      // Socket destroyed mid-stream (client disconnect race). Stop writing.
+      closed = true;
+    }
   }
 
   function close(): void {
     if (closed) return;
     closed = true;
-    reply.raw.end();
+    try {
+      reply.raw.end();
+    } catch {
+      // Already destroyed; nothing to clean up.
+    }
   }
 
   function isClosed(): boolean {
