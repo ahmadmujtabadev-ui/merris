@@ -23,7 +23,7 @@ function templatesToViewAgents(templates: WorkflowTemplate[]): ViewAgent[] {
   return templates.map((t) => ({
     name: t.name,
     description: t.description,
-    category: 'Compliance', // backend doesn't expose category yet; default
+    category: t.category,
     runs: undefined,
     rating: undefined,
     iconLabel: '⚡',

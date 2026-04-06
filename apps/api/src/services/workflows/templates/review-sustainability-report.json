@@ -2,6 +2,7 @@
   "id": "review-sustainability-report",
   "name": "Review Sustainability Report",
   "description": "Comprehensive review of a sustainability report with KB evidence retrieval and peer benchmarking",
+  "category": "Reporting",
   "steps": [
     {
       "id": "ingest",

@@ -2,6 +2,7 @@
   "id": "assess-regulatory-impact",
   "name": "Assess Regulatory Impact",
   "description": "Assess impact of new regulation on client engagements",
+  "category": "Compliance",
   "steps": [
     { "id": "extract", "name": "Extract regulation requirements", "tool": "perceive_document", "inputs": { "documentBody": "$document", "documentType": "word" } },
     { "id": "regulatory", "name": "Search regulatory context", "tool": "search_knowledge", "inputs": { "query": "$document regulation requirements", "domains": ["regulatory"] } },
