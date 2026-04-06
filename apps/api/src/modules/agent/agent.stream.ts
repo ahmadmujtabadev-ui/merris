@@ -33,8 +33,8 @@ async function phase<T>(
 
 export async function chatStream(request: ChatRequest, emit: Emit): Promise<void> {
   try {
-    // Phase 1: Assessing query — classify intent (cheap heuristic for now)
-    await phase(emit, 'Assessing query', () => classifyIntent(request.message), (intent) => intent);
+    // Phase 1: Assessing query — no-op; timeline still animates active → done
+    await phase(emit, 'Assessing query', () => undefined);
 
     // Phase 2: Searching context — load engagement context
     const context = await phase(
@@ -172,15 +172,6 @@ export async function chatStream(request: ChatRequest, emit: Emit): Promise<void
 }
 
 // ----- helpers -----
-
-/** PLACEHOLDER: cheap heuristic — replace with a real intent classifier in a follow-up plan. */
-function classifyIntent(message: string): string {
-  const m = message.toLowerCase();
-  if (/draft|write|generate/.test(m)) return 'drafting request';
-  if (/review|check|gap|finding/.test(m)) return 'review request';
-  if (/calculate|how many|how much|total/.test(m)) return 'quantitative query';
-  return 'advisory question';
-}
 
 function deriveConfidence(citations: CitationItem[]): 'high' | 'medium' | 'low' {
   if (citations.length >= 3) return 'high';
