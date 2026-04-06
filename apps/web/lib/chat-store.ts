@@ -18,6 +18,15 @@ export interface EvaluationState {
   decision?: 'PASS' | 'FIX' | 'REJECT' | 'BLOCK';
 }
 
+export interface ChatMessage {
+  id: string;
+  question: string;
+  answer: string;
+  citations: CitationItem[];
+  evaluation: EvaluationState | null;
+  timestamp: number;
+}
+
 interface ChatState {
   // input/context
   jurisdiction: string[];          // active codes
@@ -33,12 +42,16 @@ interface ChatState {
   evaluation: EvaluationState | null;
   errorMessage: string | null;
 
+  // conversation history
+  messages: ChatMessage[];
+
   // actions
   toggleJurisdiction: (j: string) => void;
   toggleKnowledgeSource: (k: string) => void;
   setEngagementId: (id: string) => void;
   startQuery: (question: string) => Promise<void>;
   reset: () => void;
+  clearConversation: () => void;
 }
 
 const initialThinkingSteps = (): ThinkingStepState[] =>
@@ -56,6 +69,8 @@ export const useChatStore = create<ChatState>((set, get) => ({
   citations: [],
   evaluation: null,
   errorMessage: null,
+
+  messages: [],
 
   toggleJurisdiction: (j) =>
     set((s) => ({
@@ -84,7 +99,7 @@ export const useChatStore = create<ChatState>((set, get) => ({
       errorMessage: null,
     });
 
-    const { engagementId, jurisdiction, knowledgeSources } = get();
+    const { engagementId, jurisdiction, knowledgeSources, messages } = get();
 
     try {
       await api.chatStream(
@@ -93,6 +108,10 @@ export const useChatStore = create<ChatState>((set, get) => ({
           message: question,
           jurisdiction: jurisdiction.join(','),
           knowledgeSources,
+          conversationHistory: messages.flatMap((m) => [
+            { role: 'user' as const, content: m.question },
+            { role: 'assistant' as const, content: m.answer },
+          ]),
         },
         (event: StreamEvent) => {
           handleEvent(event, set, get);
@@ -115,6 +134,18 @@ export const useChatStore = create<ChatState>((set, get) => ({
       citations: [],
       evaluation: null,
       errorMessage: null,
+    }),
+
+  clearConversation: () =>
+    set({
+      phase: 'home',
+      question: '',
+      thinkingSteps: initialThinkingSteps(),
+      tokenText: '',
+      citations: [],
+      evaluation: null,
+      errorMessage: null,
+      messages: [],
     }),
 }));
 
@@ -176,7 +207,23 @@ function handleEvent(
       break;
     }
     case 'done': {
-      set({ phase: 'response' });
+      set((s) => {
+        // Push the completed exchange into the messages array IF the run was successful
+        // (not error, has a token). Block decisions still get pushed because they're a
+        // valid response, just one with the BLOCK decision.
+        if (s.errorMessage === null && s.tokenText.length > 0) {
+          const newMessage: ChatMessage = {
+            id: `m-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+            question: s.question,
+            answer: s.tokenText,
+            citations: s.citations,
+            evaluation: s.evaluation,
+            timestamp: Date.now(),
+          };
+          return { phase: 'response', messages: [...s.messages, newMessage] };
+        }
+        return { phase: 'response' };
+      });
       break;
     }
   }
