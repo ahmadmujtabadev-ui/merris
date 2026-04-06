@@ -892,3 +892,46 @@ If the smoke test reveals issues (proxy buffering, header rewriting, etc.), fix 
 - `Retrieving intelligence` emits a static set of `K1, K2, K3` source chips when the caller doesn't pass `knowledgeSources`. A real implementation would inspect which RAG collections were actually queried by tools during the loop. Tracked for follow-up.
 - Citations are returned as `[]` from `runClaudeToolLoop` to avoid a circular import on `extractCitations`. The next plan can lift the citation extractor into a sibling file and wire it in.
 - Hard-blocked responses are NOT regenerated in the streaming path (would require re-emitting all phases). They're suppressed with a warning string. JSON path retains regeneration.
+
+---
+
+## Follow-up Tickets (filed after Plan 1 merge — 2026-04-06)
+
+These items were identified by the per-task code reviews and the holistic end-of-plan review. None block Plan 2; all are ordered by priority for Plan 3.
+
+### 1. [BLOCKS PLAN 3] SSE path returns `citations: []` — JSON parity needed
+
+- **File:** `apps/api/src/modules/agent/agent.stream.ts` — `runClaudeToolLoop` returns `citations: []` unconditionally
+- **Why it matters:** The JSON path runs `extractCitations(toolCalls)` from `agent.service.ts` and returns real citations. The SSE path will silently lose all citation rendering on the frontend. Plan 3's `SourcesEvent` consumer in the Intelligence page will look broken.
+- **Fix shape:** Lift `extractCitations` and `TOOL_CITATION_MAP` out of `agent.service.ts` into a new `apps/api/src/modules/agent/citations.ts` (avoids the circular-dep risk noted inline). Import from both `chat()` and `chatStream()`.
+- **Effort:** ~30 minutes. One file move, two import changes.
+
+### 2. [BEFORE PLAN 3 INTEGRATION] De-duplicate `runClaudeToolLoop`
+
+- **Files:** `apps/api/src/modules/agent/agent.service.ts` (`chat()` tool loop) and `apps/api/src/modules/agent/agent.stream.ts` (`runClaudeToolLoop`)
+- **Why it matters:** The two loops have already drifted in three places (cursorSection injection, truncation marker text, tool error logging). They will keep drifting until unified.
+- **Fix shape:** Extract a `runToolUseLoop({client, request, context, onToolCall})` function to `agent.tools-loop.ts`. `chat()` and `chatStream()` both call it; chatStream passes an `onToolCall` callback to emit `thinking_sources` for retrieval-tool calls.
+- **Effort:** Small refactor plan, ~2 hours. Should land before Plan 3 to avoid the SSE path looking visibly different from the JSON path.
+
+### 3. Replace placeholder heuristics
+
+- **File:** `apps/api/src/modules/agent/agent.stream.ts`
+- `classifyIntent`: regex-based intent classification — replace with a real classifier or remove the user-visible `detail` until it's accurate
+- `inferKnowledgeSources`: defaults to `['K1', 'K2', 'K3']` when `knowledgeSources` isn't passed — replace with real RAG-collection inspection inside the tool-use loop (resolved together with item #2)
+- **Effort:** ties into Plan 3's intelligence-page work; not standalone.
+
+### 4. Tighten `EvaluationEvent.decision` typing
+
+- **File:** `packages/shared/src/stream-events.ts`
+- Currently typed `decision?: string` (deliberately loose to accept the new `'BLOCK'` value introduced by the hard-block path)
+- Promote to `decision?: 'PASS' | 'FIX' | 'REJECT' | 'BLOCK'` so consumers get exhaustive switch checking
+- **Effort:** 1-line change + check no broken consumers; ~5 minutes when Plan 3 is implementing the consumer.
+
+### 5. Other low-priority items from the holistic review
+
+- Add `"smoke:sse": "tsx src/scripts/sse-smoke-test.ts"` to `apps/api/package.json` so the smoke launcher is discoverable
+- Add a Vitest case for the `getClient()` null branch in `chatStream`
+- Add a Vitest case for the outer `catch` branch ordering in `chatStream` (use `mockRejectedValueOnce`)
+- Document the lazy-import rationale in the router with a one-line comment, or convert to top-level imports
+- Memory capture is silently dropped on stream errors (parity with JSON path — pre-existing, but stream errors will be more frequent)
+- `request.raw.on('close', ...)` listener in `sse.ts` is never removed (no leak in practice; hygiene)
