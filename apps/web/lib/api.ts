@@ -182,6 +182,10 @@ class ApiClient {
     );
   }
 
+  createEngagement(payload: { name: string; frameworks?: string[]; deadline?: string }) {
+    return this.post<{ engagement: Engagement }>('/engagements', payload);
+  }
+
   // ===== Assistant (chat) — JSON path =====
   chatJson(payload: ChatRequestPayload) {
     return this.post<{
