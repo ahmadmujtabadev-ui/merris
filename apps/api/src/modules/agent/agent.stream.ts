@@ -24,12 +24,25 @@ function loadSystemPrompt(): string {
 
 type Emit = (event: StreamEvent) => void;
 
-async function phase<T>(emit: Emit, step: ThinkingStepName, fn: () => Promise<T> | T, detailFn?: (result: T) => string | undefined): Promise<T> {
+async function phase<T>(
+  emit: Emit,
+  step: ThinkingStepName,
+  fn: () => Promise<T> | T,
+  detailFn?: (result: T) => string | undefined,
+): Promise<T> {
   emit({ type: 'thinking_step', step, status: 'active' });
-  const result = await fn();
-  const detail = detailFn?.(result);
-  emit({ type: 'thinking_step', step, status: 'done', ...(detail ? { detail } : {}) });
-  return result;
+  try {
+    const result = await fn();
+    const detail = detailFn?.(result);
+    emit({ type: 'thinking_step', step, status: 'done', ...(detail ? { detail } : {}) });
+    return result;
+  } catch (err) {
+    // Terminate the in-flight phase so the frontend's progress UI doesn't
+    // show this step as 'active' forever. The outer chatStream try/catch
+    // still emits the top-level error + done after rethrow.
+    emit({ type: 'thinking_step', step, status: 'done', detail: 'failed' });
+    throw err;
+  }
 }
 
 export async function chatStream(request: ChatRequest, emit: Emit): Promise<void> {
@@ -48,6 +61,8 @@ export async function chatStream(request: ChatRequest, emit: Emit): Promise<void
     // Phase 3: Retrieving intelligence — placeholder, real source emission happens during tool use
     await phase(emit, 'Retrieving intelligence', async () => {
       const sources = inferKnowledgeSources(request);
+      // emits thinking_sources inline before phase done so the chips render
+      // alongside the in-progress 'Retrieving intelligence' step
       if (sources.length > 0) {
         emit({ type: 'thinking_sources', sources });
       }
@@ -68,17 +83,27 @@ export async function chatStream(request: ChatRequest, emit: Emit): Promise<void
       () => runClaudeToolLoop(client, request, context),
     );
 
-    // Phase 5: Evaluating quality — run evaluator + optional auto-rewrite
+    // Phase 5: Evaluating quality — run evaluator + optional auto-rewrite.
+    // Hard-blocked responses bypass the evaluator entirely; running the
+    // evaluator on the synthetic warning string would produce semantically
+    // meaningless score/decision values that are misleading on the wire.
     const { finalResponse, evaluation } = await phase(
       emit,
       'Evaluating quality',
       async () => {
         const hardBlock = checkHardBlocks(responseText);
-        let final = responseText;
         if (hardBlock) {
-          // For streaming, we don't regenerate (would re-emit phases). Mark and continue.
-          final = '⚠️ Response failed hard-block check and was suppressed. Please rephrase.';
+          // Streaming path does NOT regenerate (would re-emit phases).
+          // Suppress with a warning string and a synthetic block evaluation.
+          return {
+            finalResponse: '⚠️ Response failed hard-block check and was suppressed. Please rephrase.',
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            evaluation: { score: 0, decision: 'BLOCK', flags: [], hardBlocked: true } as any as Awaited<
+              ReturnType<typeof evaluateResponse>
+            >,
+          };
         }
+        let final = responseText;
         const evalResult = await evaluateResponse(request.message, final, { engagementId: request.engagementId });
         if (evalResult.decision === 'FIX' && evalResult.fix_instructions) {
           final = await autoRewrite(final, evalResult.flags, evalResult.fix_instructions);
@@ -122,6 +147,7 @@ export async function chatStream(request: ChatRequest, emit: Emit): Promise<void
 
 // ----- helpers -----
 
+/** PLACEHOLDER: cheap heuristic — replace with a real intent classifier in a follow-up plan. */
 function classifyIntent(message: string): string {
   const m = message.toLowerCase();
   if (/draft|write|generate/.test(m)) return 'drafting request';
@@ -130,6 +156,7 @@ function classifyIntent(message: string): string {
   return 'advisory question';
 }
 
+/** PLACEHOLDER: defaults to a representative trio when the caller doesn't pass `knowledgeSources`. */
 function inferKnowledgeSources(request: ChatRequest): string[] {
   if (request.knowledgeSources && request.knowledgeSources.length > 0) {
     return request.knowledgeSources;
@@ -151,7 +178,7 @@ interface ToolLoopResult {
 }
 
 async function runClaudeToolLoop(
-  client: ReturnType<typeof getClient>,
+  client: NonNullable<ReturnType<typeof getClient>>,
   request: ChatRequest,
   context: Awaited<ReturnType<typeof buildAgentContext>>,
 ): Promise<ToolLoopResult> {
@@ -187,7 +214,7 @@ async function runClaudeToolLoop(
   const MAX_ROUNDS = 20;
 
   for (let round = 0; round < MAX_ROUNDS; round++) {
-    const response = await client!.messages.create({
+    const response = await client.messages.create({
       model: 'claude-sonnet-4-20250514',
       max_tokens: 4096,
       system: systemPrompt,
@@ -227,7 +254,7 @@ async function runClaudeToolLoop(
 
     currentMessages = [
       ...currentMessages,
-      { role: 'assistant', content: response.content as never },
+      { role: 'assistant', content: response.content as unknown as Array<Anthropic.TextBlockParam | Anthropic.ToolUseBlockParam> },
       { role: 'user', content: toolResults },
     ];
   }
