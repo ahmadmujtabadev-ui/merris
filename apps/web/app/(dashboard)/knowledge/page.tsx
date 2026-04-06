@@ -1,11 +1,5 @@
-import { PlaceholderPage } from '@/components/merris/placeholder-page';
+import { KnowledgePage } from '@/components/pages/knowledge/knowledge-page';
 
-export default function KnowledgePage() {
-  return (
-    <PlaceholderPage
-      title="Knowledge"
-      planRef="Plan 5: remaining-pages"
-      description="Browse the K1–K7 knowledge collections (Disclosures, Market, Regulatory, Finance, Peers, Climate, Research)."
-    />
-  );
+export default function Page() {
+  return <KnowledgePage />;
 }
