@@ -51,6 +51,7 @@ export interface WorkflowTemplate {
   id: string;
   name: string;
   description: string;
+  category: string;
   steps: Array<{
     id: string;
     name: string;

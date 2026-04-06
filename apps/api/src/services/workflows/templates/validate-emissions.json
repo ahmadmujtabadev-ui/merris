@@ -2,6 +2,7 @@
   "id": "validate-emissions",
   "name": "Validate Emissions Data",
   "description": "Extract emissions figures, recalculate using verified factors, flag discrepancies",
+  "category": "Climate",
   "steps": [
     { "id": "extract", "name": "Extract emissions figures", "tool": "perceive_document", "inputs": { "documentBody": "$document", "documentType": "word" } },
     { "id": "recalculate", "name": "Recalculate with verified factors", "tool": "verify_compliance", "inputs": { "documentBody": "$document", "frameworks": ["gri"] } },

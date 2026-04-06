@@ -2,6 +2,7 @@
   "id": "benchmark-company",
   "name": "Benchmark Company ESG Performance",
   "description": "Extract ESG metrics and benchmark against sector peers",
+  "category": "Reporting",
   "steps": [
     { "id": "extract", "name": "Extract ESG metrics", "tool": "perceive_document", "inputs": { "documentBody": "$document", "documentType": "word" } },
     { "id": "peers", "name": "Find peer companies", "tool": "search_knowledge", "inputs": { "query": "$sector ESG peer metrics", "domains": ["corporate_disclosure"] } },

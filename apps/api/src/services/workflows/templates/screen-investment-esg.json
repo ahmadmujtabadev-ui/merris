@@ -2,6 +2,7 @@
   "id": "screen-investment-esg",
   "name": "ESG Investment Screening",
   "description": "Screen investment proposal for ESG risks with peer benchmarking",
+  "category": "Due Diligence",
   "steps": [
     { "id": "extract", "name": "Extract company profile", "tool": "perceive_document", "inputs": { "documentBody": "$document", "documentType": "word" } },
     { "id": "risk_screen", "name": "Run ESG risk screening", "tool": "search_knowledge", "inputs": { "query": "ESG risk $sector", "domains": ["supply_chain", "regulatory", "environmental_science"] } },

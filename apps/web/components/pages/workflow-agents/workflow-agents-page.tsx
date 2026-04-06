@@ -1,12 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { MerrisCard } from '@/components/merris/card';
 import { MerrisButton } from '@/components/merris/button';
 import { Pill } from '@/components/merris/pill';
 import { Chip } from '@/components/merris/chip';
 import { SectionLabel } from '@/components/merris/label';
-import { api, type WorkflowTemplate, type WorkflowExecution } from '@/lib/api';
+import { api, type WorkflowTemplate } from '@/lib/api';
 import { useEngagementStore } from '@/lib/store';
 import { AGENTS_PREBUILT, AGENTS_CUSTOM, RECENTLY_RUN, AGENT_CATEGORIES, type AgentEntry } from './workflow-agents-data';
 
@@ -23,7 +23,7 @@ function templatesToViewAgents(templates: WorkflowTemplate[]): ViewAgent[] {
   return templates.map((t) => ({
     name: t.name,
     description: t.description,
-    category: 'Compliance', // backend doesn't expose category yet; default
+    category: t.category,
     runs: undefined,
     rating: undefined,
     iconLabel: '⚡',
@@ -38,6 +38,16 @@ export function WorkflowAgentsPage() {
   const [hydrationError, setHydrationError] = useState<string | null>(null);
   const [runFeedback, setRunFeedback] = useState<RunFeedback | null>(null);
   const currentEngagement = useEngagementStore((s) => s.currentEngagement);
+  const pollIntervalRef = useRef<number | null>(null);
+
+  const stopPolling = () => {
+    if (pollIntervalRef.current !== null) {
+      window.clearInterval(pollIntervalRef.current);
+      pollIntervalRef.current = null;
+    }
+  };
+
+  useEffect(() => () => stopPolling(), []);
 
   useEffect(() => {
     let cancelled = false;
@@ -73,6 +83,8 @@ export function WorkflowAgentsPage() {
   const filtered = agents.filter((a) => category === 'All' || a.category === category);
 
   const handleRun = async (agent: ViewAgent) => {
+    stopPolling(); // cancel any previous run
+
     if (!agent.realTemplateId) {
       setRunFeedback({
         templateId: agent.name,
@@ -89,22 +101,72 @@ export function WorkflowAgentsPage() {
       });
       return;
     }
+
     setRunFeedback({ templateId: agent.realTemplateId, status: 'running', message: `Starting ${agent.name}…` });
+
     try {
-      const execution: WorkflowExecution = await api.runWorkflowTemplate(
-        agent.realTemplateId,
-        currentEngagement.id,
-        {},
-      );
+      const execution = await api.runWorkflowTemplate(agent.realTemplateId, currentEngagement.id, {});
+
+      if (execution.status === 'failed') {
+        setRunFeedback({
+          templateId: agent.realTemplateId,
+          status: 'failed',
+          message: execution.error ?? 'Workflow execution failed',
+          executionId: execution.id,
+        });
+        return;
+      }
+
+      if (execution.status === 'completed') {
+        setRunFeedback({
+          templateId: agent.realTemplateId,
+          status: 'completed',
+          message: `${agent.name} completed (${execution.currentStep}/${execution.totalSteps} steps)`,
+          executionId: execution.id,
+        });
+        return;
+      }
+
+      // Still running — start polling
       setRunFeedback({
         templateId: agent.realTemplateId,
-        status: execution.status === 'failed' ? 'failed' : 'completed',
-        message:
-          execution.status === 'failed'
-            ? execution.error ?? 'Workflow execution failed'
-            : `${agent.name} ${execution.status} (${execution.currentStep}/${execution.totalSteps} steps)`,
+        status: 'running',
+        message: `${agent.name} step ${execution.currentStep}/${execution.totalSteps}…`,
         executionId: execution.id,
       });
+
+      pollIntervalRef.current = window.setInterval(async () => {
+        try {
+          const latest = await api.getWorkflowExecutionStatus(execution.id);
+          if (latest.status === 'running') {
+            setRunFeedback({
+              templateId: agent.realTemplateId!,
+              status: 'running',
+              message: `${agent.name} step ${latest.currentStep}/${latest.totalSteps}…`,
+              executionId: execution.id,
+            });
+          } else {
+            stopPolling();
+            setRunFeedback({
+              templateId: agent.realTemplateId!,
+              status: latest.status,
+              message:
+                latest.status === 'failed'
+                  ? latest.error ?? 'Workflow execution failed'
+                  : `${agent.name} completed (${latest.currentStep}/${latest.totalSteps} steps)`,
+              executionId: execution.id,
+            });
+          }
+        } catch (err) {
+          stopPolling();
+          setRunFeedback({
+            templateId: agent.realTemplateId!,
+            status: 'failed',
+            message: err instanceof Error ? err.message : 'Failed to poll workflow status',
+            executionId: execution.id,
+          });
+        }
+      }, 1500);
     } catch (err) {
       setRunFeedback({
         templateId: agent.realTemplateId,
