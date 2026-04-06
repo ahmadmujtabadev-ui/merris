@@ -61,10 +61,54 @@ export function DocumentViewer({ engagementId, documentId }: Props) {
     };
   }, [documentId]);
 
-  const apply = (id: string) =>
+  // Add a new useEffect to fetch annotations after the document loads
+  useEffect(() => {
+    let cancelled = false;
+    api
+      .listDocumentAnnotations(documentId)
+      .then((res) => {
+        if (cancelled) return;
+        // The API returns a richer shape (id, documentId, createdAt, updatedAt). Map down
+        // to the local DocumentAnnotation shape used by the sidebar.
+        setAnnotations(
+          res.annotations.map((a) => ({
+            id: a.id,
+            severity: a.severity,
+            ref: a.ref,
+            title: a.title,
+            description: a.description,
+            suggestedFix: a.suggestedFix,
+            status: a.status,
+          })),
+        );
+      })
+      .catch(() => {
+        // Keep the fixture as a fallback
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [documentId]);
+
+  const apply = async (id: string) => {
+    // Optimistic update first
     setAnnotations((prev) => prev.map((a) => (a.id === id ? { ...a, status: 'applied' } : a)));
-  const dismiss = (id: string) =>
+    try {
+      await api.updateDocumentAnnotation(documentId, id, 'applied');
+    } catch {
+      // Revert on failure
+      setAnnotations((prev) => prev.map((a) => (a.id === id ? { ...a, status: 'pending' } : a)));
+    }
+  };
+
+  const dismiss = async (id: string) => {
     setAnnotations((prev) => prev.map((a) => (a.id === id ? { ...a, status: 'dismissed' } : a)));
+    try {
+      await api.updateDocumentAnnotation(documentId, id, 'dismissed');
+    } catch {
+      setAnnotations((prev) => prev.map((a) => (a.id === id ? { ...a, status: 'pending' } : a)));
+    }
+  };
 
   if (loading) {
     return (
