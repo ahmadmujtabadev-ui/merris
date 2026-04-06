@@ -1,19 +1,32 @@
-'use client';
-
 import './globals.css';
-import { useAuthStore } from '@/lib/store';
+import type { Metadata } from 'next';
+import { Manrope, Inter } from 'next/font/google';
+
+const manrope = Manrope({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-manrope',
+  display: 'swap',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+export const metadata: Metadata = {
+  title: 'Merris — ESG Intelligence',
+  description: 'AI co-pilot for ESG professionals',
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const locale = useAuthStore((s) => s.locale);
-  const dir = locale === 'ar' ? 'rtl' : 'ltr';
-
   return (
-    <html lang={locale} dir={dir} className="dark">
-      <head>
-        <title>Merris &mdash; ESG Platform</title>
-        <meta name="description" content="AI co-pilot for ESG professionals" />
-      </head>
-      <body className="min-h-screen bg-zinc-950 text-zinc-200 antialiased">{children}</body>
+    <html lang="en" className={`${manrope.variable} ${inter.variable}`}>
+      <body className="font-body bg-merris-bg text-merris-text antialiased">
+        {children}
+      </body>
     </html>
   );
 }

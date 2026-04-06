@@ -1,11 +1,11 @@
 import { PlaceholderPage } from '@/components/merris/placeholder-page';
 
-export default function CompliancePage() {
+export default function HistoryPage() {
   return (
     <PlaceholderPage
-      title="Compliance"
+      title="History"
       planRef="Plan 5: remaining-pages"
-      description="Cross-engagement compliance tracker by framework and jurisdiction."
+      description="Activity log of past analyses, conversations, and document edits."
     />
   );
 }
