@@ -9,6 +9,7 @@
     "test": "vitest run",
     "test:quality": "vitest run src/tests/quality-regression.test.ts",
     "start": "node dist/server.js",
+    "load:local-kb": "tsx src/scripts/load-local-kb.ts",
     "seed": "tsx src/scripts/seed.ts",
     "seed:kb": "tsx src/scripts/seed-knowledge-base.ts",
     "download:reports": "tsx src/scripts/download-reports.ts",
@@ -33,10 +34,12 @@
     "seed:regulatory-maturity": "tsx src/scripts/seed-regulatory-maturity.ts",
     "seed:precedent-cases": "tsx src/scripts/seed-precedent-cases.ts",
     "seed:partner-intel": "tsx src/scripts/seed-partner-intelligence.ts",
-    "smoke:sse": "tsx src/scripts/sse-smoke-test.ts"
+    "smoke:sse": "tsx src/scripts/sse-smoke-test.ts",
+    "embed:kb-dense": "node --max-old-space-size=8192 node_modules/tsx/dist/cli.mjs src/scripts/embed-kb-dense.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.24.0",
+    "@aws-sdk/client-s3": "^3.1030.0",
     "@azure/storage-blob": "^12.18.0",
     "@fastify/cors": "^9.0.0",
     "@fastify/multipart": "^8.3.1",

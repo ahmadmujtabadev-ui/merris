@@ -1,30 +1,47 @@
 // src/services/scaffolding/scaffolding.routes.ts
-//
-// Phase G placeholder routes. These exist so the web client has a real
-// HTTP endpoint to call, but the data they return is hardcoded
-// scaffolding. The `seeded: false` flag in every response signals to
-// callers that this is not real data — replace the data source in a
-// future plan.
 
 import { FastifyInstance } from 'fastify';
+import mongoose from 'mongoose';
 import { authenticate } from '../../modules/auth/auth.middleware.js';
+import { ConversationMemoryModel } from '../../models/memory.model.js';
+import {
+  CorporateDisclosureModel,
+  ClimateScienceModel,
+  RegulatoryModel,
+  SustainableFinanceModel,
+  EnvironmentalScienceModel,
+  SupplyChainModel,
+  ResearchModel,
+} from '../../models/knowledge-base.model.js';
+import { KnowledgeReportModel } from '../../models/knowledge-report.model.js';
 
 export async function registerScaffoldingRoutes(app: FastifyInstance): Promise<void> {
-  // ----- Knowledge collections -----
+  // ----- Knowledge collections (real counts) -----
   app.get(
     '/api/v1/knowledge-base/collections',
     { preHandler: [authenticate] },
     async (_request, reply) => {
+      const [c1, c2, c3, c4, c5, c6, c7, cReports] = await Promise.all([
+        CorporateDisclosureModel.countDocuments(),
+        ClimateScienceModel.countDocuments(),
+        RegulatoryModel.countDocuments(),
+        SustainableFinanceModel.countDocuments(),
+        EnvironmentalScienceModel.countDocuments(),
+        SupplyChainModel.countDocuments(),
+        ResearchModel.countDocuments(),
+        KnowledgeReportModel.countDocuments(),
+      ]);
       return reply.send({
-        seeded: false,
+        seeded: true,
         collections: [
-          { id: 'K1', name: 'Corporate Disclosures', count: 613 },
-          { id: 'K2', name: 'Market Analysis',       count: 84 },
-          { id: 'K3', name: 'Regulatory',            count: 42 },
-          { id: 'K4', name: 'Sustainable Finance',   count: 27 },
-          { id: 'K5', name: 'Peer Benchmarks',       count: 156 },
-          { id: 'K6', name: 'Climate Science',       count: 39 },
-          { id: 'K7', name: 'Research',              count: 312 },
+          // K1 includes both the catalog entries + fully ingested reports
+          { id: 'K1', name: 'Corporate Disclosures', count: c1 + cReports },
+          { id: 'K2', name: 'Market Analysis',       count: c2 },
+          { id: 'K3', name: 'Regulatory',            count: c3 },
+          { id: 'K4', name: 'Sustainable Finance',   count: c4 },
+          { id: 'K5', name: 'Peer Benchmarks',       count: c5 },
+          { id: 'K6', name: 'Climate Science',       count: c6 },
+          { id: 'K7', name: 'Research',              count: c7 },
         ],
       });
     },
@@ -71,20 +88,48 @@ export async function registerScaffoldingRoutes(app: FastifyInstance): Promise<v
     },
   );
 
-  // ----- Assistant history -----
+  // ----- Assistant history (real conversation_memories) -----
   app.get(
     '/api/v1/assistant/history',
     { preHandler: [authenticate] },
-    async (_request, reply) => {
-      return reply.send({
-        seeded: false,
-        history: [
-          { id: 'h1', text: 'Frameworks for listed steel in Oman?',  engagement: 'AJSS',  confidence: 'High',   time: '2h' },
-          { id: 'h2', text: 'Review sustainability report',          engagement: 'QAPCO', findings: 15,         time: 'Yesterday' },
-          { id: 'h3', text: 'Verify Scope 2 of 148k tCO2e',          engagement: 'AJSS',  confidence: 'Medium', time: 'Yesterday' },
-          { id: 'h4', text: 'Assess CBAM exposure',                  engagement: 'QAPCO', confidence: 'Medium', time: '3d ago' },
-        ],
-      });
+    async (request, reply) => {
+      const user = (request as any).user;
+      const engagementId = (request.query as any)['engagementId'];
+
+      const filter: Record<string, any> = { userId: new mongoose.Types.ObjectId(user.userId) };
+      if (engagementId) filter['engagementId'] = new mongoose.Types.ObjectId(engagementId);
+
+      const memories = await ConversationMemoryModel
+        .find(filter)
+        .sort({ timestamp: -1 })
+        .limit(50)
+        .lean();
+
+      // Enrich with engagement name if available
+      const db = mongoose.connection.db;
+      const engagementIds = [...new Set(
+        memories.map((m: any) => m.engagementId?.toString()).filter((id): id is string => Boolean(id))
+      )];
+      const engNameMap: Record<string, string> = {};
+      if (db && engagementIds.length > 0) {
+        const engs = await db.collection('engagements')
+          .find({ _id: { $in: engagementIds.map((id: string) => new mongoose.Types.ObjectId(id)) } })
+          .project({ name: 1 })
+          .toArray();
+        for (const e of engs) engNameMap[e._id.toString()] = e.name;
+      }
+
+      const history = memories.map((m: any) => ({
+        id: (m._id as any).toString(),
+        text: m.userMessage,
+        answer: m.agentResponse,
+        engagementId: m.engagementId?.toString(),
+        engagement: engNameMap[m.engagementId?.toString() ?? ''] ?? null,
+        toolsUsed: m.toolsUsed ?? [],
+        timestamp: m.timestamp ?? (m as any).createdAt,
+      }));
+
+      return reply.send({ seeded: true, history });
     },
   );
 

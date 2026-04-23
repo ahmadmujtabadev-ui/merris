@@ -1,6 +1,6 @@
 import type { StreamEvent } from '@merris/shared';
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3001/api/v1';
+const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000/api/v1';
 
 // ----- Domain types (loose; tighten as pages bind) -----
 
@@ -76,6 +76,7 @@ export interface WorkflowExecution {
 export interface ChatRequestPayload {
   engagementId: string;
   message: string;
+  userId?: string;
   conversationHistory?: Array<{ role: 'user' | 'assistant'; content: string }>;
   documentBody?: string;
   cursorSection?: string;
@@ -188,6 +189,10 @@ class ApiClient {
     return this.get<{ engagements: Engagement[] }>('/engagements');
   }
 
+  getEngagement(id: string) {
+    return this.get<{ engagement: Engagement }>(`/engagements/${id}`);
+  }
+
   listEngagementDocuments(engagementId: string) {
     return this.get<{ documents: IngestedDocument[] }>(`/engagements/${engagementId}/documents`);
   }
@@ -207,8 +212,8 @@ class ApiClient {
     return this.post<{ engagement: Engagement }>('/engagements', payload);
   }
 
-  // ===== Assistant (chat) — JSON path =====
-  chatJson(payload: ChatRequestPayload) {
+  // ===== Agent chat — regular JSON POST to /agent/chat =====
+  chat(payload: ChatRequestPayload) {
     return this.post<{
       response: string;
       toolCalls: Array<{ name: string; input: unknown; output: unknown }>;
@@ -217,7 +222,7 @@ class ApiClient {
       confidence: 'high' | 'medium' | 'low';
       data_gaps: string[];
       evaluation?: { score: number; decision: string; flags?: unknown };
-    }>('/assistant/chat', payload);
+    }>('/agent/chat', payload);
   }
 
   // ===== Assistant (chat) — SSE path =====
@@ -293,6 +298,51 @@ class ApiClient {
     return this.post<{ results: Array<{ id: string; title: string; excerpt: string; collection: string }> }>(
       '/knowledge-base/search',
       { query, ...(collectionId ? { collectionId } : {}) },
+    );
+  }
+
+  searchKnowledgeBase(query: string, domains?: string[], limit = 10) {
+    return this.post<{
+      results: Array<{
+        id: string;
+        domain: string;
+        collection: string;
+        title: string;
+        description: string;
+        score: number;
+        source: string;
+        year: number;
+        ingested: boolean;
+      }>;
+      totalCandidates: number;
+      searchTime: number;
+    }>('/knowledge-base/search', { query, domains, limit });
+  }
+
+  ingestKBReport(file: File, meta: { company: string; reportYear: number; sector: string; country: string; disclosureId?: string }) {
+    const form = new FormData();
+    form.append('file', file);
+    form.append('company', meta.company);
+    form.append('reportYear', String(meta.reportYear));
+    form.append('sector', meta.sector);
+    form.append('country', meta.country);
+    if (meta.disclosureId) form.append('disclosureId', meta.disclosureId);
+
+    const headers: Record<string, string> = {};
+    if (this.token) headers['Authorization'] = `Bearer ${this.token}`;
+
+    return fetch(`${API_BASE}/knowledge-base/ingest-report`, {
+      method: 'POST', headers, body: form,
+    }).then(async (r) => {
+      if (!r.ok) throw new ApiError(r.status, await r.text());
+      return r.json() as Promise<{ result: { reportId: string; metricsCount: number; narrativesCount: number } }>;
+    });
+  }
+
+  listKBReports(filters?: { sector?: string; country?: string }) {
+    const qs = new URLSearchParams(filters as Record<string, string>).toString();
+    return this.get<{ reports: Array<{ id: string; company: string; reportYear: number; sector: string; country: string; quality: { overallScore: number }; metricsCount: number }> }>(
+      `/knowledge-base/reports${qs ? '?' + qs : ''}`,
     );
   }
 
@@ -381,18 +431,24 @@ class ApiClient {
     }>(`/engagements/${engagementId}/findings`);
   }
 
-  getAssistantHistory() {
+  getAssistantHistory(engagementId?: string) {
+    const qs = engagementId ? `?engagementId=${engagementId}` : '';
     return this.get<{
       seeded: boolean;
       history: Array<{
         id: string;
         text: string;
-        engagement: string;
+        answer?: string;
+        engagement?: string;
+        engagementId?: string;
+        toolsUsed?: string[];
+        timestamp?: string;
+        // legacy scaffolding fields
         confidence?: 'High' | 'Medium' | 'Low';
         findings?: number;
-        time: string;
+        time?: string;
       }>;
-    }>('/assistant/history');
+    }>(`/assistant/history${qs}`);
   }
 
   getTeam() {

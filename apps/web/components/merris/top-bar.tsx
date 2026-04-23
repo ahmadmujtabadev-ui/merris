@@ -4,8 +4,10 @@ import { useState, useRef, useEffect } from 'react';
 import { Pill } from './pill';
 import { merrisTokens } from '@/lib/design-tokens';
 import { useEngagementStore } from '@/lib/store';
+import { useChatStore } from '@/lib/chat-store';
 
-const TABS = ['Dashboard', 'Analytics', 'Archive'] as const;
+const TABS = ['Dashboard'] as const;
+// Analytics and Archive are future tabs — not yet implemented
 
 export function MerrisTopBar() {
   const [activeTab, setActiveTab] = useState<(typeof TABS)[number]>('Dashboard');
@@ -15,6 +17,7 @@ export function MerrisTopBar() {
   const engagements = useEngagementStore((s) => s.engagements);
   const current = useEngagementStore((s) => s.currentEngagement);
   const setCurrent = useEngagementStore((s) => s.setCurrentEngagement);
+  const setChatEngagementId = useChatStore((s) => s.setEngagementId);
 
   useEffect(() => {
     if (!open) return;
@@ -78,6 +81,7 @@ export function MerrisTopBar() {
                 type="button"
                 onClick={() => {
                   setCurrent(e);
+                  setChatEngagementId(e.id);
                   setOpen(false);
                 }}
                 className="block w-full px-3 py-2 text-left font-body text-[12px] text-merris-text hover:bg-merris-surface-low"

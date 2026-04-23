@@ -2,22 +2,33 @@
 
 import { MerrisCard } from '@/components/merris/card';
 import { SectionLabel } from '@/components/merris/label';
-import { PLACEHOLDER_FRAMEWORK_COMPLIANCE } from '@/lib/portfolio-constants';
 
-export function EngagementDetailFrameworks() {
+export function EngagementDetailFrameworks({ frameworks }: { frameworks: string[] }) {
+  if (!frameworks || frameworks.length === 0) {
+    return (
+      <>
+        <SectionLabel>Framework Compliance</SectionLabel>
+        <MerrisCard className="mb-5 text-center" style={{ padding: '20px' }}>
+          <p className="font-body text-[12px] text-merris-text-tertiary">
+            No frameworks selected. Edit this engagement to add frameworks.
+          </p>
+        </MerrisCard>
+      </>
+    );
+  }
+
   return (
     <>
-      <SectionLabel>Framework Compliance</SectionLabel>
-      <div className="mb-5 grid grid-cols-2 gap-2 md:grid-cols-4">
-        {PLACEHOLDER_FRAMEWORK_COMPLIANCE.map(({ code, percent }) => {
-          const color = percent > 50 ? 'text-merris-primary' : percent > 0 ? 'text-merris-warning' : 'text-merris-text-tertiary';
-          return (
-            <MerrisCard key={code} className="text-center" style={{ padding: '12px' }}>
-              <div className="mb-1 font-body text-[10px] font-semibold uppercase tracking-wider text-merris-text-tertiary">{code}</div>
-              <div className={`font-display text-[20px] font-bold ${color}`}>{percent}%</div>
-            </MerrisCard>
-          );
-        })}
+      <SectionLabel>Frameworks</SectionLabel>
+      <div className="mb-5 flex flex-wrap gap-2">
+        {frameworks.map((f) => (
+          <span
+            key={f}
+            className="rounded-merris-sm bg-merris-surface-low px-3 py-1 font-body text-[12px] font-medium text-merris-text"
+          >
+            {f}
+          </span>
+        ))}
       </div>
     </>
   );

@@ -7,7 +7,7 @@ import { Pill } from '@/components/merris/pill';
 import { Chip } from '@/components/merris/chip';
 import { SectionLabel } from '@/components/merris/label';
 import { api, type WorkflowTemplate } from '@/lib/api';
-import { useEngagementStore } from '@/lib/store';
+import { useEngagementStore, useWorkflowStore } from '@/lib/store';
 import { AGENTS_PREBUILT, AGENTS_CUSTOM, RECENTLY_RUN, AGENT_CATEGORIES, type AgentEntry } from './workflow-agents-data';
 import { BuilderTab } from './builder-tab';
 
@@ -40,7 +40,10 @@ export function WorkflowAgentsPage() {
   const [hydrationError, setHydrationError] = useState<string | null>(null);
   const [runFeedback, setRunFeedback] = useState<RunFeedback | null>(null);
   const currentEngagement = useEngagementStore((s) => s.currentEngagement);
+  const { executions, fetchHistory: fetchWorkflowHistory } = useWorkflowStore();
   const pollIntervalRef = useRef<number | null>(null);
+
+  useEffect(() => { fetchWorkflowHistory(); }, [fetchWorkflowHistory]);
 
   const stopPolling = () => {
     if (pollIntervalRef.current !== null) {
@@ -308,18 +311,34 @@ export function WorkflowAgentsPage() {
 
       <SectionLabel>Recently Run</SectionLabel>
       <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
-        {RECENTLY_RUN.map((r) => (
-          <MerrisCard key={r.name} style={{ padding: '16px' }}>
-            <div className="mb-2 flex items-center justify-between">
-              <span className="font-display text-[12px] font-semibold text-merris-text">{r.name}</span>
-              <Pill variant="completed" size="sm">{r.status}</Pill>
-            </div>
-            <div className="font-body text-[10px] text-merris-text-tertiary">
-              {r.time}
-              {r.findings > 0 && <span className="text-merris-warning"> · {r.findings} findings</span>}
-            </div>
-          </MerrisCard>
-        ))}
+        {executions.length === 0
+          ? RECENTLY_RUN.map((r) => (
+              <MerrisCard key={r.name} style={{ padding: '16px' }}>
+                <div className="mb-2 flex items-center justify-between">
+                  <span className="font-display text-[12px] font-semibold text-merris-text">{r.name}</span>
+                  <Pill variant="completed" size="sm">{r.status}</Pill>
+                </div>
+                <div className="font-body text-[10px] text-merris-text-tertiary">
+                  {r.time}
+                  {r.findings > 0 && <span className="text-merris-warning"> · {r.findings} findings</span>}
+                </div>
+              </MerrisCard>
+            ))
+          : executions.slice(0, 3).map((e) => (
+              <MerrisCard key={e.id} style={{ padding: '16px' }}>
+                <div className="mb-2 flex items-center justify-between">
+                  <span className="font-display text-[12px] font-semibold text-merris-text">{e.templateId}</span>
+                  <Pill variant={e.status === 'completed' ? 'completed' : e.status === 'failed' ? 'overdue' : 'in-progress'} size="sm">
+                    {e.status}
+                  </Pill>
+                </div>
+                <div className="font-body text-[10px] text-merris-text-tertiary">
+                  {e.startedAt ? new Date(e.startedAt).toLocaleString() : ''}
+                  {' · '}{e.currentStep}/{e.totalSteps} steps
+                </div>
+              </MerrisCard>
+            ))
+        }
       </div>
         </>
       )}

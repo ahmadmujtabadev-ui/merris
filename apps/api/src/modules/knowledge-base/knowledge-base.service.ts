@@ -1,4 +1,5 @@
 import fs from 'fs/promises';
+import crypto from 'crypto';
 import { logger } from '../../lib/logger.js';
 import { sendMessage } from '../../lib/claude.js';
 import { parsePDF } from '../ingestion/ingestion.parsers.js';
@@ -10,6 +11,9 @@ import {
   type IReportQuality,
 } from '../../models/knowledge-report.model.js';
 import { CorporateDisclosureModel } from '../../models/knowledge-base.model.js';
+import { EmbeddingModel } from '../../models/embedding.model.js';
+import { TFIDFEngine } from './tfidf-engine.js';
+import { invalidateSearchCache } from './search.service.js';
 import mongoose from 'mongoose';
 
 // ============================================================
@@ -139,6 +143,17 @@ export async function ingestReport(
     logger.info(`Updated K1 disclosure ${metadata.disclosureId} status to ingested`);
   }
 
+  // Step 7: Auto-generate TF-IDF embedding (non-blocking — fires after response)
+  const embeddingText = [
+    metadata.company, String(metadata.reportYear), metadata.sector, metadata.country,
+    ...extraction.metrics.map((m) => `${m.name} ${m.value} ${m.unit} ${m.frameworkRef}`),
+    ...extraction.narratives.map((n) => `${n.title} ${n.content.substring(0, 500)}`),
+    parsed.text.substring(0, 20_000),
+  ].filter(Boolean).join(' ');
+
+  generateKBEmbeddingAsync(report._id.toString(), embeddingText, 'kb_knowledge_reports', 'K1')
+    .catch((err) => logger.error('Auto-embedding failed for report', err));
+
   logger.info(
     `Report ingested: ${metadata.company} ${metadata.reportYear} — ` +
       `${extraction.metrics.length} metrics, ${extraction.narratives.length} narratives, ` +
@@ -152,6 +167,71 @@ export async function ingestReport(
     quality: extraction.quality,
     processingTime,
   };
+}
+
+// ============================================================
+// Auto-Embedding Helper
+// ============================================================
+
+/**
+ * Generates and persists a TF-IDF embedding for a single KB document
+ * immediately after ingestion. Rebuilds IDF from all existing embeddings
+ * + the new text so vectors stay consistent. Invalidates the search
+ * cache so the next query picks up the new entry.
+ */
+async function generateKBEmbeddingAsync(
+  sourceId: string,
+  newText: string,
+  sourceCollection: string,
+  domain: 'K1' | 'K2' | 'K3' | 'K4' | 'K5' | 'K6' | 'K7'
+): Promise<void> {
+  const textHash = crypto.createHash('sha256').update(newText).digest('hex').substring(0, 16);
+
+  // Load all existing embedding texts to rebuild a global IDF
+  const existing = await EmbeddingModel.find({}).select('text').lean();
+  const allTexts = [...existing.map((e) => e.text), newText];
+
+  const engine = new TFIDFEngine();
+  engine.buildIDF(allTexts);
+
+  const vector = engine.computeVector(newText);
+  const terms = vector.terms.slice(0, 500);
+  const weights = vector.weights.slice(0, 500);
+
+  // Compute L2 magnitude
+  let magnitude = 0;
+  for (const w of weights) magnitude += w * w;
+  magnitude = Math.sqrt(magnitude);
+
+  // Build sparse map for tfidfVector field
+  const tfidfVector: Record<string, number> = {};
+  for (let i = 0; i < terms.length; i++) {
+    const term = terms[i];
+    const weight = weights[i];
+    if (term !== undefined && weight !== undefined) {
+      tfidfVector[term] = weight;
+    }
+  }
+
+  await EmbeddingModel.findOneAndUpdate(
+    { sourceCollection, sourceId: new mongoose.Types.ObjectId(sourceId) },
+    {
+      sourceCollection,
+      sourceId: new mongoose.Types.ObjectId(sourceId),
+      domain,
+      text: newText.substring(0, 50_000),
+      textHash,
+      tfidfVector,
+      denseTerms: terms,
+      denseWeights: weights,
+      magnitude,
+    },
+    { upsert: true, new: true, setDefaultsOnInsert: true }
+  );
+
+  // Invalidate in-memory search cache so next query loads fresh data
+  invalidateSearchCache();
+  logger.info(`KB embedding generated: ${sourceCollection}/${sourceId}`);
 }
 
 // ============================================================

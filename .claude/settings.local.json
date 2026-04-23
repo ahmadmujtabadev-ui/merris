@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E \"\\\\.\\(ts|tsx|js\\)$\")",
+      "Bash(pnpm --filter \"@merris/api\" add @aws-sdk/client-s3)",
+      "Bash(pnpm --filter \"@merris/api\" build)"
+    ]
+  }
+}

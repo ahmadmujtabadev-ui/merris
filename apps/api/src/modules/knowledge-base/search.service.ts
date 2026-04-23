@@ -245,3 +245,9 @@ export function invalidateSearchCache(): void {
   cacheTimestamp = 0;
   logger.info('Search cache invalidated');
 }
+
+// ============================================================
+// Hybrid search — dense first, TF-IDF fallback
+// ============================================================
+
+export { denseSearch, getDenseEmbeddingCount, getDenseEmbeddingStats, invalidateDenseCache } from './dense-search.service.js';

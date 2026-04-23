@@ -24,7 +24,9 @@ export async function parsePDF(buffer: Buffer): Promise<ParsedContent> {
   const { PDFParse } = await import('pdf-parse');
 
   try {
-    const pdf = new PDFParse(buffer);
+    // pdfjs-dist v5+ requires Uint8Array, not Buffer
+    const uint8 = new Uint8Array(buffer.buffer, buffer.byteOffset, buffer.byteLength);
+    const pdf = new PDFParse(uint8 as unknown as Buffer);
     const textResult = await pdf.getText();
     const text = textResult.pages.map((p) => p.text).join('\n').trim();
     const pageCount = textResult.pages.length;

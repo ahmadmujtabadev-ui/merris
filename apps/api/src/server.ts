@@ -1,7 +1,10 @@
-import dotenv from 'dotenv';
-dotenv.config();
-
 import path from 'path';
+import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+dotenv.config({ path: path.resolve(__dirname, '../../../.env') });
 import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import fastifyStatic from '@fastify/static';
@@ -148,7 +151,7 @@ async function start() {
   // Phase K-lite: document annotation persistence
   await registerAnnotationRoutes(app);
 
-  const port = parseInt(process.env['PORT'] || '3001', 10);
+  const port = parseInt(process.env['PORT'] || '8000', 10);
 
   try {
     await app.listen({ port, host: '0.0.0.0' });

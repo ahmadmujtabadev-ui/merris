@@ -166,6 +166,44 @@ export async function registerIngestionRoutes(app: FastifyInstance): Promise<voi
   );
 
   // ----------------------------------------------------------
+  // GET /api/v1/engagements/:id — single engagement by id
+  // ----------------------------------------------------------
+  app.get<{ Params: { id: string } }>(
+    '/api/v1/engagements/:id',
+    { preHandler: [authenticate] },
+    async (request, reply) => {
+      try {
+        if (!request.user) {
+          return reply.code(401).send({ error: 'Authentication required' });
+        }
+        const db = mongoose.connection.db;
+        if (!db) return reply.code(500).send({ error: 'Database not connected' });
+
+        const engagement = await db.collection('engagements').findOne({
+          _id: new mongoose.Types.ObjectId(request.params.id),
+          orgId: new mongoose.Types.ObjectId(request.user.orgId),
+        });
+
+        if (!engagement) return reply.code(404).send({ error: 'Engagement not found' });
+
+        return reply.code(200).send({
+          engagement: {
+            id: engagement._id.toString(),
+            name: engagement.name,
+            frameworks: engagement.frameworks,
+            status: engagement.status,
+            deadline: engagement.deadline,
+            createdAt: engagement.createdAt,
+            updatedAt: engagement.updatedAt,
+          },
+        });
+      } catch (err) {
+        return handleError(err, reply);
+      }
+    }
+  );
+
+  // ----------------------------------------------------------
   // POST /api/v1/documents/:id/process — trigger sync processing
   // ----------------------------------------------------------
   app.post<{ Params: { id: string } }>(

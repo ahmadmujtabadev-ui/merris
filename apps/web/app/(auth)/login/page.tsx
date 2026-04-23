@@ -42,11 +42,11 @@ export default function LoginPage() {
           };
         };
         token: string;
-        org: { id: string; name: string; type: 'consulting' | 'corporate' | 'regulator'; plan: 'starter' | 'professional' | 'enterprise' };
+        organization: { id: string; name: string; type: 'consulting' | 'corporate' | 'regulator'; plan: 'starter' | 'professional' | 'enterprise' };
       }>('/auth/login', { email, password });
 
-      setAuth(res.user, res.token, res.org);
-      router.push('/engagements');
+      setAuth(res.user, res.token, res.organization);
+      router.push('/intelligence');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Login failed');
     } finally {

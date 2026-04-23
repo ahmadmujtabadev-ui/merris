@@ -1,4 +1,5 @@
 import { getClient } from '../../lib/claude.js';
+import { logger } from '../../lib/logger.js';
 import { buildAgentContext } from './agent.context.js';
 import { getToolDefinitions } from './agent.tools.js';
 import { captureConversation, buildMemoryContext } from './memory.js';
@@ -78,15 +79,15 @@ export async function chat(request: ChatRequest): Promise<ChatResponse> {
     ? 'The agent completed processing but reached the maximum number of tool execution rounds.'
     : responseText;
 
-  // Capture to memory (non-blocking)
-  captureConversation({
+  // Capture to memory (awaited so history is always persisted)
+  await captureConversation({
     engagementId,
     userId,
     channel: 'web',
     userMessage: message,
     agentResponse: finalResponse,
     toolsUsed: toolCalls.map((t) => t.name),
-  }).catch(() => { /* non-critical */ });
+  }).catch((err) => logger.error('Memory capture failed', err));
 
   const { citations, references, data_gaps } = extractCitations(toolCalls as ToolCall[]);
   trackDataGaps(data_gaps, { country: context?.orgProfile?.country, sector: context?.orgProfile?.industry }).catch(() => {}); // non-blocking

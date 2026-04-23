@@ -2,6 +2,14 @@ import { create } from 'zustand';
 import type { StreamEvent, CitationItem } from '@merris/shared';
 import { THINKING_PHASES } from './intelligence-constants';
 import { api } from './api';
+// Lazy import to avoid circular dependency — read auth token at call time
+function getAuthUser() {
+  try {
+    const stored = typeof window !== 'undefined' ? localStorage.getItem('merris_auth') : null;
+    if (stored) return JSON.parse(stored)?.user ?? null;
+  } catch { /* ignore */ }
+  return null;
+}
 
 export type ChatPhase = 'home' | 'thinking' | 'response';
 
@@ -100,27 +108,39 @@ export const useChatStore = create<ChatState>((set, get) => ({
     });
 
     const { engagementId, jurisdiction, knowledgeSources, messages } = get();
+    const authUser = getAuthUser();
 
     try {
-      await api.chatStream(
-        {
-          engagementId,
-          message: question,
-          jurisdiction: jurisdiction.join(','),
-          knowledgeSources,
-          conversationHistory: messages.flatMap((m) => [
-            { role: 'user' as const, content: m.question },
-            { role: 'assistant' as const, content: m.answer },
-          ]),
-        },
-        (event: StreamEvent) => {
-          handleEvent(event, set, get);
-        },
-      );
+      const res = await api.chat({
+        engagementId,
+        message: question,
+        jurisdiction: jurisdiction.join(','),
+        knowledgeSources,
+        ...(authUser?.id ? { userId: authUser.id } : {}),
+        conversationHistory: messages.flatMap((m) => [
+          { role: 'user' as const, content: m.question },
+          { role: 'assistant' as const, content: m.answer },
+        ]),
+      });
+
+      // Synthesise stream events from the JSON response
+      if (res.evaluation) {
+        handleEvent({
+          type: 'evaluation',
+          score: res.evaluation.score,
+          confidence: (res.confidence ?? 'medium') as 'high' | 'medium' | 'low',
+          decision: res.evaluation.decision as 'PASS' | 'FIX' | 'REJECT' | 'BLOCK',
+        } as StreamEvent, set, get);
+      }
+      if (res.citations?.length) {
+        handleEvent({ type: 'sources', citations: res.citations } as unknown as StreamEvent, set, get);
+      }
+      handleEvent({ type: 'token', text: res.response } as StreamEvent, set, get);
+      handleEvent({ type: 'done' } as StreamEvent, set, get);
     } catch (err) {
       set({
         phase: 'response',
-        errorMessage: err instanceof Error ? err.message : 'Unknown stream error',
+        errorMessage: err instanceof Error ? err.message : 'Unknown error',
       });
     }
   },

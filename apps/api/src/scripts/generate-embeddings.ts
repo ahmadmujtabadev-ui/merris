@@ -7,8 +7,10 @@
  *   pnpm --filter @merris/api generate:embeddings -- --rebuild
  */
 
+import path from 'path';
 import dotenv from 'dotenv';
-dotenv.config();
+// pnpm sets cwd to apps/api/ — go up 2 levels to reach repo root where .env lives
+dotenv.config({ path: path.resolve(process.cwd(), '../../.env') });
 
 import crypto from 'crypto';
 import mongoose from 'mongoose';

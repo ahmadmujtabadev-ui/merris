@@ -20,15 +20,10 @@ export function EngagementDetail({ engagementId }: { engagementId: string }) {
     setLoading(true);
     setError(null);
     api
-      .listEngagements()
+      .getEngagement(engagementId)
       .then((res) => {
         if (cancelled) return;
-        const found = res.engagements.find((e) => e.id === engagementId) ?? null;
-        if (!found) {
-          setError('Engagement not found.');
-        } else {
-          setEngagement(found);
-        }
+        setEngagement(res.engagement);
       })
       .catch((err) => {
         if (cancelled) return;
@@ -69,7 +64,7 @@ export function EngagementDetail({ engagementId }: { engagementId: string }) {
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
         <div className="md:col-span-2">
           <EngagementDetailReadiness score={completeness} />
-          <EngagementDetailFrameworks />
+          <EngagementDetailFrameworks frameworks={engagement.frameworks ?? []} />
           <EngagementDetailFindings />
           <EngagementDocumentsSection engagementId={engagement.id} />
         </div>

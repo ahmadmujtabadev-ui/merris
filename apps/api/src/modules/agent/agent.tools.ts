@@ -13,6 +13,7 @@ import { logger } from '../../lib/logger.js';
 import { KnowledgeReportModel } from '../../models/knowledge-report.model.js';
 import { CorporateDisclosureModel, RegulatoryModel, ClimateScienceModel } from '../../models/knowledge-base.model.js';
 import { semanticSearch } from '../knowledge-base/search.service.js';
+import { denseSearch } from '../knowledge-base/dense-search.service.js';
 import { getEmissionFactorLive } from '../../services/knowledge/apis/climatiq.js';
 import { getWaterStress, getClimateVulnerability, getSBTiStatus, getForcedLabourRisk, getProductLabourRisk, getCountryEmissions, getNDCTarget, getCorruptionIndex, getFacilityEmissions, getDeforestationData, getProtectedAreas, getProtectedAreasNear, getKnowTheChainScore, getKnowTheChainSector, getAbatementOptions, getCarbonPrice, getCarbonPriceScenario, getEnergyInstrument, getRECMarketStatus, getDecarbonisationPathway, getAssuranceRequirement, getVerifierChecklist, getPrecedent, getAnomalyCheck, getPartnerInsight } from '../../services/knowledge/apis/datasets.js';
 import { getThreatenedSpecies } from '../../services/knowledge/apis/iucn.js';
@@ -53,6 +54,7 @@ export function getToolDefinitions(): ToolDefinition[] {
     retrieveBestDisclosureTool,
     retrieveSimilarCompaniesTool,
     searchKnowledgeTool,
+    searchKbDenseTool,
     getRegulatoryContextTool,
     getScientificBasisTool,
     getEmissionFactorLiveTool,
@@ -1135,6 +1137,63 @@ const searchKnowledgeTool: ToolDefinition = {
     } catch (err: any) {
       logger.error('search_knowledge failed', err);
       return { error: 'Semantic search failed', details: err.message };
+    }
+  },
+};
+
+// ============================================================
+// 14b. search_kb_dense (Voyage AI dense search across M01-M14 docs)
+// ============================================================
+
+const searchKbDenseTool: ToolDefinition = {
+  name: 'search_kb_dense',
+  description:
+    'Semantic search using dense Voyage AI vectors across the full M01-M14 knowledge base (9000+ documents: regulatory PDFs, emission factor tables, framework guides, case law, research papers, jurisdiction data, XLSX templates). Use this when search_knowledge returns no results or the user asks about specific standards, regulations, benchmarks, or sector data.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      query: { type: 'string', description: 'Natural language search query' },
+      modules: {
+        type: 'array',
+        items: {
+          type: 'string',
+          enum: ['M01','M02','M03','M04','M05','M06','M07','M08','M09','M10','M11','M12','M13','M14'],
+        },
+        description: 'Limit to specific KB modules (optional). M01=regulatory, M02=frameworks, M03=emission-factors, M04=benchmarks, M05=climate, M06=carbon-markets, M07=environmental, M08=social, M09=financial, M10=sector, M11=jurisdictions, M12=templates, M13=caselaw, M14=research',
+      },
+      limit: { type: 'number', description: 'Max results (default 5, max 20)' },
+    },
+    required: ['query'],
+  },
+  handler: async (input) => {
+    const query   = input['query'] as string;
+    const modules = input['modules'] as string[] | undefined;
+    const limit   = Math.min((input['limit'] as number) || 5, 20);
+
+    try {
+      const results = await denseSearch({ query, modules, limit, minScore: 0.25 });
+
+      if (results.length === 0) {
+        return {
+          found: 0,
+          message: 'No relevant chunks found. The dense KB may not be embedded yet, or try a broader query.',
+        };
+      }
+
+      return {
+        found: results.length,
+        results: results.map((r) => ({
+          module:     r.module,
+          filename:   r.filename,
+          fileType:   r.fileType,
+          chunkIndex: r.chunkIndex,
+          score:      r.score,
+          excerpt:    r.text.substring(0, 600),
+        })),
+      };
+    } catch (err: any) {
+      logger.error('search_kb_dense failed', err);
+      return { error: 'Dense KB search failed', details: err.message };
     }
   },
 };

@@ -1,17 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { MerrisCard } from '@/components/merris/card';
 import { Chip } from '@/components/merris/chip';
 import { Pill } from '@/components/merris/pill';
-import { api } from '@/lib/api';
-import { useEngagementStore } from '@/lib/store';
-import {
-  FRAMEWORK_SUMMARIES,
-  DISCLOSURE_MATRIX,
-  type FrameworkSummary,
-  type DisclosureRow,
-} from './compliance-data';
+import { useEngagementStore, useComplianceStore } from '@/lib/store';
+import { FRAMEWORK_SUMMARIES, DISCLOSURE_MATRIX } from './compliance-data';
 
 function statusColor(status: string): string {
   if (status === 'Complete') return 'text-merris-success';
@@ -28,40 +22,33 @@ function coverageColor(coverage: string): string {
 
 export function CompliancePage() {
   const currentEngagement = useEngagementStore((s) => s.currentEngagement);
-  const [summaries, setSummaries] = useState<FrameworkSummary[]>(FRAMEWORK_SUMMARIES);
-  const [matrix, setMatrix] = useState<DisclosureRow[]>(DISCLOSURE_MATRIX);
-  const [seeded, setSeeded] = useState(false);
+  const { frameworks, disclosureMatrix, loading, fetchCompliance } = useComplianceStore();
 
   useEffect(() => {
-    if (!currentEngagement) {
-      setSummaries(FRAMEWORK_SUMMARIES);
-      setMatrix(DISCLOSURE_MATRIX);
-      setSeeded(false);
-      return;
-    }
-    api
-      .getEngagementFrameworkCompliance(currentEngagement.id)
-      .then((res) => {
-        setSummaries(res.compliance);
-        setMatrix(res.disclosureMatrix);
-        setSeeded(res.seeded);
-      })
-      .catch(() => {
-        setSummaries(FRAMEWORK_SUMMARIES);
-        setMatrix(DISCLOSURE_MATRIX);
-      });
-  }, [currentEngagement]);
+    if (currentEngagement?.id) fetchCompliance(currentEngagement.id);
+  }, [currentEngagement?.id, fetchCompliance]);
+
+  const summaries = frameworks.length > 0 ? frameworks : FRAMEWORK_SUMMARIES;
+  const matrix = disclosureMatrix.length > 0 ? disclosureMatrix : DISCLOSURE_MATRIX;
+  const isLive = frameworks.length > 0;
 
   return (
     <div className="p-6">
       <div className="mb-5 flex items-center gap-2">
         <h1 className="font-display text-[24px] font-bold text-merris-text">Compliance Tracker</h1>
-        {seeded ? (
-          <Pill variant="completed" size="sm">📡 Live</Pill>
+        {isLive ? (
+          <Pill variant="completed" size="sm">Live</Pill>
         ) : (
-          <Pill variant="draft" size="sm">📋 Placeholder</Pill>
+          <Pill variant="draft" size="sm">Placeholder</Pill>
         )}
+        {loading && <span className="font-body text-[11px] text-merris-text-tertiary">Loading…</span>}
       </div>
+
+      {!currentEngagement && (
+        <p className="mb-4 font-body text-[12px] text-merris-text-secondary">
+          Select an engagement from the top bar to see real compliance data.
+        </p>
+      )}
 
       <div className="mb-6 grid grid-cols-2 gap-3 md:grid-cols-4">
         {summaries.map((f) => (
