@@ -53,6 +53,10 @@ interface ChatState {
   // conversation history
   messages: ChatMessage[];
 
+  // cross-page pre-fill
+  pendingQuestion: string | null;
+  setPendingQuestion: (q: string | null) => void;
+
   // actions
   toggleJurisdiction: (j: string) => void;
   toggleKnowledgeSource: (k: string) => void;
@@ -69,6 +73,9 @@ export const useChatStore = create<ChatState>((set, get) => ({
   jurisdiction: ['Qatar'],
   knowledgeSources: ['K1', 'K7'],
   engagementId: '000000000000000000000000', // placeholder ObjectId; real one comes from engagement selector
+
+  pendingQuestion: null,
+  setPendingQuestion: (q) => set({ pendingQuestion: q }),
 
   phase: 'home',
   question: '',
@@ -110,33 +117,20 @@ export const useChatStore = create<ChatState>((set, get) => ({
     const { engagementId, jurisdiction, knowledgeSources, messages } = get();
     const authUser = getAuthUser();
 
-    try {
-      const res = await api.chat({
-        engagementId,
-        message: question,
-        jurisdiction: jurisdiction.join(','),
-        knowledgeSources,
-        ...(authUser?.id ? { userId: authUser.id } : {}),
-        conversationHistory: messages.flatMap((m) => [
-          { role: 'user' as const, content: m.question },
-          { role: 'assistant' as const, content: m.answer },
-        ]),
-      });
+    const payload = {
+      engagementId,
+      message: question,
+      jurisdiction: jurisdiction.join(','),
+      knowledgeSources,
+      ...(authUser?.id ? { userId: authUser.id } : {}),
+      conversationHistory: messages.flatMap((m) => [
+        { role: 'user' as const, content: m.question },
+        { role: 'assistant' as const, content: m.answer },
+      ]),
+    };
 
-      // Synthesise stream events from the JSON response
-      if (res.evaluation) {
-        handleEvent({
-          type: 'evaluation',
-          score: res.evaluation.score,
-          confidence: (res.confidence ?? 'medium') as 'high' | 'medium' | 'low',
-          decision: res.evaluation.decision as 'PASS' | 'FIX' | 'REJECT' | 'BLOCK',
-        } as StreamEvent, set, get);
-      }
-      if (res.citations?.length) {
-        handleEvent({ type: 'sources', citations: res.citations } as unknown as StreamEvent, set, get);
-      }
-      handleEvent({ type: 'token', text: res.response } as StreamEvent, set, get);
-      handleEvent({ type: 'done' } as StreamEvent, set, get);
+    try {
+      await api.chatStream(payload, (event) => handleEvent(event, set, get));
     } catch (err) {
       set({
         phase: 'response',

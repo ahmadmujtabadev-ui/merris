@@ -10,6 +10,7 @@ import {
   processDocument,
   UploadError,
 } from './ingestion.service.js';
+import { getCompleteness } from '../data-collection/data-collection.service.js';
 import mongoose from 'mongoose';
 
 // ============================================================
@@ -103,14 +104,20 @@ export async function registerIngestionRoutes(app: FastifyInstance): Promise<voi
           .find({ orgId: new mongoose.Types.ObjectId(request.user.orgId) })
           .sort({ createdAt: -1 })
           .toArray();
+
+        const completenessResults = await Promise.all(
+          engagements.map((e) => getCompleteness(e._id.toString()).catch(() => null))
+        );
+
         return reply.code(200).send({
-          engagements: engagements.map((e) => ({
+          engagements: engagements.map((e, i) => ({
             id: e._id.toString(),
             name: e.name,
             frameworks: e.frameworks,
             status: e.status,
             deadline: e.deadline,
             createdAt: e.createdAt,
+            completeness: completenessResults[i]?.overall?.percentage ?? 0,
           })),
         });
       } catch (err) {
@@ -186,6 +193,8 @@ export async function registerIngestionRoutes(app: FastifyInstance): Promise<voi
 
         if (!engagement) return reply.code(404).send({ error: 'Engagement not found' });
 
+        const completenessData = await getCompleteness(engagement._id.toString()).catch(() => null);
+
         return reply.code(200).send({
           engagement: {
             id: engagement._id.toString(),
@@ -195,6 +204,7 @@ export async function registerIngestionRoutes(app: FastifyInstance): Promise<voi
             deadline: engagement.deadline,
             createdAt: engagement.createdAt,
             updatedAt: engagement.updatedAt,
+            completeness: completenessData?.overall?.percentage ?? 0,
           },
         });
       } catch (err) {

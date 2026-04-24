@@ -42,28 +42,21 @@ export function ChatInput() {
         />
       </div>
       <div
-        className="flex items-center justify-between px-4 py-2.5"
+        className="flex items-center justify-end px-4 py-2.5"
         style={{ borderTop: `1px solid ${merrisTokens.border}` }}
       >
-        <div className="flex gap-2 text-merris-text-tertiary">
-          <span className="text-[14px]">📎</span>
-          <span className="text-[14px]">🔖</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="text-[14px] text-merris-text-tertiary">🎤</span>
-          <button
-            type="button"
-            onClick={submit}
-            disabled={!text.trim()}
-            className="flex h-8 w-8 items-center justify-center rounded-merris-sm bg-merris-primary text-white disabled:opacity-40"
-            aria-label="Send"
-          >
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M22 2L11 13" />
-              <path d="M22 2l-7 20-4-9-9-4z" />
-            </svg>
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={submit}
+          disabled={!text.trim()}
+          className="flex h-8 w-8 items-center justify-center rounded-merris-sm bg-merris-primary text-white disabled:opacity-40"
+          aria-label="Send"
+        >
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M22 2L11 13" />
+            <path d="M22 2l-7 20-4-9-9-4z" />
+          </svg>
+        </button>
       </div>
     </MerrisCard>
   );

@@ -70,13 +70,75 @@ if (!VOYAGE_API_KEY && !dryRun) {
 const CHUNK_SIZE    = 2500;  // ~600 tokens
 const CHUNK_OVERLAP = 200;   // ~50 tokens overlap for context continuity
 
+function isHighSurrogate(code: number): boolean {
+  return code >= 0xD800 && code <= 0xDBFF;
+}
+
+function isLowSurrogate(code: number): boolean {
+  return code >= 0xDC00 && code <= 0xDFFF;
+}
+
+function adjustChunkEnd(text: string, end: number): number {
+  if (end <= 0 || end >= text.length) return end;
+
+  const lastCode = text.charCodeAt(end - 1);
+  const nextCode = text.charCodeAt(end);
+  if (isHighSurrogate(lastCode) && isLowSurrogate(nextCode)) {
+    return end + 1;
+  }
+
+  return end;
+}
+
+function adjustChunkStart(text: string, start: number): number {
+  if (start <= 0 || start >= text.length) return start;
+
+  const prevCode = text.charCodeAt(start - 1);
+  const currentCode = text.charCodeAt(start);
+  if (isHighSurrogate(prevCode) && isLowSurrogate(currentCode)) {
+    return start - 1;
+  }
+
+  return start;
+}
+
+function sanitizeChunkText(text: string): string {
+  let cleaned = '';
+
+  for (let i = 0; i < text.length; i++) {
+    const code = text.charCodeAt(i);
+
+    if (isHighSurrogate(code)) {
+      if (i + 1 < text.length) {
+        const nextCode = text.charCodeAt(i + 1);
+        if (isLowSurrogate(nextCode)) {
+          cleaned += text[i]! + text[i + 1]!;
+          i++;
+        }
+      }
+      continue;
+    }
+
+    if (isLowSurrogate(code)) {
+      continue;
+    }
+
+    cleaned += text[i]!;
+  }
+
+  return cleaned.trim();
+}
+
 /**
  * Split text into overlapping chunks.
  * Prefers splitting on paragraph breaks (double newline) or sentence ends.
  */
 function chunkText(text: string): string[] {
   const cleaned = text.replace(/\r\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
-  if (cleaned.length <= CHUNK_SIZE) return cleaned.length > 20 ? [cleaned] : [];
+  if (cleaned.length <= CHUNK_SIZE) {
+    const chunk = sanitizeChunkText(cleaned);
+    return chunk.length > 20 ? [chunk] : [];
+  }
 
   const chunks: string[] = [];
   let start = 0;
@@ -98,13 +160,16 @@ function chunkText(text: string): string[] {
       }
     }
 
-    const chunk = cleaned.slice(start, end).trim();
+    end = adjustChunkEnd(cleaned, end);
+
+    const chunk = sanitizeChunkText(cleaned.slice(start, end));
     if (chunk.length > 20) chunks.push(chunk);
 
     if (end >= cleaned.length) break;
 
     // Always move forward; otherwise the last window can repeat forever.
-    start = Math.max(end - CHUNK_OVERLAP, start + 1);
+    const nextStart = adjustChunkStart(cleaned, end - CHUNK_OVERLAP);
+    start = Math.max(nextStart, start + 1);
   }
 
   return chunks;

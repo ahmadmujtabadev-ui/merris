@@ -5,12 +5,12 @@ import { ScoreRing } from '@/components/merris/score-ring';
 
 export function EngagementDetailReadiness({ score }: { score: number }) {
   const message = score === 0
-    ? 'Upload documents and run a review to calculate readiness.'
+    ? 'Upload documents and process them to extract data points.'
     : score < 50
-    ? 'Significant gaps remain. Upload more evidence and run a full review.'
+    ? 'Data extracted — review and confirm metrics to increase readiness.'
     : score < 80
-    ? 'Good progress. Some gaps still need addressing before submission.'
-    : 'Report is nearly ready for submission.';
+    ? 'Good progress. Confirm remaining data points to finalize the report.'
+    : 'Report is nearly ready. Confirm any remaining auto-extracted metrics.';
 
   return (
     <MerrisCard className="mb-5">

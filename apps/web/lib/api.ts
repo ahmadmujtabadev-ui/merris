@@ -208,6 +208,34 @@ class ApiClient {
     );
   }
 
+  processDocument(documentId: string) {
+    return this.post<{ document: IngestedDocument }>(`/documents/${documentId}/process`, {});
+  }
+
+  // ===== Data Points =====
+  listDataPoints(engagementId: string, filters?: { status?: string; framework?: string }) {
+    const qs = filters ? '?' + new URLSearchParams(filters as Record<string, string>).toString() : '';
+    return this.get<{
+      dataPoints: Array<{
+        _id: string;
+        frameworkRef: string;
+        metricName: string;
+        value: number | string;
+        unit: string;
+        period: { year: number; quarter?: number };
+        status: 'auto_extracted' | 'user_confirmed' | 'user_edited' | 'estimated' | 'missing';
+        confidence: 'high' | 'medium' | 'low';
+      }>;
+    }>(`/engagements/${engagementId}/data-points${qs}`);
+  }
+
+  confirmDataPoint(dataPointId: string) {
+    return this.post<{ dataPoint: { _id: string; status: string } }>(
+      `/data-points/${dataPointId}/confirm`,
+      {},
+    );
+  }
+
   createEngagement(payload: { name: string; frameworks?: string[]; deadline?: string }) {
     return this.post<{ engagement: Engagement }>('/engagements', payload);
   }

@@ -457,7 +457,10 @@ export async function getCompleteness(engagementId: string) {
   const total = allDataPoints.length;
   const completedStatuses: DataPointStatus[] = ['user_confirmed', 'user_edited', 'estimated'];
   const completed = allDataPoints.filter((dp) => completedStatuses.includes(dp.status as DataPointStatus)).length;
-  const percentage = total > 0 ? Math.round((completed / total) * 100) : 0;
+  // auto_extracted counts as half credit — data exists but hasn't been reviewed yet
+  const autoExtracted = allDataPoints.filter((dp) => dp.status === 'auto_extracted').length;
+  const weightedScore = completed + autoExtracted * 0.5;
+  const percentage = total > 0 ? Math.round((weightedScore / total) * 100) : 0;
 
   // By framework
   const fwMap = new Map<string, { code: string; total: number; completed: number }>();

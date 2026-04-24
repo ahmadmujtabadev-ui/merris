@@ -9,7 +9,7 @@ export function SourceToggles() {
   const toggle = useChatStore((s) => s.toggleKnowledgeSource);
 
   return (
-    <div className="flex flex-wrap items-center justify-center gap-1.5">
+    <div className="flex flex-wrap items-center gap-1.5">
       {KNOWLEDGE_SOURCES.map(({ key, label }) => {
         const isActive = active.includes(key);
         return (

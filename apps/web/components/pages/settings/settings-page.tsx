@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { MerrisCard } from '@/components/merris/card';
 import { MerrisButton } from '@/components/merris/button';
 import { Pill } from '@/components/merris/pill';
@@ -167,6 +168,13 @@ function BillingCard({ billing, seeded }: { billing: BillingData; seeded: boolea
 
 export function SettingsPage() {
   const [tab, setTab] = useState<Tab>('Profile');
+  const router = useRouter();
+  const logout = useAuthStore((s) => s.logout);
+
+  function handleLogout() {
+    logout();
+    router.push('/login');
+  }
 
   const [team, setTeam] = useState<TeamMember[]>(TEAM_MEMBERS);
   const [teamSeeded, setTeamSeeded] = useState(false);
@@ -229,15 +237,31 @@ export function SettingsPage() {
         ))}
       </aside>
       <main>
-        <h1 className="mb-1 font-display text-[20px] font-bold text-merris-text">
-          {tab === 'Profile' ? 'Profile & Organisation' : tab}
-        </h1>
-        <p className="mb-5 font-body text-[12px] text-merris-text-secondary">
-          {tab === 'Profile' && 'Manage your identity across the Merris ecosystem.'}
-          {tab === 'Team' && 'Team members with access to this workspace.'}
-          {tab === 'Preferences' && 'Configure how Merris adapts to your work.'}
-          {tab === 'Billing' && 'Plan, usage, and payment details.'}
-        </p>
+        <div className="mb-5 flex items-start justify-between">
+          <div>
+            <h1 className="mb-1 font-display text-[20px] font-bold text-merris-text">
+              {tab === 'Profile' ? 'Profile & Organisation' : tab}
+            </h1>
+            <p className="font-body text-[12px] text-merris-text-secondary">
+              {tab === 'Profile' && 'Manage your identity across the Merris ecosystem.'}
+              {tab === 'Team' && 'Team members with access to this workspace.'}
+              {tab === 'Preferences' && 'Configure how Merris adapts to your work.'}
+              {tab === 'Billing' && 'Plan, usage, and payment details.'}
+            </p>
+          </div>
+          {tab === 'Profile' && (
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="flex items-center gap-1.5 rounded-merris-sm border border-merris-error px-3 py-1.5 font-body text-[11px] font-semibold text-merris-error hover:bg-merris-error-bg"
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9" />
+              </svg>
+              Sign out
+            </button>
+          )}
+        </div>
 
         {tab === 'Profile' && (
           <>

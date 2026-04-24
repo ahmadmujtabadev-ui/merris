@@ -1,0 +1,9 @@
+{
+  "functions": {
+    "api/[...path].ts": {
+      "runtime": "nodejs22.x",
+      "maxDuration": 60,
+      "includeFiles": "public/**"
+    }
+  }
+}

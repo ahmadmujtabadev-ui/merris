@@ -11,6 +11,7 @@ import {
   getBenchmarkData,
 } from './knowledge-base.service.js';
 import { semanticSearch } from './search.service.js';
+import { denseSearch } from './dense-search.service.js';
 
 // ============================================================
 // Route Registration
@@ -187,9 +188,27 @@ export async function registerKnowledgeBaseRoutes(app: FastifyInstance): Promise
     }
   );
 
+  // K-domain → M-module prefix mapping (mirrors scaffolding.routes MODULE_K_MAP)
+  const K_MODULE_MAP: Record<string, string[]> = {
+    K1: ['M01', 'M02'], K2: ['M03', 'M04'],
+    K3: ['M05', 'M06'], K4: ['M07', 'M08'],
+    K5: ['M09', 'M10'], K6: ['M11', 'M12'],
+    K7: ['M13', 'M14'],
+  };
+
+  // Reverse map: module prefix → K-domain
+  const MODULE_K_MAP: Record<string, string> = {};
+  for (const [k, modules] of Object.entries(K_MODULE_MAP)) {
+    for (const m of modules) MODULE_K_MAP[m] = k;
+  }
+  function moduleToKDomain(moduleName: string): string {
+    const prefix = moduleName.match(/^(M\d{2})/)?.[1] ?? '';
+    return MODULE_K_MAP[prefix] ?? 'K7';
+  }
+
   // ----------------------------------------------------------
   // POST /api/v1/knowledge-base/search
-  // Semantic search across all KB domains using TF-IDF
+  // Tries TF-IDF first; falls back to Voyage AI dense search.
   // ----------------------------------------------------------
   app.post(
     '/api/v1/knowledge-base/search',
@@ -209,11 +228,79 @@ export async function registerKnowledgeBaseRoutes(app: FastifyInstance): Promise
         const body = bodySchema.parse(request.body);
         const startTime = Date.now();
 
-        const results = await semanticSearch({
+        // Try TF-IDF first
+        let results = await semanticSearch({
           query: body.query,
           domains: body.domains,
           limit: body.limit,
         });
+
+        // Fall back to dense (Voyage AI) search if TF-IDF has no data
+        if (results.length === 0) {
+          const modules = body.domains && body.domains.length > 0
+            ? body.domains.flatMap((d) => K_MODULE_MAP[d] ?? [])
+            : [];
+          const denseResults = await denseSearch({
+            query: body.query,
+            modules: modules.length > 0 ? modules : undefined,
+            limit: body.limit ?? 10,
+            minScore: 0.3,
+          });
+          // Map dense results to the SearchResult shape the frontend expects
+          results = denseResults.map((r) => {
+            // Derive K-domain from actual module name
+            const domain = body.domains?.[0] ?? moduleToKDomain(r.module);
+
+            // Clean filename → readable title
+            // e.g. "relx-relx-sustainability-2024.pdf"       → "Relx Sustainability 2024"
+            //      "3i-group-3i-group-sustainability-2024.pdf" → "3i Group Sustainability 2024"
+            //      "anglo-american-anglo-american-sustainability-2024.pdf" → "Anglo American Sustainability 2024"
+            const base = r.filename.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ').trim();
+            const words = base.split(/\s+/);
+            // Detect repeated prefix: try halves of 2..6 words to see if first N words repeat immediately
+            let deduped = words;
+            for (let n = 1; n <= Math.floor(words.length / 2); n++) {
+              const prefix = words.slice(0, n).join(' ').toLowerCase();
+              const next = words.slice(n, n * 2).join(' ').toLowerCase();
+              if (prefix === next) {
+                deduped = words.slice(n);
+                break;
+              }
+            }
+            // Also remove consecutive identical adjacent words
+            deduped = deduped.filter((w, i) => i === 0 || w.toLowerCase() !== deduped[i - 1]!.toLowerCase());
+            // Title-case each token
+            const title = deduped
+              .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+              .join(' ');
+
+            // Extract year from filename
+            const yearMatch = r.filename.match(/(\d{4})/);
+            const year = yearMatch?.[1] ? parseInt(yearMatch[1], 10) : new Date().getFullYear();
+
+            // Description: skip any leading partial word (chunk may start mid-sentence).
+            // Find the first position where a capital letter follows a space, or just
+            // the first capital letter if the text starts with a lowercase fragment.
+            let desc = r.text.trim();
+            const firstCapIdx = desc.search(/[A-Z]/);
+            if (firstCapIdx > 0 && firstCapIdx < 60) {
+              desc = desc.slice(firstCapIdx);
+            }
+            desc = desc.slice(0, 220);
+
+            return {
+              id: r.id,
+              domain,
+              collection: r.module,
+              title,
+              description: desc,
+              score: r.score,
+              source: r.filename,
+              year,
+              ingested: true,
+            };
+          });
+        }
 
         const searchTime = Date.now() - startTime;
 

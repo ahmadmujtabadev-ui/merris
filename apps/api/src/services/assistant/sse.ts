@@ -9,11 +9,23 @@ import type { StreamEvent } from '@merris/shared';
  * because Fastify will end the response when the handler resolves.
  */
 export function openSseStream(request: FastifyRequest, reply: FastifyReply) {
+  // Prevent Fastify lifecycle (onSend hooks, reply.send) from running after we
+  // take over the raw socket. Without this, @fastify/cors tries to setHeader()
+  // after writeHead() has already committed headers → ERR_HTTP_HEADERS_SENT.
+  reply.hijack();
+
+  // @fastify/cors is bypassed when we write directly to reply.raw, so we must
+  // add the CORS header ourselves. `origin: true` in the plugin config means
+  // "reflect the request Origin" — replicate that here.
+  const requestOrigin = (request.headers['origin'] as string | undefined) ?? '*';
+
   reply.raw.writeHead(200, {
     'Content-Type': 'text/event-stream',
     'Cache-Control': 'no-cache, no-transform',
     Connection: 'keep-alive',
     'X-Accel-Buffering': 'no', // disable proxy buffering (nginx)
+    'Access-Control-Allow-Origin': requestOrigin,
+    'Access-Control-Allow-Credentials': 'true',
   });
 
   // Prime the connection so proxies (Cloudflare, AWS ALB) see traffic before the

@@ -1,17 +1,22 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import { MerrisCard } from '@/components/merris/card';
 import { Pill } from '@/components/merris/pill';
 import { merrisTokens } from '@/lib/design-tokens';
 import { useKnowledgeStore } from '@/lib/store';
+import { useChatStore } from '@/lib/chat-store';
 import { KNOWLEDGE_COLLECTIONS } from './knowledge-data';
 
 export function KnowledgePage() {
   const { collections: apiCollections, fetchCollections, loadingCollections,
           seeded, searchResults, search, searching, clearSearch } = useKnowledgeStore();
   const [query, setQuery] = useState('');
+  const [expandedId, setExpandedId] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
+  const setPendingQuestion = useChatStore((s) => s.setPendingQuestion);
 
   useEffect(() => {
     fetchCollections();
@@ -31,6 +36,11 @@ export function KnowledgePage() {
     e.preventDefault();
     if (query.trim()) search(query.trim());
     else clearSearch();
+  }
+
+  function askInIntelligence(title: string) {
+    setPendingQuestion(`Tell me about: ${title}`);
+    router.push('/intelligence');
   }
 
   return (
@@ -76,21 +86,41 @@ export function KnowledgePage() {
             {searchResults.length} results for &ldquo;{query}&rdquo;
           </div>
           <div className="space-y-2">
-            {searchResults.map((r) => (
-              <MerrisCard key={r.id} style={{ padding: '10px 14px' }}>
-                <div className="flex items-start justify-between gap-2">
-                  <div>
-                    <div className="font-display text-[13px] font-semibold text-merris-text">{r.title}</div>
-                    <div className="mt-0.5 font-body text-[11px] text-merris-text-secondary line-clamp-2">{r.description}</div>
+            {searchResults.map((r) => {
+              const isExpanded = expandedId === r.id;
+              return (
+                <MerrisCard
+                  key={r.id}
+                  style={{ padding: '10px 14px', cursor: 'pointer' }}
+                  onClick={() => setExpandedId(isExpanded ? null : r.id)}
+                >
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="min-w-0 flex-1">
+                      <div className="font-display text-[13px] font-semibold text-merris-text">{r.title}</div>
+                      <div className={`mt-0.5 font-body text-[11px] text-merris-text-secondary ${isExpanded ? '' : 'line-clamp-2'}`}>
+                        {r.description}
+                      </div>
+                    </div>
+                    <div className="shrink-0 text-right">
+                      <Pill size="sm">{r.domain}</Pill>
+                      <div className="mt-1 font-body text-[9px] text-merris-text-tertiary">{Math.round(r.score * 100)}%</div>
+                    </div>
                   </div>
-                  <div className="shrink-0 text-right">
-                    <Pill size="sm">{r.domain}</Pill>
-                    <div className="mt-1 font-body text-[9px] text-merris-text-tertiary">{Math.round(r.score * 100)}%</div>
-                  </div>
-                </div>
-                <div className="mt-1 font-body text-[9px] text-merris-text-tertiary">{r.source} · {r.year}</div>
-              </MerrisCard>
-            ))}
+                  <div className="mt-1 font-body text-[9px] text-merris-text-tertiary">{r.source} · {r.year}</div>
+                  {isExpanded && (
+                    <div className="mt-2 border-t border-merris-border pt-2" onClick={(e) => e.stopPropagation()}>
+                      <button
+                        type="button"
+                        onClick={() => askInIntelligence(r.title)}
+                        className="font-display text-[10px] font-semibold text-merris-primary hover:underline"
+                      >
+                        Ask in Intelligence →
+                      </button>
+                    </div>
+                  )}
+                </MerrisCard>
+              );
+            })}
           </div>
         </div>
       )}

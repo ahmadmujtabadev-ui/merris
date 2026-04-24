@@ -49,6 +49,7 @@ export function extractCitations(toolCalls: ToolCall[]): { citations: Citation[]
   const evidenceTools = [
     'search_knowledge', 'get_regulatory_context', 'get_scientific_basis',
     'benchmark_metric', 'retrieve_best_disclosure', 'retrieve_similar_companies',
+    'search_kb_dense',
   ];
 
   for (const call of toolCalls) {
@@ -73,13 +74,16 @@ export function extractCitations(toolCalls: ToolCall[]): { citations: Citation[]
       }
 
       for (const item of items.slice(0, 5)) {
-        const title = (item.title as string) || (item.reportTitle as string) || (item.name as string) || '';
-        const source = (item.source as string) || (item.company as string) || '';
+        // dense search results use filename/module/excerpt instead of title/source/description
+        const rawFilename = (item.filename as string) || '';
+        const humanFilename = rawFilename.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
+        const title = (item.title as string) || (item.reportTitle as string) || (item.name as string) || humanFilename || '';
+        const source = (item.source as string) || (item.company as string) || (item.module as string) || '';
         const year = (item.year as number) || (item.reportYear as number) || (item.latestReportYear as number) || 0;
         const url = (item.sourceUrl as string) || ((item.data as any)?.sourceUrl as string) || undefined;
         const domain = (item.domain as string) || (item.collection as string) || '';
         const entryId = (item.id as string) || (item._id as string) || '';
-        const description = (item.description as string) || (item.abstract as string) || '';
+        const description = (item.description as string) || (item.abstract as string) || (item.excerpt as string) || '';
         const ingested = item.ingested as boolean;
 
         // RULE 1: Only cite entries that have actual content

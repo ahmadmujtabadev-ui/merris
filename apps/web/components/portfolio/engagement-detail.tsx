@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { api, type Engagement } from '@/lib/api';
 import { MerrisCard } from '@/components/merris/card';
 import { EngagementDetailHeader } from './engagement-detail-header';
@@ -9,33 +9,26 @@ import { EngagementDetailFrameworks } from './engagement-detail-frameworks';
 import { EngagementDetailFindings } from './engagement-detail-findings';
 import { EngagementDetailSidebar } from './engagement-detail-sidebar';
 import { EngagementDocumentsSection } from './engagement-documents-section';
+import { EngagementDataPoints } from './engagement-data-points';
 
 export function EngagementDetail({ engagementId }: { engagementId: string }) {
   const [engagement, setEngagement] = useState<Engagement | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    let cancelled = false;
-    setLoading(true);
-    setError(null);
+  const fetchEngagement = useCallback(() => {
     api
       .getEngagement(engagementId)
-      .then((res) => {
-        if (cancelled) return;
-        setEngagement(res.engagement);
-      })
-      .catch((err) => {
-        if (cancelled) return;
-        setError(err instanceof Error ? err.message : 'Failed to load engagement');
-      })
-      .finally(() => {
-        if (!cancelled) setLoading(false);
-      });
-    return () => {
-      cancelled = true;
-    };
+      .then((res) => setEngagement(res.engagement))
+      .catch((err) => setError(err instanceof Error ? err.message : 'Failed to load engagement'))
+      .finally(() => setLoading(false));
   }, [engagementId]);
+
+  useEffect(() => {
+    setLoading(true);
+    setError(null);
+    fetchEngagement();
+  }, [fetchEngagement]);
 
   if (loading) {
     return (
@@ -65,11 +58,15 @@ export function EngagementDetail({ engagementId }: { engagementId: string }) {
         <div className="md:col-span-2">
           <EngagementDetailReadiness score={completeness} />
           <EngagementDetailFrameworks frameworks={engagement.frameworks ?? []} />
-          <EngagementDetailFindings />
+          <EngagementDetailFindings engagementId={engagement.id} />
+          <EngagementDataPoints
+            engagementId={engagement.id}
+            onConfirmed={fetchEngagement}
+          />
           <EngagementDocumentsSection engagementId={engagement.id} />
         </div>
         <div>
-          <EngagementDetailSidebar />
+          <EngagementDetailSidebar engagementId={engagement.id} engagementName={engagement.name} />
         </div>
       </div>
     </div>
