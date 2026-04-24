@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Merris Learning & Adaptation Engine (Capability 6)
  *
  * Learns from user edits, acceptances, and rejections to adapt the agent's
@@ -157,7 +157,7 @@ export async function processAcceptSignal(
     // Increase confidence on all user style preferences
     await StyleMemoryModel.updateMany(
       {
-        userId: new mongoose.Types.ObjectId(userId),
+        userId: new (mongoose.Types.ObjectId as any)(userId),
         confidence: { $lt: 1 },
       },
       {
@@ -169,7 +169,7 @@ export async function processAcceptSignal(
     // Cap confidence at 1.0
     await StyleMemoryModel.updateMany(
       {
-        userId: new mongoose.Types.ObjectId(userId),
+        userId: new (mongoose.Types.ObjectId as any)(userId),
         confidence: { $gt: 1 },
       },
       { $set: { confidence: 1 } }
@@ -192,7 +192,7 @@ export async function processRejectSignal(
     // Decrease confidence on recent style preferences
     await StyleMemoryModel.updateMany(
       {
-        userId: new mongoose.Types.ObjectId(userId),
+        userId: new (mongoose.Types.ObjectId as any)(userId),
         confidence: { $gt: 0 },
       },
       {
@@ -204,7 +204,7 @@ export async function processRejectSignal(
     // Floor confidence at 0
     await StyleMemoryModel.updateMany(
       {
-        userId: new mongoose.Types.ObjectId(userId),
+        userId: new (mongoose.Types.ObjectId as any)(userId),
         confidence: { $lt: 0 },
       },
       { $set: { confidence: 0 } }
@@ -244,8 +244,8 @@ export async function detectEmotionalContext(
   try {
     // Get recent interactions (last 2 hours)
     const recentInteractions = await ConversationMemoryModel.find({
-      userId: new mongoose.Types.ObjectId(userId),
-      engagementId: new mongoose.Types.ObjectId(engagementId),
+      userId: new (mongoose.Types.ObjectId as any)(userId),
+      engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
       timestamp: { $gt: new Date(now - 2 * 60 * 60 * 1000) },
     }).sort({ timestamp: -1 }).limit(20).lean() as any;
 
@@ -288,7 +288,7 @@ export async function detectEmotionalContext(
     const db = mongoose.connection.db;
     if (db) {
       const engagement = await db.collection('engagements').findOne({
-        _id: new mongoose.Types.ObjectId(engagementId),
+        _id: new (mongoose.Types.ObjectId as any)(engagementId),
       });
       if (engagement?.deadline) {
         const daysToDeadline = (new Date(engagement.deadline).getTime() - now) / (1000 * 60 * 60 * 24);

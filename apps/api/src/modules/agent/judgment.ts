@@ -423,7 +423,7 @@ async function getOrgContext(engagementId: string): Promise<string> {
     if (!db) return 'Unknown organization';
 
     const engagement = await db.collection('engagements').findOne({
-      _id: new mongoose.default.Types.ObjectId(engagementId),
+      _id: new (mongoose.default.Types.ObjectId as any)(engagementId),
     });
     if (!engagement) return 'Unknown engagement';
 

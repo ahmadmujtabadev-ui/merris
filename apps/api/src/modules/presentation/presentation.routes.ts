@@ -60,7 +60,7 @@ export async function registerPresentationRoutes(app: FastifyInstance): Promise<
           });
         }
 
-        const presentation = await generatePresentation(engagementId, parsed.data);
+        const presentation = await generatePresentation(engagementId, parsed.data as any);
 
         return reply.code(201).send(presentation);
       } catch (err) {

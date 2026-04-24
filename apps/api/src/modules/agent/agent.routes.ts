@@ -119,7 +119,7 @@ export async function registerAgentRoutes(app: FastifyInstance): Promise<void> {
           engagementId: parsed.data.engagementId,
           userId: request.user.userId,
           message: parsed.data.message,
-          conversationHistory: parsed.data.conversationHistory,
+          conversationHistory: parsed.data.conversationHistory as any,
           documentBody: parsed.data.documentBody,
           cursorSection: parsed.data.cursorSection,
         });

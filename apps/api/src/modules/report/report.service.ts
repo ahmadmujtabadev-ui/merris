@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+﻿import mongoose from 'mongoose';
 import { ReportModel } from './report.model.js';
 import type { IReport, IReportSection, IReviewComment } from './report.model.js';
 import { AppError } from '../auth/auth.service.js';
@@ -21,7 +21,7 @@ interface CreateReportInput {
 
 export async function createReport(input: CreateReportInput): Promise<IReport> {
   const structure: IReportSection[] = (input.sections ?? []).map((s, idx) => ({
-    id: new mongoose.Types.ObjectId().toString(),
+    id: new (mongoose.Types.ObjectId as any)().toString(),
     title: s.title,
     frameworkRef: s.frameworkRef,
     disclosures: s.disclosures ?? [],
@@ -32,7 +32,7 @@ export async function createReport(input: CreateReportInput): Promise<IReport> {
   }));
 
   const report = await ReportModel.create({
-    engagementId: new mongoose.Types.ObjectId(input.engagementId),
+    engagementId: new (mongoose.Types.ObjectId as any)(input.engagementId),
     title: input.title,
     type: input.type,
     language: input.language ?? 'en',
@@ -50,7 +50,7 @@ export async function createReport(input: CreateReportInput): Promise<IReport> {
 
 export async function listReports(engagementId: string): Promise<IReport[]> {
   return ReportModel.find({
-    engagementId: new mongoose.Types.ObjectId(engagementId),
+    engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
   })
     .sort({ updatedAt: -1 })
     .lean()

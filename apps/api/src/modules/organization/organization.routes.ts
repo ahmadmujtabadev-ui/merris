@@ -45,7 +45,7 @@ export async function registerOrganizationRoutes(app: FastifyInstance): Promise<
       }
 
       const body = ProfileBodySchema.parse(request.body);
-      const result = await createOrUpdateProfile(request.params.id, body);
+      const result = await createOrUpdateProfile(request.params.id, body as any);
 
       return reply.code(200).send({
         profile: result.profile,
@@ -117,7 +117,7 @@ export async function registerOrganizationRoutes(app: FastifyInstance): Promise<
       }
 
       const body = FrameworkSelectionsBodySchema.parse(request.body);
-      const result = await saveFrameworkSelections(request.params.id, body);
+      const result = await saveFrameworkSelections(request.params.id, body as any);
 
       return reply.code(200).send(result);
     } catch (err) {

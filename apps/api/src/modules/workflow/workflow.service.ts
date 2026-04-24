@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+﻿import mongoose from 'mongoose';
 import {
   WorkflowModel,
   WORKFLOW_STAGES,
@@ -32,7 +32,7 @@ const entryCriteria: Record<string, CriteriaChecker> = {
     // Check org profile exists (use engagementId to look up — in a real system
     // we'd join through engagement.orgId, but for validation we check if any profile exists)
     const workflow = await WorkflowModel.findOne({
-      engagementId: new mongoose.Types.ObjectId(engagementId),
+      engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
     }).exec();
 
     // For entry criteria, we check via external models
@@ -59,7 +59,7 @@ const entryCriteria: Record<string, CriteriaChecker> = {
     let met = true;
 
     const dataPoints = await DataPointModel.find({
-      engagementId: new mongoose.Types.ObjectId(engagementId),
+      engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
     }).exec();
 
     const total = dataPoints.length;
@@ -90,7 +90,7 @@ const entryCriteria: Record<string, CriteriaChecker> = {
     let met = true;
 
     const report = await ReportModel.findOne({
-      engagementId: new mongoose.Types.ObjectId(engagementId),
+      engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
       status: 'draft',
     }).exec();
 
@@ -108,7 +108,7 @@ const entryCriteria: Record<string, CriteriaChecker> = {
     let met = true;
 
     const report = await ReportModel.findOne({
-      engagementId: new mongoose.Types.ObjectId(engagementId),
+      engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
     }).exec();
 
     if (!report) {
@@ -158,7 +158,7 @@ const entryCriteria: Record<string, CriteriaChecker> = {
 
     // Check QA passed: report must be in partner_approved or client_approved status
     const report = await ReportModel.findOne({
-      engagementId: new mongoose.Types.ObjectId(engagementId),
+      engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
     }).exec();
 
     if (!report) {
@@ -177,7 +177,7 @@ const entryCriteria: Record<string, CriteriaChecker> = {
 
     // Check evidence pack exists — at least one document linked
     const docs = await DataPointModel.find({
-      engagementId: new mongoose.Types.ObjectId(engagementId),
+      engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
       sourceDocumentId: { $exists: true, $ne: null },
     }).exec();
 
@@ -198,7 +198,7 @@ export async function initializeWorkflow(
   engagementId: string,
 ): Promise<IWorkflowDefinition> {
   const existing = await WorkflowModel.findOne({
-    engagementId: new mongoose.Types.ObjectId(engagementId),
+    engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
   }).exec();
 
   if (existing) {
@@ -213,7 +213,7 @@ export async function initializeWorkflow(
   }));
 
   const workflow = await WorkflowModel.create({
-    engagementId: new mongoose.Types.ObjectId(engagementId),
+    engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
     stages,
     currentStage: 'Setup',
     history: [],
@@ -230,7 +230,7 @@ export async function getWorkflow(
   engagementId: string,
 ): Promise<IWorkflowDefinition> {
   const workflow = await WorkflowModel.findOne({
-    engagementId: new mongoose.Types.ObjectId(engagementId),
+    engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
   }).exec();
 
   if (!workflow) {

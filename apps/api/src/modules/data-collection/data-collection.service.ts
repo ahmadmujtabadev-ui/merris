@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+﻿import mongoose from 'mongoose';
 import { z } from 'zod';
 import { DataPointModel, IDataPoint, IAuditEntry } from '../ingestion/ingestion.model.js';
 import { AppError } from '../auth/auth.service.js';
@@ -108,7 +108,7 @@ export async function checkVarianceAndDuplicates(
 
   // Check for duplicate metric+period
   const duplicateQuery: Record<string, unknown> = {
-    engagementId: new mongoose.Types.ObjectId(engagementId),
+    engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
     frameworkRef,
     metricName,
     'period.year': period.year,
@@ -117,7 +117,7 @@ export async function checkVarianceAndDuplicates(
     duplicateQuery['period.quarter'] = period.quarter;
   }
   if (excludeId) {
-    duplicateQuery['_id'] = { $ne: new mongoose.Types.ObjectId(excludeId) };
+    duplicateQuery['_id'] = { $ne: new (mongoose.Types.ObjectId as any)(excludeId) };
   }
 
   const duplicate = await DataPointModel.findOne(duplicateQuery);
@@ -132,7 +132,7 @@ export async function checkVarianceAndDuplicates(
   // Check YoY variance (> 50% triggers warning)
   if (typeof value === 'number') {
     const previousYear = await DataPointModel.findOne({
-      engagementId: new mongoose.Types.ObjectId(engagementId),
+      engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
       frameworkRef,
       metricName,
       'period.year': period.year - 1,
@@ -170,7 +170,7 @@ export async function listDataPoints(
   filters: ListDataPointsFilters = {}
 ) {
   const query: Record<string, unknown> = {
-    engagementId: new mongoose.Types.ObjectId(engagementId),
+    engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
   };
 
   if (filters.status) {
@@ -209,7 +209,7 @@ export async function createDataPoint(
     input.frameworkRef,
     input.metricName,
     input.value,
-    input.period
+    input.period as any
   );
 
   const auditEntry = {
@@ -221,7 +221,7 @@ export async function createDataPoint(
   };
 
   const dataPoint = await DataPointModel.create({
-    engagementId: new mongoose.Types.ObjectId(engagementId),
+    engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
     frameworkRef: input.frameworkRef,
     metricName: input.metricName,
     value: input.value,
@@ -362,7 +362,7 @@ export interface GapRegisterItem {
 
 export async function getGapRegister(engagementId: string) {
   const missingOrIncomplete = await DataPointModel.find({
-    engagementId: new mongoose.Types.ObjectId(engagementId),
+    engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
     status: { $in: ['missing', 'auto_extracted'] },
   })
     .sort({ frameworkRef: 1, metricName: 1 })
@@ -413,11 +413,11 @@ export async function assignGaps(
   input: AssignGapsInput,
   userId: string
 ) {
-  const objectIds = input.dataPointIds.map((id) => new mongoose.Types.ObjectId(id));
+  const objectIds = input.dataPointIds.map((id) => new (mongoose.Types.ObjectId as any)(id));
 
   const dataPoints = await DataPointModel.find({
     _id: { $in: objectIds },
-    engagementId: new mongoose.Types.ObjectId(engagementId),
+    engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
   });
 
   if (dataPoints.length === 0) {
@@ -451,7 +451,7 @@ export async function assignGaps(
 // ============================================================
 
 export async function getCompleteness(engagementId: string) {
-  const engObjId = new mongoose.Types.ObjectId(engagementId);
+  const engObjId = new (mongoose.Types.ObjectId as any)(engagementId);
   const allDataPoints = await DataPointModel.find({ engagementId: engObjId }).lean();
 
   const total = allDataPoints.length;

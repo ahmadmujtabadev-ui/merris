@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+﻿import mongoose from 'mongoose';
 import { DataPointModel, IDataPoint } from '../ingestion/ingestion.model.js';
 import { ESGDocumentModel } from '../ingestion/ingestion.model.js';
 import { ReportModel } from '../report/report.model.js';
@@ -142,7 +142,7 @@ async function buildEvidenceItem(dp: IDataPoint): Promise<EvidenceItem> {
 export async function generateAssurancePack(
   engagementId: string,
 ): Promise<AssurancePack> {
-  const engObjId = new mongoose.Types.ObjectId(engagementId);
+  const engObjId = new (mongoose.Types.ObjectId as any)(engagementId);
 
   const dataPoints = await DataPointModel.find({ engagementId: engObjId }).lean() as unknown as IDataPoint[];
 
@@ -263,7 +263,7 @@ export async function getDisclosureEvidence(
   engagementId: string,
   disclosureId: string,
 ): Promise<DisclosureEvidence | null> {
-  const engObjId = new mongoose.Types.ObjectId(engagementId);
+  const engObjId = new (mongoose.Types.ObjectId as any)(engagementId);
 
   // Find data points matching this disclosure reference
   const dataPoints = await DataPointModel.find({

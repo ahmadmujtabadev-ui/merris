@@ -1,4 +1,4 @@
-// src/services/scaffolding/scaffolding.routes.ts
+﻿// src/services/scaffolding/scaffolding.routes.ts
 
 import { FastifyInstance } from 'fastify';
 import mongoose from 'mongoose';
@@ -86,7 +86,7 @@ export async function registerScaffoldingRoutes(app: FastifyInstance): Promise<v
       const engId = request.params.id;
       let engObjId: mongoose.Types.ObjectId;
       try {
-        engObjId = new mongoose.Types.ObjectId(engId);
+        engObjId = new (mongoose.Types.ObjectId as any)(engId);
       } catch {
         return reply.send({ seeded: false, compliance: [], disclosureMatrix: [] });
       }
@@ -170,7 +170,7 @@ export async function registerScaffoldingRoutes(app: FastifyInstance): Promise<v
       const engId = request.params.id;
       let engObjId: mongoose.Types.ObjectId;
       try {
-        engObjId = new mongoose.Types.ObjectId(engId);
+        engObjId = new (mongoose.Types.ObjectId as any)(engId);
       } catch {
         return reply.send({ seeded: false, findings: [] });
       }
@@ -237,8 +237,8 @@ export async function registerScaffoldingRoutes(app: FastifyInstance): Promise<v
       const user = (request as any).user;
       const engagementId = (request.query as any)['engagementId'];
 
-      const filter: Record<string, any> = { userId: new mongoose.Types.ObjectId(user.userId) };
-      if (engagementId) filter['engagementId'] = new mongoose.Types.ObjectId(engagementId);
+      const filter: Record<string, any> = { userId: new (mongoose.Types.ObjectId as any)(user.userId) };
+      if (engagementId) filter['engagementId'] = new (mongoose.Types.ObjectId as any)(engagementId);
 
       const memories = await ConversationMemoryModel
         .find(filter)
@@ -254,7 +254,7 @@ export async function registerScaffoldingRoutes(app: FastifyInstance): Promise<v
       const engNameMap: Record<string, string> = {};
       if (db && engagementIds.length > 0) {
         const engs = await db.collection('engagements')
-          .find({ _id: { $in: engagementIds.map((id: string) => new mongoose.Types.ObjectId(id)) } })
+          .find({ _id: { $in: engagementIds.map((id: string) => new (mongoose.Types.ObjectId as any)(id)) } })
           .project({ name: 1 })
           .toArray();
         for (const e of engs) engNameMap[e._id.toString()] = e.name;

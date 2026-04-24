@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Semantic Search Service
  *
  * Provides TF-IDF-based semantic search across all 7 KB domains.
@@ -203,7 +203,7 @@ export async function semanticSearch(options: SearchOptions): Promise<SearchResu
     const model = getModelForCollection(collection);
     if (!model) continue;
 
-    const sourceIds = items.map((i) => new mongoose.Types.ObjectId(i.sourceId));
+    const sourceIds = items.map((i) => new (mongoose.Types.ObjectId as any)(i.sourceId));
     const docs = await model.find({ _id: { $in: sourceIds } }).lean();
 
     const docMap = new Map(docs.map((d: any) => [d._id.toString(), d]));

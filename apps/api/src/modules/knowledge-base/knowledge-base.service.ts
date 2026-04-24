@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+﻿import fs from 'fs/promises';
 import crypto from 'crypto';
 import { logger } from '../../lib/logger.js';
 import { sendMessage } from '../../lib/claude.js';
@@ -117,7 +117,7 @@ export async function ingestReport(
     { company: metadata.company, reportYear: metadata.reportYear },
     {
       disclosureId: metadata.disclosureId
-        ? new mongoose.Types.ObjectId(metadata.disclosureId)
+        ? new (mongoose.Types.ObjectId as any)(metadata.disclosureId)
         : undefined,
       company: metadata.company,
       reportYear: metadata.reportYear,
@@ -214,10 +214,10 @@ async function generateKBEmbeddingAsync(
   }
 
   await EmbeddingModel.findOneAndUpdate(
-    { sourceCollection, sourceId: new mongoose.Types.ObjectId(sourceId) },
+    { sourceCollection, sourceId: new (mongoose.Types.ObjectId as any)(sourceId) },
     {
       sourceCollection,
-      sourceId: new mongoose.Types.ObjectId(sourceId),
+      sourceId: new (mongoose.Types.ObjectId as any)(sourceId),
       domain,
       text: newText.substring(0, 50_000),
       textHash,

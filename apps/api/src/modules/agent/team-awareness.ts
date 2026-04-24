@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Merris Multi-User Awareness Engine (Capability 4)
  *
  * Understands team composition, role-based context, and engagement bottlenecks.
@@ -46,7 +46,7 @@ export interface Bottleneck {
 // ============================================================
 
 export async function getTeamContext(engagementId: string): Promise<TeamContext> {
-  const engObjId = new mongoose.Types.ObjectId(engagementId);
+  const engObjId = new (mongoose.Types.ObjectId as any)(engagementId);
 
   // Get the engagement to find orgId
   let engagement: any = null;
@@ -122,7 +122,7 @@ export async function getBottlenecks(engagementId: string): Promise<Bottleneck[]
   try {
     // Check for data points that have been in auto_extracted status too long (>7 days)
     const staleDataPoints = await DataPointModel.find({
-      engagementId: new mongoose.Types.ObjectId(engagementId),
+      engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
       status: 'auto_extracted',
       updatedAt: { $lt: new Date(now - 7 * 24 * 60 * 60 * 1000) },
     }).limit(20).lean() as any;
@@ -142,7 +142,7 @@ export async function getBottlenecks(engagementId: string): Promise<Bottleneck[]
 
     // Check for missing data points
     const missingDataPoints = await DataPointModel.find({
-      engagementId: new mongoose.Types.ObjectId(engagementId),
+      engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
       status: 'missing',
     }).limit(20).lean() as any;
 
@@ -158,7 +158,7 @@ export async function getBottlenecks(engagementId: string): Promise<Bottleneck[]
 
     // Check for no recent activity on the engagement (>14 days)
     const recentConversations = await ConversationMemoryModel.findOne({
-      engagementId: new mongoose.Types.ObjectId(engagementId),
+      engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
       timestamp: { $gt: new Date(now - 14 * 24 * 60 * 60 * 1000) },
     }).lean();
 
@@ -176,7 +176,7 @@ export async function getBottlenecks(engagementId: string): Promise<Bottleneck[]
     const db = mongoose.connection.db;
     if (db) {
       const stalledReports = await db.collection('reports').find({
-        engagementId: new mongoose.Types.ObjectId(engagementId),
+        engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
         status: 'in_review',
         updatedAt: { $lt: new Date(now - 5 * 24 * 60 * 60 * 1000) },
       }).toArray();
@@ -211,7 +211,7 @@ async function getTaskAssignments(engagementId: string, users: any[]): Promise<T
 
   try {
     // Derive tasks from engagement state
-    const engObjId = new mongoose.Types.ObjectId(engagementId);
+    const engObjId = new (mongoose.Types.ObjectId as any)(engagementId);
 
     // Count data points by status
     const statusCounts = await DataPointModel.aggregate([

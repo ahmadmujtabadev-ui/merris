@@ -51,7 +51,7 @@ export async function registerAuthRoutes(app: FastifyInstance): Promise<void> {
   app.post('/api/v1/auth/register', async (request, reply) => {
     try {
       const body = RegisterBodySchema.parse(request.body);
-      const result = await register(body);
+      const result = await register(body as any);
       return reply.code(201).send(result);
     } catch (err) {
       return handleError(err, reply);
@@ -64,7 +64,7 @@ export async function registerAuthRoutes(app: FastifyInstance): Promise<void> {
   app.post('/api/v1/auth/login', async (request, reply) => {
     try {
       const body = LoginBodySchema.parse(request.body);
-      const result = await login(body);
+      const result = await login(body as any);
       return reply.code(200).send(result);
     } catch (err) {
       return handleError(err, reply);

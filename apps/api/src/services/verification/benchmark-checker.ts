@@ -1,4 +1,4 @@
-// src/services/verification/benchmark-checker.ts
+﻿// src/services/verification/benchmark-checker.ts
 //
 // Compares engagement metrics against peer benchmarks from knowledge base.
 
@@ -18,7 +18,7 @@ async function resolveSector(engagementId: string): Promise<string | null> {
     const db = mongoose.connection.db;
     if (!db) return null;
     const engagement = await db.collection("engagements").findOne({
-      _id: new mongoose.Types.ObjectId(engagementId),
+      _id: new (mongoose.Types.ObjectId as any)(engagementId),
     });
     if (!engagement?.orgId) return null;
     const orgProfile = await db.collection("orgprofiles").findOne({

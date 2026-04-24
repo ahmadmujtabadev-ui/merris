@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Merris Perception Engine
  *
  * Reads an entire document on open, cross-references against engagement data,
@@ -807,7 +807,7 @@ async function getEngagementFrameworks(engagementId: string): Promise<FrameworkI
     const db = mongoose.connection.db;
     if (!db) return [];
     const engagement = await db.collection('engagements').findOne({
-      _id: new mongoose.Types.ObjectId(engagementId),
+      _id: new (mongoose.Types.ObjectId as any)(engagementId),
     });
     if (!engagement?.frameworks?.length) return [];
 
@@ -839,7 +839,7 @@ async function getEngagementInfo(engagementId: string): Promise<any> {
     const db = mongoose.connection.db;
     if (!db) return null;
     return await db.collection('engagements').findOne({
-      _id: new mongoose.Types.ObjectId(engagementId),
+      _id: new (mongoose.Types.ObjectId as any)(engagementId),
     });
   } catch {
     return null;

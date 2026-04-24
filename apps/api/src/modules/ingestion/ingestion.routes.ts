@@ -1,4 +1,4 @@
-import type { FastifyInstance } from 'fastify';
+﻿import type { FastifyInstance } from 'fastify';
 import multipart from '@fastify/multipart';
 import { z } from 'zod';
 import { authenticate } from '../auth/auth.middleware.js';
@@ -101,7 +101,7 @@ export async function registerIngestionRoutes(app: FastifyInstance): Promise<voi
         }
         const engagements = await db
           .collection('engagements')
-          .find({ orgId: new mongoose.Types.ObjectId(request.user.orgId) })
+          .find({ orgId: new (mongoose.Types.ObjectId as any)(request.user.orgId) })
           .sort({ createdAt: -1 })
           .toArray();
 
@@ -147,7 +147,7 @@ export async function registerIngestionRoutes(app: FastifyInstance): Promise<voi
         }
         const now = new Date();
         const doc = {
-          orgId: new mongoose.Types.ObjectId(request.user.orgId),
+          orgId: new (mongoose.Types.ObjectId as any)(request.user.orgId),
           name: name.trim(),
           frameworks: Array.isArray(frameworks) ? frameworks : [],
           status: 'DRAFT',
@@ -187,8 +187,8 @@ export async function registerIngestionRoutes(app: FastifyInstance): Promise<voi
         if (!db) return reply.code(500).send({ error: 'Database not connected' });
 
         const engagement = await db.collection('engagements').findOne({
-          _id: new mongoose.Types.ObjectId(request.params.id),
-          orgId: new mongoose.Types.ObjectId(request.user.orgId),
+          _id: new (mongoose.Types.ObjectId as any)(request.params.id),
+          orgId: new (mongoose.Types.ObjectId as any)(request.user.orgId),
         });
 
         if (!engagement) return reply.code(404).send({ error: 'Engagement not found' });

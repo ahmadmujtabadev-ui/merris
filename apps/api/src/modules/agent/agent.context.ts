@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+﻿import mongoose from 'mongoose';
 import { OrgProfileModel } from '../organization/organization.model.js';
 import { DataPointModel } from '../ingestion/ingestion.model.js';
 import { UserModel } from '../auth/auth.model.js';
@@ -151,7 +151,7 @@ export async function buildAgentContext(
   let recentActivity: RecentActivityEntry[] = [];
   try {
     const recentDataPoints = await DataPointModel.find({
-      engagementId: new mongoose.Types.ObjectId(engagementId),
+      engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
     })
       .sort({ updatedAt: -1 })
       .limit(5)
@@ -175,7 +175,7 @@ export async function buildAgentContext(
     const db = mongoose.connection.db;
     if (db) {
       const eng = await db.collection('engagements').findOne({
-        _id: new mongoose.Types.ObjectId(engagementId),
+        _id: new (mongoose.Types.ObjectId as any)(engagementId),
       });
       if (eng) engagementName = eng.name || engagementName;
     }

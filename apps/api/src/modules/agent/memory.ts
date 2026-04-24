@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Merris Engagement Memory Service
  *
  * Captures and retrieves memory across all interactions:
@@ -38,8 +38,8 @@ export interface CaptureConversationInput {
 export async function captureConversation(input: CaptureConversationInput): Promise<void> {
   try {
     await ConversationMemoryModel.create({
-      engagementId: new mongoose.Types.ObjectId(input.engagementId),
-      userId: new mongoose.Types.ObjectId(input.userId),
+      engagementId: new (mongoose.Types.ObjectId as any)(input.engagementId),
+      userId: new (mongoose.Types.ObjectId as any)(input.userId),
       channel: input.channel,
       userMessage: input.userMessage,
       agentResponse: input.agentResponse,
@@ -57,7 +57,7 @@ export async function getRecentConversations(
   limit = 10
 ): Promise<Array<Record<string, any>>> {
   return ConversationMemoryModel.find({
-    engagementId: new mongoose.Types.ObjectId(engagementId),
+    engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
   })
     .sort({ timestamp: -1 })
     .limit(limit)
@@ -82,8 +82,8 @@ export interface CaptureDecisionInput {
 export async function captureDecision(input: CaptureDecisionInput): Promise<void> {
   try {
     await DecisionMemoryModel.create({
-      engagementId: new mongoose.Types.ObjectId(input.engagementId),
-      userId: new mongoose.Types.ObjectId(input.userId),
+      engagementId: new (mongoose.Types.ObjectId as any)(input.engagementId),
+      userId: new (mongoose.Types.ObjectId as any)(input.userId),
       decision: input.decision,
       reasoning: input.reasoning,
       alternatives: input.alternatives || [],
@@ -98,7 +98,7 @@ export async function captureDecision(input: CaptureDecisionInput): Promise<void
 
 export async function getDecisions(engagementId: string): Promise<Array<Record<string, any>>> {
   return DecisionMemoryModel.find({
-    engagementId: new mongoose.Types.ObjectId(engagementId),
+    engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
   })
     .sort({ timestamp: -1 })
     .lean() as any;
@@ -122,9 +122,9 @@ export async function captureStyle(input: CaptureStyleInput): Promise<void> {
   try {
     // Upsert: if same user+category+preference exists, update confidence and add evidence
     const query: Record<string, any> = { category: input.category };
-    if (input.userId) query.userId = new mongoose.Types.ObjectId(input.userId);
-    if (input.orgId) query.orgId = new mongoose.Types.ObjectId(input.orgId);
-    if (input.clientOrgId) query.clientOrgId = new mongoose.Types.ObjectId(input.clientOrgId);
+    if (input.userId) query.userId = new (mongoose.Types.ObjectId as any)(input.userId);
+    if (input.orgId) query.orgId = new (mongoose.Types.ObjectId as any)(input.orgId);
+    if (input.clientOrgId) query.clientOrgId = new (mongoose.Types.ObjectId as any)(input.clientOrgId);
 
     const existing = await StyleMemoryModel.findOne({
       ...query,
@@ -140,9 +140,9 @@ export async function captureStyle(input: CaptureStyleInput): Promise<void> {
       await existing.save();
     } else {
       await StyleMemoryModel.create({
-        userId: input.userId ? new mongoose.Types.ObjectId(input.userId) : undefined,
-        orgId: input.orgId ? new mongoose.Types.ObjectId(input.orgId) : undefined,
-        clientOrgId: input.clientOrgId ? new mongoose.Types.ObjectId(input.clientOrgId) : undefined,
+        userId: input.userId ? new (mongoose.Types.ObjectId as any)(input.userId) : undefined,
+        orgId: input.orgId ? new (mongoose.Types.ObjectId as any)(input.orgId) : undefined,
+        clientOrgId: input.clientOrgId ? new (mongoose.Types.ObjectId as any)(input.clientOrgId) : undefined,
         category: input.category,
         preference: input.preference,
         evidence: [input.evidence],
@@ -160,9 +160,9 @@ export async function getStylePreferences(
   clientOrgId?: string
 ): Promise<IStyleMemory[]> {
   const conditions: Record<string, any>[] = [];
-  if (userId) conditions.push({ userId: new mongoose.Types.ObjectId(userId) });
-  if (orgId) conditions.push({ orgId: new mongoose.Types.ObjectId(orgId) });
-  if (clientOrgId) conditions.push({ clientOrgId: new mongoose.Types.ObjectId(clientOrgId) });
+  if (userId) conditions.push({ userId: new (mongoose.Types.ObjectId as any)(userId) });
+  if (orgId) conditions.push({ orgId: new (mongoose.Types.ObjectId as any)(orgId) });
+  if (clientOrgId) conditions.push({ clientOrgId: new (mongoose.Types.ObjectId as any)(clientOrgId) });
 
   if (conditions.length === 0) return [];
 
@@ -203,8 +203,8 @@ export async function catchMeUp(
   engagementId: string,
   userId: string
 ): Promise<CatchMeUpSummary> {
-  const engObjId = new mongoose.Types.ObjectId(engagementId);
-  const userObjId = new mongoose.Types.ObjectId(userId);
+  const engObjId = new (mongoose.Types.ObjectId as any)(engagementId);
+  const userObjId = new (mongoose.Types.ObjectId as any)(userId);
 
   // Find user's last interaction
   const lastSession = await ConversationMemoryModel.findOne({

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Generate TF-IDF Embeddings for all KB entries
  *
  * Usage:
@@ -324,7 +324,7 @@ async function main(): Promise<void> {
       updateOne: {
         filter: {
           sourceCollection: entry.collection,
-          sourceId: new mongoose.Types.ObjectId(entry.id),
+          sourceId: new (mongoose.Types.ObjectId as any)(entry.id),
         },
         update: {
           $set: {

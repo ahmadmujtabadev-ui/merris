@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+﻿import mongoose from 'mongoose';
 import { DataPointModel, IDataPoint } from '../ingestion/ingestion.model.js';
 import { ReportModel, IReportSection } from '../report/report.model.js';
 import { Disclosure } from '../../models/disclosure.model.js';
@@ -70,7 +70,7 @@ function unitsConflict(unitA: string, unitB: string): boolean {
 // ============================================================
 
 export async function runQA(engagementId: string): Promise<ConsistencyReport> {
-  const engObjId = new mongoose.Types.ObjectId(engagementId);
+  const engObjId = new (mongoose.Types.ObjectId as any)(engagementId);
 
   const [dataPoints, reports] = await Promise.all([
     DataPointModel.find({ engagementId: engObjId }).lean() as unknown as Promise<IDataPoint[]>,

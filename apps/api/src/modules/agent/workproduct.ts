@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Merris Work Product Generation Engine (Capability 5)
  *
  * Generates full ESG reports, assurance evidence packs, and executive summaries
@@ -97,7 +97,7 @@ export async function generateFullReport(
   options: GenerateReportOptions
 ): Promise<GeneratedReport> {
   const { engagementId, language, qualityLevel } = options;
-  const engObjId = new mongoose.Types.ObjectId(engagementId);
+  const engObjId = new (mongoose.Types.ObjectId as any)(engagementId);
 
   // Fetch engagement info, frameworks, data points, and existing report in parallel
   const [engagement, frameworks, dataPoints, existingReport, completeness] = await Promise.all([
@@ -230,7 +230,7 @@ export async function generateFullReport(
 // ============================================================
 
 export async function generateAssurancePack(engagementId: string): Promise<AssurancePack> {
-  const engObjId = new mongoose.Types.ObjectId(engagementId);
+  const engObjId = new (mongoose.Types.ObjectId as any)(engagementId);
 
   const [frameworks, dataPoints, documents] = await Promise.all([
     getEngagementFrameworks(engagementId),
@@ -316,7 +316,7 @@ export async function generateAssurancePack(engagementId: string): Promise<Assur
 // ============================================================
 
 export async function generateExecutiveSummary(engagementId: string): Promise<string> {
-  const engObjId = new mongoose.Types.ObjectId(engagementId);
+  const engObjId = new (mongoose.Types.ObjectId as any)(engagementId);
 
   const [engagement, dataPoints, completeness, existingReport] = await Promise.all([
     getEngagementInfo(engagementId),
@@ -563,7 +563,7 @@ async function getEngagementFrameworks(engagementId: string): Promise<FrameworkI
     const db = mongoose.connection.db;
     if (!db) return [];
     const engagement = await db.collection('engagements').findOne({
-      _id: new mongoose.Types.ObjectId(engagementId),
+      _id: new (mongoose.Types.ObjectId as any)(engagementId),
     });
     if (!engagement?.frameworks?.length) return [];
 
@@ -597,7 +597,7 @@ async function getEngagementInfo(engagementId: string): Promise<any> {
     const db = mongoose.connection.db;
     if (!db) return null;
     return await db.collection('engagements').findOne({
-      _id: new mongoose.Types.ObjectId(engagementId),
+      _id: new (mongoose.Types.ObjectId as any)(engagementId),
     });
   } catch {
     return null;

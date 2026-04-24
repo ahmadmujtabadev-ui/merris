@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Standalone smoke test for /api/v1/assistant/chat SSE wire format.
  *
  * Purpose: verify Plan 1 Task 6 — that the new content-negotiated chat
@@ -78,9 +78,9 @@ async function main() {
   const url = await app.listen({ port: PORT, host: '127.0.0.1' });
 
   // 5. Create a token for the operator.
-  const orgId = new mongoose.Types.ObjectId().toString();
-  const userId = new mongoose.Types.ObjectId().toString();
-  const engagementId = new mongoose.Types.ObjectId().toString();
+  const orgId = new (mongoose.Types.ObjectId as any)().toString();
+  const userId = new (mongoose.Types.ObjectId as any)().toString();
+  const engagementId = new (mongoose.Types.ObjectId as any)().toString();
   const token = jwt.sign(
     {
       userId,

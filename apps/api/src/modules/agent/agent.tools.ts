@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+﻿import mongoose from 'mongoose';
 import type { CalculationMethod } from '@merris/shared';
 import { DataPointModel, ESGDocumentModel } from '../ingestion/ingestion.model.js';
 import { calculate } from '../calculation/calculation.service.js';
@@ -120,7 +120,7 @@ const searchDocumentsTool: ToolDefinition = {
 
     // Text search over extracted text (vector search stub)
     const documents = await ESGDocumentModel.find({
-      engagementId: new mongoose.Types.ObjectId(engagementId),
+      engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
       status: 'ingested',
       $or: [
         { extractedText: { $regex: new RegExp(query, 'i') } },
@@ -175,7 +175,7 @@ const getDataPointTool: ToolDefinition = {
     };
 
     const dataPoint = await DataPointModel.findOne({
-      engagementId: new mongoose.Types.ObjectId(engagementId),
+      engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
       frameworkRef,
       metricName: { $regex: new RegExp(metricName, 'i') },
     }).lean();
@@ -275,7 +275,7 @@ const checkComplianceTool: ToolDefinition = {
 
     // Get all data points for this engagement + framework
     const dataPoints = await DataPointModel.find({
-      engagementId: new mongoose.Types.ObjectId(engagementId),
+      engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
       frameworkRef: { $regex: new RegExp(`^${frameworkCode}`, 'i') },
     }).lean();
 
@@ -357,7 +357,7 @@ const draftDisclosureTool: ToolDefinition = {
 
     // Fetch related data points
     const dataPoints = await DataPointModel.find({
-      engagementId: new mongoose.Types.ObjectId(engagementId),
+      engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
       frameworkRef: { $regex: new RegExp(`^${frameworkRef}`, 'i') },
     }).lean();
 
@@ -473,7 +473,7 @@ const checkConsistencyTool: ToolDefinition = {
     // Use reportId as engagementId for cross-referencing
     let engagementObjId: mongoose.Types.ObjectId;
     try {
-      engagementObjId = new mongoose.Types.ObjectId(reportId);
+      engagementObjId = new (mongoose.Types.ObjectId as any)(reportId);
     } catch {
       return { error: 'Invalid report/engagement ID format.' };
     }
@@ -736,7 +736,7 @@ const createEvidencePackTool: ToolDefinition = {
     const frameworkCode =
       (disclosure as unknown as { frameworkCode?: string }).frameworkCode || '';
     const dataPoints = await DataPointModel.find({
-      engagementId: new mongoose.Types.ObjectId(engagementId),
+      engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
       frameworkRef: { $regex: new RegExp(`^${frameworkCode}`, 'i') },
     }).lean();
 

@@ -89,7 +89,7 @@ export async function registerReportRoutes(app: FastifyInstance): Promise<void> 
         const report = await createReport({
           engagementId,
           ...parsed.data,
-        });
+        } as any);
 
         return reply.code(201).send(report);
       } catch (err) {

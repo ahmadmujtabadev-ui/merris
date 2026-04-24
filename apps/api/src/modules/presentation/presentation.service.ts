@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+﻿import mongoose from 'mongoose';
 import PptxGenJS from 'pptxgenjs';
 import { PresentationModel, IPresentation, ISlideSpec, IBranding } from './presentation.model.js';
 import { getTemplate, SlideTemplate } from './presentation.templates.js';
@@ -33,7 +33,7 @@ async function fetchDataForSlide(
     return result;
   }
 
-  const engObjId = new mongoose.Types.ObjectId(engagementId);
+  const engObjId = new (mongoose.Types.ObjectId as any)(engagementId);
 
   // Build regex patterns to match metric names
   const regexPatterns = dataBindings.map((binding) => new RegExp(binding, 'i'));
@@ -113,7 +113,7 @@ function buildPptxBuffer(
   branding: IBranding,
 ): Promise<Buffer> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const pptx = new (PptxGenJS as any)() as PptxGenJS;
+  const pptx = new (PptxGenJS as any)();
 
   pptx.title = title;
   pptx.author = 'Merris ESG Platform';
@@ -220,11 +220,11 @@ export async function generatePresentation(
   const buffer = await buildPptxBuffer(slides, title, branding);
 
   // Store file path (stub - in production would upload to Azure Blob Storage)
-  const filePath = `/tmp/presentations/${new mongoose.Types.ObjectId().toString()}.pptx`;
+  const filePath = `/tmp/presentations/${new (mongoose.Types.ObjectId as any)().toString()}.pptx`;
 
   // Create presentation record
   const presentation = await PresentationModel.create({
-    engagementId: new mongoose.Types.ObjectId(engagementId),
+    engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
     title,
     type: input.type,
     slides,
@@ -244,7 +244,7 @@ export async function generatePresentation(
 
 export async function listPresentations(engagementId: string): Promise<IPresentation[]> {
   return PresentationModel.find({
-    engagementId: new mongoose.Types.ObjectId(engagementId),
+    engagementId: new (mongoose.Types.ObjectId as any)(engagementId),
   })
     .sort({ createdAt: -1 })
     .lean() as unknown as IPresentation[];
