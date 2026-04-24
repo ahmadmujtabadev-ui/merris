@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 import PptxGenJS from 'pptxgenjs';
-import type { CHART_NAME } from 'pptxgenjs';
 import { PresentationModel, IPresentation, ISlideSpec, IBranding } from './presentation.model.js';
 import { getTemplate, SlideTemplate } from './presentation.templates.js';
 import { DataPointModel } from '../ingestion/ingestion.model.js';
@@ -159,7 +158,7 @@ function buildPptxBuffer(
       };
 
       if (cd.labels && cd.labels.length > 0) {
-        const chartTypeMap: Record<string, CHART_NAME> = {
+        const chartTypeMap: Record<string, string> = {
           bar: pptx.ChartType.bar,
           line: pptx.ChartType.line,
           pie: pptx.ChartType.pie,
