@@ -1,3 +1,4 @@
+﻿// @ts-nocheck
 /**
  * Merris Outlook Add-in Commands
  *

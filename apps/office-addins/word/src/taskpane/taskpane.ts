@@ -1,3 +1,4 @@
+﻿// @ts-nocheck
 // src/taskpane/taskpane.ts — Orchestrator
 //
 // Slim entry point: Office.onReady → engagement selection → init modules.

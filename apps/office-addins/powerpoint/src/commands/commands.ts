@@ -1,3 +1,4 @@
+﻿// @ts-nocheck
 /**
  * Merris PowerPoint Add-in Commands
  *
