@@ -167,7 +167,8 @@ function buildPptxBuffer(
 
         const pptxChartType = chartTypeMap[slide.content.chartType] || pptx.ChartType.bar;
 
-        pptxSlide.addChart(pptxChartType, [
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        pptxSlide.addChart(pptxChartType as any, [
           {
             name: cd.datasets[0]?.label || 'Data',
             labels: cd.labels,
