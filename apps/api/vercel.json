@@ -1,8 +1,8 @@
 {
+  "buildCommand": "cd ../.. && pnpm exec turbo build --filter=@merris/api...",
   "functions": {
     "api/[...path].ts": {
-      "maxDuration": 60,
-      "includeFiles": "public/**"
+      "maxDuration": 60
     }
   }
 }
