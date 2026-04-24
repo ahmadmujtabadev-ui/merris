@@ -4,8 +4,8 @@
 // assurance standard impacts and generates pre-verification checklist.
 
 import mongoose from 'mongoose';
-import type { VerificationFinding } from './verification.service';
-import { determineApplicableFrameworks, type EntityInfo } from './entity-context';
+import type { VerificationFinding } from './verification.service.js';
+import { determineApplicableFrameworks, type EntityInfo } from './entity-context.js';
 
 export interface AssuranceApplicability {
   framework: string;

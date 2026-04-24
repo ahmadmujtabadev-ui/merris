@@ -1,11 +1,11 @@
 // src/services/verification/verification.router.ts
 
 import { FastifyInstance } from "fastify";
-import { authenticate } from "../../modules/auth/auth.middleware";
-import { verifyFull, verifyCalculation, verifyConsistency, verifyCompliance, verifyBenchmark, verifyAnomaly, verifyCrossDocument } from "./verification.service";
-import { formatVerificationReport } from "./format";
-import { determineApplicableFrameworks, getExcludedFrameworks } from "./entity-context";
-import { generateFrameworkIndex } from "./index-generator";
+import { authenticate } from "../../modules/auth/auth.middleware.js";
+import { verifyFull, verifyCalculation, verifyConsistency, verifyCompliance, verifyBenchmark, verifyAnomaly, verifyCrossDocument } from "./verification.service.js";
+import { formatVerificationReport } from "./format.js";
+import { determineApplicableFrameworks, getExcludedFrameworks } from "./entity-context.js";
+import { generateFrameworkIndex } from "./index-generator.js";
 
 export async function registerVerificationRoutes(app: FastifyInstance): Promise<void> {
   app.post("/api/v1/verify/full", { preHandler: [authenticate] }, async (request, reply) => {

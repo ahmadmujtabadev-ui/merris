@@ -2,8 +2,8 @@
 //
 // Checks framework line-item compliance.
 
-import { Disclosure } from "../../models/disclosure.model";
-import type { VerificationFinding } from "./verification.service";
+import { Disclosure } from "../../models/disclosure.model.js";
+import type { VerificationFinding } from "./verification.service.js";
 
 export type ComplianceFinding = VerificationFinding;
 

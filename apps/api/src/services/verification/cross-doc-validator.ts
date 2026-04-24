@@ -3,9 +3,9 @@
 // Validates consistency of data points across multiple documents
 // within the same engagement.
 
-import { DataPointModel } from "../../modules/ingestion/ingestion.model";
-import { ESGDocumentModel } from "../../modules/ingestion/ingestion.model";
-import type { VerificationFinding } from "./verification.service";
+import { DataPointModel } from "../../modules/ingestion/ingestion.model.js";
+import { ESGDocumentModel } from "../../modules/ingestion/ingestion.model.js";
+import type { VerificationFinding } from "./verification.service.js";
 
 export type CrossDocFinding = VerificationFinding;
 

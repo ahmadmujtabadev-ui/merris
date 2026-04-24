@@ -3,9 +3,9 @@
 // Compares engagement metrics against peer benchmarks from knowledge base.
 
 import mongoose from "mongoose";
-import { DataPointModel } from "../../modules/ingestion/ingestion.model";
-import { KnowledgeReportModel } from "../../models/knowledge-report.model";
-import type { VerificationFinding } from "./verification.service";
+import { DataPointModel } from "../../modules/ingestion/ingestion.model.js";
+import { KnowledgeReportModel } from "../../models/knowledge-report.model.js";
+import type { VerificationFinding } from "./verification.service.js";
 
 export type BenchmarkFinding = VerificationFinding;
 

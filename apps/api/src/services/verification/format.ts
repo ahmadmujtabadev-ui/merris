@@ -2,7 +2,7 @@
 //
 // Standardized output formatters for verification results.
 
-import type { VerificationReport, VerificationFinding } from "./verification.service";
+import type { VerificationReport, VerificationFinding } from "./verification.service.js";
 
 export interface FormattedCalculationVerification {
   verdict: "Correct" | "Incorrect" | "Requires Review";

@@ -1,5 +1,5 @@
 import { Queue, Worker, type Processor } from 'bullmq';
-import IORedis from 'ioredis';
+import { Redis as IORedis } from 'ioredis';
 import { logger } from './logger.js';
 
 const REDIS_URL = process.env['REDIS_URL'];

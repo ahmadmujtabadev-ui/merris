@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import PptxGenJS from 'pptxgenjs';
+import type { CHART_NAME } from 'pptxgenjs';
 import { PresentationModel, IPresentation, ISlideSpec, IBranding } from './presentation.model.js';
 import { getTemplate, SlideTemplate } from './presentation.templates.js';
 import { DataPointModel } from '../ingestion/ingestion.model.js';
@@ -112,7 +113,8 @@ function buildPptxBuffer(
   title: string,
   branding: IBranding,
 ): Promise<Buffer> {
-  const pptx = new PptxGenJS();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const pptx = new (PptxGenJS as any)() as PptxGenJS;
 
   pptx.title = title;
   pptx.author = 'Merris ESG Platform';
@@ -157,7 +159,7 @@ function buildPptxBuffer(
       };
 
       if (cd.labels && cd.labels.length > 0) {
-        const chartTypeMap: Record<string, PptxGenJS.CHART_NAME> = {
+        const chartTypeMap: Record<string, CHART_NAME> = {
           bar: pptx.ChartType.bar,
           line: pptx.ChartType.line,
           pie: pptx.ChartType.pie,

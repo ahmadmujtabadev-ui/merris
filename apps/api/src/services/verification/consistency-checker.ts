@@ -2,8 +2,8 @@
 //
 // Checks narrative-data consistency within a document.
 
-import { sendMessage } from "../../lib/claude";
-import type { VerificationFinding } from "./verification.service";
+import { sendMessage } from "../../lib/claude.js";
+import type { VerificationFinding } from "./verification.service.js";
 
 export type ConsistencyFinding = VerificationFinding;
 

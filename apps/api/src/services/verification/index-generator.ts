@@ -3,8 +3,8 @@
 // Generates a framework disclosure index by semantically matching
 // document content against each disclosure requirement.
 
-import { sendMessage } from '../../lib/claude';
-import { Disclosure } from '../../models/disclosure.model';
+import { sendMessage } from '../../lib/claude.js';
+import { Disclosure } from '../../models/disclosure.model.js';
 
 export interface IndexEntry {
   disclosureCode: string;

@@ -3,8 +3,8 @@
 // Detects statistical anomalies, missing periods, and internal
 // consistency issues in engagement data points.
 
-import { DataPointModel } from "../../modules/ingestion/ingestion.model";
-import type { VerificationFinding } from "./verification.service";
+import { DataPointModel } from "../../modules/ingestion/ingestion.model.js";
+import type { VerificationFinding } from "./verification.service.js";
 
 export type AnomalyFinding = VerificationFinding;
 

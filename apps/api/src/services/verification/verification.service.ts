@@ -2,13 +2,13 @@
 //
 // Orchestrates all verification checks.
 
-import { validateCalculation, type CalculationFinding } from "./calculation-validator";
-import { checkConsistency, type ConsistencyFinding } from "./consistency-checker";
-import { checkCompliance, type ComplianceFinding } from "./compliance-checker";
-import { checkBenchmarks, type BenchmarkFinding } from "./benchmark-checker";
-import { detectAnomalies, type AnomalyFinding } from "./anomaly-detector";
-import { validateCrossDocument, type CrossDocFinding } from "./cross-doc-validator";
-import { type EntityInfo, determineApplicableFrameworks, getExcludedFrameworks } from "./entity-context";
+import { validateCalculation, type CalculationFinding } from "./calculation-validator.js";
+import { checkConsistency, type ConsistencyFinding } from "./consistency-checker.js";
+import { checkCompliance, type ComplianceFinding } from "./compliance-checker.js";
+import { checkBenchmarks, type BenchmarkFinding } from "./benchmark-checker.js";
+import { detectAnomalies, type AnomalyFinding } from "./anomaly-detector.js";
+import { validateCrossDocument, type CrossDocFinding } from "./cross-doc-validator.js";
+import { type EntityInfo, determineApplicableFrameworks, getExcludedFrameworks } from "./entity-context.js";
 
 export interface VerificationFinding {
   id: string;

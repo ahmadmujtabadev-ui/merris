@@ -3,9 +3,9 @@
 // Validates emissions and metric calculations by recalculating
 // from raw inputs using the existing calculation engine.
 
-import { calculate } from "../../modules/calculation/calculation.service";
-import { DataPointModel } from "../../modules/ingestion/ingestion.model";
-import type { VerificationFinding } from "./verification.service";
+import { calculate } from "../../modules/calculation/calculation.service.js";
+import { DataPointModel } from "../../modules/ingestion/ingestion.model.js";
+import type { VerificationFinding } from "./verification.service.js";
 
 export type CalculationFinding = VerificationFinding;
 
