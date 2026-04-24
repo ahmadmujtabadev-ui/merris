@@ -5,15 +5,11 @@ export const logger = winston.createLogger({
   format: winston.format.combine(
     winston.format.timestamp(),
     winston.format.errors({ stack: true }),
-    winston.format.json()
+    winston.format.colorize(),
+    winston.format.simple()
   ),
   defaultMeta: { service: 'merris-api' },
   transports: [
-    new winston.transports.Console({
-      format: winston.format.combine(
-        winston.format.colorize(),
-        winston.format.simple()
-      ),
-    }),
+    new winston.transports.Console(),
   ],
 });

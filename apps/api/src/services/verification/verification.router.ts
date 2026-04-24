@@ -74,7 +74,7 @@ export async function registerVerificationRoutes(app: FastifyInstance): Promise<
     if (!entity) return reply.code(400).send({ error: 'Entity info required for assurance readiness assessment' });
 
     const report = await verifyFull(engagementId, documentBody, frameworks || []);
-    const { checkAssuranceReadiness } = await import("./assurance-readiness");
+    const { checkAssuranceReadiness } = await import("./assurance-readiness.js");
     const readiness = await checkAssuranceReadiness(entity, report.findings);
     return reply.send({ verification: report.summary, assurance_readiness: readiness });
   });
