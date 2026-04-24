@@ -96,6 +96,9 @@ importers:
       '@types/mime-types':
         specifier: ^3.0.1
         version: 3.0.1
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.19.37
       '@types/pdf-parse':
         specifier: ^1.1.5
         version: 1.1.5
@@ -2469,9 +2472,6 @@ packages:
 
   '@types/node@22.19.15':
     resolution: {integrity: sha512-F0R/h2+dsy5wJAUe3tAU6oqa2qbWY5TpNfL/RGmo1y38hiyO1w3x2jPtt76wmuaJI4DQnOBu21cNXQ2STIUUWg==}
-
-  '@types/node@25.5.0':
-    resolution: {integrity: sha512-jp2P3tQMSxWugkCUKLRPVUpGaL5MVFwF8RDuSRztfwgN1wmqJeMSbKlnEtQqU8UrhTmzEmZdu2I6v2dpp7XIxw==}
 
   '@types/office-js@1.0.585':
     resolution: {integrity: sha512-g48fw7zvGdW4pZQ3TDyc8LVRlUX+l/NOp8WWPZmqis7QoEexmVhvimMnnUVW+RUkakZ9iTZyvp60rt7YAohBwg==}
@@ -5627,9 +5627,6 @@ packages:
   undici-types@6.21.0:
     resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
 
-  undici-types@7.18.2:
-    resolution: {integrity: sha512-AsuCzffGHJybSaRrmr5eHr81mwJU3kjw6M+uprWvCXiNeN9SOGwQ3Jn8jb8m3Z6izVgknn1R0FTCEAP2QrLY/w==}
-
   universalify@2.0.1:
     resolution: {integrity: sha512-gptHNQghINnc/vTGIk0SOFGFNXw7JVrlRUtConJRlvaw6DuX0wO5Jeko9sWrMBhh+PsYAZ7oXAiOnf/UKogyiw==}
     engines: {node: '>= 10.0.0'}
@@ -8345,7 +8342,7 @@ snapshots:
 
   '@types/bcrypt@5.0.2':
     dependencies:
-      '@types/node': 25.5.0
+      '@types/node': 20.19.37
 
   '@types/body-parser@1.19.6':
     dependencies:
@@ -8430,7 +8427,7 @@ snapshots:
   '@types/jsonwebtoken@9.0.10':
     dependencies:
       '@types/ms': 2.1.0
-      '@types/node': 25.5.0
+      '@types/node': 20.19.37
 
   '@types/jsonwebtoken@9.0.6':
     dependencies:
@@ -8461,15 +8458,11 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
-  '@types/node@25.5.0':
-    dependencies:
-      undici-types: 7.18.2
-
   '@types/office-js@1.0.585': {}
 
   '@types/pdf-parse@1.1.5':
     dependencies:
-      '@types/node': 25.5.0
+      '@types/node': 20.19.37
 
   '@types/prop-types@15.7.15': {}
 
@@ -11879,8 +11872,6 @@ snapshots:
   undici-types@5.26.5: {}
 
   undici-types@6.21.0: {}
-
-  undici-types@7.18.2: {}
 
   universalify@2.0.1: {}
 
