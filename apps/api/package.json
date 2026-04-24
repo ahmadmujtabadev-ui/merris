@@ -2,6 +2,9 @@
   "name": "@merris/api",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "22.x"
+  },
   "main": "dist/server.js",
   "scripts": {
     "build": "tsc",
