@@ -3,7 +3,15 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**"]
+      "outputs": ["dist/**", ".next/**"],
+      "env": [
+        "MONGODB_URI",
+        "REDIS_URL",
+        "ANTHROPIC_API_KEY",
+        "JWT_SECRET",
+        "PORT",
+        "VOYAGE_API_KEY"
+      ]
     },
     "dev": {
       "cache": false,
