@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 // ============================================================
-// Auth Schemas
+// Auth Schemas — v2
 // ============================================================
 
 export const NotificationSettingsSchema = z.object({
