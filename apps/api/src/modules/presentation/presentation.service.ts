@@ -1,5 +1,13 @@
 ﻿import mongoose from 'mongoose';
-import PptxGenJS from 'pptxgenjs';
+import { createRequire } from 'node:module';
+
+// pptxgenjs ships an ESM build (pptxgen.es.js) that Vercel's bundler resolves
+// at build time and bakes into the CJS bundle, causing a runtime crash.
+// Using createRequire forces CJS resolution → pptxgen.cjs.js is loaded instead.
+function loadPptxGen(): any {
+  const base = (() => { try { return import.meta.url; } catch { return 'file://' + process.cwd() + '/'; } })();
+  return createRequire(base)('pptxgenjs');
+}
 import { PresentationModel, IPresentation, ISlideSpec, IBranding } from './presentation.model.js';
 import { getTemplate, SlideTemplate } from './presentation.templates.js';
 import { DataPointModel } from '../ingestion/ingestion.model.js';
@@ -112,6 +120,7 @@ function buildPptxBuffer(
   title: string,
   branding: IBranding,
 ): Promise<Buffer> {
+  const PptxGenJS = loadPptxGen();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const pptx = new (PptxGenJS as any)();
 
