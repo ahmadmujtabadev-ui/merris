@@ -12,7 +12,10 @@ import { logger } from '../../lib/logger.js';
 // truth for the router prompt. Keep the on-disk fallback string exactly
 // in sync with the previous private copy.
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+function getDirname(): string {
+  try { return path.dirname(fileURLToPath(import.meta.url)); } catch { return process.cwd(); }
+}
+const __dirname = getDirname();
 
 export function loadSystemPrompt(): string {
   const promptPath = path.resolve(__dirname, '../../../../../prompts/router.md');

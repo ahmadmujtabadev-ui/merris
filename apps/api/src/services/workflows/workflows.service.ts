@@ -2,6 +2,7 @@
 
 import * as fs from "fs";
 import * as path from "path";
+import { fileURLToPath } from "url";
 import { chat } from "../../modules/agent/agent.service.js";
 import { perceiveDocument } from "../../modules/agent/perception.js";
 import { judgeDocument } from "../../modules/agent/judgment.js";
@@ -62,7 +63,10 @@ export function listExecutions(): WorkflowExecution[] {
 // Template helpers
 // ============================================================
 
-const templateDir = path.join(__dirname, "templates");
+function getDirname(): string {
+  try { return path.dirname(fileURLToPath(import.meta.url)); } catch { return process.cwd(); }
+}
+const templateDir = path.join(getDirname(), "templates");
 
 export function listTemplates(): WorkflowTemplate[] {
   try {
