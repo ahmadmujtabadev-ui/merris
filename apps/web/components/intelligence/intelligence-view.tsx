@@ -26,7 +26,7 @@ export function IntelligenceView() {
   }
 
   return (
-    <div className="mx-auto max-w-[760px] px-5 py-9">
+    <div className="w-full px-8 py-9">
       {messages.length > 0 && (
         <div className="mb-2 flex items-center justify-between">
           <span className="font-display text-[11px] font-semibold uppercase tracking-wider text-merris-text-tertiary">
