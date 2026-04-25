@@ -328,7 +328,7 @@ export function WorkflowAgentsPage() {
               <MerrisCard key={e.id} style={{ padding: '16px' }}>
                 <div className="mb-2 flex items-center justify-between">
                   <span className="font-display text-[12px] font-semibold text-merris-text">{e.templateId}</span>
-                  <Pill variant={e.status === 'completed' ? 'completed' : e.status === 'failed' ? 'overdue' : 'in-progress'} size="sm">
+                  <Pill variant={e.status === 'completed' ? 'completed' : e.status === 'failed' ? 'critical' : 'in-progress'} size="sm">
                     {e.status}
                   </Pill>
                 </div>
