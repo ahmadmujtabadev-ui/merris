@@ -30,8 +30,14 @@ import { registerScaffoldingRoutes } from './services/scaffolding/scaffolding.ro
 import { registerAnnotationRoutes } from './services/annotations/annotations.routes.js';
 import { connectDB } from './lib/db.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+function getSafeDir(): string {
+  try {
+    return path.dirname(fileURLToPath(import.meta.url));
+  } catch {
+    return process.cwd();
+  }
+}
+const __dirname = getSafeDir();
 
 if (!process.env['VERCEL']) {
   dotenv.config({ path: path.resolve(__dirname, '../../../.env') });
