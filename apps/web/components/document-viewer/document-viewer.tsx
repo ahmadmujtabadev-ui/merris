@@ -205,7 +205,7 @@ export function DocumentViewer({ engagementId, documentId }: Props) {
     const url = URL.createObjectURL(blob);
     const anchor = document.createElement('a');
     anchor.href = url;
-    anchor.download = `${doc.filename.replace(/\.[^.]+$/, '')}-findings.csv`;
+    anchor.download = `${doc?.filename.replace(/\.[^.]+$/, '') ?? 'document'}-findings.csv`;
     anchor.click();
     URL.revokeObjectURL(url);
   }
