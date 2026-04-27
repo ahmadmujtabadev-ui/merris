@@ -39,7 +39,8 @@
     "seed:precedent-cases": "tsx src/scripts/seed-precedent-cases.ts",
     "seed:partner-intel": "tsx src/scripts/seed-partner-intelligence.ts",
     "smoke:sse": "tsx src/scripts/sse-smoke-test.ts",
-    "embed:kb-dense": "node --max-old-space-size=8192 node_modules/tsx/dist/cli.mjs src/scripts/embed-kb-dense.ts"
+    "embed:kb-dense": "node --max-old-space-size=8192 node_modules/tsx/dist/cli.mjs src/scripts/embed-kb-dense.ts",
+    "migrate:qdrant": "tsx src/scripts/migrate-to-qdrant.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.24.0",
@@ -51,6 +52,7 @@
     "@fastify/websocket": "^10.0.0",
     "@merris/shared": "workspace:*",
     "@microsoft/microsoft-graph-client": "^3.0.0",
+    "@qdrant/js-client-rest": "^1.17.0",
     "bcrypt": "^5.1.0",
     "bullmq": "^5.8.0",
     "dotenv": "^16.4.0",
