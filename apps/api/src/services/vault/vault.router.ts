@@ -5,6 +5,13 @@ import { authenticate } from "../../modules/auth/auth.middleware.js";
 import { getEngagementVault, listVaultFiles, queryVault, deepQueryVault } from "./vault.service.js";
 import { generateReviewTable } from "./review-table.service.js";
 import { VaultModel } from "./vault.model.js";
+import {
+  uploadVaultDocument,
+  listVaultDocuments,
+  getVaultDocument,
+  searchVaultDocuments,
+  deleteVaultDocument,
+} from "../../modules/vault/vault-service.js";
 
 export async function registerVaultRoutes(app: FastifyInstance): Promise<void> {
   // ---- Existing routes ----
@@ -103,4 +110,112 @@ export async function registerVaultRoutes(app: FastifyInstance): Promise<void> {
     const vaults = await VaultModel.find(filter).sort({ updatedAt: -1 }).lean();
     return reply.send({ vaults });
   });
+
+  // ================================================================
+  // Vault Document Management (new — modules/vault/)
+  // ================================================================
+
+  app.post(
+    "/api/v1/vault/:workspaceId/documents",
+    { preHandler: [authenticate] },
+    async (request, reply) => {
+      const { workspaceId } = request.params as { workspaceId: string };
+      const data = await request.file();
+      if (!data) {
+        return reply.code(400).send({ error: "No file uploaded" });
+      }
+
+      const buffer = await data.toBuffer();
+      const user = (request as any).user;
+      const { vaultId } = (request.query as any) || {};
+
+      const doc = await uploadVaultDocument({
+        workspaceId,
+        vaultId: vaultId || workspaceId,
+        filename: data.filename,
+        mimeType: data.mimetype,
+        buffer,
+        uploadedBy: user?.id || "anonymous",
+      });
+
+      return reply.code(201).send(doc);
+    }
+  );
+
+  app.get(
+    "/api/v1/vault/:workspaceId/documents",
+    { preHandler: [authenticate] },
+    async (request, reply) => {
+      const { workspaceId } = request.params as { workspaceId: string };
+      const { classification, status, limit } = request.query as {
+        classification?: string;
+        status?: string;
+        limit?: string;
+      };
+
+      const docs = await listVaultDocuments({
+        workspaceId,
+        classification,
+        status,
+        limit: limit ? parseInt(limit, 10) : undefined,
+      });
+      return reply.send(docs);
+    }
+  );
+
+  app.get(
+    "/api/v1/vault/:workspaceId/documents/:docId",
+    { preHandler: [authenticate] },
+    async (request, reply) => {
+      const { workspaceId, docId } = request.params as {
+        workspaceId: string;
+        docId: string;
+      };
+
+      const doc = await getVaultDocument(workspaceId, docId);
+      if (!doc) {
+        return reply.code(404).send({ error: "Document not found" });
+      }
+      return reply.send(doc);
+    }
+  );
+
+  app.post(
+    "/api/v1/vault/:workspaceId/documents/search",
+    { preHandler: [authenticate] },
+    async (request, reply) => {
+      const { workspaceId } = request.params as { workspaceId: string };
+      const { query, documentIds, limit } = request.body as {
+        query: string;
+        documentIds?: string[];
+        limit?: number;
+      };
+
+      if (!query) {
+        return reply.code(400).send({ error: "query is required" });
+      }
+
+      const results = await searchVaultDocuments({
+        query,
+        workspaceId,
+        documentIds,
+        limit,
+      });
+      return reply.send(results);
+    }
+  );
+
+  app.delete(
+    "/api/v1/vault/:workspaceId/documents/:docId",
+    { preHandler: [authenticate] },
+    async (request, reply) => {
+      const { workspaceId, docId } = request.params as {
+        workspaceId: string;
+        docId: string;
+      };
+
+      await deleteVaultDocument(workspaceId, docId);
+      return reply.code(204).send();
+    }
+  );
 }

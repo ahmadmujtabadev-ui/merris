@@ -39,6 +39,39 @@ export interface IngestedDocument {
   extractedText?: string;
 }
 
+export interface VaultDocument {
+  id: string;
+  filename: string;
+  format: string;
+  classification: string;
+  status: string;
+  size: number;
+  pageCount?: number;
+  chunkCount: number;
+  version: number;
+  uploadedAt: string;
+  isScanned: boolean;
+}
+
+export interface VaultChunkSummary {
+  id: string;
+  index: number;
+  type: string;
+  page?: number;
+  section: string;
+  tokens: number;
+}
+
+export interface VaultSearchResult {
+  chunkId: string;
+  documentId: string;
+  content: string;
+  page: number;
+  section: string;
+  type: string;
+  score: number;
+}
+
 export interface KnowledgeCollection {
   id: string;
   code: string;     // K1..K7
@@ -563,6 +596,53 @@ class ApiClient {
         updatedAt: string;
       };
     }>(`/documents/${documentId}/annotations`, payload);
+  }
+
+  // ================================================================
+  // Vault Document Management
+  // ================================================================
+
+  async uploadVaultDocument(workspaceId: string, file: File, vaultId?: string) {
+    const qs = vaultId ? `?vaultId=${vaultId}` : '';
+    return this.upload<{ document: VaultDocument; duplicate: boolean }>(
+      `/vault/${workspaceId}/documents${qs}`,
+      file,
+      'file',
+    );
+  }
+
+  async listVaultDocuments(
+    workspaceId: string,
+    filters?: { classification?: string; status?: string; limit?: number },
+  ) {
+    const params = new URLSearchParams();
+    if (filters?.classification) params.set('classification', filters.classification);
+    if (filters?.status) params.set('status', filters.status);
+    if (filters?.limit) params.set('limit', String(filters.limit));
+    const qs = params.toString() ? `?${params}` : '';
+    return this.get<{ total: number; documents: VaultDocument[] }>(
+      `/vault/${workspaceId}/documents${qs}`,
+    );
+  }
+
+  async getVaultDocument(workspaceId: string, docId: string) {
+    return this.get<VaultDocument & { chunks: VaultChunkSummary[] }>(
+      `/vault/${workspaceId}/documents/${docId}`,
+    );
+  }
+
+  async searchVault(
+    workspaceId: string,
+    payload: { query: string; documentIds?: string[]; limit?: number },
+  ) {
+    return this.post<{ resultCount: number; results: VaultSearchResult[] }>(
+      `/vault/${workspaceId}/documents/search`,
+      payload,
+    );
+  }
+
+  async deleteVaultDocument(workspaceId: string, docId: string) {
+    return this.delete<void>(`/vault/${workspaceId}/documents/${docId}`);
   }
 }
 

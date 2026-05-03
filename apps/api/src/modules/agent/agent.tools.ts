@@ -18,6 +18,7 @@ import { getEmissionFactorLive } from '../../services/knowledge/apis/climatiq.js
 import { getWaterStress, getClimateVulnerability, getSBTiStatus, getForcedLabourRisk, getProductLabourRisk, getCountryEmissions, getNDCTarget, getCorruptionIndex, getFacilityEmissions, getDeforestationData, getProtectedAreas, getProtectedAreasNear, getKnowTheChainScore, getKnowTheChainSector, getAbatementOptions, getCarbonPrice, getCarbonPriceScenario, getEnergyInstrument, getRECMarketStatus, getDecarbonisationPathway, getAssuranceRequirement, getVerifierChecklist, getPrecedent, getAnomalyCheck, getPartnerInsight } from '../../services/knowledge/apis/datasets.js';
 import { getThreatenedSpecies } from '../../services/knowledge/apis/iucn.js';
 import { getSpeciesNear, getSpeciesStatus } from '../../services/knowledge/apis/gbif.js';
+import { getVaultTools } from '../vault/vault-tools.js';
 
 // ============================================================
 // Types
@@ -85,6 +86,7 @@ export function getToolDefinitions(): ToolDefinition[] {
     getPrecedentTool,
     getAnomalyCheckTool,
     getPartnerInsightTool,
+    ...getVaultTools(),
   ];
 }
 

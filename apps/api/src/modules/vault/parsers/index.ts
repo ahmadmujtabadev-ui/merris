@@ -1,0 +1,75 @@
+import { randomUUID } from "crypto";
+import { createHash } from "crypto";
+import { logger } from "../../../lib/logger.js";
+import { parsePDF } from "./pdf.parser.js";
+import { parseDocx } from "./docx.parser.js";
+import type { ParsedDocument, ParsedSource } from "../types.js";
+
+export interface ParseFileOptions {
+  buffer: Buffer;
+  filename: string;
+  mimeType: string;
+  workspaceId: string;
+  uploadedBy: string;
+}
+
+export async function parseFile(
+  opts: ParseFileOptions
+): Promise<ParsedDocument> {
+  const { buffer, filename, mimeType, workspaceId, uploadedBy } = opts;
+  const ext = filename.split(".").pop()?.toLowerCase() || "";
+  const docId = randomUUID();
+
+  const source: ParsedSource = {
+    filename,
+    mimeType,
+    sizeBytes: buffer.length,
+    checksumSha256: createHash("sha256").update(buffer).digest("hex"),
+    uploadedBy,
+    uploadedAt: new Date().toISOString(),
+    languageDetected: [],
+  };
+
+  let partial: Partial<ParsedDocument>;
+
+  if (mimeType === "application/pdf" || ext === "pdf") {
+    partial = await parsePDF(buffer, docId, workspaceId);
+  } else if (
+    mimeType ===
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+    ext === "docx"
+  ) {
+    partial = await parseDocx(buffer, docId, workspaceId);
+  } else {
+    logger.warn(`Vault parser: unsupported format ${mimeType} (${ext}), treating as raw text`);
+    partial = {
+      docId,
+      workspaceId,
+      outline: [],
+      elements: [
+        {
+          elementId: randomUUID(),
+          type: "paragraph",
+          text: buffer.toString("utf-8").slice(0, 100_000),
+          page: 1,
+        },
+      ],
+      tables: [],
+      images: [],
+    };
+  }
+
+  return {
+    docId: partial.docId || docId,
+    workspaceId: partial.workspaceId || workspaceId,
+    source,
+    classification: partial.classification || {
+      docClass: "unknown",
+      confidence: 0,
+    },
+    outline: partial.outline || [],
+    elements: partial.elements || [],
+    tables: partial.tables || [],
+    images: partial.images || [],
+  };
+}
