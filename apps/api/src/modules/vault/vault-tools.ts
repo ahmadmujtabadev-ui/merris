@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import type { ToolDefinition } from "../agent/agent.tools.js";
 import { hybridSearch } from "./search/hybrid-search.js";
 import { queryTables } from "./table-store.js";
+import { compareDocuments } from "./reasoning/compare-documents.js";
 import { VaultDocumentModel } from "./vault-document.model.js";
 import { VaultChunkModel } from "./vault-chunk.model.js";
 
@@ -314,6 +315,57 @@ export const vaultQueryTableTool: ToolDefinition = {
   },
 };
 
+export const vaultCompareDocumentsTool: ToolDefinition = {
+  name: "vault_compare_documents",
+  description:
+    "Compare two or more documents from the firm's vault along specified dimensions (e.g. methodology comparison, compliance alignment, scope coverage). Use for questions like 'how does our methodology compare to the CSRD requirements' or 'what are the differences between these two reports'.",
+  input_schema: {
+    type: "object",
+    properties: {
+      workspace_id: {
+        type: "string",
+        description: "The workspace ID to scope the comparison",
+      },
+      document_ids: {
+        type: "array",
+        items: { type: "string" },
+        description: "Array of 2 or more document IDs to compare",
+      },
+      dimensions: {
+        type: "array",
+        items: { type: "string" },
+        description: "Optional: specific dimensions to compare along (e.g. 'methodology', 'data quality', 'compliance')",
+      },
+      query: {
+        type: "string",
+        description: "Optional: specific question guiding the comparison",
+      },
+    },
+    required: ["workspace_id", "document_ids"],
+  },
+  handler: async (input) => {
+    const { workspace_id, document_ids, dimensions, query } = input as {
+      workspace_id: string;
+      document_ids: string[];
+      dimensions?: string[];
+      query?: string;
+    };
+
+    if (!document_ids || document_ids.length < 2) {
+      return { error: "At least two document IDs are required for comparison." };
+    }
+
+    const result = await compareDocuments({
+      workspaceId: workspace_id,
+      documentIds: document_ids,
+      dimensions,
+      query,
+    });
+
+    return result;
+  },
+};
+
 export function getVaultTools(): ToolDefinition[] {
   return [
     vaultSearchTool,
@@ -321,5 +373,6 @@ export function getVaultTools(): ToolDefinition[] {
     vaultCiteTool,
     vaultListDocumentsTool,
     vaultQueryTableTool,
+    vaultCompareDocumentsTool,
   ];
 }

@@ -7,6 +7,7 @@ import { parseXlsx } from "./xlsx.parser.js";
 import { parseCsv } from "./csv.parser.js";
 import { parsePptx } from "./pptx.parser.js";
 import { parseImage } from "./image.parser.js";
+import { parseEmail } from "./email.parser.js";
 import type { ParsedDocument, ParsedSource } from "../types.js";
 
 export interface ParseFileOptions {
@@ -63,6 +64,8 @@ export async function parseFile(
     partial = await parsePptx(buffer, docId, workspaceId);
   } else if (mimeType.startsWith("image/") || ["png", "jpg", "jpeg", "tiff", "webp"].includes(ext)) {
     partial = await parseImage(buffer, mimeType, docId, workspaceId);
+  } else if (mimeType === "message/rfc822" || ext === "eml") {
+    partial = await parseEmail(buffer, docId, workspaceId);
   } else {
     logger.warn(`Vault parser: unsupported format ${mimeType} (${ext}), treating as raw text`);
     partial = {
