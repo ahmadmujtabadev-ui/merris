@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import type { ToolDefinition } from "../agent/agent.tools.js";
-import { vectorSearch } from "./search/vector-search.js";
+import { hybridSearch } from "./search/hybrid-search.js";
 import { queryTables } from "./table-store.js";
 import { VaultDocumentModel } from "./vault-document.model.js";
 import { VaultChunkModel } from "./vault-chunk.model.js";
@@ -40,7 +40,7 @@ export const vaultSearchTool: ToolDefinition = {
       limit?: number;
     };
 
-    const results = await vectorSearch({
+    const results = await hybridSearch({
       query,
       workspaceId: workspace_id,
       documentIds: document_ids,

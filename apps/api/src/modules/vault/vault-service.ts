@@ -6,7 +6,7 @@ import { logger } from "../../lib/logger.js";
 import { VaultDocumentModel } from "./vault-document.model.js";
 import { VaultChunkModel } from "./vault-chunk.model.js";
 import { runVaultPipeline } from "./vault-pipeline.js";
-import { vectorSearch } from "./search/vector-search.js";
+import { hybridSearch } from "./search/hybrid-search.js";
 import { VAULT_QUEUE_NAME, PIPELINE_VERSION } from "./types.js";
 
 export interface UploadOptions {
@@ -175,7 +175,7 @@ export interface SearchOptions {
 }
 
 export async function searchVaultDocuments(opts: SearchOptions) {
-  const results = await vectorSearch({
+  const results = await hybridSearch({
     query: opts.query,
     workspaceId: opts.workspaceId,
     documentIds: opts.documentIds,
