@@ -7,6 +7,8 @@ import { VaultDocumentModel } from "./vault-document.model.js";
 import { VaultChunkModel } from "./vault-chunk.model.js";
 import { runVaultPipeline } from "./vault-pipeline.js";
 import { hybridSearch } from "./search/hybrid-search.js";
+import { resolveVersion } from "./vault-version.js";
+import { emitVaultMetric } from "./metrics/vault-telemetry.js";
 import { VAULT_QUEUE_NAME, PIPELINE_VERSION } from "./types.js";
 
 export interface UploadOptions {
@@ -37,6 +39,8 @@ export async function uploadVaultDocument(opts: UploadOptions) {
     };
   }
 
+  const { version, supersededId } = await resolveVersion(workspaceId, filename);
+
   let blobUrl: string | undefined;
   try {
     const blobName = `vault/${workspaceId}/${Date.now()}-${filename}`;
@@ -56,6 +60,10 @@ export async function uploadVaultDocument(opts: UploadOptions) {
     classification: "unknown",
     uploadSource: "manual",
     uploaderId: new mongoose.Types.ObjectId(uploadedBy),
+    version,
+    supersedesId: supersededId
+      ? new mongoose.Types.ObjectId(supersededId)
+      : undefined,
     status: "queued",
     blobUrl,
     provenance: {
@@ -63,6 +71,14 @@ export async function uploadVaultDocument(opts: UploadOptions) {
       uploadedBy: new mongoose.Types.ObjectId(uploadedBy),
     },
     pipelineVersion: PIPELINE_VERSION,
+  });
+
+  emitVaultMetric({
+    event: "upload",
+    workspaceId,
+    documentId: doc._id.toString(),
+    filename,
+    metadata: { version, supersededId, size: buffer.length },
   });
 
   const pipelineInput = {
@@ -193,6 +209,61 @@ export async function searchVaultDocuments(opts: SearchOptions) {
       type: r.chunkType,
       score: r.score,
     })),
+  };
+}
+
+export async function reprocessVaultDocument(
+  workspaceId: string,
+  docId: string
+): Promise<{ queued: boolean; message: string }> {
+  const doc = await VaultDocumentModel.findOne({
+    _id: new mongoose.Types.ObjectId(docId),
+    workspaceId: new mongoose.Types.ObjectId(workspaceId),
+  });
+
+  if (!doc) {
+    return { queued: false, message: "Document not found" };
+  }
+
+  if (!doc.blobUrl) {
+    return {
+      queued: false,
+      message: "Cannot reprocess — original file not stored in blob storage",
+    };
+  }
+
+  await VaultDocumentModel.findByIdAndUpdate(docId, {
+    status: "queued",
+    errorMessage: undefined,
+  });
+
+  emitVaultMetric({
+    event: "reprocess",
+    workspaceId,
+    documentId: docId,
+    filename: doc.filename,
+  });
+
+  const queue = createQueue(VAULT_QUEUE_NAME);
+  if (queue) {
+    await queue.add(
+      "reprocess-vault-document",
+      {
+        documentId: docId,
+        workspaceId,
+        vaultId: doc.vaultId.toString(),
+        filename: doc.filename,
+        mimeType: doc.format,
+        uploadedBy: doc.uploaderId.toString(),
+      },
+      { attempts: 3, backoff: { type: "exponential", delay: 5000 } }
+    );
+    return { queued: true, message: "Document queued for reprocessing" };
+  }
+
+  return {
+    queued: false,
+    message: "Queue unavailable — reprocessing requires Redis",
   };
 }
 

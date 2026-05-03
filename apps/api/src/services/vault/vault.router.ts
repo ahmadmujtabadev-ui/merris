@@ -11,7 +11,24 @@ import {
   getVaultDocument,
   searchVaultDocuments,
   deleteVaultDocument,
+  reprocessVaultDocument,
 } from "../../modules/vault/vault-service.js";
+
+const uploadRateMap = new Map<string, { count: number; resetAt: number }>();
+const UPLOAD_RATE_LIMIT = 20;
+const UPLOAD_RATE_WINDOW_MS = 60_000;
+
+function checkUploadRate(workspaceId: string): boolean {
+  const now = Date.now();
+  const entry = uploadRateMap.get(workspaceId);
+  if (!entry || now > entry.resetAt) {
+    uploadRateMap.set(workspaceId, { count: 1, resetAt: now + UPLOAD_RATE_WINDOW_MS });
+    return true;
+  }
+  if (entry.count >= UPLOAD_RATE_LIMIT) return false;
+  entry.count++;
+  return true;
+}
 
 export async function registerVaultRoutes(app: FastifyInstance): Promise<void> {
   // ---- Existing routes ----
@@ -120,6 +137,13 @@ export async function registerVaultRoutes(app: FastifyInstance): Promise<void> {
     { preHandler: [authenticate] },
     async (request, reply) => {
       const { workspaceId } = request.params as { workspaceId: string };
+
+      if (!checkUploadRate(workspaceId)) {
+        return reply.code(429).send({
+          error: `Upload rate limit exceeded — max ${UPLOAD_RATE_LIMIT} uploads per minute per workspace`,
+        });
+      }
+
       const data = await request.file();
       if (!data) {
         return reply.code(400).send({ error: "No file uploaded" });
@@ -216,6 +240,23 @@ export async function registerVaultRoutes(app: FastifyInstance): Promise<void> {
 
       await deleteVaultDocument(workspaceId, docId);
       return reply.code(204).send();
+    }
+  );
+
+  app.patch(
+    "/api/v1/vault/:workspaceId/documents/:docId/reprocess",
+    { preHandler: [authenticate] },
+    async (request, reply) => {
+      const { workspaceId, docId } = request.params as {
+        workspaceId: string;
+        docId: string;
+      };
+
+      const result = await reprocessVaultDocument(workspaceId, docId);
+      if (!result.queued) {
+        return reply.code(409).send(result);
+      }
+      return reply.send(result);
     }
   );
 }
