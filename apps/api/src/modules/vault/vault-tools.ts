@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import type { ToolDefinition } from "../agent/agent.tools.js";
 import { vectorSearch } from "./search/vector-search.js";
+import { queryTables } from "./table-store.js";
 import { VaultDocumentModel } from "./vault-document.model.js";
 import { VaultChunkModel } from "./vault-chunk.model.js";
 
@@ -247,11 +248,78 @@ export const vaultListDocumentsTool: ToolDefinition = {
   },
 };
 
+export const vaultQueryTableTool: ToolDefinition = {
+  name: "vault_query_table",
+  description:
+    "Query structured tables extracted from spreadsheets and documents in the firm's vault. Use for quantitative questions like 'what was Scope 2 emissions in 2023' or 'compare carbon intensity across holdings'. Matches column headers and row content against the query.",
+  input_schema: {
+    type: "object",
+    properties: {
+      workspace_id: {
+        type: "string",
+        description: "The workspace ID to scope the query",
+      },
+      query: {
+        type: "string",
+        description: "The question or search terms to match against table data",
+      },
+      columns: {
+        type: "array",
+        items: { type: "string" },
+        description: "Optional: specific column names to filter on",
+      },
+      document_id: {
+        type: "string",
+        description: "Optional: limit query to a specific document",
+      },
+    },
+    required: ["workspace_id", "query"],
+  },
+  handler: async (input) => {
+    const { workspace_id, query, columns, document_id } = input as {
+      workspace_id: string;
+      query: string;
+      columns?: string[];
+      document_id?: string;
+    };
+
+    const results = await queryTables({
+      workspaceId: workspace_id,
+      query,
+      columns,
+      documentId: document_id,
+      limit: 10,
+    });
+
+    if (results.length === 0) {
+      return {
+        found: false,
+        message: "No matching table data found in the vault.",
+      };
+    }
+
+    return {
+      found: true,
+      tableCount: results.length,
+      tables: results.map((r) => ({
+        chunk_id: r.chunkId,
+        document_id: r.documentId,
+        caption: r.caption,
+        headers: r.headers,
+        matched_rows: r.matchedRows,
+        page: r.page,
+        section: r.sectionPath.join(" > "),
+      })),
+    };
+  },
+};
+
 export function getVaultTools(): ToolDefinition[] {
   return [
     vaultSearchTool,
     vaultFetchDocumentTool,
     vaultCiteTool,
     vaultListDocumentsTool,
+    vaultQueryTableTool,
   ];
 }

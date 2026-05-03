@@ -1,10 +1,12 @@
 import { logger } from "../../lib/logger.js";
 import { VaultDocumentModel } from "./vault-document.model.js";
+import { VaultChunkModel } from "./vault-chunk.model.js";
 import { parseFile } from "./parsers/index.js";
 import { chunkDocument } from "./chunker.js";
 import { enrichChunks } from "./enricher.js";
 import { embedChunks } from "./embedder.js";
 import { indexChunks } from "./indexer.js";
+import { extractEntities } from "./extractors/entity-extractor.js";
 import type { VaultDocumentStatus } from "./vault-document.model.js";
 
 export interface PipelineInput {
@@ -98,6 +100,10 @@ export async function runVaultPipeline(input: PipelineInput): Promise<void> {
     logger.info(
       `Vault pipeline: completed ${filename} — ${chunkCount} chunks indexed`
     );
+
+    runEntityExtraction(documentId, chunks).catch((err) =>
+      logger.warn(`Entity extraction background task failed for ${filename}`, err)
+    );
   } catch (error) {
     logger.error(`Vault pipeline failed for ${filename}`, error);
     const message =
@@ -105,4 +111,30 @@ export async function runVaultPipeline(input: PipelineInput): Promise<void> {
     await updateStatus(documentId, "failed", { errorMessage: message });
     throw error;
   }
+}
+
+async function runEntityExtraction(
+  documentId: string,
+  chunks: import("./types.js").ChunkInput[]
+): Promise<void> {
+  const storedChunks = await VaultChunkModel.find({
+    documentId,
+  })
+    .sort({ chunkIndex: 1 })
+    .lean();
+
+  for (const stored of storedChunks) {
+    if (stored.chunkType === "table") continue;
+    try {
+      const entities = await extractEntities(stored.content);
+      if (entities.length > 0) {
+        await VaultChunkModel.findByIdAndUpdate(stored._id, { entities });
+      }
+    } catch {
+      // non-critical
+    }
+  }
+  logger.info(
+    `Entity extraction completed for document ${documentId}`
+  );
 }

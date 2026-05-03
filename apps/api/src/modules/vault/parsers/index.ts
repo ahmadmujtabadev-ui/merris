@@ -3,6 +3,8 @@ import { createHash } from "crypto";
 import { logger } from "../../../lib/logger.js";
 import { parsePDF } from "./pdf.parser.js";
 import { parseDocx } from "./docx.parser.js";
+import { parseXlsx } from "./xlsx.parser.js";
+import { parseCsv } from "./csv.parser.js";
 import type { ParsedDocument, ParsedSource } from "../types.js";
 
 export interface ParseFileOptions {
@@ -40,6 +42,17 @@ export async function parseFile(
     ext === "docx"
   ) {
     partial = await parseDocx(buffer, docId, workspaceId);
+  } else if (
+    mimeType ===
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ||
+    ext === "xlsx" ||
+    ext === "xls"
+  ) {
+    partial = await parseXlsx(buffer, docId, workspaceId, "xlsx");
+  } else if (mimeType === "text/csv" || ext === "csv") {
+    partial = await parseCsv(buffer, docId, workspaceId);
+  } else if (ext === "tsv") {
+    partial = await parseCsv(buffer, docId, workspaceId);
   } else {
     logger.warn(`Vault parser: unsupported format ${mimeType} (${ext}), treating as raw text`);
     partial = {
