@@ -7,6 +7,7 @@ import { enrichChunks } from "./enricher.js";
 import { embedChunks } from "./embedder.js";
 import { indexChunks } from "./indexer.js";
 import { extractEntities } from "./extractors/entity-extractor.js";
+import { classifyDocument } from "./classifiers/document-classifier.js";
 import type { VaultDocumentStatus } from "./vault-document.model.js";
 
 export interface PipelineInput {
@@ -57,10 +58,17 @@ export async function runVaultPipeline(input: PipelineInput): Promise<void> {
       parsed.elements.length === 0 ||
       parsed.elements.every((e) => !e.text || e.text.length < 10);
 
+    const fullText = parsed.elements.map((e) => e.text).join("\n");
+    const classificationResult = await classifyDocument(fullText, filename).catch(() => ({
+      docClass: "unknown" as const,
+      confidence: 0,
+    }));
+
     await VaultDocumentModel.findByIdAndUpdate(documentId, {
       pageCount: new Set(parsed.elements.map((e) => e.page)).size || 1,
       isScanned,
       languageDetected: parsed.source.languageDetected,
+      classification: classificationResult.docClass,
     });
 
     await updateStatus(documentId, "chunking");

@@ -5,6 +5,8 @@ import { parsePDF } from "./pdf.parser.js";
 import { parseDocx } from "./docx.parser.js";
 import { parseXlsx } from "./xlsx.parser.js";
 import { parseCsv } from "./csv.parser.js";
+import { parsePptx } from "./pptx.parser.js";
+import { parseImage } from "./image.parser.js";
 import type { ParsedDocument, ParsedSource } from "../types.js";
 
 export interface ParseFileOptions {
@@ -53,6 +55,14 @@ export async function parseFile(
     partial = await parseCsv(buffer, docId, workspaceId);
   } else if (ext === "tsv") {
     partial = await parseCsv(buffer, docId, workspaceId);
+  } else if (
+    mimeType ===
+      "application/vnd.openxmlformats-officedocument.presentationml.presentation" ||
+    ext === "pptx"
+  ) {
+    partial = await parsePptx(buffer, docId, workspaceId);
+  } else if (mimeType.startsWith("image/") || ["png", "jpg", "jpeg", "tiff", "webp"].includes(ext)) {
+    partial = await parseImage(buffer, mimeType, docId, workspaceId);
   } else {
     logger.warn(`Vault parser: unsupported format ${mimeType} (${ext}), treating as raw text`);
     partial = {
