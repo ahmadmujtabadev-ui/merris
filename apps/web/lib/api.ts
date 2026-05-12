@@ -644,6 +644,125 @@ class ApiClient {
   async deleteVaultDocument(workspaceId: string, docId: string) {
     return this.delete<void>(`/vault/${workspaceId}/documents/${docId}`);
   }
+
+  async retryVaultDocument(workspaceId: string, docId: string) {
+    return this.patch<{ queued: boolean; message: string }>(
+      `/vault/${workspaceId}/documents/${docId}/reprocess`,
+    );
+  }
+
+  async getVaultStats(workspaceId: string) {
+    return this.get<{ total: number; indexed: number; failed: number; processing: number }>(
+      `/vault/${workspaceId}/stats`,
+    );
+  }
+
+  async getVaultDocumentPages(workspaceId: string, docId: string) {
+    return this.get<{
+      total: number;
+      pages: Array<{
+        page: number;
+        chunks: Array<{
+          id: string;
+          index: number;
+          type: string;
+          content: string;
+          section: string | null;
+          bbox: { x: number; y: number; width: number; height: number } | null;
+          tableData: { headers: string[]; rows: string[][]; caption?: string } | null;
+        }>;
+      }>;
+    }>(`/vault/${workspaceId}/documents/${docId}/pages`);
+  }
+
+  async listVaultJobs(workspaceId: string) {
+    return this.get<{
+      total: number;
+      jobs: Array<{
+        jobId: string;
+        documentId: string;
+        filename: string;
+        format: string;
+        status: string;
+        startedAt: string;
+        updatedAt: string;
+      }>;
+    }>(`/vault/${workspaceId}/jobs`);
+  }
+
+  async getVaultJob(workspaceId: string, docId: string) {
+    return this.get<{
+      jobId: string;
+      documentId: string;
+      filename: string;
+      format: string;
+      status: string;
+      chunkCount: number;
+      pageCount: number | null;
+      errorMessage: string | null;
+      startedAt: string;
+      updatedAt: string;
+    }>(`/vault/${workspaceId}/jobs/${docId}`);
+  }
+
+  async askVault(workspaceId: string, question: string, documentIds?: string[], limit?: number) {
+    return this.post<{
+      answer: string;
+      sources: Array<{
+        chunkId: string;
+        documentId: string;
+        content: string;
+        page: number | null;
+        section: string;
+        score: number;
+      }>;
+    }>(`/vault/${workspaceId}/ask`, { question, documentIds, limit });
+  }
+
+  async queryVaultTable(workspaceId: string, query: string, columns?: string[], documentId?: string, limit?: number) {
+    return this.post<{
+      found: boolean;
+      tableCount: number;
+      tables: Array<{
+        chunkId: string;
+        documentId: string;
+        caption: string;
+        headers: string[];
+        matchedRows: string[][];
+        page: number;
+        section: string;
+      }>;
+    }>(`/vault/${workspaceId}/query-table`, { query, columns, documentId, limit });
+  }
+
+  async compareVaultDocuments(workspaceId: string, documentIds: string[], dimensions?: string[], query?: string) {
+    return this.post<{
+      dimensions: Array<{
+        name: string;
+        comparisons: Array<{
+          documentId: string;
+          documentName: string;
+          summary: string;
+          chunkIds: string[];
+        }>;
+      }>;
+      overallAnalysis: string;
+    }>(`/vault/${workspaceId}/compare`, { documentIds, dimensions, query });
+  }
+
+  async resolveVaultCitations(workspaceId: string, chunkIds: string[]) {
+    return this.post<{
+      citations: Array<{
+        chunkId: string;
+        documentTitle: string;
+        documentId: string;
+        page: number | null;
+        section: string | null;
+        snippet: string;
+        classification: string;
+      }>;
+    }>(`/vault/${workspaceId}/citations`, { chunkIds });
+  }
 }
 
 export class ApiError extends Error {

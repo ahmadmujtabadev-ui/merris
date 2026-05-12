@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { api } from './api';
-import type { WorkflowTemplate, WorkflowExecution } from './api';
+import type { WorkflowTemplate, WorkflowExecution, VaultDocument, VaultSearchResult } from './api';
 
 // ---- Local type definitions (mirrors @merris/shared without runtime Zod dependency) ----
 
@@ -228,6 +228,85 @@ export const useKnowledgeStore = create<KnowledgeState>((set) => ({
   },
 
   clearSearch: () => set({ searchResults: [], searchQuery: '' }),
+}));
+
+// ---- Vault Knowledge Base slice ----
+
+interface VaultStats { total: number; indexed: number; failed: number; processing: number; }
+
+interface VaultKBState {
+  documents: VaultDocument[];
+  stats: VaultStats;
+  loading: boolean;
+  uploading: boolean;
+  searchResults: VaultSearchResult[];
+  searching: boolean;
+  fetchDocuments: (workspaceId: string) => Promise<void>;
+  fetchStats: (workspaceId: string) => Promise<void>;
+  uploadDocument: (workspaceId: string, file: File) => Promise<{ duplicate: boolean }>;
+  deleteDocument: (workspaceId: string, docId: string) => Promise<void>;
+  retryDocument: (workspaceId: string, docId: string) => Promise<void>;
+  search: (workspaceId: string, query: string) => Promise<void>;
+  clearSearch: () => void;
+}
+
+export const useVaultKBStore = create<VaultKBState>((set, get) => ({
+  documents: [],
+  stats: { total: 0, indexed: 0, failed: 0, processing: 0 },
+  loading: false,
+  uploading: false,
+  searchResults: [],
+  searching: false,
+
+  fetchDocuments: async (workspaceId) => {
+    set({ loading: true });
+    try {
+      const data = await api.listVaultDocuments(workspaceId, { limit: 100 });
+      set({ documents: data.documents, loading: false });
+    } catch { set({ loading: false }); }
+  },
+
+  fetchStats: async (workspaceId) => {
+    try {
+      const data = await api.getVaultStats(workspaceId);
+      set({ stats: data });
+    } catch {}
+  },
+
+  uploadDocument: async (workspaceId, file) => {
+    set({ uploading: true });
+    try {
+      const result = await api.uploadVaultDocument(workspaceId, file);
+      await get().fetchDocuments(workspaceId);
+      await get().fetchStats(workspaceId);
+      set({ uploading: false });
+      return { duplicate: result.duplicate };
+    } catch (e) {
+      set({ uploading: false });
+      throw e;
+    }
+  },
+
+  deleteDocument: async (workspaceId, docId) => {
+    await api.deleteVaultDocument(workspaceId, docId);
+    set((s) => ({ documents: s.documents.filter((d) => d.id !== docId) }));
+    await get().fetchStats(workspaceId);
+  },
+
+  retryDocument: async (workspaceId, docId) => {
+    await api.retryVaultDocument(workspaceId, docId);
+    await get().fetchDocuments(workspaceId);
+  },
+
+  search: async (workspaceId, query) => {
+    set({ searching: true });
+    try {
+      const data = await api.searchVault(workspaceId, { query, limit: 20 });
+      set({ searchResults: data.results, searching: false });
+    } catch { set({ searching: false }); }
+  },
+
+  clearSearch: () => set({ searchResults: [] }),
 }));
 
 // ---- Compliance slice ----

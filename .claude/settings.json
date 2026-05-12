@@ -3,7 +3,10 @@
     "allow": [
       "Bash(git commit -m ' *)",
       "Bash(git commit *)",
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\Paklogics\\\\Desktop\\\\example_code\\\\merris\\\\merris-platform\" -Directory)",
+      "Bash(Select-Object -ExpandProperty Name)",
+      "Bash(node --input-type=module --eval \"import multipart from '@fastify/multipart'; console.log\\(typeof multipart\\);\")"
     ]
   }
 }

@@ -1,10 +1,17 @@
 // src/services/vault/vault.router.ts
 
 import { FastifyInstance } from "fastify";
+import mongoose from "mongoose";
 import { authenticate } from "../../modules/auth/auth.middleware.js";
 import { getEngagementVault, listVaultFiles, queryVault, deepQueryVault } from "./vault.service.js";
 import { generateReviewTable } from "./review-table.service.js";
 import { VaultModel } from "./vault.model.js";
+import { VaultDocumentModel } from "../../modules/vault/vault-document.model.js";
+import { VaultChunkModel } from "../../modules/vault/vault-chunk.model.js";
+import { hybridSearch } from "../../modules/vault/search/hybrid-search.js";
+import { queryTables } from "../../modules/vault/table-store.js";
+import { compareDocuments } from "../../modules/vault/reasoning/compare-documents.js";
+import { sendMessage } from "../../lib/claude.js";
 import {
   uploadVaultDocument,
   listVaultDocuments,
@@ -129,6 +136,33 @@ export async function registerVaultRoutes(app: FastifyInstance): Promise<void> {
   });
 
   // ================================================================
+  // Vault Stats — document counts by status per workspace
+  // ================================================================
+
+  app.get(
+    "/api/v1/vault/:workspaceId/stats",
+    { preHandler: [authenticate] },
+    async (request, reply) => {
+      const { workspaceId } = request.params as { workspaceId: string };
+      let wsOid: mongoose.Types.ObjectId;
+      try {
+        wsOid = new mongoose.Types.ObjectId(workspaceId);
+      } catch {
+        return reply.code(400).send({ error: "Invalid workspaceId" });
+      }
+
+      const [total, indexed, failed, processing] = await Promise.all([
+        VaultDocumentModel.countDocuments({ workspaceId: wsOid }),
+        VaultDocumentModel.countDocuments({ workspaceId: wsOid, status: "indexed" }),
+        VaultDocumentModel.countDocuments({ workspaceId: wsOid, status: "failed" }),
+        VaultDocumentModel.countDocuments({ workspaceId: wsOid, status: { $in: ["queued", "parsing", "chunking", "embedding"] } }),
+      ]);
+
+      return reply.send({ total, indexed, failed, processing });
+    }
+  );
+
+  // ================================================================
   // Vault Document Management (new — modules/vault/)
   // ================================================================
 
@@ -159,7 +193,7 @@ export async function registerVaultRoutes(app: FastifyInstance): Promise<void> {
         filename: data.filename,
         mimeType: data.mimetype,
         buffer,
-        uploadedBy: user?.id || "anonymous",
+        uploadedBy: user?.userId || user?.id || workspaceId,
       });
 
       return reply.code(201).send(doc);
@@ -257,6 +291,332 @@ export async function registerVaultRoutes(app: FastifyInstance): Promise<void> {
         return reply.code(409).send(result);
       }
       return reply.send(result);
+    }
+  );
+
+  // ================================================================
+  // Document pages — page-level chunk breakdown for document viewer
+  // ================================================================
+
+  app.get(
+    "/api/v1/vault/:workspaceId/documents/:docId/pages",
+    { preHandler: [authenticate] },
+    async (request, reply) => {
+      const { workspaceId, docId } = request.params as {
+        workspaceId: string;
+        docId: string;
+      };
+
+      let wsOid: mongoose.Types.ObjectId;
+      let docOid: mongoose.Types.ObjectId;
+      try {
+        wsOid = new mongoose.Types.ObjectId(workspaceId);
+        docOid = new mongoose.Types.ObjectId(docId);
+      } catch {
+        return reply.code(400).send({ error: "Invalid workspaceId or docId" });
+      }
+
+      const chunks = await VaultChunkModel.find({
+        workspaceId: wsOid,
+        documentId: docOid,
+      })
+        .sort({ pageNumber: 1, chunkIndex: 1 })
+        .select("chunkIndex chunkType content sectionPath pageNumber bbox tableData")
+        .lean();
+
+      // Group by page
+      const pageMap = new Map<number, typeof chunks>();
+      for (const chunk of chunks) {
+        const page = chunk.pageNumber ?? 0;
+        if (!pageMap.has(page)) pageMap.set(page, []);
+        pageMap.get(page)!.push(chunk);
+      }
+
+      const pages = Array.from(pageMap.entries())
+        .sort(([a], [b]) => a - b)
+        .map(([page, pageChunks]) => ({
+          page,
+          chunks: pageChunks.map((c) => ({
+            id: c._id.toString(),
+            index: c.chunkIndex,
+            type: c.chunkType,
+            content: c.content,
+            section: (c.sectionPath as string[]).join(" > ") || null,
+            bbox: c.bbox ?? null,
+            tableData: c.tableData ?? null,
+          })),
+        }));
+
+      return reply.send({ total: chunks.length, pages });
+    }
+  );
+
+  // ================================================================
+  // Jobs — in-flight document processing queue
+  // ================================================================
+
+  app.get(
+    "/api/v1/vault/:workspaceId/jobs",
+    { preHandler: [authenticate] },
+    async (request, reply) => {
+      const { workspaceId } = request.params as { workspaceId: string };
+
+      let wsOid: mongoose.Types.ObjectId;
+      try {
+        wsOid = new mongoose.Types.ObjectId(workspaceId);
+      } catch {
+        return reply.code(400).send({ error: "Invalid workspaceId" });
+      }
+
+      const inFlight = await VaultDocumentModel.find({
+        workspaceId: wsOid,
+        status: { $in: ["queued", "parsing", "chunking", "embedding"] },
+      })
+        .sort({ updatedAt: -1 })
+        .select("filename format status updatedAt createdAt errorMessage")
+        .lean();
+
+      const jobs = inFlight.map((d) => ({
+        jobId: d._id.toString(),
+        documentId: d._id.toString(),
+        filename: d.filename,
+        format: d.format,
+        status: d.status,
+        startedAt: d.createdAt,
+        updatedAt: d.updatedAt,
+      }));
+
+      return reply.send({ total: jobs.length, jobs });
+    }
+  );
+
+  app.get(
+    "/api/v1/vault/:workspaceId/jobs/:docId",
+    { preHandler: [authenticate] },
+    async (request, reply) => {
+      const { workspaceId, docId } = request.params as {
+        workspaceId: string;
+        docId: string;
+      };
+
+      let wsOid: mongoose.Types.ObjectId;
+      let docOid: mongoose.Types.ObjectId;
+      try {
+        wsOid = new mongoose.Types.ObjectId(workspaceId);
+        docOid = new mongoose.Types.ObjectId(docId);
+      } catch {
+        return reply.code(400).send({ error: "Invalid workspaceId or docId" });
+      }
+
+      const doc = await VaultDocumentModel.findOne({ _id: docOid, workspaceId: wsOid })
+        .select("filename format status chunkCount pageCount errorMessage createdAt updatedAt")
+        .lean();
+
+      if (!doc) {
+        return reply.code(404).send({ error: "Job not found" });
+      }
+
+      return reply.send({
+        jobId: doc._id.toString(),
+        documentId: doc._id.toString(),
+        filename: doc.filename,
+        format: doc.format,
+        status: doc.status,
+        chunkCount: doc.chunkCount,
+        pageCount: doc.pageCount ?? null,
+        errorMessage: doc.errorMessage ?? null,
+        startedAt: doc.createdAt,
+        updatedAt: doc.updatedAt,
+      });
+    }
+  );
+
+  // ================================================================
+  // Ask — vault-scoped AI Q&A
+  // ================================================================
+
+  app.post(
+    "/api/v1/vault/:workspaceId/ask",
+    { preHandler: [authenticate] },
+    async (request, reply) => {
+      const { workspaceId } = request.params as { workspaceId: string };
+      const { question, documentIds, limit } = request.body as {
+        question?: string;
+        documentIds?: string[];
+        limit?: number;
+      };
+
+      if (!question || typeof question !== "string" || question.trim().length === 0) {
+        return reply.code(400).send({ error: "question is required" });
+      }
+
+      const results = await hybridSearch({
+        query: question.trim(),
+        workspaceId,
+        documentIds,
+        limit: limit || 15,
+      });
+
+      if (results.length === 0) {
+        return reply.send({
+          answer: "I could not find any relevant content in your vault documents for this question.",
+          sources: [],
+        });
+      }
+
+      const context = results
+        .map((r, i) =>
+          `[${i + 1}] ${r.content}\n(page ${r.pageNumber ?? "?"}, section: ${r.sectionPath.join(" > ") || "root"})`
+        )
+        .join("\n\n");
+
+      const answer = await sendMessage({
+        maxTokens: 2048,
+        system:
+          "You are an expert ESG analyst. Answer the user's question using only the provided vault document excerpts. Be precise and cite sources by their [N] reference number. If the documents do not contain enough information, say so clearly.",
+        messages: [
+          {
+            role: "user",
+            content: `Question: ${question.trim()}\n\nVault Document Excerpts:\n${context}`,
+          },
+        ],
+      });
+
+      return reply.send({
+        answer: answer ?? "No answer could be generated.",
+        sources: results.map((r) => ({
+          chunkId: r.chunkId,
+          documentId: r.documentId,
+          content: r.content.slice(0, 300),
+          page: r.pageNumber ?? null,
+          section: r.sectionPath.join(" > ") || "root",
+          score: Math.round(r.score * 100) / 100,
+        })),
+      });
+    }
+  );
+
+  // ================================================================
+  // Query Table — structured table extraction
+  // ================================================================
+
+  app.post(
+    "/api/v1/vault/:workspaceId/query-table",
+    { preHandler: [authenticate] },
+    async (request, reply) => {
+      const { workspaceId } = request.params as { workspaceId: string };
+      const { query, columns, documentId, limit } = request.body as {
+        query?: string;
+        columns?: string[];
+        documentId?: string;
+        limit?: number;
+      };
+
+      if (!query || typeof query !== "string" || query.trim().length === 0) {
+        return reply.code(400).send({ error: "query is required" });
+      }
+
+      const tables = await queryTables({
+        workspaceId,
+        query: query.trim(),
+        columns,
+        documentId,
+        limit: limit || 10,
+      });
+
+      return reply.send({
+        found: tables.length > 0,
+        tableCount: tables.length,
+        tables: tables.map((t) => ({
+          chunkId: t.chunkId,
+          documentId: t.documentId,
+          caption: t.caption,
+          headers: t.headers,
+          matchedRows: t.matchedRows,
+          page: t.page,
+          section: t.sectionPath.join(" > "),
+        })),
+      });
+    }
+  );
+
+  // ================================================================
+  // Compare — multi-document Claude-powered comparison
+  // ================================================================
+
+  app.post(
+    "/api/v1/vault/:workspaceId/compare",
+    { preHandler: [authenticate] },
+    async (request, reply) => {
+      const { workspaceId } = request.params as { workspaceId: string };
+      const { documentIds, dimensions, query } = request.body as {
+        documentIds?: string[];
+        dimensions?: string[];
+        query?: string;
+      };
+
+      if (!documentIds || !Array.isArray(documentIds) || documentIds.length < 2) {
+        return reply.code(400).send({ error: "documentIds must be an array of at least 2 document IDs" });
+      }
+
+      const result = await compareDocuments({
+        workspaceId,
+        documentIds,
+        dimensions,
+        query,
+      });
+
+      return reply.send(result);
+    }
+  );
+
+  // ================================================================
+  // Citations — resolve chunk IDs to render-ready citations
+  // ================================================================
+
+  app.post(
+    "/api/v1/vault/:workspaceId/citations",
+    { preHandler: [authenticate] },
+    async (request, reply) => {
+      const { workspaceId } = request.params as { workspaceId: string };
+      const { chunkIds } = request.body as { chunkIds?: string[] };
+
+      if (!chunkIds || !Array.isArray(chunkIds) || chunkIds.length === 0) {
+        return reply.code(400).send({ error: "chunkIds must be a non-empty array" });
+      }
+
+      let wsOid: mongoose.Types.ObjectId;
+      try {
+        wsOid = new mongoose.Types.ObjectId(workspaceId);
+      } catch {
+        return reply.code(400).send({ error: "Invalid workspaceId" });
+      }
+
+      const chunks = await VaultChunkModel.find({
+        _id: { $in: chunkIds.map((id) => new mongoose.Types.ObjectId(id)) },
+        workspaceId: wsOid,
+      }).lean();
+
+      const docIds = [...new Set(chunks.map((c) => c.documentId.toString()))];
+      const docs = await VaultDocumentModel.find({
+        _id: { $in: docIds.map((id) => new mongoose.Types.ObjectId(id)) },
+      }).lean();
+      const docMap = new Map(docs.map((d) => [d._id.toString(), d]));
+
+      const citations = chunks.map((chunk) => {
+        const doc = docMap.get(chunk.documentId.toString());
+        return {
+          chunkId: chunk._id.toString(),
+          documentTitle: doc?.filename || "Unknown document",
+          documentId: chunk.documentId.toString(),
+          page: chunk.pageNumber ?? null,
+          section: (chunk.sectionPath as string[]).join(" > ") || null,
+          snippet: chunk.content.slice(0, 300),
+          classification: doc?.classification || "unknown",
+        };
+      });
+
+      return reply.send({ citations });
     }
   );
 }
