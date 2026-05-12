@@ -9,8 +9,10 @@ export const MAX_ROUNDS = 4;
 
 // Hard cap on expensive search calls to prevent runaway loops.
 // Prompt instructions alone are not reliable — enforce in code.
+// search_kb_dense is allowed 2 calls because the named-company protocol
+// requires two queries with different keyword angles before concluding no results.
 const TOOL_CALL_LIMITS: Record<string, number> = {
-  search_kb_dense:  1,
+  search_kb_dense:  2,
   search_knowledge: 1,
 };
 

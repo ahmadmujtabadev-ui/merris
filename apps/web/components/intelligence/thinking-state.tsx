@@ -1,62 +1,97 @@
 'use client';
 
 import clsx from 'clsx';
-import { MerrisCard } from '@/components/merris/card';
 import { useChatStore } from '@/lib/chat-store';
-import { merrisTokens } from '@/lib/design-tokens';
+
+function ThinkingDots() {
+  return (
+    <div className="flex items-end gap-[3px] pb-[1px]">
+      <span className="animate-thinking-dot-1 h-[5px] w-[5px] rounded-full bg-merris-primary" />
+      <span className="animate-thinking-dot-2 h-[5px] w-[5px] rounded-full bg-merris-primary" />
+      <span className="animate-thinking-dot-3 h-[5px] w-[5px] rounded-full bg-merris-primary" />
+    </div>
+  );
+}
 
 export function ThinkingState() {
   const steps = useChatStore((s) => s.thinkingSteps);
+  const tokenText = useChatStore((s) => s.tokenText);
+
+  // Collapse once streaming begins — AdvisoryResponse takes over
+  if (tokenText.length > 0) return null;
+
+  const activeStep = steps.find((s) => s.status === 'active');
 
   return (
-    <MerrisCard className="px-5 py-[18px]">
-      {steps.map((s) => (
-        <div
-          key={s.step}
-          className={clsx('mb-3.5 flex gap-2.5', s.status === 'pending' && 'opacity-30')}
-        >
+    <div className="overflow-hidden rounded-merris border border-merris-border bg-merris-surface shadow-merris">
+      {/* ── Animated header ── */}
+      <div className="flex items-center gap-2.5 border-b border-merris-border bg-merris-surface px-4 py-3">
+        <ThinkingDots />
+        <span className="font-display text-[12px] font-semibold text-merris-primary">
+          {activeStep?.step ?? 'Processing'}
+        </span>
+        {activeStep?.detail && (
+          <span className="ml-auto max-w-[200px] truncate font-mono text-[10px] text-merris-text-tertiary">
+            {activeStep.detail}
+          </span>
+        )}
+      </div>
+
+      {/* ── Step list ── */}
+      <div className="px-4 py-3.5 space-y-[9px]">
+        {steps.map((s) => (
           <div
+            key={s.step}
             className={clsx(
-              'mt-0.5 flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-full',
-              s.status === 'done' && 'bg-merris-primary',
-              s.status === 'active' && 'bg-merris-primary-bg animate-pulse-soft',
-              s.status === 'pending' && 'bg-merris-surface-high',
-              s.status === 'failed' && 'bg-merris-error-bg',
+              'flex items-center gap-2.5 transition-all duration-300',
+              s.status === 'pending' && 'opacity-20',
             )}
           >
-            {s.status === 'done' && (
-              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M20 6L9 17l-5-5" />
-              </svg>
-            )}
-            {s.status === 'active' && <div className="h-1.5 w-1.5 rounded-full bg-merris-primary" />}
-            {s.status === 'failed' && (
-              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke={merrisTokens.error} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M18 6L6 18M6 6l12 12" />
-              </svg>
-            )}
-          </div>
-          <div className="flex-1">
+            {/* Status dot / icon */}
             <div
               className={clsx(
-                'font-display text-[13px] font-semibold',
-                s.status === 'active' && 'text-merris-primary',
+                'flex h-[16px] w-[16px] flex-shrink-0 items-center justify-center rounded-full',
+                s.status === 'done' && 'bg-merris-primary',
+                s.status === 'active' && 'bg-merris-primary-bg',
+                s.status === 'pending' && 'bg-merris-surface-high',
+                s.status === 'failed' && 'bg-merris-error-bg',
+              )}
+            >
+              {s.status === 'done' && (
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+              )}
+              {s.status === 'active' && (
+                <span className="h-[5px] w-[5px] rounded-full bg-merris-primary animate-pulse-soft" />
+              )}
+              {s.status === 'failed' && (
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#dc2626" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M18 6L6 18M6 6l12 12" />
+                </svg>
+              )}
+            </div>
+
+            {/* Step label */}
+            <span
+              className={clsx(
+                'font-body text-[12px] leading-none',
+                s.status === 'active' && 'font-medium text-merris-primary',
+                s.status === 'done' && 'text-merris-text-secondary',
+                s.status === 'pending' && 'text-merris-text-tertiary',
                 s.status === 'failed' && 'text-merris-error',
-                s.status !== 'active' && s.status !== 'failed' && 'text-merris-text',
               )}
             >
               {s.step}
-            </div>
-            {s.detail && s.status !== 'failed' && (
-              <div className="font-mono text-[11px] text-merris-text-tertiary">{s.detail}</div>
-            )}
-            {s.status === 'active' && <div className="text-[11px] text-merris-primary">⋯</div>}
+            </span>
+
+            {/* Source chips */}
             {s.sources && s.sources.length > 0 && (
-              <div className="mt-1.5 flex flex-wrap gap-1.5">
+              <div className="ml-1 flex flex-wrap gap-1">
                 {s.sources.map((src) => (
                   <span
                     key={src}
-                    className="rounded-merris-sm bg-merris-surface-low px-2 py-0.5 font-body text-[10px] text-merris-text-secondary"
+                    className="rounded-full bg-merris-primary-bg px-2 py-0.5 font-body text-[9px] font-semibold text-merris-primary"
                   >
                     {src}
                   </span>
@@ -64,8 +99,8 @@ export function ThinkingState() {
               </div>
             )}
           </div>
-        </div>
-      ))}
-    </MerrisCard>
+        ))}
+      </div>
+    </div>
   );
 }

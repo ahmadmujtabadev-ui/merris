@@ -62,31 +62,45 @@ export async function denseSearch(options: DenseSearchOptions): Promise<DenseSea
     return [];
   }
 
-  // Build optional module filter for Qdrant
-  const qdrantFilter = modules && modules.length > 0
-    ? {
-        should: modules.map((m) => ({
-          key: 'module',
-          match: { value: m },
-        })),
-      }
-    : undefined;
+  // Qdrant pre-filter is intentionally NOT applied for module filtering.
+  // Reason: document modules are stored with full names (e.g. "M04-benchmarks")
+  // but the tool API accepts short codes ("M04"). Qdrant exact-match would
+  // return 0 results for every module-scoped query. Instead we fetch a larger
+  // probe set from Qdrant and apply the prefix-aware JS post-filter below.
+  // When a module filter is requested, we fetch 4× more to compensate for the
+  // lack of Qdrant-level pre-filtering.
+  const probeLimit = modules && modules.length > 0
+    ? Math.min(limit * 4, 80)
+    : Math.max(limit, 10);
 
-  // HNSW search on Qdrant (~10-50ms for 22K vectors)
   let hits: Array<{ id: string | number; score: number; payload?: Record<string, unknown> | null }>;
   try {
     const client = getQdrantClient();
     hits = await client.search(COLLECTION, {
       vector: queryVector,
-      limit,
-      score_threshold: minScore,
+      limit: probeLimit,
       with_payload: true,
-      ...(qdrantFilter ? { filter: qdrantFilter } : {}),
     });
   } catch (err) {
     logger.error('[dense-search] Qdrant search failed — falling back to empty', err);
     return [];
   }
+
+  // Log raw Qdrant scores so we can see what the threshold is cutting off
+  const rawScores = hits.map((h) => {
+    const filename = (h.payload?.['filename'] as string | undefined) ?? 'unknown';
+    const module   = (h.payload?.['module']   as string | undefined) ?? '?';
+    return `${module}/${filename} → ${h.score.toFixed(4)}`;
+  });
+  logger.info(
+    `[dense-search] query="${query}" modules=${JSON.stringify(modules ?? 'all')} minScore=${minScore} ` +
+    `probeLimit=${probeLimit} rawHits=${hits.length}\n` +
+    rawScores.map((s, i) => `  [${i + 1}] ${s}`).join('\n'),
+  );
+
+  // Apply minScore filter in JS (not in Qdrant) so raw scores are always visible above
+  hits = hits.filter((h) => h.score >= minScore);
+  logger.info(`[dense-search] after minScore(${minScore}) filter: ${hits.length} hits remaining`);
 
   if (hits.length === 0) return [];
 

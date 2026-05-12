@@ -48,10 +48,27 @@ const config: Config = {
           '0%,100%': { opacity: '1' },
           '50%': { opacity: '0.5' },
         },
+        'thinking-dot': {
+          '0%,60%,100%': { transform: 'translateY(0)', opacity: '0.3' },
+          '30%': { transform: 'translateY(-4px)', opacity: '1' },
+        },
+        'cursor-blink': {
+          '0%,100%': { opacity: '1' },
+          '50%': { opacity: '0' },
+        },
+        'slide-in': {
+          from: { opacity: '0', transform: 'translateY(6px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
+        },
       },
       animation: {
         'fade-in': 'fade-in 0.2s ease-out',
         'pulse-soft': 'pulse-soft 1.6s ease-in-out infinite',
+        'thinking-dot-1': 'thinking-dot 1.2s ease-in-out infinite',
+        'thinking-dot-2': 'thinking-dot 1.2s ease-in-out 0.15s infinite',
+        'thinking-dot-3': 'thinking-dot 1.2s ease-in-out 0.3s infinite',
+        'cursor-blink': 'cursor-blink 0.9s ease-in-out infinite',
+        'slide-in': 'slide-in 0.25s ease-out',
       },
     },
   },

@@ -48,3 +48,28 @@ html, body {
 
 button { cursor: pointer; }
 input::placeholder, textarea::placeholder { color: var(--merris-text-tertiary); }
+
+/* ── Merris animation keyframes ── */
+@keyframes merris-thinking-dot {
+  0%, 60%, 100% { transform: translateY(0px); opacity: 0.25; }
+  30%           { transform: translateY(-5px); opacity: 1; }
+}
+@keyframes merris-cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+@keyframes merris-slide-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes merris-border-pulse {
+  0%, 100% { border-left-color: var(--merris-primary-light); }
+  50%       { border-left-color: var(--merris-primary); }
+}
+
+.animate-thinking-dot-1 { animation: merris-thinking-dot 1.2s ease-in-out infinite; }
+.animate-thinking-dot-2 { animation: merris-thinking-dot 1.2s ease-in-out 0.15s infinite; }
+.animate-thinking-dot-3 { animation: merris-thinking-dot 1.2s ease-in-out 0.3s infinite; }
+.animate-cursor-blink   { animation: merris-cursor-blink 0.9s ease-in-out infinite; }
+.animate-slide-in       { animation: merris-slide-in 0.25s ease-out; }
+.animate-border-pulse   { animation: merris-border-pulse 2s ease-in-out infinite; }

@@ -21,13 +21,13 @@ export function IntelligenceView() {
   const reset = useChatStore((s) => s.reset);
   const clearConversation = useChatStore((s) => s.clearConversation);
 
-  // Empty state: hero
   if (phase === 'home' && messages.length === 0) {
     return <IntelligenceHero />;
   }
 
   return (
     <div className="w-full px-8 py-9">
+      {/* Conversation history header */}
       {messages.length > 0 && (
         <div className="mb-2 flex items-center justify-between">
           <span className="font-display text-[11px] font-semibold uppercase tracking-wider text-merris-text-tertiary">
@@ -36,24 +36,32 @@ export function IntelligenceView() {
           <button
             type="button"
             onClick={clearConversation}
-            className="font-body text-[11px] text-merris-text-tertiary hover:text-merris-error"
+            className="font-body text-[11px] text-merris-text-tertiary hover:text-merris-error transition-colors"
           >
             Clear conversation
           </button>
         </div>
       )}
 
+      {/* Past messages */}
       {messages.map((m) => (
         <ConversationMessage key={m.id} message={m} />
       ))}
 
+      {/* Active query */}
       {phase === 'thinking' && (
         <>
+          {/* Question bubble */}
           <MerrisCard className="mb-5 bg-merris-surface-low px-4 py-3">
             <div className="font-body text-[13px] text-merris-text">{question}</div>
           </MerrisCard>
+
           <WorkingHeader />
+
+          {/* Thinking steps — hides itself once tokenText arrives */}
           <ThinkingState />
+
+          {/* Streaming response — appears as soon as first token arrives */}
           {tokenText.length > 0 && (
             <div className="mt-4">
               <AdvisoryResponse />
@@ -62,22 +70,19 @@ export function IntelligenceView() {
         </>
       )}
 
-      {phase === 'response' && (
+      {/* Error state */}
+      {phase === 'response' && errorMessage && (
         <>
-          {/* Show the in-progress exchange if it hasn't been pushed to messages yet
-              (errorMessage path doesn't push, so it shows here) */}
-          {errorMessage && (
-            <>
-              <MerrisCard className="mb-5 bg-merris-surface-low px-4 py-3">
-                <div className="font-body text-[13px] text-merris-text">{question}</div>
-              </MerrisCard>
-              {evaluation?.decision === 'BLOCK' ? <RefusalResponse /> : (
-                <MerrisCard className="border-l-[3px] border-merris-error p-5 font-body text-[13px] text-merris-error">
-                  <div className="mb-2 font-display font-bold">Stream error</div>
-                  <div>{errorMessage}</div>
-                </MerrisCard>
-              )}
-            </>
+          <MerrisCard className="mb-5 bg-merris-surface-low px-4 py-3">
+            <div className="font-body text-[13px] text-merris-text">{question}</div>
+          </MerrisCard>
+          {evaluation?.decision === 'BLOCK' ? (
+            <RefusalResponse />
+          ) : (
+            <MerrisCard className="border-l-[3px] border-merris-error p-5 font-body text-[13px] text-merris-error">
+              <div className="mb-1 font-display text-[13px] font-bold">Stream error</div>
+              <div>{errorMessage}</div>
+            </MerrisCard>
           )}
         </>
       )}

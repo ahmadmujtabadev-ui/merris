@@ -1150,7 +1150,7 @@ const searchKnowledgeTool: ToolDefinition = {
 const searchKbDenseTool: ToolDefinition = {
   name: 'search_kb_dense',
   description:
-    'Semantic search using dense Voyage AI vectors across the full M01-M14 knowledge base (9000+ documents: regulatory PDFs, emission factor tables, framework guides, case law, research papers, jurisdiction data, XLSX templates). Use this when search_knowledge returns no results or the user asks about specific standards, regulations, benchmarks, or sector data.',
+    'Semantic search using dense Voyage AI vectors across the full M01-M14 knowledge base (9000+ documents: regulatory PDFs, emission factor tables, framework guides, case law, research papers, jurisdiction data, XLSX templates). Use this when search_knowledge returns no results or the user asks about specific standards, regulations, benchmarks, or sector data. IMPORTANT: Always reformulate the query into document-content-like terms before calling. Strip evaluative language ("credible", "sufficient", "aligned") and instead pass factual keywords: company name + metric + year + standard. Example: convert "Is Stellantis 2038 net-zero credible?" to "Stellantis GHG net-zero 2038 carbon neutrality target". For named-company documents scope modules to ["M04"].',
   input_schema: {
     type: 'object',
     properties: {
@@ -1172,8 +1172,10 @@ const searchKbDenseTool: ToolDefinition = {
     const modules = input['modules'] as string[] | undefined;
     const limit   = Math.min((input['limit'] as number) || 8, 20);
 
+    logger.info(`[search_kb_dense] TOOL CALLED — query="${query}" modules=${JSON.stringify(modules ?? 'all')} limit=${limit}`);
+
     try {
-      const results = await denseSearch({ query, modules, limit, minScore: 0.25 });
+      const results = await denseSearch({ query, modules, limit, minScore: 0.10 });
 
       if (results.length === 0) {
         return {
