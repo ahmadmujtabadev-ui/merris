@@ -1170,7 +1170,7 @@ const searchKbDenseTool: ToolDefinition = {
   handler: async (input) => {
     const query   = input['query'] as string;
     const modules = input['modules'] as string[] | undefined;
-    const limit   = Math.min((input['limit'] as number) || 5, 20);
+    const limit   = Math.min((input['limit'] as number) || 8, 20);
 
     try {
       const results = await denseSearch({ query, modules, limit, minScore: 0.25 });
@@ -1189,8 +1189,11 @@ const searchKbDenseTool: ToolDefinition = {
           filename:   r.filename,
           fileType:   r.fileType,
           chunkIndex: r.chunkIndex,
+          totalChunks: r.totalChunks,
           score:      r.score,
-          excerpt:    r.text.substring(0, 600),
+          // Pre-formatted citation ready for inline use: "Filename.pdf §4/12 (M01)"
+          ref:        `${r.filename} §${r.chunkIndex + 1}/${r.totalChunks} (${r.module})`,
+          excerpt:    r.text.substring(0, 1200),
         })),
       };
     } catch (err: any) {

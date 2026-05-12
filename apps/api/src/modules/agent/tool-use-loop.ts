@@ -105,7 +105,7 @@ export async function runToolUseLoop(opts: ToolUseLoopOptions): Promise<ToolUseL
   for (let round = 0; round < MAX_ROUNDS; round++) {
     const response = await client.messages.create({
       model: 'claude-sonnet-4-20250514',
-      max_tokens: 4096,
+      max_tokens: 8192,
       system: systemPrompt,
       tools,
       messages: currentMessages,
