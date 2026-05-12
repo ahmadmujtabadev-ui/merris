@@ -17,6 +17,7 @@ export function IntelligenceView() {
   const evaluation = useChatStore((s) => s.evaluation);
   const errorMessage = useChatStore((s) => s.errorMessage);
   const messages = useChatStore((s) => s.messages);
+  const tokenText = useChatStore((s) => s.tokenText);
   const reset = useChatStore((s) => s.reset);
   const clearConversation = useChatStore((s) => s.clearConversation);
 
@@ -53,6 +54,11 @@ export function IntelligenceView() {
           </MerrisCard>
           <WorkingHeader />
           <ThinkingState />
+          {tokenText.length > 0 && (
+            <div className="mt-4">
+              <AdvisoryResponse />
+            </div>
+          )}
         </>
       )}
 

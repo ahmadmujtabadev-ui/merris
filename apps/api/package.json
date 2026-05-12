@@ -40,7 +40,8 @@
     "seed:partner-intel": "tsx src/scripts/seed-partner-intelligence.ts",
     "smoke:sse": "tsx src/scripts/sse-smoke-test.ts",
     "embed:kb-dense": "node --max-old-space-size=8192 node_modules/tsx/dist/cli.mjs src/scripts/embed-kb-dense.ts",
-    "migrate:qdrant": "tsx src/scripts/migrate-to-qdrant.ts"
+    "migrate:qdrant": "tsx src/scripts/migrate-to-qdrant.ts",
+    "index:qdrant": "tsx src/scripts/create-qdrant-indexes.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.24.0",

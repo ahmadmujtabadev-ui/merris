@@ -87,12 +87,9 @@ export async function chatStream(request: ChatRequest, emit: Emit): Promise<void
           request,
           context,
           onToolCall,
+          onTextChunk: (chunk) => emit({ type: 'token', text: chunk }),
         });
 
-        // If the caller did NOT pre-emit sources during Phase 3, emit now
-        // using the real K-domains observed in the tool loop. This happens
-        // before the Analyzing phase closes so the chips still arrive
-        // before the 'Analyzing:done' thinking_step event.
         if (!preEmittedSources && accumulatedDomains.size > 0) {
           emit({ type: 'thinking_sources', sources: Array.from(accumulatedDomains) });
         }
@@ -129,19 +126,16 @@ export async function chatStream(request: ChatRequest, emit: Emit): Promise<void
             >,
           };
         }
-        let final = responseText;
-        const evalResult = await evaluateResponse(request.message, final, { engagementId: request.engagementId });
-        if (evalResult.decision === 'FIX' && evalResult.fix_instructions) {
-          final = await autoRewrite(final, evalResult.flags, evalResult.fix_instructions);
-        }
-        return { finalResponse: final, evaluation: evalResult };
+        const evalResult = await evaluateResponse(request.message, responseText, { engagementId: request.engagementId });
+        // Skip autoRewrite — preserves original reasoning and saves 5-8s per response
+        return { finalResponse: responseText, evaluation: evalResult };
       },
       (r) => `score ${r.evaluation.score} (${r.evaluation.decision})`,
     );
 
-    // Phase 6: Answering — emit the response, sources, evaluation, done
+    // Phase 6: Answering — emit sources + evaluation.
+    // Text was already streamed chunk-by-chunk during Analyzing.
     await phase(emit, 'Answering', async () => {
-      emit({ type: 'token', text: finalResponse });
       if (citations.length > 0) {
         emit({ type: 'sources', citations });
       }

@@ -5,25 +5,14 @@ import { loadSystemPrompt } from './system-prompt.js';
 import type { ChatRequest } from './agent.service.js';
 import type { buildAgentContext } from './agent.context.js';
 
-// ============================================================
-// Shared tool-use loop
-// ============================================================
-//
-// This file is the single source of truth for the Claude tool-use loop
-// used by both the JSON chat path (agent.service.ts:chat) and the SSE
-// chat path (agent.stream.ts:chatStream).
-//
-// Historically the two paths had their own private copies that drifted
-// in three places:
-//   1) chatStream ignored cursorSection
-//   2) chatStream wrote a shorter truncation marker
-//   3) chatStream swallowed tool errors silently
-// All three are reconciled here. Callers are responsible for:
-//   - null-checking the Anthropic client before invoking
-//   - mapping toolCalls to citations via extractCitations
-//   - memory capture and suggestedActions derivation
+export const MAX_ROUNDS = 4;
 
-export const MAX_ROUNDS = 20;
+// Hard cap on expensive search calls to prevent runaway loops.
+// Prompt instructions alone are not reliable — enforce in code.
+const TOOL_CALL_LIMITS: Record<string, number> = {
+  search_kb_dense:  1,
+  search_knowledge: 1,
+};
 
 export interface ToolCallRecord {
   name: string;
@@ -41,12 +30,8 @@ export interface ToolUseLoopOptions {
   client: NonNullable<Anthropic | null>;
   request: ChatRequest;
   context: Awaited<ReturnType<typeof buildAgentContext>>;
-  /**
-   * Fires after each tool executes (success or failure). chatStream uses
-   * this to accumulate knowledge-retrieval domains for thinking_sources
-   * emission.
-   */
   onToolCall?: (call: ToolCallRecord) => void;
+  onTextChunk?: (chunk: string) => void;
 }
 
 export async function runToolUseLoop(opts: ToolUseLoopOptions): Promise<ToolUseLoopResult> {
@@ -61,9 +46,11 @@ export async function runToolUseLoop(opts: ToolUseLoopOptions): Promise<ToolUseL
     message,
   } = request;
 
+  const loopStart = Date.now();
+
   // ---- System prompt --------------------------------------------------
   const systemTemplate = loadSystemPrompt();
-  let systemPrompt = systemTemplate
+  let systemPromptText = systemTemplate
     .replace('{engagement_context}', JSON.stringify(context, null, 2))
     .replace('{tool_descriptions}', 'Available via tool_use — see tools parameter.');
 
@@ -71,21 +58,24 @@ export async function runToolUseLoop(opts: ToolUseLoopOptions): Promise<ToolUseL
     const docSection = documentBody.length > 15000
       ? documentBody.substring(0, 15000) + '\n\n[Document truncated — ' + documentBody.length + ' chars total]'
       : documentBody;
-    systemPrompt += `\n\nDOCUMENT CONTEXT (the user has this document open in Word):\n${docSection}`;
+    systemPromptText += `\n\nDOCUMENT CONTEXT (the user has this document open in Word):\n${docSection}`;
     if (cursorSection) {
-      systemPrompt += `\n\nUSER'S CURSOR IS IN SECTION: "${cursorSection}"`;
+      systemPromptText += `\n\nUSER'S CURSOR IS IN SECTION: "${cursorSection}"`;
     }
-    systemPrompt += `\n\nWhen the user asks you to "draft" a section, generate the full disclosure text ready to insert into the document. When referencing sections, use the exact headings from the document above. If a section contains "[TO BE DRAFTED BY MERRIS]" or "[TO BE COMPLETED]", that is a placeholder waiting for you to generate content.`;
+    systemPromptText += `\n\nWhen the user asks you to "draft" a section, generate the full disclosure text ready to insert into the document. When referencing sections, use the exact headings from the document above. If a section contains "[TO BE DRAFTED BY MERRIS]" or "[TO BE COMPLETED]", that is a placeholder waiting for you to generate content.`;
   }
 
-  // ---- Context prefix on the user message -----------------------------
+  // Cacheable system prompt (cache_control not in standard SDK types — cast to any)
+  const systemParam: any = [
+    { type: 'text', text: systemPromptText, cache_control: { type: 'ephemeral' } },
+  ];
+
+  // ---- Context prefix --------------------------------------------------
   let contextPrefix = '';
   if (jurisdiction) contextPrefix += `Jurisdiction: ${jurisdiction}. `;
   if (sector) contextPrefix += `Sector: ${sector}. `;
   if (ownershipType) contextPrefix += `Entity type: ${ownershipType}. `;
-  if (contextPrefix) {
-    contextPrefix = `[Context: ${contextPrefix.trim()}]\n\n`;
-  }
+  if (contextPrefix) contextPrefix = `[Context: ${contextPrefix.trim()}]\n\n`;
 
   const messages: Anthropic.MessageParam[] = [
     ...conversationHistory.map((msg) => ({
@@ -95,82 +85,127 @@ export async function runToolUseLoop(opts: ToolUseLoopOptions): Promise<ToolUseL
     { role: 'user', content: contextPrefix + message },
   ];
 
-  // ---- Tool loop ------------------------------------------------------
-  const tools = getToolSchemas() as Anthropic.Tool[];
+  // ---- Tools — cache_control on last entry caches all schemas ----------
+  const rawTools = getToolSchemas() as Anthropic.Tool[];
+  const tools: any[] = rawTools.length > 0
+    ? [
+        ...rawTools.slice(0, -1),
+        { ...rawTools[rawTools.length - 1], cache_control: { type: 'ephemeral' } },
+      ]
+    : rawTools;
+
   const toolDefinitions = getToolDefinitions();
   const toolCalls: ToolCallRecord[] = [];
-
+  const toolCallCounts: Record<string, number> = {};
   let currentMessages = [...messages];
 
+  logger.info(`[tool-loop] start — system ${systemPromptText.length} chars, ${rawTools.length} tools`);
+
   for (let round = 0; round < MAX_ROUNDS; round++) {
-    const response = await client.messages.create({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 8192,
-      system: systemPrompt,
-      tools,
-      messages: currentMessages,
-    });
+    const roundStart = Date.now();
+
+    // ---- Claude API call (streaming, with prompt caching) ---------------
+    // Streaming means the final-round text reaches onTextChunk in real-time.
+    // Tool-calling rounds produce no user-visible text, so streaming is
+    // transparent there. finalMessage() gives us the complete tool inputs.
+    let response: Anthropic.Message;
+    try {
+      const stream = (client as any).messages.stream(
+        {
+          model: 'claude-sonnet-4-6',
+          max_tokens: 1500,
+          system: systemParam,
+          tools,
+          messages: currentMessages,
+        },
+        { headers: { 'anthropic-beta': 'prompt-caching-2024-07-31' } },
+      );
+
+      // Forward text deltas — visible to user only on the final (no-tool) round
+      if (opts.onTextChunk) {
+        stream.on('text', (chunk: string) => opts.onTextChunk!(chunk));
+      }
+
+      response = await stream.finalMessage();
+    } catch (err) {
+      logger.error(`[tool-loop] round ${round} Claude API failed`, err);
+      throw err;
+    }
+
+    const claudeMs = Date.now() - roundStart;
+    const usage = (response as any).usage ?? {};
+    logger.info(
+      `[tool-loop] round ${round} Claude: ${claudeMs}ms | ` +
+      `in=${usage.input_tokens ?? '?'} out=${usage.output_tokens ?? '?'} ` +
+      `cache_read=${usage.cache_read_input_tokens ?? 0} cache_write=${usage.cache_creation_input_tokens ?? 0}`,
+    );
 
     const toolUseBlocks = response.content.filter(
       (block): block is Anthropic.ContentBlock & {
-        type: 'tool_use';
-        id: string;
-        name: string;
-        input: Record<string, unknown>;
+        type: 'tool_use'; id: string; name: string; input: Record<string, unknown>;
       } => block.type === 'tool_use',
     );
 
     if (toolUseBlocks.length === 0) {
       const textBlock = response.content.find((block) => block.type === 'text');
-      const responseText =
-        textBlock && 'text' in textBlock
-          ? (textBlock as { text: string }).text
-          : 'No response generated.';
+      const responseText = textBlock && 'text' in textBlock
+        ? (textBlock as { text: string }).text
+        : 'No response generated.';
+      logger.info(`[tool-loop] done in ${Date.now() - loopStart}ms after ${round + 1} round(s)`);
       return { responseText, toolCalls, reachedMaxRounds: false };
     }
 
-    const toolResults: Anthropic.ToolResultBlockParam[] = [];
+    logger.info(`[tool-loop] round ${round} calling ${toolUseBlocks.length} tool(s) in parallel: ${toolUseBlocks.map(t => t.name).join(', ')}`);
 
-    for (const toolUse of toolUseBlocks) {
-      const toolDef = toolDefinitions.find((t) => t.name === toolUse.name);
+    // ---- Execute all tools in PARALLEL ----------------------------------
+    const toolStart = Date.now();
+    const toolResults: Anthropic.ToolResultBlockParam[] = await Promise.all(
+      toolUseBlocks.map(async (toolUse) => {
+        const toolDef = toolDefinitions.find((t) => t.name === toolUse.name);
+        let result: unknown;
+        const t0 = Date.now();
 
-      let result: unknown;
-      let record: ToolCallRecord | null = null;
-
-      if (toolDef) {
-        try {
-          result = await toolDef.handler(toolUse.input as Record<string, unknown>);
-          record = {
-            name: toolUse.name,
-            input: toolUse.input as Record<string, unknown>,
-            output: result,
+        // Enforce per-tool call limits to prevent runaway search loops
+        const callLimit = TOOL_CALL_LIMITS[toolUse.name];
+        const callCount = toolCallCounts[toolUse.name] ?? 0;
+        if (callLimit && callCount >= callLimit) {
+          result = {
+            limitReached: true,
+            message: `${toolUse.name} already called ${callCount} time(s). Use the context already retrieved to generate your answer — do not search again.`,
           };
-          toolCalls.push(record);
-        } catch (err) {
-          const errorMessage = err instanceof Error ? err.message : 'Tool execution failed';
-          result = { error: errorMessage };
-          record = {
-            name: toolUse.name,
-            input: toolUse.input as Record<string, unknown>,
-            output: { error: errorMessage },
-          };
-          toolCalls.push(record);
-          logger.error(`Tool ${toolUse.name} failed`, err);
+          logger.info(`[tool-loop]   ${toolUse.name}: BLOCKED (limit ${callLimit} reached)`);
+        } else if (toolDef) {
+          toolCallCounts[toolUse.name] = callCount + 1;
+          try {
+            result = await toolDef.handler(toolUse.input as Record<string, unknown>);
+          } catch (err) {
+            const msg = err instanceof Error ? err.message : 'Tool execution failed';
+            result = { error: msg };
+            logger.error(`[tool-loop] ${toolUse.name} failed`, err);
+          }
+        } else {
+          result = { error: `Unknown tool: ${toolUse.name}` };
         }
-      } else {
-        result = { error: `Unknown tool: ${toolUse.name}` };
-      }
 
-      if (record && onToolCall) {
-        onToolCall(record);
-      }
+        logger.info(`[tool-loop]   ${toolUse.name}: ${Date.now() - t0}ms`);
 
-      toolResults.push({
-        type: 'tool_result',
-        tool_use_id: toolUse.id,
-        content: JSON.stringify(result),
-      });
-    }
+        const record: ToolCallRecord = {
+          name: toolUse.name,
+          input: toolUse.input as Record<string, unknown>,
+          output: result,
+        };
+        toolCalls.push(record);
+        if (onToolCall) onToolCall(record);
+
+        return {
+          type: 'tool_result' as const,
+          tool_use_id: toolUse.id,
+          content: JSON.stringify(result),
+        };
+      }),
+    );
+
+    logger.info(`[tool-loop] round ${round} tools done: ${Date.now() - toolStart}ms`);
 
     currentMessages = [
       ...currentMessages,
@@ -184,5 +219,6 @@ export async function runToolUseLoop(opts: ToolUseLoopOptions): Promise<ToolUseL
     ];
   }
 
+  logger.info(`[tool-loop] reached max rounds after ${Date.now() - loopStart}ms`);
   return { responseText: '', toolCalls, reachedMaxRounds: true };
 }

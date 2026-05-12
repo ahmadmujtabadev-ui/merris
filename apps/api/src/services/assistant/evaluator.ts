@@ -84,9 +84,10 @@ CRITICAL: formatting issues are worth max -5 from discipline_score. A response w
 
   try {
     const result = await sendMessage({
+      model: 'claude-haiku-4-5-20251001',
       system: 'You are a senior ESG partner reviewing work quality. Return only valid JSON.',
       messages: [{ role: 'user', content: evaluatorPrompt }],
-      maxTokens: 500,
+      maxTokens: 400,
     });
 
     if (!result) return { score: 85, decision: 'PASS', flags: [] };

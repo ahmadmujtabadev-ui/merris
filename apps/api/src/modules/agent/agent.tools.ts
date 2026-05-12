@@ -1193,7 +1193,7 @@ const searchKbDenseTool: ToolDefinition = {
           score:      r.score,
           // Pre-formatted citation ready for inline use: "Filename.pdf §4/12 (M01)"
           ref:        `${r.filename} §${r.chunkIndex + 1}/${r.totalChunks} (${r.module})`,
-          excerpt:    r.text.substring(0, 1200),
+          excerpt:    r.text.substring(0, 700),
         })),
       };
     } catch (err: any) {

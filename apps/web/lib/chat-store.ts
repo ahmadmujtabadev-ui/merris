@@ -199,7 +199,7 @@ export function handleEvent(
       break;
     }
     case 'token': {
-      set({ tokenText: event.text });
+      set((s) => ({ tokenText: s.tokenText + event.text }));
       break;
     }
     case 'sources': {
