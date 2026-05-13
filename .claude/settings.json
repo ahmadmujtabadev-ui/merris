@@ -7,7 +7,12 @@
       "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\Paklogics\\\\Desktop\\\\example_code\\\\merris\\\\merris-platform\" -Directory)",
       "Bash(Select-Object -ExpandProperty Name)",
       "Bash(node --input-type=module --eval \"import multipart from '@fastify/multipart'; console.log\\(typeof multipart\\);\")",
-      "Read(//c/c/Users/Paklogics/Desktop/example_code/merris/merris-platform/apps/web/components/pages/knowledge/**)"
+      "Read(//c/c/Users/Paklogics/Desktop/example_code/merris/merris-platform/apps/web/components/pages/knowledge/**)",
+      "Bash(python -c 'import json,sys; d=json.load\\(open\\('\\\\''c:/Users/Paklogics/Desktop/example_code/merris/merris-platform/__TRACKED_VAR__'\\\\''\\)\\); print\\(len\\(d\\)\\)')",
+      "Bash(npx tsx *)",
+      "Bash(pnpm --filter \"@merris/api\" exec tsc --noEmit)",
+      "Bash(pnpm --filter \"@merris/web\" exec tsc --noEmit)",
+      "Bash(pnpm --filter \"@merris/web\" add react-markdown remark-gfm)"
     ]
   }
 }

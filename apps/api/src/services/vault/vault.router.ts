@@ -8,6 +8,7 @@ import { generateReviewTable } from "./review-table.service.js";
 import { VaultModel } from "./vault.model.js";
 import { VaultDocumentModel } from "../../modules/vault/vault-document.model.js";
 import { VaultChunkModel } from "../../modules/vault/vault-chunk.model.js";
+import { getDenseEmbeddingCount, getDenseEmbeddingStats } from "../../modules/knowledge-base/dense-search.service.js";
 import { hybridSearch } from "../../modules/vault/search/hybrid-search.js";
 import { queryTables } from "../../modules/vault/table-store.js";
 import { compareDocuments } from "../../modules/vault/reasoning/compare-documents.js";
@@ -151,7 +152,7 @@ export async function registerVaultRoutes(app: FastifyInstance): Promise<void> {
         return reply.code(400).send({ error: "Invalid workspaceId" });
       }
 
-      const [total, indexed, failed, processing, chunkAgg] = await Promise.all([
+      const [total, indexed, failed, processing, chunkAgg, denseTotal, denseByModule] = await Promise.all([
         VaultDocumentModel.countDocuments({ workspaceId: wsOid }),
         VaultDocumentModel.countDocuments({ workspaceId: wsOid, status: "indexed" }),
         VaultDocumentModel.countDocuments({ workspaceId: wsOid, status: "failed" }),
@@ -160,11 +161,15 @@ export async function registerVaultRoutes(app: FastifyInstance): Promise<void> {
           { $match: { workspaceId: wsOid } },
           { $group: { _id: null, total: { $sum: "$chunkCount" } } },
         ]),
+        getDenseEmbeddingCount(),
+        getDenseEmbeddingStats(),
       ]);
 
-      const totalChunks: number = (chunkAgg[0] as { total?: number } | undefined)?.total ?? 0;
+      const vaultChunks: number = (chunkAgg[0] as { total?: number } | undefined)?.total ?? 0;
+      // totalChunks = vault uploads + M01-M14 dense KB chunks
+      const totalChunks: number = vaultChunks + denseTotal;
 
-      return reply.send({ total, indexed, failed, processing, totalChunks });
+      return reply.send({ total, indexed, failed, processing, totalChunks, denseChunks: denseTotal, denseByModule });
     }
   );
 

@@ -12,17 +12,40 @@ const K_COLORS: Record<string, string> = {
   K7: '#be185d',
 };
 
+// Module colours for M01-M14 dense KB results
+const M_COLORS: Record<string, string> = {
+  M01: '#0f766e', M02: '#0369a1', M03: '#15803d', M04: '#b45309',
+  M05: '#7c3aed', M06: '#be185d', M07: '#047857', M08: '#1d4ed8',
+  M09: '#9333ea', M10: '#b91c1c', M11: '#0e7490', M12: '#92400e',
+  M13: '#4f46e5', M14: '#065f46',
+};
+
 function KBadge({ source }: { source: string }) {
-  const match = source?.match(/K\d/)?.[0] ?? '';
-  const color = K_COLORS[match] ?? '#6b7280';
-  return match ? (
-    <span
-      className="inline-flex items-center justify-center rounded px-1.5 py-0.5 font-mono text-[9px] font-bold text-white"
-      style={{ background: color }}
-    >
-      {match}
-    </span>
-  ) : (
+  // K-vault badge (e.g. "K2")
+  const kMatch = source?.match(/K\d/)?.[0] ?? '';
+  if (kMatch) {
+    return (
+      <span
+        className="inline-flex items-center justify-center rounded px-1.5 py-0.5 font-mono text-[9px] font-bold text-white"
+        style={{ background: K_COLORS[kMatch] ?? '#6b7280' }}
+      >
+        {kMatch}
+      </span>
+    );
+  }
+  // Dense KB module badge (e.g. "M02-frameworks" → "M02")
+  const mMatch = source?.match(/M\d{2}/)?.[0] ?? '';
+  if (mMatch) {
+    return (
+      <span
+        className="inline-flex items-center justify-center rounded px-1.5 py-0.5 font-mono text-[9px] font-bold text-white"
+        style={{ background: M_COLORS[mMatch] ?? '#0f766e' }}
+      >
+        {mMatch}
+      </span>
+    );
+  }
+  return (
     <span className="inline-flex items-center justify-center rounded bg-blue-500 px-1.5 py-0.5 font-mono text-[9px] font-bold text-white">web</span>
   );
 }

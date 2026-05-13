@@ -71,8 +71,29 @@ export function AdvisoryResponse() {
   const isStreaming = phase === 'thinking';
   const followUps = useMemo(() => generateFollowUps(question), [question]);
   const [elapsed, setElapsed] = useState(0);
+  const [copied, setCopied] = useState(false);
   const startRef = useRef(Date.now());
   const startedRef = useRef(false);
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(tokenText);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleExport = () => {
+    const blob = new Blob([`# Merris Advisory Response\n\n**Question:** ${question}\n\n---\n\n${tokenText}`], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `merris-response-${Date.now()}.md`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const handleRegenerate = () => {
+    void startQuery(question);
+  };
 
   useEffect(() => {
     if (tokenText.length > 0 && !startedRef.current) {
@@ -147,20 +168,36 @@ export function AdvisoryResponse() {
         {/* ── Action bar ── */}
         {!isStreaming && (
           <div className="flex items-center gap-1 border-t border-merris-border px-5 py-2.5">
-            {[
-              { label: 'Copy', icon: <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> },
-              { label: 'Export', icon: <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> },
-              { label: 'Insert into memo', icon: <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> },
-              { label: 'Regenerate', icon: <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg> },
-            ].map(({ label, icon }) => (
-              <button
-                key={label}
-                className="flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 font-body text-[11px] text-merris-text-tertiary hover:bg-merris-surface-low hover:text-merris-text"
-              >
-                {icon}
-                {label}
-              </button>
-            ))}
+            <button
+              onClick={() => void handleCopy()}
+              className="flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 font-body text-[11px] text-merris-text-tertiary hover:bg-merris-surface-low hover:text-merris-text"
+            >
+              {copied
+                ? <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5"/></svg>
+                : <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              }
+              {copied ? 'Copied!' : 'Copy'}
+            </button>
+            <button
+              onClick={handleExport}
+              className="flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 font-body text-[11px] text-merris-text-tertiary hover:bg-merris-surface-low hover:text-merris-text"
+            >
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Export
+            </button>
+            <button
+              className="flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 font-body text-[11px] text-merris-text-tertiary hover:bg-merris-surface-low hover:text-merris-text"
+            >
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Insert into memo
+            </button>
+            <button
+              onClick={handleRegenerate}
+              className="flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 font-body text-[11px] text-merris-text-tertiary hover:bg-merris-surface-low hover:text-merris-text"
+            >
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+              Regenerate
+            </button>
 
             <div className="mx-2 h-4 w-px bg-merris-border" />
 

@@ -653,7 +653,7 @@ class ApiClient {
   }
 
   async getVaultStats(workspaceId: string) {
-    return this.get<{ total: number; indexed: number; failed: number; processing: number; totalChunks: number }>(
+    return this.get<{ total: number; indexed: number; failed: number; processing: number; totalChunks: number; denseChunks: number; denseByModule: Record<string, number> }>(
       `/vault/${workspaceId}/stats`,
     );
   }

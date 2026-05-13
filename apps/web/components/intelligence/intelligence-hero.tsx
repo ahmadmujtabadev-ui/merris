@@ -34,14 +34,6 @@ const SUGGESTED = [
   },
 ];
 
-// ── Live ticker events ────────────────────────────────────────────────────────
-const TICKER_EVENTS = [
-  { label: 'LIVE', text: 'QCB Circular 2024-08 ingested · 47 chunks · K3' },
-  { label: 'K5', text: '3 peer Scope 3 disclosures re-validated' },
-  { label: 'K1', text: 'EFRAG ESRS E1 update indexed · 89 chunks' },
-  { label: 'K3', text: 'IFRS S2 amendment (§29a) — 12 new passages' },
-  { label: 'K6', text: 'CDP Financial Services Q2025 ingested' },
-];
 
 export function IntelligenceHero() {
   const router = useRouter();
@@ -199,94 +191,6 @@ export function IntelligenceHero() {
               </div>
             </button>
           ))}
-        </div>
-
-        {/* ── Index health ── */}
-        <div className="mb-5 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-merris-primary"><path d="M4 6h16M4 10h16M4 14h10"/></svg>
-            <span className="font-display text-[14px] font-bold text-merris-text">Index health</span>
-            <span className="font-body text-[10px] font-semibold uppercase tracking-wider text-merris-text-tertiary">/ Live</span>
-          </div>
-          <button className="font-body text-[11px] font-semibold text-merris-primary hover:underline">
-            Open Knowledge →
-          </button>
-        </div>
-
-        <div className="mb-5 overflow-hidden rounded-2xl border border-merris-border bg-white shadow-sm">
-          <div className="grid grid-cols-5 divide-x divide-merris-border">
-            {[
-              {
-                label: 'CORPUS DEPTH',
-                value: chunks > 0 ? chunks.toLocaleString() : '9,247',
-                sub: '● indexing · +142 today',
-                subColor: '#16a34a',
-              },
-              {
-                label: 'DOCUMENTS',
-                value: docs > 0 ? docs.toLocaleString() : '1,184',
-                sub: '96% verified · 4.0% in review',
-                subColor: undefined,
-              },
-              {
-                label: 'VAULTS ACTIVE',
-                value: '7/7',
-                bars: true,
-              },
-              {
-                label: 'QUERIES TODAY',
-                value: '2,418',
-                sub: 'sparkline',
-                sparkline: true,
-              },
-              {
-                label: 'AVG CONFIDENCE',
-                value: '94',
-                unit: '%',
-                sub: '+3pts vs last week',
-                subColor: '#16a34a',
-              },
-            ].map(({ label, value, sub, subColor, bars, sparkline, unit }) => (
-              <div key={label} className="px-5 py-5">
-                <div className="mb-2 font-body text-[9px] font-semibold uppercase tracking-wider text-merris-text-tertiary">{label}</div>
-                <div className="font-display text-[28px] font-bold leading-none text-merris-text">
-                  {value}
-                  {unit && <span className="font-body text-[16px] font-semibold text-merris-text-secondary">{unit}</span>}
-                </div>
-                {bars && (
-                  <div className="mt-2 flex gap-[3px]">
-                    {[1,1,1,1,1,1,1,0.6,0.4,0.2].map((h, i) => (
-                      <div key={i} className="w-2 rounded-sm bg-merris-primary" style={{ height: `${h * 20}px`, opacity: h }} />
-                    ))}
-                  </div>
-                )}
-                {sparkline && (
-                  <div className="mt-2 flex items-end gap-[2px]">
-                    {[0.4,0.6,0.5,0.8,0.7,1,0.9,0.85,0.95,1].map((h, i) => (
-                      <div key={i} className="w-2 rounded-sm bg-merris-surface-high" style={{ height: `${h * 20}px` }} />
-                    ))}
-                  </div>
-                )}
-                {sub && !bars && !sparkline && (
-                  <div className="mt-1 font-body text-[10px]" style={{ color: subColor ?? '#9aa0a6' }}>{sub}</div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ── Live activity ticker ── */}
-        <div className="flex items-center gap-3 overflow-hidden rounded-xl border border-merris-border bg-white px-4 py-2.5">
-          <span className="shrink-0 rounded bg-emerald-500 px-1.5 py-0.5 font-mono text-[9px] font-bold text-white">LIVE</span>
-          <div className="flex min-w-0 gap-6 overflow-hidden font-body text-[10px] text-merris-text-secondary">
-            {TICKER_EVENTS.map((e, i) => (
-              <span key={i} className="shrink-0">
-                <span className="mr-1 font-semibold text-merris-primary">●</span>
-                {e.text}
-                <span className="ml-1.5 rounded border border-merris-border px-1 py-0.5 font-mono text-[8px] text-merris-text-tertiary">{e.label}</span>
-              </span>
-            ))}
-          </div>
         </div>
 
       </div>

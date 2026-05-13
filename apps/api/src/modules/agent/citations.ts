@@ -85,12 +85,14 @@ export function extractCitations(toolCalls: ToolCall[]): { citations: Citation[]
         const entryId = (item.id as string) || (item._id as string) || '';
         const description = (item.description as string) || (item.abstract as string) || (item.excerpt as string) || '';
         const ingested = item.ingested as boolean;
+        // Dense KB items have a module field (M01-M14) — they are always verified
+        const isIndexedKb = typeof item.module === 'string' && /^M\d{2}/.test(item.module as string);
 
         // RULE 1: Only cite entries that have actual content
         if (!title || !source) continue;
 
-        // If ingested field exists and is false, skip — it's a catalog stub
-        if (ingested === false) {
+        // If ingested field exists and is false, skip — it's a catalog stub (not applicable to dense KB)
+        if (!isIndexedKb && ingested === false) {
           data_gaps.push(`${title} (${source}, ${year}) exists in catalog but has not been ingested — not cited`);
           continue;
         }
@@ -104,7 +106,7 @@ export function extractCitations(toolCalls: ToolCall[]): { citations: Citation[]
           domain,
           entryId,
           excerpt: description.substring(0, 200),
-          verified: ingested === true,
+          verified: isIndexedKb || ingested === true,
         });
       }
     } catch {
