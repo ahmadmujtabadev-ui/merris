@@ -115,7 +115,7 @@ function extractBody(raw: string): string {
     const plainMatch = body.match(
       /Content-Type: text\/plain[^\n]*\n(?:Content-Transfer-Encoding:[^\n]*\n)?\n([\s\S]*?)(?=\n--|\n\nContent-Type:|$)/
     );
-    if (plainMatch) return plainMatch[1];
+    if (plainMatch) return plainMatch[1] ?? '';
   }
 
   return body

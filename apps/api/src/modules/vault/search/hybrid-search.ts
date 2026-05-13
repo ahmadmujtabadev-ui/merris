@@ -39,10 +39,11 @@ export async function hybridSearch(
     const rerankedResults = reranked
       .sort((a, b) => b.score - a.score)
       .slice(0, limit)
-      .map((r) => ({
-        ...topFused[r.index],
-        score: r.score,
-      }));
+      .flatMap((r): VaultSearchResult[] => {
+        const item = topFused[r.index];
+        if (!item) return [];
+        return [{ ...item, score: r.score }];
+      });
 
     return rerankedResults;
   } catch (error) {
@@ -59,6 +60,7 @@ function reciprocalRankFusion(
   for (const results of resultSets) {
     for (let rank = 0; rank < results.length; rank++) {
       const r = results[rank];
+      if (!r) continue;
       const rrfScore = 1 / (RRF_K + rank + 1);
       const key = r.chunkId;
 

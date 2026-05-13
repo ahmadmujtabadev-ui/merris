@@ -155,7 +155,13 @@ export async function listVaultDocuments(opts: ListOptions) {
   };
 }
 
-export async function getVaultDocument(workspaceId: string, docId: string) {
+export interface VaultDocumentDetail {
+  id: string;
+  chunks: Array<{ id: string; index: number; type: string; page?: number; section: string; tokens: number }>;
+  [key: string]: unknown;
+}
+
+export async function getVaultDocument(workspaceId: string, docId: string): Promise<VaultDocumentDetail | null> {
   const doc = await VaultDocumentModel.findOne({
     _id: new mongoose.Types.ObjectId(docId),
     workspaceId: new mongoose.Types.ObjectId(workspaceId),

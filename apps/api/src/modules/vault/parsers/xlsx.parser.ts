@@ -229,6 +229,7 @@ function classifySheet(
 function findHeaderRow(rows: string[][]): number {
   for (let i = 0; i < Math.min(rows.length, 5); i++) {
     const row = rows[i];
+    if (!row) continue;
     const nonEmpty = row.filter((c) => String(c).trim());
     if (nonEmpty.length >= 2) {
       const allText = nonEmpty.every((c) => isNaN(Number(c)) || String(c).trim() === "");

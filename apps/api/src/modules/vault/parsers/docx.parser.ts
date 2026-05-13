@@ -33,20 +33,21 @@ export async function parseDocx(
 
     match = tableRegex.exec(html);
     while (match) {
-      const tableHtml = match[1];
+      const tableHtml = match[1] ?? '';
       const rows: string[][] = [];
       let trMatch: RegExpExecArray | null;
 
       const trRegexLocal = new RegExp(trRegex.source, trRegex.flags);
       trMatch = trRegexLocal.exec(tableHtml);
       while (trMatch) {
+        const trContent = trMatch[1] ?? '';
         const cells: string[] = [];
         let cellMatch: RegExpExecArray | null;
         const cellRegex = new RegExp(tdThRegex.source, tdThRegex.flags);
-        cellMatch = cellRegex.exec(trMatch[1]);
+        cellMatch = cellRegex.exec(trContent);
         while (cellMatch) {
-          cells.push(stripHtml(cellMatch[1]));
-          cellMatch = cellRegex.exec(trMatch[1]);
+          cells.push(stripHtml(cellMatch[1] ?? ''));
+          cellMatch = cellRegex.exec(trContent);
         }
         if (cells.length > 0) rows.push(cells);
         trMatch = trRegexLocal.exec(tableHtml);
@@ -73,15 +74,15 @@ export async function parseDocx(
     let blockMatch: RegExpExecArray | null;
     blockMatch = blockRegex.exec(htmlWithoutTables);
     while (blockMatch) {
-      const tag = blockMatch[1].toLowerCase();
-      const text = stripHtml(blockMatch[2]).trim();
+      const tag = (blockMatch[1] ?? '').toLowerCase();
+      const text = stripHtml(blockMatch[2] ?? '').trim();
       if (!text) {
         blockMatch = blockRegex.exec(htmlWithoutTables);
         continue;
       }
 
       if (tag.startsWith("h")) {
-        const level = parseInt(tag[1], 10);
+        const level = parseInt(tag.charAt(1) || '0', 10);
         currentHeadingPath = currentHeadingPath.slice(0, level - 1);
         currentHeadingPath[level - 1] = text;
         currentHeadingPath = currentHeadingPath.filter(Boolean);

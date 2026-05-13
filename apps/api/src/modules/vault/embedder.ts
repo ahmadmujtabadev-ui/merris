@@ -27,9 +27,11 @@ export async function embedChunks(
       const { vectors } = await embedBatch(texts, apiKey, "document");
 
       for (let j = 0; j < batch.length; j++) {
+        const chunk = batch[j];
+        if (!chunk) continue;
         embedded.push({
-          ...batch[j],
-          vector: vectors[j] || [],
+          ...chunk,
+          vector: vectors[j] ?? [],
           embeddingModel: VOYAGE_MODEL_NAME,
         });
       }

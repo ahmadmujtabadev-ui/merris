@@ -18,7 +18,7 @@ export function chunkDocument(parsed: ParsedDocument): ChunkInput[] {
     const tableText = table.rows.map((r) => r.join(" | ")).join("\n");
     const caption = table.caption ? `${table.caption}\n` : "";
     const headers =
-      table.rows.length > 1 ? table.rows[0].join(" | ") + "\n" : "";
+      table.rows.length > 1 ? (table.rows[0] ?? []).join(" | ") + "\n" : "";
     const fullText = caption + headers + tableText;
     const tokens = estimateTokens(fullText);
 
@@ -105,6 +105,7 @@ export function chunkDocument(parsed: ParsedDocument): ChunkInput[] {
       let overlapTokens = 0;
       for (let i = currentTexts.length - 1; i >= 0; i--) {
         const t = currentTexts[i];
+        if (!t) continue;
         const tTokens = estimateTokens(t);
         if (overlapTokens + tTokens > OVERLAP_TOKENS) break;
         overlapTexts.unshift(t);

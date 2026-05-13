@@ -30,7 +30,9 @@ export async function parsePptx(
 
     for (const slideFile of slideFiles) {
       slideNumber++;
-      const xml = await zip.files[slideFile].async("text");
+      const zipEntry = zip.files[slideFile];
+      if (!zipEntry) continue;
+      const xml = await zipEntry.async("text");
       const slideText = extractTextFromXml(xml);
 
       if (slideText.trim()) {
@@ -59,7 +61,7 @@ export async function parsePptx(
           elements.push({
             elementId: randomUUID(),
             type: "paragraph",
-            text: lines[i],
+            text: lines[i] ?? '',
             page: slideNumber,
             metadata: {
               headingPath: [`Slide ${slideNumber}`, title],
@@ -119,13 +121,13 @@ function extractTextFromXml(xml: string): string {
   let paraMatch: RegExpExecArray | null;
   paraMatch = paraRegex.exec(xml);
   while (paraMatch) {
-    const paraContent = paraMatch[1];
+    const paraContent = paraMatch[1] ?? '';
     const lineTexts: string[] = [];
     let textMatch: RegExpExecArray | null;
     const localTextRegex = new RegExp(textRegex.source, textRegex.flags);
     textMatch = localTextRegex.exec(paraContent);
     while (textMatch) {
-      const decoded = textMatch[1]
+      const decoded = (textMatch[1] ?? '')
         .replace(/&amp;/g, "&")
         .replace(/&lt;/g, "<")
         .replace(/&gt;/g, ">")
