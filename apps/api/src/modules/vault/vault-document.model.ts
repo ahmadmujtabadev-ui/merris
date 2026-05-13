@@ -34,6 +34,7 @@ export interface IVaultDocument extends Document {
   localPath?: string;
   pageCount?: number;
   isScanned: boolean;
+  ocrUsed: boolean;
   languageDetected: string[];
   provenance: {
     uploadedAt: Date;
@@ -90,6 +91,7 @@ const VaultDocumentSchema = new Schema<IVaultDocument>(
     localPath: { type: String },
     pageCount: { type: Number },
     isScanned: { type: Boolean, default: false },
+    ocrUsed: { type: Boolean, default: false },
     languageDetected: [{ type: String }],
     provenance: {
       uploadedAt: { type: Date, default: Date.now },

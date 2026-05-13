@@ -7,16 +7,23 @@ export function WorkingHeader() {
   const isStreaming = tokenText.length > 0;
 
   return (
-    <div className="mb-4 flex items-center gap-2.5">
-      <div className="relative flex h-[28px] w-[28px] items-center justify-center rounded-full bg-merris-primary font-display text-[11px] font-bold text-white">
+    <div className="mb-4 flex items-center gap-3">
+      <div className="relative flex h-8 w-8 items-center justify-center rounded-xl bg-merris-primary font-display text-[12px] font-bold text-white">
         M
         {!isStreaming && (
-          <span className="absolute -right-[3px] -top-[3px] h-[8px] w-[8px] rounded-full border-2 border-merris-bg bg-merris-primary-light animate-pulse-soft" />
+          <span className="absolute -right-[3px] -top-[3px] h-2 w-2 rounded-full border-2 border-[#f5f3ef] bg-emerald-400 animate-pulse" />
         )}
       </div>
-      <span className="font-display text-[13px] font-semibold text-merris-text">
-        {isStreaming ? 'Merris' : 'Merris is working…'}
-      </span>
+      <div>
+        <span className="font-display text-[14px] font-bold text-merris-text">
+          {isStreaming ? 'Merris' : 'Merris is working…'}
+        </span>
+        {!isStreaming && (
+          <div className="mt-0.5 font-body text-[10px] text-merris-text-tertiary">
+            Reasoning through your question
+          </div>
+        )}
+      </div>
     </div>
   );
 }

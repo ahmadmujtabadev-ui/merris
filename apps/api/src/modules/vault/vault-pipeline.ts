@@ -94,6 +94,7 @@ export async function runVaultPipeline(input: PipelineInput): Promise<void> {
     await VaultDocumentModel.findByIdAndUpdate(documentId, {
       pageCount: new Set(parsed.elements.map((e) => e.page)).size || 1,
       isScanned,
+      ocrUsed: parsed.ocrUsed ?? false,
       languageDetected: parsed.source.languageDetected,
       classification: classificationResult.docClass,
     });

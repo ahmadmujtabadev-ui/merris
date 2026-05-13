@@ -150,7 +150,7 @@ export function FirmLibraryPage() {
               {searchResults.map((r) => (
                 <MerrisCard key={r.chunkId}>
                   <div className="mb-1 flex items-center gap-2">
-                    <Pill size="sm" variant="info">p.{r.page}</Pill>
+                    <Pill size="sm" variant="default">p.{r.page}</Pill>
                     {r.section && <span className="font-body text-[10px] text-merris-text-tertiary">{r.section}</span>}
                     <span className="ml-auto font-mono text-[10px] text-merris-text-tertiary">{(r.score * 100).toFixed(0)}%</span>
                   </div>

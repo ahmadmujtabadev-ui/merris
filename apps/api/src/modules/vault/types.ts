@@ -74,6 +74,7 @@ export interface ParsedDocument {
   elements: ParsedElement[];
   tables: ParsedTable[];
   images: ParsedImage[];
+  ocrUsed?: boolean;
 }
 
 export interface ChunkInput {

@@ -151,14 +151,20 @@ export async function registerVaultRoutes(app: FastifyInstance): Promise<void> {
         return reply.code(400).send({ error: "Invalid workspaceId" });
       }
 
-      const [total, indexed, failed, processing] = await Promise.all([
+      const [total, indexed, failed, processing, chunkAgg] = await Promise.all([
         VaultDocumentModel.countDocuments({ workspaceId: wsOid }),
         VaultDocumentModel.countDocuments({ workspaceId: wsOid, status: "indexed" }),
         VaultDocumentModel.countDocuments({ workspaceId: wsOid, status: "failed" }),
         VaultDocumentModel.countDocuments({ workspaceId: wsOid, status: { $in: ["queued", "parsing", "chunking", "embedding"] } }),
+        VaultDocumentModel.aggregate([
+          { $match: { workspaceId: wsOid } },
+          { $group: { _id: null, total: { $sum: "$chunkCount" } } },
+        ]),
       ]);
 
-      return reply.send({ total, indexed, failed, processing });
+      const totalChunks: number = (chunkAgg[0] as { total?: number } | undefined)?.total ?? 0;
+
+      return reply.send({ total, indexed, failed, processing, totalChunks });
     }
   );
 
@@ -440,15 +446,18 @@ export async function registerVaultRoutes(app: FastifyInstance): Promise<void> {
     { preHandler: [authenticate] },
     async (request, reply) => {
       const { workspaceId } = request.params as { workspaceId: string };
-      const { question, documentIds, limit } = request.body as {
+      const { question, documentIds, limit, previousMessages } = request.body as {
         question?: string;
         documentIds?: string[];
         limit?: number;
+        previousMessages?: Array<{ role: "user" | "assistant"; content: string }>;
       };
 
       if (!question || typeof question !== "string" || question.trim().length === 0) {
         return reply.code(400).send({ error: "question is required" });
       }
+
+      const startTime = Date.now();
 
       const results = await hybridSearch({
         query: question.trim(),
@@ -460,6 +469,10 @@ export async function registerVaultRoutes(app: FastifyInstance): Promise<void> {
       if (results.length === 0) {
         return reply.send({
           answer: "I could not find any relevant content in your vault documents for this question.",
+          lowConfidence: false,
+          answeredInMs: Date.now() - startTime,
+          passageCount: 0,
+          followUpSuggestions: [],
           sources: [],
         });
       }
@@ -470,23 +483,65 @@ export async function registerVaultRoutes(app: FastifyInstance): Promise<void> {
         )
         .join("\n\n");
 
-      const answer = await sendMessage({
-        maxTokens: 2048,
-        system:
-          "You are an expert ESG analyst. Answer the user's question using only the provided vault document excerpts. Be precise and cite sources by their [N] reference number. If the documents do not contain enough information, say so clearly.",
-        messages: [
-          {
-            role: "user",
-            content: `Question: ${question.trim()}\n\nVault Document Excerpts:\n${context}`,
-          },
-        ],
+      // Build multi-turn message history
+      const messages: Array<{ role: "user" | "assistant"; content: string }> = [];
+      if (previousMessages && previousMessages.length > 0) {
+        messages.push(...previousMessages.slice(-6));
+      }
+      messages.push({
+        role: "user",
+        content: `Question: ${question.trim()}\n\nVault Document Excerpts:\n${context}\n\nAfter your answer add exactly:\nFOLLOW_UPS:\n["question 1?","question 2?","question 3?"]`,
       });
 
+      const rawAnswer = await sendMessage({
+        maxTokens: 2048,
+        system: `You are an expert ESG analyst. Answer the user's question using only the provided vault document excerpts.
+
+FORMATTING RULES — follow exactly:
+- Use ## for major section headings, ### for sub-headings. Never output raw ### as plain text.
+- Use **bold** for key terms, numbers, and findings.
+- Use bullet points (- ) for lists.
+- Use numbered lists (1. 2. 3.) for sequential steps or ranked items.
+- For comparison data (e.g. two documents side-by-side), output a markdown table:
+  | Column A | Column B | Column C |
+  |----------|----------|----------|
+  | value    | value    | value    |
+  | detail   | detail   | detail   |
+- For statistics, percentages, and key metrics, render them in a table so they display as visual stat cards.
+- Cite sources inline using [N] reference numbers (e.g. "85% of CxOs increased investment [1]").
+- If asked about charts, images, or visual content and the document text is sparse, explain what you found and note that the document may need OCR re-processing to extract image content.
+- If the documents do not contain enough information, say so clearly.`,
+        messages,
+      });
+
+      // Parse out follow-up suggestions appended after FOLLOW_UPS:
+      let answer = rawAnswer ?? "No answer could be generated.";
+      let followUpSuggestions: string[] = [];
+      const followUpMatch = answer.match(/\nFOLLOW_UPS:\s*(\[[\s\S]*?\])/);
+      if (followUpMatch?.[1]) {
+        try { followUpSuggestions = JSON.parse(followUpMatch[1]); } catch { /* ignore */ }
+        answer = answer.replace(/\nFOLLOW_UPS:[\s\S]*$/, "").trim();
+      }
+
+      // Enrich sources with document filenames
+      const uniqueDocIds = [...new Set(results.map((r) => r.documentId))];
+      const sourceDocs = await VaultDocumentModel.find({
+        _id: { $in: uniqueDocIds.map((id) => new mongoose.Types.ObjectId(id)) },
+      }).select("filename").lean();
+      const docNameMap = new Map(sourceDocs.map((d) => [d._id.toString(), d.filename]));
+
+      const maxScore = results.reduce((m, r) => Math.max(m, r.score), 0);
+
       return reply.send({
-        answer: answer ?? "No answer could be generated.",
+        answer,
+        lowConfidence: maxScore < 0.1,
+        answeredInMs: Date.now() - startTime,
+        passageCount: results.length,
+        followUpSuggestions: followUpSuggestions.slice(0, 3),
         sources: results.map((r) => ({
           chunkId: r.chunkId,
           documentId: r.documentId,
+          documentName: docNameMap.get(r.documentId) ?? "Unknown document",
           content: r.content.slice(0, 300),
           page: r.pageNumber ?? null,
           section: r.sectionPath.join(" > ") || "root",
@@ -567,6 +622,78 @@ export async function registerVaultRoutes(app: FastifyInstance): Promise<void> {
       });
 
       return reply.send(result);
+    }
+  );
+
+  // ================================================================
+  // Generate Flow — Claude-powered process flow from document content
+  // ================================================================
+
+  app.post(
+    "/api/v1/vault/:workspaceId/generate-flow",
+    { preHandler: [authenticate] },
+    async (request, reply) => {
+      const { workspaceId } = request.params as { workspaceId: string };
+      const { documentIds, topic } = request.body as {
+        documentIds?: string[];
+        topic?: string;
+      };
+
+      if (!topic || typeof topic !== "string" || topic.trim().length === 0) {
+        return reply.code(400).send({ error: "topic is required" });
+      }
+
+      const results = await hybridSearch({
+        query: topic.trim(),
+        workspaceId,
+        documentIds,
+        limit: 20,
+      });
+
+      if (results.length === 0) {
+        return reply.send({
+          title: topic,
+          steps: [],
+          summary: "No relevant content found in the selected documents.",
+        });
+      }
+
+      const context = results
+        .map((r, i) => `[${i + 1}] (page ${r.pageNumber ?? "?"}): ${r.content}`)
+        .join("\n\n");
+
+      const flowText = await sendMessage({
+        maxTokens: 2048,
+        system: `You are an expert process designer specialising in ESG and sustainability. Generate a clear structured process flow from the document content provided.
+
+Respond with ONLY valid JSON — no markdown fences, no extra text — matching this exact schema:
+{
+  "title": "string",
+  "steps": [
+    { "step": 1, "title": "string", "description": "string", "substeps": ["string"] }
+  ],
+  "summary": "string"
+}
+Include 4-8 steps. Keep each description to 1-2 sentences. substeps is optional.`,
+        messages: [
+          {
+            role: "user",
+            content: `Topic: ${topic.trim()}\n\nDocument excerpts:\n${context}\n\nGenerate a step-by-step process flow based on this content.`,
+          },
+        ],
+      });
+
+      try {
+        const clean = (flowText ?? "").replace(/```json|```/g, "").trim();
+        const flow = JSON.parse(clean);
+        return reply.send(flow);
+      } catch {
+        return reply.send({
+          title: topic,
+          steps: [],
+          summary: flowText ?? "Could not generate flow.",
+        });
+      }
     }
   );
 

@@ -13,6 +13,30 @@ function getAuthUser() {
 
 export type ChatPhase = 'home' | 'thinking' | 'response';
 
+// ── Saved conversation history (persisted to localStorage) ──
+export interface SavedConversation {
+  id: string;
+  title: string;
+  messages: ChatMessage[];
+  jurisdiction: string[];
+  knowledgeSources: string[];
+  savedAt: number;
+}
+
+const SAVED_CONV_KEY = 'merris_saved_conversations';
+
+export function loadSavedConversations(): SavedConversation[] {
+  if (typeof window === 'undefined') return [];
+  try {
+    const raw = localStorage.getItem(SAVED_CONV_KEY);
+    return raw ? (JSON.parse(raw) as SavedConversation[]) : [];
+  } catch { return []; }
+}
+
+function persistSavedConversations(list: SavedConversation[]) {
+  try { localStorage.setItem(SAVED_CONV_KEY, JSON.stringify(list.slice(0, 50))); } catch { /* ignore */ }
+}
+
 export interface ThinkingStepState {
   step: (typeof THINKING_PHASES)[number];
   status: 'pending' | 'active' | 'done' | 'failed';
@@ -64,6 +88,7 @@ interface ChatState {
   startQuery: (question: string) => Promise<void>;
   reset: () => void;
   clearConversation: () => void;
+  restoreConversation: (conv: SavedConversation) => void;
 }
 
 const initialThinkingSteps = (): ThinkingStepState[] =>
@@ -150,7 +175,21 @@ export const useChatStore = create<ChatState>((set, get) => ({
       errorMessage: null,
     }),
 
-  clearConversation: () =>
+  clearConversation: () => {
+    const { messages, jurisdiction, knowledgeSources } = get();
+    if (messages.length > 0) {
+      const existing = loadSavedConversations();
+      const title = messages[0]?.question?.slice(0, 80) ?? 'Conversation';
+      const saved: SavedConversation = {
+        id: `conv-${Date.now()}`,
+        title,
+        messages,
+        jurisdiction,
+        knowledgeSources,
+        savedAt: Date.now(),
+      };
+      persistSavedConversations([saved, ...existing]);
+    }
     set({
       phase: 'home',
       question: '',
@@ -160,7 +199,23 @@ export const useChatStore = create<ChatState>((set, get) => ({
       evaluation: null,
       errorMessage: null,
       messages: [],
-    }),
+    });
+  },
+
+  restoreConversation: (conv: SavedConversation) => {
+    set({
+      phase: 'response',
+      messages: conv.messages,
+      jurisdiction: conv.jurisdiction,
+      knowledgeSources: conv.knowledgeSources,
+      question: conv.messages[conv.messages.length - 1]?.question ?? '',
+      thinkingSteps: initialThinkingSteps(),
+      tokenText: '',
+      citations: conv.messages[conv.messages.length - 1]?.citations ?? [],
+      evaluation: conv.messages[conv.messages.length - 1]?.evaluation ?? null,
+      errorMessage: null,
+    });
+  },
 }));
 
 // ----- Pure event reducer -----

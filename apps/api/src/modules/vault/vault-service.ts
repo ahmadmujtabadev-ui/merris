@@ -150,6 +150,7 @@ export async function listVaultDocuments(opts: ListOptions) {
       version: d.version,
       uploadedAt: d.provenance.uploadedAt,
       isScanned: d.isScanned,
+      ocrUsed: d.ocrUsed,
     })),
   };
 }

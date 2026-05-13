@@ -51,6 +51,7 @@ export interface VaultDocument {
   version: number;
   uploadedAt: string;
   isScanned: boolean;
+  ocrUsed: boolean;
 }
 
 export interface VaultChunkSummary {
@@ -652,7 +653,7 @@ class ApiClient {
   }
 
   async getVaultStats(workspaceId: string) {
-    return this.get<{ total: number; indexed: number; failed: number; processing: number }>(
+    return this.get<{ total: number; indexed: number; failed: number; processing: number; totalChunks: number }>(
       `/vault/${workspaceId}/stats`,
     );
   }
@@ -705,18 +706,29 @@ class ApiClient {
     }>(`/vault/${workspaceId}/jobs/${docId}`);
   }
 
-  async askVault(workspaceId: string, question: string, documentIds?: string[], limit?: number) {
+  async askVault(
+    workspaceId: string,
+    question: string,
+    documentIds?: string[],
+    limit?: number,
+    previousMessages?: Array<{ role: 'user' | 'assistant'; content: string }>,
+  ) {
     return this.post<{
       answer: string;
+      lowConfidence: boolean;
+      answeredInMs: number;
+      passageCount: number;
+      followUpSuggestions: string[];
       sources: Array<{
         chunkId: string;
         documentId: string;
+        documentName: string;
         content: string;
         page: number | null;
         section: string;
         score: number;
       }>;
-    }>(`/vault/${workspaceId}/ask`, { question, documentIds, limit });
+    }>(`/vault/${workspaceId}/ask`, { question, documentIds, limit, previousMessages });
   }
 
   async queryVaultTable(workspaceId: string, query: string, columns?: string[], documentId?: string, limit?: number) {
@@ -748,6 +760,19 @@ class ApiClient {
       }>;
       overallAnalysis: string;
     }>(`/vault/${workspaceId}/compare`, { documentIds, dimensions, query });
+  }
+
+  async generateVaultFlow(workspaceId: string, topic: string, documentIds?: string[]) {
+    return this.post<{
+      title: string;
+      steps: Array<{
+        step: number;
+        title: string;
+        description: string;
+        substeps?: string[];
+      }>;
+      summary: string;
+    }>(`/vault/${workspaceId}/generate-flow`, { topic, documentIds });
   }
 
   async resolveVaultCitations(workspaceId: string, chunkIds: string[]) {
