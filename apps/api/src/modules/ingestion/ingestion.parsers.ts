@@ -1,3 +1,4 @@
+import Anthropic from '@anthropic-ai/sdk';
 import { logger } from '../../lib/logger.js';
 
 // ============================================================
@@ -42,6 +43,46 @@ export async function parsePDF(buffer: Buffer): Promise<ParsedContent> {
   } catch (error) {
     logger.error('PDF parsing failed', error);
     throw new Error('Failed to parse PDF file');
+  }
+}
+
+// ============================================================
+// Scanned PDF — Claude document understanding fallback
+// ============================================================
+
+export async function parsePDFWithClaude(buffer: Buffer, pageCount?: number): Promise<ParsedContent> {
+  const apiKey = process.env['ANTHROPIC_API_KEY'];
+  if (!apiKey) {
+    return { text: '', tables: [], isScanned: true, format: 'pdf', pageCount };
+  }
+  try {
+    const client = new Anthropic({ apiKey });
+    const response = await client.messages.create({
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: 4096,
+      messages: [
+        {
+          role: 'user',
+          content: [
+            {
+              type: 'document',
+              source: { type: 'base64', media_type: 'application/pdf', data: buffer.toString('base64') },
+            } as unknown as Anthropic.TextBlockParam,
+            {
+              type: 'text',
+              text: 'Extract ALL text, numbers, table data, headings, and ESG metrics from this PDF. Return only the raw extracted content.',
+            },
+          ],
+        },
+      ],
+    });
+    const textBlock = response.content.find((b) => b.type === 'text');
+    const text = textBlock && 'text' in textBlock ? textBlock.text : '';
+    logger.info(`Claude PDF extraction: ${text.length} chars`);
+    return { text, tables: [], isScanned: true, format: 'pdf', pageCount };
+  } catch (error) {
+    logger.error('Claude PDF document extraction failed', error);
+    return { text: '', tables: [], isScanned: true, format: 'pdf', pageCount };
   }
 }
 
@@ -117,33 +158,99 @@ export async function parseDocx(buffer: Buffer): Promise<ParsedContent> {
 }
 
 // ============================================================
-// PowerPoint Parser (basic text extraction)
+// PowerPoint Parser — extracts text from slide XML via JSZip
 // ============================================================
 
-export async function parsePptx(_buffer: Buffer): Promise<ParsedContent> {
-  // Basic PPTX parsing stub.
-  // For full PPTX support, a dedicated library (e.g., pptx-parser) would be needed.
-  // PPTX files are ZIP archives containing XML slides.
-  // Future implementation: unzip and extract text from slide XML files.
-  return {
-    text: '[PPTX content - requires specialized parser]',
-    tables: [],
-    isScanned: false,
-    format: 'pptx',
-  };
+export async function parsePptx(buffer: Buffer): Promise<ParsedContent> {
+  try {
+    const JSZip = (await import('jszip')).default;
+    const zip = await JSZip.loadAsync(buffer);
+
+    const slideFiles = Object.keys(zip.files)
+      .filter((name) => /^ppt\/slides\/slide\d+\.xml$/.test(name))
+      .sort((a, b) => {
+        const numA = parseInt(a.match(/\d+/)![0], 10);
+        const numB = parseInt(b.match(/\d+/)![0], 10);
+        return numA - numB;
+      });
+
+    const textParts: string[] = [];
+    for (const slideFile of slideFiles) {
+      const xml = await zip.files[slideFile]!.async('text');
+      // Extract text from <a:t> elements
+      const matches = xml.match(/<a:t[^>]*>([^<]*)<\/a:t>/g) ?? [];
+      const slideText = matches
+        .map((m) => m.replace(/<[^>]+>/g, '').trim())
+        .filter(Boolean)
+        .join(' ');
+      if (slideText) textParts.push(slideText);
+    }
+
+    return {
+      text: textParts.join('\n\n'),
+      tables: [],
+      isScanned: false,
+      format: 'pptx',
+    };
+  } catch (error) {
+    logger.error('PPTX parsing failed', error);
+    return { text: '', tables: [], isScanned: false, format: 'pptx' };
+  }
 }
 
 // ============================================================
-// Image Handler (flagged for Claude Vision)
+// Image Handler — uses Claude Vision to extract text
 // ============================================================
 
-export function parseImage(_buffer: Buffer, format: string): ParsedContent {
-  return {
-    text: '',
-    tables: [],
-    isScanned: true,
-    format,
-  };
+type ImageMediaType = 'image/png' | 'image/jpeg' | 'image/webp' | 'image/gif';
+
+const IMAGE_MEDIA_TYPES: Record<string, ImageMediaType> = {
+  png:  'image/png',
+  jpg:  'image/jpeg',
+  jpeg: 'image/jpeg',
+  webp: 'image/webp',
+  gif:  'image/gif',
+};
+
+export async function parseImage(buffer: Buffer, format: string): Promise<ParsedContent> {
+  const apiKey = process.env['ANTHROPIC_API_KEY'];
+  if (!apiKey) {
+    logger.warn('ANTHROPIC_API_KEY not set — cannot use Claude Vision for image extraction');
+    return { text: '', tables: [], isScanned: true, format };
+  }
+
+  const mediaType = IMAGE_MEDIA_TYPES[format.toLowerCase()] ?? 'image/png';
+
+  try {
+    const client = new Anthropic({ apiKey });
+    const response = await client.messages.create({
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: 4096,
+      messages: [
+        {
+          role: 'user',
+          content: [
+            {
+              type: 'image',
+              source: { type: 'base64', media_type: mediaType as ImageMediaType, data: buffer.toString('base64') },
+            } as unknown as Anthropic.Messages.ImageBlockParam,
+            {
+              type: 'text',
+              text: 'Extract ALL text, numbers, table values, headings, and labels from this image. Include every data point visible. Return only the extracted content, no explanations.',
+            },
+          ],
+        },
+      ],
+    });
+
+    const textBlock = response.content.find((b) => b.type === 'text');
+    const text = textBlock && 'text' in textBlock ? textBlock.text : '';
+    logger.info(`Claude Vision extracted ${text.length} chars from image`);
+    return { text, tables: [], isScanned: true, format };
+  } catch (error) {
+    logger.error('Claude Vision image extraction failed', error);
+    return { text: '', tables: [], isScanned: true, format };
+  }
 }
 
 // ============================================================
@@ -154,7 +261,16 @@ export async function parseFile(buffer: Buffer, mimeType: string, filename: stri
   const ext = filename.split('.').pop()?.toLowerCase() || '';
 
   if (mimeType === 'application/pdf' || ext === 'pdf') {
-    return parsePDF(buffer);
+    const result = await parsePDF(buffer);
+    // Scanned PDF — fallback to Claude's native PDF document understanding
+    if (result.isScanned || result.text.length < 100) {
+      logger.info('PDF appears scanned — attempting Claude document fallback');
+      const visionResult = await parsePDFWithClaude(buffer, result.pageCount);
+      if (visionResult.text.length > result.text.length) {
+        return visionResult;
+      }
+    }
+    return result;
   }
 
   if (

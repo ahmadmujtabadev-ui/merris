@@ -90,6 +90,22 @@ export function getTemplate(templateId: string): WorkflowTemplate | null {
   }
 }
 
+export function saveTemplate(template: WorkflowTemplate): void {
+  if (!fs.existsSync(templateDir)) fs.mkdirSync(templateDir, { recursive: true });
+  const filePath = path.join(templateDir, `${template.id}.json`);
+  fs.writeFileSync(filePath, JSON.stringify(template, null, 2), "utf-8");
+}
+
+export function deleteTemplate(templateId: string): boolean {
+  const filePath = path.join(templateDir, `${templateId}.json`);
+  try {
+    fs.unlinkSync(filePath);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 // ============================================================
 // Variable substitution
 // ============================================================

@@ -81,17 +81,20 @@ export interface KnowledgeCollection {
   entryCount?: number;
 }
 
+export interface WorkflowStep {
+  id: string;
+  name: string;
+  description?: string;
+  tool: string;
+  inputs?: Record<string, unknown>;
+}
+
 export interface WorkflowTemplate {
   id: string;
   name: string;
   description: string;
   category: string;
-  steps: Array<{
-    id: string;
-    name: string;
-    tool: string;
-    inputs: Record<string, unknown>;
-  }>;
+  steps: WorkflowStep[];
 }
 
 export interface WorkflowExecution {
@@ -102,6 +105,28 @@ export interface WorkflowExecution {
   currentStep: number;
   totalSteps: number;
   results: Record<string, unknown>;
+  error?: string;
+  startedAt: string;
+  completedAt?: string;
+}
+
+export interface ReActStep {
+  type: 'thought' | 'action' | 'observation' | 'final';
+  content: string;
+  tool?: string;
+  toolInput?: Record<string, unknown>;
+  toolResultSummary?: string;
+}
+
+export interface ReActExecution {
+  id: string;
+  templateId: string;
+  engagementId: string;
+  goal: string;
+  status: 'running' | 'completed' | 'failed';
+  steps: ReActStep[];
+  finalAnswer: string;
+  iterations: number;
   error?: string;
   startedAt: string;
   completedAt?: string;
@@ -432,10 +457,30 @@ class ApiClient {
     return this.get<{ executions: WorkflowExecution[] }>('/workflows/history');
   }
 
-  generateBuilderSteps(description: string) {
+  saveWorkflowTemplate(template: Omit<WorkflowTemplate, 'id'> & { id?: string }) {
+    return this.post<WorkflowTemplate>('/workflows/templates', template);
+  }
+
+  deleteWorkflowTemplate(templateId: string) {
+    return this.delete<{ deleted: boolean }>(`/workflows/templates/${templateId}`);
+  }
+
+  runReActAgent(templateId: string, engagementId: string, inputs?: Record<string, unknown>) {
+    return this.post<ReActExecution>('/workflows/react/run', { templateId, engagementId, inputs: inputs ?? {} });
+  }
+
+  getReActExecution(id: string) {
+    return this.get<ReActExecution>(`/workflows/react/${id}`);
+  }
+
+  listReActHistory() {
+    return this.get<{ executions: ReActExecution[] }>('/workflows/react/history');
+  }
+
+  generateBuilderSteps(description: string, jurisdiction?: string, frameworks?: string) {
     return this.post<{
       steps: Array<{ id: string; name: string; description: string; tool: string }>;
-    }>('/workflows/builder/generate-steps', { description });
+    }>('/workflows/builder/generate-steps', { description, jurisdiction, frameworks });
   }
 
   // ===== Assurance =====

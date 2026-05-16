@@ -12,7 +12,11 @@
       "Bash(npx tsx *)",
       "Bash(pnpm --filter \"@merris/api\" exec tsc --noEmit)",
       "Bash(pnpm --filter \"@merris/web\" exec tsc --noEmit)",
-      "Bash(pnpm --filter \"@merris/web\" add react-markdown remark-gfm)"
+      "Bash(pnpm --filter \"@merris/web\" add react-markdown remark-gfm)",
+      "Bash(pnpm add *)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\Paklogics\\.claude\\projects\\c--Users-Paklogics-Desktop-example-code-merris-merris-platform\\memory"
     ]
   }
 }

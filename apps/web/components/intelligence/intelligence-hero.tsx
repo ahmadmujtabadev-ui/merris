@@ -42,13 +42,13 @@ export function IntelligenceHero() {
   const startQuery = useChatStore((s) => s.startQuery);
   const user = useAuthStore((s) => s.user);
 
-  const [stats, setStats] = useState<{ totalChunks: number; indexed: number; total: number } | null>(null);
+  const [stats, setStats] = useState<{ totalChunks: number; indexed: number; total: number; denseByModule: Record<string, number> } | null>(null);
 
   const fetchStats = useCallback(async () => {
     if (!user?.orgId) return;
     try {
       const s = await api.getVaultStats(user.orgId);
-      setStats({ totalChunks: s.totalChunks ?? s.indexed, indexed: s.indexed, total: s.total });
+      setStats({ totalChunks: s.totalChunks ?? s.indexed, indexed: s.indexed, total: s.total, denseByModule: s.denseByModule ?? {} });
     } catch { /* ignore */ }
   }, [user?.orgId]);
 
@@ -125,7 +125,7 @@ export function IntelligenceHero() {
             <span className="mt-0.5 w-20 shrink-0 font-body text-[9px] font-semibold uppercase tracking-wider text-merris-text-tertiary">
               Knowledge
             </span>
-            <SourceToggles />
+            <SourceToggles denseByModule={stats?.denseByModule} />
           </div>
         </div>
 

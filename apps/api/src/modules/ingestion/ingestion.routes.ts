@@ -10,6 +10,7 @@ import {
   processDocument,
   UploadError,
 } from './ingestion.service.js';
+import { logger } from '../../lib/logger.js';
 import { getCompleteness } from '../data-collection/data-collection.service.js';
 import mongoose from 'mongoose';
 
@@ -66,9 +67,22 @@ export async function registerIngestionRoutes(app: FastifyInstance): Promise<voi
           file.mimetype
         );
 
+        const documentId = result.document._id.toString();
+
+        // If Redis queue is unavailable, process synchronously in the background
+        // so documents don't get permanently stuck at "queued" status.
+        if (!result.queued) {
+          logger.warn(`Redis unavailable — processing document ${documentId} synchronously`);
+          setImmediate(() => {
+            processDocument(documentId).catch((err) =>
+              logger.error(`Sync document processing failed for ${documentId}`, err),
+            );
+          });
+        }
+
         return reply.code(201).send({
           document: {
-            id: result.document._id.toString(),
+            id: documentId,
             engagementId: result.document.engagementId.toString(),
             filename: result.document.filename,
             format: result.document.format,
@@ -77,6 +91,7 @@ export async function registerIngestionRoutes(app: FastifyInstance): Promise<voi
             uploadedAt: result.document.uploadedAt,
           },
           queued: result.queued,
+          processingAsync: true,
         });
       } catch (err) {
         return handleError(err, reply);
