@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import type { Node, Edge } from '@xyflow/react';
 import dynamic from 'next/dynamic';
 import { MerrisCard } from '@/components/merris/card';
 import { MerrisButton } from '@/components/merris/button';
@@ -36,8 +37,23 @@ interface BuilderStep {
 type Permission = 'everyone' | 'analysts' | 'only-me';
 type OutputFormat = 'report' | 'json';
 
-export function BuilderTab() {
+export interface OpenTemplate {
+  templateId: string;
+  name: string;
+  nodes: Node[];
+  edges: Edge[];
+}
+
+interface BuilderTabProps {
+  openTemplate?: OpenTemplate | null;
+}
+
+export function BuilderTab({ openTemplate }: BuilderTabProps = {}) {
   const [mode, setMode] = useState<'describe' | 'visual'>('describe');
+
+  useEffect(() => {
+    if (openTemplate) setMode('visual');
+  }, [openTemplate]);
 
   // ─── Describe mode state ────────────────────────────────────
   const [agentName, setAgentName] = useState('');
@@ -152,7 +168,14 @@ export function BuilderTab() {
         </button>
       </div>
 
-      {mode === 'visual' && <VisualBuilder agentName={agentName || 'New Agent'} />}
+      {mode === 'visual' && (
+        <VisualBuilder
+          agentName={(openTemplate?.name ?? agentName) || 'New Agent'}
+          templateId={openTemplate?.templateId}
+          initialNodes={openTemplate?.nodes}
+          initialEdges={openTemplate?.edges}
+        />
+      )}
 
       {mode === 'describe' && (
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-[2fr_1fr]">

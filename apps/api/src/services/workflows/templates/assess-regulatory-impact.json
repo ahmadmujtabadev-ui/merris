@@ -1,11 +1,146 @@
 {
   "id": "assess-regulatory-impact",
   "name": "Assess Regulatory Impact",
-  "description": "Assess impact of new regulation on client engagements",
-  "category": "Compliance",
+  "description": "Visual workflow — 5 nodes",
+  "category": "Custom",
   "steps": [
-    { "id": "extract", "name": "Extract regulation requirements", "tool": "perceive_document", "inputs": { "documentBody": "$document", "documentType": "word" } },
-    { "id": "regulatory", "name": "Search regulatory context", "tool": "search_knowledge", "inputs": { "query": "$document regulation requirements", "domains": ["regulatory"] } },
-    { "id": "report", "name": "Produce impact assessment", "tool": "generate_text", "inputs": { "prompt": "Produce a regulatory impact assessment from: $extract, $regulatory" } }
-  ]
+    {
+      "id": "extract",
+      "name": "Extract regulation requirements",
+      "description": "",
+      "tool": "perceive_document",
+      "inputs": {}
+    },
+    {
+      "id": "regulatory",
+      "name": "Search regulatory context",
+      "description": "",
+      "tool": "search_knowledge",
+      "inputs": {}
+    },
+    {
+      "id": "report",
+      "name": "Produce impact assessment",
+      "description": "",
+      "tool": "generate_text",
+      "inputs": {}
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "trigger-0",
+        "type": "trigger",
+        "position": {
+          "x": 60,
+          "y": 180
+        },
+        "data": {
+          "label": "Start",
+          "triggerType": "manual",
+          "state": "idle"
+        },
+        "measured": {
+          "width": 190,
+          "height": 106
+        }
+      },
+      {
+        "id": "extract",
+        "type": "transform",
+        "position": {
+          "x": 300,
+          "y": 180
+        },
+        "data": {
+          "label": "Extract regulation requirements",
+          "state": "idle",
+          "operation": ""
+        },
+        "measured": {
+          "width": 253,
+          "height": 91
+        }
+      },
+      {
+        "id": "regulatory",
+        "type": "kb-search",
+        "position": {
+          "x": 550,
+          "y": 180
+        },
+        "data": {
+          "label": "Search regulatory context",
+          "state": "idle",
+          "sources": [],
+          "query": "",
+          "topK": 8
+        },
+        "measured": {
+          "width": 219,
+          "height": 110
+        }
+      },
+      {
+        "id": "report",
+        "type": "llm-reason",
+        "position": {
+          "x": 800,
+          "y": 180
+        },
+        "data": {
+          "label": "Produce impact assessment",
+          "state": "idle",
+          "prompt": ""
+        },
+        "measured": {
+          "width": 232,
+          "height": 109
+        }
+      },
+      {
+        "id": "output-end",
+        "type": "output",
+        "position": {
+          "x": 1050,
+          "y": 180
+        },
+        "data": {
+          "label": "Output",
+          "format": "report",
+          "state": "idle"
+        },
+        "measured": {
+          "width": 150,
+          "height": 122
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-trigger-0-extract",
+        "source": "trigger-0",
+        "target": "extract",
+        "type": "smoothstep"
+      },
+      {
+        "id": "e-extract-regulatory",
+        "source": "extract",
+        "target": "regulatory",
+        "type": "smoothstep"
+      },
+      {
+        "id": "e-regulatory-report",
+        "source": "regulatory",
+        "target": "report",
+        "type": "smoothstep"
+      },
+      {
+        "id": "e-report-output-end",
+        "source": "report",
+        "target": "output-end",
+        "type": "smoothstep"
+      }
+    ]
+  }
 }

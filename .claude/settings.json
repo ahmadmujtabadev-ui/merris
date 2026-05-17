@@ -13,7 +13,12 @@
       "Bash(pnpm --filter \"@merris/api\" exec tsc --noEmit)",
       "Bash(pnpm --filter \"@merris/web\" exec tsc --noEmit)",
       "Bash(pnpm --filter \"@merris/web\" add react-markdown remark-gfm)",
-      "Bash(pnpm add *)"
+      "Bash(pnpm add *)",
+      "Bash(node_modules/.bin/tsx -e \"import mongoose from 'mongoose'; import * as dotenv from 'dotenv'; dotenv.config\\(\\); await mongoose.connect\\(process.env.MONGODB_URI||'mongodb://localhost:27017/merris'\\); const col = mongoose.connection.db.collection\\('kb_dense_embeddings'\\); const modules = await col.distinct\\('module'\\); console.log\\(JSON.stringify\\(modules.sort\\(\\)\\)\\); await mongoose.disconnect\\(\\);\")",
+      "Bash(node_modules/.bin/tsx -e \"import mongoose from 'mongoose'; import * as dotenv from 'dotenv'; dotenv.config\\(\\); await mongoose.connect\\(process.env.MONGODB_URI||'mongodb://localhost:27017/merris'\\); const col = mongoose.connection.db.collection\\('kb_dense_embeddings'\\); const modules = await col.distinct\\('module'\\); console.log\\(modules.sort\\(\\).join\\('\\\\n'\\)\\); await mongoose.disconnect\\(\\);\")",
+      "Bash(node -e \"const mongoose = require\\('mongoose'\\); require\\('dotenv'\\).config\\(\\); mongoose.connect\\(process.env.MONGODB_URI||'mongodb://localhost:27017/merris'\\).then\\(async \\(\\) => { const docs = await mongoose.connection.db.collection\\('kb_dense_embeddings'\\).distinct\\('module'\\); console.log\\(docs.sort\\(\\).join\\('\\\\n'\\)\\); process.exit\\(0\\); }\\).catch\\(e => { console.error\\(e.message\\); process.exit\\(1\\); }\\);\")",
+      "Bash(node -e \"require\\('dotenv'\\).config\\(\\); const v = process.env.VOYAGE_API_KEY; const q = process.env.QDRANT_URL; console.log\\('VOYAGE_API_KEY:', v ? v.slice\\(0,8\\)+'...' : 'MISSING'\\); console.log\\('QDRANT_URL:', q || 'MISSING'\\);\")",
+      "Bash(node -e \"require\\('dotenv'\\).config\\({path:'.env'}\\); const v = process.env.VOYAGE_API_KEY; const q = process.env.QDRANT_URL; console.log\\('VOYAGE_API_KEY:', v ? v.slice\\(0,8\\)+'...' : 'MISSING'\\); console.log\\('QDRANT_URL:', q || 'MISSING'\\);\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\Paklogics\\.claude\\projects\\c--Users-Paklogics-Desktop-example-code-merris-merris-platform\\memory"

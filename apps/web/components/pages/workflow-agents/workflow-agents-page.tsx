@@ -9,8 +9,10 @@ import { SectionLabel } from '@/components/merris/label';
 import { api, type WorkflowTemplate, type ReActExecution } from '@/lib/api';
 import { useEngagementStore, useWorkflowStore } from '@/lib/store';
 import { AGENTS_PREBUILT, AGENTS_CUSTOM, AGENT_CATEGORIES, type AgentEntry } from './workflow-agents-data';
-import { BuilderTab } from './builder-tab';
+import { BuilderTab, type OpenTemplate } from './builder-tab';
 import { ReActResultsPanel } from './react-results-panel';
+import { stepsToGraph } from './visual-builder/flow-utils';
+import type { Node, Edge } from '@xyflow/react';
 
 type ViewAgent = AgentEntry & { realTemplateId?: string };
 
@@ -42,6 +44,7 @@ export function WorkflowAgentsPage() {
   const [loading, setLoading] = useState(true);
   const [runFeedback, setRunFeedback] = useState<RunFeedback | null>(null);
   const [showResults, setShowResults] = useState(false);
+  const [openTemplate, setOpenTemplate] = useState<OpenTemplate | null>(null);
   const currentEngagement = useEngagementStore((s) => s.currentEngagement);
   const { executions, fetchHistory: fetchWorkflowHistory } = useWorkflowStore();
 
@@ -106,6 +109,27 @@ export function WorkflowAgentsPage() {
     }
   };
 
+  const handleOpenInBuilder = async (agent: ViewAgent) => {
+    if (!agent.realTemplateId) return;
+    try {
+      const template = await api.getWorkflowTemplate(agent.realTemplateId);
+      let nodes: Node[];
+      let edges: Edge[];
+      if (template.graph && template.graph.nodes.length > 0) {
+        nodes = template.graph.nodes as Node[];
+        edges = template.graph.edges as Edge[];
+      } else {
+        const graph = stepsToGraph(template.steps);
+        nodes = graph.nodes;
+        edges = graph.edges;
+      }
+      setOpenTemplate({ templateId: template.id, name: template.name, nodes, edges });
+      setTab('builder');
+    } catch {
+      // silently ignore — template may not exist on backend yet
+    }
+  };
+
   return (
     <div className="p-6">
       {/* ReAct results panel */}
@@ -127,7 +151,7 @@ export function WorkflowAgentsPage() {
       <div className="mb-5 inline-flex rounded-merris-sm bg-merris-surface-low p-1">
         <button
           type="button"
-          onClick={() => setTab('library')}
+          onClick={() => { setTab('library'); setOpenTemplate(null); }}
           className={tab === 'library'
             ? 'rounded-[6px] bg-merris-primary px-4 py-1.5 font-display text-[12px] font-semibold text-white'
             : 'px-4 py-1.5 font-display text-[12px] text-merris-text-secondary'}
@@ -145,7 +169,7 @@ export function WorkflowAgentsPage() {
         </button>
       </div>
 
-      {tab === 'builder' && <BuilderTab />}
+      {tab === 'builder' && <BuilderTab openTemplate={openTemplate} />}
 
       {tab === 'library' && (
         <>
@@ -229,13 +253,24 @@ export function WorkflowAgentsPage() {
                     <div className="font-body text-[10px] text-merris-text-tertiary">
                       {a.by ? `by ${a.by}` : a.category}
                     </div>
-                    <MerrisButton
-                      variant="primary"
-                      className="!text-[11px] !px-3 !py-1.5"
-                      onClick={() => handleRun(a)}
-                    >
-                      ▶ Run
-                    </MerrisButton>
+                    <div className="flex items-center gap-1.5">
+                      {a.realTemplateId && (
+                        <button
+                          type="button"
+                          onClick={() => handleOpenInBuilder(a)}
+                          className="rounded-lg border border-merris-border px-3 py-1.5 font-body text-[11px] text-merris-text-secondary transition-colors hover:border-merris-primary hover:text-merris-primary"
+                        >
+                          Open
+                        </button>
+                      )}
+                      <MerrisButton
+                        variant="primary"
+                        className="!text-[11px] !px-3 !py-1.5"
+                        onClick={() => handleRun(a)}
+                      >
+                        ▶ Run
+                      </MerrisButton>
+                    </div>
                   </div>
                 </MerrisCard>
               ))}

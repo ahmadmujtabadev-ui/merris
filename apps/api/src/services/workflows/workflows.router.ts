@@ -55,6 +55,7 @@ export async function registerWorkflowServiceRoutes(app: FastifyInstance): Promi
       description: body.description ?? "",
       category: body.category ?? "Custom",
       steps: body.steps,
+      ...(body.graph ? { graph: body.graph } : {}),
     };
     saveTemplate(template);
     logger.info(`Saved workflow template: ${template.id}`);

@@ -4,12 +4,13 @@
 // Claude autonomously decides which tools to call and when to stop.
 
 import Anthropic from '@anthropic-ai/sdk';
-import { semanticSearch } from '../../modules/knowledge-base/search.service.js';
+import { denseSearch } from '../../modules/knowledge-base/dense-search.service.js';
 import { checkCompliance } from '../verification/compliance-checker.js';
 import { calculate } from '../../modules/calculation/calculation.service.js';
 import { sendMessage } from '../../lib/claude.js';
 import { logger } from '../../lib/logger.js';
 import { getTemplate } from './workflows.service.js';
+import { runDAGExecution } from './dag-engine.js';
 
 // ── Types ─────────────────────────────────────────────────────
 
@@ -55,16 +56,16 @@ const TOOL_DEFINITIONS: Anthropic.Tool[] = [
   {
     name: 'search_knowledge',
     description:
-      'Semantic search across the ESG knowledge base (K1–K7: regulatory, climate science, environmental, social, corporate disclosure, methodology, guidance). Use this before making any regulatory or factual claims.',
+      'Semantic search across 22,000+ chunks from the ESG knowledge base using Voyage AI dense embeddings. Use this before making any regulatory or factual claims. Available modules: regulatory, frameworks, emission_factors, benchmarks, climate, carbon_markets, environmental, social, financial, sector, jurisdictions, templates, caselaw, research.',
     input_schema: {
       type: 'object' as const,
       properties: {
         query: { type: 'string', description: 'Natural language search query' },
-        domains: {
+        modules: {
           type: 'array',
           items: { type: 'string' },
           description:
-            'Optional domain filter: regulatory, climate_science, environmental_science, social_data, corporate_disclosure, methodology, guidance',
+            'Optional module filter — one or more of: regulatory, frameworks, emission_factors, benchmarks, climate, carbon_markets, environmental, social, financial, sector, jurisdictions, templates, caselaw, research',
         },
       },
       required: ['query'],
@@ -153,6 +154,43 @@ const TOOL_DEFINITIONS: Anthropic.Tool[] = [
   },
 ];
 
+// ── Domain → Module mapping for search_knowledge tool ────────
+
+const DOMAIN_TO_MODULES: Record<string, string[]> = {
+  regulatory:            ['M01-regulatory', 'M11-jurisdictions'],
+  frameworks:            ['M02-frameworks'],
+  emission_factors:      ['M03-emission-factors'],
+  benchmarks:            ['M04-benchmarks'],
+  climate:               ['M05-climate'],
+  carbon_markets:        ['M06-carbon-markets'],
+  environmental:         ['M07-environmental'],
+  social:                ['M08-social'],
+  financial:             ['M09-financial'],
+  sector:                ['M10-sector'],
+  jurisdictions:         ['M11-jurisdictions'],
+  templates:             ['M12-templates'],
+  caselaw:               ['M13-caselaw'],
+  research:              ['M14-research'],
+  // legacy aliases from old tool schema
+  climate_science:       ['M05-climate'],
+  environmental_science: ['M07-environmental'],
+  social_data:           ['M08-social'],
+  corporate_disclosure:  ['M04-benchmarks', 'M09-financial'],
+  methodology:           ['M02-frameworks', 'M03-emission-factors'],
+  guidance:              ['M02-frameworks', 'M12-templates'],
+};
+
+function resolveModules(input: string[] | undefined): string[] | undefined {
+  if (!input || input.length === 0) return undefined;
+  const resolved = new Set<string>();
+  for (const d of input) {
+    const mapped = DOMAIN_TO_MODULES[d.toLowerCase()];
+    if (mapped) mapped.forEach((m) => resolved.add(m));
+    else resolved.add(d); // pass through if already a full module name
+  }
+  return resolved.size > 0 ? Array.from(resolved) : undefined;
+}
+
 // ── Tool execution ────────────────────────────────────────────
 
 async function executeTool(
@@ -163,14 +201,15 @@ async function executeTool(
   switch (toolName) {
     case 'search_knowledge': {
       const query = String(toolInput['query'] ?? '');
-      const domains = toolInput['domains'] as string[] | undefined;
-      const results = await semanticSearch({ query, domains, limit: 8 });
+      // Accept both 'modules' (new) and 'domains' (legacy) parameter names
+      const rawModules = (toolInput['modules'] ?? toolInput['domains']) as string[] | undefined;
+      const modules = resolveModules(rawModules);
+      const results = await denseSearch({ query, modules, limit: 8, minScore: 0.2 });
       return results.slice(0, 6).map((r) => ({
-        title: r.title,
-        domain: r.domain,
-        score: Number(r.score.toFixed(3)),
-        source: r.source,
-        description: r.description,
+        filename: r.filename,
+        module: r.module,
+        score: r.score,
+        excerpt: r.text.slice(0, 600),
       }));
     }
 
@@ -203,12 +242,12 @@ async function executeTool(
       const sector = String(toolInput['sector'] ?? '');
       const metric = toolInput['metric'] ? String(toolInput['metric']) : '';
       const query = metric ? `${sector} ${metric} peer benchmark` : `${sector} ESG best practice`;
-      const results = await semanticSearch({ query, domains: ['corporate_disclosure'], limit: 6 });
+      const results = await denseSearch({ query, modules: ['M04-benchmarks', 'M09-financial'], limit: 6, minScore: 0.2 });
       return results.slice(0, 5).map((r) => ({
-        title: r.title,
-        score: Number(r.score.toFixed(3)),
-        source: r.source,
-        description: r.description,
+        filename: r.filename,
+        module: r.module,
+        score: r.score,
+        excerpt: r.text.slice(0, 400),
       }));
     }
 
@@ -284,6 +323,31 @@ export async function runReActAgent(
   };
 
   reactStore.set(executionId, execution);
+
+  // ── Dispatch to DAG engine if template has a stored graph ────
+  if (template.graph && Array.isArray(template.graph.nodes) && template.graph.nodes.length > 1) {
+    logger.info(`ReAct ${executionId}: graph detected (${template.graph.nodes.length} nodes) — running DAG engine`);
+    try {
+      const result = await runDAGExecution(
+        template.graph,
+        engagementId,
+        executionId,
+        (steps) => reactStore.set(executionId, { ...execution, steps: [...steps] }),
+      );
+      execution.steps = result.steps;
+      execution.finalAnswer = result.finalAnswer;
+      execution.iterations = result.nodeCount;
+      execution.status = 'completed';
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : 'DAG execution failed';
+      logger.error(`DAG ${executionId} failed: ${msg}`, err);
+      execution.status = 'failed';
+      execution.error = msg;
+    }
+    execution.completedAt = new Date().toISOString();
+    reactStore.set(executionId, { ...execution, steps: [...execution.steps] });
+    return execution;
+  }
 
   const systemPrompt = `You are Merris, an expert ESG compliance AI agent running an autonomous analysis.
 

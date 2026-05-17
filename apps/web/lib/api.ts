@@ -95,6 +95,7 @@ export interface WorkflowTemplate {
   description: string;
   category: string;
   steps: WorkflowStep[];
+  graph?: { nodes: unknown[]; edges: unknown[] };
 }
 
 export interface WorkflowExecution {

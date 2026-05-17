@@ -1,4 +1,5 @@
 import type { Node, Edge } from '@xyflow/react';
+import type { WorkflowStep } from '@/lib/api';
 
 export type FlowNodeType =
   | 'trigger'
@@ -75,6 +76,68 @@ const defaults: Record<FlowNodeType, AnyNodeData> = {
 export function makeNode(type: FlowNodeType, position: { x: number; y: number }): Node {
   const id = `${type}-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`;
   return { id, type, position, data: { ...defaults[type] } };
+}
+
+// ── Convert flat steps → React Flow graph (for templates without stored graph) ──
+
+function toolToNodeType(tool: string): FlowNodeType {
+  const map: Record<string, FlowNodeType> = {
+    search_knowledge:  'kb-search',
+    benchmark:         'kb-search',
+    verify_compliance: 'condition',
+    detect_frameworks: 'condition',
+    calculate:         'tool-call',
+    generate_text:     'llm-reason',
+    judge_document:    'llm-reason',
+    perceive_document: 'transform',
+  };
+  return map[tool] ?? 'tool-call';
+}
+
+export function stepsToGraph(steps: WorkflowStep[]): { nodes: Node[]; edges: Edge[] } {
+  const nodes: Node[] = [];
+  const edges: Edge[] = [];
+
+  nodes.push({
+    id: 'trigger-0',
+    type: 'trigger',
+    position: { x: 60, y: 180 },
+    data: { label: 'Start', triggerType: 'manual', state: 'idle' },
+  });
+
+  steps.forEach((step, i) => {
+    const nodeType = toolToNodeType(step.tool);
+    const x = 300 + i * 250;
+    const extraData: Record<string, unknown> =
+      nodeType === 'kb-search'  ? { sources: [], query: step.description ?? '', topK: 8 }
+      : nodeType === 'llm-reason' ? { prompt: step.description ?? '' }
+      : nodeType === 'tool-call'  ? { tool: step.tool }
+      : nodeType === 'condition'  ? { condition: step.description ?? '', trueLabel: 'Pass', falseLabel: 'Fail' }
+      : nodeType === 'transform'  ? { operation: step.description ?? '' }
+      : {};
+
+    nodes.push({
+      id: step.id,
+      type: nodeType,
+      position: { x, y: 180 },
+      data: { label: step.name, state: 'idle', ...extraData },
+    });
+
+    const sourceId = i === 0 ? 'trigger-0' : steps[i - 1]!.id;
+    edges.push({ id: `e-${sourceId}-${step.id}`, source: sourceId, target: step.id, type: 'smoothstep' });
+  });
+
+  const lastId = steps.length > 0 ? steps[steps.length - 1]!.id : 'trigger-0';
+  const outX = 300 + steps.length * 250;
+  nodes.push({
+    id: 'output-end',
+    type: 'output',
+    position: { x: outX, y: 180 },
+    data: { label: 'Output', format: 'report', state: 'idle' },
+  });
+  edges.push({ id: `e-${lastId}-output-end`, source: lastId, target: 'output-end', type: 'smoothstep' });
+
+  return { nodes, edges };
 }
 
 export const INITIAL_NODES: Node[] = [

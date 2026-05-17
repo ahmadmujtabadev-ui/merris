@@ -1,8 +1,9 @@
 'use client';
 
 import { useCallback, useRef, useState, useEffect } from 'react';
-import { api } from '@/lib/api';
+import { api, type ReActExecution } from '@/lib/api';
 import { useEngagementStore } from '@/lib/store';
+import { ReActResultsPanel } from '../react-results-panel';
 import {
   ReactFlow,
   Background,
@@ -31,20 +32,32 @@ import {
 
 interface VisualBuilderProps {
   agentName?: string;
+  templateId?: string;
+  initialNodes?: Node[];
+  initialEdges?: Edge[];
 }
 
-export function VisualBuilder({ agentName = 'Untitled Agent' }: VisualBuilderProps) {
+export function VisualBuilder({ agentName = 'Untitled Agent', templateId, initialNodes, initialEdges }: VisualBuilderProps) {
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
-  const [nodes, setNodes, onNodesChange] = useNodesState(INITIAL_NODES);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(INITIAL_EDGES);
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes ?? INITIAL_NODES);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges ?? INITIAL_EDGES);
   const [selectedNode, setSelectedNode] = useState<Node | null>(null);
   const [name, setName] = useState(agentName);
+  const [currentTemplateId, setCurrentTemplateId] = useState(templateId);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [runState, setRunState] = useState<'idle' | 'running' | 'done' | 'error'>('idle');
   const [runMessage, setRunMessage] = useState('');
+  const [completedExecution, setCompletedExecution] = useState<ReActExecution | null>(null);
+  const [showResults, setShowResults] = useState(false);
   const currentEngagement = useEngagementStore((s) => s.currentEngagement);
 
   useEffect(() => { setName(agentName); }, [agentName]);
+
+  useEffect(() => {
+    if (initialNodes) setNodes(initialNodes);
+    if (initialEdges) setEdges(initialEdges);
+    if (templateId) setCurrentTemplateId(templateId);
+  }, [initialNodes, initialEdges, templateId, setNodes, setEdges]);
 
   const onConnect = useCallback(
     (connection: Connection) =>
@@ -124,12 +137,15 @@ export function VisualBuilder({ agentName = 'Untitled Agent' }: VisualBuilderPro
             inputs: {},
           };
         });
-      await api.saveWorkflowTemplate({
+      const saved = await api.saveWorkflowTemplate({
+        ...(currentTemplateId ? { id: currentTemplateId } : {}),
         name: name.trim(),
         description: `Visual workflow with ${nodes.length} nodes`,
         category: 'Custom',
         steps,
+        graph: { nodes, edges },
       });
+      setCurrentTemplateId(saved.id);
       setSaveState('saved');
       setTimeout(() => setSaveState('idle'), 3000);
     } catch {
@@ -166,10 +182,12 @@ export function VisualBuilder({ agentName = 'Untitled Agent' }: VisualBuilderPro
             inputs: {},
           };
         });
-      const saved = await api.saveWorkflowTemplate({ name: name.trim(), description: `Visual workflow — ${nodes.length} nodes`, category: 'Custom', steps });
+      const saved = await api.saveWorkflowTemplate({ ...(currentTemplateId ? { id: currentTemplateId } : {}), name: name.trim(), description: `Visual workflow — ${nodes.length} nodes`, category: 'Custom', steps, graph: { nodes, edges } });
       const execution = await api.runReActAgent(saved.id, currentEngagement.id, {});
       setRunState('done');
-      setRunMessage(`Completed · ${execution.iterations} iteration${execution.iterations !== 1 ? 's' : ''} · ${execution.steps.length} steps · id: ${execution.id}`);
+      setRunMessage(`Completed · ${execution.iterations} iteration${execution.iterations !== 1 ? 's' : ''} · ${execution.steps.length} steps`);
+      setCompletedExecution(execution);
+      setShowResults(true);
     } catch (err) {
       setRunState('error');
       setRunMessage(err instanceof Error ? err.message : 'ReAct execution failed');
@@ -185,6 +203,10 @@ export function VisualBuilder({ agentName = 'Untitled Agent' }: VisualBuilderPro
   };
 
   return (
+    <>
+    {showResults && completedExecution && (
+      <ReActResultsPanel execution={completedExecution} onClose={() => setShowResults(false)} />
+    )}
     <div className="flex h-[calc(100vh-200px)] min-h-[560px] overflow-hidden rounded-xl border border-gray-200 bg-gray-50">
       {/* Left palette */}
       <NodePalette onAddNode={handleAddNode} />
@@ -204,9 +226,18 @@ export function VisualBuilder({ agentName = 'Untitled Agent' }: VisualBuilderPro
               {nodes.length} nodes · {edges.length} edges
             </span>
             {(runState === 'done' || runState === 'error') && (
-              <span className={`font-body text-[10px] max-w-[220px] truncate ${runState === 'done' ? 'text-green-600' : 'text-red-500'}`}>
+              <span className={`font-body text-[10px] max-w-[180px] truncate ${runState === 'done' ? 'text-green-600' : 'text-red-500'}`}>
                 {runMessage}
               </span>
+            )}
+            {runState === 'done' && completedExecution && (
+              <button
+                type="button"
+                onClick={() => setShowResults(true)}
+                className="rounded-lg border border-green-500 px-3 py-1.5 font-body text-[11px] font-semibold text-green-600 hover:bg-green-50"
+              >
+                View Results →
+              </button>
             )}
             <button
               type="button"
@@ -308,5 +339,6 @@ export function VisualBuilder({ agentName = 'Untitled Agent' }: VisualBuilderPro
         onDelete={handleDeleteNode}
       />
     </div>
+    </>
   );
 }

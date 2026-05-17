@@ -1,0 +1,50 @@
+{
+  "id": "custom-compilence-1778908006892",
+  "name": "compilence",
+  "description": "Analyze our Scope 1 and Scope 2 emissions data, check compliance with TCFD framework, and generate an executive summary with peer benchmarks",
+  "category": "Compliance",
+  "steps": [
+    {
+      "id": "analyze_emissions_data",
+      "name": "Analyze Emissions Data",
+      "description": "Extract and analyze Scope 1 and Scope 2 emissions data from the provided documentation.",
+      "tool": "perceive_document",
+      "inputs": {}
+    },
+    {
+      "id": "detect_tcfd_framework",
+      "name": "Detect TCFD Framework",
+      "description": "Identify and extract TCFD framework requirements and disclosure elements.",
+      "tool": "detect_frameworks",
+      "inputs": {}
+    },
+    {
+      "id": "verify_tcfd_compliance",
+      "name": "Verify TCFD Compliance",
+      "description": "Check emissions data and disclosures against TCFD framework requirements for compliance.",
+      "tool": "verify_compliance",
+      "inputs": {}
+    },
+    {
+      "id": "benchmark_peer_performance",
+      "name": "Benchmark Peer Performance",
+      "description": "Compare emissions performance against industry peers and benchmarks.",
+      "tool": "benchmark",
+      "inputs": {}
+    },
+    {
+      "id": "search_regulatory_context",
+      "name": "Search Regulatory Context",
+      "description": "Retrieve relevant EU CSRD requirements and guidance for emissions reporting.",
+      "tool": "search_knowledge",
+      "inputs": {}
+    },
+    {
+      "id": "generate_executive_summary",
+      "name": "Generate Executive Summary",
+      "description": "Create comprehensive executive summary including emissions analysis, compliance status, and peer benchmarks.",
+      "tool": "generate_text",
+      "inputs": {}
+    }
+  ]
+}
