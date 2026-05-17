@@ -1,6 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Manrope, Inter } from 'next/font/google';
+import { Manrope, Inter, Instrument_Serif } from 'next/font/google';
 
 const manrope = Manrope({
   subsets: ['latin'],
@@ -16,6 +16,14 @@ const inter = Inter({
   display: 'swap',
 });
 
+const instrumentSerif = Instrument_Serif({
+  subsets: ['latin'],
+  weight: ['400'],
+  style: ['normal', 'italic'],
+  variable: '--font-instrument-serif',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
   title: 'Merris — ESG Intelligence',
   description: 'AI co-pilot for ESG professionals',
@@ -23,7 +31,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${manrope.variable} ${inter.variable}`}>
+    <html lang="en" className={`${manrope.variable} ${inter.variable} ${instrumentSerif.variable}`}>
       <body className="font-body bg-merris-bg text-merris-text antialiased">
         {children}
       </body>

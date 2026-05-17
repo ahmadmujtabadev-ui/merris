@@ -5,7 +5,7 @@ import { BaseNode } from './base-node';
 import type { TransformData, NodeRunState } from '../flow-utils';
 
 const OP_LABELS: Record<string, string> = {
-  extract:   'Extract key fields',
+  extract:   'Extract key fields from text',
   summarize: 'Summarize content',
   format:    'Format to template',
   merge:     'Merge multiple inputs',
@@ -19,10 +19,10 @@ export function TransformNode({ data: rawData, selected }: NodeProps) {
       type="transform"
       selected={selected}
       status={data.state as NodeRunState}
-      icon="🔄"
+      iconPath="M7 16V4m0 0L3 8m4-4l4 4M17 8v12m0 0l4-4m-4 4l-4-4"
       label={data.label}
     >
-      <p className="font-body text-[10px] text-gray-500">
+      <p className="font-body text-[10px]" style={{ color: '#9aa0a6' }}>
         {OP_LABELS[data.operation] ?? data.operation}
       </p>
     </BaseNode>

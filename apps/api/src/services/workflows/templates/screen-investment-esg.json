@@ -1,12 +1,201 @@
 {
   "id": "screen-investment-esg",
   "name": "ESG Investment Screening",
-  "description": "Screen investment proposal for ESG risks with peer benchmarking",
-  "category": "Due Diligence",
+  "description": "Visual workflow — 6 nodes",
+  "category": "Custom",
   "steps": [
-    { "id": "extract", "name": "Extract company profile", "tool": "perceive_document", "inputs": { "documentBody": "$document", "documentType": "word" } },
-    { "id": "risk_screen", "name": "Run ESG risk screening", "tool": "search_knowledge", "inputs": { "query": "ESG risk $sector", "domains": ["supply_chain", "regulatory", "environmental_science"] } },
-    { "id": "benchmark", "name": "Benchmark against peers", "tool": "benchmark", "inputs": { "query": "peer comparison $sector ESG metrics" } },
-    { "id": "report", "name": "Produce due diligence summary", "tool": "generate_text", "inputs": { "prompt": "Produce ESG due diligence summary from: $extract, $risk_screen, $benchmark" } }
-  ]
+    {
+      "id": "extract",
+      "name": "Extract company profile",
+      "description": "",
+      "tool": "perceive_document",
+      "inputs": {}
+    },
+    {
+      "id": "risk_screen",
+      "name": "Run ESG risk screening",
+      "description": "",
+      "tool": "search_knowledge",
+      "inputs": {}
+    },
+    {
+      "id": "benchmark",
+      "name": "Benchmark against peers",
+      "description": "",
+      "tool": "search_knowledge",
+      "inputs": {}
+    },
+    {
+      "id": "report",
+      "name": "Produce due diligence summary",
+      "description": "Using the retrieved ESG data from the Stellantis Climate 2024 \nsustainability report, produce a structured analysis:\n\n1. Climate targets and GHG reduction commitments\n2. EV transition progress and targets\n3. TCFD framework alignment assessment  \n4. Key ESG risks and gaps identified\n5. Recommended actions\n\nReference specific figures from the document.",
+      "tool": "generate_text",
+      "inputs": {}
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "trigger-0",
+        "type": "trigger",
+        "position": {
+          "x": 60,
+          "y": 180
+        },
+        "data": {
+          "label": "Start",
+          "triggerType": "manual",
+          "state": "idle"
+        },
+        "measured": {
+          "width": 210,
+          "height": 129
+        }
+      },
+      {
+        "id": "extract",
+        "type": "transform",
+        "position": {
+          "x": 300,
+          "y": 180
+        },
+        "data": {
+          "label": "Extract company profile",
+          "state": "idle",
+          "operation": ""
+        },
+        "measured": {
+          "width": 225,
+          "height": 113
+        }
+      },
+      {
+        "id": "risk_screen",
+        "type": "kb-search",
+        "position": {
+          "x": 550,
+          "y": 180
+        },
+        "data": {
+          "label": "Run ESG risk screening",
+          "state": "idle",
+          "sources": [
+            "K1",
+            "K2",
+            "K3",
+            "K4",
+            "K5",
+            "K6",
+            "K7"
+          ],
+          "query": "automotive industry ESG benchmarks climate disclosure TCFD",
+          "topK": 8
+        },
+        "measured": {
+          "width": 219,
+          "height": 128
+        },
+        "selected": false
+      },
+      {
+        "id": "benchmark",
+        "type": "kb-search",
+        "position": {
+          "x": 800,
+          "y": 180
+        },
+        "data": {
+          "label": "Benchmark against peers",
+          "state": "idle",
+          "sources": [
+            "K1",
+            "K2",
+            "K3",
+            "K4",
+            "K5",
+            "K6",
+            "K7"
+          ],
+          "query": "",
+          "topK": 50
+        },
+        "measured": {
+          "width": 234,
+          "height": 128
+        },
+        "selected": false
+      },
+      {
+        "id": "report",
+        "type": "llm-reason",
+        "position": {
+          "x": 1050,
+          "y": 180
+        },
+        "data": {
+          "label": "Produce due diligence summary",
+          "state": "idle",
+          "prompt": "Using the retrieved ESG data from the Stellantis Climate 2024 \nsustainability report, produce a structured analysis:\n\n1. Climate targets and GHG reduction commitments\n2. EV transition progress and targets\n3. TCFD framework alignment assessment  \n4. Key ESG risks and gaps identified\n5. Recommended actions\n\nReference specific figures from the document.",
+          "model": "claude-sonnet-4-6",
+          "temperature": 1
+        },
+        "measured": {
+          "width": 280,
+          "height": 146
+        },
+        "selected": false
+      },
+      {
+        "id": "output-end",
+        "type": "output",
+        "position": {
+          "x": 1376,
+          "y": 176
+        },
+        "data": {
+          "label": "Output",
+          "format": "report",
+          "state": "idle"
+        },
+        "measured": {
+          "width": 150,
+          "height": 149
+        },
+        "selected": false,
+        "dragging": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-trigger-0-extract",
+        "source": "trigger-0",
+        "target": "extract",
+        "type": "smoothstep"
+      },
+      {
+        "id": "e-extract-risk_screen",
+        "source": "extract",
+        "target": "risk_screen",
+        "type": "smoothstep"
+      },
+      {
+        "id": "e-risk_screen-benchmark",
+        "source": "risk_screen",
+        "target": "benchmark",
+        "type": "smoothstep"
+      },
+      {
+        "id": "e-benchmark-report",
+        "source": "benchmark",
+        "target": "report",
+        "type": "smoothstep"
+      },
+      {
+        "id": "e-report-output-end",
+        "source": "report",
+        "target": "output-end",
+        "type": "smoothstep"
+      }
+    ]
+  }
 }

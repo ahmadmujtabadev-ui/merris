@@ -33,6 +33,7 @@ const config: Config = {
       fontFamily: {
         display: ['var(--font-manrope)', 'Manrope', 'sans-serif'],
         body: ['var(--font-inter)', 'Inter', 'sans-serif'],
+        serif: ['var(--font-instrument-serif)', 'Georgia', 'serif'],
       },
       borderRadius: {
         merris: 'var(--merris-radius)',

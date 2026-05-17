@@ -37,6 +37,8 @@ interface VisualBuilderProps {
   initialEdges?: Edge[];
 }
 
+const PRIMARY = '#0b5142';
+
 export function VisualBuilder({ agentName = 'Untitled Agent', templateId, initialNodes, initialEdges }: VisualBuilderProps) {
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes ?? INITIAL_NODES);
@@ -47,11 +49,23 @@ export function VisualBuilder({ agentName = 'Untitled Agent', templateId, initia
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [runState, setRunState] = useState<'idle' | 'running' | 'done' | 'error'>('idle');
   const [runMessage, setRunMessage] = useState('');
+  const [elapsedSecs, setElapsedSecs] = useState(0);
+  const runTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const [completedExecution, setCompletedExecution] = useState<ReActExecution | null>(null);
   const [showResults, setShowResults] = useState(false);
   const currentEngagement = useEngagementStore((s) => s.currentEngagement);
 
   useEffect(() => { setName(agentName); }, [agentName]);
+
+  useEffect(() => {
+    if (runState === 'running') {
+      setElapsedSecs(0);
+      runTimerRef.current = setInterval(() => setElapsedSecs((s) => s + 1), 1000);
+    } else {
+      if (runTimerRef.current) clearInterval(runTimerRef.current);
+    }
+    return () => { if (runTimerRef.current) clearInterval(runTimerRef.current); };
+  }, [runState]);
 
   useEffect(() => {
     if (initialNodes) setNodes(initialNodes);
@@ -86,9 +100,11 @@ export function VisualBuilder({ agentName = 'Untitled Agent', templateId, initia
     setSelectedNode(null);
   }, [setNodes, setEdges]);
 
-  const handleAddNode = useCallback((type: FlowNodeType) => {
+  const handleAddNode = useCallback((type: FlowNodeType, label?: string) => {
     const position = { x: 200 + Math.random() * 300, y: 100 + Math.random() * 200 };
-    setNodes((nds) => [...nds, makeNode(type, position)]);
+    const node = makeNode(type, position);
+    if (label) node.data = { ...node.data, label };
+    setNodes((nds) => [...nds, node]);
   }, [setNodes]);
 
   // Drag-and-drop from palette onto canvas
@@ -100,7 +116,8 @@ export function VisualBuilder({ agentName = 'Untitled Agent', templateId, initia
   const onDrop = useCallback(
     (e: React.DragEvent) => {
       e.preventDefault();
-      const type = e.dataTransfer.getData('application/merris-node-type') as FlowNodeType;
+      const type  = e.dataTransfer.getData('application/merris-node-type') as FlowNodeType;
+      const label = e.dataTransfer.getData('application/merris-node-label');
       if (!type || !reactFlowWrapper.current) return;
 
       const bounds = reactFlowWrapper.current.getBoundingClientRect();
@@ -108,7 +125,9 @@ export function VisualBuilder({ agentName = 'Untitled Agent', templateId, initia
         x: e.clientX - bounds.left - 95,
         y: e.clientY - bounds.top - 40,
       };
-      setNodes((nds) => [...nds, makeNode(type, position)]);
+      const node = makeNode(type, position);
+      if (label) node.data = { ...node.data, label };
+      setNodes((nds) => [...nds, node]);
     },
     [setNodes],
   );
@@ -202,74 +221,153 @@ export function VisualBuilder({ agentName = 'Untitled Agent', templateId, initia
     }
   };
 
+  const isValid = nodes.some((n) => n.type === 'trigger') && nodes.some((n) => n.type === 'output') && nodes.length >= 2;
+
   return (
     <>
     {showResults && completedExecution && (
       <ReActResultsPanel execution={completedExecution} onClose={() => setShowResults(false)} />
     )}
-    <div className="flex h-[calc(100vh-200px)] min-h-[560px] overflow-hidden rounded-xl border border-gray-200 bg-gray-50">
+    <div className="flex h-[calc(100vh-200px)] min-h-[560px] overflow-hidden rounded-xl bg-gray-50" style={{ border: '1px solid #e8eae8' }}>
       {/* Left palette */}
       <NodePalette onAddNode={handleAddNode} />
 
       {/* Canvas */}
       <div className="flex flex-1 flex-col overflow-hidden">
-        {/* Toolbar */}
-        <div className="flex items-center gap-3 border-b border-gray-200 bg-white px-4 py-2.5">
-          <input
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="w-48 rounded-lg border border-transparent bg-gray-50 px-2.5 py-1 font-display text-[13px] font-semibold text-gray-700 outline-none focus:border-gray-300"
-            placeholder="Agent name…"
-          />
-          <div className="ml-auto flex items-center gap-2">
-            <span className="font-body text-[10px] text-gray-400">
-              {nodes.length} nodes · {edges.length} edges
+        {/* ── RUNNING state toolbar ── */}
+        {runState === 'running' ? (
+          <div className="flex items-center gap-3 border-b bg-white px-4 py-2.5" style={{ borderColor: '#e8eae8' }}>
+            {/* Running icon */}
+            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full" style={{ background: '#d9770618' }}>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#d97706" stroke="none">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+            <span className="font-display text-[12px] font-bold text-gray-800">Running agent…</span>
+
+            {/* Progress bar */}
+            <style>{`@keyframes merris-slide{0%{transform:translateX(-200%)}100%{transform:translateX(500%)}}`}</style>
+            <div className="flex-1 overflow-hidden rounded-full" style={{ height: 6, background: '#f0f0ed' }}>
+              <div
+                className="h-full rounded-full"
+                style={{ width: '30%', background: PRIMARY, animation: 'merris-slide 1.4s ease-in-out infinite' }}
+              />
+            </div>
+
+            {/* Elapsed */}
+            <span className="font-mono text-[11px] font-semibold" style={{ color: '#9aa0a6' }}>
+              {elapsedSecs}s
             </span>
-            {(runState === 'done' || runState === 'error') && (
-              <span className={`font-body text-[10px] max-w-[180px] truncate ${runState === 'done' ? 'text-green-600' : 'text-red-500'}`}>
-                {runMessage}
-              </span>
-            )}
-            {runState === 'done' && completedExecution && (
-              <button
-                type="button"
-                onClick={() => setShowResults(true)}
-                className="rounded-lg border border-green-500 px-3 py-1.5 font-body text-[11px] font-semibold text-green-600 hover:bg-green-50"
-              >
-                View Results →
-              </button>
-            )}
+
+            {/* Cancel */}
             <button
               type="button"
-              onClick={handleClearCanvas}
-              className="rounded-lg border border-gray-200 px-3 py-1.5 font-body text-[11px] text-gray-500 transition-colors hover:bg-gray-100"
+              onClick={() => { setRunState('idle'); setRunMessage(''); }}
+              className="rounded-lg px-3 py-1.5 font-body text-[11px] font-semibold transition-colors hover:bg-gray-100"
+              style={{ background: '#f5f5f0', color: '#374151' }}
             >
-              Clear
-            </button>
-            <button
-              type="button"
-              onClick={handleSave}
-              disabled={saveState === 'saving'}
-              className={`rounded-lg px-4 py-1.5 font-body text-[11px] font-semibold transition-all ${
-                saveState === 'saved'
-                  ? 'bg-green-600 text-white'
-                  : saveState === 'error'
-                    ? 'bg-red-500 text-white'
-                    : 'bg-gray-900 text-white hover:bg-gray-800 disabled:opacity-60'
-              }`}
-            >
-              {saveState === 'saving' ? 'Saving…' : saveState === 'saved' ? '✓ Saved' : saveState === 'error' ? '✗ Error' : '💾 Save Agent'}
-            </button>
-            <button
-              type="button"
-              onClick={handleRun}
-              disabled={runState === 'running'}
-              className="rounded-lg bg-merris-primary px-4 py-1.5 font-body text-[11px] font-semibold text-white hover:opacity-90 disabled:opacity-60"
-            >
-              {runState === 'running' ? '⏳ Running…' : '▶ Run'}
+              CANCEL
             </button>
           </div>
+        ) : (
+        /* ── IDLE / DONE / ERROR toolbar ── */
+        <div className="flex items-center gap-2.5 border-b bg-white px-4 py-2" style={{ borderColor: '#e8eae8' }}>
+          {/* Agent name + pencil */}
+          <div className="flex items-center gap-1.5">
+            <input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-44 bg-transparent font-display text-[13px] font-bold text-gray-800 outline-none placeholder:text-gray-300"
+              placeholder="Untitled Agent…"
+            />
+            <button type="button" className="shrink-0 rounded p-1 hover:bg-gray-100">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#9aa0a6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Divider */}
+          <div className="h-4 w-px shrink-0" style={{ background: '#e8eae8' }} />
+
+          {/* Metadata pills */}
+          <div className="flex items-center gap-1 font-mono text-[9px] font-bold" style={{ color: '#c4cac4' }}>
+            <span className="rounded px-1.5 py-0.5" style={{ background: '#f5f5f0' }}>{nodes.length}n</span>
+            <span style={{ color: '#e0e2e0' }}>·</span>
+            <span className="rounded px-1.5 py-0.5" style={{ background: '#f5f5f0' }}>{edges.length}e</span>
+            <span style={{ color: '#e0e2e0' }}>·</span>
+            <span className="rounded px-1.5 py-0.5" style={{ background: '#f5f5f0' }}>
+              {saveState === 'saved' ? 'saved' : 'unsaved'}
+            </span>
+            <span style={{ color: '#e0e2e0' }}>·</span>
+            <span
+              className="flex items-center gap-1 rounded px-1.5 py-0.5"
+              style={{ background: isValid ? '#f0fdf4' : '#f5f5f0', color: isValid ? '#16a34a' : '#c4cac4' }}
+            >
+              <span className="h-1.5 w-1.5 rounded-full" style={{ background: isValid ? '#16a34a' : '#d1d5db' }} />
+              {isValid ? 'VALID' : 'INCOMPLETE'}
+            </span>
+          </div>
+
+          <div className="flex-1" />
+
+          {/* Results button when done */}
+          {runState === 'done' && completedExecution && (
+            <button
+              type="button"
+              onClick={() => setShowResults(true)}
+              className="rounded-lg px-3 py-2 font-body text-[11px] font-semibold transition-colors hover:bg-green-50"
+              style={{ border: '1px solid #16a34a', color: '#16a34a' }}
+            >
+              View Results →
+            </button>
+          )}
+
+          {/* Error strip */}
+          {runState === 'error' && (
+            <span className="max-w-[200px] truncate font-body text-[11px]" style={{ color: '#dc2626' }}>
+              ✗ {runMessage}
+            </span>
+          )}
+
+          {/* Clear */}
+          <button
+            type="button"
+            onClick={handleClearCanvas}
+            className="rounded-lg px-3 py-2 font-body text-[11px] font-semibold transition-colors hover:bg-gray-50"
+            style={{ border: '1px solid #e8eae8', color: '#9aa0a6' }}
+          >
+            Clear
+          </button>
+
+          {/* Save */}
+          <button
+            type="button"
+            onClick={handleSave}
+            disabled={saveState === 'saving'}
+            className="flex items-center gap-1.5 rounded-lg px-5 py-2 font-body text-[12px] font-semibold transition-colors disabled:opacity-60"
+            style={{ border: `2px solid ${saveState === 'error' ? '#dc2626' : PRIMARY}`, color: saveState === 'error' ? '#dc2626' : PRIMARY }}
+          >
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M20 6L9 17l-5-5"/>
+            </svg>
+            {saveState === 'saving' ? 'Saving…' : saveState === 'saved' ? 'Saved' : 'Save'}
+          </button>
+
+          {/* Run */}
+          <button
+            type="button"
+            onClick={handleRun}
+            className="flex items-center gap-1.5 rounded-lg px-5 py-2 font-body text-[12px] font-semibold text-white transition-colors"
+            style={{ background: PRIMARY }}
+          >
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="white" stroke="none">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+            Run
+          </button>
         </div>
+        )}
 
         {/* ReactFlow canvas */}
         <div ref={reactFlowWrapper} className="flex-1 bg-[#f9f9f9]">
