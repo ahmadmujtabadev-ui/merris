@@ -124,13 +124,40 @@ export interface ReActExecution {
   templateId: string;
   engagementId: string;
   goal: string;
-  status: 'running' | 'completed' | 'failed';
+  status: 'running' | 'completed' | 'failed' | 'paused';
   steps: ReActStep[];
   finalAnswer: string;
   iterations: number;
   error?: string;
   startedAt: string;
   completedAt?: string;
+  hilReviewId?: string;
+}
+
+export interface HilRunContext {
+  engagementName?: string;
+  jurisdiction?: string;
+  severity?: string;
+  triggeredBy?: string;
+  assignedTo?: string;
+}
+
+export interface HilReview {
+  reviewId: string;
+  executionId: string;
+  templateId: string;
+  engagementId: string;
+  nodeId: string;
+  nodeLabel: string;
+  stepIndex: number;
+  totalSteps: number;
+  agentOutput: string;
+  runContext: HilRunContext;
+  status: 'pending' | 'approved' | 'rejected';
+  reviewNotes?: string;
+  reviewedBy?: string;
+  reviewedAt?: string;
+  createdAt: string;
 }
 
 export interface ChatRequestPayload {
@@ -833,6 +860,61 @@ class ApiClient {
         classification: string;
       }>;
     }>(`/vault/${workspaceId}/citations`, { chunkIds });
+  }
+
+  // ===== Human-in-the-Loop reviews =====
+  listHilReviews(params?: { engagementId?: string; status?: string }) {
+    const qs = params ? '?' + new URLSearchParams(params as Record<string, string>).toString() : '';
+    return this.get<{ reviews: HilReview[] }>(`/hil/reviews${qs}`);
+  }
+
+  getHilReview(reviewId: string) {
+    return this.get<HilReview>(`/hil/reviews/${reviewId}`);
+  }
+
+  approveHilReview(reviewId: string, notes?: string) {
+    return this.post<{ ok: boolean; review: HilReview }>(`/hil/reviews/${reviewId}/approve`, { notes });
+  }
+
+  rejectHilReview(reviewId: string, notes?: string) {
+    return this.post<{ ok: boolean; review: HilReview }>(`/hil/reviews/${reviewId}/reject`, { notes });
+  }
+
+  // ===== File exports (return raw Blob for download) =====
+  async exportWord(payload: {
+    title: string;
+    agentName: string;
+    runId: string;
+    generatedAt: string;
+    content: string;
+  }): Promise<Blob> {
+    const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+    if (this.getToken()) headers['Authorization'] = `Bearer ${this.getToken()}`;
+    const res = await fetch(`${API_BASE}/export/word`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) throw new ApiError(res.status, 'Word export failed');
+    return res.blob();
+  }
+
+  async exportExcel(payload: {
+    title: string;
+    agentName: string;
+    runId: string;
+    generatedAt: string;
+    content: string;
+  }): Promise<Blob> {
+    const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+    if (this.getToken()) headers['Authorization'] = `Bearer ${this.getToken()}`;
+    const res = await fetch(`${API_BASE}/export/excel`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) throw new ApiError(res.status, 'Excel export failed');
+    return res.blob();
   }
 }
 

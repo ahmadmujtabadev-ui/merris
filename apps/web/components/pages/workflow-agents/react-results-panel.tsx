@@ -1,5 +1,8 @@
 'use client';
 
+import { useState } from 'react';
+import Link from 'next/link';
+import { api } from '@/lib/api';
 import type { ReActExecution, ReActStep } from '@/lib/api';
 
 const PRIMARY = '#0b5142';
@@ -118,23 +121,42 @@ function TraceStep({
   );
 }
 
+// ── Inline markdown (bold / italic / code) ────────────────────────
+function InlineMd({ text }: { text: string }) {
+  // Split on **bold**, *italic*, `code` tokens — keep delimiters via capture group
+  const parts = text.split(/(\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`)/g);
+  return (
+    <>
+      {parts.map((part, i) => {
+        if (part.startsWith('**') && part.endsWith('**'))
+          return <strong key={i}>{part.slice(2, -2)}</strong>;
+        if (part.startsWith('*') && part.endsWith('*'))
+          return <em key={i}>{part.slice(1, -1)}</em>;
+        if (part.startsWith('`') && part.endsWith('`'))
+          return <code key={i} className="rounded bg-gray-100 px-1 font-mono text-[12px]">{part.slice(1, -1)}</code>;
+        return <span key={i}>{part}</span>;
+      })}
+    </>
+  );
+}
+
 // ── Report block renderer ──────────────────────────────────────────
 function ReportBlock({ block }: { block: Block }) {
   switch (block.kind) {
     case 'h1':
-      return <h1 className="font-serif text-[30px] font-normal leading-tight text-merris-text">{block.text}</h1>;
+      return <h1 className="font-serif text-[30px] font-normal leading-tight text-merris-text"><InlineMd text={block.text} /></h1>;
     case 'h2':
       return (
         <div className="mt-7 mb-3 flex items-center gap-2">
           <div className="h-px w-4" style={{ background: PRIMARY }} />
-          <span className="font-mono text-[9px] font-bold uppercase tracking-widest" style={{ color: PRIMARY }}>{block.text}</span>
+          <span className="font-mono text-[9px] font-bold uppercase tracking-widest" style={{ color: PRIMARY }}><InlineMd text={block.text} /></span>
         </div>
       );
     case 'bullet':
       return (
         <div className="flex gap-2 py-1">
           <span className="mt-[5px] h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: PRIMARY }} />
-          <p className="font-body text-[13px] leading-relaxed text-merris-text">{block.text}</p>
+          <p className="font-body text-[13px] leading-relaxed text-merris-text"><InlineMd text={block.text} /></p>
         </div>
       );
     case 'quote':
@@ -143,12 +165,12 @@ function ReportBlock({ block }: { block: Block }) {
           className="my-3 rounded-r border-l-2 py-2 pl-4 font-body text-[13px] italic leading-relaxed"
           style={{ borderColor: PRIMARY, background: '#f5f8f5', color: '#5f6368' }}
         >
-          {block.text}
+          <InlineMd text={block.text} />
         </blockquote>
       );
     default:
       return block.text ? (
-        <p className="py-1 font-body text-[13px] leading-relaxed text-merris-text">{block.text}</p>
+        <p className="py-1 font-body text-[13px] leading-relaxed text-merris-text"><InlineMd text={block.text} /></p>
       ) : null;
   }
 }
@@ -193,17 +215,55 @@ export function ReActResultsPanel({ execution, onClose }: ReActResultsPanelProps
     completed: { bg: '#f0fdf4', color: '#15803d', dot: '#16a34a' },
     failed:    { bg: '#fef2f2', color: '#dc2626', dot: '#dc2626' },
     running:   { bg: '#fffbeb', color: '#b45309', dot: '#d97706' },
+    paused:    { bg: '#fffbeb', color: '#b45309', dot: '#d97706' },
   };
   const sc = statusColors[execution.status as keyof typeof statusColors] ?? statusColors.completed;
 
-  const handleExport = () => {
-    const lines = [`# ${agentName}`, `Run: ${runId}`, '', finalAnswer];
-    const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+  const [exporting, setExporting] = useState<'word' | 'excel' | 'md' | null>(null);
+
+  function triggerDownload(blob: Blob, filename: string) {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url; a.download = `${runId}.md`; a.click();
+    a.href = url; a.download = filename; a.click();
     URL.revokeObjectURL(url);
+  }
+
+  const handleExportMd = () => {
+    const lines = [`# ${agentName}`, `Run: ${runId}`, '', finalAnswer];
+    triggerDownload(new Blob([lines.join('\n')], { type: 'text/markdown' }), `${runId}.md`);
   };
+
+  const handleExportWord = async () => {
+    setExporting('word');
+    try {
+      const blob = await api.exportWord({
+        title: agentName,
+        agentName,
+        runId,
+        generatedAt: dateLabel,
+        content: finalAnswer,
+      });
+      triggerDownload(blob, `${runId}.docx`);
+    } catch { /* silently fail — backend not up in dev */ }
+    finally { setExporting(null); }
+  };
+
+  const handleExportExcel = async () => {
+    setExporting('excel');
+    try {
+      const blob = await api.exportExcel({
+        title: agentName,
+        agentName,
+        runId,
+        generatedAt: dateLabel,
+        content: finalAnswer,
+      });
+      triggerDownload(blob, `${runId}.xlsx`);
+    } catch { /* silently fail */ }
+    finally { setExporting(null); }
+  };
+
+  const handleExport = handleExportMd;
 
   return (
     // Fixed to content area (right of sidebar, below topbar)
@@ -260,6 +320,34 @@ export function ReActResultsPanel({ execution, onClose }: ReActResultsPanelProps
           </button>
         </div>
       </div>
+
+      {/* ── HIL paused banner ─────────────────────────────────────── */}
+      {execution.status === 'paused' && execution.hilReviewId && (
+        <div
+          className="flex shrink-0 items-center justify-between px-6 py-3"
+          style={{ background: '#fffbeb', borderBottom: '1px solid #fde68a' }}
+        >
+          <div className="flex items-center gap-2.5">
+            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-amber-500">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+              </svg>
+            </div>
+            <div>
+              <span className="font-display text-[12px] font-bold text-amber-900">Workflow paused — human review required</span>
+              <span className="ml-2 font-mono text-[9px] text-amber-600">{execution.hilReviewId}</span>
+            </div>
+          </div>
+          <Link
+            href={`/workflow-agents/human-in-loop?reviewId=${execution.hilReviewId}`}
+            className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-display text-[11px] font-semibold text-white transition-opacity hover:opacity-90"
+            style={{ background: '#0b5142' }}
+          >
+            Open Review
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </Link>
+        </div>
+      )}
 
       {/* ── Body: two columns ─────────────────────────────────────── */}
       <div className="flex flex-1 overflow-hidden">
@@ -376,21 +464,34 @@ export function ReActResultsPanel({ execution, onClose }: ReActResultsPanelProps
               </button>
               <button
                 type="button"
-                onClick={handleExport}
-                className="flex items-center gap-1.5 rounded-lg border px-3 py-1.5 font-display text-[11px] font-semibold text-merris-text transition-colors hover:border-merris-primary hover:text-merris-primary"
+                onClick={() => void handleExportExcel()}
+                disabled={exporting === 'excel'}
+                className="flex items-center gap-1.5 rounded-lg border px-3 py-1.5 font-display text-[11px] font-semibold text-merris-text transition-colors hover:border-merris-primary hover:text-merris-primary disabled:opacity-50"
                 style={{ borderColor: '#e0e2e0' }}
               >
+                {exporting === 'excel' ? (
+                  <div className="h-3 w-3 animate-spin rounded-full border border-t-transparent" style={{ borderColor: PRIMARY + '40', borderTopColor: PRIMARY }} />
+                ) : (
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 8l8 8M16 8l-8 8"/>
+                  </svg>
+                )}
                 Export Excel
               </button>
               <button
                 type="button"
-                onClick={handleExport}
-                className="flex items-center gap-1.5 rounded-lg px-4 py-1.5 font-display text-[12px] font-semibold text-white transition-opacity hover:opacity-90"
+                onClick={() => void handleExportWord()}
+                disabled={exporting === 'word'}
+                className="flex items-center gap-1.5 rounded-lg px-4 py-1.5 font-display text-[12px] font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-50"
                 style={{ background: PRIMARY }}
               >
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/>
-                </svg>
+                {exporting === 'word' ? (
+                  <div className="h-3 w-3 animate-spin rounded-full border border-white/30 border-t-white" />
+                ) : (
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/>
+                  </svg>
+                )}
                 Export Word
               </button>
             </div>

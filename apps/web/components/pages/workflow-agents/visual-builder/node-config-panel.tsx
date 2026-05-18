@@ -27,13 +27,13 @@ const TYPE_DISPLAY_NAMES: Record<FlowNodeType, string> = {
 };
 
 const KB_VAULTS: Array<{ id: string; name: string; count: string }> = [
-  { id: 'K1', name: 'ESG Frameworks',      count: '1,847' },
-  { id: 'K2', name: 'Climate Disclosures',  count: '2,310' },
-  { id: 'K3', name: 'Regulatory Filings',   count: '4,521' },
-  { id: 'K4', name: 'Sustainability RPTs',  count: '891'   },
-  { id: 'K5', name: 'TCFD Templates',       count: '456'   },
-  { id: 'K6', name: 'Industry Benchmarks',  count: '1,203' },
-  { id: 'K7', name: 'Internal Policies',    count: '742'   },
+  { id: 'K1', name: 'Disclosures',  count: '1,272' },
+  { id: 'K2', name: 'Market',       count: '3,160' },
+  { id: 'K3', name: 'Regulatory',   count: '2,708' },
+  { id: 'K4', name: 'Finance',      count: '9,595' },
+  { id: 'K5', name: 'Peers',        count: '594'   },
+  { id: 'K6', name: 'Climate',      count: '2,024' },
+  { id: 'K7', name: 'Research',     count: '3,019' },
 ];
 
 const MODELS: Array<{ id: string; name: string; context: string }> = [

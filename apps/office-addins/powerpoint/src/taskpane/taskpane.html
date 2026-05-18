@@ -3,114 +3,225 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Merris ESG - PowerPoint</title>
-  <link rel="stylesheet" href="../../../shared/styles.css" />
+  <title>Merris ESG Agent — PowerPoint</title>
   <script src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+  <style>
+    :root {
+      --primary: #0b5142; --primary-light: #f0f6f0;
+      --border: #e8eae8; --text: #1a1f1a;
+      --text-sec: #5f6368; --text-ter: #9aa0a6;
+      --bg: #ffffff; --bg-sec: #fafaf8;
+      --amber: #b45309; --amber-bg: #fffbeb;
+      --red: #dc2626; --red-bg: #fef2f2;
+      --green: #15803d; --green-bg: #f0fdf4;
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 13px; color: var(--text); background: var(--bg); }
+    .m-header { display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--border);background:var(--primary);color:white; }
+    .m-header-title { font-size:13px;font-weight:700;flex:1; }
+    .m-header-sub { font-size:8px;opacity:.6;font-family:monospace;text-transform:uppercase;letter-spacing:.06em; }
+    .m-engagement-pill { font-size:9px;font-family:monospace;background:rgba(255,255,255,.15);padding:2px 8px;border-radius:99px;max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
+    .m-tabs { display:flex;border-bottom:1px solid var(--border);background:var(--bg-sec); }
+    .m-tab { flex:1;padding:9px 4px;font-size:11px;font-weight:600;border:none;background:none;cursor:pointer;color:var(--text-ter);position:relative;transition:color .15s; }
+    .m-tab.active { color:var(--primary); }
+    .m-tab.active::after { content:'';position:absolute;bottom:0;left:10%;right:10%;height:2px;background:var(--primary);border-radius:2px; }
+    .m-panel { display:none; }
+    .m-panel.active { display:block; }
+    .m-card { margin:10px;padding:10px 12px;border-radius:var(--radius);border:1px solid var(--border); }
+    .m-label { font-size:8px;font-family:monospace;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-ter);margin-bottom:6px; }
+    .m-btn { display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;border:none;transition:opacity .15s; }
+    .m-btn:disabled { opacity:.5;cursor:not-allowed; }
+    .m-btn-primary { background:var(--primary);color:white; }
+    .m-btn-outline { background:transparent;color:var(--primary);border:1.5px solid var(--primary); }
+    .m-btn-sm { padding:4px 8px;font-size:10px; }
+    .m-btn-danger { background:var(--red);color:white; }
+    .m-row { display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border); }
+    .m-row:last-child { border-bottom:none; }
+    .m-row-label { font-size:11px;color:var(--text-sec); }
+    .m-row-value { font-size:11px;font-weight:600;font-family:monospace; }
+    .m-spinner { width:14px;height:14px;border:2px solid rgba(11,81,66,.2);border-top-color:var(--primary);border-radius:50%;animation:spin .7s linear infinite;display:inline-block; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    .m-empty { text-align:center;padding:24px 14px;color:var(--text-ter);font-size:11px; }
+    .m-toast { position:fixed;bottom:12px;left:10px;right:10px;padding:9px 12px;border-radius:var(--radius);font-size:11px;font-weight:600;color:white;z-index:999;display:flex;align-items:center;gap:6px; }
+    .m-select { width:100%;padding:7px 10px;border-radius:var(--radius);border:1.5px solid var(--border);font-size:12px;outline:none; }
+    .m-select:focus { border-color:var(--primary); }
+    .m-exec-item { display:flex;align-items:center;gap:8px;padding:8px 10px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .1s; }
+    .m-exec-item:hover { background:var(--primary-light); }
+    .m-exec-dot { width:7px;height:7px;border-radius:50%;flex-shrink:0; }
+    .m-exec-name { font-size:11px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
+    .m-exec-meta { font-size:9px;font-family:monospace;color:var(--text-ter);margin-top:1px; }
+    .m-preview-box { margin:10px;padding:10px 12px;border-radius:var(--radius);border:1.5px solid var(--primary);background:var(--primary-light); }
+    .m-swatch-row { display:flex;gap:4px;margin-top:6px; }
+    .m-swatch { width:24px;height:24px;border-radius:4px;border:1px solid var(--border);flex-shrink:0; }
+    .m-chip { display:inline-flex;align-items:center;gap:3px;padding:2px 6px;border-radius:99px;font-size:9px;font-family:monospace;font-weight:700;background:var(--primary-light);color:var(--primary);border:1px solid rgba(11,81,66,.15); }
+    ::-webkit-scrollbar { width:4px; }
+    ::-webkit-scrollbar-thumb { background:var(--border);border-radius:2px; }
+  </style>
 </head>
 <body>
-  <div class="merris-taskpane" id="app">
-    <div class="merris-header">
-      <h1>Merris ESG</h1>
-    </div>
 
-    <!-- Tab navigation -->
-    <div class="merris-section">
-      <div class="merris-grid" style="grid-template-columns: repeat(4, 1fr);">
-        <button class="merris-btn merris-btn-primary tab-btn active" data-tab="chart">Chart</button>
-        <button class="merris-btn merris-btn-secondary tab-btn" data-tab="slide">Slide</button>
-        <button class="merris-btn merris-btn-secondary tab-btn" data-tab="brand">Brand</button>
-        <button class="merris-btn merris-btn-secondary tab-btn" data-tab="agent">Agent</button>
+  <!-- ── Selector screen ── -->
+  <div id="screen-selector">
+    <div class="m-header">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div><div class="m-header-title">Merris ESG</div><div class="m-header-sub">PowerPoint Add-in</div></div>
+    </div>
+    <div style="padding:20px 14px;display:flex;flex-direction:column;gap:12px;">
+      <p style="font-size:11px;color:var(--text-sec);">Link this presentation to a Merris engagement to insert ESG slides and charts.</p>
+      <div>
+        <div class="m-label">Engagement</div>
+        <select class="m-select" id="engagement-select"><option value="">Loading…</option></select>
       </div>
-    </div>
-
-    <!-- Insert Chart Panel -->
-    <div id="chart-panel" class="merris-section tab-content">
-      <h2>Insert ESG Chart</h2>
-      <label for="engagement-select">Engagement</label>
-      <select id="engagement-select" class="merris-select">
-        <option value="">Select engagement...</option>
-      </select>
-
-      <label for="metric-select" style="margin-top:8px; display:block;">Metric</label>
-      <select id="metric-select" class="merris-select" disabled>
-        <option value="">Select metric...</option>
-      </select>
-
-      <label for="chart-type" style="margin-top:8px; display:block;">Chart Type</label>
-      <select id="chart-type" class="merris-select">
-        <option value="bar">Bar Chart</option>
-        <option value="line">Line Chart</option>
-        <option value="waterfall">Waterfall Chart</option>
-        <option value="radar">Radar Chart</option>
-        <option value="pie">Pie Chart</option>
-        <option value="bubble">Bubble Chart</option>
-      </select>
-
-      <div id="chart-preview" style="margin-top:12px; min-height:200px; border:1px solid #e0e0e0; border-radius:6px; display:flex; align-items:center; justify-content:center; color:#757575;">
-        Select a metric to preview
+      <div style="display:flex;gap:8px;">
+        <button class="m-btn m-btn-primary" id="btn-select" style="flex:1;">Connect</button>
+        <button class="m-btn m-btn-outline" id="btn-skip">Skip</button>
       </div>
-
-      <button id="insert-chart-btn" class="merris-btn merris-btn-primary" style="margin-top:12px; width:100%;" disabled>
-        Insert on Slide
-      </button>
-      <div id="chart-status"></div>
-    </div>
-
-    <!-- Generate Slide Panel -->
-    <div id="slide-panel" class="merris-section tab-content" style="display:none;">
-      <h2>Generate Slide</h2>
-      <label for="template-select">Template</label>
-      <select id="template-select" class="merris-select">
-        <option value="">Select template...</option>
-        <option value="kpi-dashboard">KPI Dashboard</option>
-        <option value="ghg-waterfall">GHG Waterfall</option>
-        <option value="yoy-comparison">Year-over-Year Comparison</option>
-        <option value="materiality-matrix">Materiality Matrix</option>
-        <option value="compliance-status">Compliance Status</option>
-        <option value="roadmap-timeline">ESG Roadmap Timeline</option>
-      </select>
-
-      <div id="template-preview" class="merris-card" style="margin-top:12px; display:none;">
-        <div class="merris-card-header" id="template-name"></div>
-        <p id="template-desc" style="color:#757575; font-size:13px;"></p>
-      </div>
-
-      <label for="slide-engagement" style="margin-top:8px; display:block;">Engagement</label>
-      <select id="slide-engagement" class="merris-select">
-        <option value="">Select engagement...</option>
-      </select>
-
-      <button id="generate-slide-btn" class="merris-btn merris-btn-primary" style="margin-top:12px; width:100%;" disabled>
-        Generate Slide
-      </button>
-      <div id="slide-status"></div>
-    </div>
-
-    <!-- Apply Branding Panel -->
-    <div id="brand-panel" class="merris-section tab-content" style="display:none;">
-      <h2>Apply Branding</h2>
-      <label for="brand-select">Brand Profile</label>
-      <select id="brand-select" class="merris-select">
-        <option value="">Select brand...</option>
-      </select>
-
-      <div id="brand-preview" class="merris-card" style="margin-top:12px; display:none;">
-        <div class="merris-card-header" id="brand-name"></div>
-        <div id="brand-colors" style="display:flex; gap:4px; margin-top:8px;"></div>
-        <p id="brand-font" style="color:#757575; font-size:13px; margin-top:4px;"></p>
-      </div>
-
-      <button id="apply-brand-btn" class="merris-btn merris-btn-primary" style="margin-top:12px; width:100%;" disabled>
-        Apply to All Slides
-      </button>
-      <div id="brand-status"></div>
-    </div>
-
-    <!-- Agent Panel -->
-    <div id="agent-panel" class="merris-section tab-content" style="display:none;">
-      <div id="agent-container"></div>
     </div>
   </div>
-  <!-- JS injected by webpack -->
+
+  <!-- ── Main app ── -->
+  <div id="screen-app" style="display:none;flex-direction:column;height:100vh;">
+
+    <!-- Header -->
+    <div class="m-header">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div style="flex:1;"><div class="m-header-title">Merris ESG</div><div class="m-header-sub">PowerPoint Agent</div></div>
+      <span class="m-engagement-pill" id="header-engagement">—</span>
+    </div>
+
+    <!-- Tabs -->
+    <div class="m-tabs">
+      <button class="m-tab active" data-tab="slides">Slides</button>
+      <button class="m-tab" data-tab="chart">Chart</button>
+      <button class="m-tab" data-tab="brand">Brand</button>
+    </div>
+
+    <div style="flex:1;overflow-y:auto;">
+
+      <!-- ── SLIDES TAB ── -->
+      <div class="m-panel active" id="panel-slides">
+        <div style="padding:8px 10px;display:flex;align-items:center;justify-content:space-between;">
+          <div class="m-label" style="margin:0;">Recent Workflow Runs</div>
+          <button class="m-btn m-btn-sm m-btn-outline" id="btn-refresh-runs">Refresh</button>
+        </div>
+
+        <!-- Run list -->
+        <div id="runs-list">
+          <div class="m-empty">Loading runs…</div>
+        </div>
+
+        <!-- Preview card (hidden until a run is selected) -->
+        <div id="slide-preview" style="display:none;">
+          <div class="m-preview-box">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+              <div style="font-size:11px;font-weight:700;color:var(--primary);" id="preview-run-name"></div>
+              <button class="m-btn m-btn-sm m-btn-outline" id="btn-close-preview" style="padding:2px 6px;font-size:10px;">✕</button>
+            </div>
+            <div id="preview-content" style="font-size:10px;color:var(--text-sec);line-height:1.5;max-height:120px;overflow-y:auto;white-space:pre-wrap;"></div>
+          </div>
+
+          <div class="m-card">
+            <div class="m-label">Insert as</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <button class="m-btn m-btn-primary" id="btn-insert-title-slide" style="width:100%;justify-content:center;">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M8 12h8M12 9v6"/></svg>
+                Insert as title slide
+              </button>
+              <button class="m-btn m-btn-outline" id="btn-insert-content-slide" style="width:100%;justify-content:center;">
+                Insert as content slide (bullets)
+              </button>
+              <button class="m-btn m-btn-outline" id="btn-insert-both" style="width:100%;justify-content:center;">
+                Insert title + content slides
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Placeholder when nothing selected -->
+        <div id="slide-empty" class="m-empty" style="padding-top:8px;">
+          Select a run above to preview and insert.
+        </div>
+      </div>
+
+      <!-- ── CHART TAB ── -->
+      <div class="m-panel" id="panel-chart">
+        <div class="m-card">
+          <div class="m-label">Data source</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div>
+              <div style="font-size:10px;color:var(--text-sec);margin-bottom:4px;">Chart type</div>
+              <select class="m-select" id="chart-type-select">
+                <option value="bar">Bar chart</option>
+                <option value="line">Line chart</option>
+                <option value="pie">Pie chart</option>
+                <option value="waterfall">Waterfall</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding:8px 10px;display:flex;align-items:center;justify-content:space-between;">
+          <div class="m-label" style="margin:0;">Engagement Data Points</div>
+          <button class="m-btn m-btn-sm m-btn-outline" id="btn-refresh-dp">Refresh</button>
+        </div>
+        <div id="dp-list">
+          <div class="m-empty">Loading data points…</div>
+        </div>
+
+        <div style="padding:10px;">
+          <button class="m-btn m-btn-primary" id="btn-insert-chart" style="width:100%;justify-content:center;" disabled>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Insert chart on slide
+          </button>
+        </div>
+        <div id="chart-status" style="padding:0 10px 10px;"></div>
+      </div>
+
+      <!-- ── BRAND TAB ── -->
+      <div class="m-panel" id="panel-brand">
+        <div class="m-card">
+          <div class="m-label">Brand Profile</div>
+          <select class="m-select" id="brand-select">
+            <option value="">Loading brands…</option>
+          </select>
+
+          <div id="brand-preview" style="display:none;margin-top:10px;">
+            <div class="m-row">
+              <span class="m-row-label">Colors</span>
+              <div class="m-swatch-row" id="brand-swatches"></div>
+            </div>
+            <div class="m-row">
+              <span class="m-row-label">Heading font</span>
+              <span class="m-row-value" id="brand-font-heading">—</span>
+            </div>
+            <div class="m-row">
+              <span class="m-row-label">Body font</span>
+              <span class="m-row-value" id="brand-font-body">—</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding:0 10px 6px;">
+          <button class="m-btn m-btn-primary" id="btn-apply-brand" style="width:100%;justify-content:center;" disabled>
+            Apply to all slides
+          </button>
+        </div>
+        <div id="brand-status" style="padding:0 10px 10px;font-size:11px;color:var(--text-sec);"></div>
+
+        <div class="m-card" style="margin-top:4px;">
+          <div class="m-label">Merris defaults</div>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px;">
+            <button class="m-btn m-btn-outline" id="btn-apply-merris" style="width:100%;justify-content:center;">
+              Apply Merris ESG branding
+            </button>
+            <p style="font-size:10px;color:var(--text-ter);">Uses Merris primary green (#0B5142) with Segoe UI for a professional ESG report look.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </body>
 </html>

@@ -5,75 +5,172 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Merris ESG Agent — Excel</title>
   <script src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
-  <!-- styles bundled by webpack -->
+  <style>
+    :root {
+      --primary: #0b5142; --primary-light: #f0f6f0;
+      --border: #e8eae8; --text: #1a1f1a;
+      --text-sec: #5f6368; --text-ter: #9aa0a6;
+      --bg: #ffffff; --bg-sec: #fafaf8;
+      --amber: #b45309; --amber-bg: #fffbeb;
+      --red: #dc2626; --red-bg: #fef2f2;
+      --green: #15803d; --green-bg: #f0fdf4;
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 13px; color: var(--text); background: var(--bg); }
+    .m-header { display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--border);background:var(--primary);color:white; }
+    .m-header-title { font-size:13px;font-weight:700;flex:1; }
+    .m-header-sub { font-size:8px;opacity:.6;font-family:monospace;text-transform:uppercase;letter-spacing:.06em; }
+    .m-engagement-pill { font-size:9px;font-family:monospace;background:rgba(255,255,255,.15);padding:2px 8px;border-radius:99px;max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
+    .m-tabs { display:flex;border-bottom:1px solid var(--border);background:var(--bg-sec); }
+    .m-tab { flex:1;padding:9px 4px;font-size:11px;font-weight:600;border:none;background:none;cursor:pointer;color:var(--text-ter);position:relative;transition:color .15s; }
+    .m-tab.active { color:var(--primary); }
+    .m-tab.active::after { content:'';position:absolute;bottom:0;left:10%;right:10%;height:2px;background:var(--primary);border-radius:2px; }
+    .m-panel { display:none; }
+    .m-panel.active { display:block; }
+    .m-card { margin:10px;padding:10px 12px;border-radius:var(--radius);border:1px solid var(--border); }
+    .m-label { font-size:8px;font-family:monospace;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-ter);margin-bottom:6px; }
+    .m-btn { display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;border:none;transition:opacity .15s; }
+    .m-btn:disabled { opacity:.5;cursor:not-allowed; }
+    .m-btn-primary { background:var(--primary);color:white; }
+    .m-btn-outline { background:transparent;color:var(--primary);border:1.5px solid var(--primary); }
+    .m-btn-sm { padding:4px 8px;font-size:10px; }
+    .m-progress { height:6px;background:#e8eae8;border-radius:3px;overflow:hidden;margin-top:6px; }
+    .m-progress-bar { height:100%;background:var(--primary);border-radius:3px;transition:width .4s; }
+    .m-row { display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border); }
+    .m-row:last-child { border-bottom:none; }
+    .m-row-label { font-size:11px;color:var(--text-sec); }
+    .m-row-value { font-size:11px;font-weight:600;font-family:monospace; }
+    .m-stat-grid { display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px; }
+    .m-stat-box { padding:10px 12px;border-radius:var(--radius);border:1px solid var(--border);text-align:center; }
+    .m-stat-num { font-size:22px;font-weight:700;color:var(--primary); }
+    .m-stat-label { font-size:9px;font-family:monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--text-ter);margin-top:2px; }
+    .m-spinner { width:14px;height:14px;border:2px solid rgba(11,81,66,.2);border-top-color:var(--primary);border-radius:50%;animation:spin .7s linear infinite;display:inline-block; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    .m-dp-item { display:flex;align-items:center;gap:6px;padding:5px 10px;border-bottom:1px solid var(--border);cursor:pointer; }
+    .m-dp-item:hover { background:var(--primary-light); }
+    .m-dp-check { width:14px;height:14px;border:1.5px solid var(--border);border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+    .m-dp-check.checked { background:var(--primary);border-color:var(--primary); }
+    .m-dp-metric { font-size:11px;flex:1;color:var(--text); }
+    .m-dp-value { font-size:10px;font-family:monospace;color:var(--text-sec); }
+    .m-empty { text-align:center;padding:24px 14px;color:var(--text-ter);font-size:11px; }
+    .m-toast { position:fixed;bottom:12px;left:10px;right:10px;padding:9px 12px;border-radius:var(--radius);font-size:11px;font-weight:600;color:white;z-index:999;display:flex;align-items:center;gap:6px; }
+    .m-select { width:100%;padding:7px 10px;border-radius:var(--radius);border:1.5px solid var(--border);font-size:12px;outline:none; }
+    .m-select:focus { border-color:var(--primary); }
+    ::-webkit-scrollbar { width:4px; }
+    ::-webkit-scrollbar-thumb { background:var(--border);border-radius:2px; }
+  </style>
 </head>
 <body>
-  <div class="merris-taskpane">
-    <!-- Header -->
-    <div class="merris-header">
-      <span class="logo">&#127807; Merris</span>
-      <span class="subtitle">ESG Agent for Excel</span>
+
+  <!-- ── Selector screen ── -->
+  <div id="screen-selector">
+    <div class="m-header">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div><div class="m-header-title">Merris ESG</div><div class="m-header-sub">Excel Add-in</div></div>
     </div>
-
-    <!-- Tabs -->
-    <div class="merris-tabs">
-      <button class="merris-tab active" data-tab="agent">Agent</button>
-      <button class="merris-tab" data-tab="summary">Data Summary</button>
-      <button class="merris-tab" data-tab="actions">Actions</button>
-    </div>
-
-    <!-- Content -->
-    <div class="merris-content">
-      <!-- Agent Chat Panel -->
-      <div id="panel-agent" class="merris-panel active"></div>
-
-      <!-- Data Completeness Summary -->
-      <div id="panel-summary" class="merris-panel">
-        <div class="merris-section-title">Data Completeness</div>
-        <div id="completeness-stats">
-          <div class="merris-loading">
-            <div class="merris-spinner"></div>
-            Loading summary...
-          </div>
-        </div>
+    <div style="padding:20px 14px;display:flex;flex-direction:column;gap:12px;">
+      <p style="font-size:11px;color:var(--text-sec);">Link this workbook to a Merris engagement to pull data points and insert analysis results.</p>
+      <div>
+        <div class="m-label">Engagement</div>
+        <select class="m-select" id="engagement-select"><option value="">Loading…</option></select>
       </div>
-
-      <!-- Suggested Actions -->
-      <div id="panel-actions" class="merris-panel">
-        <div class="merris-section-title">Suggested Actions</div>
-        <div id="suggested-actions">
-          <div class="merris-card">
-            <div class="merris-card-title">Auto-Fill Missing Data</div>
-            <div class="merris-card-body">
-              Select a range of metric labels and click Auto-Fill to populate values from the Merris platform.
-            </div>
-            <div style="margin-top: 8px;">
-              <button class="merris-btn primary" id="btn-autofill">Auto-Fill Selection</button>
-            </div>
-          </div>
-          <div class="merris-card">
-            <div class="merris-card-title">Validate Sheet</div>
-            <div class="merris-card-body">
-              Run validation rules against all data in the current sheet to check for errors, inconsistencies, and missing fields.
-            </div>
-            <div style="margin-top: 8px;">
-              <button class="merris-btn primary" id="btn-validate">Validate Data</button>
-            </div>
-          </div>
-          <div class="merris-card">
-            <div class="merris-card-title">Export to Merris</div>
-            <div class="merris-card-body">
-              Push the data in this worksheet back to the Merris platform for use in reports and disclosures.
-            </div>
-            <div style="margin-top: 8px;">
-              <button class="merris-btn">Export</button>
-            </div>
-          </div>
-        </div>
+      <div style="display:flex;gap:8px;">
+        <button class="m-btn m-btn-primary" id="btn-select" style="flex:1;">Connect</button>
+        <button class="m-btn m-btn-outline" id="btn-skip">Skip</button>
       </div>
     </div>
   </div>
 
-  <!-- JS injected by webpack -->
+  <!-- ── Main app ── -->
+  <div id="screen-app" style="display:none;flex-direction:column;height:100vh;">
+
+    <!-- Header -->
+    <div class="m-header">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div style="flex:1;"><div class="m-header-title">Merris ESG</div><div class="m-header-sub">Excel Agent</div></div>
+      <span class="m-engagement-pill" id="header-engagement">—</span>
+    </div>
+
+    <!-- Tabs -->
+    <div class="m-tabs">
+      <button class="m-tab active" data-tab="data">Data</button>
+      <button class="m-tab" data-tab="insert">Insert</button>
+      <button class="m-tab" data-tab="validate">Validate</button>
+    </div>
+
+    <div style="flex:1;overflow-y:auto;">
+
+      <!-- ── DATA TAB ── -->
+      <div class="m-panel active" id="panel-data">
+        <!-- Stats -->
+        <div class="m-stat-grid" id="stats-grid">
+          <div class="m-stat-box"><div class="m-stat-num" id="stat-total">—</div><div class="m-stat-label">Data Points</div></div>
+          <div class="m-stat-box"><div class="m-stat-num" id="stat-complete">—</div><div class="m-stat-label">Complete</div></div>
+        </div>
+
+        <!-- Completeness bar -->
+        <div class="m-card" id="completeness-card" style="display:none;">
+          <div class="m-label">Sheet Completeness</div>
+          <div id="completeness-pct" style="font-size:22px;font-weight:700;color:var(--primary);"></div>
+          <div class="m-progress"><div class="m-progress-bar" id="completeness-bar" style="width:0%;"></div></div>
+          <div style="font-size:10px;color:var(--text-ter);margin-top:6px;" id="completeness-detail"></div>
+        </div>
+
+        <div style="padding:8px 10px;display:flex;align-items:center;justify-content:space-between;">
+          <div class="m-label" style="margin:0;">Engagement Data Points</div>
+          <button class="m-btn m-btn-sm m-btn-outline" id="btn-refresh-dp">Refresh</button>
+        </div>
+        <div id="dp-list">
+          <div class="m-empty">Loading data points…</div>
+        </div>
+      </div>
+
+      <!-- ── INSERT TAB ── -->
+      <div class="m-panel" id="panel-insert">
+        <div class="m-card">
+          <div class="m-label">Insert at active cell</div>
+          <p style="font-size:11px;color:var(--text-sec);margin-bottom:10px;">
+            Select data points in the Data tab, then choose a layout to insert into the spreadsheet.
+          </p>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <button class="m-btn m-btn-primary" id="btn-insert-table" style="width:100%;justify-content:center;">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg>
+              Insert as table
+            </button>
+            <button class="m-btn m-btn-outline" id="btn-insert-list" style="width:100%;justify-content:center;">
+              Insert as list (metric · value · unit)
+            </button>
+            <button class="m-btn m-btn-outline" id="btn-autofill" style="width:100%;justify-content:center;">
+              Auto-fill selected cells
+            </button>
+          </div>
+        </div>
+        <div class="m-card">
+          <div class="m-label">Insert from workflow run</div>
+          <div id="runs-select-wrap">
+            <select class="m-select" id="runs-select" style="margin-bottom:8px;"><option value="">Loading runs…</option></select>
+            <button class="m-btn m-btn-primary" id="btn-insert-run" style="width:100%;justify-content:center;">Insert run output as sheet</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── VALIDATE TAB ── -->
+      <div class="m-panel" id="panel-validate">
+        <div class="m-card">
+          <div class="m-label">Validation</div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <button class="m-btn m-btn-primary" id="btn-validate" style="width:100%;justify-content:center;">Validate active sheet</button>
+            <button class="m-btn m-btn-outline" id="btn-clear-highlights" style="width:100%;justify-content:center;">Clear highlights</button>
+          </div>
+        </div>
+        <div id="validation-results">
+          <div class="m-empty">Run validation to see results.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </body>
 </html>

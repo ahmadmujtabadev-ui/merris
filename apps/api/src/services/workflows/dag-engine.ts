@@ -3,11 +3,16 @@
 // DAG execution engine: topological sort → async per-node execution → state threading
 // Each node's output feeds downstream nodes as context.
 
+import mongoose from 'mongoose';
 import { denseSearch } from '../../modules/knowledge-base/dense-search.service.js';
 import { checkCompliance } from '../verification/compliance-checker.js';
 import { calculate } from '../../modules/calculation/calculation.service.js';
 import { sendMessage } from '../../lib/claude.js';
 import { logger } from '../../lib/logger.js';
+import { ESGDocumentModel, DataPointModel } from '../../modules/ingestion/ingestion.model.js';
+import { HilReviewModel } from '../../modules/hil/hil-review.model.js';
+
+const HIL_SENTINEL = '__HIL_PAUSED__:';
 
 // ── Internal types ──────────────────────────────────────────────
 
@@ -35,6 +40,8 @@ export interface DagResult {
   steps: DagStep[];
   finalAnswer: string;
   nodeCount: number;
+  paused?: boolean;
+  hilReviewId?: string;
 }
 
 // ── Topological sort (Kahn's algorithm) ────────────────────────
@@ -82,24 +89,110 @@ async function executeNode(
   node: DagNode,
   context: string,
   engagementId: string,
+  executionId: string,
 ): Promise<string> {
   const d = node.data;
 
   switch (node.type) {
-    case 'trigger':
-      return JSON.stringify({ triggered: true, timestamp: new Date().toISOString() });
+    case 'trigger': {
+      // Load all ingested engagement documents and their extracted data points
+      let docContext = '';
+      try {
+        const engId = new mongoose.Types.ObjectId(engagementId);
+        const docs = await ESGDocumentModel.find(
+          { engagementId: engId, status: 'ingested' },
+          { filename: 1, extractedData: 1, extractedText: 1 },
+        ).lean();
+
+        if (docs.length > 0) {
+          const dataPoints = await DataPointModel.find(
+            { engagementId: engId },
+            { metricName: 1, value: 1, unit: 1, frameworkRef: 1, confidence: 1 },
+          ).lean();
+
+          const dpSummary = dataPoints
+            .slice(0, 40)
+            .map((dp) => `  • ${dp.metricName}: ${dp.value} ${dp.unit} [${dp.frameworkRef}]`)
+            .join('\n');
+
+          const textPreviews = docs
+            .map((doc) => {
+              const preview = doc.extractedText?.slice(0, 1500) ?? '';
+              return `=== ${doc.filename} ===\n${preview}`;
+            })
+            .join('\n\n');
+
+          docContext = `ENGAGEMENT DOCUMENTS (${docs.length} file${docs.length > 1 ? 's' : ''} ingested):\n\nExtracted Data Points:\n${dpSummary}\n\nDocument Text:\n${textPreviews}`;
+        }
+      } catch (err) {
+        logger.warn('DAG trigger: could not load engagement docs', err);
+      }
+
+      return JSON.stringify({
+        triggered: true,
+        timestamp: new Date().toISOString(),
+        document_context: docContext || null,
+      });
+    }
 
     case 'kb-search': {
-      const query = String(d['query'] ?? '');
+      // Derive query: use configured template, fall back to context excerpt
+      let query = String(d['query'] ?? '').trim();
+      if (!query && context) {
+        // Extract a meaningful phrase from predecessor context
+        const stripped = context.replace(/[{}":\[\]]/g, ' ').replace(/\s+/g, ' ').trim();
+        query = stripped.slice(0, 150);
+      }
       if (!query) return '[]';
-      const results = await denseSearch({ query, limit: 6, minScore: 0.2 });
+
+      // Map K1-K7 vault selections to M01-M14 module names
+      const sourceMap: Record<string, string> = {
+        K1: 'M09-financial',
+        K2: 'M10-sector',
+        K3: 'M01-regulatory',
+        K4: 'M09-financial',
+        K5: 'M04-benchmarks',
+        K6: 'M05-climate',
+        K7: 'M14-research',
+      };
+      const rawSources = (d['sources'] as string[] | undefined) ?? [];
+      const modules = rawSources.length > 0
+        ? rawSources.map((k) => sourceMap[k] ?? k).filter(Boolean)
+        : undefined;
+
+      // Search firm-wide KB (Qdrant dense)
+      const kbResults = await denseSearch({ query, modules, limit: 8, minScore: 0.15 });
+
+      // Also pull matching data points from the engagement's ingested docs
+      let engagementMatches: Array<{ metric: string; value: unknown; unit: string; source: string }> = [];
+      try {
+        const engId = new mongoose.Types.ObjectId(engagementId);
+        const queryWords = query.toLowerCase().split(/\s+/).filter((w) => w.length > 3);
+        const regex = queryWords.length > 0
+          ? new RegExp(queryWords.slice(0, 4).join('|'), 'i')
+          : /./;
+        const dps = await DataPointModel.find(
+          { engagementId: engId, metricName: regex },
+          { metricName: 1, value: 1, unit: 1, frameworkRef: 1 },
+        ).limit(10).lean();
+        engagementMatches = dps.map((dp) => ({
+          metric: dp.metricName,
+          value: dp.value,
+          unit: dp.unit,
+          source: `engagement:${dp.frameworkRef}`,
+        }));
+      } catch { /* non-critical */ }
+
       return JSON.stringify(
-        results.slice(0, 5).map((r) => ({
-          filename: r.filename,
-          module: r.module,
-          score: r.score,
-          excerpt: r.text.slice(0, 500),
-        })),
+        {
+          kb_results: kbResults.slice(0, 5).map((r) => ({
+            filename: r.filename,
+            module: r.module,
+            score: r.score,
+            excerpt: r.text.slice(0, 500),
+          })),
+          engagement_data: engagementMatches,
+        },
         null,
         2,
       );
@@ -120,6 +213,32 @@ async function executeNode(
 
     case 'tool-call': {
       const tool = String(d['tool'] ?? '');
+      const label = String(d['label'] ?? '').toLowerCase();
+
+      // Human-in-the-Loop pause: save review record and return sentinel
+      if (label.includes('human') || label.includes('hil') || label.includes('review')) {
+        const reviewId = `hil_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
+        try {
+          await HilReviewModel.create({
+            reviewId,
+            executionId,
+            templateId: '',
+            engagementId,
+            nodeId: node.id,
+            nodeLabel: String(d['label'] ?? node.id),
+            stepIndex: 0,
+            totalSteps: 0,
+            agentOutput: context.slice(0, 8000),
+            runContext: {},
+            status: 'pending',
+          });
+          logger.info(`DAG ${executionId}: HIL pause at node ${node.id}, reviewId=${reviewId}`);
+        } catch (err) {
+          logger.warn('DAG: failed to save HIL review record', err);
+        }
+        return `${HIL_SENTINEL}${reviewId}`;
+      }
+
       switch (tool) {
         case 'verify_compliance': {
           const frameworks = (d['frameworks'] as string[]) ?? [];
@@ -237,12 +356,30 @@ export async function runDAGExecution(
 
     let output: string;
     try {
-      output = await executeNode(node, context, engagementId);
+      output = await executeNode(node, context, engagementId, executionId);
     } catch (err) {
       output = `Error: ${err instanceof Error ? err.message : String(err)}`;
     }
 
     nodeOutputs.set(node.id, output);
+
+    // Detect HIL pause sentinel — stop DAG and surface review ID
+    if (output.startsWith(HIL_SENTINEL)) {
+      const hilReviewId = output.slice(HIL_SENTINEL.length);
+      steps.push({
+        type: 'observation',
+        content: `Paused for human review · reviewId: ${hilReviewId}`,
+        tool: node.type,
+        toolResultSummary: `Awaiting approval (${hilReviewId})`,
+      });
+      onStep(steps);
+
+      const pausedAnswer = `This workflow has paused for a human review step.\n\nReview ID: **${hilReviewId}**\n\nOpen the Human-in-Loop review page to approve or reject this step and continue the workflow.`;
+      steps.push({ type: 'final', content: pausedAnswer });
+      onStep(steps);
+
+      return { steps, finalAnswer: pausedAnswer, nodeCount: sorted.length, paused: true, hilReviewId };
+    }
 
     steps.push({
       type: 'observation',

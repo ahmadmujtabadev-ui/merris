@@ -260,3 +260,55 @@ export function runWorkflow(
     params,
   });
 }
+
+// ----- ReAct / DAG execution results -----
+
+export interface ReActStep {
+  type: 'thought' | 'action' | 'observation' | 'final';
+  content: string;
+  tool?: string;
+}
+
+export interface ReActExecution {
+  id: string;
+  templateId: string;
+  engagementId: string;
+  goal: string;
+  status: 'running' | 'completed' | 'failed' | 'paused';
+  steps: ReActStep[];
+  finalAnswer: string;
+  iterations: number;
+  startedAt: string;
+  completedAt?: string;
+}
+
+export function listRecentExecutions(): Promise<{ executions: ReActExecution[] }> {
+  return api.get<{ executions: ReActExecution[] }>('/workflows/react/history');
+}
+
+export function getReActExecution(id: string): Promise<ReActExecution> {
+  return api.get<ReActExecution>(`/workflows/react/${id}`);
+}
+
+// ----- HIL reviews -----
+
+export interface HilReview {
+  reviewId: string;
+  executionId: string;
+  nodeLabel: string;
+  agentOutput: string;
+  status: 'pending' | 'approved' | 'rejected';
+  createdAt: string;
+}
+
+export function listHilReviews(status = 'pending'): Promise<{ reviews: HilReview[] }> {
+  return api.get<{ reviews: HilReview[] }>(`/hil/reviews?status=${status}`);
+}
+
+export function approveHilReview(reviewId: string, notes?: string): Promise<{ ok: boolean }> {
+  return api.post<{ ok: boolean }>(`/hil/reviews/${reviewId}/approve`, { notes });
+}
+
+export function rejectHilReview(reviewId: string, notes?: string): Promise<{ ok: boolean }> {
+  return api.post<{ ok: boolean }>(`/hil/reviews/${reviewId}/reject`, { notes });
+}

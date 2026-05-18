@@ -28,6 +28,8 @@ import { registerWorkflowServiceRoutes } from './services/workflows/workflows.ro
 import { registerKBElevationRoutes } from './services/knowledge/elevation.router.js';
 import { registerScaffoldingRoutes } from './services/scaffolding/scaffolding.routes.js';
 import { registerAnnotationRoutes } from './services/annotations/annotations.routes.js';
+import { registerHilReviewRoutes } from './modules/hil/hil-review.routes.js';
+import { registerExportRoutes } from './modules/export/export.routes.js';
 import { connectDB } from './lib/db.js';
 
 function getSafeDir(): string {
@@ -112,6 +114,8 @@ async function registerRoutes(app: FastifyInstance): Promise<void> {
   await registerKBElevationRoutes(app);
   await registerScaffoldingRoutes(app);
   await registerAnnotationRoutes(app);
+  await registerHilReviewRoutes(app);
+  await registerExportRoutes(app);
 }
 
 export async function buildApp(): Promise<FastifyInstance> {

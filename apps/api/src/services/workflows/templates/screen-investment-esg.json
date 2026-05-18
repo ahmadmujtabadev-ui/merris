@@ -95,7 +95,7 @@
           "width": 219,
           "height": 128
         },
-        "selected": false
+        "selected": true
       },
       {
         "id": "benchmark",
@@ -120,7 +120,7 @@
           "topK": 50
         },
         "measured": {
-          "width": 234,
+          "width": 233,
           "height": 128
         },
         "selected": false
@@ -141,7 +141,7 @@
         },
         "measured": {
           "width": 280,
-          "height": 146
+          "height": 147
         },
         "selected": false
       },
@@ -159,7 +159,7 @@
         },
         "measured": {
           "width": 150,
-          "height": 149
+          "height": 150
         },
         "selected": false,
         "dragging": false

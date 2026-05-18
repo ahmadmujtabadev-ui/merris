@@ -21,9 +21,8 @@ const WORKSPACE_NAV: NavItem[] = [
   { href: '/portfolio',       label: 'Portfolio',       iconPath: 'M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z', shortcut: '2' },
   { href: '/compliance',      label: 'Compliance',      iconPath: 'M9 12l2 2 4-4M3 12a9 9 0 1018 0 9 9 0 00-18 0z', shortcut: '3' },
   { href: '/knowledge',       label: 'Knowledge',       iconPath: 'M4 19.5A2.5 2.5 0 016.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z', shortcut: '4' },
-  { href: '/firm-library',    label: 'Firm Library',    iconPath: 'M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z', shortcut: '5' },
-  { href: '/workflow-agents', label: 'Workflow Agents', iconPath: 'M13 2L3 14h9l-1 10 10-12h-9l1-10z', shortcut: '6' },
-  { href: '/history',         label: 'History',         iconPath: 'M12 22a10 10 0 100-20 10 10 0 000 20zM12 6v6l4 2', shortcut: '7' },
+  { href: '/workflow-agents', label: 'Workflow Agents', iconPath: 'M13 2L3 14h9l-1 10 10-12h-9l1-10z', shortcut: '5' },
+  { href: '/history',         label: 'History',         iconPath: 'M12 22a10 10 0 100-20 10 10 0 000 20zM12 6v6l4 2', shortcut: '6' },
 ];
 
 const SYSTEM_NAV: NavItem[] = [

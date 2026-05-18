@@ -5,35 +5,346 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Merris ESG Agent — Word</title>
   <script src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+  <style>
+    :root {
+      --primary: #0b5142;
+      --primary-light: #f0f6f0;
+      --border: #e8eae8;
+      --text: #1a1f1a;
+      --text-sec: #5f6368;
+      --text-ter: #9aa0a6;
+      --bg: #ffffff;
+      --bg-sec: #fafaf8;
+      --amber: #b45309;
+      --amber-bg: #fffbeb;
+      --red: #dc2626;
+      --red-bg: #fef2f2;
+      --green: #15803d;
+      --green-bg: #f0fdf4;
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 13px; color: var(--text); background: var(--bg); }
+
+    /* ── Header ── */
+    .m-header {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 14px; border-bottom: 1px solid var(--border);
+      background: var(--primary); color: white;
+    }
+    .m-header-logo { width: 22px; height: 22px; }
+    .m-header-title { font-size: 13px; font-weight: 700; letter-spacing: -0.2px; flex: 1; }
+    .m-header-sub { font-size: 9px; opacity: .7; font-family: monospace; text-transform: uppercase; letter-spacing: .05em; }
+    .m-engagement-pill {
+      font-size: 9px; font-family: monospace; background: rgba(255,255,255,.15);
+      padding: 2px 8px; border-radius: 99px; max-width: 120px; overflow: hidden;
+      text-overflow: ellipsis; white-space: nowrap;
+    }
+
+    /* ── Tab bar ── */
+    .m-tabs { display: flex; border-bottom: 1px solid var(--border); background: var(--bg-sec); }
+    .m-tab {
+      flex: 1; padding: 9px 4px; font-size: 11px; font-weight: 600; border: none;
+      background: none; cursor: pointer; color: var(--text-ter); position: relative;
+      transition: color .15s;
+    }
+    .m-tab.active { color: var(--primary); }
+    .m-tab.active::after {
+      content: ''; position: absolute; bottom: 0; left: 10%; right: 10%;
+      height: 2px; background: var(--primary); border-radius: 2px;
+    }
+    .m-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 15px; height: 15px; padding: 0 4px;
+      background: var(--primary); color: white;
+      border-radius: 99px; font-size: 8px; font-weight: 700; margin-left: 4px;
+    }
+
+    /* ── Panels ── */
+    .m-panel { display: none; flex: 1; overflow-y: auto; }
+    .m-panel.active { display: block; }
+
+    /* ── Cards ── */
+    .m-card {
+      margin: 10px; padding: 10px 12px; border-radius: var(--radius);
+      border: 1px solid var(--border); background: var(--bg);
+    }
+    .m-card-label {
+      font-size: 8px; font-family: monospace; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .08em; color: var(--text-ter);
+      margin-bottom: 6px;
+    }
+    .m-card-title { font-size: 12px; font-weight: 600; color: var(--text); }
+    .m-card-body { font-size: 11px; color: var(--text-sec); line-height: 1.5; margin-top: 4px; }
+
+    /* ── Buttons ── */
+    .m-btn {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 600;
+      cursor: pointer; border: none; transition: opacity .15s;
+    }
+    .m-btn:disabled { opacity: .5; cursor: not-allowed; }
+    .m-btn-primary { background: var(--primary); color: white; }
+    .m-btn-primary:hover:not(:disabled) { opacity: .9; }
+    .m-btn-outline {
+      background: transparent; color: var(--primary);
+      border: 1.5px solid var(--primary);
+    }
+    .m-btn-outline:hover:not(:disabled) { background: var(--primary-light); }
+    .m-btn-sm { padding: 4px 8px; font-size: 10px; }
+    .m-btn-danger { background: var(--red-bg); color: var(--red); border: 1px solid #fca5a5; }
+
+    /* ── Insert from Merris section ── */
+    .m-from-merris {
+      margin: 10px; border-radius: var(--radius);
+      border: 1.5px solid var(--primary); overflow: hidden;
+    }
+    .m-from-merris-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 8px 12px; background: var(--primary); color: white;
+    }
+    .m-from-merris-title { font-size: 11px; font-weight: 700; }
+    .m-from-merris-body { padding: 10px 12px; }
+    .m-exec-item {
+      display: flex; align-items: flex-start; gap: 8px;
+      padding: 8px 0; border-bottom: 1px solid var(--border); cursor: pointer;
+    }
+    .m-exec-item:last-child { border-bottom: none; }
+    .m-exec-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 4px; flex-shrink: 0; }
+    .m-exec-name { font-size: 11px; font-weight: 600; color: var(--text); }
+    .m-exec-meta { font-size: 9px; font-family: monospace; color: var(--text-ter); margin-top: 1px; }
+
+    /* ── Insert preview card ── */
+    .m-insert-preview {
+      margin: 10px; border-radius: var(--radius);
+      border: 1.5px solid var(--primary); background: var(--primary-light);
+      overflow: hidden;
+    }
+    .m-insert-preview-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 8px 12px; background: var(--primary); color: white;
+    }
+    .m-insert-preview-body {
+      max-height: 200px; overflow-y: auto; padding: 10px 12px;
+      font-size: 11px; line-height: 1.55; color: var(--text-sec); white-space: pre-wrap;
+    }
+    .m-insert-preview-actions {
+      display: flex; gap: 6px; padding: 8px 12px;
+      border-top: 1px solid var(--border); background: var(--bg);
+    }
+
+    /* ── Spinner ── */
+    .m-spinner {
+      width: 14px; height: 14px; border: 2px solid rgba(255,255,255,.3);
+      border-top-color: white; border-radius: 50%; animation: spin .7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Action queue items ── */
+    .m-action-item {
+      margin: 8px 10px; padding: 10px 12px; border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+    .m-action-item.applied { border-color: #bbf7d0; background: var(--green-bg); }
+    .m-action-item-desc { font-size: 11px; font-weight: 600; }
+    .m-action-item-sub { font-size: 9px; color: var(--text-ter); margin-top: 2px; font-family: monospace; }
+    .m-action-btns { display: flex; gap: 4px; margin-top: 8px; }
+
+    /* ── Chat ── */
+    .m-chat-messages { flex: 1; overflow-y: auto; padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+    .m-chat-bubble {
+      max-width: 85%; padding: 8px 11px; border-radius: 10px; font-size: 11px; line-height: 1.5;
+    }
+    .m-chat-bubble.user { align-self: flex-end; background: var(--primary); color: white; border-bottom-right-radius: 3px; }
+    .m-chat-bubble.assistant { align-self: flex-start; background: var(--bg-sec); border: 1px solid var(--border); border-bottom-left-radius: 3px; }
+    .m-chat-input-row { display: flex; gap: 6px; padding: 8px 10px; border-top: 1px solid var(--border); }
+    .m-chat-input {
+      flex: 1; border: 1.5px solid var(--border); border-radius: 6px;
+      padding: 6px 10px; font-size: 11px; outline: none; resize: none;
+      font-family: inherit;
+    }
+    .m-chat-input:focus { border-color: var(--primary); }
+
+    /* ── Toast ── */
+    .m-toast {
+      position: fixed; bottom: 12px; left: 10px; right: 10px;
+      padding: 9px 12px; border-radius: var(--radius);
+      font-size: 11px; font-weight: 600; color: white;
+      z-index: 999; display: flex; align-items: center; gap: 6px;
+      animation: fadeIn .2s ease;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── Engagement selector (first screen) ── */
+    .m-selector { padding: 20px 14px; display: flex; flex-direction: column; gap: 12px; }
+    .m-selector h2 { font-size: 15px; font-weight: 700; color: var(--primary); }
+    .m-selector p { font-size: 11px; color: var(--text-sec); }
+    .m-select {
+      width: 100%; padding: 8px 10px; border-radius: var(--radius);
+      border: 1.5px solid var(--border); font-size: 12px; outline: none;
+      background: var(--bg);
+    }
+    .m-select:focus { border-color: var(--primary); }
+
+    /* ── Insights list ── */
+    .m-insight {
+      margin: 8px 10px; padding: 10px 12px; border-radius: var(--radius);
+      border-left: 3px solid var(--primary); border: 1px solid var(--border);
+      border-left-width: 3px;
+    }
+    .m-insight.gap { border-left-color: var(--red); }
+    .m-insight.quality { border-left-color: var(--amber); }
+    .m-insight-title { font-size: 11px; font-weight: 600; }
+    .m-insight-detail { font-size: 10px; color: var(--text-sec); margin-top: 3px; line-height: 1.4; }
+
+    /* ── Empty state ── */
+    .m-empty { text-align: center; padding: 30px 14px; color: var(--text-ter); font-size: 11px; }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  </style>
 </head>
 <body>
-  <div class="merris-taskpane" id="merris-root">
-
-    <!-- Engagement Selector (shown first, hidden after selection) -->
-    <div id="engagement-selector-container"></div>
-
-    <!-- Main App (hidden until engagement selected) -->
-    <div id="merris-app" style="display:none; height:100vh; flex-direction:column;">
-
-      <!-- Tab Bar -->
-      <div class="merris-tab-bar" id="tab-bar">
-        <button class="merris-tab active" data-tab="insights">Insights</button>
-        <button class="merris-tab" data-tab="actions">Actions</button>
-        <button class="merris-tab" data-tab="chat">Chat</button>
-        <button class="merris-tab" data-tab="history">History</button>
+  <!-- ── Engagement Selector (shown first) ── -->
+  <div id="screen-selector">
+    <div style="background:var(--primary);padding:12px 14px;display:flex;align-items:center;gap:8px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      <div>
+        <div style="font-size:14px;font-weight:700;color:white;">Merris ESG</div>
+        <div style="font-size:8px;color:rgba(255,255,255,.6);font-family:monospace;text-transform:uppercase;letter-spacing:.1em;">Word Add-in</div>
       </div>
-
-      <!-- Tab Content -->
-      <div class="merris-tab-content" id="tab-content">
-        <div id="tab-insights" class="merris-tab-panel active"></div>
-        <div id="tab-actions" class="merris-tab-panel" style="display:none;"></div>
-        <div id="tab-chat" class="merris-tab-panel" style="display:none;"></div>
-        <div id="tab-history" class="merris-tab-panel" style="display:none;"></div>
-      </div>
-
-      <!-- Persistent Footer -->
-      <div class="merris-footer" id="merris-footer"></div>
     </div>
+    <div class="m-selector">
+      <p>Select an engagement to link this document, or skip to use the add-in without an engagement context.</p>
+      <div>
+        <div style="font-size:9px;font-family:monospace;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-ter);margin-bottom:6px;">Engagement</div>
+        <select class="m-select" id="engagement-select">
+          <option value="">Loading engagements…</option>
+        </select>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button class="m-btn m-btn-primary" id="btn-select-engagement" style="flex:1;">Connect</button>
+        <button class="m-btn m-btn-outline" id="btn-skip-engagement">Skip</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Main app (hidden until engagement selected) ── -->
+  <div id="screen-app" style="display:none;height:100vh;display:none;flex-direction:column;">
+
+    <!-- Header -->
+    <div class="m-header">
+      <svg class="m-header-logo" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      <div style="flex:1;">
+        <div class="m-header-title">Merris ESG</div>
+        <div class="m-header-sub">Word Agent</div>
+      </div>
+      <span class="m-engagement-pill" id="header-engagement">—</span>
+    </div>
+
+    <!-- Tabs -->
+    <div class="m-tabs">
+      <button class="m-tab active" data-tab="insert">Insert</button>
+      <button class="m-tab" data-tab="chat">Chat</button>
+      <button class="m-tab" data-tab="review">Review</button>
+      <button class="m-tab" data-tab="history">History</button>
+    </div>
+
+    <!-- Panels -->
+    <div style="flex:1;overflow-y:auto;display:flex;flex-direction:column;">
+
+      <!-- ── INSERT TAB ── -->
+      <div class="m-panel active" id="panel-insert">
+
+        <!-- From Merris section -->
+        <div class="m-from-merris">
+          <div class="m-from-merris-header">
+            <span class="m-from-merris-title">Recent Workflow Runs</span>
+            <button class="m-btn m-btn-sm" id="btn-refresh-runs" style="background:rgba(255,255,255,.15);color:white;border:none;padding:3px 8px;font-size:9px;">
+              Refresh
+            </button>
+          </div>
+          <div class="m-from-merris-body" id="runs-list">
+            <div class="m-empty" style="padding:14px 0;">Loading recent runs…</div>
+          </div>
+        </div>
+
+        <!-- Insert preview (hidden until a run is selected) -->
+        <div id="insert-preview" style="display:none;">
+          <div class="m-insert-preview">
+            <div class="m-insert-preview-header">
+              <span id="preview-run-name" style="font-size:11px;font-weight:700;">Run output</span>
+              <button id="btn-close-preview" style="background:none;border:none;color:white;cursor:pointer;font-size:14px;opacity:.7;">✕</button>
+            </div>
+            <div class="m-insert-preview-body" id="preview-content"></div>
+            <div class="m-insert-preview-actions">
+              <button class="m-btn m-btn-primary" id="btn-insert-at-cursor">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M12 3v18"/></svg>
+                Insert at cursor
+              </button>
+              <button class="m-btn m-btn-outline" id="btn-insert-at-end">Insert at end</button>
+              <button class="m-btn m-btn-outline" id="btn-insert-as-comment" style="margin-left:auto;">As comment</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pending actions queue -->
+        <div id="actions-queue" style="display:none;">
+          <div style="padding:8px 10px 0;display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-size:9px;font-family:monospace;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-ter);">
+              Pending actions
+            </span>
+            <button class="m-btn m-btn-sm" id="btn-apply-all-actions" style="font-size:9px;padding:3px 8px;">Apply All</button>
+          </div>
+          <div id="actions-list"></div>
+        </div>
+
+        <div id="insert-empty" class="m-empty">
+          Select a workflow run above to preview and insert its output into this document.
+        </div>
+      </div>
+
+      <!-- ── CHAT TAB ── -->
+      <div class="m-panel" id="panel-chat" style="display:flex;flex-direction:column;height:calc(100vh - 90px);">
+        <div class="m-chat-messages" id="chat-messages">
+          <div class="m-chat-bubble assistant">
+            Hello! I'm Merris. I can help you draft ESG sections, check consistency, answer questions about your document, or retrieve data from your engagement. What would you like to do?
+          </div>
+        </div>
+        <div class="m-chat-input-row">
+          <textarea class="m-chat-input" id="chat-input" rows="2" placeholder="Ask Merris about this document…"></textarea>
+          <button class="m-btn m-btn-primary" id="btn-chat-send" style="align-self:flex-end;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2L15 22 11 13 2 9l20-7z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ── REVIEW TAB ── -->
+      <div class="m-panel" id="panel-review">
+        <div style="padding:10px 10px 4px;display:flex;gap:6px;flex-wrap:wrap;">
+          <button class="m-btn m-btn-outline m-btn-sm" id="btn-quick-review">Quick Check</button>
+          <button class="m-btn m-btn-outline m-btn-sm" id="btn-full-review">Full Review</button>
+          <button class="m-btn m-btn-outline m-btn-sm" id="btn-verify-doc">Verify vs Framework</button>
+        </div>
+        <div id="review-findings">
+          <div class="m-empty">Run a review to see compliance findings and quality issues.</div>
+        </div>
+      </div>
+
+      <!-- ── HISTORY TAB ── -->
+      <div class="m-panel" id="panel-history">
+        <div id="history-list">
+          <div class="m-empty">No history yet. Actions you apply will appear here.</div>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 </body>
 </html>

@@ -27,13 +27,14 @@ export interface ReActExecution {
   templateId: string;
   engagementId: string;
   goal: string;
-  status: 'running' | 'completed' | 'failed';
+  status: 'running' | 'completed' | 'failed' | 'paused';
   steps: ReActStep[];
   finalAnswer: string;
   iterations: number;
   error?: string;
   startedAt: string;
   completedAt?: string;
+  hilReviewId?: string;
 }
 
 // ── In-memory store ───────────────────────────────────────────
@@ -337,7 +338,8 @@ export async function runReActAgent(
       execution.steps = result.steps;
       execution.finalAnswer = result.finalAnswer;
       execution.iterations = result.nodeCount;
-      execution.status = 'completed';
+      execution.status = result.paused ? 'paused' : 'completed';
+      if (result.hilReviewId) execution.hilReviewId = result.hilReviewId;
     } catch (err) {
       const msg = err instanceof Error ? err.message : 'DAG execution failed';
       logger.error(`DAG ${executionId} failed: ${msg}`, err);

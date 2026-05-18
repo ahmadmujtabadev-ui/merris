@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, type ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 import { MerrisCard } from '@/components/merris/card';
 import { MerrisButton } from '@/components/merris/button';
@@ -58,7 +58,7 @@ const BILLING_FALLBACK: BillingData = {
   paymentLast4: '4242',
 };
 
-const TABS = ['Profile', 'Team', 'Preferences', 'Billing'] as const;
+const TABS = ['Profile', 'Team', 'Preferences', 'Billing', 'Add-ins'] as const;
 type Tab = (typeof TABS)[number];
 
 function ProfileForm() {
@@ -166,6 +166,161 @@ function BillingCard({ billing, seeded }: { billing: BillingData; seeded: boolea
   );
 }
 
+// ── Add-ins onboarding ─────────────────────────────────────────
+
+interface AddinInfo {
+  name: string;
+  host: string;
+  icon: ReactNode;
+  color: string;
+  manifestFile: string;
+  features: string[];
+  tabs: string[];
+}
+
+const ADDIN_LIST: AddinInfo[] = [
+  {
+    name: 'Word',
+    host: 'Microsoft Word',
+    color: '#2b5797',
+    manifestFile: 'manifest.xml',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+      </svg>
+    ),
+    features: [
+      'Insert workflow run output at cursor, end, or as comment',
+      'Chat with the ESG agent using document context',
+      'Quick Check and Full Review of the open document',
+      'Verify document against compliance frameworks',
+    ],
+    tabs: ['Insert', 'Chat', 'Review', 'History'],
+  },
+  {
+    name: 'Excel',
+    host: 'Microsoft Excel',
+    color: '#1d6f42',
+    manifestFile: 'manifest.xml',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/>
+      </svg>
+    ),
+    features: [
+      'Browse and select engagement data points as a checklist',
+      'Insert selected metrics as a formatted table or list',
+      'Auto-fill cells from the AI agent',
+      'Validate the active sheet and highlight anomalies',
+    ],
+    tabs: ['Data', 'Insert', 'Validate'],
+  },
+  {
+    name: 'PowerPoint',
+    host: 'Microsoft PowerPoint',
+    color: '#b7472a',
+    manifestFile: 'manifest.xml',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <rect x="2" y="4" width="20" height="16" rx="2"/>
+        <path d="M8 12h8M12 9v6"/>
+      </svg>
+    ),
+    features: [
+      'Insert workflow run output as title or content slides',
+      'Insert ESG metric charts (bar, line, pie, waterfall)',
+      'Apply Merris or custom brand colours and fonts',
+    ],
+    tabs: ['Slides', 'Chart', 'Brand'],
+  },
+];
+
+const SIDELOAD_STEPS = [
+  { label: 'Open the Office app (Word / Excel / PowerPoint).', icon: '1' },
+  { label: 'Go to Insert → Add-ins → My Add-ins → Manage My Add-ins → Upload My Add-in.', icon: '2' },
+  { label: 'Browse to the manifest file in apps/office-addins/<host>/manifest.xml and click Upload.', icon: '3' },
+  { label: 'The Merris ESG panel will appear in the Home ribbon.', icon: '4' },
+];
+
+function AddinsTab() {
+  return (
+    <div className="space-y-6">
+      {/* Sideloading instructions */}
+      <MerrisCard>
+        <div className="mb-3 flex items-center gap-2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0b5142" strokeWidth="2">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <div className="font-body text-[10px] font-semibold uppercase tracking-[0.08em] text-merris-primary">How to sideload</div>
+        </div>
+        <div className="space-y-2">
+          {SIDELOAD_STEPS.map((step) => (
+            <div key={step.icon} className="flex items-start gap-3">
+              <div className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-merris-primary-bg font-body text-[10px] font-bold text-merris-primary">
+                {step.icon}
+              </div>
+              <p className="font-body text-[12px] text-merris-text-secondary">{step.label}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-3 rounded-merris-sm border border-amber-200 bg-amber-50 px-3 py-2 font-body text-[11px] text-amber-700">
+          <strong>Note:</strong> Sideloading requires an Office 365 / Microsoft 365 subscription. On Mac, use Insert → Add-ins → Upload My Add-in from the More Options menu.
+        </div>
+      </MerrisCard>
+
+      {/* Per-add-in cards */}
+      {ADDIN_LIST.map((addin) => (
+        <MerrisCard key={addin.name}>
+          <div className="mb-3 flex items-center gap-3">
+            <div
+              className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-merris-sm text-white"
+              style={{ background: addin.color }}
+            >
+              {addin.icon}
+            </div>
+            <div>
+              <div className="font-display text-[14px] font-bold text-merris-text">Merris ESG — {addin.name}</div>
+              <div className="font-body text-[11px] text-merris-text-secondary">{addin.host} task pane</div>
+            </div>
+            <div className="ml-auto flex gap-1.5">
+              {addin.tabs.map((t) => (
+                <span
+                  key={t}
+                  className="rounded-full bg-merris-primary-bg px-2 py-0.5 font-body text-[9px] font-semibold uppercase tracking-wider text-merris-primary"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="mb-3">
+            <div className="mb-1.5 font-body text-[9px] font-semibold uppercase tracking-wider text-merris-text-tertiary">Features</div>
+            <ul className="space-y-1">
+              {addin.features.map((f) => (
+                <li key={f} className="flex items-start gap-2">
+                  <svg className="mt-0.5 flex-shrink-0" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#0b5142" strokeWidth="2.5">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  <span className="font-body text-[12px] text-merris-text-secondary">{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <div className="rounded-merris-sm border border-merris-border bg-merris-surface-low px-2.5 py-1.5 font-body text-[11px] text-merris-text-secondary">
+              <span className="font-semibold text-merris-text">Manifest: </span>
+              apps/office-addins/{addin.name.toLowerCase()}/{addin.manifestFile}
+            </div>
+          </div>
+        </MerrisCard>
+      ))}
+    </div>
+  );
+}
+
 export function SettingsPage() {
   const [tab, setTab] = useState<Tab>('Profile');
   const router = useRouter();
@@ -240,13 +395,14 @@ export function SettingsPage() {
         <div className="mb-5 flex items-start justify-between">
           <div>
             <h1 className="mb-1 font-display text-[20px] font-bold text-merris-text">
-              {tab === 'Profile' ? 'Profile & Organisation' : tab}
+              {tab === 'Profile' ? 'Profile & Organisation' : tab === 'Add-ins' ? 'Office Add-ins' : tab}
             </h1>
             <p className="font-body text-[12px] text-merris-text-secondary">
               {tab === 'Profile' && 'Manage your identity across the Merris ecosystem.'}
               {tab === 'Team' && 'Team members with access to this workspace.'}
               {tab === 'Preferences' && 'Configure how Merris adapts to your work.'}
               {tab === 'Billing' && 'Plan, usage, and payment details.'}
+              {tab === 'Add-ins' && 'Install and use Merris ESG inside Word, Excel, and PowerPoint.'}
             </p>
           </div>
           {tab === 'Profile' && (
@@ -278,6 +434,7 @@ export function SettingsPage() {
         {tab === 'Team' && <TeamCard team={team} seeded={teamSeeded} />}
         {tab === 'Preferences' && <PreferencesCard preferences={preferences} seeded={preferencesSeeded} />}
         {tab === 'Billing' && <BillingCard billing={billing} seeded={billingSeeded} />}
+        {tab === 'Add-ins' && <AddinsTab />}
       </main>
     </div>
   );
