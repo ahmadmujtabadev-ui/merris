@@ -48,10 +48,19 @@ module.exports = {
   ],
   devServer: {
     port: 3005,
-    https: true,
+    server: "http",
+    allowedHosts: "all",
     headers: {
       "Access-Control-Allow-Origin": "*",
     },
+    proxy: [
+      {
+        context: ["/api"],
+        target: "http://localhost:8000",
+        changeOrigin: true,
+      },
+    ],
+    hot: true,
   },
   devtool: isProduction ? false : "source-map",
 };

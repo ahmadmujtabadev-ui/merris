@@ -73,8 +73,8 @@
         "id": "risk_screen",
         "type": "kb-search",
         "position": {
-          "x": 550,
-          "y": 180
+          "x": 560,
+          "y": 160
         },
         "data": {
           "label": "Run ESG risk screening",
@@ -95,7 +95,8 @@
           "width": 219,
           "height": 128
         },
-        "selected": true
+        "selected": false,
+        "dragging": false
       },
       {
         "id": "benchmark",
@@ -120,7 +121,7 @@
           "topK": 50
         },
         "measured": {
-          "width": 233,
+          "width": 234,
           "height": 128
         },
         "selected": false
@@ -141,7 +142,7 @@
         },
         "measured": {
           "width": 280,
-          "height": 147
+          "height": 146
         },
         "selected": false
       },
@@ -149,7 +150,7 @@
         "id": "output-end",
         "type": "output",
         "position": {
-          "x": 1376,
+          "x": 1616,
           "y": 176
         },
         "data": {
@@ -159,7 +160,7 @@
         },
         "measured": {
           "width": 150,
-          "height": 150
+          "height": 149
         },
         "selected": false,
         "dragging": false

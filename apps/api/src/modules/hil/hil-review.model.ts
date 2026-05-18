@@ -29,9 +29,9 @@ const HilReviewSchema = new Schema<IHilReview>(
   {
     reviewId:    { type: String, required: true, unique: true, index: true },
     executionId: { type: String, required: true, index: true },
-    templateId:  { type: String, required: true },
-    engagementId:{ type: String, required: true, index: true },
-    nodeId:      { type: String, required: true },
+    templateId:  { type: String, required: false, default: '' },
+    engagementId:{ type: String, required: false, default: '', index: true },
+    nodeId:      { type: String, required: false, default: '' },
     nodeLabel:   { type: String, required: true },
     stepIndex:   { type: Number, required: true },
     totalSteps:  { type: Number, required: true },

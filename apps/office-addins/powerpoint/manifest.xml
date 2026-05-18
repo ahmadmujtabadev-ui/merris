@@ -11,16 +11,16 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Merris ESG" />
   <Description DefaultValue="AI-powered ESG presentation assistant for PowerPoint" />
-  <IconUrl DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev/addins/assets/icon-32.png" />
-  <HighResolutionIconUrl DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev/addins/assets/icon-64.png" />
-  <SupportUrl DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev/addins/assets/icon-32.png" />
+  <IconUrl DefaultValue="https://localhost:3005/icon-32.png" />
+  <HighResolutionIconUrl DefaultValue="https://localhost:3005/icon-64.png" />
+  <SupportUrl DefaultValue="https://localhost:3005" />
 
   <Hosts>
     <Host Name="Presentation" />
   </Hosts>
 
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev/addins/powerpoint/taskpane.html" />
+    <SourceLocation DefaultValue="http://localhost:3005/taskpane.html" />
   </DefaultSettings>
 
   <Permissions>ReadWriteDocument</Permissions>
@@ -44,7 +44,6 @@
                   <bt:Image size="32" resid="Icon.32x32" />
                   <bt:Image size="80" resid="Icon.80x80" />
                 </Icon>
-
                 <Control xsi:type="Button" id="AgentButton">
                   <Label resid="Agent.Label" />
                   <Supertip>
@@ -71,13 +70,13 @@
 
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev/addins/assets/icon-16.png" />
-        <bt:Image id="Icon.32x32" DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev/addins/assets/icon-32.png" />
-        <bt:Image id="Icon.80x80" DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev/addins/assets/icon-80.png" />
+        <bt:Image id="Icon.16x16" DefaultValue="https://localhost:3005/icon-16.png" />
+        <bt:Image id="Icon.32x32" DefaultValue="https://localhost:3005/icon-32.png" />
+        <bt:Image id="Icon.80x80" DefaultValue="https://localhost:3005/icon-80.png" />
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev/addins/powerpoint/taskpane.html" />
-        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://distinct-uncoincidentally-brycen.ngrok-free.dev" />
+        <bt:Url id="Taskpane.Url" DefaultValue="http://localhost:3005/taskpane.html" />
+        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="http://localhost:3005" />
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="MerrisTab.Label" DefaultValue="Merris" />
@@ -86,8 +85,8 @@
         <bt:String id="GetStarted.Title" DefaultValue="Merris ESG for PowerPoint" />
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="Agent.Tooltip" DefaultValue="Open the Merris panel to insert ESG charts, generate slides, and apply branding." />
-        <bt:String id="GetStarted.Description" DefaultValue="Insert ESG charts, generate slides from templates, and apply branding from the Merris platform." />
+        <bt:String id="Agent.Tooltip" DefaultValue="Insert ESG charts, generate slides, and apply branding from Merris." />
+        <bt:String id="GetStarted.Description" DefaultValue="Insert ESG charts, generate slides from templates, and apply branding." />
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>

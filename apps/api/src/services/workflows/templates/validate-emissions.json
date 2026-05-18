@@ -1,11 +1,172 @@
 {
   "id": "validate-emissions",
   "name": "Validate Emissions Data",
-  "description": "Extract emissions figures, recalculate using verified factors, flag discrepancies",
-  "category": "Climate",
+  "description": "Visual workflow — 6 nodes",
+  "category": "Custom",
   "steps": [
-    { "id": "extract", "name": "Extract emissions figures", "tool": "perceive_document", "inputs": { "documentBody": "$document", "documentType": "word" } },
-    { "id": "recalculate", "name": "Recalculate with verified factors", "tool": "verify_compliance", "inputs": { "documentBody": "$document", "frameworks": ["gri"] } },
-    { "id": "report", "name": "Produce validation report", "tool": "generate_text", "inputs": { "prompt": "Produce an emissions validation report from: $extract, $recalculate" } }
-  ]
+    {
+      "id": "extract",
+      "name": "Extract emissions figures",
+      "description": "",
+      "tool": "perceive_document",
+      "inputs": {}
+    },
+    {
+      "id": "recalculate",
+      "name": "Recalculate with verified factors",
+      "description": "",
+      "tool": "verify_compliance",
+      "inputs": {}
+    },
+    {
+      "id": "report",
+      "name": "Produce validation report",
+      "description": "",
+      "tool": "generate_text",
+      "inputs": {}
+    },
+    {
+      "id": "tool-call-1779126730397-aszj",
+      "name": "Human-in-Loop",
+      "description": "web-search",
+      "tool": "generate_text",
+      "inputs": {}
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "trigger-0",
+        "type": "trigger",
+        "position": {
+          "x": 60,
+          "y": 180
+        },
+        "data": {
+          "label": "Start",
+          "triggerType": "manual",
+          "state": "idle"
+        },
+        "measured": {
+          "width": 210,
+          "height": 129
+        }
+      },
+      {
+        "id": "extract",
+        "type": "transform",
+        "position": {
+          "x": 300,
+          "y": 180
+        },
+        "data": {
+          "label": "Extract emissions figures",
+          "state": "idle",
+          "operation": ""
+        },
+        "measured": {
+          "width": 235,
+          "height": 113
+        }
+      },
+      {
+        "id": "recalculate",
+        "type": "condition",
+        "position": {
+          "x": 550,
+          "y": 180
+        },
+        "data": {
+          "label": "Recalculate with verified factors",
+          "state": "idle",
+          "condition": "",
+          "trueLabel": "Pass",
+          "falseLabel": "Fail"
+        },
+        "measured": {
+          "width": 276,
+          "height": 157
+        }
+      },
+      {
+        "id": "report",
+        "type": "llm-reason",
+        "position": {
+          "x": 800,
+          "y": 180
+        },
+        "data": {
+          "label": "Produce validation report",
+          "state": "idle",
+          "prompt": ""
+        },
+        "measured": {
+          "width": 235,
+          "height": 126
+        }
+      },
+      {
+        "id": "output-end",
+        "type": "output",
+        "position": {
+          "x": 1050,
+          "y": 180
+        },
+        "data": {
+          "label": "Output",
+          "format": "report",
+          "state": "idle"
+        },
+        "measured": {
+          "width": 150,
+          "height": 149
+        }
+      },
+      {
+        "id": "tool-call-1779126730397-aszj",
+        "type": "tool-call",
+        "position": {
+          "x": 1296,
+          "y": 192
+        },
+        "data": {
+          "label": "Human-in-Loop",
+          "tool": "web-search",
+          "state": "idle"
+        },
+        "measured": {
+          "width": 210,
+          "height": 128
+        },
+        "selected": false,
+        "dragging": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-trigger-0-extract",
+        "source": "trigger-0",
+        "target": "extract",
+        "type": "smoothstep"
+      },
+      {
+        "id": "e-extract-recalculate",
+        "source": "extract",
+        "target": "recalculate",
+        "type": "smoothstep"
+      },
+      {
+        "id": "e-recalculate-report",
+        "source": "recalculate",
+        "target": "report",
+        "type": "smoothstep"
+      },
+      {
+        "id": "e-report-output-end",
+        "source": "report",
+        "target": "output-end",
+        "type": "smoothstep"
+      }
+    ]
+  }
 }

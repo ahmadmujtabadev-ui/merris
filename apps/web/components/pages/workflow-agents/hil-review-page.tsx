@@ -90,7 +90,7 @@ function ReviewListItem({
               {review.nodeLabel}
             </div>
             <div className="mt-0.5 truncate font-mono text-[9px]" style={{ color: '#9aa0a6' }}>
-              {review.runContext.engagementName ?? review.engagementId.slice(-8)}
+              {review.runContext?.engagementName ?? review.engagementId.slice(-8)}
             </div>
           </div>
           <div className="flex shrink-0 flex-col items-end gap-1">
@@ -324,7 +324,7 @@ export function HilReviewPage() {
                         {selectedReview.status}
                       </span>
                     ) : (
-                      <SeverityBadge severity={selectedReview.runContext.severity} />
+                      <SeverityBadge severity={selectedReview.runContext?.severity} />
                     )}
                   </div>
                 </div>
@@ -334,20 +334,20 @@ export function HilReviewPage() {
                   <div className="mb-1 w-full font-mono text-[8px] font-bold uppercase tracking-widest" style={{ color: '#9aa0a6' }}>
                     Run Context
                   </div>
-                  {selectedReview.runContext.engagementName && (
-                    <ContextPill label="Engagement" value={selectedReview.runContext.engagementName} dot="#22c55e" />
+                  {selectedReview.runContext?.engagementName && (
+                    <ContextPill label="Engagement" value={selectedReview.runContext?.engagementName} dot="#22c55e" />
                   )}
-                  {selectedReview.runContext.jurisdiction && (
-                    <ContextPill label="Jurisdiction" value={selectedReview.runContext.jurisdiction} />
+                  {selectedReview.runContext?.jurisdiction && (
+                    <ContextPill label="Jurisdiction" value={selectedReview.runContext?.jurisdiction} />
                   )}
-                  {selectedReview.runContext.severity && (
-                    <ContextPill label="Severity" value={selectedReview.runContext.severity} />
+                  {selectedReview.runContext?.severity && (
+                    <ContextPill label="Severity" value={selectedReview.runContext?.severity} />
                   )}
-                  {selectedReview.runContext.triggeredBy && (
-                    <ContextPill label="Triggered by" value={selectedReview.runContext.triggeredBy} />
+                  {selectedReview.runContext?.triggeredBy && (
+                    <ContextPill label="Triggered by" value={selectedReview.runContext?.triggeredBy} />
                   )}
-                  {selectedReview.runContext.assignedTo && (
-                    <ContextPill label="Assigned to" value={selectedReview.runContext.assignedTo} />
+                  {selectedReview.runContext?.assignedTo && (
+                    <ContextPill label="Assigned to" value={selectedReview.runContext?.assignedTo} />
                   )}
                   <ContextPill label="Execution" value={selectedReview.executionId.slice(-8)} />
                 </div>

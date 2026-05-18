@@ -219,22 +219,24 @@ async function executeNode(
       if (label.includes('human') || label.includes('hil') || label.includes('review')) {
         const reviewId = `hil_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
         try {
-          await HilReviewModel.create({
+          const doc = new HilReviewModel({
             reviewId,
-            executionId,
+            executionId: executionId || 'unknown',
             templateId: '',
-            engagementId,
-            nodeId: node.id,
-            nodeLabel: String(d['label'] ?? node.id),
+            engagementId: engagementId || '',
+            nodeId: String(node.id || 'node'),
+            nodeLabel: String(d['label'] ?? node.id ?? 'Human Review'),
             stepIndex: 0,
             totalSteps: 0,
-            agentOutput: context.slice(0, 8000),
+            agentOutput: String(context || '').slice(0, 8000),
             runContext: {},
             status: 'pending',
           });
-          logger.info(`DAG ${executionId}: HIL pause at node ${node.id}, reviewId=${reviewId}`);
-        } catch (err) {
-          logger.warn('DAG: failed to save HIL review record', err);
+          await doc.save({ validateBeforeSave: false });
+          logger.info(`DAG ${executionId}: HIL review saved reviewId=${reviewId}`);
+        } catch (err: unknown) {
+          const msg = err instanceof Error ? err.message : String(err);
+          logger.error(`DAG: HIL save FAILED — ${msg}`);
         }
         return `${HIL_SENTINEL}${reviewId}`;
       }

@@ -47,9 +47,9 @@ export async function ensureAuthenticated(): Promise<string> {
  * Uses stored credentials or dev defaults.
  */
 async function merrisApiLogin(): Promise<string | null> {
-  const baseUrl = "/api/v1";
-  const email = localStorage.getItem("merris_email") || "tim@merris.ai";
-  const password = localStorage.getItem("merris_password") || "Test1234!";
+  const baseUrl = "http://localhost:8000/api/v1";
+  const email = localStorage.getItem("merris_email") || "ahmadmujtabadev@gmail.com";
+  const password = localStorage.getItem("merris_password") || "Merris123!";
 
   const response = await fetch(`${baseUrl}/auth/login`, {
     method: "POST",
