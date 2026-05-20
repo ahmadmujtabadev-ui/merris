@@ -22,6 +22,14 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const handleMicrosoftLogin = () => {
+    const clientId = 'df5eabf8-0da1-46db-b1b7-22addbbcfc7b';
+    const redirectUri = encodeURIComponent(`${window.location.origin}/auth/callback`);
+    const scope = encodeURIComponent('openid profile email');
+    const url = `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=${clientId}&response_type=code&redirect_uri=${redirectUri}&scope=${scope}&response_mode=query`;
+    window.location.href = url;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
@@ -114,6 +122,27 @@ export default function LoginPage() {
           <MerrisButton type="submit" variant="primary" disabled={loading} className="w-full justify-center">
             {loading ? t(locale, 'common.loading') : t(locale, 'auth.login')}
           </MerrisButton>
+
+          <div className="relative flex items-center gap-3">
+            <div className="h-px flex-1 bg-merris-border-medium" />
+            <span className="text-xs text-merris-text-muted">or</span>
+            <div className="h-px flex-1 bg-merris-border-medium" />
+          </div>
+
+          <button
+            type="button"
+            onClick={handleMicrosoftLogin}
+            className="flex w-full items-center justify-center gap-3 rounded-merris border border-merris-border-medium bg-white px-4 py-2.5 text-sm font-medium text-merris-text shadow-sm transition hover:bg-merris-bg"
+          >
+            <svg width="18" height="18" viewBox="0 0 21 21" fill="none">
+              <rect x="1" y="1" width="9" height="9" fill="#F25022"/>
+              <rect x="11" y="1" width="9" height="9" fill="#7FBA00"/>
+              <rect x="1" y="11" width="9" height="9" fill="#00A4EF"/>
+              <rect x="11" y="11" width="9" height="9" fill="#FFB900"/>
+            </svg>
+            Sign in with Microsoft
+          </button>
+
           <p className="text-center text-sm text-merris-text-muted">
             {t(locale, 'auth.noAccount')}{' '}
             <Link href="/register" className="text-merris-primary hover:underline">

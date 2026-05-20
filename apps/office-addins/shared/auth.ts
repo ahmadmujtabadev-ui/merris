@@ -8,24 +8,28 @@ import { configure, getToken, clearToken } from "./api-client";
 /* globals Office */
 declare const Office: any;
 
-const CLIENT_ID = "00000000-0000-0000-0000-000000000000"; // Replace with real AAD app ID
+const CLIENT_ID = "df5eabf8-0da1-46db-b1b7-22addbbcfc7b";
 const AUTHORITY = "https://login.microsoftonline.com/common";
-const REDIRECT_URI = "https://localhost:3000/auth/callback";
+const REDIRECT_URI = "https://localhost:3003/auth/callback";
 const SCOPES = ["openid", "profile", "email"];
 
 let _dialogLoginPromise: Promise<string> | null = null;
 
-/**
- * Attempt to authenticate. Tries:
- * 1. Existing token in localStorage
- * 2. Merris API login (email/password from localStorage or defaults for dev)
- * 3. Office SSO (requires Azure AD — production only)
- */
 export async function ensureAuthenticated(): Promise<string> {
   const existing = getToken();
   if (existing) return existing;
 
-  // Dev/testing: auto-login with Merris API credentials
+  // Try Office SSO first (production — Azure AD, silent)
+  try {
+    const officeToken = await trySSOLogin();
+    const merrisToken = await exchangeMicrosoftToken(officeToken);
+    configure({ token: merrisToken });
+    return merrisToken;
+  } catch {
+    // Fall through to dev login
+  }
+
+  // Dev fallback: email/password
   try {
     const token = await merrisApiLogin();
     if (token) return token;
@@ -33,13 +37,20 @@ export async function ensureAuthenticated(): Promise<string> {
     // Fall through
   }
 
-  try {
-    const ssoToken = await trySSOLogin();
-    configure({ token: ssoToken });
-    return ssoToken;
-  } catch {
-    return dialogLogin();
-  }
+  return dialogLogin();
+}
+
+async function exchangeMicrosoftToken(officeToken: string): Promise<string> {
+  const baseUrl = "http://localhost:8000/api/v1";
+  const res = await fetch(`${baseUrl}/auth/microsoft`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ token: officeToken }),
+  });
+  if (!res.ok) throw new Error("Microsoft token exchange failed");
+  const data = await res.json();
+  if (!data.token) throw new Error("No token returned");
+  return data.token;
 }
 
 /**

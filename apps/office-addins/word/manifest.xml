@@ -93,5 +93,16 @@
         <bt:String id="GetStarted.Description" DefaultValue="AI-powered ESG report drafting. Click ESG Agent to draft sections, check consistency, and chat with the AI assistant." />
       </bt:LongStrings>
     </Resources>
+
+    <WebApplicationInfo>
+      <Id>df5eabf8-0da1-46db-b1b7-22addbbcfc7b</Id>
+      <Resource>api://df5eabf8-0da1-46db-b1b7-22addbbcfc7b</Resource>
+      <Scopes>
+        <Scope>openid</Scope>
+        <Scope>profile</Scope>
+        <Scope>email</Scope>
+      </Scopes>
+    </WebApplicationInfo>
+
   </VersionOverrides>
 </OfficeApp>
